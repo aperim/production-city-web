@@ -1,4 +1,5 @@
 import { render, screen } from "@testing-library/react";
+import { createRef } from "react";
 import userEvent from "@testing-library/user-event";
 import { describe, expect, it, vi } from "vitest";
 import { Button } from "./Button";
@@ -35,5 +36,12 @@ describe("Button", () => {
     const { container } = render(<Button size="lg">Large</Button>);
     const button = container.querySelector("button");
     expect(button?.getAttribute("class")).toContain("h-10");
+  });
+
+  it("forwards refs to the underlying button element", () => {
+    const ref = createRef<HTMLButtonElement>();
+    render(<Button ref={ref}>Focusable</Button>);
+    expect(ref.current).toBeInstanceOf(HTMLButtonElement);
+    expect(ref.current).toHaveTextContent("Focusable");
   });
 });

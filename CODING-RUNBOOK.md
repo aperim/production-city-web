@@ -235,7 +235,10 @@ Before starting work on a new session:
 
 ```bash
 # Check no pending migrations
-wrangler d1 migrations apply <D1_BINDING_NAME> --local --dry-run
+wrangler d1 migrations list <D1_BINDING_NAME> --local --config apps/backend/wrangler.toml
+
+# Generate Prisma Client for the current worktree
+pnpm exec prisma generate
 
 # Verify unit tests pass
 pnpm test
