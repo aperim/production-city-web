@@ -1,0 +1,30 @@
+import { Meta } from "@storybook/addon-docs/blocks";
+import { GuidePage } from "./GuidePage";
+
+<Meta title="Style Guide/Brand" />
+
+<GuidePage
+  title="Brand"
+  summary="Production City’s visual system stays direct: calm surfaces, practical spacing, and typography that reads quickly in both light and dark themes."
+  sections={[
+    {
+      title: "Principles",
+      children: (
+        <ul>
+          <li>Use a restrained surface system instead of decorative gradients.</li>
+          <li>Prefer practical hierarchy over promotional copy.</li>
+          <li>Keep interfaces readable first on desktop and mobile.</li>
+        </ul>
+      ),
+    },
+    {
+      title: "Voice",
+      children: (
+        <p>
+          UI copy should sound operational and specific. Avoid slogans, filler, and
+          decorative labels.
+        </p>
+      ),
+    },
+  ]}
+/>

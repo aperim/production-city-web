@@ -75,7 +75,7 @@ app.openapi(liveRoute, (c) => {
 });
 
 app.openapi(readyRoute, async (c) => {
-  const prisma = createPrismaClient(c.env.DB);
+  const prisma = await createPrismaClient(c.env.DB);
   try {
     await prisma.$queryRaw`SELECT 1`;
     return c.json({ status: "ok" as const, db: "ok" as const }, 200);

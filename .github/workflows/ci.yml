@@ -50,3 +50,9 @@ jobs:
 
       - name: Unit tests
         run: pnpm test
+
+      - name: Build Storybook
+        run: pnpm build-storybook
+
+      - name: Storybook accessibility tests
+        run: pnpm --filter ./packages/ui run test:a11y

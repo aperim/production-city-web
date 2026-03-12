@@ -1,0 +1,21 @@
+import { Meta } from "@storybook/addon-docs/blocks";
+import { GuidePage } from "./GuidePage";
+
+<Meta title="Style Guide/Iconography" />
+
+<GuidePage
+  title="Iconography"
+  summary="Icon usage should stay functional: simple glyphs, consistent sizing, and clear alignment inside buttons, badges, and navigation."
+  sections={[
+    {
+      title: "Standards",
+      children: (
+        <ul>
+          <li>Prefer 16px to 20px icons for interface controls.</li>
+          <li>Avoid decorative icon backgrounds.</li>
+          <li>Use labels or accessible names when meaning is not obvious.</li>
+        </ul>
+      ),
+    },
+  ]}
+/>

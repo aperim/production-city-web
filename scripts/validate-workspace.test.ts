@@ -7,20 +7,40 @@ import { parse as parseToml } from "smol-toml";
 const ROOT = resolve(import.meta.dirname, "..");
 
 describe("workspace validation", () => {
-  const workspacePackages = [
-    "apps/web",
-    "apps/backend",
-    "apps/workers",
-    "packages/ui",
-  ];
+  const workspacePackages = {
+    "apps/web": "@productioncity/holding-web",
+    "apps/backend": "@productioncity/holding-backend",
+    "apps/workers": "@productioncity/holding-workers",
+    "packages/ui": "@productioncity/holding-ui",
+  } as const;
 
-  for (const pkg of workspacePackages) {
+  for (const [pkg, expectedName] of Object.entries(workspacePackages)) {
     it(`${pkg}/package.json exists and is valid JSON`, () => {
       const pkgPath = resolve(ROOT, pkg, "package.json");
       expect(existsSync(pkgPath)).toBe(true);
       const content = JSON.parse(readFileSync(pkgPath, "utf-8")) as Record<string, unknown>;
       expect(content).toHaveProperty("name");
       expect(content).toHaveProperty("version");
+      expect(content.name).toBe(expectedName);
+    });
+
+    it(`${pkg}/package.json publishes to GitHub Packages with repository metadata`, () => {
+      const pkgPath = resolve(ROOT, pkg, "package.json");
+      const content = JSON.parse(readFileSync(pkgPath, "utf-8")) as {
+        publishConfig?: { registry?: string };
+        repository?: { type?: string; url?: string } | string;
+      };
+
+      expect(content.publishConfig?.registry).toBe("https://npm.pkg.github.com");
+      expect(content.repository).toBeDefined();
+
+      if (typeof content.repository === "string") {
+        expect(content.repository).toContain("github.com/productioncity/holding");
+        return;
+      }
+
+      expect(content.repository?.type).toBe("git");
+      expect(content.repository?.url).toContain("github.com/productioncity/holding");
     });
   }
 
@@ -46,6 +66,14 @@ describe("workspace validation", () => {
     expect(gitignore).toContain(".env");
   });
 
+  it("workspace .npmrc routes the @productioncity scope to GitHub Packages", () => {
+    const npmrcPath = resolve(ROOT, ".npmrc");
+    expect(existsSync(npmrcPath)).toBe(true);
+    const content = readFileSync(npmrcPath, "utf-8");
+    expect(content).toContain("@productioncity:registry=https://npm.pkg.github.com");
+    expect(content).not.toContain("_authToken");
+  });
+
   it("baseline migration contains no WAL pragma as executable SQL", () => {
     const migrationPath = resolve(
       ROOT,
@@ -67,6 +95,42 @@ describe("workspace validation", () => {
     const content = readFileSync(seedPath, "utf-8");
     expect(content).not.toContain("ts-node");
     expect(content).not.toContain("tsx");
+  });
+
+  it("no @production-city workspace references remain", () => {
+    const filesToCheck = [
+      "apps/web/package.json",
+      "apps/backend/package.json",
+      "apps/workers/package.json",
+      "packages/ui/package.json",
+      "apps/web/app/page.tsx",
+      ".github/workflows/ci.yml",
+      ".github/workflows/deploy.yml",
+    ];
+
+    for (const relativePath of filesToCheck) {
+      const content = readFileSync(resolve(ROOT, relativePath), "utf-8");
+      expect(content).not.toContain("@production-city");
+    }
+  });
+
+  it("workspace configs do not reference npmjs.com or Docker Hub", () => {
+    const filesToCheck = [
+      "package.json",
+      ".github/workflows/ci.yml",
+      ".github/workflows/deploy.yml",
+      "apps/web/package.json",
+      "apps/backend/package.json",
+      "apps/workers/package.json",
+      "packages/ui/package.json",
+    ];
+
+    for (const relativePath of filesToCheck) {
+      const content = readFileSync(resolve(ROOT, relativePath), "utf-8").toLowerCase();
+      expect(content).not.toContain("npmjs.com");
+      expect(content).not.toContain("docker hub");
+      expect(content).not.toContain("docker.io");
+    }
   });
 });
 

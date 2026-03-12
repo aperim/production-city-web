@@ -1,0 +1,31 @@
+import { Meta } from "@storybook/addon-docs/blocks";
+import { GuidePage } from "./GuidePage";
+
+<Meta title="Style Guide/Voice" />
+
+<GuidePage
+  title="Voice"
+  summary="Product language should read like an operations tool: concise, specific, and free of synthetic enthusiasm."
+  sections={[
+    {
+      title: "Do",
+      children: (
+        <ul>
+          <li>Describe the action or state directly.</li>
+          <li>Surface blockers and outcomes clearly.</li>
+          <li>Keep labels short and literal.</li>
+        </ul>
+      ),
+    },
+    {
+      title: "Avoid",
+      children: (
+        <ul>
+          <li>Marketing slogans inside product UI.</li>
+          <li>Decorative headings that add no information.</li>
+          <li>Ambiguous status language.</li>
+        </ul>
+      ),
+    },
+  ]}
+/>

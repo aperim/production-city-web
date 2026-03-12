@@ -1,0 +1,25 @@
+import { Meta } from "@storybook/addon-docs/blocks";
+import { GuidePage } from "./GuidePage";
+
+<Meta title="Style Guide/Accessibility" />
+
+<GuidePage
+  title="Accessibility"
+  summary="Storybook runs addon-a11y on stories, and the UI package has a dedicated axe-core test suite so accessibility regressions fail CI instead of staying in a panel."
+  sections={[
+    {
+      title: "What is enforced",
+      children: (
+        <ul>
+          <li>Storybook a11y checks are enabled with failure severity.</li>
+          <li>Existing atoms have axe-core coverage in light and dark themes.</li>
+          <li>Focus visibility and semantic structure are part of story review.</li>
+        </ul>
+      ),
+    },
+    {
+      title: "CSP notes",
+      children: <p>Visual styling should come from classes and custom properties, not inline style attributes.</p>,
+    },
+  ]}
+/>

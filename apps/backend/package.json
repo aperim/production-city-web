@@ -1,13 +1,20 @@
 {
-  "name": "@production-city/backend",
+  "name": "@productioncity/holding-backend",
   "version": "0.0.0",
   "private": true,
   "type": "module",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/productioncity/holding.git"
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com"
+  },
   "scripts": {
     "dev": "wrangler dev",
-    "build": "wrangler deploy --dry-run --outdir dist",
+    "build": "wrangler deploy --dry-run --outdir dist --env=\"\"",
     "test": "vitest run",
-    "lint": "eslint .",
+    "lint": "eslint src test eslint.config.js vitest.config.ts",
     "typecheck": "tsc --noEmit",
     "deploy": "wrangler deploy"
   },

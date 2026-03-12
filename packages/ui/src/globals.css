@@ -1,6 +1,7 @@
 @import "tailwindcss";
 
-@theme {
+:root,
+[data-theme="light"] {
   --color-background: #fafafa;
   --color-foreground: #0f172a;
   --color-muted: #f1f5f9;
@@ -20,8 +21,126 @@
   --radius-lg: 10px;
 }
 
+[data-theme="dark"] {
+  --color-background: #151515;
+  --color-foreground: #f3f3f1;
+  --color-muted: #202020;
+  --color-muted-foreground: #b8b8b1;
+  --color-border: #313131;
+  --color-primary: #f3f3f1;
+  --color-primary-foreground: #151515;
+  --color-secondary: #202020;
+  --color-secondary-foreground: #f3f3f1;
+  --color-destructive: #ef4444;
+  --color-destructive-foreground: #fff7f7;
+  --color-accent: #2a2a2a;
+  --color-accent-foreground: #f3f3f1;
+  --color-ring: #d6d3d1;
+}
+
+@theme inline {
+  --color-background: var(--color-background);
+  --color-foreground: var(--color-foreground);
+  --color-muted: var(--color-muted);
+  --color-muted-foreground: var(--color-muted-foreground);
+  --color-border: var(--color-border);
+  --color-primary: var(--color-primary);
+  --color-primary-foreground: var(--color-primary-foreground);
+  --color-secondary: var(--color-secondary);
+  --color-secondary-foreground: var(--color-secondary-foreground);
+  --color-destructive: var(--color-destructive);
+  --color-destructive-foreground: var(--color-destructive-foreground);
+  --color-accent: var(--color-accent);
+  --color-accent-foreground: var(--color-accent-foreground);
+  --color-ring: var(--color-ring);
+  --radius-sm: var(--radius-sm);
+  --radius-md: var(--radius-md);
+  --radius-lg: var(--radius-lg);
+}
+
+html {
+  background-color: var(--color-background);
+}
+
 body {
   font-family: system-ui, -apple-system, sans-serif;
   color: var(--color-foreground);
   background-color: var(--color-background);
+}
+
+.guide-page {
+  max-width: 72rem;
+  margin: 0 auto;
+  padding: 2rem 1.5rem 4rem;
+}
+
+.guide-page__header {
+  margin-bottom: 2rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.guide-page__title {
+  font-size: 2rem;
+  line-height: 1.2;
+  font-weight: 600;
+  letter-spacing: -0.025em;
+}
+
+.guide-page__summary {
+  max-width: 48rem;
+  margin-top: 0.75rem;
+  color: var(--color-muted-foreground);
+}
+
+.guide-page__grid {
+  display: grid;
+  gap: 1rem;
+}
+
+.guide-page__section {
+  padding: 1rem 1.25rem;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  background-color: var(--color-muted);
+}
+
+.guide-page__section h2 {
+  font-size: 1.125rem;
+  line-height: 1.5;
+  font-weight: 600;
+}
+
+.guide-page__section p,
+.guide-page__section li {
+  color: var(--color-muted-foreground);
+}
+
+.guide-page__section ul {
+  padding-left: 1rem;
+  margin-top: 0.75rem;
+}
+
+.guide-page__tokens {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr));
+  gap: 0.75rem;
+  margin-top: 1rem;
+}
+
+.guide-page__token {
+  padding: 0.75rem;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background-color: var(--color-background);
+}
+
+.guide-page__token-label {
+  font-size: 0.875rem;
+  color: var(--color-muted-foreground);
+}
+
+.guide-page__token-value {
+  margin-top: 0.5rem;
+  font-family: ui-monospace, SFMono-Regular, monospace;
 }

@@ -1,0 +1,43 @@
+import { Meta } from "@storybook/addon-docs/blocks";
+import { GuidePage } from "./GuidePage";
+
+<Meta title="Style Guide/Colour" />
+
+<GuidePage
+  title="Colour"
+  summary="Theme switching is token-driven. Storybook defaults to dark mode, while the light theme remains available in the toolbar for contrast and readability checks."
+  sections={[
+    {
+      title: "Core tokens",
+      children: (
+        <div className="guide-page__tokens">
+          <div className="guide-page__token">
+            <div className="guide-page__token-label">Background</div>
+            <div className="guide-page__token-value">--color-background</div>
+          </div>
+          <div className="guide-page__token">
+            <div className="guide-page__token-label">Foreground</div>
+            <div className="guide-page__token-value">--color-foreground</div>
+          </div>
+          <div className="guide-page__token">
+            <div className="guide-page__token-label">Primary</div>
+            <div className="guide-page__token-value">--color-primary</div>
+          </div>
+          <div className="guide-page__token">
+            <div className="guide-page__token-label">Border</div>
+            <div className="guide-page__token-value">--color-border</div>
+          </div>
+        </div>
+      ),
+    },
+    {
+      title: "Usage",
+      children: (
+        <ul>
+          <li>Use semantic tokens, not hard-coded hex values, inside components.</li>
+          <li>Validate contrast in both toolbar themes before merging.</li>
+        </ul>
+      ),
+    },
+  ]}
+/>
