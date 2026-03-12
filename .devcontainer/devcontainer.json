@@ -49,12 +49,7 @@
                 "--env-file",
                 ".env"
         ],
-        "forwardPorts": [4321, 6006, 8787],
-        "portsAttributes": {
-                "4321": { "label": "Web (vinext)", "onAutoForward": "notify" },
-                "6006": { "label": "Storybook", "onAutoForward": "notify" },
-                "8787": { "label": "Backend Worker", "onAutoForward": "silent" }
-        },
+        "appPort": [4321, 6006, 8787],
         "postCreateCommand": "bash .devcontainer/post-create.sh",
         "postStartCommand": "bash .devcontainer/post-start.sh"
 }
