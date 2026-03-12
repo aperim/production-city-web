@@ -26,6 +26,7 @@ case "$RAW_ARCH" in
 esac
 
 OS="$(uname -s)"   # Linux expected inside devcontainer
+REAL_CLAUDE_BIN=""
 
 # Resolve workspace root — prefer $CONTAINER_WORKSPACE_FOLDER, fall back to /workspaces/*
 if [ -n "${CONTAINER_WORKSPACE_FOLDER:-}" ]; then
@@ -233,8 +234,57 @@ install_puppeteer() {
 ###############################################################################
 # 7. Claude Code CLI
 ###############################################################################
+claude_support_dir() {
+    printf '%s\n' "${DEV_HOME}/.local/share/production-city/claude"
+}
+
+resolve_real_claude_bin() {
+    local wrapper_path="${DEV_HOME}/.local/bin/claude"
+    local candidates=(
+        "$(claude_support_dir)/claude-real"
+        "${DEV_HOME}/.claude/bin/claude"
+        "/usr/local/bin/claude"
+    )
+    local candidate=""
+
+    for candidate in "${candidates[@]}"; do
+        if [ -n "$candidate" ] && [ -x "$candidate" ] && [ "$candidate" != "$wrapper_path" ]; then
+            printf '%s\n' "$candidate"
+            return 0
+        fi
+    done
+
+    if command -v claude &>/dev/null; then
+        candidate="$(command -v claude)"
+        if [ -n "$candidate" ] && [ "$candidate" != "$wrapper_path" ]; then
+            printf '%s\n' "$candidate"
+            return 0
+        fi
+    fi
+
+    return 1
+}
+
+install_claude_support_files() {
+    local support_dir=""
+    support_dir="$(claude_support_dir)"
+
+    mkdir -p "$support_dir"
+
+    install -m 644 "${WORKSPACE_DIR}/scripts/claude-auth.ts" \
+        "${support_dir}/claude-auth.ts"
+    install -m 644 "${WORKSPACE_DIR}/scripts/claude-wrapper.ts" \
+        "${support_dir}/claude-wrapper.ts"
+    install -m 644 "${WORKSPACE_DIR}/scripts/claude-print-healthcheck.ts" \
+        "${support_dir}/claude-print-healthcheck.ts"
+
+    chown -R "$DEV_USER" "$support_dir" 2>/dev/null || true
+    echo "Claude support files installed to $support_dir"
+}
+
 install_claude() {
     if command -v claude &>/dev/null; then
+        REAL_CLAUDE_BIN="$(resolve_real_claude_bin || true)"
         echo "Claude Code already installed: $(claude --version 2>/dev/null || echo 'unknown')"
         return 0
     fi
@@ -246,11 +296,55 @@ install_claude() {
     export PATH="${DEV_HOME}/.claude/bin:${DEV_HOME}/.local/bin:${PATH}"
 
     if command -v claude &>/dev/null; then
+        REAL_CLAUDE_BIN="$(resolve_real_claude_bin || true)"
         echo "Claude Code installed: $(claude --version 2>/dev/null || echo 'ok')"
     else
         echo "Claude Code install did not place binary on PATH"
         return 1
     fi
+}
+
+###############################################################################
+# 8. Claude wrapper
+###############################################################################
+install_claude_wrapper() {
+    if [ -z "${REAL_CLAUDE_BIN:-}" ]; then
+        REAL_CLAUDE_BIN="$(resolve_real_claude_bin || true)"
+    fi
+
+    if [ -z "${REAL_CLAUDE_BIN:-}" ]; then
+        echo "claude not found — skipping wrapper install"
+        return 1
+    fi
+
+    local wrapper_dir="${DEV_HOME}/.local/bin"
+    local wrapper_path="${wrapper_dir}/claude"
+    local support_dir=""
+
+    support_dir="$(claude_support_dir)"
+
+    mkdir -p "$wrapper_dir"
+
+    if [ "${REAL_CLAUDE_BIN}" = "$wrapper_path" ]; then
+        local relocated_bin="${support_dir}/claude-real"
+        mv "$wrapper_path" "$relocated_bin"
+        chmod +x "$relocated_bin"
+        REAL_CLAUDE_BIN="$relocated_bin"
+    fi
+
+    cat > "$wrapper_path" <<EOF
+#!/usr/bin/env bash
+set -euo pipefail
+
+export PRODUCTION_CITY_REAL_CLAUDE_BIN="${REAL_CLAUDE_BIN}"
+exec node --experimental-transform-types --experimental-detect-module "${support_dir}/claude-wrapper.ts" "\$@"
+EOF
+
+    chmod +x "$wrapper_path"
+    chown "$DEV_USER" "$wrapper_path" 2>/dev/null || true
+    export PATH="${DEV_HOME}/.local/bin:${DEV_HOME}/.claude/bin:${PATH}"
+
+    echo "Claude wrapper installed: $wrapper_path -> ${REAL_CLAUDE_BIN}"
 }
 
 ###############################################################################
@@ -432,26 +526,24 @@ configure_mcp() {
 ###############################################################################
 configure_claude() {
     local settings_file="${DEV_HOME}/.claude/settings.json"
+    local wrapper_path="${DEV_HOME}/.local/bin/claude"
     mkdir -p "${DEV_HOME}/.claude"
-
-    # Build the desired settings object
-    local desired='{
-        "permissions": {
-            "defaultMode": "bypassPermissions"
-        },
-        "apiKeyHelper": "/bin/sh -c '\''echo $ANTHROPIC_API_KEY'\''"
-    }'
 
     if [ -f "$settings_file" ]; then
         local tmp=""
         tmp="$(mktemp)"
-        jq -s '.[0] * .[1]' "$settings_file" <(echo "$desired") > "$tmp" 2>/dev/null \
-            && mv "$tmp" "$settings_file"
+        if [ -x "$wrapper_path" ]; then
+            jq '.permissions.defaultMode = "bypassPermissions" | del(.apiKeyHelper)' \
+                "$settings_file" > "$tmp" 2>/dev/null && mv "$tmp" "$settings_file"
+        else
+            jq '.permissions.defaultMode = "bypassPermissions"' \
+                "$settings_file" > "$tmp" 2>/dev/null && mv "$tmp" "$settings_file"
+        fi
     else
-        printf '%s\n' "$desired" | jq '.' > "$settings_file"
+        printf '%s\n' '{"permissions":{"defaultMode":"bypassPermissions"}}' | jq '.' > "$settings_file"
     fi
 
-    echo "Claude settings updated: apiKeyHelper + bypassPermissions"
+    echo "Claude settings updated for Production City devcontainer"
 
     # User preferences (onboarding, theme)
     local prefs_file="${DEV_HOME}/.claude.json"
@@ -497,7 +589,26 @@ TOML
 }
 
 ###############################################################################
-# 13. Ed25519 signing key (for audit logs)
+# 13. Claude wrapper validation
+###############################################################################
+validate_claude_wrapper() {
+    local wrapper_path="${DEV_HOME}/.local/bin/claude"
+    local support_dir=""
+
+    support_dir="$(claude_support_dir)"
+
+    if [ ! -x "$wrapper_path" ]; then
+        echo "Claude wrapper not found — validation failed"
+        return 1
+    fi
+
+    PRODUCTION_CITY_REAL_CLAUDE_BIN=/bin/echo \
+        node --experimental-transform-types --experimental-detect-module \
+        "${support_dir}/claude-wrapper.ts" TEST >/dev/null
+}
+
+###############################################################################
+# 14. Ed25519 signing key (for audit logs)
 ###############################################################################
 generate_keys() {
     local key_dir="${WORKSPACE_DIR}"
@@ -521,46 +632,51 @@ generate_keys() {
 }
 
 ###############################################################################
-# 14. .env from .env.example
+# 15. .env from .env.example
 ###############################################################################
 setup_env() {
     local env_file="${WORKSPACE_DIR}/.env"
     local env_example="${WORKSPACE_DIR}/.env.example"
 
-    if [ -f "$env_file" ]; then
-        echo ".env already exists — skipping"
-        return 0
+    if [ ! -f "$env_file" ]; then
+        if [ ! -f "$env_example" ]; then
+            echo "No .env.example found — skipping"
+            return 0
+        fi
+
+        cp "$env_example" "$env_file"
+
+        # Generate secrets for common placeholder patterns
+        if command -v openssl &>/dev/null; then
+            local jwt_secret=""
+            jwt_secret="$(openssl rand -base64 48)"
+            local encryption_key=""
+            encryption_key="$(openssl rand -base64 32)"
+
+            # Replace placeholder values (YOUR_SECRET_HERE, CHANGE_ME, <generate>, etc.)
+            sed -i "s|JWT_SECRET=.*|JWT_SECRET=${jwt_secret}|" "$env_file" 2>/dev/null || true
+            sed -i "s|ENCRYPTION_KEY=.*|ENCRYPTION_KEY=${encryption_key}|" "$env_file" 2>/dev/null || true
+        fi
+
+        # Rewrite common hostname placeholders for devcontainer networking
+        sed -i 's/localhost:5432/db:5432/g' "$env_file" 2>/dev/null || true
+        sed -i 's/localhost:6379/redis:6379/g' "$env_file" 2>/dev/null || true
+        sed -i 's/localhost:1025/mailpit:1025/g' "$env_file" 2>/dev/null || true
+
+        echo ".env created from .env.example"
+    else
+        echo ".env already exists — reusing"
     fi
 
-    if [ ! -f "$env_example" ]; then
-        echo "No .env.example found — skipping"
-        return 0
-    fi
-
-    cp "$env_example" "$env_file"
-
-    # Generate secrets for common placeholder patterns
-    if command -v openssl &>/dev/null; then
-        local jwt_secret=""
-        jwt_secret="$(openssl rand -base64 48)"
-        local encryption_key=""
-        encryption_key="$(openssl rand -base64 32)"
-
-        # Replace placeholder values (YOUR_SECRET_HERE, CHANGE_ME, <generate>, etc.)
-        sed -i "s|JWT_SECRET=.*|JWT_SECRET=${jwt_secret}|" "$env_file" 2>/dev/null || true
-        sed -i "s|ENCRYPTION_KEY=.*|ENCRYPTION_KEY=${encryption_key}|" "$env_file" 2>/dev/null || true
-    fi
-
-    # Rewrite common hostname placeholders for devcontainer networking
-    sed -i 's/localhost:5432/db:5432/g' "$env_file" 2>/dev/null || true
-    sed -i 's/localhost:6379/redis:6379/g' "$env_file" 2>/dev/null || true
-    sed -i 's/localhost:1025/mailpit:1025/g' "$env_file" 2>/dev/null || true
-
-    echo ".env created from .env.example"
+    # Make .env values available to the current bootstrap process.
+    set -a
+    # shellcheck source=/dev/null
+    . "$env_file"
+    set +a
 }
 
 ###############################################################################
-# 15. Git safe directory
+# 16. Git safe directory
 ###############################################################################
 setup_git() {
     if command -v git &>/dev/null; then
@@ -570,7 +686,7 @@ setup_git() {
 }
 
 ###############################################################################
-# 16. Shell customizations (zsh + bash)
+# 17. Shell customizations (zsh + bash)
 ###############################################################################
 setup_shell() {
     local marker="# >>> unified-devcontainer-config >>>"
@@ -604,17 +720,24 @@ esac
 
 # Claude Code
 case ":${PATH}:" in
-    *":${HOME}/.claude/bin:"*) ;;
-    *) export PATH="${HOME}/.claude/bin:${PATH}" ;;
-esac
-case ":${PATH}:" in
     *":${HOME}/.local/bin:"*) ;;
     *) export PATH="${HOME}/.local/bin:${PATH}" ;;
+esac
+case ":${PATH}:" in
+    *":${HOME}/.claude/bin:"*) ;;
+    *) export PATH="${HOME}/.claude/bin:${PATH}" ;;
 esac
 
 # GitHub token for MCP servers
 if command -v gh &> /dev/null && gh auth status &> /dev/null 2>&1; then
     export GITHUB_TOKEN=$(gh auth token 2>/dev/null)
+fi
+
+# Workspace .env
+if [ -f "${WORKSPACE_DIR}/.env" ]; then
+    set -a
+    . "${WORKSPACE_DIR}/.env"
+    set +a
 fi
 
 # Container sandbox — bypass interactive prompts
@@ -692,17 +815,20 @@ cd "$WORKSPACE_DIR" || true
 run_step "Node.js / NVM"         setup_node
 run_step "pnpm"                  setup_pnpm
 run_step "Project dependencies"  install_deps
+run_step ".env setup"            setup_env
 run_step "System Chromium"       install_chromium
 run_step "Playwright browsers"   install_playwright
 run_step "Puppeteer browsers"    install_puppeteer
 run_step "Claude Code CLI"       install_claude
+run_step "Claude support files"  install_claude_support_files
+run_step "Claude wrapper"        install_claude_wrapper
 run_step "Claude plugins"        install_plugins
 run_step "Codex CLI"             install_codex
 run_step "MCP servers"           configure_mcp
 run_step "Claude settings"       configure_claude
+run_step "Claude wrapper validation" validate_claude_wrapper
 run_step "Codex config"          configure_codex
 run_step "Signing keys"          generate_keys
-run_step ".env setup"            setup_env
 run_step "Git config"            setup_git
 run_step "Shell customizations"  setup_shell
 

@@ -66,6 +66,22 @@ describe("workspace validation", () => {
     expect(gitignore).toContain(".env");
   });
 
+  it("devcontainer bootstrap wires Claude wrapper and healthcheck scripts", () => {
+    const postCreatePath = resolve(ROOT, ".devcontainer/post-create.sh");
+    const postStartPath = resolve(ROOT, ".devcontainer/post-start.sh");
+    const postCreate = readFileSync(postCreatePath, "utf-8");
+    const postStart = readFileSync(postStartPath, "utf-8");
+
+    expect(postCreate).toContain("resolve_real_claude_bin");
+    expect(postCreate).toContain("${DEV_HOME}/.claude/bin/claude");
+    expect(postCreate).toContain("${DEV_HOME}/.local/share/production-city/claude");
+    expect(postCreate).toContain('$(claude_support_dir)/claude-real');
+    expect(postCreate).toContain('"${support_dir}/claude-wrapper.ts"');
+    expect(postCreate).toContain("${DEV_HOME}/.local/bin/claude");
+    expect(postCreate).toContain('alias claude="claude --dangerously-skip-permissions"');
+    expect(postStart).toContain('PRODUCTION_CITY_REAL_CLAUDE_BIN=/bin/echo');
+  });
+
   it("workspace .npmrc routes the @productioncity scope to GitHub Packages", () => {
     const npmrcPath = resolve(ROOT, ".npmrc");
     expect(existsSync(npmrcPath)).toBe(true);

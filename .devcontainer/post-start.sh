@@ -91,11 +91,29 @@ db_seed() {
 }
 
 ###############################################################################
+# 4. Claude wrapper validation
+###############################################################################
+claude_wrapper_validation() {
+    local wrapper_path="${HOME}/.local/bin/claude"
+    local support_dir="${HOME}/.local/share/production-city/claude"
+
+    if [ ! -x "$wrapper_path" ]; then
+        echo "Claude wrapper not found — skipping Claude validation"
+        return 0
+    fi
+
+    PRODUCTION_CITY_REAL_CLAUDE_BIN=/bin/echo \
+        node --experimental-transform-types --experimental-detect-module \
+        "${support_dir}/claude-wrapper.ts" TEST >/dev/null
+}
+
+###############################################################################
 # Run all steps
 ###############################################################################
 run_step "Prisma Client generation"  prisma_generate
 run_step "D1 local migrations"       d1_migrate
 run_step "Database seed"             db_seed
+run_step "Claude wrapper validation" claude_wrapper_validation
 
 ###############################################################################
 # Summary
