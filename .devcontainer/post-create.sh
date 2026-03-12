@@ -374,6 +374,7 @@ configure_mcp() {
     # MCP servers are registered in the user's ~/.claude.json via jq
     # (claude mcp add -s user writes to the calling user's HOME, which may
     # be root during post-create — so we manipulate the JSON directly)
+    # (direct JSON manipulation avoids relying on claude CLI being on PATH)
     local user_claude_json="${DEV_HOME}/.claude.json"
     if [ ! -f "$user_claude_json" ]; then
         echo '{}' > "$user_claude_json"
