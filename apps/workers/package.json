@@ -1,0 +1,13 @@
+{
+  "name": "@production-city/workers",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "echo 'workers dev server not yet configured'",
+    "build": "echo 'workers build not yet configured'",
+    "test": "echo 'no tests yet'",
+    "lint": "eslint .",
+    "typecheck": "tsc --noEmit"
+  }
+}

@@ -1,0 +1,11 @@
+# apps/backend/wrangler.toml — stub configuration
+# Full configuration will be added by subsequent issues.
+
+name = "production-city-backend"
+compatibility_date = "2025-01-01"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "production-city-db"
+database_id = "" # Set via CI secrets or wrangler.toml overrides
+migrations_dir = "../../prisma/migrations"

@@ -1,0 +1,45 @@
+{
+  "name": "production-city",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "pnpm -r run dev",
+    "build": "pnpm --filter './packages/ui' build && pnpm --filter '!./packages/ui' -r run build",
+    "test": "vitest run && pnpm -r run test",
+    "test:e2e": "pnpm --filter ./apps/web run test:e2e",
+    "lint": "pnpm -r run lint",
+    "typecheck": "pnpm -r run typecheck",
+    "build-storybook": "pnpm --filter ./packages/ui run build-storybook",
+    "db:seed": "node --experimental-transform-types --experimental-detect-module prisma/seed.ts"
+  },
+  "prisma": {
+    "seed": "node --experimental-transform-types --experimental-detect-module prisma/seed.ts"
+  },
+  "engines": {
+    "node": ">=25.0.0",
+    "pnpm": ">=10.0.0"
+  },
+  "simple-git-hooks": {
+    "pre-commit": "pnpm exec lint-staged && git diff --cached --name-only | grep '\\.pem$' && echo 'ERROR: .pem file staged for commit' && exit 1 || true"
+  },
+  "lint-staged": {
+    "*.{ts,tsx,js,jsx}": [
+      "eslint --fix"
+    ]
+  },
+  "devDependencies": {
+    "@prisma/adapter-better-sqlite3": "^7.5.0",
+    "@prisma/client": "^7.5.0",
+    "@types/node": "^25.4.0",
+    "better-sqlite3": "^12.6.2",
+    "eslint": "^10.0.3",
+    "prisma": "^7.5.0",
+    "lint-staged": "^16.3.3",
+    "simple-git-hooks": "^2.13.1",
+    "typescript": "^5.9.3",
+    "typescript-eslint": "^8.57.0",
+    "vitest": "^4.0.18",
+    "yaml": "^2.8.2"
+  }
+}

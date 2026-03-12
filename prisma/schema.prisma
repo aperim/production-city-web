@@ -1,0 +1,21 @@
+// prisma/schema.prisma
+//
+// Production City — shared Prisma schema
+//
+// Current database: Cloudflare D1 (SQLite)
+// Planned migration: self-hosted PostgreSQL (TimescaleDB/PostGIS/PGVector)
+//
+// IMPORTANT: D1 does not support Row Level Security (SQLite limitation).
+// When migrating to PostgreSQL, review all models for RLS requirements.
+//
+// IMPORTANT: D1/SQLite uses TEXT for datetimes. PostgreSQL uses TIMESTAMPTZ.
+// Design schemas to be portable — prefer Prisma model-level constraints
+// over raw SQL constraints where possible.
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+}

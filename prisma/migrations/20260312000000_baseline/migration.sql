@@ -1,0 +1,5 @@
+-- Baseline: empty schema. Models will be added in subsequent migrations.
+-- This file exists to establish the migrations table and baseline state.
+--
+-- IMPORTANT: Do NOT add PRAGMA journal_mode=WAL here.
+-- D1 manages its own journal mode — this pragma is unsafe in Cloudflare D1.

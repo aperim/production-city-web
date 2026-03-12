@@ -1,0 +1,13 @@
+{
+  "name": "@production-city/backend",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "echo 'backend dev server not yet configured'",
+    "build": "echo 'backend build not yet configured'",
+    "test": "echo 'no tests yet'",
+    "lint": "eslint .",
+    "typecheck": "tsc --noEmit"
+  }
+}

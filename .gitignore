@@ -1,1 +1,44 @@
+# Dependencies
+node_modules/
+
+# Build output
+dist/
+
+# Cloudflare
+.wrangler/
+*.d1
+
+# Environment
 .env
+.env.local
+.env.*.local
+
+# Database
+local.db
+local.db-journal
+
+# Keys and secrets
+signing_key.pem
+signing_key.pub
+*.pem
+
+# IDE
+.vscode/settings.json
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Prisma
+prisma/*.db
+prisma/*.db-journal
+
+# Storybook
+storybook-static/
+
+# Logs
+*.log
+
+# Turbo / build cache
+.turbo/

@@ -1,0 +1,14 @@
+{
+  "name": "@production-city/web",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "echo 'web dev server not yet configured'",
+    "build": "echo 'web build not yet configured'",
+    "test": "echo 'no tests yet'",
+    "test:e2e": "echo 'e2e tests not yet configured'",
+    "lint": "eslint .",
+    "typecheck": "tsc --noEmit"
+  }
+}

@@ -138,7 +138,7 @@ install_deps() {
         sudo chown -R "$DEV_USER" node_modules
     fi
 
-    pnpm install --frozen-lockfile || pnpm install
+    pnpm install --frozen-lockfile
 }
 
 ###############################################################################
