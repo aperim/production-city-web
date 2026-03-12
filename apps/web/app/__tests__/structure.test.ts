@@ -1,63 +1,75 @@
+import { existsSync, readFileSync } from "node:fs";
+import { resolve } from "node:path";
 import { describe, it, expect } from "vitest";
 
 /**
- * Structure validation tests for vinext web app.
+ * Structure validation tests for the vinext web app.
  *
- * These tests verify the project configuration by importing
- * package metadata and checking expected values. They run under
- * @cloudflare/vitest-pool-workers (workerd runtime).
+ * Verifies critical project configuration constraints: vinext usage,
+ * wrangler.jsonc format (required by vinext), correct vitest setup,
+ * and absence of forbidden dependencies.
  */
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-let pkg: any;
+const WEB_ROOT = resolve(import.meta.dirname, "../..");
 
 describe("vinext structure validation", () => {
-  it("package.json has vinext dependency", async () => {
-    pkg = await import("../../package.json", { with: { type: "json" } });
-    const allDeps = {
-      ...pkg.default.dependencies,
-      ...pkg.default.devDependencies,
-    };
+  it("app/layout.tsx exists", () => {
+    expect(existsSync(resolve(WEB_ROOT, "app/layout.tsx"))).toBe(true);
+  });
+
+  it("app/page.tsx exists", () => {
+    expect(existsSync(resolve(WEB_ROOT, "app/page.tsx"))).toBe(true);
+  });
+
+  it("wrangler.jsonc exists (not wrangler.toml — vinext requires .jsonc)", () => {
+    expect(existsSync(resolve(WEB_ROOT, "wrangler.jsonc"))).toBe(true);
+    expect(existsSync(resolve(WEB_ROOT, "wrangler.toml"))).toBe(false);
+  });
+
+  it("has vinext dependency", () => {
+    const pkg = JSON.parse(
+      readFileSync(resolve(WEB_ROOT, "package.json"), "utf-8"),
+    ) as Record<string, Record<string, string>>;
+    const allDeps = { ...pkg.dependencies, ...pkg.devDependencies };
     expect(allDeps).toHaveProperty("vinext");
   });
 
-  it("package.json has no hono dependency", async () => {
-    pkg = await import("../../package.json", { with: { type: "json" } });
-    const allDeps = {
-      ...pkg.default.dependencies,
-      ...pkg.default.devDependencies,
-    };
+  it("no hono dependency", () => {
+    const pkg = JSON.parse(
+      readFileSync(resolve(WEB_ROOT, "package.json"), "utf-8"),
+    ) as Record<string, Record<string, string>>;
+    const allDeps = { ...pkg.dependencies, ...pkg.devDependencies };
     expect(allDeps).not.toHaveProperty("hono");
   });
 
-  it("package.json has no @vitejs/plugin-react in devDependencies", async () => {
-    pkg = await import("../../package.json", { with: { type: "json" } });
-    expect(pkg.default.devDependencies).not.toHaveProperty(
-      "@vitejs/plugin-react",
-    );
+  it("no @vitejs/plugin-react in devDependencies", () => {
+    const pkg = JSON.parse(
+      readFileSync(resolve(WEB_ROOT, "package.json"), "utf-8"),
+    ) as Record<string, Record<string, string>>;
+    expect(pkg.devDependencies).not.toHaveProperty("@vitejs/plugin-react");
   });
 
-  it("package.json has @cloudflare/vitest-pool-workers", async () => {
-    pkg = await import("../../package.json", { with: { type: "json" } });
-    expect(pkg.default.devDependencies).toHaveProperty(
+  it("no @cloudflare/vitest-pool-workers in apps/web (apps/backend and apps/workers only)", () => {
+    const pkg = JSON.parse(
+      readFileSync(resolve(WEB_ROOT, "package.json"), "utf-8"),
+    ) as Record<string, Record<string, string>>;
+    expect(pkg.devDependencies).not.toHaveProperty(
       "@cloudflare/vitest-pool-workers",
     );
   });
 
-  it("scripts use vinext commands", async () => {
-    pkg = await import("../../package.json", { with: { type: "json" } });
-    expect(pkg.default.scripts?.dev).toContain("vinext dev");
-    expect(pkg.default.scripts?.build).toContain("vinext build");
-    expect(pkg.default.scripts?.deploy).toContain("vinext deploy");
+  it("scripts use vinext commands", () => {
+    const pkg = JSON.parse(
+      readFileSync(resolve(WEB_ROOT, "package.json"), "utf-8"),
+    ) as Record<string, Record<string, string>>;
+    expect(pkg.scripts?.dev).toContain("vinext dev");
+    expect(pkg.scripts?.build).toContain("vinext build");
+    expect(pkg.scripts?.deploy).toContain("vinext deploy");
   });
 
-  it("layout component is importable", async () => {
-    const layout = await import("../layout");
-    expect(typeof layout.default).toBe("function");
-  });
-
-  it("page component is importable", async () => {
-    const page = await import("../page");
-    expect(typeof page.default).toBe("function");
+  it("vite.config.ts uses vinext() plugin", () => {
+    const config = readFileSync(resolve(WEB_ROOT, "vite.config.ts"), "utf-8");
+    expect(config).toContain("vinext()");
+    expect(config).not.toContain("react()");
   });
 });

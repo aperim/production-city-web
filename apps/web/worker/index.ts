@@ -16,16 +16,14 @@ const SECURITY_HEADERS: Record<string, string> = {
 };
 
 export default {
-  async fetch(
-    request: Request,
-    env: Record<string, unknown>,
-    ctx: ExecutionContext,
-  ): Promise<Response> {
-    const response = await (handler as ExportedHandler<typeof env>).fetch!(
-      request,
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  async fetch(request: Request, env: any, ctx: ExecutionContext): Promise<Response> {
+     
+    const response = (await (handler as ExportedHandler).fetch!(
+      request as Parameters<ExportedHandlerFetchHandler>[0],
       env,
       ctx,
-    );
+    )) as Response;
     const newResponse = new Response(response.body, response);
     for (const [key, value] of Object.entries(SECURITY_HEADERS)) {
       newResponse.headers.set(key, value);
