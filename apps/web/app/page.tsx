@@ -1,4 +1,4 @@
-import { HoldingPage } from "@production-city/ui";
+import { HoldingPage } from "@productioncity/holding-ui";
 import { ErrorBoundary } from "./error-boundary";
 
 /**

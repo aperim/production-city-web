@@ -1,0 +1,26 @@
+import { Meta } from "@storybook/addon-docs/blocks";
+import { GuidePage } from "./GuidePage";
+
+<Meta title="Style Guide/Layout" />
+
+<GuidePage
+  title="Layout"
+  summary="Viewport presets cover the smallest supported phone frame through desktop so Storybook can validate real layout breakpoints instead of arbitrary device names."
+  sections={[
+    {
+      title: "Viewport presets",
+      children: (
+        <ul>
+          <li>Mobile: 390 × 844</li>
+          <li>Tablet: 768 × 1024</li>
+          <li>Laptop: 1280 × 800</li>
+          <li>Desktop: 1440 × 900</li>
+        </ul>
+      ),
+    },
+    {
+      title: "Guidance",
+      children: <p>Layouts should adapt with spacing and stacking changes, not decorative rearrangements.</p>,
+    },
+  ]}
+/>

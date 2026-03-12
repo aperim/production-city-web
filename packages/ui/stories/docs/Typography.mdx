@@ -1,0 +1,25 @@
+import { Meta } from "@storybook/addon-docs/blocks";
+import { GuidePage } from "./GuidePage";
+
+<Meta title="Style Guide/Typography" />
+
+<GuidePage
+  title="Typography"
+  summary="Typography stays plain and consistent so component stories focus on hierarchy and readability instead of ornament."
+  sections={[
+    {
+      title: "Hierarchy",
+      children: (
+        <ul>
+          <li>Heading levels are reserved for structural meaning.</li>
+          <li>Body copy should default to readable paragraph spacing.</li>
+          <li>Small decorative labels are intentionally avoided.</li>
+        </ul>
+      ),
+    },
+    {
+      title: "Review checklist",
+      children: <p>Verify heading order, truncation behavior, and contrast in both themes.</p>,
+    },
+  ]}
+/>

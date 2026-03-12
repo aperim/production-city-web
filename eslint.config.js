@@ -2,7 +2,20 @@ import tseslint from "typescript-eslint";
 
 export default tseslint.config(
   {
-    ignores: ["**/dist/", "**/node_modules/", "**/.wrangler/", "storybook-static/"],
+    ignores: [
+      "dist/**",
+      "**/dist/**",
+      "**/node_modules/**",
+      ".wrangler/**",
+      "**/.wrangler/**",
+      "storybook-static/**",
+      "**/storybook-static/**",
+    ],
+    languageOptions: {
+      parserOptions: {
+        tsconfigRootDir: import.meta.dirname,
+      },
+    },
   },
   ...tseslint.configs.recommended,
   {

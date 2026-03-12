@@ -1,14 +1,21 @@
 {
-  "name": "@production-city/web",
+  "name": "@productioncity/holding-web",
   "version": "0.0.0",
   "private": true,
   "type": "module",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/productioncity/holding.git"
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com"
+  },
   "scripts": {
     "dev": "vinext dev --port 4321 --host",
     "build": "vinext build",
     "test": "vitest run",
     "test:e2e": "playwright test",
-    "lint": "eslint .",
+    "lint": "eslint app worker eslint.config.js vite.config.ts vitest.config.ts playwright.config.ts",
     "typecheck": "tsc --noEmit",
     "deploy": "vinext deploy"
   },
@@ -19,7 +26,7 @@
     "vinext": "^0.0.28",
     "@prisma/client": "^7.5.0",
     "@prisma/adapter-d1": "^7.5.0",
-    "@production-city/ui": "workspace:*"
+    "@productioncity/holding-ui": "workspace:*"
   },
   "devDependencies": {
     "@cloudflare/vite-plugin": "^1.27.0",
