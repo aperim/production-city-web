@@ -31,8 +31,8 @@ const ReadyOkSchema = z.object({
 });
 
 const ErrorResponseSchema = z.object({
-  status: z.string(),
-  db: z.string().optional(),
+  status: z.literal("error"),
+  db: z.literal("unavailable"),
 });
 
 /** Route definitions */
@@ -88,7 +88,7 @@ app.openapi(readyRoute, async (c) => {
 });
 
 /** OpenAPI spec + docs */
-app.doc("/openapi.json", {
+app.doc31("/openapi.json", {
   openapi: "3.1.0",
   info: { title: "Production City API", version: "0.1.0" },
 });

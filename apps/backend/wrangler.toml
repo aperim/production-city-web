@@ -4,6 +4,9 @@ compatibility_date = "2026-01-01"
 compatibility_flags = ["nodejs_compat"]
 main = "src/index.ts"
 
+[vars]
+ALLOWED_ORIGIN = "http://localhost:4321"
+
 [[d1_databases]]
 binding = "DB"
 database_name = "holding-dev"
