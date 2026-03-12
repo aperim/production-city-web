@@ -11,7 +11,7 @@ These rules are specific to this repository and override general preferences whe
 ### Storybook-First with Atomic Design
 
 - Every UI component MUST be defined and reviewed in `packages/ui` Storybook **before** it is implemented in any app
-- No exceptions: if it renders on screen, it starts in Storybook
+- "UI component" means: anything that renders visible DOM output. React hooks, context providers, and utility functions live in `packages/ui` but do **not** require Storybook stories — only renderable components do
 - `packages/ui` follows **Atomic Design** methodology — components are organised as:
   - `atoms/` — smallest building blocks (Button, Input, Badge, Icon)
   - `molecules/` — groups of atoms (SearchBar, FormField, Card)
@@ -19,6 +19,7 @@ These rules are specific to this repository and override general preferences whe
   - `templates/` — page-level layouts (no real data)
   - `pages/` — template instances with real/representative data
 - Every component must have Storybook stories covering all meaningful states (default, loading, error, empty, disabled, etc.) before use in any app
+- When adding a new component, verify that `.storybook/main.ts` story glob patterns will pick it up. If the file is outside the configured story paths, update `.storybook/main.ts` accordingly
 
 ### Version Discipline
 
@@ -49,6 +50,7 @@ These rules are specific to this repository and override general preferences whe
 
 - **Always use Prisma Client.** Never use raw D1 API, raw Wrangler bindings, or raw SQL for data access
 - This is mandatory — the project will migrate from Cloudflare D1 to self-hosted PostgreSQL (TimescaleDB/PostGIS/PGVector). Any raw D1/Wrangler data access creates migration debt that cannot be easily resolved
+- **Cloudflare Workers instantiation:** Prisma Client must be instantiated **per-request**, not at module scope. In a CF Workers context the D1 binding is only available inside the request handler. Always create the client inside the handler using the D1 binding from the execution context — never create it at the top level of a Worker file
 - Prisma schema lives in `prisma/` at the monorepo root
 - **CI runs migrations automatically. Manual migrations are NEVER permitted** — "manual" means a human typing commands by hand; automated tooling (post-start.sh, CI scripts) is required and allowed
 - **CI runs seeds automatically. Manual seeds are NEVER permitted** against production

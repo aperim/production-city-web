@@ -290,6 +290,13 @@ Before writing any component code:
   - Workers: `pnpm --filter ./apps/workers dev` (wrangler)
   - Storybook: `pnpm --filter ./packages/ui storybook`
 
+**Monorepo build ordering:** If a package depends on `packages/ui` or other shared packages, those must be built before running tests or the dev server. Build shared packages first:
+```bash
+pnpm --filter ./packages/ui build   # build shared packages first
+pnpm --filter ./apps/web test       # then test dependent apps
+```
+For packages with complex dependency graphs, use `pnpm --filter ./apps/web... build` (the `...` suffix includes dependencies recursively).
+
 ### 4) Issue hygiene (as you go)
 
 **NOT NEGOTIABLE**
@@ -371,6 +378,7 @@ Before writing any component code:
 - Database now: Cloudflare D1 (SQLite), via `@prisma/adapter-d1`
 - Database planned: self-hosted PostgreSQL (TimescaleDB/PostGIS/PGVector)
 - **Always use Prisma Client** — never raw D1/Wrangler API or raw SQL
+- Each app that uses the database must have a `wrangler.toml` that declares a `[[d1_databases]]` binding. The binding name in `wrangler.toml` is the authoritative name — all migration commands use it. The `migrations_dir` in `wrangler.toml` must match where migration SQL files are generated (default: `prisma/migrations/`)
 
 ### Generating migrations
 
@@ -395,15 +403,15 @@ The migration SQL file must be committed alongside the schema change.
 ### Applying migrations locally
 
 ```bash
-# Apply pending migrations to local D1 (wrangler.toml defines the binding name)
+# Apply pending migrations to local D1
+# <D1_BINDING_NAME> comes from [[d1_databases]] binding in wrangler.toml
 wrangler d1 migrations apply <D1_BINDING_NAME> --local
 
-# Check wrangler.toml for the binding name — do not hardcode it
+# Audit which migrations have been applied vs. pending:
+wrangler d1 migrations list <D1_BINDING_NAME> --local
 ```
 
-The D1 binding name is defined in `wrangler.toml`. Always use the name from config, not a hardcoded value.
-
-The migrations directory must match the `migrations_dir` configured in `wrangler.toml`.
+The migrations directory must match `migrations_dir` in `wrangler.toml`. Verify alignment before generating migrations on a new project.
 
 ### CI applies migrations — never do this manually in production
 
@@ -412,11 +420,25 @@ The migrations directory must match the `migrations_dir` configured in `wrangler
 wrangler d1 migrations apply <D1_BINDING_NAME>
 
 # Never run this manually against production.
+
+# Audit applied migrations in production (read-only):
+wrangler d1 migrations list <D1_BINDING_NAME>
 ```
+
+### Rolling back a bad migration
+
+**D1 does not support transactional DDL rollback.** There is no `prisma migrate reset` or rollback command for production D1.
+
+The correct pattern is **forward-only migrations with compensating migrations**:
+1. Do not attempt to undo a migration by reverting the SQL
+2. Generate a new migration that reverses the schema change (e.g., drop a column you just added)
+3. Apply the compensating migration through the normal CI pipeline
+
+Design migrations to be safe if they need to be compensated: avoid destructive changes (column drops, type changes) in the same migration as additive ones. Separate concerns across multiple migration files.
 
 ### Seeds
 
-- Seeds live in `prisma/seed.ts` (path configured in `package.json` → `prisma.seed`)
+- Seeds live in `prisma/seed.ts` (actual path configured in `package.json` → `prisma.seed`)
 - Must be idempotent: use upserts and existence checks, never plain inserts
 - Run locally via `post-start.sh` (automated) and in CI for non-production environments
 - Never run seeds against production
@@ -425,6 +447,11 @@ wrangler d1 migrations apply <D1_BINDING_NAME>
 
 When migrating to self-hosted PostgreSQL:
 - Change the Prisma provider in `schema.prisma` and swap `@prisma/adapter-d1` for the PostgreSQL adapter
-- Review all migrations for SQLite-specific syntax that may need adjustment for PostgreSQL
-- Application code should not need to change **provided** Prisma Client is used exclusively everywhere — this is the reason raw D1/Wrangler API access is prohibited
-- Note: D1 uses SQLite semantics (e.g., no `ENUM` types, limited `ALTER TABLE`). Design schemas to be portable where possible.
+- **Application data access code** should not need to change, provided Prisma Client is used exclusively — this is the primary reason raw D1/Wrangler API access is prohibited
+- The following **will** require review and likely changes:
+  - All migration SQL files (D1/SQLite uses different type mappings, e.g., `TEXT` for datetimes; PostgreSQL uses `TIMESTAMPTZ`)
+  - Prisma Client instantiation code in Workers (adapter and binding injection changes)
+  - Seed scripts using `prisma.$executeRaw` with SQLite-specific syntax
+  - Schema features unavailable in SQLite (ENUMs, foreign key constraints enforced at DB level, `ALTER TABLE` with type changes)
+  - PostgreSQL extensions (TimescaleDB, PostGIS, PGVector) require schema-level configuration with no D1 equivalent
+- D1 uses SQLite semantics throughout. Design schemas to be portable: avoid SQLite-specific workarounds, prefer Prisma model-level constraints over raw SQL constraints where possible
