@@ -1,11 +1,12 @@
-import { defineConfig } from "vitest/config";
+import { defineWorkersConfig } from "@cloudflare/vitest-pool-workers/config";
 
-export default defineConfig({
+export default defineWorkersConfig({
   test: {
-    environment: "jsdom",
     include: ["app/**/*.test.ts", "app/**/*.test.tsx"],
-  },
-  resolve: {
-    conditions: ["import", "module", "browser", "default"],
+    poolOptions: {
+      workers: {
+        wrangler: { configPath: "./wrangler.toml" },
+      },
+    },
   },
 });

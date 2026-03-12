@@ -1,10 +1,14 @@
 {
   "extends": "../../tsconfig.base.json",
-  "include": ["app/**/*.ts", "app/**/*.tsx", "vite.config.ts", "vitest.config.ts"],
+  "include": ["app/**/*.ts", "app/**/*.tsx", "middleware.ts", "test/**/*.ts", "vite.config.ts", "vitest.config.ts"],
   "compilerOptions": {
     "noEmit": true,
+    "module": "ESNext",
     "jsx": "react-jsx",
     "lib": ["ES2022", "DOM", "DOM.Iterable"],
-    "types": ["@cloudflare/workers-types"]
+    "types": ["@cloudflare/workers-types", "@cloudflare/vitest-pool-workers"],
+    "paths": {
+      "next/server": ["./node_modules/vinext/dist/shims/server.d.ts"]
+    }
   }
 }

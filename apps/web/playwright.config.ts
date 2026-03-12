@@ -7,9 +7,9 @@ export default defineConfig({
     baseURL: "http://localhost:4321",
   },
   webServer: {
-    command: "pnpm run dev",
+    command: "pnpm exec vinext dev --port 4321",
     port: 4321,
     reuseExistingServer: !process.env.CI,
-    timeout: 30000,
+    timeout: 60000,
   },
 });
