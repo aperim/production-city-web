@@ -34,10 +34,10 @@ Overlay-capable components should be built from four internal primitives:
 
 This branch does not ship consumer-facing dialog/popover components yet. It does ship the shared contracts and constants that those components should consume:
 
-- [packages/ui/src/foundations/layering.ts](/tmp/issue-57-foundation-research/packages/ui/src/foundations/layering.ts)
-- [packages/ui/src/foundations/positioning.ts](/tmp/issue-57-foundation-research/packages/ui/src/foundations/positioning.ts)
-- [packages/ui/src/foundations/motion.ts](/tmp/issue-57-foundation-research/packages/ui/src/foundations/motion.ts)
-- [packages/ui/src/foundations/overlay.ts](/tmp/issue-57-foundation-research/packages/ui/src/foundations/overlay.ts)
+- [packages/ui/src/foundations/layering.ts](../../packages/ui/src/foundations/layering.ts)
+- [packages/ui/src/foundations/positioning.ts](../../packages/ui/src/foundations/positioning.ts)
+- [packages/ui/src/foundations/motion.ts](../../packages/ui/src/foundations/motion.ts)
+- [packages/ui/src/foundations/overlay.ts](../../packages/ui/src/foundations/overlay.ts)
 
 ## Layering model
 
@@ -67,7 +67,7 @@ These values are a temporary hand-authored foundation until the token build pipe
 
 - No runtime animation library by default.
 - Use CSS transitions and `@starting-style` where enter motion is needed.
-- Approved durations live in [packages/ui/src/foundations/motion.ts](/tmp/issue-57-foundation-research/packages/ui/src/foundations/motion.ts): `100ms`, `150ms`, `200ms`.
+- Approved durations live in [packages/ui/src/foundations/motion.ts](../../packages/ui/src/foundations/motion.ts): `100ms`, `150ms`, `200ms`.
 - Use one easing curve: `cubic-bezier(0.2, 0, 0, 1)`.
 - Respect `prefers-reduced-motion`: all non-instant motion collapses to `0ms`.
 - Avoid scale, bounce, spring, or decorative transform choreography.

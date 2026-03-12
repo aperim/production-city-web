@@ -23,9 +23,11 @@ Always verify flags before running migration commands:
 pnpm exec prisma migrate diff --help
 
 # 2. Generate migration SQL
+# Prisma 7.5 removed --from-local-d1. Point prisma.config.ts at the intended
+# local datasource first, then use the config-backed flags for the installed CLI.
 pnpm exec prisma migrate diff \
-  --from-local-d1 \
-  --to-schema-datamodel ./prisma/schema.prisma \
+  --from-config-datasource \
+  --to-schema ./prisma/schema.prisma \
   --script \
   --output ./prisma/migrations/<timestamp>_<description>/migration.sql
 

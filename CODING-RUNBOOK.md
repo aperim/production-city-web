@@ -392,15 +392,16 @@ After changing `prisma/schema.prisma`, generate a migration SQL file:
 # Verify the exact flags for your installed Prisma version:
 pnpm exec prisma migrate diff --help
 
-# Typical D1 workflow (flags may vary by Prisma version — verify before running):
+# Prisma 7.5 removed --from-local-d1. Point prisma.config.ts at the intended
+# local datasource first, then use the config-backed flags for the installed CLI.
 pnpm exec prisma migrate diff \
-  --from-local-d1 \
-  --to-schema-datamodel ./prisma/schema.prisma \
+  --from-config-datasource \
+  --to-schema ./prisma/schema.prisma \
   --script \
   --output ./prisma/migrations/<timestamp>_<description>.sql
 ```
 
-> **Note:** `--from-local-d1` was added for D1 support in recent Prisma versions. Always verify the correct flags with `pnpm exec prisma migrate diff --help` against the installed version. Do not rely on documentation that may be stale.
+> **Note:** Prisma CLI flags around local D1 diffing have changed across releases. Always verify the exact flags with `pnpm exec prisma migrate diff --help` against the installed version before copying a command from docs.
 
 The migration SQL file must be committed alongside the schema change.
 

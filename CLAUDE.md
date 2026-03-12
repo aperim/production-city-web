@@ -191,9 +191,12 @@ The `@productioncity` scope must be routed to GitHub Packages. This is configure
 
 ```bash
 pnpm exec prisma migrate diff --help  # verify flags for installed version first
+
+# Prisma 7.5 removed --from-local-d1. Point prisma.config.ts at the intended
+# local datasource first, then use the config-backed flags for the installed CLI.
 pnpm exec prisma migrate diff \
-  --from-local-d1 \
-  --to-schema-datamodel ./prisma/schema.prisma \
+  --from-config-datasource \
+  --to-schema ./prisma/schema.prisma \
   --script \
   --output ./prisma/migrations/<timestamp>_<description>.sql
 ```
