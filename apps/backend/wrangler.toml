@@ -1,11 +1,35 @@
-# apps/backend/wrangler.toml — stub configuration
-# Full configuration will be added by subsequent issues.
-
-name = "production-city-backend"
-compatibility_date = "2025-01-01"
+# apps/backend/wrangler.toml — Cloudflare Worker API
+name = "holding-backend"
+compatibility_date = "2026-01-01"
+compatibility_flags = ["nodejs_compat"]
+main = "src/index.ts"
 
 [[d1_databases]]
 binding = "DB"
-database_name = "production-city-db"
-database_id = "" # Set via CI secrets or wrangler.toml overrides
+database_name = "holding-dev"
+database_id = "local-dev"
+migrations_dir = "../../prisma/migrations"
+
+[env.preview]
+name = "holding-backend-preview"
+[[env.preview.d1_databases]]
+binding = "DB"
+database_name = "holding-preview"
+database_id = "$CF_D1_DATABASE_ID_PREVIEW"
+migrations_dir = "../../prisma/migrations"
+
+[env.staging]
+name = "holding-backend-staging"
+[[env.staging.d1_databases]]
+binding = "DB"
+database_name = "holding-staging"
+database_id = "$CF_D1_DATABASE_ID_STAGING"
+migrations_dir = "../../prisma/migrations"
+
+[env.production]
+name = "holding-backend-production"
+[[env.production.d1_databases]]
+binding = "DB"
+database_name = "holding-production"
+database_id = "$CF_D1_DATABASE_ID_PRODUCTION"
 migrations_dir = "../../prisma/migrations"

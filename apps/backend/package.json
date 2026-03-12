@@ -4,10 +4,22 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "dev": "echo 'backend dev server not yet configured'",
-    "build": "echo 'backend build not yet configured'",
-    "test": "echo 'no tests yet'",
+    "dev": "wrangler dev",
+    "build": "wrangler deploy --dry-run --outdir dist",
+    "test": "vitest run",
     "lint": "eslint .",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "deploy": "wrangler deploy"
+  },
+  "dependencies": {
+    "hono": "^4.12.7",
+    "@prisma/client": "^7.5.0",
+    "@prisma/adapter-d1": "^7.5.0"
+  },
+  "devDependencies": {
+    "@cloudflare/workers-types": "^4.20260312.1",
+    "typescript": "^5.9.3",
+    "vitest": "^4.0.18",
+    "wrangler": "^4.72.0"
   }
 }

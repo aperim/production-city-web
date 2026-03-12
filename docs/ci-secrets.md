@@ -12,6 +12,7 @@ All secrets are configured in **Settings > Secrets and variables > Actions**.
 |--------|---------|---------------|
 | `CLOUDFLARE_ACCOUNT_ID` | Cloudflare account identifier | Cloudflare dashboard right sidebar |
 | `CLOUDFLARE_API_TOKEN` | **Scoped** Cloudflare API token (see below) | Create at dash.cloudflare.com/profile/api-tokens |
+| `CF_D1_DATABASE_ID_PREVIEW` | D1 database ID for preview environment | `wrangler d1 list` or Cloudflare dashboard |
 | `CF_D1_DATABASE_ID_STAGING` | D1 database ID for staging environment | `wrangler d1 list` or Cloudflare dashboard |
 | `CF_D1_DATABASE_ID_PRODUCTION` | D1 database ID for production environment | `wrangler d1 list` or Cloudflare dashboard |
 | `GITHUB_TOKEN` | Default GitHub token (auto-provided) | Auto-injected by GitHub Actions |
@@ -34,6 +35,21 @@ All secrets are configured in **Settings > Secrets and variables > Actions**.
 ### GITHUB_TOKEN_TROY
 
 Used exclusively for automated PR approvals to avoid the "cannot approve your own PR" restriction. This should be a **fine-grained PAT** from an alternate account with only **Pull requests: Read and Write** permission on this repository. Avoid classic PATs with broad `repo` scope.
+
+---
+
+## Wrangler Environment Variables
+
+Wrangler resolves `$VAR` references in `wrangler.toml` from environment variables at deploy time.
+These are NOT `.env` variables. They must be injected via CI secrets.
+
+```yaml
+# Example GitHub Actions step
+- name: Deploy backend
+  run: wrangler deploy --env production
+  env:
+    CF_D1_DATABASE_ID_PRODUCTION: ${{ secrets.CF_D1_DATABASE_ID_PRODUCTION }}
+```
 
 ---
 
@@ -115,11 +131,12 @@ wrangler queues create holding-jobs-production
 D1 databases must exist before migrations can run:
 
 ```bash
+wrangler d1 create holding-db-preview
 wrangler d1 create holding-db-staging
 wrangler d1 create holding-db-production
 ```
 
-Record the returned database IDs as GitHub Actions secrets (`CF_D1_DATABASE_ID_STAGING`, `CF_D1_DATABASE_ID_PRODUCTION`).
+Record the returned database IDs as GitHub Actions secrets (`CF_D1_DATABASE_ID_PREVIEW`, `CF_D1_DATABASE_ID_STAGING`, `CF_D1_DATABASE_ID_PRODUCTION`).
 
 ---
 

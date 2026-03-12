@@ -2,6 +2,7 @@ import { existsSync, readFileSync } from "node:fs";
 import { resolve } from "node:path";
 import { describe, expect, it } from "vitest";
 import { parse } from "yaml";
+import { parse as parseToml } from "smol-toml";
 
 const ROOT = resolve(import.meta.dirname, "..");
 
@@ -66,5 +67,71 @@ describe("workspace validation", () => {
     const content = readFileSync(seedPath, "utf-8");
     expect(content).not.toContain("ts-node");
     expect(content).not.toContain("tsx");
+  });
+});
+
+describe("wrangler multi-environment configuration", () => {
+  const appsWithD1 = ["apps/backend", "apps/web"];
+  const environments = ["preview", "staging", "production"];
+
+  for (const app of appsWithD1) {
+    describe(app, () => {
+      const tomlPath = resolve(ROOT, app, "wrangler.toml");
+      const content = readFileSync(tomlPath, "utf-8");
+      const config = parseToml(content) as Record<string, unknown>;
+      const env = config.env as Record<string, Record<string, unknown>> | undefined;
+
+      it("has all three environments defined", () => {
+        expect(env).toBeDefined();
+        for (const e of environments) {
+          expect(env).toHaveProperty(e);
+        }
+      });
+
+      for (const e of environments) {
+        it(`env.${e} has d1_databases binding named DB`, () => {
+          const envConfig = env![e] as Record<string, unknown>;
+          const d1Databases = envConfig.d1_databases as Array<Record<string, unknown>>;
+          expect(d1Databases).toBeDefined();
+          expect(Array.isArray(d1Databases)).toBe(true);
+          const dbBinding = d1Databases.find((db) => db.binding === "DB");
+          expect(dbBinding).toBeDefined();
+        });
+
+        it(`env.${e} database_id is a variable reference`, () => {
+          const envConfig = env![e] as Record<string, unknown>;
+          const d1Databases = envConfig.d1_databases as Array<Record<string, unknown>>;
+          const dbBinding = d1Databases.find((db) => db.binding === "DB");
+          expect(dbBinding).toBeDefined();
+          expect(String(dbBinding!.database_id)).toContain("$");
+        });
+      }
+    });
+  }
+
+  describe("apps/workers", () => {
+    const tomlPath = resolve(ROOT, "apps/workers", "wrangler.toml");
+    const content = readFileSync(tomlPath, "utf-8");
+    const config = parseToml(content) as Record<string, unknown>;
+    const env = config.env as Record<string, Record<string, unknown>> | undefined;
+
+    it("has all three environments defined", () => {
+      expect(env).toBeDefined();
+      for (const e of environments) {
+        expect(env).toHaveProperty(e);
+      }
+    });
+
+    for (const e of environments) {
+      it(`env.${e} has queue consumers`, () => {
+        const envConfig = env![e] as Record<string, unknown>;
+        const queues = envConfig.queues as Record<string, unknown>;
+        expect(queues).toBeDefined();
+        const consumers = queues.consumers as Array<Record<string, unknown>>;
+        expect(consumers).toBeDefined();
+        expect(Array.isArray(consumers)).toBe(true);
+        expect(consumers.length).toBeGreaterThan(0);
+      });
+    }
   });
 });

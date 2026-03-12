@@ -1,0 +1,39 @@
+# apps/workers/wrangler.toml — Cloudflare Queue Workers
+name = "holding-workers"
+compatibility_date = "2026-01-01"
+compatibility_flags = ["nodejs_compat"]
+main = "src/index.ts"
+
+[[queues.consumers]]
+queue = "holding-jobs"
+max_batch_size = 10
+max_batch_timeout = 30
+max_retries = 3
+dead_letter_queue = "holding-jobs-dlq"
+
+[env.preview]
+name = "holding-workers-preview"
+[[env.preview.queues.consumers]]
+queue = "holding-jobs-preview"
+max_batch_size = 10
+max_batch_timeout = 30
+max_retries = 3
+dead_letter_queue = "holding-jobs-dlq-preview"
+
+[env.staging]
+name = "holding-workers-staging"
+[[env.staging.queues.consumers]]
+queue = "holding-jobs-staging"
+max_batch_size = 10
+max_batch_timeout = 30
+max_retries = 3
+dead_letter_queue = "holding-jobs-dlq-staging"
+
+[env.production]
+name = "holding-workers-production"
+[[env.production.queues.consumers]]
+queue = "holding-jobs-production"
+max_batch_size = 10
+max_batch_timeout = 30
+max_retries = 3
+dead_letter_queue = "holding-jobs-dlq-production"
