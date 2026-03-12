@@ -8,6 +8,7 @@
 6. **pnpm only**: never use npm, yarn, or bun — this is a pnpm monorepo.
 7. **No manual migrations or seeds**: CI runs migrations and seeds automatically. Never run them manually against production or staging. Devcontainer automation via `post-start.sh` is not "manual" — it is required.
 8. **Prisma only for data access**: never use raw D1 API, raw Wrangler bindings, or raw SQL. See `CODING.md` for the rationale.
+9. **GitHub-only registries**: all packages publish to GitHub Packages (`npm.pkg.github.com`), all containers to GitHub Container Registry (`ghcr.io`). Never publish to npmjs.com or Docker Hub. Never commit registry auth tokens to the repo. Package scope: `@productioncity`, naming: `@productioncity/<repo>-<package>`.
 
 ---
 

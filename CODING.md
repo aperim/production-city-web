@@ -46,6 +46,16 @@ These rules are specific to this repository and override general preferences whe
 - Add a dependency to the workspace root: `pnpm add -w <dep>`
 - Install all dependencies (CI and initial setup): `pnpm install --frozen-lockfile`
 
+### GitHub-Only Registries
+
+- **Never publish packages to npmjs.com or push containers to Docker Hub**
+- All packages publish to **GitHub Packages** (`npm.pkg.github.com`)
+- All containers publish to **GitHub Container Registry** (`ghcr.io`)
+- Package org scope: `@productioncity`
+- Package naming convention: `@productioncity/<repo>-<package>` (e.g., `@productioncity/holding-ui`)
+- Publishing is CI-only — never publish manually
+- Never commit registry auth tokens (`_authToken`, PATs) to the repo — local auth belongs in `~/.npmrc`
+
 ### Database Access
 
 - **Always use Prisma Client.** Never use raw D1 API, raw Wrangler bindings, or raw SQL for data access

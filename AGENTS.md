@@ -47,6 +47,15 @@ All data access goes through Prisma Client, instantiated per-request inside the 
 
 CI runs migrations and seeds automatically. Never run them manually against production or staging.
 
+### 7. GitHub-only for packages and containers
+
+**Never publish to npmjs.com, Docker Hub, or any other registry.**
+
+- Package registry: GitHub Packages (`npm.pkg.github.com`)
+- Container registry: GitHub Container Registry (`ghcr.io`)
+- Org scope: `@productioncity`
+- Package naming: `@productioncity/<repo>-<package>` (e.g., `@productioncity/holding-ui`)
+
 ---
 
 ## Cloudflare Access

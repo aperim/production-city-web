@@ -147,6 +147,36 @@ pnpm -r run <script>                  # run script across all packages
 
 ---
 
+## Package & Container Registry — GitHub Only
+
+**Never publish packages to npmjs.com or push containers to Docker Hub.** We exclusively use GitHub registries.
+
+- **Package registry:** GitHub Packages (`npm.pkg.github.com`)
+- **Container registry:** GitHub Container Registry (`ghcr.io`)
+- **Org scope:** `@productioncity` — all packages are prefixed with the GitHub org name
+- **Package naming:** `@productioncity/<repo>-<package>` (e.g., `@productioncity/holding-ui`, `@productioncity/holding-design-tokens`)
+
+The `@productioncity` scope must be routed to GitHub Packages. This is configured in CI via `NODE_AUTH_TOKEN` / `GITHUB_TOKEN` and locally via user-level `.npmrc` (not committed to the repo):
+
+```bash
+# Developer-local or CI .npmrc — scope routing
+@productioncity:registry=https://npm.pkg.github.com
+```
+
+**Authentication safety:**
+- CI uses `GITHUB_TOKEN` (automatic) or a fine-grained PAT with `write:packages` scope only
+- Never commit `_authToken`, PAT values, or registry credentials to the repo
+- Local auth belongs in `~/.npmrc` (user-level), never in the repo `.npmrc`
+- All publishing goes through GitHub Actions CI — never publish manually
+
+**Never:**
+- Publish to npmjs.com
+- Push containers to Docker Hub
+- Commit registry auth tokens to the repository
+- Publish manually — CI only
+
+---
+
 ## Database — Prisma Only
 
 **Never use raw D1 API, raw Wrangler bindings, or raw SQL.**
