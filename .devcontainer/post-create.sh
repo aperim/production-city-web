@@ -502,11 +502,13 @@ TOML
 # 13. Ed25519 signing key (for audit logs)
 ###############################################################################
 generate_keys() {
-    local key_dir="${WORKSPACE_DIR}"
+    # Keys are generated OUTSIDE the workspace to prevent accidental commits.
+    # See issue #16: a signing key was previously committed to git history.
+    local key_dir="${DEV_HOME}/.config/production-city"
     local key_file="${key_dir}/signing_key.pem"
 
     if [ -f "$key_file" ]; then
-        echo "Signing key already exists — skipping"
+        echo "Signing key already exists at ${key_file} — skipping"
         return 0
     fi
 
@@ -515,11 +517,14 @@ generate_keys() {
         return 1
     fi
 
+    mkdir -p "$key_dir"
     openssl genpkey -algorithm Ed25519 -out "$key_file" 2>/dev/null
     openssl pkey -in "$key_file" -pubout -out "${key_dir}/signing_key.pub" 2>/dev/null
+    chmod 700 "$key_dir"
     chmod 600 "$key_file"
+    chmod 644 "${key_dir}/signing_key.pub"
 
-    echo "Ed25519 signing key generated"
+    echo "Ed25519 signing key generated at ${key_dir}"
 }
 
 ###############################################################################
