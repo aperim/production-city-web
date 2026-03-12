@@ -133,6 +133,9 @@ importers:
       '@types/react-dom':
         specifier: ^19.2.3
         version: 19.2.3(@types/react@19.2.14)
+      '@vitejs/plugin-rsc':
+        specifier: ^0.5.21
+        version: 0.5.21(react-dom@19.2.4(react@19.2.4))(react-server-dom-webpack@19.2.4(react-dom@19.2.4(react@19.2.4))(react@19.2.4)(webpack@5.105.4))(react@19.2.4)(vite@7.3.1(@types/node@25.4.0)(jiti@2.6.1)(lightningcss@1.31.1)(terser@5.46.0)(yaml@2.8.2))
       tailwindcss:
         specifier: ^4.2.1
         version: 4.2.1
@@ -4171,8 +4174,7 @@ snapshots:
 
   '@rolldown/pluginutils@1.0.0-rc.3': {}
 
-  '@rolldown/pluginutils@1.0.0-rc.5':
-    optional: true
+  '@rolldown/pluginutils@1.0.0-rc.5': {}
 
   '@rollup/pluginutils@5.3.0(rollup@4.59.0)':
     dependencies:
@@ -4635,7 +4637,6 @@ snapshots:
       vitefu: 1.1.2(vite@7.3.1(@types/node@25.4.0)(jiti@2.6.1)(lightningcss@1.31.1)(terser@5.46.0)(yaml@2.8.2))
     optionalDependencies:
       react-server-dom-webpack: 19.2.4(react-dom@19.2.4(react@19.2.4))(react@19.2.4)(webpack@5.105.4)
-    optional: true
 
   '@vitest/browser@4.0.18(vite@7.3.1(@types/node@25.4.0)(jiti@2.6.1)(lightningcss@1.31.1)(terser@5.46.0)(yaml@2.8.2))(vitest@4.0.18(@types/node@25.4.0)(jiti@2.6.1)(jsdom@28.1.0)(lightningcss@1.31.1)(terser@5.46.0)(yaml@2.8.2))':
     dependencies:
@@ -5466,7 +5467,6 @@ snapshots:
   is-reference@3.0.3:
     dependencies:
       '@types/estree': 1.0.8
-    optional: true
 
   is-wsl@3.1.1:
     dependencies:
@@ -5810,7 +5810,6 @@ snapshots:
       '@types/estree': 1.0.8
       is-reference: 3.0.3
       zimmerframe: 1.1.4
-    optional: true
 
   picocolors@1.1.1: {}
 
@@ -6158,8 +6157,7 @@ snapshots:
 
   sqlstring@2.3.3: {}
 
-  srvx@0.11.9:
-    optional: true
+  srvx@0.11.9: {}
 
   stackback@0.0.2: {}
 
@@ -6345,8 +6343,7 @@ snapshots:
     dependencies:
       safe-buffer: 5.2.1
 
-  turbo-stream@3.2.0:
-    optional: true
+  turbo-stream@3.2.0: {}
 
   type-check@0.4.0:
     dependencies:
@@ -6492,7 +6489,6 @@ snapshots:
   vitefu@1.1.2(vite@7.3.1(@types/node@25.4.0)(jiti@2.6.1)(lightningcss@1.31.1)(terser@5.46.0)(yaml@2.8.2)):
     optionalDependencies:
       vite: 7.3.1(@types/node@25.4.0)(jiti@2.6.1)(lightningcss@1.31.1)(terser@5.46.0)(yaml@2.8.2)
-    optional: true
 
   vitest@3.2.4(@types/node@25.4.0)(@vitest/browser@4.0.18(vite@7.3.1(@types/node@25.4.0)(jiti@2.6.1)(lightningcss@1.31.1)(terser@5.46.0)(yaml@2.8.2))(vitest@4.0.18(@types/node@25.4.0)(jiti@2.6.1)(jsdom@28.1.0)(lightningcss@1.31.1)(terser@5.46.0)(yaml@2.8.2)))(jiti@2.6.1)(jsdom@28.1.0)(lightningcss@1.31.1)(terser@5.46.0)(yaml@2.8.2):
     dependencies:
@@ -6747,7 +6743,6 @@ snapshots:
       grammex: 3.1.12
       graphmatch: 1.1.1
 
-  zimmerframe@1.1.4:
-    optional: true
+  zimmerframe@1.1.4: {}
 
   zod@4.3.6: {}
