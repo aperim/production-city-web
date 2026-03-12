@@ -1,16 +1,18 @@
+import { z } from "zod";
 import { QueueMessageSchema } from "./types.js";
 import type { QueueMessage } from "./types.js";
 
+/** Typed result from validateQueueMessage. */
+export type ValidateResult =
+  | { success: true; data: QueueMessage }
+  | { success: false; error: z.ZodError };
+
 /**
  * Validates that an unknown value conforms to the QueueMessage shape using Zod.
- * Returns { success: true, data } on valid input, { success: false } otherwise.
+ *
+ * Returns a typed result: `{ success: true, data }` on valid input,
+ * `{ success: false, error: ZodError }` with structured error details otherwise.
  */
-export function validateQueueMessage(
-  value: unknown,
-): { success: true; data: QueueMessage } | { success: false } {
-  const result = QueueMessageSchema.safeParse(value);
-  if (result.success) {
-    return { success: true, data: result.data as QueueMessage };
-  }
-  return { success: false };
+export function validateQueueMessage(value: unknown): ValidateResult {
+  return QueueMessageSchema.safeParse(value);
 }

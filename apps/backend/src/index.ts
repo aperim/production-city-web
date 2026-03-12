@@ -1,7 +1,9 @@
 import { OpenAPIHono, createRoute, z } from "@hono/zod-openapi";
+import { swaggerUI } from "@hono/swagger-ui";
 import { cors } from "hono/cors";
 import { createPrismaClient } from "./lib/prisma.js";
 
+/** Environment bindings provided by the Cloudflare Worker runtime. */
 type Bindings = {
   DB: D1Database;
   ALLOWED_ORIGIN: string;
@@ -83,7 +85,15 @@ app.openapi(readyRoute, async (c) => {
     );
     return c.json({ status: "error", db: "unavailable" }, 503);
   } finally {
-    await prisma.$disconnect();
+    // Guard disconnect errors so they don't mask the health check result
+    await prisma.$disconnect().catch((disconnectErr: unknown) => {
+      console.error(
+        JSON.stringify({
+          event: "readiness.disconnect.failed",
+          error: String(disconnectErr),
+        }),
+      );
+    });
   }
 });
 
@@ -93,15 +103,6 @@ app.doc31("/openapi.json", {
   info: { title: "Production City API", version: "0.1.0" },
 });
 
-app.get("/docs", (c) => {
-  const html = `<!DOCTYPE html>
-<html><head><title>Production City API Docs</title>
-<script src="https://unpkg.com/swagger-ui-dist/swagger-ui-bundle.js"></script>
-<link rel="stylesheet" href="https://unpkg.com/swagger-ui-dist/swagger-ui.css" />
-</head><body><div id="swagger-ui"></div>
-<script>SwaggerUIBundle({ url: '/openapi.json', dom_id: '#swagger-ui' })</script>
-</body></html>`;
-  return c.html(html);
-});
+app.get("/docs", swaggerUI({ url: "/openapi.json" }));
 
 export default app;

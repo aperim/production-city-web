@@ -12,10 +12,11 @@
     "deploy": "wrangler deploy"
   },
   "dependencies": {
-    "hono": "^4.12.7",
+    "@hono/swagger-ui": "0.6.1",
     "@hono/zod-openapi": "^1.2.2",
-    "@prisma/client": "^7.5.0",
     "@prisma/adapter-d1": "^7.5.0",
+    "@prisma/client": "^7.5.0",
+    "hono": "^4.12.7",
     "zod": "^4.3.6"
   },
   "devDependencies": {

@@ -31,23 +31,32 @@ export default {
           continue;
         }
 
+        // Use the validated/parsed data — not the raw untrusted body
         console.log(
           JSON.stringify({
             event: "queue.message",
             id: message.id,
-            type: message.body?.type,
+            type: validation.data.type,
             attempt: message.attempts,
           }),
         );
 
-        // TODO: dispatch to domain handlers based on message.body.type
+        // TODO: dispatch to domain handlers based on validation.data.type
         message.ack();
       } catch (err) {
+        // message.body is untrusted; only log envelope metadata, never payload
+        const rawType =
+          typeof message.body === "object" &&
+          message.body !== null &&
+          "type" in message.body &&
+          typeof (message.body as Record<string, unknown>).type === "string"
+            ? (message.body as Record<string, unknown>).type
+            : undefined;
         console.error(
           JSON.stringify({
             event: "queue.message.error",
             id: message.id,
-            type: message.body?.type,
+            type: rawType,
             attempt: message.attempts,
             error: String(err),
           }),
