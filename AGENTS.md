@@ -158,9 +158,12 @@ For any UI component:
 
 ```bash
 pnpm exec prisma migrate diff --help  # verify flags against installed version first
+
+# Prisma 7.5 removed --from-local-d1. Point prisma.config.ts at the intended
+# local datasource first, then use the config-backed flags for the installed CLI.
 pnpm exec prisma migrate diff \
-  --from-local-d1 \
-  --to-schema-datamodel ./prisma/schema.prisma \
+  --from-config-datasource \
+  --to-schema ./prisma/schema.prisma \
   --script \
   --output ./prisma/migrations/<timestamp>_<description>.sql
 ```
@@ -178,9 +181,10 @@ D1 does not support transactional DDL rollback. Generate a new forward migration
 Before writing any code:
 
 ```bash
-wrangler d1 migrations apply <D1_BINDING_NAME> --local --dry-run  # no pending migrations
-pnpm test                                                           # unit tests passing
-pnpm build-storybook                                               # stories clean
+wrangler d1 migrations list <D1_BINDING_NAME> --local --config apps/backend/wrangler.toml  # no pending migrations
+pnpm exec prisma generate                                                           # generate client artifacts in the worktree
+pnpm test                                                                           # unit tests passing
+pnpm build-storybook                                                                # stories clean
 ```
 
 ---

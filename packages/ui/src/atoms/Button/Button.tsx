@@ -1,5 +1,9 @@
 import { cva, type VariantProps } from "class-variance-authority";
-import type { ButtonHTMLAttributes, ReactNode } from "react";
+import {
+  forwardRef,
+  type ButtonHTMLAttributes,
+  type ReactNode,
+} from "react";
 import { cn } from "../../lib/utils";
 
 const buttonVariants = cva(
@@ -41,9 +45,13 @@ interface ButtonProps
  * Supports five variants (default, destructive, outline, ghost, link)
  * and three sizes (sm, md, lg).
  */
-function Button({ className, variant, size, children, ...props }: ButtonProps) {
+const Button = forwardRef<HTMLButtonElement, ButtonProps>(function Button(
+  { className, variant, size, children, ...props },
+  ref,
+) {
   return (
     <button
+      ref={ref}
       type="button"
       className={cn(buttonVariants({ variant, size, className }))}
       {...props}
@@ -51,7 +59,7 @@ function Button({ className, variant, size, children, ...props }: ButtonProps) {
       {children}
     </button>
   );
-}
+});
 
 export { Button, buttonVariants };
 export type { ButtonProps };

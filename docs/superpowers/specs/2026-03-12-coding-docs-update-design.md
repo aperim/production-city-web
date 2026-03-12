@@ -186,8 +186,8 @@ Migrations always run before code deploys. If migration fails, deploy does not p
 ```bash
 # Generate migration SQL from schema diff
 pnpm prisma migrate diff \
-  --from-local-d1 \
-  --to-schema-datamodel prisma/schema.prisma \
+  --from-config-datasource \
+  --to-schema prisma/schema.prisma \
   --script \
   --output prisma/migrations/<timestamp>_<name>.sql
 
