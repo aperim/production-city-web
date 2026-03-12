@@ -70,15 +70,30 @@ describe("workspace validation", () => {
   });
 });
 
+/**
+ * Parse a wrangler config file — supports both .toml and .jsonc formats.
+ * vinext uses wrangler.jsonc; other apps may use wrangler.toml.
+ */
+function readWranglerConfig(appDir: string): Record<string, unknown> {
+  const jsoncPath = resolve(ROOT, appDir, "wrangler.jsonc");
+  if (existsSync(jsoncPath)) {
+    const raw = readFileSync(jsoncPath, "utf-8");
+    // Strip single-line comments for JSON.parse
+    const stripped = raw.replace(/^\s*\/\/.*$/gm, "");
+    return JSON.parse(stripped) as Record<string, unknown>;
+  }
+  const tomlPath = resolve(ROOT, appDir, "wrangler.toml");
+  const content = readFileSync(tomlPath, "utf-8");
+  return parseToml(content) as Record<string, unknown>;
+}
+
 describe("wrangler multi-environment configuration", () => {
   const appsWithD1 = ["apps/backend", "apps/web"];
   const environments = ["preview", "staging", "production"];
 
   for (const app of appsWithD1) {
     describe(app, () => {
-      const tomlPath = resolve(ROOT, app, "wrangler.toml");
-      const content = readFileSync(tomlPath, "utf-8");
-      const config = parseToml(content) as Record<string, unknown>;
+      const config = readWranglerConfig(app);
       const env = config.env as Record<string, Record<string, unknown>> | undefined;
 
       it("has all three environments defined", () => {

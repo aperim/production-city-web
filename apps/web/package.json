@@ -4,28 +4,31 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "dev": "wrangler dev --local --port 4321",
-    "build": "vite build && wrangler deploy --dry-run --outdir dist-worker",
+    "dev": "vinext dev --port 4321",
+    "build": "vinext build",
     "test": "vitest run",
     "test:e2e": "playwright test",
     "lint": "eslint .",
     "typecheck": "tsc --noEmit",
-    "deploy": "wrangler deploy"
+    "deploy": "vinext deploy"
   },
   "dependencies": {
-    "hono": "^4.12.7",
     "react": "^19.2.4",
     "react-dom": "^19.2.4",
+    "react-server-dom-webpack": "^19.2.4",
+    "vinext": "^0.0.28",
     "@prisma/client": "^7.5.0",
-    "@prisma/adapter-d1": "^7.5.0"
+    "@prisma/adapter-d1": "^7.5.0",
+    "@production-city/ui": "workspace:*"
   },
   "devDependencies": {
+    "@cloudflare/vite-plugin": "^1.27.0",
     "@cloudflare/workers-types": "^4.20260312.1",
     "@playwright/test": "^1.58.2",
     "@tailwindcss/vite": "^4.2.1",
     "@types/react": "^19.2.3",
     "@types/react-dom": "^19.2.3",
-    "@vitejs/plugin-react": "^5.1.4",
+    "@vitejs/plugin-rsc": "^0.5.21",
     "tailwindcss": "^4.2.1",
     "typescript": "^5.9.3",
     "vite": "^7.3.1",
