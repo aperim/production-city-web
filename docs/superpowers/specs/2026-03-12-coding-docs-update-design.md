@@ -85,8 +85,10 @@ production-city/
 - Use `pnpm info <package> version` or check the package registry directly
 
 #### Frontend Knowledge Gate
-- Before ANY frontend work, review `docs/knowledge/frontend-2026.md`
-- This document captures breaking changes in React 19, Tailwind v4, shadcn/ui, and Vite 7 that are not in agent training data
+- Before ANY frontend work, review **both**:
+  - `docs/knowledge/frontend-2026.md` — breaking changes in React 19, Tailwind v4, shadcn/ui, Vite 7
+  - `docs/knowledge/Uncodixify.md` — UI anti-patterns and design decisions to avoid
+- These documents contain knowledge that is NOT in agent training data
 
 #### pnpm Only
 - This is a pnpm monorepo — never use npm, yarn, or bun
