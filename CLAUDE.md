@@ -58,15 +58,35 @@ Stories must cover all meaningful states before the component is used elsewhere.
 
 ---
 
-## Version Discipline
+## Version Discipline — CURRENT RELEASE ONLY
 
-Agent memory has stale version data. Always check current versions:
+**Always use the current release version. Never default to LTS, "stable", or "latest stable" unless explicitly instructed otherwise.**
+
+Agent training data is stale. Assume all version numbers in memory are wrong. Verify at task time:
 
 ```bash
-pnpm view <package> dist-tags.latest
+pnpm view <package> dist-tags.latest          # npm packages
+node --version                                # confirm Node runtime
+wrangler --version                            # confirm Wrangler
 ```
 
+For non-npm tooling (Node.js, Wrangler, etc.), check the official release page at task time — do not guess.
+
 Record the verified version in the PR description.
+
+---
+
+## TypeScript Execution — Node Native Only
+
+**TypeScript files are executed exclusively via Node's native type stripping.**
+
+```bash
+node --experimental-transform-types --experimental-detect-module <file.ts>
+```
+
+**Never use:** ts-node, tsx, or any other TypeScript runner or transpiler.
+
+Node 25 has stable Amaro/SWC-based type stripping. There is no need for external runners.
 
 ---
 
