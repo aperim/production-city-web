@@ -69,13 +69,6 @@ Dependabot is configured via `.github/dependabot.yml` (committed in this reposit
 
 Ensure Dependabot is enabled in **Settings > Code security and analysis > Dependabot**.
 
-### CodeQL Static Analysis
-
-CodeQL is configured via `.github/workflows/codeql.yml`:
-- Runs on push to `main`, PRs targeting `main`, and weekly schedule (Monday 4am UTC)
-- Analyzes JavaScript/TypeScript with `security-and-quality` query suite
-- Results visible in **Security > Code scanning alerts**
-
 ---
 
 ## CI Pipeline Architecture
@@ -83,7 +76,7 @@ CodeQL is configured via `.github/workflows/codeql.yml`:
 ### `ci.yml` — Quality checks (every push and PR)
 
 ```
-install → audit → prisma generate → lint → typecheck → test → OpenAPI validate
+install → audit (prod) → prisma generate → lint → typecheck → test
 ```
 
 ### `deploy.yml` — Deploy pipeline (merge to main only)
