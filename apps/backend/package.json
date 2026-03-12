@@ -13,8 +13,10 @@
   },
   "dependencies": {
     "hono": "^4.12.7",
+    "@hono/zod-openapi": "^1.2.2",
     "@prisma/client": "^7.5.0",
-    "@prisma/adapter-d1": "^7.5.0"
+    "@prisma/adapter-d1": "^7.5.0",
+    "zod": "^4.3.6"
   },
   "devDependencies": {
     "@cloudflare/workers-types": "^4.20260312.1",

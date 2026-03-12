@@ -1,4 +1,4 @@
-import { Hono } from "hono";
+import { OpenAPIHono, createRoute, z } from "@hono/zod-openapi";
 import { cors } from "hono/cors";
 import { createPrismaClient } from "./lib/prisma.js";
 
@@ -7,7 +7,7 @@ type Bindings = {
   ALLOWED_ORIGIN: string;
 };
 
-const app = new Hono<{ Bindings: Bindings }>();
+export const app = new OpenAPIHono<{ Bindings: Bindings }>();
 
 app.use(
   "*",
@@ -20,17 +20,63 @@ app.use(
   }),
 );
 
-/** Liveness probe — no DB dependency */
-app.get("/live", (c) => {
-  return c.json({ status: "ok" });
+/** Shared schemas */
+const StatusOkSchema = z.object({
+  status: z.literal("ok"),
 });
 
-/** Readiness probe — verifies DB connectivity via Prisma */
-app.get("/ready", async (c) => {
+const ReadyOkSchema = z.object({
+  status: z.literal("ok"),
+  db: z.literal("ok"),
+});
+
+const ErrorResponseSchema = z.object({
+  status: z.string(),
+  db: z.string().optional(),
+});
+
+/** Route definitions */
+const liveRoute = createRoute({
+  method: "get",
+  path: "/live",
+  summary: "Liveness probe",
+  description: "Returns 200 if the service is running. No database dependency.",
+  responses: {
+    200: {
+      content: { "application/json": { schema: StatusOkSchema } },
+      description: "Service is alive",
+    },
+  },
+});
+
+const readyRoute = createRoute({
+  method: "get",
+  path: "/ready",
+  summary: "Readiness probe",
+  description:
+    "Returns 200 if the service is ready and database is reachable.",
+  responses: {
+    200: {
+      content: { "application/json": { schema: ReadyOkSchema } },
+      description: "Service is ready",
+    },
+    503: {
+      content: { "application/json": { schema: ErrorResponseSchema } },
+      description: "Service not ready",
+    },
+  },
+});
+
+/** Route handlers */
+app.openapi(liveRoute, (c) => {
+  return c.json({ status: "ok" as const }, 200);
+});
+
+app.openapi(readyRoute, async (c) => {
   const prisma = createPrismaClient(c.env.DB);
   try {
     await prisma.$queryRaw`SELECT 1`;
-    return c.json({ status: "ok", db: "ok" });
+    return c.json({ status: "ok" as const, db: "ok" as const }, 200);
   } catch (err) {
     console.error(
       JSON.stringify({ event: "readiness.check.failed", error: String(err) }),
@@ -41,73 +87,21 @@ app.get("/ready", async (c) => {
   }
 });
 
-/** OpenAPI spec redirect */
+/** OpenAPI spec + docs */
+app.doc("/openapi.json", {
+  openapi: "3.1.0",
+  info: { title: "Production City API", version: "0.1.0" },
+});
+
 app.get("/docs", (c) => {
-  return c.json({
-    openapi: "3.1.0",
-    info: { title: "Production City API", version: "0.1.0" },
-    paths: {
-      "/live": {
-        get: {
-          summary: "Liveness probe",
-          responses: {
-            "200": {
-              description: "Service is alive",
-              content: {
-                "application/json": {
-                  schema: {
-                    type: "object",
-                    properties: { status: { type: "string" } },
-                  },
-                },
-              },
-            },
-          },
-        },
-      },
-      "/ready": {
-        get: {
-          summary: "Readiness probe",
-          responses: {
-            "200": {
-              description: "Service is ready",
-              content: {
-                "application/json": {
-                  schema: {
-                    type: "object",
-                    properties: {
-                      status: { type: "string" },
-                      db: { type: "string" },
-                    },
-                  },
-                },
-              },
-            },
-            "503": {
-              description: "Service not ready",
-              content: {
-                "application/json": {
-                  schema: { $ref: "#/components/schemas/ErrorResponse" },
-                },
-              },
-            },
-          },
-        },
-      },
-    },
-    components: {
-      schemas: {
-        ErrorResponse: {
-          type: "object",
-          properties: {
-            status: { type: "string" },
-            error: { type: "string" },
-          },
-          required: ["status"],
-        },
-      },
-    },
-  });
+  const html = `<!DOCTYPE html>
+<html><head><title>Production City API Docs</title>
+<script src="https://unpkg.com/swagger-ui-dist/swagger-ui-bundle.js"></script>
+<link rel="stylesheet" href="https://unpkg.com/swagger-ui-dist/swagger-ui.css" />
+</head><body><div id="swagger-ui"></div>
+<script>SwaggerUIBundle({ url: '/openapi.json', dom_id: '#swagger-ui' })</script>
+</body></html>`;
+  return c.html(html);
 });
 
 export default app;

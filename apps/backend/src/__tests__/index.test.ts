@@ -1,9 +1,9 @@
 import { describe, it, expect, vi } from "vitest";
-import app from "../index.js";
+import { app } from "../index.js";
 
 /**
  * Creates a minimal mock D1Database for testing.
- * The readiness endpoint runs SELECT 1 via Prisma's $queryRawUnsafe.
+ * The readiness endpoint runs SELECT 1 via Prisma's $queryRaw.
  */
 function createMockEnv(dbQueryResult: unknown = [{ "1": 1 }]) {
   return {
@@ -53,14 +53,29 @@ describe("Backend API", () => {
     expect(res.status).toBe(404);
   });
 
-  it("GET /docs returns OpenAPI spec", async () => {
+  it("GET /openapi.json returns valid OpenAPI 3.1.0 spec", async () => {
     const env = createMockEnv();
-    const req = new Request("http://localhost/docs");
+    const req = new Request("http://localhost/openapi.json");
     const res = await app.fetch(req, env);
 
     expect(res.status).toBe(200);
     const body = (await res.json()) as Record<string, unknown>;
     expect(body).toHaveProperty("openapi", "3.1.0");
     expect(body).toHaveProperty("paths");
+    expect(body).toHaveProperty("info");
+
+    const info = body.info as Record<string, unknown>;
+    expect(info.title).toBe("Production City API");
+  });
+
+  it("GET /docs returns HTML with Swagger UI", async () => {
+    const env = createMockEnv();
+    const req = new Request("http://localhost/docs");
+    const res = await app.fetch(req, env);
+
+    expect(res.status).toBe(200);
+    const html = await res.text();
+    expect(html).toContain("swagger-ui");
+    expect(html).toContain("/openapi.json");
   });
 });
