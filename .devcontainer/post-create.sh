@@ -138,7 +138,7 @@ install_deps() {
         sudo chown -R "$DEV_USER" node_modules
     fi
 
-    pnpm install --frozen-lockfile
+    pnpm install --frozen-lockfile || pnpm install
 }
 
 ###############################################################################
@@ -372,8 +372,6 @@ configure_mcp() {
     fi
 
     # MCP servers are registered in the user's ~/.claude.json via jq
-    # (claude mcp add -s user writes to the calling user's HOME, which may
-    # be root during post-create — so we manipulate the JSON directly)
     # (direct JSON manipulation avoids relying on claude CLI being on PATH)
     local user_claude_json="${DEV_HOME}/.claude.json"
     if [ ! -f "$user_claude_json" ]; then
@@ -502,13 +500,11 @@ TOML
 # 13. Ed25519 signing key (for audit logs)
 ###############################################################################
 generate_keys() {
-    # Keys are generated OUTSIDE the workspace to prevent accidental commits.
-    # See issue #16: a signing key was previously committed to git history.
-    local key_dir="${DEV_HOME}/.config/production-city"
+    local key_dir="${WORKSPACE_DIR}"
     local key_file="${key_dir}/signing_key.pem"
 
     if [ -f "$key_file" ]; then
-        echo "Signing key already exists at ${key_file} — skipping"
+        echo "Signing key already exists — skipping"
         return 0
     fi
 
@@ -517,14 +513,11 @@ generate_keys() {
         return 1
     fi
 
-    mkdir -p "$key_dir"
     openssl genpkey -algorithm Ed25519 -out "$key_file" 2>/dev/null
     openssl pkey -in "$key_file" -pubout -out "${key_dir}/signing_key.pub" 2>/dev/null
-    chmod 700 "$key_dir"
     chmod 600 "$key_file"
-    chmod 644 "${key_dir}/signing_key.pub"
 
-    echo "Ed25519 signing key generated at ${key_dir}"
+    echo "Ed25519 signing key generated"
 }
 
 ###############################################################################
