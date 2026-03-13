@@ -49,12 +49,9 @@ export function FAQItem({
           <span>{question}</span>
           <span
             aria-hidden="true"
-            className={cn(
-              "shrink-0 ms-4 text-muted-foreground transition-transform duration-200 motion-reduce:transition-none",
-              isOpen && "rotate-180",
-            )}
+            className="shrink-0 ms-4 text-muted-foreground"
           >
-            ▾
+            {isOpen ? "\u25B4" : "\u25BE"}
           </span>
         </button>
       </h3>

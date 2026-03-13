@@ -1,5 +1,6 @@
 import { useState, type ReactNode } from "react";
 import { cn } from "../../lib/utils";
+import { sanitizeHref } from "../../atoms/Link/Link";
 import { LanguageSwitcher, type LanguageOption } from "../../molecules/LanguageSwitcher/LanguageSwitcher";
 
 /** A navigation link item. */
@@ -59,7 +60,7 @@ export function LandingNavigation({
           {links.map((link) => (
             <a
               key={link.href}
-              href={link.href}
+              href={sanitizeHref(link.href)}
               className="text-sm text-muted-foreground transition-colors duration-150 hover:text-foreground"
             >
               {link.label}
@@ -95,7 +96,7 @@ export function LandingNavigation({
             {links.map((link) => (
               <a
                 key={link.href}
-                href={link.href}
+                href={sanitizeHref(link.href)}
                 className="text-sm text-muted-foreground transition-colors duration-150 hover:text-foreground"
               >
                 {link.label}

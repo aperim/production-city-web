@@ -1,4 +1,5 @@
 import { cn } from "../../lib/utils";
+import { sanitizeHref } from "../../atoms/Link/Link";
 import { LanguageSwitcher, type LanguageOption } from "../../molecules/LanguageSwitcher/LanguageSwitcher";
 
 /** A link in the footer. */
@@ -91,7 +92,7 @@ export function LandingFooter({
                 {group.links.map((link) => (
                   <li key={link.href}>
                     <a
-                      href={link.href}
+                      href={sanitizeHref(link.href)}
                       className="text-sm text-muted-foreground transition-colors duration-150 hover:text-foreground"
                     >
                       {link.label}
@@ -129,7 +130,7 @@ export function LandingFooter({
             {legalLinks.map((link) => (
               <a
                 key={link.href}
-                href={link.href}
+                href={sanitizeHref(link.href)}
                 className="text-xs text-muted-foreground transition-colors duration-150 hover:text-foreground"
               >
                 {link.label}

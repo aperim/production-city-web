@@ -1,4 +1,5 @@
 import { cn } from "../../lib/utils";
+import { sanitizeHref } from "../../atoms/Link/Link";
 
 /** Props for the CTABanner molecule */
 export interface CTABannerProps {
@@ -54,7 +55,7 @@ export function CTABanner({
         )}
       </div>
       <a
-        href={buttonHref}
+        href={sanitizeHref(buttonHref)}
         className={cn(
           "inline-flex shrink-0 items-center px-4 py-2 text-sm font-medium",
           "bg-primary text-primary-foreground rounded-md",

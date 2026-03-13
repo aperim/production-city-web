@@ -53,6 +53,7 @@ export function FAQSection({
         <div className="mt-4">
           <input
             type="search"
+            aria-label={searchPlaceholder}
             placeholder={searchPlaceholder}
             value={filter}
             onChange={(e) => setFilter(e.target.value)}

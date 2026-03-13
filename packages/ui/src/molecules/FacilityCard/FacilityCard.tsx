@@ -1,5 +1,6 @@
 import type { ReactNode } from "react";
 import { cn } from "../../lib/utils";
+import { sanitizeHref } from "../../atoms/Link/Link";
 
 /** A key specification for a facility. */
 export interface FacilitySpec {
@@ -66,7 +67,7 @@ export function FacilityCard({
 
   if (href) {
     return (
-      <a href={href} className={cardClasses}>
+      <a href={sanitizeHref(href)} className={cardClasses}>
         {content}
       </a>
     );

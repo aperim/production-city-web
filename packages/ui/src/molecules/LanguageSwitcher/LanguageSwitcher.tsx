@@ -117,7 +117,8 @@ export function LanguageSwitcher({
       items[items.length - 1]?.focus();
     }
     if (e.key === "Tab") {
-      close();
+      // Close menu but don't refocus trigger — let browser handle natural tab order
+      setOpen(false);
     }
   }
 
