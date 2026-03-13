@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { SectionDivider } from "./SectionDivider";
 
-const meta = {
+const meta: Meta<typeof SectionDivider> = {
   title: "Atoms/SectionDivider",
   component: SectionDivider,
   tags: ["autodocs"],
@@ -20,7 +20,7 @@ const meta = {
       </div>
     ),
   ],
-} satisfies Meta<typeof SectionDivider>;
+};
 
 export default meta;
 type Story = StoryObj<typeof meta>;
