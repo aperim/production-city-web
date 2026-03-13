@@ -1,0 +1,86 @@
+{
+  "auth": {
+    "login": {
+      "rateLimited": "Too many requests. Try again later.",
+      "checkEmail": "Check your email for a sign-in link",
+      "invalidToken": "Invalid or expired authentication token.",
+      "invalidCode": "Invalid or expired code.",
+      "loggedOut": "Logged out",
+      "required": "Authentication required.",
+      "invalidSession": "Invalid or expired session.",
+      "accountInactive": "Account is not active."
+    },
+    "verify": {
+      "tokenFailed": "Token verification failed.",
+      "codeFailed": "Code verification failed."
+    }
+  },
+  "admin": {
+    "users": {
+      "notFound": "User not found.",
+      "invalidParam": "Invalid parameter.",
+      "invalidSortBy": "Invalid sortBy. Allowed: {allowed}",
+      "invalidSortOrder": "Invalid sortOrder. Allowed: {allowed}",
+      "searchTooLong": "Search query too long (max 200 characters).",
+      "invalidStatus": "Invalid status. Allowed: {allowed}",
+      "nameNoHtml": "Name must not contain HTML tags.",
+      "cannotDeactivateSelf": "Cannot deactivate your own account.",
+      "cannotDeactivateLastSuperAdmin": "Cannot deactivate the last active super_admin.",
+      "cannotActivateNoRoles": "Cannot activate user with no roles.",
+      "rolesNotFound": "One or more roles not found.",
+      "roleNotAssigned": "User does not have this role.",
+      "cannotRemoveOwnAdminRole": "Cannot remove your own {role} role.",
+      "cannotRemoveLastSuperAdmin": "Cannot remove the last super_admin role.",
+      "cannotRemoveLastRole": "Cannot remove the last role from a user.",
+      "roleRemoved": "Role removed."
+    },
+    "invitations": {
+      "messageNoHtml": "Message must not contain HTML tags.",
+      "userExists": "A user with this email already exists.",
+      "pendingExists": "A pending invitation already exists for this email.",
+      "rolesNotFound": "One or more roles not found.",
+      "notFound": "Invitation not found.",
+      "notFoundOrProcessed": "Invitation not found or already processed.",
+      "onlyPendingResend": "Only pending invitations can be resent.",
+      "revoked": "Invitation revoked.",
+      "resent": "Invitation resent."
+    },
+    "approvals": {
+      "notFound": "User not found.",
+      "notPending": "User is not pending approval.",
+      "noRoles": "Cannot approve user with no roles.",
+      "approved": "User approved.",
+      "rejected": "User rejected.",
+      "reasonNoHtml": "Reason must not contain HTML tags."
+    },
+    "auditLog": {
+      "empty": "No audit log entries found."
+    }
+  },
+  "permissions": {
+    "forbidden": "Insufficient permissions."
+  },
+  "email": {
+    "magicLink": {
+      "subject": "Sign in to Production City",
+      "expiresIn": "15 minutes"
+    },
+    "invitation": {
+      "subject": "You've been invited to Production City",
+      "expiresIn": "7 days"
+    },
+    "rejection": {
+      "subject": "Production City — Access Request Update",
+      "body": "Your access request for Production City was not approved. If you believe this is an error, please contact the administrator."
+    }
+  },
+  "errors": {
+    "rateLimited": "Too many requests. Try again later.",
+    "notFound": "Resource not found.",
+    "invalidInput": "Invalid input.",
+    "conflict": "Conflict.",
+    "unauthorized": "Authentication required.",
+    "forbidden": "Insufficient permissions.",
+    "serviceUnavailable": "Service temporarily unavailable."
+  }
+}

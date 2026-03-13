@@ -3,6 +3,8 @@ import { swaggerUI } from "@hono/swagger-ui";
 import { cors } from "hono/cors";
 import { createPrismaClient } from "./lib/prisma.js";
 import { mountRoutes } from "./routes.js";
+import { requestIdMiddleware } from "./middleware/request-id.js";
+import { validateEnv } from "./middleware/env-validation.js";
 
 /** Environment bindings provided by the Cloudflare Worker runtime. */
 type Bindings = {
@@ -13,6 +15,15 @@ type Bindings = {
 };
 
 export const app = new OpenAPIHono<{ Bindings: Bindings }>();
+
+// Request ID middleware: generates X-Request-ID for every request
+app.use("*", requestIdMiddleware());
+
+// Environment validation: runs on every request, throws if required bindings are missing
+app.use("*", async (c, next) => {
+  validateEnv(c.env);
+  await next();
+});
 
 app.use(
   "*",
@@ -113,5 +124,20 @@ app.get("/v1/docs", swaggerUI({ url: "/v1/openapi.json" }));
 
 // Mount auth and admin API routes
 mountRoutes(app as unknown as OpenAPIHono<{ Bindings: Record<string, unknown> }>);
+
+// Global error handler: catch env validation and other uncaught errors
+app.onError((err, c) => {
+  console.error(
+    JSON.stringify({
+      event: "unhandled.error",
+      error: String(err),
+      requestId: c.res.headers.get("X-Request-ID") ?? undefined,
+    }),
+  );
+  return c.json(
+    { error: "internal_error", message: "An internal error occurred." },
+    500,
+  );
+});
 
 export default app;

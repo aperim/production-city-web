@@ -1,0 +1,129 @@
+{
+  "auth": {
+    "login": {
+      "title": "Sign in",
+      "emailLabel": "Email address",
+      "emailPlaceholder": "you@example.com",
+      "submitButton": "Send magic link",
+      "submitting": "Sending...",
+      "checkEmail": "Check your email for a sign-in link",
+      "codeLabel": "Verification code",
+      "codePlaceholder": "000000",
+      "verifyButton": "Verify code",
+      "verifying": "Verifying...",
+      "orSeparator": "or",
+      "resendLink": "Resend magic link",
+      "backToLogin": "Back to sign in"
+    },
+    "logout": {
+      "button": "Sign out",
+      "success": "You have been signed out."
+    },
+    "session": {
+      "expired": "Your session has expired. Please sign in again."
+    }
+  },
+  "admin": {
+    "dashboard": {
+      "title": "Admin Dashboard",
+      "welcome": "Welcome, {name}"
+    },
+    "users": {
+      "title": "Users",
+      "searchPlaceholder": "Search users...",
+      "filterStatus": "Filter by status",
+      "filterRole": "Filter by role",
+      "sortBy": "Sort by",
+      "emptyState": "No users found.",
+      "tableHeaders": {
+        "email": "Email",
+        "name": "Name",
+        "status": "Status",
+        "roles": "Roles",
+        "lastLogin": "Last Login",
+        "actions": "Actions"
+      },
+      "statusActive": "Active",
+      "statusPending": "Pending Approval",
+      "statusDeactivated": "Deactivated",
+      "actionDeactivate": "Deactivate",
+      "actionActivate": "Activate",
+      "actionManageRoles": "Manage Roles",
+      "confirmDeactivate": "Are you sure you want to deactivate this user?",
+      "confirmActivate": "Are you sure you want to activate this user?"
+    },
+    "invitations": {
+      "title": "Invitations",
+      "createButton": "Send Invitation",
+      "emailLabel": "Email address",
+      "emailPlaceholder": "newuser@example.com",
+      "rolesLabel": "Assign roles",
+      "messageLabel": "Personal message (optional)",
+      "messagePlaceholder": "Welcome to the team!",
+      "emptyState": "No invitations found.",
+      "tableHeaders": {
+        "email": "Email",
+        "status": "Status",
+        "createdAt": "Sent",
+        "expiresAt": "Expires",
+        "actions": "Actions"
+      },
+      "statusPending": "Pending",
+      "statusAccepted": "Accepted",
+      "statusRevoked": "Revoked",
+      "statusExpired": "Expired",
+      "actionRevoke": "Revoke",
+      "actionResend": "Resend",
+      "confirmRevoke": "Are you sure you want to revoke this invitation?"
+    },
+    "approvals": {
+      "title": "Pending Approvals",
+      "emptyState": "No users pending approval.",
+      "approveButton": "Approve",
+      "rejectButton": "Reject",
+      "rejectReasonLabel": "Reason (optional)",
+      "confirmApprove": "Are you sure you want to approve this user?",
+      "confirmReject": "Are you sure you want to reject this user?"
+    },
+    "roles": {
+      "title": "Roles & Permissions",
+      "emptyState": "No roles configured."
+    },
+    "auditLog": {
+      "title": "Audit Log",
+      "emptyState": "No audit entries found.",
+      "loadMore": "Load more",
+      "tableHeaders": {
+        "action": "Action",
+        "actor": "Actor",
+        "subject": "Subject",
+        "details": "Details",
+        "timestamp": "Timestamp"
+      }
+    }
+  },
+  "common": {
+    "loading": "Loading...",
+    "error": "An error occurred.",
+    "retry": "Retry",
+    "cancel": "Cancel",
+    "confirm": "Confirm",
+    "save": "Save",
+    "delete": "Delete",
+    "edit": "Edit",
+    "close": "Close",
+    "back": "Back",
+    "next": "Next",
+    "previous": "Previous",
+    "noResults": "No results found."
+  },
+  "nav": {
+    "dashboard": "Dashboard",
+    "users": "Users",
+    "invitations": "Invitations",
+    "approvals": "Approvals",
+    "roles": "Roles",
+    "auditLog": "Audit Log",
+    "signOut": "Sign Out"
+  }
+}
