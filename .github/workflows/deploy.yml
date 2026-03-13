@@ -40,7 +40,7 @@ jobs:
         run: pnpm exec prisma generate
 
       - name: Apply D1 migrations (staging)
-        run: wrangler d1 migrations apply DB --remote --env staging
+        run: pnpm exec wrangler d1 migrations apply DB --remote --env staging
         env:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
@@ -168,7 +168,7 @@ jobs:
         run: pnpm install --frozen-lockfile
 
       - name: Apply D1 migrations (production)
-        run: wrangler d1 migrations apply DB --remote --env production
+        run: pnpm exec wrangler d1 migrations apply DB --remote --env production
         env:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
