@@ -17,7 +17,9 @@
     "test:e2e": "playwright test",
     "lint": "eslint app worker eslint.config.js vite.config.ts vitest.config.ts playwright.config.ts",
     "typecheck": "tsc --noEmit",
-    "deploy": "vinext deploy"
+    "deploy": "vinext deploy",
+    "deploy:staging": "node scripts/cf-deploy.mjs staging",
+    "deploy:production": "node scripts/cf-deploy.mjs production"
   },
   "dependencies": {
     "react": "^19.2.4",
