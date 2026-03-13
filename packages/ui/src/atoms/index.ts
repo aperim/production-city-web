@@ -40,3 +40,9 @@ export { AttributionLink } from "./AttributionLink/AttributionLink";
 export type { AttributionLinkProps } from "./AttributionLink/AttributionLink";
 export { ImageSkeleton } from "./ImageSkeleton/ImageSkeleton";
 export type { ImageSkeletonProps } from "./ImageSkeleton/ImageSkeleton";
+
+// Issue #142: Landing Page Atoms
+export { SectionDivider, sectionDividerVariants } from "./SectionDivider/SectionDivider";
+export type { SectionDividerProps } from "./SectionDivider/SectionDivider";
+export { StatValue, statValueVariants } from "./StatValue/StatValue";
+export type { StatValueProps } from "./StatValue/StatValue";
