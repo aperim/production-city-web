@@ -192,6 +192,10 @@ testApp.post("/v1/test/reset", async (c) => {
     // Delete all user roles
     await prisma.userRole.deleteMany({});
 
+    // Delete media pairs and assets
+    await prisma.mediaPair.deleteMany({});
+    await prisma.mediaAsset.deleteMany({});
+
     // Delete all non-system users (keep none — seed will recreate)
     await prisma.user.deleteMany({});
 
@@ -279,6 +283,303 @@ testApp.post("/v1/test/seed", async (c) => {
         member: { id: memberUser.id, email: memberUser.email },
         viewer: { id: viewerUser.id, email: viewerUser.email },
       },
+    }, 200);
+  } finally {
+    await prisma.$disconnect().catch(() => {});
+  }
+});
+
+/**
+ * POST /v1/test/seed-media
+ * Seeds deterministic media assets and pairs for E2E testing.
+ * Creates assets with known flags (AI-assisted, AI-generated, First Nations)
+ * and pairs them under known content contexts.
+ */
+testApp.post("/v1/test/seed-media", async (c) => {
+  const prisma = await createPrismaClient(c.env.DB);
+  try {
+    // Clean existing media data first
+    await prisma.mediaPair.deleteMany({});
+    await prisma.mediaAsset.deleteMany({});
+
+    // --- Hero pair: standard Pexels attribution, no special flags ---
+    const heroLight = await prisma.mediaAsset.create({
+      data: {
+        id: "test-hero-light",
+        source: "pexels",
+        externalId: "pexels-1001",
+        externalUrl: "https://www.pexels.com/photo/1001",
+        photographer: "Jane Smith",
+        photographerUrl: "https://www.pexels.com/@janesmith",
+        photographerId: "1001",
+        originalWidth: 1920,
+        originalHeight: 1080,
+        averageColor: "#4A6B8A",
+        alt: "Modern production studio with natural lighting",
+        originalAlt: "Modern production studio",
+        mimeType: "image/jpeg",
+        fileSize: 245000,
+        checksum: "abc123hero-light",
+        localPath: "public/media/hero-home/hero-home-light.jpg",
+        publicPath: "/media/hero-home/hero-home-light.jpg",
+        downloadUrl: "https://images.pexels.com/photos/1001/original.jpeg",
+        license: "pexels",
+        attributionRequired: true,
+        attributionText: "Photo by Jane Smith on Pexels",
+        aiAssisted: false,
+        aiGenerated: false,
+        hasFirstNationsPermission: false,
+        themeVariant: "light",
+        contentContext: "hero-home",
+        reviewStatus: "accepted",
+      },
+    });
+
+    const heroDark = await prisma.mediaAsset.create({
+      data: {
+        id: "test-hero-dark",
+        source: "pexels",
+        externalId: "pexels-1002",
+        externalUrl: "https://www.pexels.com/photo/1002",
+        photographer: "Jane Smith",
+        photographerUrl: "https://www.pexels.com/@janesmith",
+        photographerId: "1001",
+        originalWidth: 1920,
+        originalHeight: 1080,
+        averageColor: "#1A2B3C",
+        alt: "Modern production studio at night",
+        originalAlt: "Production studio night",
+        mimeType: "image/jpeg",
+        fileSize: 230000,
+        checksum: "abc123hero-dark",
+        localPath: "public/media/hero-home/hero-home-dark.jpg",
+        publicPath: "/media/hero-home/hero-home-dark.jpg",
+        downloadUrl: "https://images.pexels.com/photos/1002/original.jpeg",
+        license: "pexels",
+        attributionRequired: true,
+        attributionText: "Photo by Jane Smith on Pexels",
+        aiAssisted: false,
+        aiGenerated: false,
+        hasFirstNationsPermission: false,
+        themeVariant: "dark",
+        contentContext: "hero-home",
+        reviewStatus: "accepted",
+      },
+    });
+
+    await prisma.mediaPair.create({
+      data: {
+        id: "test-pair-hero-home",
+        contentContext: "hero-home",
+        lightAssetId: heroLight.id,
+        darkAssetId: heroDark.id,
+      },
+    });
+
+    // --- Facilities pair: AI-assisted flag ---
+    const facLight = await prisma.mediaAsset.create({
+      data: {
+        id: "test-fac-light",
+        source: "pexels",
+        externalId: "pexels-2001",
+        photographer: "Bob Chen",
+        photographerUrl: "https://www.pexels.com/@bobchen",
+        originalWidth: 1920,
+        originalHeight: 1080,
+        averageColor: "#7A8B6A",
+        alt: "AI-enhanced studio facilities overview",
+        mimeType: "image/jpeg",
+        fileSize: 300000,
+        checksum: "abc123fac-light",
+        localPath: "public/media/hero-facilities/hero-facilities-light.jpg",
+        publicPath: "/media/hero-facilities/hero-facilities-light.jpg",
+        license: "pexels",
+        attributionRequired: true,
+        attributionText: "Photo by Bob Chen on Pexels",
+        aiAssisted: true,
+        aiGenerated: false,
+        hasFirstNationsPermission: false,
+        themeVariant: "light",
+        contentContext: "hero-facilities",
+        reviewStatus: "accepted",
+      },
+    });
+
+    const facDark = await prisma.mediaAsset.create({
+      data: {
+        id: "test-fac-dark",
+        source: "pexels",
+        externalId: "pexels-2002",
+        photographer: "Bob Chen",
+        photographerUrl: "https://www.pexels.com/@bobchen",
+        originalWidth: 1920,
+        originalHeight: 1080,
+        averageColor: "#2A3B1C",
+        alt: "AI-enhanced studio facilities at night",
+        mimeType: "image/jpeg",
+        fileSize: 280000,
+        checksum: "abc123fac-dark",
+        localPath: "public/media/hero-facilities/hero-facilities-dark.jpg",
+        publicPath: "/media/hero-facilities/hero-facilities-dark.jpg",
+        license: "pexels",
+        attributionRequired: true,
+        attributionText: "Photo by Bob Chen on Pexels",
+        aiAssisted: true,
+        aiGenerated: false,
+        hasFirstNationsPermission: false,
+        themeVariant: "dark",
+        contentContext: "hero-facilities",
+        reviewStatus: "accepted",
+      },
+    });
+
+    await prisma.mediaPair.create({
+      data: {
+        id: "test-pair-hero-facilities",
+        contentContext: "hero-facilities",
+        lightAssetId: facLight.id,
+        darkAssetId: facDark.id,
+      },
+    });
+
+    // --- Gallery pair: AI-generated flag ---
+    const galLight = await prisma.mediaAsset.create({
+      data: {
+        id: "test-gal-light",
+        source: "custom",
+        externalId: "custom-gen-3001",
+        photographer: "AI Studio",
+        originalWidth: 1024,
+        originalHeight: 1024,
+        averageColor: "#5A4B8A",
+        alt: "AI-generated creative workspace visualization",
+        mimeType: "image/png",
+        fileSize: 500000,
+        checksum: "abc123gal-light",
+        localPath: "public/media/gallery-creative/gallery-creative-light.png",
+        publicPath: "/media/gallery-creative/gallery-creative-light.png",
+        license: "custom",
+        attributionRequired: false,
+        aiAssisted: false,
+        aiGenerated: true,
+        hasFirstNationsPermission: false,
+        themeVariant: "light",
+        contentContext: "gallery-creative",
+        reviewStatus: "accepted",
+      },
+    });
+
+    const galDark = await prisma.mediaAsset.create({
+      data: {
+        id: "test-gal-dark",
+        source: "custom",
+        externalId: "custom-gen-3002",
+        photographer: "AI Studio",
+        originalWidth: 1024,
+        originalHeight: 1024,
+        averageColor: "#2A1B4A",
+        alt: "AI-generated creative workspace at night",
+        mimeType: "image/png",
+        fileSize: 480000,
+        checksum: "abc123gal-dark",
+        localPath: "public/media/gallery-creative/gallery-creative-dark.png",
+        publicPath: "/media/gallery-creative/gallery-creative-dark.png",
+        license: "custom",
+        attributionRequired: false,
+        aiAssisted: false,
+        aiGenerated: true,
+        hasFirstNationsPermission: false,
+        themeVariant: "dark",
+        contentContext: "gallery-creative",
+        reviewStatus: "accepted",
+      },
+    });
+
+    await prisma.mediaPair.create({
+      data: {
+        id: "test-pair-gallery-creative",
+        contentContext: "gallery-creative",
+        lightAssetId: galLight.id,
+        darkAssetId: galDark.id,
+      },
+    });
+
+    // --- Community pair: First Nations flag ---
+    const comLight = await prisma.mediaAsset.create({
+      data: {
+        id: "test-com-light",
+        source: "pexels",
+        externalId: "pexels-4001",
+        photographer: "Aunty Marcia",
+        photographerUrl: "https://www.pexels.com/@auntymarcia",
+        originalWidth: 1920,
+        originalHeight: 1280,
+        averageColor: "#8A6B4A",
+        alt: "Community gathering space with First Nations artwork",
+        mimeType: "image/jpeg",
+        fileSize: 350000,
+        checksum: "abc123com-light",
+        localPath: "public/media/hero-community/hero-community-light.jpg",
+        publicPath: "/media/hero-community/hero-community-light.jpg",
+        license: "pexels",
+        attributionRequired: true,
+        attributionText: "Photo by Aunty Marcia on Pexels",
+        aiAssisted: false,
+        aiGenerated: false,
+        hasFirstNationsPermission: true,
+        culturalNotes: "Used with permission from the local Aboriginal community",
+        themeVariant: "light",
+        contentContext: "hero-community",
+        reviewStatus: "accepted",
+      },
+    });
+
+    const comDark = await prisma.mediaAsset.create({
+      data: {
+        id: "test-com-dark",
+        source: "pexels",
+        externalId: "pexels-4002",
+        photographer: "Aunty Marcia",
+        photographerUrl: "https://www.pexels.com/@auntymarcia",
+        originalWidth: 1920,
+        originalHeight: 1280,
+        averageColor: "#3A2B1A",
+        alt: "Community space at dusk with First Nations artwork",
+        mimeType: "image/jpeg",
+        fileSize: 340000,
+        checksum: "abc123com-dark",
+        localPath: "public/media/hero-community/hero-community-dark.jpg",
+        publicPath: "/media/hero-community/hero-community-dark.jpg",
+        license: "pexels",
+        attributionRequired: true,
+        attributionText: "Photo by Aunty Marcia on Pexels",
+        aiAssisted: false,
+        aiGenerated: false,
+        hasFirstNationsPermission: true,
+        culturalNotes: "Used with permission from the local Aboriginal community",
+        themeVariant: "dark",
+        contentContext: "hero-community",
+        reviewStatus: "accepted",
+      },
+    });
+
+    await prisma.mediaPair.create({
+      data: {
+        id: "test-pair-hero-community",
+        contentContext: "hero-community",
+        lightAssetId: comLight.id,
+        darkAssetId: comDark.id,
+      },
+    });
+
+    return c.json({
+      message: "Media test data seeded.",
+      pairs: [
+        { contentContext: "hero-home", lightId: heroLight.id, darkId: heroDark.id },
+        { contentContext: "hero-facilities", lightId: facLight.id, darkId: facDark.id },
+        { contentContext: "gallery-creative", lightId: galLight.id, darkId: galDark.id },
+        { contentContext: "hero-community", lightId: comLight.id, darkId: comDark.id },
+      ],
     }, 200);
   } finally {
     await prisma.$disconnect().catch(() => {});

@@ -143,6 +143,29 @@ export async function loginViaUI(page: Page, email: string): Promise<void> {
 }
 
 /**
+ * Seeds deterministic media test data (assets + pairs) via the test API.
+ * Returns the created pairs with their content contexts and asset IDs.
+ */
+export async function seedMediaTestData(): Promise<{
+  message: string;
+  pairs: Array<{ contentContext: string; lightId: string; darkId: string }>;
+}> {
+  const res = await fetch(`${BACKEND_URL}/v1/test/seed-media`, {
+    method: "POST",
+  });
+
+  if (!res.ok) {
+    const err = await res.text();
+    throw new Error(`Failed to seed media test data: ${res.status} ${err}`);
+  }
+
+  return res.json() as Promise<{
+    message: string;
+    pairs: Array<{ contentContext: string; lightId: string; darkId: string }>;
+  }>;
+}
+
+/**
  * Performs an admin API call with the session cookie from the page.
  */
 export async function adminApiCall(

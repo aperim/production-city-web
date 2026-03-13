@@ -237,7 +237,7 @@ mediaApp.openapi(getAssetRoute, async (c) => {
   const prisma = await createPrismaClient(c.env.DB);
   try {
     const asset = await prisma.mediaAsset.findUnique({
-      where: { id, archivedAt: null },
+      where: { id, archivedAt: null, reviewStatus: "accepted" },
     });
 
     if (!asset) {

@@ -9,6 +9,7 @@
     "test": "vitest run && pnpm -r run test",
     "test:e2e": "pnpm --filter ./apps/web run test:e2e",
     "lint": "pnpm -r run lint",
+    "lint:media-src": "bash scripts/ci/check-no-external-media-src.sh",
     "typecheck": "pnpm -r run typecheck",
     "build-storybook": "pnpm --filter ./packages/design-tokens run build && pnpm --filter ./packages/ui run build-storybook",
     "db:seed": "node --experimental-transform-types --experimental-detect-module prisma/seed.ts"
