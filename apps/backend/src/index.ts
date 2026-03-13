@@ -5,6 +5,7 @@ import { createPrismaClient } from "./lib/prisma.js";
 import { mountRoutes } from "./routes.js";
 import { requestIdMiddleware } from "./middleware/request-id.js";
 import { validateEnv } from "./middleware/env-validation.js";
+import { t } from "./i18n/index.js";
 
 /** Environment bindings provided by the Cloudflare Worker runtime. */
 type Bindings = {
@@ -135,7 +136,7 @@ app.onError((err, c) => {
     }),
   );
   return c.json(
-    { error: "internal_error", message: "An internal error occurred." },
+    { error: "internal_error", message: t("errors.internalError") },
     500,
   );
 });

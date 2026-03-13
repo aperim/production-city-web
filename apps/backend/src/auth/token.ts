@@ -4,6 +4,7 @@
  */
 
 import type { PrismaClient } from "@prisma/client";
+import { t } from "../i18n/index.js";
 
 /** Generate a cryptographically random token (32 bytes, base64url). */
 export function generateSessionToken(): string {
@@ -78,10 +79,12 @@ export async function hmacSha256Hex(key: string, message: string): Promise<strin
 }
 
 /** Generic error for all token/code failures (anti-enumeration). */
-export const TOKEN_INVALID_ERROR = {
-  error: "token_invalid",
-  message: "This link is invalid or has expired. Please request a new one.",
-} as const;
+export function TOKEN_INVALID_ERROR(): { error: string; message: string } {
+  return {
+    error: "token_invalid",
+    message: t("auth.verify.tokenInvalid"),
+  };
+}
 
 export interface TokenVerifyResult {
   ok: true;

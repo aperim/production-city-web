@@ -4,6 +4,7 @@
  */
 
 import type { Context, MiddlewareHandler } from "hono";
+import { t } from "../i18n/index.js";
 
 /**
  * Extracts the origin from a URL string. Returns null if invalid.
@@ -33,7 +34,7 @@ export function csrfMiddleware(): MiddlewareHandler {
 
     const requestOrigin = getOrigin(c.req.url);
     if (!requestOrigin) {
-      return c.json({ error: "csrf_failed", message: "Invalid request origin." }, 403);
+      return c.json({ error: "csrf_failed", message: t("auth.csrf.invalidOrigin") }, 403);
     }
 
     // Check Origin header first, fall back to Referer
@@ -45,11 +46,11 @@ export function csrfMiddleware(): MiddlewareHandler {
       : getOrigin(refererHeader);
 
     if (!clientOrigin) {
-      return c.json({ error: "csrf_failed", message: "Missing Origin or Referer header." }, 403);
+      return c.json({ error: "csrf_failed", message: t("auth.csrf.missingHeader") }, 403);
     }
 
     if (clientOrigin !== requestOrigin) {
-      return c.json({ error: "csrf_failed", message: "Origin mismatch." }, 403);
+      return c.json({ error: "csrf_failed", message: t("auth.csrf.originMismatch") }, 403);
     }
 
     return next();

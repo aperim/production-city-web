@@ -12,7 +12,13 @@
     },
     "verify": {
       "tokenFailed": "Token verification failed.",
-      "codeFailed": "Code verification failed."
+      "codeFailed": "Code verification failed.",
+      "tokenInvalid": "This link is invalid or has expired. Please request a new one."
+    },
+    "csrf": {
+      "invalidOrigin": "Invalid request origin.",
+      "missingHeader": "Missing Origin or Referer header.",
+      "originMismatch": "Origin mismatch."
     }
   },
   "admin": {
@@ -81,6 +87,7 @@
     "conflict": "Conflict.",
     "unauthorized": "Authentication required.",
     "forbidden": "Insufficient permissions.",
-    "serviceUnavailable": "Service temporarily unavailable."
+    "serviceUnavailable": "Service temporarily unavailable.",
+    "internalError": "An internal error occurred."
   }
 }

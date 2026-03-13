@@ -4,6 +4,7 @@
  */
 
 import type { PrismaClient } from "@prisma/client";
+import { t } from "../i18n/index.js";
 import { sendEmail } from "./postmark.js";
 import type { PostmarkSendRequest } from "./postmark.js";
 import {
@@ -244,7 +245,7 @@ export async function handleMagicLinkRequest(
       body: {
         error: "rate_limited",
         retryAfter: emailLimit.retryAfterSeconds!,
-        message: "Too many requests. Try again later.",
+        message: t("errors.rateLimited"),
       },
     };
   }
@@ -257,7 +258,7 @@ export async function handleMagicLinkRequest(
       body: {
         error: "rate_limited",
         retryAfter: ipLimit.retryAfterSeconds!,
-        message: "Too many requests. Try again later.",
+        message: t("errors.rateLimited"),
       },
     };
   }
@@ -335,7 +336,7 @@ export async function handleMagicLinkRequest(
     const postmarkRequest: PostmarkSendRequest = {
       From: FROM_ADDRESS,
       To: email,
-      Subject: "Sign in to Production City",
+      Subject: t("email.magicLink.subject"),
       HtmlBody: renderMagicLinkHtml({
         magicLinkUrl,
         code,
@@ -382,7 +383,7 @@ export async function handleMagicLinkRequest(
     body: {
       requestId,
       status: "sending",
-      message: "Check your email for a sign-in link",
+      message: t("auth.login.checkEmail"),
     },
   };
 }
@@ -415,7 +416,7 @@ export async function sendInvitationEmail(
   const postmarkRequest: PostmarkSendRequest = {
     From: FROM_ADDRESS,
     To: request.email,
-    Subject: "You've been invited to Production City",
+    Subject: t("email.invitation.subject"),
     HtmlBody: renderInvitationHtml({
       inviterName: request.inviterName,
       message: request.message,

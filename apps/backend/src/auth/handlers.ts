@@ -5,6 +5,7 @@
 import { OpenAPIHono, createRoute, z } from "@hono/zod-openapi";
 import { createPrismaClient } from "../lib/prisma.js";
 import { verifyMagicLinkToken, verifyMagicCode, TOKEN_INVALID_ERROR } from "./token.js";
+import { t } from "../i18n/index.js";
 import {
   createSession,
   buildSessionCookie,
@@ -159,7 +160,7 @@ authApp.openapi(verifyTokenRoute, async (c) => {
         ipAddress: c.req.header("CF-Connecting-IP"),
         userAgent: c.req.header("User-Agent"),
       });
-      return c.json(TOKEN_INVALID_ERROR, 400);
+      return c.json(TOKEN_INVALID_ERROR(), 400);
     }
 
     // Find or validate user
@@ -212,7 +213,7 @@ authApp.openapi(verifyTokenRoute, async (c) => {
         });
       } else {
         // No user and no invitation: generic error
-        return c.json(TOKEN_INVALID_ERROR, 400);
+        return c.json(TOKEN_INVALID_ERROR(), 400);
       }
     } else {
       // Update last login
@@ -286,7 +287,7 @@ authApp.openapi(verifyCodeRoute, async (c) => {
       });
 
       const response: { error: string; message: string; remainingAttempts?: number } = {
-        ...TOKEN_INVALID_ERROR,
+        ...TOKEN_INVALID_ERROR(),
       };
       if (remainingAttempts !== undefined) {
         response.remainingAttempts = remainingAttempts;
@@ -339,7 +340,7 @@ authApp.openapi(verifyCodeRoute, async (c) => {
           userAgent: c.req.header("User-Agent"),
         });
       } else {
-        return c.json(TOKEN_INVALID_ERROR, 400);
+        return c.json(TOKEN_INVALID_ERROR(), 400);
       }
     } else {
       await prisma.user.update({
@@ -406,7 +407,7 @@ authApp.openapi(logoutRoute, async (c) => {
     }
 
     c.header("Set-Cookie", buildClearSessionCookie());
-    return c.json({ message: "Logged out" }, 200);
+    return c.json({ message: t("auth.login.loggedOut") }, 200);
   } finally {
     await prisma.$disconnect().catch(() => {});
   }

@@ -322,7 +322,8 @@ describe("Magic code verification", () => {
 
 describe("TOKEN_INVALID_ERROR", () => {
   it("has generic error message", () => {
-    expect(TOKEN_INVALID_ERROR.error).toBe("token_invalid");
-    expect(TOKEN_INVALID_ERROR.message).toContain("invalid or has expired");
+    const err = TOKEN_INVALID_ERROR();
+    expect(err.error).toBe("token_invalid");
+    expect(err.message).toContain("invalid or has expired");
   });
 });

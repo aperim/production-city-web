@@ -8,6 +8,7 @@
  */
 
 import type { Context, MiddlewareHandler } from "hono";
+import { t } from "../i18n/index.js";
 
 export interface RateLimitConfig {
   /** Function to derive the rate-limit key from the request (e.g., IP, email) */
@@ -70,7 +71,7 @@ export function rateLimitMiddleware(config: RateLimitConfig): MiddlewareHandler 
       return c.json(
         {
           error: "rate_limited",
-          message: "Too many requests. Try again later.",
+          message: t("errors.rateLimited"),
         },
         429,
       );

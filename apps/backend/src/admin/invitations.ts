@@ -11,6 +11,7 @@ import { createPrismaClient } from "../lib/prisma.js";
 import { authMiddleware, requirePermission } from "../auth/middleware.js";
 import type { AuthContext } from "../auth/middleware.js";
 import { createAuditLog } from "../auth/audit.js";
+import { t } from "../i18n/index.js";
 import {
   generateToken,
   generateCode,
@@ -208,7 +209,7 @@ invitationsApp.openapi(createInvitationRoute, async (c) => {
 
     // Validate message: no HTML
     if (body.message && /<[^>]*>/.test(body.message)) {
-      return c.json({ error: "invalid_input", message: "Message must not contain HTML tags." }, 400);
+      return c.json({ error: "invalid_input", message: t("admin.invitations.messageNoHtml") }, 400);
     }
 
     // Check if user already exists
@@ -217,7 +218,7 @@ invitationsApp.openapi(createInvitationRoute, async (c) => {
       select: { id: true },
     });
     if (existingUser) {
-      return c.json({ error: "conflict", message: "A user with this email already exists." }, 409);
+      return c.json({ error: "conflict", message: t("admin.invitations.userExists") }, 409);
     }
 
     // Check for pending invitation
@@ -226,7 +227,7 @@ invitationsApp.openapi(createInvitationRoute, async (c) => {
       select: { id: true },
     });
     if (pendingInvitation) {
-      return c.json({ error: "conflict", message: "A pending invitation already exists for this email." }, 409);
+      return c.json({ error: "conflict", message: t("admin.invitations.pendingExists") }, 409);
     }
 
     // Validate roles exist
@@ -235,7 +236,7 @@ invitationsApp.openapi(createInvitationRoute, async (c) => {
       select: { id: true },
     });
     if (roles.length !== body.roleIds.length) {
-      return c.json({ error: "invalid_input", message: "One or more roles not found." }, 400);
+      return c.json({ error: "invalid_input", message: t("admin.invitations.rolesNotFound") }, 400);
     }
 
     // Create invitation with 7-day expiry
@@ -332,7 +333,7 @@ invitationsApp.openapi(revokeInvitationRoute, async (c) => {
     });
 
     if (result.count === 0) {
-      return c.json({ error: "not_found", message: "Invitation not found or already processed." }, 404);
+      return c.json({ error: "not_found", message: t("admin.invitations.notFoundOrProcessed") }, 404);
     }
 
     const invitation = await prisma.invitation.findUnique({
@@ -349,7 +350,7 @@ invitationsApp.openapi(revokeInvitationRoute, async (c) => {
       userAgent: c.req.header("User-Agent"),
     });
 
-    return c.json({ message: "Invitation revoked." }, 200);
+    return c.json({ message: t("admin.invitations.revoked") }, 200);
   } finally {
     await prisma.$disconnect().catch(() => {});
   }
@@ -367,11 +368,11 @@ invitationsApp.openapi(resendInvitationRoute, async (c) => {
     });
 
     if (!invitation) {
-      return c.json({ error: "not_found", message: "Invitation not found." }, 404);
+      return c.json({ error: "not_found", message: t("admin.invitations.notFound") }, 404);
     }
 
     if (invitation.status !== "pending") {
-      return c.json({ error: "invalid_state", message: "Only pending invitations can be resent." }, 400);
+      return c.json({ error: "invalid_state", message: t("admin.invitations.onlyPendingResend") }, 400);
     }
 
     // Invalidate previous magic links for this email
@@ -424,7 +425,7 @@ invitationsApp.openapi(resendInvitationRoute, async (c) => {
       userAgent: c.req.header("User-Agent"),
     });
 
-    return c.json({ message: "Invitation resent." }, 200);
+    return c.json({ message: t("admin.invitations.resent") }, 200);
   } finally {
     await prisma.$disconnect().catch(() => {});
   }

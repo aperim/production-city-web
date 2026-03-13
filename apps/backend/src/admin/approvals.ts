@@ -10,6 +10,7 @@ import { createPrismaClient } from "../lib/prisma.js";
 import { authMiddleware, requirePermission } from "../auth/middleware.js";
 import type { AuthContext } from "../auth/middleware.js";
 import { createAuditLog } from "../auth/audit.js";
+import { t } from "../i18n/index.js";
 
 type Bindings = {
   DB: D1Database;
@@ -128,16 +129,16 @@ approvalsApp.openapi(approveRoute, async (c) => {
     });
 
     if (!user) {
-      return c.json({ error: "not_found", message: "User not found." }, 404);
+      return c.json({ error: "not_found", message: t("admin.approvals.notFound") }, 404);
     }
 
     if (user.status !== "pending_approval") {
-      return c.json({ error: "conflict", message: "User is not pending approval." }, 409);
+      return c.json({ error: "conflict", message: t("admin.approvals.notPending") }, 409);
     }
 
     // Verify at least one role
     if (user.userRoles.length === 0) {
-      return c.json({ error: "conflict", message: "Cannot approve user with no roles." }, 409);
+      return c.json({ error: "conflict", message: t("admin.approvals.noRoles") }, 409);
     }
 
     await prisma.user.update({
@@ -165,7 +166,7 @@ approvalsApp.openapi(approveRoute, async (c) => {
       userAgent: c.req.header("User-Agent"),
     });
 
-    return c.json({ message: "User approved." }, 200);
+    return c.json({ message: t("admin.approvals.approved") }, 200);
   } finally {
     await prisma.$disconnect().catch(() => {});
   }
@@ -180,7 +181,7 @@ approvalsApp.openapi(rejectRoute, async (c) => {
   try {
     // Validate reason: no HTML
     if (body.reason && /<[^>]*>/.test(body.reason)) {
-      return c.json({ error: "invalid_input", message: "Reason must not contain HTML tags." }, 400);
+      return c.json({ error: "invalid_input", message: t("admin.approvals.reasonNoHtml") }, 400);
     }
 
     const user = await prisma.user.findUnique({
@@ -189,11 +190,11 @@ approvalsApp.openapi(rejectRoute, async (c) => {
     });
 
     if (!user) {
-      return c.json({ error: "not_found", message: "User not found." }, 404);
+      return c.json({ error: "not_found", message: t("admin.approvals.notFound") }, 404);
     }
 
     if (user.status !== "pending_approval") {
-      return c.json({ error: "conflict", message: "User is not pending approval." }, 409);
+      return c.json({ error: "conflict", message: t("admin.approvals.notPending") }, 409);
     }
 
     await prisma.user.update({
@@ -235,10 +236,9 @@ approvalsApp.openapi(rejectRoute, async (c) => {
           body: JSON.stringify({
             From: "Production City <noreply@mail.production.city>",
             To: user.email,
-            Subject: "Production City — Access Request Update",
-            TextBody:
-              "Your access request for Production City was not approved. If you believe this is an error, please contact the administrator.",
-            HtmlBody: `<p>Your access request for Production City was not approved.</p><p>If you believe this is an error, please contact the administrator.</p>`,
+            Subject: t("email.rejection.subject"),
+            TextBody: t("email.rejection.body"),
+            HtmlBody: `<p>${t("email.rejection.body").split(". ").join(".</p><p>")}</p>`,
             MessageStream: "outbound",
             Tag: "rejection-notification",
           }),
@@ -248,7 +248,7 @@ approvalsApp.openapi(rejectRoute, async (c) => {
       }
     }
 
-    return c.json({ message: "User rejected." }, 200);
+    return c.json({ message: t("admin.approvals.rejected") }, 200);
   } finally {
     await prisma.$disconnect().catch(() => {});
   }

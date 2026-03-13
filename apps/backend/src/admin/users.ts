@@ -13,6 +13,7 @@ import { authMiddleware, requirePermission } from "../auth/middleware.js";
 import type { AuthContext } from "../auth/middleware.js";
 import { createAuditLog } from "../auth/audit.js";
 import { revokeAllUserSessions } from "../auth/session.js";
+import { t } from "../i18n/index.js";
 
 type Bindings = { DB: D1Database; ALLOWED_ORIGIN: string };
 
@@ -161,22 +162,22 @@ usersApp.openapi(listUsersRoute, async (c) => {
 
   // Validate sortBy
   if (!VALID_SORT_BY.includes(sortBy as typeof VALID_SORT_BY[number])) {
-    return c.json({ error: "invalid_param", message: `Invalid sortBy. Allowed: ${VALID_SORT_BY.join(", ")}` }, 400);
+    return c.json({ error: "invalid_param", message: t("admin.users.invalidSortBy", { allowed: VALID_SORT_BY.join(", ") }) }, 400);
   }
 
   // Validate sortOrder
   if (!VALID_SORT_ORDER.includes(sortOrder as typeof VALID_SORT_ORDER[number])) {
-    return c.json({ error: "invalid_param", message: `Invalid sortOrder. Allowed: ${VALID_SORT_ORDER.join(", ")}` }, 400);
+    return c.json({ error: "invalid_param", message: t("admin.users.invalidSortOrder", { allowed: VALID_SORT_ORDER.join(", ") }) }, 400);
   }
 
   // Validate search length
   if (query.search && query.search.length > 200) {
-    return c.json({ error: "invalid_param", message: "Search query too long (max 200 characters)." }, 400);
+    return c.json({ error: "invalid_param", message: t("admin.users.searchTooLong") }, 400);
   }
 
   // Validate status
   if (query.status && !VALID_STATUSES.includes(query.status as typeof VALID_STATUSES[number])) {
-    return c.json({ error: "invalid_param", message: `Invalid status. Allowed: ${VALID_STATUSES.join(", ")}` }, 400);
+    return c.json({ error: "invalid_param", message: t("admin.users.invalidStatus", { allowed: VALID_STATUSES.join(", ") }) }, 400);
   }
 
   const prisma = await createPrismaClient(c.env.DB);
@@ -261,7 +262,7 @@ usersApp.openapi(getUserRoute, async (c) => {
     });
 
     if (!user) {
-      return c.json({ error: "not_found", message: "User not found." }, 404);
+      return c.json({ error: "not_found", message: t("admin.users.notFound") }, 404);
     }
 
     return c.json({
@@ -298,13 +299,13 @@ usersApp.openapi(patchUserRoute, async (c) => {
     });
 
     if (!user) {
-      return c.json({ error: "not_found", message: "User not found." }, 404);
+      return c.json({ error: "not_found", message: t("admin.users.notFound") }, 404);
     }
 
     // Validate name: no HTML
     if (body.name !== undefined) {
       if (/<[^>]*>/.test(body.name)) {
-        return c.json({ error: "invalid_input", message: "Name must not contain HTML tags." }, 400);
+        return c.json({ error: "invalid_input", message: t("admin.users.nameNoHtml") }, 400);
       }
     }
 
@@ -314,7 +315,7 @@ usersApp.openapi(patchUserRoute, async (c) => {
     if (body.status === "deactivated") {
       // Cannot deactivate self
       if (id === auth.user.id) {
-        return c.json({ error: "conflict", message: "Cannot deactivate your own account." }, 409);
+        return c.json({ error: "conflict", message: t("admin.users.cannotDeactivateSelf") }, 409);
       }
 
       // Cannot deactivate last super_admin
@@ -327,7 +328,7 @@ usersApp.openapi(patchUserRoute, async (c) => {
           },
         });
         if (activeSuperAdminCount <= 1) {
-          return c.json({ error: "conflict", message: "Cannot deactivate the last active super_admin." }, 409);
+          return c.json({ error: "conflict", message: t("admin.users.cannotDeactivateLastSuperAdmin") }, 409);
         }
       }
 
@@ -339,7 +340,7 @@ usersApp.openapi(patchUserRoute, async (c) => {
       // Reactivation: verify at least one role exists
       const roleCount = await prisma.userRole.count({ where: { userId: id } });
       if (roleCount === 0) {
-        return c.json({ error: "conflict", message: "Cannot activate user with no roles." }, 409);
+        return c.json({ error: "conflict", message: t("admin.users.cannotActivateNoRoles") }, 409);
       }
     }
 
@@ -416,7 +417,7 @@ usersApp.openapi(assignRolesRoute, async (c) => {
       select: { id: true },
     });
     if (!user) {
-      return c.json({ error: "not_found", message: "User not found." }, 404);
+      return c.json({ error: "not_found", message: t("admin.users.notFound") }, 404);
     }
 
     // Validate roles exist
@@ -425,7 +426,7 @@ usersApp.openapi(assignRolesRoute, async (c) => {
       select: { id: true, name: true },
     });
     if (roles.length !== roleIds.length) {
-      return c.json({ error: "invalid_input", message: "One or more roles not found." }, 400);
+      return c.json({ error: "invalid_input", message: t("admin.users.rolesNotFound") }, 400);
     }
 
     // Create user roles (skip duplicates)
@@ -487,14 +488,14 @@ usersApp.openapi(removeRoleRoute, async (c) => {
     });
 
     if (!userRole) {
-      return c.json({ error: "not_found", message: "User does not have this role." }, 404);
+      return c.json({ error: "not_found", message: t("admin.users.roleNotAssigned") }, 404);
     }
 
     // Self-demotion prevention: cannot remove own admin/super_admin
     if (id === auth.user.id && ["admin", "super_admin"].includes(userRole.role.name)) {
       return c.json({
         error: "conflict",
-        message: `Cannot remove your own ${userRole.role.name} role.`,
+        message: t("admin.users.cannotRemoveOwnAdminRole", { role: userRole.role.name }),
       }, 409);
     }
 
@@ -509,7 +510,7 @@ usersApp.openapi(removeRoleRoute, async (c) => {
       if (activeSuperAdminCount <= 1) {
         return c.json({
           error: "conflict",
-          message: "Cannot remove the last super_admin role.",
+          message: t("admin.users.cannotRemoveLastSuperAdmin"),
         }, 409);
       }
     }
@@ -519,7 +520,7 @@ usersApp.openapi(removeRoleRoute, async (c) => {
     if (roleCount <= 1) {
       return c.json({
         error: "conflict",
-        message: "Cannot remove the last role from a user.",
+        message: t("admin.users.cannotRemoveLastRole"),
       }, 409);
     }
 
@@ -537,7 +538,7 @@ usersApp.openapi(removeRoleRoute, async (c) => {
       userAgent: c.req.header("User-Agent"),
     });
 
-    return c.json({ message: "Role removed." }, 200);
+    return c.json({ message: t("admin.users.roleRemoved") }, 200);
   } finally {
     await prisma.$disconnect().catch(() => {});
   }

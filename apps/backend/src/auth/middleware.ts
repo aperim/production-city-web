@@ -5,6 +5,7 @@
 import type { Context, MiddlewareHandler } from "hono";
 import { validateSession, extractSessionToken } from "./session.js";
 import { createPrismaClient } from "../lib/prisma.js";
+import { t } from "../i18n/index.js";
 
 export interface AuthUser {
   id: string;
@@ -31,14 +32,14 @@ export function authMiddleware(): MiddlewareHandler {
     const token = extractSessionToken(cookieHeader);
 
     if (!token) {
-      return c.json({ error: "unauthorized", message: "Authentication required." }, 401);
+      return c.json({ error: "unauthorized", message: t("auth.login.required") }, 401);
     }
 
     const prisma = await createPrismaClient(c.env.DB);
     try {
       const session = await validateSession(prisma, token);
       if (!session) {
-        return c.json({ error: "unauthorized", message: "Invalid or expired session." }, 401);
+        return c.json({ error: "unauthorized", message: t("auth.login.invalidSession") }, 401);
       }
 
       // Load user with roles and permissions
@@ -69,7 +70,7 @@ export function authMiddleware(): MiddlewareHandler {
       });
 
       if (!user || user.status !== "active") {
-        return c.json({ error: "unauthorized", message: "Account is not active." }, 401);
+        return c.json({ error: "unauthorized", message: t("auth.login.accountInactive") }, 401);
       }
 
       // Flatten permissions: "resource:action"
@@ -108,10 +109,10 @@ export function requirePermission(resource: string, action: string): MiddlewareH
   return async (c: Context, next) => {
     const auth = c.get("auth") as AuthContext | undefined;
     if (!auth) {
-      return c.json({ error: "unauthorized", message: "Authentication required." }, 401);
+      return c.json({ error: "unauthorized", message: t("auth.login.required") }, 401);
     }
     if (!auth.permissions.includes(required)) {
-      return c.json({ error: "forbidden", message: "Insufficient permissions." }, 403);
+      return c.json({ error: "forbidden", message: t("permissions.forbidden") }, 403);
     }
     return next();
   };
@@ -125,11 +126,11 @@ export function requireAnyPermission(permissions: string[]): MiddlewareHandler {
   return async (c: Context, next) => {
     const auth = c.get("auth") as AuthContext | undefined;
     if (!auth) {
-      return c.json({ error: "unauthorized", message: "Authentication required." }, 401);
+      return c.json({ error: "unauthorized", message: t("auth.login.required") }, 401);
     }
     const hasAny = permissions.some((p) => auth.permissions.includes(p));
     if (!hasAny) {
-      return c.json({ error: "forbidden", message: "Insufficient permissions." }, 403);
+      return c.json({ error: "forbidden", message: t("permissions.forbidden") }, 403);
     }
     return next();
   };
