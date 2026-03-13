@@ -40,6 +40,11 @@
     },
     "production": {
       "name": "holding-web-production",
+      // Issue #97: Route canonical domain and www (www redirects to canonical in the Worker)
+      "routes": [
+        { "pattern": "production.city/*", "zone_name": "production.city" },
+        { "pattern": "www.production.city/*", "zone_name": "production.city" }
+      ],
       "d1_databases": [
         {
           "binding": "DB",

@@ -31,6 +31,14 @@ migrations_dir = "../../prisma/migrations"
 
 [env.production]
 name = "holding-backend-production"
+
+[env.production.vars]
+ALLOWED_ORIGIN = "https://production.city"
+
+[[env.production.routes]]
+pattern = "api.production.city/*"
+zone_name = "production.city"
+
 [[env.production.d1_databases]]
 binding = "DB"
 database_name = "holding-production"

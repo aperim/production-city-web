@@ -97,12 +97,15 @@ app.openapi(readyRoute, async (c) => {
   }
 });
 
-/** OpenAPI spec + docs */
-app.doc31("/openapi.json", {
+/**
+ * OpenAPI spec + docs — versioned at /v1/ (Issue #98).
+ * Health probes (/live, /ready) remain at root as infrastructure endpoints.
+ */
+app.doc31("/v1/openapi.json", {
   openapi: "3.1.0",
-  info: { title: "Production City API", version: "0.1.0" },
+  info: { title: "Production City API", version: "1.0.0" },
 });
 
-app.get("/docs", swaggerUI({ url: "/openapi.json" }));
+app.get("/v1/docs", swaggerUI({ url: "/v1/openapi.json" }));
 
 export default app;

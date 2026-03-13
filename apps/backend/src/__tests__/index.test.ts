@@ -29,8 +29,9 @@ describe("Backend API", () => {
     expect(res.status).toBe(404);
   });
 
-  it("GET /openapi.json returns valid OpenAPI 3.1.0 spec", async () => {
-    const req = new Request("http://localhost/openapi.json");
+  // Issue #98: OpenAPI spec and docs moved to /v1/ prefix
+  it("GET /v1/openapi.json returns valid OpenAPI 3.1.0 spec", async () => {
+    const req = new Request("http://localhost/v1/openapi.json");
     const res = await app.fetch(req, env);
 
     expect(res.status).toBe(200);
@@ -43,13 +44,27 @@ describe("Backend API", () => {
     expect(info.title).toBe("Production City API");
   });
 
-  it("GET /docs returns HTML with Swagger UI", async () => {
-    const req = new Request("http://localhost/docs");
+  it("GET /v1/docs returns HTML with Swagger UI pointing to /v1/openapi.json", async () => {
+    const req = new Request("http://localhost/v1/docs");
     const res = await app.fetch(req, env);
 
     expect(res.status).toBe(200);
     const html = await res.text();
     expect(html).toContain("swagger-ui");
-    expect(html).toContain("/openapi.json");
+    expect(html).toContain("/v1/openapi.json");
+  });
+
+  it("GET /openapi.json (old path) returns 404 after versioning", async () => {
+    const req = new Request("http://localhost/openapi.json");
+    const res = await app.fetch(req, env);
+
+    expect(res.status).toBe(404);
+  });
+
+  it("GET /docs (old path) returns 404 after versioning", async () => {
+    const req = new Request("http://localhost/docs");
+    const res = await app.fetch(req, env);
+
+    expect(res.status).toBe(404);
   });
 });
