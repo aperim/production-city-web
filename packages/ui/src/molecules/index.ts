@@ -61,3 +61,19 @@ export { ThemedImage, useTheme, isLocalSource } from "./ThemedImage/ThemedImage"
 export type { ThemedImageProps } from "./ThemedImage/ThemedImage";
 export { MediaAttribution } from "./MediaAttribution/MediaAttribution";
 export type { MediaAttributionProps } from "./MediaAttribution/MediaAttribution";
+
+// Issue #142: Landing Page Molecules
+export { LanguageSwitcher } from "./LanguageSwitcher/LanguageSwitcher";
+export type { LanguageSwitcherProps, LanguageOption } from "./LanguageSwitcher/LanguageSwitcher";
+export { FacilityCard } from "./FacilityCard/FacilityCard";
+export type { FacilityCardProps, FacilitySpec } from "./FacilityCard/FacilityCard";
+export { ServiceCard } from "./ServiceCard/ServiceCard";
+export type { ServiceCardProps } from "./ServiceCard/ServiceCard";
+export { TeamMember } from "./TeamMember/TeamMember";
+export type { TeamMemberProps } from "./TeamMember/TeamMember";
+export { CTABanner } from "./CTABanner/CTABanner";
+export type { CTABannerProps } from "./CTABanner/CTABanner";
+export { FAQItem } from "./FAQItem/FAQItem";
+export type { FAQItemProps } from "./FAQItem/FAQItem";
+export { EOIForm } from "./EOIForm/EOIForm";
+export type { EOIFormProps, EOIFormLabels, EOIFormData, EOICategoryOption } from "./EOIForm/EOIForm";
