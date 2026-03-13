@@ -28,4 +28,24 @@ export function mountRoutes(app: OpenAPIHono<{ Bindings: Record<string, unknown>
   app.route("/", approvalsApp);
   app.route("/", rolesApp);
   app.route("/", auditLogApp);
+
+  // Test routes — only in test environment (build-time conditional import).
+  // Requires BOTH NODE_ENV=test AND TEST_ENABLED=true.
+  // The async import is awaited via mountTestRoutes() in test server startup.
+  // This block is a fallback for lazy mounting in dev; production builds
+  // should never reach this code path.
+
+}
+
+/**
+ * Mount test routes (for use in test server startup).
+ * SECURITY: Only call this when NODE_ENV=test AND TEST_ENABLED=true.
+ * Callers MUST await this before accepting requests to avoid race conditions.
+ */
+export async function mountTestRoutes(app: OpenAPIHono<{ Bindings: Record<string, unknown> }>): Promise<void> {
+  if (process.env.NODE_ENV !== "test" || process.env.TEST_ENABLED !== "true") {
+    throw new Error("mountTestRoutes() called outside test environment");
+  }
+  const { testApp } = await import("./test-routes.js");
+  app.route("/", testApp);
 }

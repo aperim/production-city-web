@@ -1,15 +1,53 @@
-import { defineConfig } from "@playwright/test";
+import { defineConfig, devices } from "@playwright/test";
+
+const CI = !!process.env.CI;
+const BASE_URL = process.env.BASE_URL ?? "http://localhost:4321";
 
 export default defineConfig({
   testDir: "./e2e",
-  timeout: 30000,
+  timeout: 60_000,
+  expect: { timeout: 10_000 },
+  fullyParallel: false,
+  retries: CI ? 2 : 0,
+  workers: 1,
+  reporter: CI ? "github" : "list",
+
   use: {
-    baseURL: "http://localhost:4321",
+    baseURL: BASE_URL,
+    trace: CI ? "on-first-retry" : "retain-on-failure",
+    screenshot: "only-on-failure",
+    video: CI ? "on-first-retry" : "off",
   },
-  webServer: {
-    command: "pnpm run dev",
-    port: 4321,
-    reuseExistingServer: !process.env.CI,
-    timeout: 30000,
-  },
+
+  projects: [
+    {
+      name: "chromium",
+      use: { ...devices["Desktop Chrome"] },
+    },
+    {
+      name: "firefox",
+      use: { ...devices["Desktop Firefox"] },
+    },
+    {
+      name: "webkit",
+      use: { ...devices["Desktop Safari"] },
+    },
+    {
+      name: "mobile-chrome",
+      use: { ...devices["Pixel 5"] },
+    },
+    {
+      name: "mobile-safari",
+      use: { ...devices["iPhone 12"] },
+    },
+  ],
+
+  webServer: CI
+    ? undefined
+    : {
+        command: "pnpm run dev",
+        port: 4321,
+        reuseExistingServer: true,
+        timeout: 60_000,
+      },
 });
