@@ -57,3 +57,11 @@ export { InvitationForm } from './InvitationForm/InvitationForm';
 export type { InvitationFormProps } from './InvitationForm/InvitationForm';
 export { ApprovalCard } from './ApprovalCard/ApprovalCard';
 export type { ApprovalCardProps } from './ApprovalCard/ApprovalCard';
+
+// Issue #159: Media Display Organisms
+export { MediaDisplay } from './MediaDisplay/MediaDisplay';
+export type { MediaDisplayProps } from './MediaDisplay/MediaDisplay';
+export { MediaGallery } from './MediaGallery/MediaGallery';
+export type { MediaGalleryProps } from './MediaGallery/MediaGallery';
+export { MediaHero } from './MediaHero/MediaHero';
+export type { MediaHeroProps } from './MediaHero/MediaHero';

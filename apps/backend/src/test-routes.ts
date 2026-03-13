@@ -109,7 +109,7 @@ testApp.post("/v1/test/create-magic-link", async (c) => {
 
   const email = body.email.toLowerCase().trim();
   const purpose = body.purpose ?? "login";
-  const hmacSecret = (c.env as Record<string, string>).HMAC_SECRET ?? "test-hmac-secret";
+  const hmacSecret = (c.env as unknown as Record<string, string>).HMAC_SECRET ?? "test-hmac-secret";
 
   const prisma = await createPrismaClient(c.env.DB);
   try {

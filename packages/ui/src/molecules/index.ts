@@ -55,3 +55,9 @@ export { AuditLogEntry } from "./AuditLogEntry/AuditLogEntry";
 export type { AuditLogEntryProps } from "./AuditLogEntry/AuditLogEntry";
 export { SuppressionBadge } from "./SuppressionBadge/SuppressionBadge";
 export type { SuppressionBadgeProps, SuppressionReason } from "./SuppressionBadge/SuppressionBadge";
+
+// Issue #158: Media Display Molecules
+export { ThemedImage, useTheme, isLocalSource } from "./ThemedImage/ThemedImage";
+export type { ThemedImageProps } from "./ThemedImage/ThemedImage";
+export { MediaAttribution } from "./MediaAttribution/MediaAttribution";
+export type { MediaAttributionProps } from "./MediaAttribution/MediaAttribution";

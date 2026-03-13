@@ -32,3 +32,11 @@ export { Divider, dividerVariants } from "./Divider/Divider";
 export type { DividerProps } from "./Divider/Divider";
 export { Skeleton, SkeletonText, skeletonVariants } from "./Skeleton/Skeleton";
 export type { SkeletonProps } from "./Skeleton/Skeleton";
+
+// Issue #158: Media Display Atoms
+export { MediaBadge, mediaBadgeVariants } from "./MediaBadge/MediaBadge";
+export type { MediaBadgeProps, MediaBadgeVariant } from "./MediaBadge/MediaBadge";
+export { AttributionLink } from "./AttributionLink/AttributionLink";
+export type { AttributionLinkProps } from "./AttributionLink/AttributionLink";
+export { ImageSkeleton } from "./ImageSkeleton/ImageSkeleton";
+export type { ImageSkeletonProps } from "./ImageSkeleton/ImageSkeleton";
