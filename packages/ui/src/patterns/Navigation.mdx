@@ -1,0 +1,208 @@
+import { Meta, Canvas, Story } from "@storybook/addon-docs/blocks";
+import * as NavHeaderStories from "../organisms/NavigationHeader/NavigationHeader.stories";
+import * as SidebarStories from "../organisms/Sidebar/Sidebar.stories";
+import * as BreadcrumbStories from "../molecules/Breadcrumb/Breadcrumb.stories";
+import * as TabsStories from "../molecules/Tabs/Tabs.stories";
+import * as PaginationStories from "../molecules/Pagination/Pagination.stories";
+
+<Meta title="Patterns/Navigation" />
+
+# Navigation Patterns
+
+Patterns for moving users through your application. All navigation components enforce a URL scheme allowlist (http, https, mailto, tel, relative paths) to prevent injection via malicious hrefs.
+
+---
+
+## 1. Global Header Navigation
+
+The primary navigation pattern for application headers.
+
+### When to use
+- Top-level page navigation in web applications.
+- When users need persistent access to primary sections.
+
+### Anatomy
+- **Logo slot** — brand identity, links to home.
+- **Primary nav links** — 3–7 main sections.
+- **Actions slot** — user menu, search, CTA button.
+- **Mobile hamburger** — visible below `md` breakpoint.
+
+### Live example
+
+<Canvas>
+  <Story of={NavHeaderStories.Default} />
+</Canvas>
+
+### Do
+- Keep nav items to 5–7 maximum.
+- Use `aria-current="page"` on the active link (automatic).
+- Always provide a skip-to-content link for keyboard users.
+
+### Don't
+- Do not render nav labels as raw HTML strings — use ReactNode only.
+- Do not embed `javascript:` or `data:` hrefs — the scheme allowlist blocks these automatically.
+- Do not add decorative icons that provide no functional value.
+
+### Responsive behaviour
+- `md+`: full horizontal nav with actions.
+- `< md`: hamburger button reveals a vertical nav list.
+
+### Accessibility
+- `<header>` + `<nav aria-label="Main navigation">` landmarks.
+- `aria-current="page"` on active item.
+- Skip link targets `#main-content`.
+- All touch targets ≥ 44×44 px.
+
+---
+
+## 2. Sidebar Navigation
+
+Collapsible side navigation for dashboard and admin interfaces.
+
+### When to use
+- When the application has many sections and sub-sections.
+- When users need persistent secondary navigation alongside content.
+
+### Anatomy
+- **Sections** with optional headings.
+- **Items** with optional icons and badges.
+- **Nested items** revealed on expand.
+- **Collapse toggle** reduces to icon-only mode (56 px width).
+
+### Live example
+
+<Canvas>
+  <Story of={SidebarStories.Default} />
+</Canvas>
+
+### Do
+- Group related items into sections with clear headings.
+- Use badges sparingly — only for actionable counts (e.g. unread messages).
+- Provide icon-only fallback when collapsed.
+
+### Don't
+- Do not use `javascript:` or `data:` hrefs — scheme allowlist is enforced.
+- Do not nest more than 2 levels deep.
+- Do not put more than 10 items in a single section.
+
+### Responsive behaviour
+- Desktop: persistent expanded (260 px) or collapsed (56 px).
+- Mobile: hidden by default; show as overlay drawer.
+
+### Accessibility
+- `<aside>` + `<nav>` landmarks.
+- `aria-current="page"` on active item.
+- `aria-expanded` on collapsible items.
+- Keyboard: Tab navigates items; Enter/Space activates.
+
+---
+
+## 3. Breadcrumb Trail
+
+Contextual navigation showing current location within the site hierarchy.
+
+### When to use
+- On pages more than one level deep in the hierarchy.
+- When users need to understand and navigate the current path.
+
+### Live example
+
+<Canvas>
+  <Story of={BreadcrumbStories.Default} />
+</Canvas>
+
+### Do
+- Last breadcrumb should be the current page (non-linked).
+- Keep labels concise — max 30 characters per item.
+
+### Don't
+- Do not show breadcrumbs on top-level pages.
+- Do not truncate in a way that removes hierarchy context.
+
+### Accessibility
+- `<nav aria-label="Breadcrumb">` landmark.
+- `aria-current="page"` on last item.
+
+---
+
+## 4. Tab Navigation
+
+Horizontal or vertical tabs for switching between related content panels.
+
+### When to use
+- When content can be divided into distinct, parallel sections.
+- When only one section is relevant at a time.
+
+### Live example
+
+<Canvas>
+  <Story of={TabsStories.Default} />
+</Canvas>
+
+### Do
+- Use 2–7 tabs. Keep tab labels short (1–3 words).
+- Show content immediately on tab activation.
+
+### Don't
+- Do not use tabs for sequential workflows — use Stepper instead.
+- Do not use tabs for content of vastly different lengths.
+
+### Accessibility
+- ARIA tablist/tab/tabpanel pattern.
+- Arrow keys navigate tabs; Enter/Space activates.
+- `aria-selected` on active tab.
+
+---
+
+## 5. Pagination Navigation
+
+Page controls for navigating through multi-page data sets.
+
+### When to use
+- When a data set exceeds the visible viewport and cannot be infinitely scrolled.
+- For tables, search results, and content archives.
+
+### Live example
+
+<Canvas>
+  <Story of={PaginationStories.Default} />
+</Canvas>
+
+### Do
+- Show current page and total pages. Disable Previous on page 1, Next on last page.
+
+### Don't
+- Do not use pagination for fewer than 2 pages.
+- Do not hide disabled buttons — keep them visible and disabled.
+
+### Accessibility
+- `<nav aria-label="Pagination">` landmark.
+- `aria-current="page"` on active page button.
+
+---
+
+## 6. Mobile Navigation
+
+Off-canvas navigation for small viewports using the Drawer molecule.
+
+### When to use
+- On mobile viewports when the primary nav does not fit horizontally.
+- As the mobile counterpart to sidebar or header navigation.
+
+### Anatomy
+- Hamburger button in the header triggers the drawer.
+- Drawer slides in from the side.
+- Backdrop closes on click. Escape key closes.
+
+### Do
+- Focus the first nav item when the drawer opens.
+- Return focus to the hamburger button on close.
+- Show a visible close button inside the drawer.
+
+### Don't
+- Do not stack content behind a visible drawer without a backdrop.
+- Do not omit a close mechanism inside the drawer.
+
+### Accessibility
+- `role="dialog"` with `aria-modal` on the drawer panel.
+- Focus trap while open. `aria-expanded` on the hamburger button.

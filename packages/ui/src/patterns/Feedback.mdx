@@ -1,0 +1,259 @@
+import { Meta, Canvas, Story } from "@storybook/addon-docs/blocks";
+import * as ToastStories from "../organisms/Toast/Toast.stories";
+import * as ModalStories from "../organisms/Modal/Modal.stories";
+import * as EmptyStateStories from "../molecules/EmptyState/EmptyState.stories";
+import * as AlertStories from "../molecules/Alert/Alert.stories";
+import * as ProgressStories from "../molecules/Progress/Progress.stories";
+import * as SkeletonStories from "../atoms/Skeleton/Skeleton.stories";
+
+<Meta title="Patterns/Feedback" />
+
+# Feedback Patterns
+
+Patterns for communicating system status and outcomes to users.
+
+---
+
+## 1. Toast Notifications
+
+Transient messages that appear in a corner and auto-dismiss.
+
+### When to use
+- Confirming a completed action ("File saved", "Email sent").
+- Reporting a non-blocking error ("Failed to sync — will retry").
+- Providing undo opportunities after destructive actions.
+
+### Anatomy
+- **Variant**: info, success, warning, error.
+- **Message**: 1–2 lines of plain text (ReactNode).
+- **Action button** (optional): "Undo", "View".
+- **Dismiss button**: always present.
+- **Auto-dismiss** timer (configurable; 0 = persistent).
+
+### Live example
+
+<Canvas>
+  <Story of={ToastStories.Default} />
+</Canvas>
+
+### Do
+- Keep messages under 80 characters.
+- Use `error` variant for failures the user must act on.
+- Use `success` for completed actions (not for every click).
+- Position `bottom-right` by default; `top-center` for page-level alerts.
+
+### Don't
+- Do not show toasts for every navigation event.
+- Do not auto-dismiss error toasts that require user action — set `duration={0}`.
+- Do not put critical information only in toasts (they disappear).
+
+### Animations
+- Enter/exit transitions are 150 ms ease.
+- Respects `prefers-reduced-motion` — no animation when motion is reduced.
+
+### Accessibility
+- Non-error toasts: `role="status"` + `aria-live="polite"`.
+- Error toasts: `role="alert"` + `aria-live="assertive"`.
+- Dismiss button: `aria-label="Dismiss notification"`.
+- Focus is NOT trapped — toasts are non-intrusive.
+
+---
+
+## 2. Modal / Dialog Feedback
+
+Blocking overlays for confirmations, form dialogs, and informational messages.
+
+### When to use
+- Destructive action confirmation ("Delete this item?").
+- Complex input required before continuing.
+- Critical information that must be acknowledged.
+
+### Live example — Confirmation dialog
+
+<Canvas>
+  <Story of={ModalStories.ConfirmationDialog} />
+</Canvas>
+
+### Do
+- Use `size="sm"` for confirmation dialogs (keep them simple).
+- Provide both a confirm and a cancel action.
+- Use plain, action-oriented button labels ("Delete", not "OK").
+
+### Don't
+- Do not open a modal from within another modal.
+- Do not use modals for non-critical notifications (use toasts instead).
+- Do not render HTML strings inside the modal — use ReactNode only.
+
+### Focus management
+- On open: focus moves to the first focusable element inside the dialog.
+- Tab/Shift+Tab cycles within the dialog only (focus trap).
+- On close: focus returns to the element that triggered the modal.
+
+### Accessibility
+- `role="dialog"` + `aria-modal="true"`.
+- `aria-labelledby` pointing to the dialog title.
+- `aria-describedby` pointing to the description when present.
+- Escape key closes the modal.
+
+---
+
+## 3. Empty State
+
+See [Data Display Patterns](/story/patterns-datadisplay--docs) for full empty state documentation.
+
+---
+
+## 4. Error States
+
+Patterns for communicating errors at field, form, and page level.
+
+### Field-level errors
+- Shown inline below the input.
+- `aria-invalid="true"` on the input.
+- Error text linked via `aria-describedby`.
+
+### Form-level error summary
+- Shown at the top of the form after submit.
+- `role="alert"` so screen readers announce immediately.
+- Lists all field errors with links to the relevant fields.
+
+### Live example — Alert
+
+<Canvas>
+  <Story of={AlertStories.Destructive} />
+</Canvas>
+
+### Page-level errors
+- Use a full-width Alert component at the top of the page.
+- For fatal errors (e.g., 404, 500), use a dedicated error page with navigation options.
+
+### Do
+- Be specific: "Email already in use" not "Invalid input".
+- Offer a recovery action: "Try again", "Go back", "Contact support".
+
+### Don't
+- Do not show raw error codes or stack traces to end users.
+- Do not use red color alone to communicate error state.
+
+---
+
+## 5. Loading States
+
+Patterns for communicating that content is being fetched or processed.
+
+### Skeleton loading
+
+<Canvas>
+  <Story of={SkeletonStories.Default} />
+</Canvas>
+
+### Progress bar
+
+<Canvas>
+  <Story of={ProgressStories.Default} />
+</Canvas>
+
+### When to use
+- **Skeleton**: use when you know the shape of the content (lists, tables, cards).
+- **Progress bar**: use for operations with measurable progress (file upload, multi-step).
+- **Spinner**: use for short operations (< 2 s) where content shape is unknown.
+
+### Do
+- Match skeleton dimensions to actual content to reduce layout shift.
+- Show progress bar for operations taking longer than 2 seconds.
+- Show a percentage when the exact progress is known.
+
+### Don't
+- Do not show a skeleton indefinitely — always have a timeout + error state.
+- Do not show multiple loading indicators simultaneously.
+
+### Accessibility
+- Skeleton areas: `aria-hidden="true"` or `aria-label="Loading..."`.
+- Progress bars: `role="progressbar"` + `aria-valuenow` + `aria-valuemin` + `aria-valuemax`.
+- Spinner: `role="status"` + `aria-label="Loading"`.
+
+---
+
+## 6. Offline Indicator
+
+A persistent indicator shown when the user has lost network connectivity.
+
+### When to use
+- In progressive web apps or apps with offline support.
+- When the application can still show cached content but cannot make new requests.
+
+### Anatomy
+- **Banner** (top of page, below header): "You're offline. Some features may not be available."
+- Optional retry button.
+- Disappears automatically when connectivity is restored.
+
+### Do
+- Show the indicator immediately when `navigator.onLine` becomes `false`.
+- Dismiss automatically when connectivity is restored (with a brief "Back online" success toast).
+- Show cached content and grey out actions that require a network.
+
+### Don't
+- Do not block the entire UI — users can still view cached content.
+- Do not show the banner on every page load (only when offline).
+
+### Accessibility
+- Banner uses `role="status"` + `aria-live="polite"`.
+- Color alone does not communicate offline state — use text + icon.
+
+---
+
+## 7. Slow Network Warning
+
+Progressive feedback when requests are taking longer than expected.
+
+### When to use
+- When a request exceeds a threshold (e.g., > 3 seconds).
+- To set expectations and reduce perceived wait time.
+
+### Anatomy
+- After 3 s: show a subtle inline spinner with "Loading…" text near the relevant content.
+- After 8 s: show a soft warning: "This is taking longer than usual."
+- After 15 s: offer retry: "Still loading — retry?"
+
+### Do
+- Clear all intermediate states immediately when the response arrives.
+- Log slow requests to monitoring (separate from UI feedback).
+
+### Don't
+- Do not show the warning immediately — wait at least 3 seconds.
+- Do not show multiple overlapping warnings.
+
+### Accessibility
+- Updates announced with `aria-live="polite"` (not `assertive`).
+
+---
+
+## 8. Confirmation Dialogs
+
+Pattern for confirming irreversible or destructive actions.
+
+### When to use
+- Deleting records permanently.
+- Sending something that cannot be recalled (email blast, published post).
+- Any action where the consequence is difficult to reverse.
+
+### Anatomy
+- `size="sm"` modal with a clear action question as the title.
+- Brief consequence in the description: "This cannot be undone."
+- **Two buttons**: Cancel (secondary) + destructive action (destructive variant).
+
+### Live example
+
+<Canvas>
+  <Story of={ModalStories.ConfirmationDialog} />
+</Canvas>
+
+### Do
+- Name buttons with the action, not "OK/Cancel": "Delete" and "Keep".
+- Place the safe action (Cancel) first visually.
+- Make the destructive button clearly destructive (red variant).
+
+### Don't
+- Do not ask for confirmation of non-destructive, easily reversible actions.
+- Do not use "Are you sure?" — be specific about the action and consequence.
+- Do not use modals for bulk operations (more than 5 items) without a progress indicator.

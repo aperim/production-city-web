@@ -1,0 +1,229 @@
+import { Meta, Canvas, Story } from "@storybook/addon-docs/blocks";
+import * as DataTableStories from "../organisms/DataTable/DataTable.stories";
+import * as CardStories from "../molecules/Card/Card.stories";
+import * as EmptyStateStories from "../molecules/EmptyState/EmptyState.stories";
+import * as ProgressStories from "../molecules/Progress/Progress.stories";
+
+<Meta title="Patterns/DataDisplay" />
+
+# Data Display Patterns
+
+Patterns for presenting information to users. Focus on clarity, hierarchy, and accessible semantics.
+
+---
+
+## 1. Data Table Layout
+
+A full-featured table pattern with sorting, filtering, row selection, and pagination.
+
+### When to use
+- When users need to compare rows across multiple attributes.
+- When bulk selection and actions are required.
+- Structured data with 3+ columns and 10+ rows.
+
+### Anatomy
+- **Column headers** — sortable, with aria-sort.
+- **Row selection** — checkbox (multi) or radio (single) per row.
+- **Row actions** — inline action buttons on each row.
+- **Expandable rows** — reveal additional detail without navigation.
+- **Pagination** — page controls below the table.
+- **Column toggle** — show/hide columns button above the table.
+- **Loading state** — skeleton rows while data loads.
+- **Empty state** — clear message and optional CTA when no rows.
+- **Error state** — error message when data fails to load.
+
+### Live example
+
+<Canvas>
+  <Story of={DataTableStories.Default} />
+</Canvas>
+
+### With sorting
+
+<Canvas>
+  <Story of={DataTableStories.WithSorting} />
+</Canvas>
+
+### With multi-selection
+
+<Canvas>
+  <Story of={DataTableStories.WithMultiSelect} />
+</Canvas>
+
+### Do
+- Always provide a visible `caption` (visually hidden if needed) for screen readers.
+- Use `aria-sort` on sortable column headers.
+- Mark `aria-busy="true"` on the table during loading.
+- Use `aria-selected` on rows when selection is enabled.
+
+### Don't
+- Do not use a table for layout — only for tabular data.
+- Do not use zebra striping as the only row differentiation.
+- Do not put interactive controls in non-interactive table cells.
+
+### Responsive behaviour
+- Horizontal scroll container on viewports narrower than the table.
+- Priority column hiding: hide lower-priority columns below breakpoints.
+- Use `@container` queries so the table responds to its container width.
+
+### Performance
+- For 1000+ rows, use TanStack Virtual at the application level.
+- The DataTable component provides the full API surface; virtualization is a rendering concern.
+
+### Accessibility
+- `<table>` with `<caption>` or `aria-labelledby`.
+- `<th scope="col">` for column headers; `<th scope="row">` for row headers.
+- Keyboard: Tab to interactive elements; arrow keys inside cells if grid role is used.
+
+---
+
+## 2. Card Grid
+
+A responsive grid of Card components for displaying collections of items.
+
+### When to use
+- Product listings, team members, articles, project cards.
+- When each item has a consistent structure (image, title, description, actions).
+
+### Live example
+
+<Canvas>
+  <Story of={CardStories.Default} />
+</Canvas>
+
+### Do
+- Use consistent card sizes within a grid.
+- Show loading state with skeleton cards (same dimensions as real cards).
+- Include an empty state when the collection is empty.
+
+### Don't
+- Do not mix cards of radically different heights in a grid — use masonry only when intentional.
+- Do not use cards for navigation when a simple link list would suffice.
+
+### Responsive behaviour
+- 1 column on mobile, 2–3 on tablet, 3–4 on desktop.
+- Use CSS grid with `grid-cols-1 sm:grid-cols-2 lg:grid-cols-3`.
+
+### Accessibility
+- Each card is a landmark or list item depending on context.
+- Interactive cards use `<a>` wrapping or a clear CTA button.
+- Images have meaningful `alt` text or `alt=""` for decorative images.
+
+---
+
+## 3. Detail View / Record Page
+
+A full-page view of a single record with grouped field display and actions.
+
+### When to use
+- Viewing a specific item's full details (user profile, order, document).
+- When the user has drilled down from a list or table.
+
+### Anatomy
+- **Page header** — record name/title + primary action buttons.
+- **Field groups** — labeled sections grouping related attributes.
+- **Related data** — sub-tables or card lists for associated records.
+- **Action bar** — Edit, Delete, and other contextual actions.
+
+### Do
+- Use a consistent read-only display format (label + value pairs).
+- Group fields logically (e.g., "Contact Info", "Account Details").
+- Provide an edit path from the detail view (pencil icon or Edit button).
+
+### Don't
+- Do not show all fields without grouping for records with 10+ attributes.
+- Do not use inline editing in the detail view if the form is complex.
+
+### Accessibility
+- Use `<dl>` (definition list) for label/value pairs.
+- Headings (`h2`, `h3`) delineate sections.
+- Action buttons have descriptive `aria-label` when the label is ambiguous.
+
+---
+
+## 4. Dashboard Layout
+
+A widget-based layout for operational overviews and summary metrics.
+
+### When to use
+- Home screens for applications with diverse metrics.
+- When users need a quick overview of multiple data streams.
+
+### Anatomy
+- **Summary row** — 3–4 key metrics (numbers with labels, no decorative charts).
+- **Main content area** — primary data table or chart.
+- **Secondary panels** — activity feeds, quick actions.
+
+### Do
+- Limit the summary row to 3–4 metrics. Show the number prominently, label clearly.
+- Use a real data table or list — not placeholder charts.
+- Prioritize the most-used action first.
+
+### Don't
+- Do not fill space with decorative charts that carry no data.
+- Do not use metric cards as the only layout element.
+- Do not show hero sections or decorative copy inside dashboards.
+
+### Accessibility
+- Each widget is a `<section>` with a visible or screen-reader-only heading.
+- Metrics are readable as text, not images of numbers.
+
+---
+
+## 5. Timeline / Activity Feed
+
+Chronological list of events related to a record or system.
+
+### When to use
+- Audit logs, chat history, order status updates.
+- When the sequence of events matters.
+
+### Anatomy
+- Items ordered newest-first (or oldest-first — be consistent).
+- Each item: timestamp, actor, action description.
+- Optional "Load more" for long histories.
+
+### Do
+- Format timestamps in the user's local timezone.
+- Include relative times ("3 hours ago") with absolute time on hover/tooltip.
+- Use `<time datetime="...">` for timestamps.
+
+### Don't
+- Do not use a horizontal timeline for more than 5–6 steps (use vertical).
+- Do not omit actor information in collaborative systems.
+
+### Accessibility
+- Use `<ol>` for ordered lists of events.
+- `<time>` element for all timestamps.
+- Screen reader reads: "Alice submitted a request, 3 hours ago".
+
+---
+
+## 6. Empty State
+
+Clear, actionable content shown when a collection has no items.
+
+### When to use
+- First-time use (before any items are created).
+- After filtering/search returns no results.
+- When a connection or data source is unavailable.
+
+### Live example
+
+<Canvas>
+  <Story of={EmptyStateStories.Default} />
+</Canvas>
+
+### Do
+- Explain why the list is empty (first use vs. no search results).
+- Provide a clear CTA: "Create your first project" or "Clear filters".
+- Keep the message brief — 1 heading + 1 short sentence max.
+
+### Don't
+- Do not show a blank area with no explanation.
+- Do not use generic "No results" without context.
+- Do not make the empty state larger than the content it replaces.
+
+### Accessibility
+- Empty state text is rendered as readable content (not an image).
+- CTA button is keyboard accessible and has a clear label.

@@ -1,0 +1,214 @@
+import { Meta, Canvas, Story } from "@storybook/addon-docs/blocks";
+import * as FormStories from "../organisms/Form/Form.stories";
+import * as FormFieldStories from "../molecules/FormField/FormField.stories";
+import * as DatePickerStories from "../molecules/DatePicker/DatePicker.stories";
+import * as FileUploadStories from "../molecules/FileUpload/FileUpload.stories";
+import * as StepperStories from "../molecules/Stepper/Stepper.stories";
+
+<Meta title="Patterns/Forms" />
+
+# Form Patterns
+
+Patterns for collecting user input. All form components use native HTML semantics for accessibility. Validation is performed via developer-supplied validator functions — schema definitions must be statically defined, never constructed from user input.
+
+---
+
+## 1. Form Layout
+
+Standard form layout with labels above fields, clear structure, and accessible error handling.
+
+### When to use
+- Any form collecting user data.
+- Single-column for mobile-first simple forms.
+- Two-column for dense settings or profile forms.
+
+### Anatomy
+- **FormField** molecules wrap each input with label, helper text, and error state.
+- **Error summary** at the top of the form lists all field errors after submit attempt.
+- **Submit / Reset** action buttons at the bottom.
+
+### Live example
+
+<Canvas>
+  <Story of={FormStories.Default} />
+</Canvas>
+
+### Two-column variant
+
+<Canvas>
+  <Story of={FormStories.TwoColumn} />
+</Canvas>
+
+### Do
+- Always place labels above fields (never placeholder-only).
+- Show field-level error messages inline, below the input.
+- Show a form-level error summary when multiple fields fail.
+- Mark required fields with an asterisk and `aria-required`.
+
+### Don't
+- Do not use floating labels — they reduce readability and cause accessibility issues.
+- Do not rely on color alone to indicate errors.
+- Do not disable the submit button as the only way to show validation state.
+
+### Responsive behaviour
+- Single column on all viewports by default.
+- Two-column variant uses CSS grid; falls back to single column below `sm`.
+
+### Accessibility
+- `<form>` element with `aria-label` or `<legend>`.
+- Error summary has `role="alert"` and `aria-live="assertive"`.
+- Each field linked to its error message via `aria-describedby`.
+- Required fields use `aria-required="true"` and visual indicator.
+
+---
+
+## 2. Inline Validation
+
+Real-time feedback shown as users type or on field blur.
+
+### When to use
+- When immediate feedback improves completion rates (e.g., password strength, username availability).
+- For fields with clear, testable constraints (email format, length limits).
+
+### Do
+- Validate on blur, not on every keystroke (reduces noise).
+- Show success state (green check) when field is valid after interaction.
+- Clear the error as soon as the field becomes valid.
+
+### Don't
+- Do not validate empty fields on initial page load.
+- Do not show errors on fields the user has not yet touched.
+
+### Accessibility
+- Errors announced via `aria-describedby` linking to the error message element.
+- `aria-invalid="true"` on the input when it has an error.
+- Error messages persist visually (not just announced once).
+
+---
+
+## 3. Multi-step Form / Wizard
+
+A sequential form split into logical steps with progress indication.
+
+### When to use
+- When a form has more than 5–7 fields.
+- When fields can be meaningfully grouped into stages (e.g., account → profile → payment).
+- When each step has its own validation that must pass before proceeding.
+
+### Anatomy
+- **Stepper** molecule shows progress at the top.
+- Each step rendered in the main content area.
+- Previous / Next / Submit buttons at the bottom.
+- Optional "Save draft" for long forms.
+
+### Live example — Stepper progress indicator
+
+<Canvas>
+  <Story of={StepperStories.Default} />
+</Canvas>
+
+### Do
+- Validate each step before allowing "Next".
+- Allow navigation back to previous steps.
+- Preserve entered values when navigating between steps.
+- Show a summary/review step before final submission.
+
+### Don't
+- Do not use a wizard for simple forms with < 5 fields.
+- Do not lose user data when they navigate back.
+- Do not use "wizard" in the UI copy — say "Step 1 of 3" instead.
+
+### Accessibility
+- Stepper communicates progress via `aria-label="Step 2 of 4"`.
+- Focus moves to the first field of the new step on navigation.
+- Completed steps show `aria-label="Step 1: Account (completed)"`.
+
+---
+
+## 4. Search with Filters
+
+A search input combined with faceted filters for narrowing results.
+
+### When to use
+- Product listings, user directories, content archives.
+- When users need to combine free-text search with categorical filters.
+
+### Anatomy
+- **Search input** with submit button or live-search (debounced).
+- **Filter controls**: dropdowns, checkboxes, or tag filters.
+- **Active filters** displayed as removable chips above results.
+- **Clear all** button when any filter is active.
+
+### Do
+- Debounce live search to avoid excessive requests (300–500 ms).
+- Show result count: "Showing 24 of 142 results".
+- Allow clearing all filters with a single action.
+
+### Don't
+- Do not auto-submit on every keystroke without debounce.
+- Do not hide active filters — always show what's applied.
+
+### Accessibility
+- Search input uses `role="search"` or is inside `<form role="search">`.
+- Filter state announced to screen readers when results change.
+- Active filter chips have remove buttons with `aria-label="Remove filter: [name]"`.
+
+---
+
+## 5. Date / Time Selection
+
+Calendar-based input for selecting dates, times, or date ranges.
+
+### When to use
+- Booking, scheduling, or filtering by date.
+- Whenever a date must be precisely specified.
+
+### Live example
+
+<Canvas>
+  <Story of={DatePickerStories.Default} />
+</Canvas>
+
+### Do
+- Allow both calendar click and manual keyboard entry.
+- Show constraints clearly (min/max dates greyed out).
+- Format the displayed date to match the user's locale.
+
+### Don't
+- Do not use a plain `<input type="text">` for dates without a picker.
+- Do not block past dates unless there is a product reason.
+
+### Accessibility
+- Calendar uses `role="grid"` with `aria-label="Calendar"`.
+- Arrow keys navigate dates. Enter selects. Escape closes.
+- Selected date announced: `aria-selected="true"`.
+
+---
+
+## 6. File Upload
+
+Single or multi-file upload with drag-and-drop and preview.
+
+### When to use
+- Profile photos, document attachments, media uploads.
+
+### Live example
+
+<Canvas>
+  <Story of={FileUploadStories.Default} />
+</Canvas>
+
+### Do
+- Show accepted file types and maximum size limits.
+- Display upload progress for large files.
+- Show preview thumbnails for images.
+- Validate file type and size before upload.
+
+### Don't
+- Do not upload files without explicit user action.
+- Do not silently truncate file names — show the full name with an ellipsis tooltip.
+
+### Accessibility
+- Drop zone uses `role="button"` with keyboard activation (Enter/Space).
+- Screen reader announces: "Drop files here or click to browse".
+- Upload progress announced via `role="progressbar"`.
