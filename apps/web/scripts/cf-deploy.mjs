@@ -8,8 +8,8 @@
  *
  * vinext build generates dist/server/wrangler.json from the top-level
  * wrangler.jsonc config only — it does not apply env.* overrides.
- * This script builds, patches the generated file with the correct worker name
- * and D1 database_id for the target environment, then deploys.
+ * This script builds, patches the generated file with the correct worker name,
+ * D1 database_id, and routes for the target environment, then deploys.
  */
 import { spawnSync } from 'node:child_process';
 import { readFileSync, writeFileSync } from 'node:fs';
@@ -22,10 +22,15 @@ const ENV_CONFIG = {
   staging: {
     name: 'holding-web-staging',
     d1DatabaseId: '527c2f52-144b-422f-aa16-46e5b86cdd9f',
+    routes: [],
   },
   production: {
     name: 'holding-web-production',
     d1DatabaseId: '2b77f155-690e-4368-800d-ee52e7796d81',
+    routes: [
+      { pattern: 'production.city/*', zone_name: 'production.city' },
+      { pattern: 'www.production.city/*', zone_name: 'production.city' },
+    ],
   },
 };
 
@@ -35,7 +40,7 @@ if (!Object.hasOwn(ENV_CONFIG, env ?? '')) {
   process.exit(1);
 }
 
-const { name, d1DatabaseId } = ENV_CONFIG[env];
+const { name, d1DatabaseId, routes } = ENV_CONFIG[env];
 const appDir = resolve(__dirname, '..');
 const wranglerJsonPath = resolve(appDir, 'dist', 'server', 'wrangler.json');
 
@@ -61,8 +66,13 @@ if (Array.isArray(config.d1_databases)) {
     db.database_id = d1DatabaseId;
   }
 }
+if (routes.length > 0) {
+  config.routes = routes;
+} else {
+  delete config.routes;
+}
 writeFileSync(wranglerJsonPath, JSON.stringify(config, null, 2) + '\n');
-console.log(`[cf-deploy] Patched: name=${name}, d1_databases[DB].database_id=${d1DatabaseId}`);
+console.log(`[cf-deploy] Patched: name=${name}, d1_databases[DB].database_id=${d1DatabaseId}, routes=${routes.length}`);
 
 // Step 3: Deploy using the patched config (no --env flag — config is already environment-specific)
 console.log(`[cf-deploy] Deploying ${name}…`);
