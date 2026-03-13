@@ -93,7 +93,7 @@ describe("workspace validation", () => {
   it("baseline migration contains no WAL pragma as executable SQL", () => {
     const migrationPath = resolve(
       ROOT,
-      "prisma/migrations/20260312000000_baseline/migration.sql",
+      "prisma/migrations/0000_baseline.sql",
     );
     expect(existsSync(migrationPath)).toBe(true);
     const content = readFileSync(migrationPath, "utf-8");

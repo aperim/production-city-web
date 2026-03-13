@@ -1,5 +1,6 @@
 import { PrismaClient } from "@prisma/client";
 import { PrismaBetterSqlite3 } from "@prisma/adapter-better-sqlite3";
+import { seedDatabase } from "./seed-logic.js";
 
 // NOTE: seed.ts runs in a Node.js context (not CF Workers).
 // Use the better-sqlite3 adapter with DATABASE_URL for local seeding.
@@ -10,7 +11,7 @@ const prisma = new PrismaClient({ adapter });
 
 async function main(): Promise<void> {
   console.log("Seed: starting (idempotent)");
-  // Future domain seeds go here — always use upserts
+  await seedDatabase(prisma);
   console.log("Seed: complete");
 }
 

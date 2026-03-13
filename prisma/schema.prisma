@@ -19,3 +19,211 @@ generator client {
 datasource db {
   provider = "sqlite"
 }
+
+/// User accounts. Soft-deleted via status="deactivated", never hard-deleted.
+/// State machine: pending_approval → active ↔ deactivated
+model User {
+  id            String    @id @default(cuid())
+  email         String    @unique
+  name          String?
+  /// pending_approval | active | deactivated
+  status        String    @default("pending_approval")
+  emailVerified Boolean   @default(false)
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+  lastLoginAt   DateTime?
+  deactivatedAt DateTime?
+
+  // Relations
+  userRoles       UserRole[]    @relation("UserRoles")
+  rolesGranted    UserRole[]    @relation("RoleGranter")
+  sessions        Session[]
+  magicLinks      MagicLink[]
+  invitation      Invitation?   @relation("InvitedUser")
+  invitationsSent Invitation[]  @relation("InvitedBy")
+  auditLogs              AuditLog[]          @relation("AuditSubject")
+  auditLogsActed         AuditLog[]          @relation("AuditActor")
+  suppressionsRemoved    EmailSuppression[]
+
+  // @@index([email]) — omitted: @unique already creates an index
+  @@index([status])
+}
+
+/// Named roles (super_admin, admin, member, viewer). System roles cannot be deleted.
+model Role {
+  id          String   @id @default(cuid())
+  name        String   @unique
+  description String?
+  isSystem    Boolean  @default(false)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  rolePermissions RolePermission[]
+  userRoles       UserRole[]
+  invitationRoles InvitationRole[]
+}
+
+/// Fine-grained permissions as resource:action pairs (e.g. user:read, facility:manage).
+model Permission {
+  id          String   @id @default(cuid())
+  resource    String
+  action      String
+  description String?
+  createdAt   DateTime @default(now())
+
+  rolePermissions RolePermission[]
+
+  @@unique([resource, action])
+  @@index([resource])
+}
+
+/// Maps roles to permissions (many-to-many).
+model RolePermission {
+  id           String   @id @default(cuid())
+  roleId       String
+  permissionId String
+  createdAt    DateTime @default(now())
+
+  role       Role       @relation(fields: [roleId], references: [id], onDelete: Cascade)
+  permission Permission @relation(fields: [permissionId], references: [id], onDelete: Cascade)
+
+  @@unique([roleId, permissionId])
+}
+
+/// Assigns roles to users. grantedBy tracks which admin granted the role.
+model UserRole {
+  id        String   @id @default(cuid())
+  userId    String
+  roleId    String
+  grantedAt DateTime @default(now())
+  grantedBy String?
+
+  user          User  @relation("UserRoles", fields: [userId], references: [id], onDelete: Cascade)
+  role          Role  @relation(fields: [roleId], references: [id], onDelete: Cascade)
+  grantedByUser User? @relation("RoleGranter", fields: [grantedBy], references: [id])
+
+  @@unique([userId, roleId])
+}
+
+/// Session tokens. Token field stores SHA-256 hash, never plaintext.
+model Session {
+  id           String    @id @default(cuid())
+  userId       String
+  token        String    @unique
+  ipAddress    String?
+  userAgent    String?
+  createdAt    DateTime  @default(now())
+  expiresAt    DateTime
+  lastActiveAt DateTime  @default(now())
+  revokedAt    DateTime?
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  // @@index([token]) — omitted: @unique already creates an index
+  @@index([userId])
+  @@index([expiresAt])
+}
+
+/// Magic links for passwordless auth. tokenHash and codeHash store hashes, never plaintext.
+/// codeHash stores HMAC(server_secret, email + purpose + id + code) — no codeSalt needed.
+model MagicLink {
+  id                String    @id @default(cuid())
+  userId            String?
+  email             String
+  tokenHash         String    @unique
+  /// HMAC(server_secret, email + purpose + id + code)
+  codeHash          String
+  /// login | invitation_accept
+  purpose           String
+  postmarkMessageId String?
+  /// pending | sending | sent | delivered | bounced | failed
+  deliveryStatus    String    @default("pending")
+  attempts          Int       @default(0)
+  maxAttempts       Int       @default(5)
+  createdAt         DateTime  @default(now())
+  /// Must be set explicitly (15 min for login, 7 days for invitations)
+  expiresAt         DateTime
+  usedAt            DateTime?
+
+  user User? @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([email, createdAt])
+  @@index([expiresAt])
+  @@index([postmarkMessageId])
+}
+
+/// Invitations to join the platform. activeEmail provides DB-level uniqueness for pending invitations.
+model Invitation {
+  id          String    @id @default(cuid())
+  email       String
+  invitedById String
+  userId      String?   @unique
+  /// pending | accepted | expired | revoked
+  status      String    @default("pending")
+  /// Set to email when status=pending, NULL when accepted/expired/revoked
+  activeEmail String?   @unique
+  message     String?
+  createdAt   DateTime  @default(now())
+  /// Must be set explicitly (default 7 days)
+  expiresAt   DateTime
+  acceptedAt  DateTime?
+  revokedAt   DateTime?
+
+  invitedBy       User             @relation("InvitedBy", fields: [invitedById], references: [id])
+  user            User?            @relation("InvitedUser", fields: [userId], references: [id])
+  invitationRoles InvitationRole[]
+
+  @@index([email])
+  @@index([status])
+}
+
+/// Maps roles to invitations (pre-assigned roles for when invitation is accepted).
+model InvitationRole {
+  id           String @id @default(cuid())
+  invitationId String
+  roleId       String
+
+  invitation Invitation @relation(fields: [invitationId], references: [id], onDelete: Cascade)
+  role       Role       @relation(fields: [roleId], references: [id], onDelete: Cascade)
+
+  @@unique([invitationId, roleId])
+}
+
+/// Immutable audit log for all auth and admin events.
+/// details is JSON-as-string (D1 has no JSON column type).
+model AuditLog {
+  id        String   @id @default(cuid())
+  actorId   String?
+  subjectId String?
+  action    String
+  resource  String
+  details   String?
+  ipAddress String?
+  userAgent String?
+  createdAt DateTime @default(now())
+
+  actor   User? @relation("AuditActor", fields: [actorId], references: [id])
+  subject User? @relation("AuditSubject", fields: [subjectId], references: [id])
+
+  @@index([actorId])
+  @@index([subjectId])
+  @@index([action])
+  @@index([createdAt])
+}
+
+/// Email suppression list for bounce and spam complaint tracking.
+/// Prevents sending to addresses that have bounced or filed complaints.
+model EmailSuppression {
+  id        String    @id @default(cuid())
+  email     String    @unique
+  /// hard_bounce | spam_complaint
+  reason    String
+  /// JSON: Postmark bounce/complaint details
+  details   String?
+  createdAt DateTime  @default(now())
+  /// Set when admin removes suppression
+  removedAt DateTime?
+  /// userId of admin who removed
+  removedBy     String?
+  removedByUser User?   @relation(fields: [removedBy], references: [id])
+}
