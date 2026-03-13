@@ -1,7 +1,11 @@
 import type { QueueMessage } from "./types.js";
 import { validateQueueMessage } from "./validate.js";
+import { runAllCleanups } from "./cleanup.js";
 
-export type Env = Record<string, unknown>;
+export type Env = {
+  DB: D1Database;
+  [key: string]: unknown;
+};
 
 /**
  * Cloudflare Queue consumer handler.
@@ -10,6 +14,59 @@ export type Env = Record<string, unknown>;
  * IMPORTANT: Never log message.body — only log metadata for observability.
  */
 export default {
+  /**
+   * Cron Trigger handler: runs scheduled cleanup of expired records.
+   * Schedule: 0 3 * * * (daily at 03:00 UTC)
+   */
+  async scheduled(
+    _event: ScheduledEvent,
+    env: Env,
+    _ctx: ExecutionContext,
+  ): Promise<void> {
+    const startTime = Date.now();
+    console.log(JSON.stringify({ event: "cleanup.start", timestamp: new Date().toISOString() }));
+
+    try {
+      const [{ PrismaClient }, { PrismaD1 }] = await Promise.all([
+        import("@prisma/client"),
+        import("@prisma/adapter-d1"),
+      ]);
+      const adapter = new PrismaD1(env.DB);
+      const prisma = new PrismaClient({ adapter });
+
+      try {
+        const results = await runAllCleanups(prisma);
+
+        for (const result of results) {
+          console.log(
+            JSON.stringify({
+              event: "cleanup.model",
+              model: result.model,
+              checked: result.checked,
+              deleted: result.deleted,
+              durationMs: result.durationMs,
+            }),
+          );
+        }
+
+        console.log(
+          JSON.stringify({
+            event: "cleanup.complete",
+            totalDurationMs: Date.now() - startTime,
+          }),
+        );
+      } finally {
+        await prisma.$disconnect().catch((err: unknown) => {
+          console.error(JSON.stringify({ event: "cleanup.disconnect.error", error: String(err) }));
+        });
+      }
+    } catch (err) {
+      console.error(
+        JSON.stringify({ event: "cleanup.error", error: String(err), durationMs: Date.now() - startTime }),
+      );
+    }
+  },
+
   async queue(
     batch: MessageBatch<QueueMessage>,
     _env: Env,
