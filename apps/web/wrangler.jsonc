@@ -22,7 +22,7 @@
         {
           "binding": "DB",
           "database_name": "holding-preview",
-          "database_id": "$CF_D1_DATABASE_ID_PREVIEW",
+          "database_id": "61f78701-4ff5-4808-8d05-c1be66d984ec",
           "migrations_dir": "../../prisma/migrations"
         }
       ]
@@ -33,7 +33,7 @@
         {
           "binding": "DB",
           "database_name": "holding-staging",
-          "database_id": "$CF_D1_DATABASE_ID_STAGING",
+          "database_id": "527c2f52-144b-422f-aa16-46e5b86cdd9f",
           "migrations_dir": "../../prisma/migrations"
         }
       ]
@@ -49,7 +49,7 @@
         {
           "binding": "DB",
           "database_name": "holding-production",
-          "database_id": "$CF_D1_DATABASE_ID_PRODUCTION",
+          "database_id": "2b77f155-690e-4368-800d-ee52e7796d81",
           "migrations_dir": "../../prisma/migrations"
         }
       ]

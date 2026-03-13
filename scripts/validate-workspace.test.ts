@@ -193,12 +193,16 @@ describe("wrangler multi-environment configuration", () => {
           expect(dbBinding).toBeDefined();
         });
 
-        it(`env.${e} database_id is a variable reference`, () => {
+        it(`env.${e} database_id is a valid UUID`, () => {
           const envConfig = env![e] as Record<string, unknown>;
           const d1Databases = envConfig.d1_databases as Array<Record<string, unknown>>;
           const dbBinding = d1Databases.find((db) => db.binding === "DB");
           expect(dbBinding).toBeDefined();
-          expect(String(dbBinding!.database_id)).toContain("$");
+          // Wrangler does not expand shell env vars in wrangler.toml/jsonc database_id fields,
+          // so IDs must be literal UUIDs (not $VAR references).
+          expect(String(dbBinding!.database_id)).toMatch(
+            /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i
+          );
         });
       }
     });
