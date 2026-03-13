@@ -227,3 +227,124 @@ model EmailSuppression {
   removedBy     String?
   removedByUser User?   @relation(fields: [removedBy], references: [id])
 }
+
+/// Media asset with full provenance tracking for attribution and compliance
+model MediaAsset {
+  id                    String    @id @default(cuid())
+
+  /// Source platform: "pexels" | "unsplash" | "custom" | etc.
+  source                String
+  /// For external sources, this is the source platform ID (e.g., Pexels photo ID).
+  /// For custom assets, use "custom-{cuid}". Must always be populated.
+  externalId            String
+  /// URL on source platform (provenance only — never used as src)
+  externalUrl           String?
+
+  /// Creator name (required for attribution display)
+  photographer          String
+  /// Creator profile URL
+  photographerUrl       String?
+  /// Creator ID on source platform
+  photographerId        String?
+
+  /// Original width in pixels
+  originalWidth         Int
+  /// Original height in pixels
+  originalHeight        Int
+  /// Hex color for skeleton placeholder (e.g., "#2A3B4C")
+  averageColor          String?
+  /// Alt text — required for accessibility. Must be descriptive and meaningful.
+  alt                   String
+  /// Original alt text from source (for provenance)
+  originalAlt           String?
+  /// Restricted to: "image/jpeg", "image/png", "image/webp" (no SVG — script injection risk)
+  mimeType              String
+  /// File size in bytes
+  fileSize              Int?
+  /// SHA-256 checksum for integrity verification
+  checksum              String?
+
+  /// Relative path from project root (e.g., "public/media/hero-home/hero-home-dark.jpg").
+  /// Server-internal — the API must return publicPath instead.
+  localPath             String
+  /// Public URL path served to clients (e.g., "/media/hero-home/hero-home-dark.jpg").
+  /// This is the ONLY path that may appear in API responses and component src attributes.
+  publicPath            String
+  /// Original download URL (provenance only — NEVER used as src)
+  downloadUrl           String?
+
+  /// License identifier: "pexels" | "unsplash" | "cc-by-4.0" | "custom" | etc.
+  license               String
+  /// Whether attribution is required for display
+  attributionRequired   Boolean   @default(true)
+  /// Plain text attribution string, e.g., "Photo by Jane Doe on Pexels"
+  attributionText       String?
+
+  /// Whether the media was created with AI assistance
+  aiAssisted            Boolean   @default(false)
+  /// Whether the media was fully AI-generated
+  aiGenerated           Boolean   @default(false)
+  /// True when media is used with explicit permission of First Nations Peoples
+  hasFirstNationsPermission Boolean @default(false)
+  /// Free-text field for cultural context, permissions details, community attribution
+  culturalNotes         String?
+
+  /// Theme variant: "light" | "dark" | "universal"
+  themeVariant          String    @default("universal")
+  /// Semantic context: "hero-home", "gallery-facilities", etc.
+  contentContext        String?
+
+  /// Sourcing agent: "claude-code", "human", etc.
+  sourcingAgent         String?
+  /// Search query used for sourcing
+  sourcingPrompt        String?
+  /// Review status: "accepted" | "rejected" | "pending"
+  reviewStatus          String    @default("pending")
+  /// Agent review reasoning
+  reviewNotes           String?
+  /// When review was completed
+  reviewedAt            DateTime?
+
+  /// NULL = active; set = archived (soft delete)
+  archivedAt            DateTime?
+  /// User ID who archived the asset
+  archivedBy            String?
+
+  /// When originally downloaded from source
+  downloadedAt          DateTime?
+  createdAt             DateTime  @default(now())
+  updatedAt             DateTime  @updatedAt
+
+  // Relations
+  lightPairs            MediaPair[] @relation("LightAsset")
+  darkPairs             MediaPair[] @relation("DarkAsset")
+
+  @@unique([source, externalId])
+  @@index([contentContext])
+  @@index([themeVariant])
+  @@index([reviewStatus])
+  @@index([archivedAt])
+}
+
+/// Pairs a light-mode and dark-mode media asset for a content context
+model MediaPair {
+  id              String     @id @default(cuid())
+  /// Semantic key: "hero-home", "gallery-facilities"
+  contentContext  String
+
+  lightAssetId    String
+  /// onDelete: Restrict — cannot delete an asset that is part of a pair.
+  /// Admin must remove the pair first, then archive the asset.
+  lightAsset      MediaAsset @relation("LightAsset", fields: [lightAssetId], references: [id], onDelete: Restrict)
+
+  darkAssetId     String
+  /// onDelete: Restrict — see lightAsset comment above.
+  darkAsset       MediaAsset @relation("DarkAsset", fields: [darkAssetId], references: [id], onDelete: Restrict)
+
+  createdAt       DateTime   @default(now())
+  updatedAt       DateTime   @updatedAt
+
+  @@unique([contentContext])
+  @@index([lightAssetId])
+  @@index([darkAssetId])
+}
