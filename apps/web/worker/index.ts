@@ -16,14 +16,9 @@ const SECURITY_HEADERS: Record<string, string> = {
 };
 
 export default {
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  async fetch(request: Request, env: any, ctx: ExecutionContext): Promise<Response> {
-     
-    const response = (await (handler as ExportedHandler).fetch!(
-      request as Parameters<ExportedHandlerFetchHandler>[0],
-      env,
-      ctx,
-    )) as Response;
+  async fetch(request: Request, env: unknown, ctx: ExecutionContext): Promise<Response> {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any -- vinext handler types are opaque
+    const response = await (handler as any).fetch(request, env, ctx);
     const newResponse = new Response(response.body, response);
     for (const [key, value] of Object.entries(SECURITY_HEADERS)) {
       newResponse.headers.set(key, value);

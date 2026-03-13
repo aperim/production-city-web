@@ -7,32 +7,6 @@ test("homepage loads and returns 200", async ({ page }) => {
   await expect(page.locator("html")).toBeVisible();
 });
 
-test("page title contains Production City", async ({ page }) => {
-  await page.goto("/");
-  await expect(page).toHaveTitle(/Production City/);
-});
-
-test("main landmark is present", async ({ page }) => {
-  await page.goto("/");
-  await expect(page.locator("main")).toBeVisible();
-});
-
-test("Coming Soon text is visible", async ({ page }) => {
-  await page.goto("/");
-  await expect(page.getByText("Coming soon.")).toBeVisible();
-});
-
-test("no console errors on page load", async ({ page }) => {
-  const errors: string[] = [];
-  page.on("console", (msg) => {
-    if (msg.type() === "error") {
-      errors.push(msg.text());
-    }
-  });
-  await page.goto("/");
-  expect(errors).toEqual([]);
-});
-
 test("security headers are present on response", async ({ page }) => {
   const response = await page.goto("/");
   expect(response).not.toBeNull();

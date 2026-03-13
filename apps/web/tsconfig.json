@@ -3,7 +3,6 @@
   "include": ["app/**/*.ts", "app/**/*.tsx", "worker/**/*.ts", "vite.config.ts", "vitest.config.ts"],
   "compilerOptions": {
     "noEmit": true,
-    "module": "ESNext",
     "jsx": "react-jsx",
     "lib": ["ES2022", "DOM", "DOM.Iterable"],
     "types": ["@cloudflare/workers-types"]

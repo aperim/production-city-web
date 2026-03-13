@@ -3,7 +3,7 @@ import "../app.css";
 /**
  * Root layout for the Production City web application.
  *
- * Security headers are applied at the middleware level (middleware.ts).
+ * Security headers are applied at the worker level (worker/index.ts).
  */
 export default function RootLayout({
   children,
