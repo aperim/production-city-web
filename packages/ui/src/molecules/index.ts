@@ -41,3 +41,17 @@ export { Drawer } from "./Drawer/Drawer";
 export type { DrawerProps, DrawerPosition } from "./Drawer/Drawer";
 export { Pagination } from "./Pagination/Pagination";
 export type { PaginationProps } from "./Pagination/Pagination";
+
+// Issue #121: Auth & Admin Components
+export { DeliveryStatusIndicator } from "./DeliveryStatusIndicator/DeliveryStatusIndicator";
+export type { DeliveryStatusIndicatorProps, DeliveryStatus } from "./DeliveryStatusIndicator/DeliveryStatusIndicator";
+export { MagicCodeInput } from "./MagicCodeInput/MagicCodeInput";
+export type { MagicCodeInputProps } from "./MagicCodeInput/MagicCodeInput";
+export { RoleBadge } from "./RoleBadge/RoleBadge";
+export type { RoleBadgeProps } from "./RoleBadge/RoleBadge";
+export { StatusIndicator } from "./StatusIndicator/StatusIndicator";
+export type { StatusIndicatorProps, StatusType } from "./StatusIndicator/StatusIndicator";
+export { AuditLogEntry } from "./AuditLogEntry/AuditLogEntry";
+export type { AuditLogEntryProps } from "./AuditLogEntry/AuditLogEntry";
+export { SuppressionBadge } from "./SuppressionBadge/SuppressionBadge";
+export type { SuppressionBadgeProps, SuppressionReason } from "./SuppressionBadge/SuppressionBadge";

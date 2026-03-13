@@ -41,3 +41,19 @@ export type {
   FormSubmitResult,
   FormValidator,
 } from './Form/Form';
+
+// Issue #121: Auth & Admin Components
+export { LoginForm } from './LoginForm/LoginForm';
+export type { LoginFormProps } from './LoginForm/LoginForm';
+export { MagicCodeForm } from './MagicCodeForm/MagicCodeForm';
+export type { MagicCodeFormProps } from './MagicCodeForm/MagicCodeForm';
+export { UserTable } from './UserTable/UserTable';
+export type { UserTableProps, UserTableUser, PaginationInfo } from './UserTable/UserTable';
+export { InvitationTable } from './InvitationTable/InvitationTable';
+export type { InvitationTableProps, InvitationTableInvitation } from './InvitationTable/InvitationTable';
+export { UserDetailPanel } from './UserDetailPanel/UserDetailPanel';
+export type { UserDetailPanelProps, UserDetail } from './UserDetailPanel/UserDetailPanel';
+export { InvitationForm } from './InvitationForm/InvitationForm';
+export type { InvitationFormProps } from './InvitationForm/InvitationForm';
+export { ApprovalCard } from './ApprovalCard/ApprovalCard';
+export type { ApprovalCardProps } from './ApprovalCard/ApprovalCard';
