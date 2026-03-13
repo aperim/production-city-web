@@ -285,3 +285,73 @@ export function listSuppressions() {
 export function removeSuppression(id: string) {
   return request<{ message: string }>('DELETE', `/v1/admin/suppressions/${encodeURIComponent(id)}`);
 }
+
+// --- Media API ---
+
+/** Public asset shape returned by the API (uses publicPath, never localPath) */
+export interface MediaAssetPublic {
+  id: string;
+  publicPath: string;
+  alt: string;
+  width: number;
+  height: number;
+  averageColor: string | null;
+  photographer: string;
+  photographerUrl: string | null;
+  source: string;
+  externalUrl: string | null;
+  aiAssisted: boolean;
+  aiGenerated: boolean;
+  hasFirstNationsPermission: boolean;
+  license: string;
+  attributionText: string | null;
+}
+
+export interface MediaPairResponse {
+  id: string;
+  contentContext: string;
+  light: MediaAssetPublic;
+  dark: MediaAssetPublic;
+}
+
+/** Fetch a single media pair by content context (GET /v1/media/pairs/:contentContext) */
+export function fetchMediaPair(contentContext: string, options?: { signal?: AbortSignal }) {
+  const url = `/v1/media/pairs/${encodeURIComponent(contentContext)}`;
+  const init: RequestInit = {
+    method: 'GET',
+    credentials: 'include',
+    headers: { 'Accept': 'application/json' },
+    signal: options?.signal,
+  };
+
+  return fetch(`${API_BASE}${url}`, init).then(async (res) => {
+    if (res.status === 404) return null;
+    if (!res.ok) {
+      const error = await res.json().catch(() => ({ error: 'unknown', message: res.statusText })) as ApiError;
+      throw new Error(error.message);
+    }
+    return res.json() as Promise<MediaPairResponse>;
+  });
+}
+
+/** Batch fetch media pairs (GET /v1/media/pairs?contexts=...) */
+export function fetchMediaPairs(contexts: string[], options?: { signal?: AbortSignal }) {
+  const params = new URLSearchParams();
+  params.set('contexts', contexts.join(','));
+  const url = `/v1/media/pairs?${params.toString()}`;
+  const init: RequestInit = {
+    method: 'GET',
+    credentials: 'include',
+    headers: { 'Accept': 'application/json' },
+    signal: options?.signal,
+  };
+
+  return fetch(`${API_BASE}${url}`, init).then(async (res) => {
+    if (!res.ok) {
+      const error = await res.json().catch(() => ({ error: 'unknown', message: res.statusText })) as ApiError;
+      throw new Error(error.message);
+    }
+    const data = await res.json() as { pairs: Record<string, MediaPairResponse> };
+    return data.pairs;
+  });
+}

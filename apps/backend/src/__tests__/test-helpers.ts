@@ -41,6 +41,16 @@ const SCHEMA_STATEMENTS = [
   `CREATE INDEX IF NOT EXISTS "AuditLog_createdAt_idx" ON "AuditLog"("createdAt")`,
   `CREATE TABLE IF NOT EXISTS "EmailSuppression" ("id" TEXT NOT NULL PRIMARY KEY, "email" TEXT NOT NULL, "reason" TEXT NOT NULL, "details" TEXT, "createdAt" DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP, "removedAt" DATETIME, "removedBy" TEXT, CONSTRAINT "EmailSuppression_removedBy_fkey" FOREIGN KEY ("removedBy") REFERENCES "User" ("id") ON DELETE SET NULL ON UPDATE CASCADE)`,
   `CREATE UNIQUE INDEX IF NOT EXISTS "EmailSuppression_email_key" ON "EmailSuppression"("email")`,
+  `CREATE TABLE IF NOT EXISTS "MediaAsset" ("id" TEXT NOT NULL PRIMARY KEY, "source" TEXT NOT NULL, "externalId" TEXT NOT NULL, "externalUrl" TEXT, "photographer" TEXT NOT NULL, "photographerUrl" TEXT, "photographerId" TEXT, "originalWidth" INTEGER NOT NULL, "originalHeight" INTEGER NOT NULL, "averageColor" TEXT, "alt" TEXT NOT NULL, "originalAlt" TEXT, "mimeType" TEXT NOT NULL, "fileSize" INTEGER, "checksum" TEXT, "localPath" TEXT NOT NULL, "publicPath" TEXT NOT NULL, "downloadUrl" TEXT, "license" TEXT NOT NULL, "attributionRequired" BOOLEAN NOT NULL DEFAULT true, "attributionText" TEXT, "aiAssisted" BOOLEAN NOT NULL DEFAULT false, "aiGenerated" BOOLEAN NOT NULL DEFAULT false, "hasFirstNationsPermission" BOOLEAN NOT NULL DEFAULT false, "culturalNotes" TEXT, "themeVariant" TEXT NOT NULL DEFAULT 'universal', "contentContext" TEXT, "sourcingAgent" TEXT, "sourcingPrompt" TEXT, "reviewStatus" TEXT NOT NULL DEFAULT 'pending', "reviewNotes" TEXT, "reviewedAt" DATETIME, "archivedAt" DATETIME, "archivedBy" TEXT, "downloadedAt" DATETIME, "createdAt" DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP, "updatedAt" DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP)`,
+  `CREATE UNIQUE INDEX IF NOT EXISTS "MediaAsset_source_externalId_key" ON "MediaAsset"("source", "externalId")`,
+  `CREATE INDEX IF NOT EXISTS "MediaAsset_contentContext_idx" ON "MediaAsset"("contentContext")`,
+  `CREATE INDEX IF NOT EXISTS "MediaAsset_themeVariant_idx" ON "MediaAsset"("themeVariant")`,
+  `CREATE INDEX IF NOT EXISTS "MediaAsset_reviewStatus_idx" ON "MediaAsset"("reviewStatus")`,
+  `CREATE INDEX IF NOT EXISTS "MediaAsset_archivedAt_idx" ON "MediaAsset"("archivedAt")`,
+  `CREATE TABLE IF NOT EXISTS "MediaPair" ("id" TEXT NOT NULL PRIMARY KEY, "contentContext" TEXT NOT NULL, "lightAssetId" TEXT NOT NULL, "darkAssetId" TEXT NOT NULL, "createdAt" DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP, "updatedAt" DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP, CONSTRAINT "MediaPair_lightAssetId_fkey" FOREIGN KEY ("lightAssetId") REFERENCES "MediaAsset" ("id") ON DELETE RESTRICT ON UPDATE CASCADE, CONSTRAINT "MediaPair_darkAssetId_fkey" FOREIGN KEY ("darkAssetId") REFERENCES "MediaAsset" ("id") ON DELETE RESTRICT ON UPDATE CASCADE)`,
+  `CREATE UNIQUE INDEX IF NOT EXISTS "MediaPair_contentContext_key" ON "MediaPair"("contentContext")`,
+  `CREATE INDEX IF NOT EXISTS "MediaPair_lightAssetId_idx" ON "MediaPair"("lightAssetId")`,
+  `CREATE INDEX IF NOT EXISTS "MediaPair_darkAssetId_idx" ON "MediaPair"("darkAssetId")`,
 ];
 
 let _initialized = false;

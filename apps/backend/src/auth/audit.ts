@@ -47,6 +47,11 @@ const DETAIL_ALLOWLIST: Record<string, string[]> = {
   "invitation.accepted": ["email"],
   "approval.approved": ["email"],
   "approval.rejected": ["email"],
+  "media.asset.updated": ["assetId", "changes"],
+  "media.asset.archived": ["assetId"],
+  "media.asset.restored": ["assetId"],
+  "media.pair.created": ["contentContext"],
+  "media.pair.deleted": ["contentContext"],
 };
 
 /** Filter details to only allowed keys for the given action. */

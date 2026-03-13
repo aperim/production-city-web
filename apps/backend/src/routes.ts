@@ -10,6 +10,8 @@ import { invitationsApp } from "./admin/invitations.js";
 import { approvalsApp } from "./admin/approvals.js";
 import { rolesApp } from "./admin/roles.js";
 import { auditLogApp } from "./admin/audit-log.js";
+import { mediaAdminApp } from "./admin/media.js";
+import { mediaApp } from "./media/handlers.js";
 
 /**
  * Mount all auth and admin routes onto the main app.
@@ -28,6 +30,10 @@ export function mountRoutes(app: OpenAPIHono<{ Bindings: Record<string, unknown>
   app.route("/", approvalsApp);
   app.route("/", rolesApp);
   app.route("/", auditLogApp);
+  app.route("/", mediaAdminApp);
+
+  // Public media routes (no auth required)
+  app.route("/", mediaApp);
 
   // Test routes — only in test environment (build-time conditional import).
   // Requires BOTH NODE_ENV=test AND TEST_ENABLED=true.

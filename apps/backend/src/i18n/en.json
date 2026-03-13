@@ -61,6 +61,30 @@
     },
     "auditLog": {
       "empty": "No audit log entries found."
+    },
+    "media": {
+      "pair": {
+        "notFound": "No media pair found for this content.",
+        "created": "Media pair created successfully.",
+        "deleted": "Media pair removed successfully.",
+        "alreadyExists": "A media pair already exists for this content context."
+      },
+      "asset": {
+        "notFound": "Media asset not found.",
+        "updated": "Media asset updated successfully.",
+        "archived": "Media asset archived successfully.",
+        "restored": "Media asset restored successfully.",
+        "invalidId": "Invalid media asset ID format.",
+        "listEmpty": "No media assets found matching the criteria."
+      },
+      "validation": {
+        "invalidContext": "Invalid content context. Must be alphanumeric with hyphens, max 100 characters.",
+        "invalidSource": "Invalid media source.",
+        "invalidVariant": "Invalid theme variant.",
+        "invalidStatus": "Invalid review status.",
+        "missingAlt": "Alt text is required for accessibility.",
+        "missingPhotographer": "Photographer name is required for attribution."
+      }
     }
   },
   "permissions": {
