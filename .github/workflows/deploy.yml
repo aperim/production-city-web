@@ -126,7 +126,7 @@ jobs:
 
       - name: Deploy web (staging)
         working-directory: apps/web
-        run: pnpm exec wrangler deploy --env staging
+        run: pnpm exec vinext deploy --env staging
         env:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
@@ -188,7 +188,7 @@ jobs:
 
       - name: Deploy web (production)
         working-directory: apps/web
-        run: pnpm exec wrangler deploy --env production
+        run: pnpm exec vinext deploy --env production
         env:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
@@ -243,7 +243,7 @@ jobs:
 
       - name: Deploy Storybook to Cloudflare Pages
         working-directory: apps/backend
-        run: pnpm exec wrangler pages deploy ../packages/ui/storybook-static --project-name holding-storybook --commit-dirty true
+        run: pnpm exec wrangler pages deploy ../../packages/ui/storybook-static --project-name holding-storybook --commit-dirty true
         env:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
