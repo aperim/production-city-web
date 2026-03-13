@@ -65,3 +65,29 @@ export { MediaGallery } from './MediaGallery/MediaGallery';
 export type { MediaGalleryProps } from './MediaGallery/MediaGallery';
 export { MediaHero } from './MediaHero/MediaHero';
 export type { MediaHeroProps } from './MediaHero/MediaHero';
+
+// Issue #143: Landing Page Organisms
+export { LandingNavigation } from './LandingNavigation/LandingNavigation';
+export type { LandingNavigationProps, NavLinkItem } from './LandingNavigation/LandingNavigation';
+export { LandingFooter } from './LandingFooter/LandingFooter';
+export type {
+  LandingFooterProps,
+  FooterLink,
+  FooterLinkGroup,
+  FooterLegalText,
+  FooterContactInfo,
+} from './LandingFooter/LandingFooter';
+export { FacilityShowcase } from './FacilityShowcase/FacilityShowcase';
+export type { FacilityShowcaseProps, FacilityShowcaseItem } from './FacilityShowcase/FacilityShowcase';
+export { ServiceGrid } from './ServiceGrid/ServiceGrid';
+export type { ServiceGridProps, ServiceGridItem } from './ServiceGrid/ServiceGrid';
+export { EOISection } from './EOISection/EOISection';
+export type { EOISectionProps } from './EOISection/EOISection';
+export { FAQSection } from './FAQSection/FAQSection';
+export type { FAQSectionProps, FAQSectionItem } from './FAQSection/FAQSection';
+export { GlobalCampusMap } from './GlobalCampusMap/GlobalCampusMap';
+export type { GlobalCampusMapProps, CampusLocation } from './GlobalCampusMap/GlobalCampusMap';
+export { StakeholderGrid } from './StakeholderGrid/StakeholderGrid';
+export type { StakeholderGridProps, StakeholderItem } from './StakeholderGrid/StakeholderGrid';
+export { ForwardLookingDisclaimer } from './ForwardLookingDisclaimer/ForwardLookingDisclaimer';
+export type { ForwardLookingDisclaimerProps } from './ForwardLookingDisclaimer/ForwardLookingDisclaimer';
