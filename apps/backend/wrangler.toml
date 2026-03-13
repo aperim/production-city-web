@@ -6,6 +6,8 @@ main = "src/index.ts"
 
 [vars]
 ALLOWED_ORIGIN = "http://localhost:4321"
+HMAC_SECRET = "dev-hmac-secret-do-not-use-in-production"
+POSTMARK_API_TOKEN = ""
 
 [[d1_databases]]
 binding = "DB"

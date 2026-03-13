@@ -2,11 +2,14 @@ import { OpenAPIHono, createRoute, z } from "@hono/zod-openapi";
 import { swaggerUI } from "@hono/swagger-ui";
 import { cors } from "hono/cors";
 import { createPrismaClient } from "./lib/prisma.js";
+import { mountRoutes } from "./routes.js";
 
 /** Environment bindings provided by the Cloudflare Worker runtime. */
 type Bindings = {
   DB: D1Database;
   ALLOWED_ORIGIN: string;
+  HMAC_SECRET: string;
+  POSTMARK_API_TOKEN: string;
 };
 
 export const app = new OpenAPIHono<{ Bindings: Bindings }>();
@@ -107,5 +110,8 @@ app.doc31("/v1/openapi.json", {
 });
 
 app.get("/v1/docs", swaggerUI({ url: "/v1/openapi.json" }));
+
+// Mount auth and admin API routes
+mountRoutes(app as unknown as OpenAPIHono<{ Bindings: Record<string, unknown> }>);
 
 export default app;

@@ -29,14 +29,24 @@ describe("OpenAPI coverage", () => {
     // Issue #98: meta paths moved to /v1/ prefix.
     const metaPaths = new Set(["/v1/openapi.json", "/v1/docs"]);
 
+    // Normalize Hono :param to OpenAPI {param} for matching
+    function normalizePath(path: string): string {
+      return path.replace(/:([^/]+)/g, "{$1}");
+    }
+
     const undocumented: string[] = [];
+    const seen = new Set<string>();
     for (const route of app.routes) {
       // Skip meta/utility routes that intentionally aren't in the spec
       if (metaPaths.has(route.path)) continue;
-      // Skip middleware (ALL method on wildcard paths like /*)
+      // Skip middleware (ALL method — these are auth/csrf/permission middleware, not endpoints)
       const method = route.method.toUpperCase();
-      if (method === "ALL" && route.path.includes("*")) continue;
-      const key = `${method} ${route.path}`;
+      if (method === "ALL") continue;
+      const normalizedPath = normalizePath(route.path);
+      const key = `${method} ${normalizedPath}`;
+      // Deduplicate (Hono may register multiple handlers for the same route)
+      if (seen.has(key)) continue;
+      seen.add(key);
       if (!documentedPaths.has(key)) {
         undocumented.push(key);
       }
@@ -55,7 +65,20 @@ describe("OpenAPI coverage", () => {
     });
 
     const paths = Object.keys(spec.paths ?? {});
+    // Health probes
     expect(paths).toContain("/live");
     expect(paths).toContain("/ready");
+    // Auth endpoints
+    expect(paths).toContain("/v1/auth/verify");
+    expect(paths).toContain("/v1/auth/logout");
+    expect(paths).toContain("/v1/auth/session");
+    // Admin endpoints
+    expect(paths).toContain("/v1/admin/users");
+    expect(paths).toContain("/v1/admin/users/{id}");
+    expect(paths).toContain("/v1/admin/invitations");
+    expect(paths).toContain("/v1/admin/approvals");
+    expect(paths).toContain("/v1/admin/roles");
+    expect(paths).toContain("/v1/admin/permissions");
+    expect(paths).toContain("/v1/admin/audit-log");
   });
 });
