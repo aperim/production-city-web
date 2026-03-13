@@ -1,17 +1,34 @@
 {
   "name": "@productioncity/holding-design-tokens",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "type": "module",
+  "description": "Production City design tokens — CSS custom properties, TypeScript constants, and JSON tokens for the Production City design system.",
+  "keywords": ["design-tokens", "css-variables", "production-city"],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/productioncity/holding.git",
+    "directory": "packages/design-tokens"
+  },
+  "license": "UNLICENSED",
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com",
+    "access": "restricted"
+  },
+  "sideEffects": false,
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
-      "import": "./dist/index.js",
-      "require": "./dist/index.js"
+      "import": "./dist/index.js"
     },
     "./tokens.css": "./dist/tokens.css"
   },
+  "files": [
+    "dist",
+    "!dist/**/*.test.*",
+    "!dist/**/*.mdx"
+  ],
   "scripts": {
     "build": "tsc && tsx scripts/build.ts",
     "test": "vitest run"

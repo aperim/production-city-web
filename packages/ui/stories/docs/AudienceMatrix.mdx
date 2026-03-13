@@ -1,0 +1,124 @@
+import { Meta } from "@storybook/addon-docs/blocks";
+import { GuidePage } from "./GuidePage";
+
+<Meta title="Style Guide/Audience Matrix" />
+
+<GuidePage
+  title="Audience Matrix"
+  summary="Production City serves five distinct audience types. Each has different expectations for information density, accessibility, interaction model, and visual tone. This page documents component guidance per audience."
+  sections={[
+    {
+      title: "Audience Overview",
+      children: (
+        <table style={{ width: "100%", borderCollapse: "collapse", fontSize: "0.875rem" }}>
+          <thead>
+            <tr style={{ borderBottom: "1px solid var(--color-border)" }}>
+              <th style={{ textAlign: "start", padding: "0.5rem 0.75rem", fontWeight: 600 }}>Audience</th>
+              <th style={{ textAlign: "start", padding: "0.5rem 0.75rem", fontWeight: 600 }}>Persona</th>
+              <th style={{ textAlign: "start", padding: "0.5rem 0.75rem", fontWeight: 600 }}>Primary Device</th>
+              <th style={{ textAlign: "start", padding: "0.5rem 0.75rem", fontWeight: 600 }}>Density</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr style={{ borderBottom: "1px solid var(--color-border)" }}>
+              <td style={{ padding: "0.5rem 0.75rem" }}>Internal staff</td>
+              <td style={{ padding: "0.5rem 0.75rem" }}>MrCoffee</td>
+              <td style={{ padding: "0.5rem 0.75rem" }}>Desktop / laptop</td>
+              <td style={{ padding: "0.5rem 0.75rem" }}>Compact</td>
+            </tr>
+            <tr style={{ borderBottom: "1px solid var(--color-border)" }}>
+              <td style={{ padding: "0.5rem 0.75rem" }}>Public visitors</td>
+              <td style={{ padding: "0.5rem 0.75rem" }}>First-time visitor</td>
+              <td style={{ padding: "0.5rem 0.75rem" }}>Mobile / tablet</td>
+              <td style={{ padding: "0.5rem 0.75rem" }}>Comfortable</td>
+            </tr>
+            <tr style={{ borderBottom: "1px solid var(--color-border)" }}>
+              <td style={{ padding: "0.5rem 0.75rem" }}>Students</td>
+              <td style={{ padding: "0.5rem 0.75rem" }}>Education portal user</td>
+              <td style={{ padding: "0.5rem 0.75rem" }}>Mobile-first</td>
+              <td style={{ padding: "0.5rem 0.75rem" }}>Comfortable</td>
+            </tr>
+            <tr style={{ borderBottom: "1px solid var(--color-border)" }}>
+              <td style={{ padding: "0.5rem 0.75rem" }}>Partners</td>
+              <td style={{ padding: "0.5rem 0.75rem" }}>Partner portal user</td>
+              <td style={{ padding: "0.5rem 0.75rem" }}>Desktop</td>
+              <td style={{ padding: "0.5rem 0.75rem" }}>Compact–Comfortable</td>
+            </tr>
+            <tr>
+              <td style={{ padding: "0.5rem 0.75rem" }}>Campus / kiosk</td>
+              <td style={{ padding: "0.5rem 0.75rem" }}>Digital signage visitor</td>
+              <td style={{ padding: "0.5rem 0.75rem" }}>Touch screen / large display</td>
+              <td style={{ padding: "0.5rem 0.75rem" }}>Spacious (64px+ targets)</td>
+            </tr>
+          </tbody>
+        </table>
+      ),
+    },
+    {
+      title: "Internal Staff (MrCoffee)",
+      children: (
+        <ul>
+          <li><strong>Data density:</strong> Use compact mode. Prefer tables with fixed-height rows. Minimal whitespace between sections.</li>
+          <li><strong>Keyboard navigation:</strong> Full keyboard support is required. All actions reachable without a mouse.</li>
+          <li><strong>Components:</strong> DataTable, Form, Input (sm/md size), Badge, Tabs, Sidebar, NavigationHeader.</li>
+          <li><strong>Typography:</strong> 14px body, 12px labels. Use <code>Text as="p" size="sm"</code> for descriptions.</li>
+          <li><strong>Tone:</strong> Functional. No decorative copy. Labels are direct nouns or short verb phrases.</li>
+          <li><strong>No hero sections</strong> inside operational UI.</li>
+        </ul>
+      ),
+    },
+    {
+      title: "Public Visitors",
+      children: (
+        <ul>
+          <li><strong>Visual impact:</strong> Comfortable spacing. Full-width hero sections on landing pages are appropriate.</li>
+          <li><strong>Performance:</strong> Minimise JavaScript. Prefer server-rendered content. Components must be tree-shakeable.</li>
+          <li><strong>Components:</strong> Button, Text, Badge, Link, Avatar (for staff profiles).</li>
+          <li><strong>Typography:</strong> 16px body, 24–32px headings. High contrast ratios (WCAG AA minimum).</li>
+          <li><strong>SEO:</strong> Use semantic HTML elements — not divs for headings. The design system exposes correct HTML via <code>as</code> prop on Text.</li>
+          <li><strong>Mobile-first layout:</strong> All public-facing pages must look correct at 390px viewport.</li>
+        </ul>
+      ),
+    },
+    {
+      title: "Students (Education Portal)",
+      children: (
+        <ul>
+          <li><strong>Mobile-first:</strong> Design for 390px first, expand from there. Touch targets minimum 44px.</li>
+          <li><strong>Clear wayfinding:</strong> Breadcrumbs, clear section labels, progress indicators for multi-step flows.</li>
+          <li><strong>Accessibility:</strong> WCAG 2.2 AA is the floor. Consider cognitive accessibility: plain language, clear errors, no time pressure.</li>
+          <li><strong>Components:</strong> Form (with clear validation), Select, Checkbox, RadioGroup, Button (md/lg), Skeleton (for async content).</li>
+          <li><strong>Text size:</strong> 16px minimum for body. Avoid 12px text in student-facing flows.</li>
+          <li><strong>Error states:</strong> Always surface error messages inline (use <code>errorMessage</code> prop). Do not rely on colour alone.</li>
+        </ul>
+      ),
+    },
+    {
+      title: "Partners (Partner Portal)",
+      children: (
+        <ul>
+          <li><strong>Professional tone:</strong> Clean, task-focused. No playful elements. Labels are precise.</li>
+          <li><strong>Task completion efficiency:</strong> Minimise clicks. Forms should be short with sensible defaults.</li>
+          <li><strong>Components:</strong> DataTable (for reports), Form, Input (md), Badge (for status), NavigationHeader, Sidebar.</li>
+          <li><strong>Density:</strong> Between compact and comfortable. Partners review data but are not power users.</li>
+          <li><strong>Internationalisation:</strong> Partner portals may serve non-English markets. Pass locale prop. Date/number formatting via Intl API.</li>
+        </ul>
+      ),
+    },
+    {
+      title: "Campus / Kiosk Visitors (Digital Signage)",
+      children: (
+        <ul>
+          <li><strong>Touch targets:</strong> Minimum 64×64 CSS pixels for all interactive elements. Use <code>size="lg"</code> and add extra padding at the application layer.</li>
+          <li><strong>High contrast:</strong> Use the dark theme with high-contrast overrides. Avoid muted colours for primary content.</li>
+          <li><strong>Minimal interaction:</strong> Kiosks should require the fewest taps possible. One primary action per screen.</li>
+          <li><strong>No hover-dependent states:</strong> All information must be visible without hover. Tooltips are not appropriate for kiosk.</li>
+          <li><strong>Large typography:</strong> Body text at 18–24px minimum for legibility at arm's length.</li>
+          <li><strong>Components:</strong> Button (lg, full-width), Text (size="xl"), Badge (size="lg" if available), Avatar (xl).</li>
+          <li><strong>Accessibility:</strong> Kiosk users may have motor impairments. Ensure all interactive elements have large hit areas and clear visual feedback.</li>
+          <li><strong>No keyboard assumption:</strong> Kiosk users interact by touch only. Do not rely on keyboard shortcuts.</li>
+        </ul>
+      ),
+    },
+  ]}
+/>

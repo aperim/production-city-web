@@ -1,0 +1,59 @@
+name: Publish Packages
+
+# Triggered when a release tag is pushed (e.g. v0.1.0, v1.2.3).
+# Publishes @productioncity/holding-design-tokens and @productioncity/holding-ui
+# to GitHub Packages (npm.pkg.github.com). Never publishes to npmjs.com.
+on:
+  push:
+    tags:
+      - 'v[0-9]+.[0-9]+.[0-9]+'
+      - 'v[0-9]+.[0-9]+.[0-9]+-*'
+
+concurrency:
+  group: publish-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    name: Publish to GitHub Packages
+    runs-on: ubuntu-24.04
+
+    permissions:
+      contents: read
+      packages: write
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 10
+
+      - name: Setup Node.js with GitHub Packages registry
+        uses: actions/setup-node@v6
+        with:
+          node-version-file: '.nvmrc'
+          cache: 'pnpm'
+          registry-url: 'https://npm.pkg.github.com'
+          scope: '@productioncity'
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Build design-tokens
+        run: pnpm --filter ./packages/design-tokens build
+
+      - name: Build UI package
+        run: pnpm --filter ./packages/ui build
+
+      - name: Publish @productioncity/holding-design-tokens
+        run: pnpm --filter ./packages/design-tokens publish --no-git-checks
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Publish @productioncity/holding-ui
+        run: pnpm --filter ./packages/ui publish --no-git-checks
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}

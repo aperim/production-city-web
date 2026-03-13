@@ -1,0 +1,72 @@
+import { Meta } from "@storybook/addon-docs/blocks";
+import { GuidePage } from "./GuidePage";
+
+<Meta title="Style Guide/Performance & CSP" />
+
+<GuidePage
+  title="Performance & CSP"
+  summary="This page documents the design system performance budget, tree-shakeability, bundle analysis approach, and Content Security Policy compatibility."
+  sections={[
+    {
+      title: "Design Token Budget",
+      children: (
+        <ul>
+          <li>The <code>@productioncity/holding-design-tokens</code> package generates a single <code>tokens.css</code> file.</li>
+          <li><strong>Budget: &lt;50KB gzipped.</strong></li>
+          <li>Current size: <strong>3,096 bytes raw / ~793 bytes gzipped</strong> — well within budget.</li>
+          <li>The token file contains only CSS custom property declarations. No rules, no selectors beyond <code>:root</code>.</li>
+          <li>Monitor token file size when adding new token scales. Run <code>gzip -c packages/design-tokens/dist/tokens.css | wc -c</code> to verify.</li>
+        </ul>
+      ),
+    },
+    {
+      title: "Tree Shakeability",
+      children: (
+        <ul>
+          <li>All components are exported as named exports from <code>@productioncity/holding-ui</code>. No default export barrel that forces full bundle inclusion.</li>
+          <li>The package.json <code>sideEffects</code> field lists only the CSS import: <code>["./src/globals.css"]</code>. All TS/TSX files are side-effect-free.</li>
+          <li>Consumers import only what they need: <code>import &#123; Button &#125; from "@productioncity/holding-ui"</code>.</li>
+          <li>Build tooling (Vite, Rollup, webpack) will tree-shake unused components from the final bundle.</li>
+          <li>CVA (class-variance-authority), clsx, and tailwind-merge are runtime dependencies — they are small (&lt;3KB combined gzipped) and have no side effects.</li>
+        </ul>
+      ),
+    },
+    {
+      title: "Bundle Analysis",
+      children: (
+        <ul>
+          <li>Run <code>pnpm --filter ./packages/ui build</code> to produce the compiled output.</li>
+          <li>Analyse with <code>npx vite-bundle-visualizer</code> or <code>npx rollup-plugin-visualizer</code> on the built output.</li>
+          <li>Storybook build chunks are intentionally larger (includes Storybook runtime, axe-core, addon code). The <code>chunkSizeWarningLimit</code> is raised to 2500KB for Storybook builds only — this does not affect the published component package.</li>
+          <li>The published <code>@productioncity/holding-ui</code> dist does not include Storybook, testing, or axe-core code.</li>
+        </ul>
+      ),
+    },
+    {
+      title: "CSP Compatibility",
+      children: (
+        <ul>
+          <li>No component uses inline <code>style</code> attributes for visual styling. All visual styling comes from Tailwind utility classes and CSS custom properties.</li>
+          <li>The <code>style</code> attribute is used only for non-visual dynamic values (e.g., <code>style=&#123;&#123; maxWidth &#125;&#125;</code> on Tooltip, <code>style=&#123;&#123; zIndex &#125;&#125;</code> on AvatarGroup stacking). These are not visual styles resolvable by class names.</li>
+          <li>The Select component uses a <code>style.backgroundImage</code> for the chevron SVG. This is a data URI containing an inline SVG — not an external URL. If your CSP restricts <code>style-src 'unsafe-inline'</code>, override the Select with a custom icon slot.</li>
+          <li>No dynamic code evaluation occurs in any component.</li>
+          <li>Design tokens are loaded as a static CSS file (<code>tokens.css</code>) — no style injection at runtime.</li>
+          <li>Tailwind v4 uses a Vite plugin for CSS generation at build time. No runtime CSS injection.</li>
+        </ul>
+      ),
+    },
+    {
+      title: "Visual Regression Baseline",
+      children: (
+        <ul>
+          <li>Visual regression testing is implemented via <strong>Chromatic</strong> (recommended in #58 research).</li>
+          <li>The Chromatic configuration file is at <code>packages/ui/chromatic.config.ts</code>.</li>
+          <li>Baselines are captured on the <code>main</code> branch automatically in CI.</li>
+          <li>To activate: add <code>CHROMATIC_PROJECT_TOKEN</code> to GitHub Actions secrets, then the <code>chromatic</code> workflow step will run on PRs.</li>
+          <li>Chromatic is configured with <code>onlyChanged: true</code> — only stories affected by code changes are tested, keeping CI fast.</li>
+          <li>The Chromatic step does not block merge when the project token is absent (the step is skipped gracefully). This allows the workflow to function in forks without secrets.</li>
+        </ul>
+      ),
+    },
+  ]}
+/>

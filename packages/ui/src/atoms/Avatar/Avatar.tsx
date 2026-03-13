@@ -34,11 +34,11 @@ const statusVariants = cva(
         away: "bg-amber-500",
       },
       size: {
-        xs: "h-1.5 w-1.5 bottom-0 right-0",
-        sm: "h-2 w-2 bottom-0 right-0",
-        md: "h-2.5 w-2.5 bottom-0 right-0",
-        lg: "h-3 w-3 bottom-0.5 right-0.5",
-        xl: "h-3.5 w-3.5 bottom-0.5 right-0.5",
+        xs: "h-1.5 w-1.5 bottom-0 end-0",
+        sm: "h-2 w-2 bottom-0 end-0",
+        md: "h-2.5 w-2.5 bottom-0 end-0",
+        lg: "h-3 w-3 bottom-0.5 end-0.5",
+        xl: "h-3.5 w-3.5 bottom-0.5 end-0.5",
       },
     },
   },
@@ -96,17 +96,20 @@ function Avatar({
   const [imgError, setImgError] = useState(false);
   const showImage = Boolean(src) && !imgError;
 
-  // Determine the accessible name for the container.
-  // When the image is shown, the <img> alt handles the name.
-  // When falling back to initials or icon, use alt (if provided) as aria-label on the container.
-  // When no alt and no identifiable content, fall back to "Avatar".
+  // Determine the accessible name and role for the container.
+  // When the image is shown, the <img> alt handles the name — no role/label on the outer div.
+  // When falling back to initials or icon, add role="img" so aria-label is valid (ARIA spec:
+  // aria-label is prohibited on generic elements without a concrete role).
+  // Priority: alt (explicit label) → initials (visible but AT-hidden, so reuse as label)
+  // → "Avatar" (final generic fallback). Never leave role="img" without an accessible name.
   const containerLabel = showImage
     ? undefined
-    : alt ?? (initials ? undefined : "Avatar");
+    : (alt ?? initials ?? "Avatar");
 
   return (
     <div
       className={cn(avatarVariants({ size }), className)}
+      role={showImage ? undefined : "img"}
       aria-label={containerLabel}
     >
       {showImage ? (
@@ -178,7 +181,7 @@ function AvatarGroup({ avatars, max = 3, size = "md", className }: AvatarGroupPr
       {visible.map((props, index) => (
         <li
           key={index}
-          className="-ml-2 first:ml-0"
+          className="-ms-2 first:ms-0"
           style={{ zIndex: visible.length - index }}
         >
           <Avatar
@@ -192,7 +195,7 @@ function AvatarGroup({ avatars, max = 3, size = "md", className }: AvatarGroupPr
         </li>
       ))}
       {overflow > 0 && (
-        <li className="-ml-2" style={{ zIndex: 0 }}>
+        <li className="-ms-2" style={{ zIndex: 0 }}>
           <div
             className={cn(
               "inline-flex items-center justify-center rounded-full bg-muted ring-2 ring-background",

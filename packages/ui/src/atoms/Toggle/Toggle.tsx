@@ -35,8 +35,9 @@ const toggleThumbVariants = cva(
   [
     "pointer-events-none absolute rounded-full bg-background shadow-sm",
     "transition-transform duration-150",
-    "top-0 left-0",
-    "peer-checked:translate-x-full",
+    "top-0 start-0",
+    // LTR: thumb slides right when checked. RTL: thumb slides left when checked.
+    "peer-checked:translate-x-full rtl:peer-checked:-translate-x-full",
   ].join(" "),
   {
     variants: {

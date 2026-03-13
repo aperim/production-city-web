@@ -11,8 +11,8 @@ import { cn } from "../../lib/utils";
 const selectVariants = cva(
   [
     "w-full rounded-sm border bg-background text-foreground appearance-none",
-    "bg-no-repeat bg-[right_0.625rem_center] bg-[length:1rem_1rem]",
-    "pr-8",
+    "bg-no-repeat bg-[right_0.625rem_center] [dir=rtl]:bg-[left_0.625rem_center] bg-[length:1rem_1rem]",
+    "pe-8",
     "transition-colors duration-150",
     "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-1",
     "disabled:cursor-not-allowed disabled:opacity-50",
@@ -20,9 +20,9 @@ const selectVariants = cva(
   {
     variants: {
       size: {
-        sm: "pl-2.5 text-xs h-8",
-        md: "pl-3 text-sm h-9",
-        lg: "pl-3.5 text-base h-10",
+        sm: "ps-2.5 text-xs h-8",
+        md: "ps-3 text-sm h-9",
+        lg: "ps-3.5 text-base h-10",
       },
       error: {
         true: "border-destructive focus-visible:ring-destructive",

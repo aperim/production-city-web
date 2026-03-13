@@ -91,7 +91,7 @@ function Divider({
       aria-orientation="vertical"
       className={cn(
         "inline-block w-px self-stretch bg-border mx-1",
-        isDashed && "bg-transparent border-l border-dashed border-border",
+        isDashed && "bg-transparent border-s border-dashed border-border",
         className,
       )}
     />

@@ -41,11 +41,11 @@ const inputVariants = cva(
         false: "border-border",
       },
       hasLeftIcon: {
-        true: "pl-8",
+        true: "ps-8",
         false: "",
       },
       hasRightIcon: {
-        true: "pr-8",
+        true: "pe-8",
         false: "",
       },
     },
@@ -142,7 +142,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>(function Input(
         {hasLeft && (
           <span
             aria-hidden="true"
-            className="absolute inset-y-0 left-0 flex items-center pl-2.5 text-muted-foreground pointer-events-none"
+            className="absolute inset-y-0 start-0 flex items-center ps-2.5 text-muted-foreground pointer-events-none"
           >
             {leftIcon}
           </span>
@@ -169,7 +169,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>(function Input(
         {hasRight && (
           <span
             aria-hidden="true"
-            className="absolute inset-y-0 right-0 flex items-center pr-2.5 text-muted-foreground pointer-events-none"
+            className="absolute inset-y-0 end-0 flex items-center pe-2.5 text-muted-foreground pointer-events-none"
           >
             {rightIcon}
           </span>

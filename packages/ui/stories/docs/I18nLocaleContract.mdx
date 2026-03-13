@@ -1,0 +1,95 @@
+import { Meta } from "@storybook/addon-docs/blocks";
+import { GuidePage } from "./GuidePage";
+
+<Meta title="Style Guide/i18n & Locale Contract" />
+
+<GuidePage
+  title="i18n & Locale Contract"
+  summary="Production City design system is built for international audiences. This page documents the locale contract: how locale is sourced, where timezone authority lives, how formatting is done, and what each component expects."
+  sections={[
+    {
+      title: "Locale Source of Truth",
+      children: (
+        <ul>
+          <li>The application shell (app router / page context) is responsible for detecting and providing the active locale.</li>
+          <li>Locale is passed down via React context or props — never read from <code>navigator.language</code> inside a design-system component.</li>
+          <li>Components that render locale-sensitive output accept a <code>locale</code> prop (BCP 47 language tag, e.g. <code>"en-AU"</code>, <code>"ar-AE"</code>).</li>
+          <li>If no <code>locale</code> prop is supplied, components default to <code>Intl.DateTimeFormat().resolvedOptions().locale</code> as a fallback — never to a hardcoded string.</li>
+        </ul>
+      ),
+    },
+    {
+      title: "Timezone Ownership",
+      children: (
+        <ul>
+          <li>Timezone is a product-level concern, not a design-system concern.</li>
+          <li>The application layer supplies a <code>timeZone</code> string (IANA timezone identifier, e.g. <code>"Australia/Sydney"</code>) to any date/time formatting component.</li>
+          <li>No design-system component defaults to a hardcoded timezone. <code>Intl.DateTimeFormat</code> is always called with an explicit <code>timeZone</code> when one is provided.</li>
+          <li>When no timezone is supplied, the runtime's local timezone is used (browser default) — this is documented at the component level.</li>
+        </ul>
+      ),
+    },
+    {
+      title: "Formatting Utilities",
+      children: (
+        <ul>
+          <li>All date, time, number, and currency formatting uses the native <code>Intl</code> API (ECMAScript Internationalisation API Specification).</li>
+          <li>No third-party formatting library is bundled in <code>@productioncity/holding-ui</code>. Consumers may wrap <code>Intl</code> with a library of their choice.</li>
+          <li>Date formatting: <code>new Intl.DateTimeFormat(locale, options).format(date)</code>.</li>
+          <li>Number formatting: <code>new Intl.NumberFormat(locale, options).format(number)</code>.</li>
+          <li>Currency: <code>new Intl.NumberFormat(locale, &#123; style: "currency", currency &#125;).format(amount)</code>.</li>
+          <li>Relative time: <code>new Intl.RelativeTimeFormat(locale, &#123; numeric: "auto" &#125;)</code>.</li>
+          <li>Collation / sort: <code>new Intl.Collator(locale)</code>.</li>
+        </ul>
+      ),
+    },
+    {
+      title: "RTL Layout Support",
+      children: (
+        <ul>
+          <li>All components use CSS logical properties: <code>margin-inline-start</code> not <code>margin-left</code>, <code>padding-inline-end</code> not <code>padding-right</code>, etc.</li>
+          <li>Tailwind logical utilities are used: <code>ps-*</code> / <code>pe-*</code> (padding-inline-start/end), <code>ms-*</code> / <code>me-*</code> (margin-inline-start/end), <code>start-*</code> / <code>end-*</code> (inset-inline-start/end).</li>
+          <li>To activate RTL rendering, set <code>dir="rtl"</code> on the <code>&lt;html&gt;</code> element or a containing element. All components inherit this automatically.</li>
+          <li>Tooltip position semantics (left/right) are screen-relative intentional positions, not layout-flow positions, and are excluded from the logical property requirement.</li>
+          <li>Run the Storybook <strong>RTL</strong> viewport toggle to verify any new component visually.</li>
+        </ul>
+      ),
+    },
+    {
+      title: "Text Expansion (German / Finnish / Arabic)",
+      children: (
+        <ul>
+          <li>German and Finnish translations are typically 30–40% longer than English. Arabic script can be shorter but requires RTL flow.</li>
+          <li>All components are tested with strings at 140% of the English baseline length.</li>
+          <li>Components use <code>truncate</code> or <code>break-words</code> Tailwind utilities where overflow is expected, and <code>min-w-0</code> on flex children to prevent overflow blowout.</li>
+          <li>No component hardcodes a fixed width that would clip translated content.</li>
+          <li>Story variants with expanded text exist for Button, Badge, Input labels, and Select options.</li>
+        </ul>
+      ),
+    },
+    {
+      title: "No Hardcoded English Strings",
+      children: (
+        <ul>
+          <li>Zero hardcoded English strings in component render output. Every user-visible string must arrive via props.</li>
+          <li>Accessible labels (aria-label, aria-description) are prop-driven.</li>
+          <li>Avatar fallback aria-label: <code>aria-label</code> prop, not a hardcoded "Avatar" string.</li>
+          <li>AvatarGroup aria-label is computed from the <code>avatars.length</code> count — the word "avatar" used there is a design-system internal; product teams should override via the <code>aria-label</code> prop if needed.</li>
+          <li>Error messages in form controls: always supplied by the consuming application, never generated inside the component.</li>
+        </ul>
+      ),
+    },
+    {
+      title: "Kiosk / Digital Signage Touch Targets",
+      children: (
+        <ul>
+          <li>WCAG 2.5.8 (AA) requires touch targets of at least 24×24 CSS pixels.</li>
+          <li>For kiosk and digital-signage deployments, Production City recommends a minimum touch target of <strong>64×64 CSS pixels</strong>.</li>
+          <li>Achieve this by using the <code>size="lg"</code> variant on interactive controls and applying additional padding at the application layer.</li>
+          <li>The <code>Button</code> lg variant is <code>h-10</code> (40px) by design. For kiosk mode wrap with a <code>p-3</code> container or use a custom size variant via className.</li>
+          <li>Document kiosk mode as a density/size recommendation in the audience matrix (see Audience Matrix page).</li>
+        </ul>
+      ),
+    },
+  ]}
+/>

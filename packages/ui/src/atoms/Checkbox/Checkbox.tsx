@@ -189,7 +189,7 @@ function CheckboxGroup({
           checked={opt.checked}
           defaultChecked={opt.defaultChecked}
           onChange={(e) => opt.onChange?.(e.target.checked, opt.value)}
-          className={selectAll ? "ml-6" : undefined}
+          className={selectAll ? "ms-6" : undefined}
         />
       ))}
     </fieldset>

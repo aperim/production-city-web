@@ -1,0 +1,25 @@
+# Cloudflare Pages configuration for Storybook deployment.
+# Target: storybook.production.city
+#
+# The Cloudflare Pages project "holding-storybook" is created once manually
+# via the Cloudflare dashboard or wrangler CLI. After creation, the custom
+# domain storybook.production.city is added in the CF Pages dashboard under
+# Settings > Custom domains.
+#
+# CI deploys via:
+#   wrangler pages deploy storybook-static --project-name holding-storybook
+#
+# This file documents the expected Pages configuration. Wrangler Pages projects
+# do not currently support full wrangler.toml driven config; settings are
+# managed in the Cloudflare dashboard.
+
+name = "holding-storybook"
+pages_build_output_dir = "storybook-static"
+
+[env.production]
+# Custom domain: storybook.production.city
+# Added in CF Pages dashboard: Settings > Custom domains > Add custom domain
+# DNS: CNAME storybook.production.city -> <project>.pages.dev
+
+[env.preview]
+# Preview deployments use the default *.pages.dev domain automatically.

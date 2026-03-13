@@ -136,7 +136,6 @@ function RadioGroup({
   return (
     <fieldset
       className={cn("border-0 p-0 m-0", className)}
-      aria-orientation={orientation}
     >
       {label != null && (
         <legend className="text-sm font-medium text-foreground mb-1.5">
