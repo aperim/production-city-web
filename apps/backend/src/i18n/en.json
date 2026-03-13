@@ -104,6 +104,39 @@
       "body": "Your access request for Production City was not approved. If you believe this is an error, please contact the administrator."
     }
   },
+  "eoi": {
+    "submitted": "Thank you for your interest. A confirmation email has been sent.",
+    "invalidCategory": "Invalid category.",
+    "invalidLocale": "Invalid locale.",
+    "consentRequired": "You must accept the privacy policy to submit.",
+    "honeypotRejected": "Invalid submission.",
+    "emailSuppressed": "Unable to send confirmation to this address.",
+    "confirmationSubject": "Thank you for your interest in Production City",
+    "confirmationBody": "Thank you for expressing your interest in Production City. We have received your submission and will be in touch.",
+    "categoryGeneral": "General Inquiry",
+    "categoryProducer": "Producer",
+    "categoryCreative": "Creative Professional",
+    "categoryPartner": "Partner",
+    "categoryInvestor": "Investor",
+    "categoryEducation": "Education",
+    "admin": {
+      "notFound": "Expression of interest not found.",
+      "updated": "Expression of interest updated.",
+      "invalidStatus": "Invalid status. Allowed: {allowed}"
+    }
+  },
+  "locales": {
+    "en": "English",
+    "zh": "中文",
+    "hi": "हिन्दी",
+    "es": "Español",
+    "ar": "العربية",
+    "fr": "Français",
+    "bn": "বাংলা",
+    "pt": "Português",
+    "ru": "Русский",
+    "ja": "日本語"
+  },
   "errors": {
     "rateLimited": "Too many requests. Try again later.",
     "notFound": "Resource not found.",

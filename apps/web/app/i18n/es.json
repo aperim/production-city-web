@@ -1,213 +1,213 @@
 {
   "auth": {
     "login": {
-      "title": "Sign in",
-      "emailLabel": "Email address",
+      "title": "Iniciar sesión",
+      "emailLabel": "Correo electrónico",
       "emailPlaceholder": "you@example.com",
-      "submitButton": "Send magic link",
-      "submitting": "Sending...",
-      "checkEmail": "Check your email for a sign-in link",
-      "codeLabel": "Verification code",
+      "submitButton": "Enviar enlace mágico",
+      "submitting": "Enviando...",
+      "checkEmail": "Revise su correo para el enlace de inicio de sesión",
+      "codeLabel": "Código de verificación",
       "codePlaceholder": "000000",
-      "verifyButton": "Verify code",
-      "verifying": "Verifying...",
-      "orSeparator": "or",
-      "resendLink": "Resend magic link",
-      "backToLogin": "Back to sign in"
+      "verifyButton": "Verificar código",
+      "verifying": "Verificando...",
+      "orSeparator": "o",
+      "resendLink": "Reenviar enlace mágico",
+      "backToLogin": "Volver a iniciar sesión"
     },
     "logout": {
-      "button": "Sign out",
-      "success": "You have been signed out."
+      "button": "Cerrar sesión",
+      "success": "Ha cerrado sesión."
     },
     "session": {
-      "expired": "Your session has expired. Please sign in again."
+      "expired": "Su sesión ha expirado. Inicie sesión de nuevo."
     }
   },
   "admin": {
     "dashboard": {
-      "title": "Admin Dashboard",
-      "welcome": "Welcome, {name}"
+      "title": "Panel de administración",
+      "welcome": "Bienvenido, {name}"
     },
     "users": {
-      "title": "Users",
-      "searchPlaceholder": "Search users...",
-      "filterStatus": "Filter by status",
-      "filterRole": "Filter by role",
-      "sortBy": "Sort by",
-      "emptyState": "No users found.",
+      "title": "Usuarios",
+      "searchPlaceholder": "Buscar usuarios...",
+      "filterStatus": "Filtrar por estado",
+      "filterRole": "Filtrar por rol",
+      "sortBy": "Ordenar por",
+      "emptyState": "No se encontraron usuarios.",
       "tableHeaders": {
-        "email": "Email",
-        "name": "Name",
-        "status": "Status",
+        "email": "Correo",
+        "name": "Nombre",
+        "status": "Estado",
         "roles": "Roles",
-        "lastLogin": "Last Login",
-        "actions": "Actions"
+        "lastLogin": "Último acceso",
+        "actions": "Acciones"
       },
-      "statusActive": "Active",
-      "statusPending": "Pending Approval",
-      "statusDeactivated": "Deactivated",
-      "actionDeactivate": "Deactivate",
-      "actionActivate": "Activate",
-      "actionManageRoles": "Manage Roles",
-      "confirmDeactivate": "Are you sure you want to deactivate this user?",
-      "confirmActivate": "Are you sure you want to activate this user?"
+      "statusActive": "Activo",
+      "statusPending": "Pendiente de aprobación",
+      "statusDeactivated": "Desactivado",
+      "actionDeactivate": "Desactivar",
+      "actionActivate": "Activar",
+      "actionManageRoles": "Gestionar roles",
+      "confirmDeactivate": "¿Está seguro de que desea desactivar este usuario?",
+      "confirmActivate": "¿Está seguro de que desea activar este usuario?"
     },
     "invitations": {
-      "title": "Invitations",
-      "createButton": "Send Invitation",
-      "emailLabel": "Email address",
+      "title": "Invitaciones",
+      "createButton": "Enviar invitación",
+      "emailLabel": "Correo electrónico",
       "emailPlaceholder": "newuser@example.com",
-      "rolesLabel": "Assign roles",
-      "messageLabel": "Personal message (optional)",
-      "messagePlaceholder": "Welcome to the team!",
-      "emptyState": "No invitations found.",
+      "rolesLabel": "Asignar roles",
+      "messageLabel": "Mensaje personal (opcional)",
+      "messagePlaceholder": "¡Bienvenido al equipo!",
+      "emptyState": "No se encontraron invitaciones.",
       "tableHeaders": {
-        "email": "Email",
-        "status": "Status",
-        "createdAt": "Sent",
-        "expiresAt": "Expires",
-        "actions": "Actions"
+        "email": "Correo",
+        "status": "Estado",
+        "createdAt": "Enviado",
+        "expiresAt": "Expira",
+        "actions": "Acciones"
       },
-      "statusPending": "Pending",
-      "statusAccepted": "Accepted",
-      "statusRevoked": "Revoked",
-      "statusExpired": "Expired",
-      "actionRevoke": "Revoke",
-      "actionResend": "Resend",
-      "confirmRevoke": "Are you sure you want to revoke this invitation?"
+      "statusPending": "Pendiente",
+      "statusAccepted": "Aceptada",
+      "statusRevoked": "Revocada",
+      "statusExpired": "Expirada",
+      "actionRevoke": "Revocar",
+      "actionResend": "Reenviar",
+      "confirmRevoke": "¿Está seguro de que desea revocar esta invitación?"
     },
     "approvals": {
-      "title": "Pending Approvals",
-      "emptyState": "No users pending approval.",
-      "approveButton": "Approve",
-      "rejectButton": "Reject",
-      "rejectReasonLabel": "Reason (optional)",
-      "confirmApprove": "Are you sure you want to approve this user?",
-      "confirmReject": "Are you sure you want to reject this user?"
+      "title": "Aprobaciones pendientes",
+      "emptyState": "No hay usuarios pendientes de aprobación.",
+      "approveButton": "Aprobar",
+      "rejectButton": "Rechazar",
+      "rejectReasonLabel": "Motivo (opcional)",
+      "confirmApprove": "¿Está seguro de que desea aprobar este usuario?",
+      "confirmReject": "¿Está seguro de que desea rechazar este usuario?"
     },
     "roles": {
-      "title": "Roles & Permissions",
-      "emptyState": "No roles configured."
+      "title": "Roles y permisos",
+      "emptyState": "No hay roles configurados."
     },
     "auditLog": {
-      "title": "Audit Log",
-      "emptyState": "No audit entries found.",
-      "loadMore": "Load more",
+      "title": "Registro de auditoría",
+      "emptyState": "No se encontraron entradas.",
+      "loadMore": "Cargar más",
       "tableHeaders": {
-        "action": "Action",
+        "action": "Acción",
         "actor": "Actor",
-        "subject": "Subject",
-        "details": "Details",
-        "timestamp": "Timestamp"
+        "subject": "Sujeto",
+        "details": "Detalles",
+        "timestamp": "Fecha"
       }
     }
   },
   "common": {
-    "loading": "Loading...",
-    "error": "An error occurred.",
-    "retry": "Retry",
-    "cancel": "Cancel",
-    "confirm": "Confirm",
-    "save": "Save",
-    "delete": "Delete",
-    "edit": "Edit",
-    "close": "Close",
-    "back": "Back",
-    "next": "Next",
-    "previous": "Previous",
-    "noResults": "No results found."
+    "loading": "Cargando...",
+    "error": "Se produjo un error.",
+    "retry": "Reintentar",
+    "cancel": "Cancelar",
+    "confirm": "Confirmar",
+    "save": "Guardar",
+    "delete": "Eliminar",
+    "edit": "Editar",
+    "close": "Cerrar",
+    "back": "Atrás",
+    "next": "Siguiente",
+    "previous": "Anterior",
+    "noResults": "No se encontraron resultados."
   },
   "media": {
     "attribution": {
-      "photoBy": "Photo by {photographer} on {source}",
-      "videoBy": "Video by {photographer} on {source}",
-      "providedBy": "Media provided by {source}",
-      "viewProfile": "View {photographer}'s profile",
-      "viewSource": "View on {source}"
+      "photoBy": "Foto de {photographer} en {source}",
+      "videoBy": "Video de {photographer} en {source}",
+      "providedBy": "Medios proporcionados por {source}",
+      "viewProfile": "Ver perfil de {photographer}",
+      "viewSource": "Ver en {source}"
     },
     "badges": {
-      "aiAssisted": "AI-assisted content",
-      "aiAssistedTooltip": "This media was created with AI assistance",
-      "aiGenerated": "AI-generated content",
-      "aiGeneratedTooltip": "This media was generated by artificial intelligence",
-      "firstNations": "First Nations cultural permission",
-      "firstNationsTooltip": "Used with permissions of First Nations Peoples",
-      "firstNationsExpanded": "This media is used with the explicit permission of First Nations Peoples"
+      "aiAssisted": "Contenido asistido por IA",
+      "aiAssistedTooltip": "Este medio fue creado con asistencia de IA",
+      "aiGenerated": "Contenido generado por IA",
+      "aiGeneratedTooltip": "Este medio fue generado por inteligencia artificial",
+      "firstNations": "Permiso cultural de Pueblos Originarios",
+      "firstNationsTooltip": "Usado con permiso de los Pueblos Originarios",
+      "firstNationsExpanded": "Este medio se usa con el permiso explícito de los Pueblos Originarios"
     },
     "states": {
-      "loading": "Loading media...",
-      "error": "Image unavailable",
-      "errorDescription": "This image could not be loaded",
-      "noMedia": "No media available",
-      "retryLoad": "Retry loading",
-      "themeChanged": "Image updated for {theme} theme"
+      "loading": "Cargando medios...",
+      "error": "Imagen no disponible",
+      "errorDescription": "No se pudo cargar esta imagen",
+      "noMedia": "No hay medios disponibles",
+      "retryLoad": "Reintentar carga",
+      "themeChanged": "Imagen actualizada para tema {theme}"
     },
     "admin": {
-      "title": "Media Assets",
-      "searchPlaceholder": "Search by photographer, description, or context...",
-      "filterSource": "Filter by source",
-      "filterVariant": "Filter by theme variant",
-      "filterStatus": "Filter by review status",
+      "title": "Activos multimedia",
+      "searchPlaceholder": "Buscar por fotógrafo, descripción o contexto...",
+      "filterSource": "Filtrar por fuente",
+      "filterVariant": "Filtrar por variante de tema",
+      "filterStatus": "Filtrar por estado de revisión",
       "columns": {
-        "preview": "Preview",
-        "photographer": "Photographer",
-        "source": "Source",
-        "context": "Context",
-        "variant": "Theme",
-        "status": "Status",
-        "flags": "Flags",
-        "actions": "Actions"
+        "preview": "Vista previa",
+        "photographer": "Fotógrafo",
+        "source": "Fuente",
+        "context": "Contexto",
+        "variant": "Tema",
+        "status": "Estado",
+        "flags": "Marcas",
+        "actions": "Acciones"
       },
       "actions": {
-        "edit": "Edit metadata",
-        "archive": "Archive asset",
-        "createPair": "Create pair",
-        "removePair": "Remove pair",
-        "restore": "Restore asset",
-        "confirmArchive": "Are you sure you want to archive this media asset?",
-        "confirmRemovePair": "Are you sure you want to remove this media pair?"
+        "edit": "Editar metadatos",
+        "archive": "Archivar activo",
+        "createPair": "Crear par",
+        "removePair": "Eliminar par",
+        "restore": "Restaurar activo",
+        "confirmArchive": "¿Está seguro de que desea archivar este activo multimedia?",
+        "confirmRemovePair": "¿Está seguro de que desea eliminar este par multimedia?"
       }
     }
   },
   "nav": {
-    "dashboard": "Dashboard",
-    "users": "Users",
-    "invitations": "Invitations",
-    "approvals": "Approvals",
+    "dashboard": "Panel",
+    "users": "Usuarios",
+    "invitations": "Invitaciones",
+    "approvals": "Aprobaciones",
     "roles": "Roles",
-    "auditLog": "Audit Log",
-    "signOut": "Sign Out"
+    "auditLog": "Auditoría",
+    "signOut": "Cerrar sesión"
   },
   "eoi": {
-    "formTitle": "Express Your Interest",
-    "nameLabel": "Full name",
-    "namePlaceholder": "Your name",
-    "emailLabel": "Email address",
+    "formTitle": "Exprese su interés",
+    "nameLabel": "Nombre completo",
+    "namePlaceholder": "Su nombre",
+    "emailLabel": "Correo electrónico",
     "emailPlaceholder": "you@example.com",
-    "messageLabel": "Message (optional)",
-    "messagePlaceholder": "Tell us about your interest...",
-    "categoryLabel": "I am a...",
-    "categoryGeneral": "General Inquiry",
-    "categoryProducer": "Producer",
-    "categoryCreative": "Creative Professional",
-    "categoryPartner": "Partner",
-    "categoryInvestor": "Investor",
-    "categoryEducation": "Education",
-    "consentLabel": "I have read and agree to the {privacyPolicy}",
-    "privacyPolicyLink": "Privacy Policy",
-    "marketingOptInLabel": "I would like to receive updates about Production City",
-    "submitButton": "Submit",
-    "submitting": "Submitting...",
-    "successTitle": "Thank you!",
-    "successMessage": "We have received your expression of interest and will be in touch.",
-    "errorMessage": "Something went wrong. Please try again.",
-    "rateLimited": "Too many submissions. Please try again later."
+    "messageLabel": "Mensaje (opcional)",
+    "messagePlaceholder": "Cuéntenos sobre su interés...",
+    "categoryLabel": "Soy...",
+    "categoryGeneral": "Consulta general",
+    "categoryProducer": "Productor",
+    "categoryCreative": "Profesional creativo",
+    "categoryPartner": "Socio",
+    "categoryInvestor": "Inversor",
+    "categoryEducation": "Educación",
+    "consentLabel": "He leído y acepto la {privacyPolicy}",
+    "privacyPolicyLink": "Política de privacidad",
+    "marketingOptInLabel": "Deseo recibir actualizaciones sobre Production City",
+    "submitButton": "Enviar",
+    "submitting": "Enviando...",
+    "successTitle": "¡Gracias!",
+    "successMessage": "Hemos recibido su expresión de interés y nos pondremos en contacto.",
+    "errorMessage": "Algo salió mal. Intente de nuevo.",
+    "rateLimited": "Demasiados envíos. Intente más tarde."
   },
   "legal": {
-    "privacyPolicy": "Privacy Policy",
-    "termsOfUse": "Terms of Use",
-    "lastUpdated": "Last updated: {date}",
-    "backToHome": "Back to home",
+    "privacyPolicy": "Política de privacidad",
+    "termsOfUse": "Términos de uso",
+    "lastUpdated": "Última actualización: {date}",
+    "backToHome": "Volver al inicio",
     "privacy": {
       "title": "Privacy Policy",
       "effectiveDate": "Effective date: {date}",
@@ -315,13 +315,13 @@
     }
   },
   "footer": {
-    "privacyPolicy": "Privacy Policy",
-    "termsOfUse": "Terms of Use",
-    "copyright": "© {year} Aperim Pty Ltd. All rights reserved.",
-    "disclaimer": "Production City™ is a trademark of Aperim Pty Ltd."
+    "privacyPolicy": "Política de privacidad",
+    "termsOfUse": "Términos de uso",
+    "copyright": "© {year} Aperim Pty Ltd. Todos los derechos reservados.",
+    "disclaimer": "Production City™ es una marca registrada de Aperim Pty Ltd."
   },
   "languageSwitcher": {
-    "label": "Language",
-    "ariaLabel": "Select language"
+    "label": "Idioma",
+    "ariaLabel": "Seleccionar idioma"
   }
 }

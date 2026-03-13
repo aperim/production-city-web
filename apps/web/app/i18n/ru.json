@@ -179,35 +179,35 @@
     "signOut": "Sign Out"
   },
   "eoi": {
-    "formTitle": "Express Your Interest",
-    "nameLabel": "Full name",
-    "namePlaceholder": "Your name",
-    "emailLabel": "Email address",
+    "formTitle": "Выразите свой интерес",
+    "nameLabel": "Полное имя",
+    "namePlaceholder": "Ваше имя",
+    "emailLabel": "Электронная почта",
     "emailPlaceholder": "you@example.com",
-    "messageLabel": "Message (optional)",
-    "messagePlaceholder": "Tell us about your interest...",
-    "categoryLabel": "I am a...",
-    "categoryGeneral": "General Inquiry",
-    "categoryProducer": "Producer",
-    "categoryCreative": "Creative Professional",
-    "categoryPartner": "Partner",
-    "categoryInvestor": "Investor",
-    "categoryEducation": "Education",
-    "consentLabel": "I have read and agree to the {privacyPolicy}",
-    "privacyPolicyLink": "Privacy Policy",
-    "marketingOptInLabel": "I would like to receive updates about Production City",
-    "submitButton": "Submit",
-    "submitting": "Submitting...",
-    "successTitle": "Thank you!",
-    "successMessage": "We have received your expression of interest and will be in touch.",
-    "errorMessage": "Something went wrong. Please try again.",
-    "rateLimited": "Too many submissions. Please try again later."
+    "messageLabel": "Сообщение (необязательно)",
+    "messagePlaceholder": "Расскажите о вашем интересе...",
+    "categoryLabel": "Я...",
+    "categoryGeneral": "Общий запрос",
+    "categoryProducer": "Продюсер",
+    "categoryCreative": "Творческий специалист",
+    "categoryPartner": "Партнёр",
+    "categoryInvestor": "Инвестор",
+    "categoryEducation": "Образование",
+    "consentLabel": "Я прочитал(а) и принимаю {privacyPolicy}",
+    "privacyPolicyLink": "Политику конфиденциальности",
+    "marketingOptInLabel": "Я хочу получать обновления о Production City",
+    "submitButton": "Отправить",
+    "submitting": "Отправка...",
+    "successTitle": "Спасибо!",
+    "successMessage": "Мы получили ваш запрос и свяжемся с вами.",
+    "errorMessage": "Что-то пошло не так. Попробуйте снова.",
+    "rateLimited": "Слишком много отправок. Попробуйте позже."
   },
   "legal": {
-    "privacyPolicy": "Privacy Policy",
-    "termsOfUse": "Terms of Use",
-    "lastUpdated": "Last updated: {date}",
-    "backToHome": "Back to home",
+    "privacyPolicy": "Политика конфиденциальности",
+    "termsOfUse": "Условия использования",
+    "lastUpdated": "Последнее обновление: {date}",
+    "backToHome": "Вернуться на главную",
     "privacy": {
       "title": "Privacy Policy",
       "effectiveDate": "Effective date: {date}",
@@ -315,13 +315,13 @@
     }
   },
   "footer": {
-    "privacyPolicy": "Privacy Policy",
-    "termsOfUse": "Terms of Use",
-    "copyright": "© {year} Aperim Pty Ltd. All rights reserved.",
-    "disclaimer": "Production City™ is a trademark of Aperim Pty Ltd."
+    "privacyPolicy": "Политика конфиденциальности",
+    "termsOfUse": "Условия использования",
+    "copyright": "© {year} Aperim Pty Ltd. Все права защищены.",
+    "disclaimer": "Production City™ — товарный знак Aperim Pty Ltd."
   },
   "languageSwitcher": {
-    "label": "Language",
-    "ariaLabel": "Select language"
+    "label": "Язык",
+    "ariaLabel": "Выберите язык"
   }
 }

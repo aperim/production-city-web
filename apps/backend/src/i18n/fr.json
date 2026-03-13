@@ -1,0 +1,150 @@
+{
+  "auth": {
+    "login": {
+      "rateLimited": "Trop de requêtes. Réessayez plus tard.",
+      "checkEmail": "Vérifiez votre e-mail pour le lien de connexion",
+      "invalidToken": "Jeton d'authentification invalide ou expiré.",
+      "invalidCode": "Code invalide ou expiré.",
+      "loggedOut": "Déconnecté",
+      "required": "Authentification requise.",
+      "invalidSession": "Session invalide ou expirée.",
+      "accountInactive": "Le compte n'est pas actif."
+    },
+    "verify": {
+      "tokenFailed": "Échec de la vérification du jeton.",
+      "codeFailed": "Échec de la vérification du code.",
+      "tokenInvalid": "Ce lien est invalide ou a expiré. Veuillez en demander un nouveau."
+    },
+    "csrf": {
+      "invalidOrigin": "Origine de la requête invalide.",
+      "missingHeader": "En-tête Origin ou Referer manquant.",
+      "originMismatch": "L'origine ne correspond pas."
+    }
+  },
+  "admin": {
+    "users": {
+      "notFound": "Utilisateur non trouvé.",
+      "invalidParam": "Paramètre invalide.",
+      "invalidSortBy": "Champ de tri invalide. Autorisés : {allowed}",
+      "invalidSortOrder": "Ordre de tri invalide. Autorisés : {allowed}",
+      "searchTooLong": "Requête de recherche trop longue (200 caractères maximum).",
+      "invalidStatus": "Statut invalide. Autorisés : {allowed}",
+      "nameNoHtml": "Le nom ne doit pas contenir de balises HTML.",
+      "cannotDeactivateSelf": "Vous ne pouvez pas désactiver votre propre compte.",
+      "cannotDeactivateLastSuperAdmin": "Impossible de désactiver le dernier super_admin actif.",
+      "cannotActivateNoRoles": "Impossible d'activer un utilisateur sans rôles.",
+      "rolesNotFound": "Un ou plusieurs rôles introuvables.",
+      "roleNotAssigned": "L'utilisateur n'a pas ce rôle.",
+      "cannotRemoveOwnAdminRole": "Vous ne pouvez pas supprimer votre propre rôle {role}.",
+      "cannotRemoveLastSuperAdmin": "Impossible de supprimer le dernier rôle super_admin.",
+      "cannotRemoveLastRole": "Impossible de supprimer le dernier rôle d'un utilisateur.",
+      "roleRemoved": "Rôle supprimé."
+    },
+    "invitations": {
+      "messageNoHtml": "Le message ne doit pas contenir de balises HTML.",
+      "userExists": "Un utilisateur avec cet e-mail existe déjà.",
+      "pendingExists": "Une invitation en attente existe déjà pour cet e-mail.",
+      "rolesNotFound": "Un ou plusieurs rôles introuvables.",
+      "notFound": "Invitation non trouvée.",
+      "notFoundOrProcessed": "Invitation non trouvée ou déjà traitée.",
+      "onlyPendingResend": "Seules les invitations en attente peuvent être renvoyées.",
+      "revoked": "Invitation révoquée.",
+      "resent": "Invitation renvoyée."
+    },
+    "approvals": {
+      "notFound": "Utilisateur non trouvé.",
+      "notPending": "L'utilisateur n'est pas en attente d'approbation.",
+      "noRoles": "Impossible d'approuver un utilisateur sans rôles.",
+      "approved": "Utilisateur approuvé.",
+      "rejected": "Utilisateur rejeté.",
+      "reasonNoHtml": "La raison ne doit pas contenir de balises HTML."
+    },
+    "auditLog": {
+      "empty": "Aucune entrée de journal d'audit trouvée."
+    },
+    "media": {
+      "pair": {
+        "notFound": "Aucune paire de médias trouvée pour ce contenu.",
+        "created": "Paire de médias créée avec succès.",
+        "deleted": "Paire de médias supprimée avec succès.",
+        "alreadyExists": "Une paire de médias existe déjà pour ce contexte de contenu."
+      },
+      "asset": {
+        "notFound": "Ressource média non trouvée.",
+        "updated": "Ressource média mise à jour avec succès.",
+        "archived": "Ressource média archivée avec succès.",
+        "restored": "Ressource média restaurée avec succès.",
+        "invalidId": "Format d'identifiant de ressource média invalide.",
+        "listEmpty": "Aucune ressource média correspondant aux critères."
+      },
+      "validation": {
+        "invalidContext": "Contexte de contenu invalide. Doit être alphanumérique avec des tirets, 100 caractères maximum.",
+        "invalidSource": "Source de média invalide.",
+        "invalidVariant": "Variante de thème invalide.",
+        "invalidStatus": "Statut de révision invalide.",
+        "missingAlt": "Le texte alternatif est requis pour l'accessibilité.",
+        "missingPhotographer": "Le nom du photographe est requis pour l'attribution."
+      }
+    }
+  },
+  "permissions": {
+    "forbidden": "Permissions insuffisantes."
+  },
+  "email": {
+    "magicLink": {
+      "subject": "Connexion à Production City",
+      "expiresIn": "15 minutes"
+    },
+    "invitation": {
+      "subject": "Vous avez été invité à Production City",
+      "expiresIn": "7 jours"
+    },
+    "rejection": {
+      "subject": "Production City — Mise à jour de la demande d'accès",
+      "body": "Votre demande d'accès à Production City n'a pas été approuvée. Si vous pensez qu'il s'agit d'une erreur, veuillez contacter l'administrateur."
+    }
+  },
+  "eoi": {
+    "submitted": "Merci de votre intérêt. Un e-mail de confirmation a été envoyé.",
+    "invalidCategory": "Catégorie invalide.",
+    "invalidLocale": "Langue invalide.",
+    "consentRequired": "Vous devez accepter la politique de confidentialité pour soumettre.",
+    "honeypotRejected": "Soumission invalide.",
+    "emailSuppressed": "Impossible d'envoyer la confirmation à cette adresse.",
+    "confirmationSubject": "Merci de votre intérêt pour Production City",
+    "confirmationBody": "Merci d'avoir exprimé votre intérêt pour Production City. Nous avons reçu votre soumission et vous contacterons.",
+    "categoryGeneral": "Demande générale",
+    "categoryProducer": "Producteur",
+    "categoryCreative": "Professionnel créatif",
+    "categoryPartner": "Partenaire",
+    "categoryInvestor": "Investisseur",
+    "categoryEducation": "Éducation",
+    "admin": {
+      "notFound": "Expression d'intérêt non trouvée.",
+      "updated": "Expression d'intérêt mise à jour.",
+      "invalidStatus": "Statut invalide. Autorisés : {allowed}"
+    }
+  },
+  "locales": {
+    "en": "English",
+    "zh": "中文",
+    "hi": "हिन्दी",
+    "es": "Español",
+    "ar": "العربية",
+    "fr": "Français",
+    "bn": "বাংলা",
+    "pt": "Português",
+    "ru": "Русский",
+    "ja": "日本語"
+  },
+  "errors": {
+    "rateLimited": "Trop de requêtes. Réessayez plus tard.",
+    "notFound": "Ressource non trouvée.",
+    "invalidInput": "Entrée invalide.",
+    "conflict": "Conflit.",
+    "unauthorized": "Authentification requise.",
+    "forbidden": "Permissions insuffisantes.",
+    "serviceUnavailable": "Service temporairement indisponible.",
+    "internalError": "Une erreur interne s'est produite."
+  }
+}

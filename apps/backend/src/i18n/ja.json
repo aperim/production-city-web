@@ -1,0 +1,150 @@
+{
+  "auth": {
+    "login": {
+      "rateLimited": "リクエストが多すぎます。後でもう一度お試しください。",
+      "checkEmail": "サインインリンクのメールを確認してください",
+      "invalidToken": "無効または期限切れの認証トークンです。",
+      "invalidCode": "無効または期限切れのコードです。",
+      "loggedOut": "ログアウトしました",
+      "required": "認証が必要です。",
+      "invalidSession": "無効または期限切れのセッションです。",
+      "accountInactive": "アカウントがアクティブではありません。"
+    },
+    "verify": {
+      "tokenFailed": "トークンの検証に失敗しました。",
+      "codeFailed": "コードの検証に失敗しました。",
+      "tokenInvalid": "このリンクは無効または期限切れです。新しいリンクをリクエストしてください。"
+    },
+    "csrf": {
+      "invalidOrigin": "無効なリクエスト元です。",
+      "missingHeader": "OriginまたはRefererヘッダーがありません。",
+      "originMismatch": "オリジンが一致しません。"
+    }
+  },
+  "admin": {
+    "users": {
+      "notFound": "ユーザーが見つかりません。",
+      "invalidParam": "無効なパラメータです。",
+      "invalidSortBy": "無効なソートフィールドです。許可: {allowed}",
+      "invalidSortOrder": "無効なソート順です。許可: {allowed}",
+      "searchTooLong": "検索クエリが長すぎます（最大200文字）。",
+      "invalidStatus": "無効なステータスです。許可: {allowed}",
+      "nameNoHtml": "名前にHTMLタグを含めることはできません。",
+      "cannotDeactivateSelf": "自分のアカウントを無効化できません。",
+      "cannotDeactivateLastSuperAdmin": "最後のアクティブなsuper_adminを無効化できません。",
+      "cannotActivateNoRoles": "ロールのないユーザーをアクティブ化できません。",
+      "rolesNotFound": "1つ以上のロールが見つかりません。",
+      "roleNotAssigned": "ユーザーにはこのロールがありません。",
+      "cannotRemoveOwnAdminRole": "自分の{role}ロールを削除できません。",
+      "cannotRemoveLastSuperAdmin": "最後のsuper_adminロールを削除できません。",
+      "cannotRemoveLastRole": "ユーザーの最後のロールを削除できません。",
+      "roleRemoved": "ロールが削除されました。"
+    },
+    "invitations": {
+      "messageNoHtml": "メッセージにHTMLタグを含めることはできません。",
+      "userExists": "このメールアドレスのユーザーは既に存在します。",
+      "pendingExists": "このメールアドレスの保留中の招待が既に存在します。",
+      "rolesNotFound": "1つ以上のロールが見つかりません。",
+      "notFound": "招待が見つかりません。",
+      "notFoundOrProcessed": "招待が見つからないか、既に処理されています。",
+      "onlyPendingResend": "保留中の招待のみ再送信できます。",
+      "revoked": "招待が取り消されました。",
+      "resent": "招待が再送信されました。"
+    },
+    "approvals": {
+      "notFound": "ユーザーが見つかりません。",
+      "notPending": "ユーザーは承認待ちではありません。",
+      "noRoles": "ロールのないユーザーを承認できません。",
+      "approved": "ユーザーが承認されました。",
+      "rejected": "ユーザーが拒否されました。",
+      "reasonNoHtml": "理由にHTMLタグを含めることはできません。"
+    },
+    "auditLog": {
+      "empty": "監査ログのエントリが見つかりません。"
+    },
+    "media": {
+      "pair": {
+        "notFound": "このコンテンツのメディアペアが見つかりません。",
+        "created": "メディアペアが正常に作成されました。",
+        "deleted": "メディアペアが正常に削除されました。",
+        "alreadyExists": "このコンテンツコンテキストのメディアペアは既に存在します。"
+      },
+      "asset": {
+        "notFound": "メディアアセットが見つかりません。",
+        "updated": "メディアアセットが正常に更新されました。",
+        "archived": "メディアアセットが正常にアーカイブされました。",
+        "restored": "メディアアセットが正常に復元されました。",
+        "invalidId": "無効なメディアアセットIDの形式です。",
+        "listEmpty": "条件に一致するメディアアセットが見つかりません。"
+      },
+      "validation": {
+        "invalidContext": "無効なコンテンツコンテキストです。英数字とハイフン、最大100文字です。",
+        "invalidSource": "無効なメディアソースです。",
+        "invalidVariant": "無効なテーマバリアントです。",
+        "invalidStatus": "無効なレビューステータスです。",
+        "missingAlt": "アクセシビリティのため代替テキストが必要です。",
+        "missingPhotographer": "帰属のため撮影者名が必要です。"
+      }
+    }
+  },
+  "permissions": {
+    "forbidden": "権限が不足しています。"
+  },
+  "email": {
+    "magicLink": {
+      "subject": "Production Cityにサインイン",
+      "expiresIn": "15分"
+    },
+    "invitation": {
+      "subject": "Production Cityに招待されました",
+      "expiresIn": "7日間"
+    },
+    "rejection": {
+      "subject": "Production City — アクセスリクエストの更新",
+      "body": "Production Cityへのアクセスリクエストは承認されませんでした。これがエラーだと思われる場合は、管理者にお問い合わせください。"
+    }
+  },
+  "eoi": {
+    "submitted": "ご関心をお寄せいただきありがとうございます。確認メールを送信しました。",
+    "invalidCategory": "無効なカテゴリです。",
+    "invalidLocale": "無効な言語です。",
+    "consentRequired": "送信するにはプライバシーポリシーに同意する必要があります。",
+    "honeypotRejected": "無効な送信です。",
+    "emailSuppressed": "このアドレスに確認を送信できませんでした。",
+    "confirmationSubject": "Production Cityへのご関心ありがとうございます",
+    "confirmationBody": "Production Cityに関心をお寄せいただきありがとうございます。送信を受け取りました。ご連絡いたします。",
+    "categoryGeneral": "一般的なお問い合わせ",
+    "categoryProducer": "プロデューサー",
+    "categoryCreative": "クリエイティブプロフェッショナル",
+    "categoryPartner": "パートナー",
+    "categoryInvestor": "投資家",
+    "categoryEducation": "教育",
+    "admin": {
+      "notFound": "関心表明が見つかりません。",
+      "updated": "関心表明が更新されました。",
+      "invalidStatus": "無効なステータスです。許可: {allowed}"
+    }
+  },
+  "locales": {
+    "en": "English",
+    "zh": "中文",
+    "hi": "हिन्दी",
+    "es": "Español",
+    "ar": "العربية",
+    "fr": "Français",
+    "bn": "বাংলা",
+    "pt": "Português",
+    "ru": "Русский",
+    "ja": "日本語"
+  },
+  "errors": {
+    "rateLimited": "リクエストが多すぎます。後でもう一度お試しください。",
+    "notFound": "リソースが見つかりません。",
+    "invalidInput": "無効な入力です。",
+    "conflict": "競合です。",
+    "unauthorized": "認証が必要です。",
+    "forbidden": "権限が不足しています。",
+    "serviceUnavailable": "サービスは一時的に利用できません。",
+    "internalError": "内部エラーが発生しました。"
+  }
+}

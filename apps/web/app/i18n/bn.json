@@ -179,35 +179,35 @@
     "signOut": "Sign Out"
   },
   "eoi": {
-    "formTitle": "Express Your Interest",
-    "nameLabel": "Full name",
-    "namePlaceholder": "Your name",
-    "emailLabel": "Email address",
+    "formTitle": "আপনার আগ্রহ প্রকাশ করুন",
+    "nameLabel": "পূর্ণ নাম",
+    "namePlaceholder": "আপনার নাম",
+    "emailLabel": "ইমেইল ঠিকানা",
     "emailPlaceholder": "you@example.com",
-    "messageLabel": "Message (optional)",
-    "messagePlaceholder": "Tell us about your interest...",
-    "categoryLabel": "I am a...",
-    "categoryGeneral": "General Inquiry",
-    "categoryProducer": "Producer",
-    "categoryCreative": "Creative Professional",
-    "categoryPartner": "Partner",
-    "categoryInvestor": "Investor",
-    "categoryEducation": "Education",
-    "consentLabel": "I have read and agree to the {privacyPolicy}",
-    "privacyPolicyLink": "Privacy Policy",
-    "marketingOptInLabel": "I would like to receive updates about Production City",
-    "submitButton": "Submit",
-    "submitting": "Submitting...",
-    "successTitle": "Thank you!",
-    "successMessage": "We have received your expression of interest and will be in touch.",
-    "errorMessage": "Something went wrong. Please try again.",
-    "rateLimited": "Too many submissions. Please try again later."
+    "messageLabel": "বার্তা (ঐচ্ছিক)",
+    "messagePlaceholder": "আমাদের আপনার আগ্রহ সম্পর্কে বলুন...",
+    "categoryLabel": "আমি...",
+    "categoryGeneral": "সাধারণ অনুসন্ধান",
+    "categoryProducer": "প্রযোজক",
+    "categoryCreative": "সৃজনশীল পেশাদার",
+    "categoryPartner": "অংশীদার",
+    "categoryInvestor": "বিনিয়োগকারী",
+    "categoryEducation": "শিক্ষা",
+    "consentLabel": "আমি {privacyPolicy} পড়েছি এবং সম্মত",
+    "privacyPolicyLink": "গোপনীয়তা নীতি",
+    "marketingOptInLabel": "আমি Production City সম্পর্কে আপডেট পেতে চাই",
+    "submitButton": "জমা দিন",
+    "submitting": "জমা দেওয়া হচ্ছে...",
+    "successTitle": "ধন্যবাদ!",
+    "successMessage": "আমরা আপনার আগ্রহ পেয়েছি এবং যোগাযোগ করব।",
+    "errorMessage": "কিছু ভুল হয়েছে। অনুগ্রহ করে আবার চেষ্টা করুন।",
+    "rateLimited": "অনেক বেশি জমা। অনুগ্রহ করে পরে আবার চেষ্টা করুন।"
   },
   "legal": {
-    "privacyPolicy": "Privacy Policy",
-    "termsOfUse": "Terms of Use",
-    "lastUpdated": "Last updated: {date}",
-    "backToHome": "Back to home",
+    "privacyPolicy": "গোপনীয়তা নীতি",
+    "termsOfUse": "ব্যবহারের শর্তাবলী",
+    "lastUpdated": "সর্বশেষ আপডেট: {date}",
+    "backToHome": "হোমে ফিরে যান",
     "privacy": {
       "title": "Privacy Policy",
       "effectiveDate": "Effective date: {date}",
@@ -315,13 +315,13 @@
     }
   },
   "footer": {
-    "privacyPolicy": "Privacy Policy",
-    "termsOfUse": "Terms of Use",
-    "copyright": "© {year} Aperim Pty Ltd. All rights reserved.",
-    "disclaimer": "Production City™ is a trademark of Aperim Pty Ltd."
+    "privacyPolicy": "গোপনীয়তা নীতি",
+    "termsOfUse": "ব্যবহারের শর্তাবলী",
+    "copyright": "© {year} Aperim Pty Ltd. সর্বস্বত্ব সংরক্ষিত।",
+    "disclaimer": "Production City™ Aperim Pty Ltd-এর ট্রেডমার্ক।"
   },
   "languageSwitcher": {
-    "label": "Language",
-    "ariaLabel": "Select language"
+    "label": "ভাষা",
+    "ariaLabel": "ভাষা নির্বাচন করুন"
   }
 }

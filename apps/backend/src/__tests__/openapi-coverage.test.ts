@@ -80,5 +80,13 @@ describe("OpenAPI coverage", () => {
     expect(paths).toContain("/v1/admin/roles");
     expect(paths).toContain("/v1/admin/permissions");
     expect(paths).toContain("/v1/admin/audit-log");
+    // EOI public endpoints
+    expect(paths).toContain("/v1/eoi");
+    expect(paths).toContain("/v1/eoi/categories");
+    expect(paths).toContain("/v1/locales");
+    // EOI admin endpoints
+    expect(paths).toContain("/v1/admin/eoi");
+    expect(paths).toContain("/v1/admin/eoi/{id}");
+    expect(paths).toContain("/v1/admin/eoi/stats");
   });
 });

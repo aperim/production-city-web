@@ -12,6 +12,8 @@ import { rolesApp } from "./admin/roles.js";
 import { auditLogApp } from "./admin/audit-log.js";
 import { mediaAdminApp } from "./admin/media.js";
 import { mediaApp } from "./media/handlers.js";
+import { eoiApp } from "./eoi/handlers.js";
+import { eoiAdminApp } from "./admin/eoi.js";
 
 /**
  * Mount all auth and admin routes onto the main app.
@@ -34,6 +36,12 @@ export function mountRoutes(app: OpenAPIHono<{ Bindings: Record<string, unknown>
 
   // Public media routes (no auth required)
   app.route("/", mediaApp);
+
+  // EOI admin routes (auth + admin role required)
+  app.route("/", eoiAdminApp);
+
+  // Public EOI and locales routes (no auth required)
+  app.route("/", eoiApp);
 
   // Test routes — only in test environment (build-time conditional import).
   // Requires BOTH NODE_ENV=test AND TEST_ENABLED=true.

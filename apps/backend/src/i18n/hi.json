@@ -1,0 +1,150 @@
+{
+  "auth": {
+    "login": {
+      "rateLimited": "बहुत अधिक अनुरोध। बाद में पुनः प्रयास करें।",
+      "checkEmail": "साइन-इन लिंक के लिए अपना ईमेल जांचें",
+      "invalidToken": "अमान्य या समय-सीमा समाप्त प्रमाणीकरण टोकन।",
+      "invalidCode": "अमान्य या समय-सीमा समाप्त कोड।",
+      "loggedOut": "लॉग आउट हो गया",
+      "required": "प्रमाणीकरण आवश्यक है।",
+      "invalidSession": "अमान्य या समय-सीमा समाप्त सत्र।",
+      "accountInactive": "खाता सक्रिय नहीं है।"
+    },
+    "verify": {
+      "tokenFailed": "टोकन सत्यापन विफल।",
+      "codeFailed": "कोड सत्यापन विफल।",
+      "tokenInvalid": "यह लिंक अमान्य या समय-सीमा समाप्त है। कृपया एक नया अनुरोध करें।"
+    },
+    "csrf": {
+      "invalidOrigin": "अमान्य अनुरोध मूल।",
+      "missingHeader": "Origin या Referer हेडर गायब है।",
+      "originMismatch": "मूल मेल नहीं खाता।"
+    }
+  },
+  "admin": {
+    "users": {
+      "notFound": "उपयोगकर्ता नहीं मिला।",
+      "invalidParam": "अमान्य पैरामीटर।",
+      "invalidSortBy": "अमान्य क्रमबद्ध फ़ील्ड। अनुमत: {allowed}",
+      "invalidSortOrder": "अमान्य क्रम। अनुमत: {allowed}",
+      "searchTooLong": "खोज बहुत लंबी है (अधिकतम 200 वर्ण)।",
+      "invalidStatus": "अमान्य स्थिति। अनुमत: {allowed}",
+      "nameNoHtml": "नाम में HTML टैग नहीं होने चाहिए।",
+      "cannotDeactivateSelf": "अपना खाता निष्क्रिय नहीं कर सकते।",
+      "cannotDeactivateLastSuperAdmin": "अंतिम सक्रिय super_admin को निष्क्रिय नहीं कर सकते।",
+      "cannotActivateNoRoles": "बिना भूमिका वाले उपयोगकर्ता को सक्रिय नहीं कर सकते।",
+      "rolesNotFound": "एक या अधिक भूमिकाएँ नहीं मिलीं।",
+      "roleNotAssigned": "उपयोगकर्ता के पास यह भूमिका नहीं है।",
+      "cannotRemoveOwnAdminRole": "अपनी {role} भूमिका नहीं हटा सकते।",
+      "cannotRemoveLastSuperAdmin": "अंतिम super_admin भूमिका नहीं हटा सकते।",
+      "cannotRemoveLastRole": "उपयोगकर्ता की अंतिम भूमिका नहीं हटा सकते।",
+      "roleRemoved": "भूमिका हटाई गई।"
+    },
+    "invitations": {
+      "messageNoHtml": "संदेश में HTML टैग नहीं होने चाहिए।",
+      "userExists": "इस ईमेल से एक उपयोगकर्ता पहले से मौजूद है।",
+      "pendingExists": "इस ईमेल के लिए एक लंबित आमंत्रण पहले से मौजूद है।",
+      "rolesNotFound": "एक या अधिक भूमिकाएँ नहीं मिलीं।",
+      "notFound": "आमंत्रण नहीं मिला।",
+      "notFoundOrProcessed": "आमंत्रण नहीं मिला या पहले से संसाधित है।",
+      "onlyPendingResend": "केवल लंबित आमंत्रण ही पुनः भेजे जा सकते हैं।",
+      "revoked": "आमंत्रण रद्द किया गया।",
+      "resent": "आमंत्रण पुनः भेजा गया।"
+    },
+    "approvals": {
+      "notFound": "उपयोगकर्ता नहीं मिला।",
+      "notPending": "उपयोगकर्ता अनुमोदन के लिए लंबित नहीं है।",
+      "noRoles": "बिना भूमिका वाले उपयोगकर्ता को अनुमोदित नहीं कर सकते।",
+      "approved": "उपयोगकर्ता अनुमोदित।",
+      "rejected": "उपयोगकर्ता अस्वीकृत।",
+      "reasonNoHtml": "कारण में HTML टैग नहीं होने चाहिए।"
+    },
+    "auditLog": {
+      "empty": "कोई ऑडिट लॉग प्रविष्टियाँ नहीं मिलीं।"
+    },
+    "media": {
+      "pair": {
+        "notFound": "इस सामग्री के लिए कोई मीडिया जोड़ी नहीं मिली।",
+        "created": "मीडिया जोड़ी सफलतापूर्वक बनाई गई।",
+        "deleted": "मीडिया जोड़ी सफलतापूर्वक हटाई गई।",
+        "alreadyExists": "इस सामग्री संदर्भ के लिए एक मीडिया जोड़ी पहले से मौजूद है।"
+      },
+      "asset": {
+        "notFound": "मीडिया संपत्ति नहीं मिली।",
+        "updated": "मीडिया संपत्ति सफलतापूर्वक अपडेट की गई।",
+        "archived": "मीडिया संपत्ति सफलतापूर्वक संग्रहीत की गई।",
+        "restored": "मीडिया संपत्ति सफलतापूर्वक पुनर्स्थापित की गई।",
+        "invalidId": "अमान्य मीडिया संपत्ति ID प्रारूप।",
+        "listEmpty": "मानदंडों से मेल खाती कोई मीडिया संपत्ति नहीं मिली।"
+      },
+      "validation": {
+        "invalidContext": "अमान्य सामग्री संदर्भ। अल्फ़ान्यूमेरिक और हाइफ़न होने चाहिए, अधिकतम 100 वर्ण।",
+        "invalidSource": "अमान्य मीडिया स्रोत।",
+        "invalidVariant": "अमान्य थीम वैरिएंट।",
+        "invalidStatus": "अमान्य समीक्षा स्थिति।",
+        "missingAlt": "पहुँच-योग्यता के लिए वैकल्पिक पाठ आवश्यक है।",
+        "missingPhotographer": "एट्रिब्यूशन के लिए फ़ोटोग्राफ़र का नाम आवश्यक है।"
+      }
+    }
+  },
+  "permissions": {
+    "forbidden": "अपर्याप्त अनुमतियाँ।"
+  },
+  "email": {
+    "magicLink": {
+      "subject": "Production City में साइन इन करें",
+      "expiresIn": "15 मिनट"
+    },
+    "invitation": {
+      "subject": "आपको Production City में आमंत्रित किया गया है",
+      "expiresIn": "7 दिन"
+    },
+    "rejection": {
+      "subject": "Production City — पहुँच अनुरोध अपडेट",
+      "body": "Production City के लिए आपका पहुँच अनुरोध स्वीकृत नहीं हुआ। यदि आपको लगता है कि यह एक त्रुटि है, तो कृपया प्रशासक से संपर्क करें।"
+    }
+  },
+  "eoi": {
+    "submitted": "आपकी रुचि के लिए धन्यवाद। एक पुष्टिकरण ईमेल भेजा गया है।",
+    "invalidCategory": "अमान्य श्रेणी।",
+    "invalidLocale": "अमान्य भाषा।",
+    "consentRequired": "सबमिट करने के लिए आपको गोपनीयता नीति स्वीकार करनी होगी।",
+    "honeypotRejected": "अमान्य सबमिशन।",
+    "emailSuppressed": "इस पते पर पुष्टिकरण नहीं भेजा जा सका।",
+    "confirmationSubject": "Production City में आपकी रुचि के लिए धन्यवाद",
+    "confirmationBody": "Production City में आपकी रुचि व्यक्त करने के लिए धन्यवाद। हमें आपका सबमिशन प्राप्त हो गया है और हम संपर्क करेंगे।",
+    "categoryGeneral": "सामान्य पूछताछ",
+    "categoryProducer": "निर्माता",
+    "categoryCreative": "रचनात्मक पेशेवर",
+    "categoryPartner": "साझेदार",
+    "categoryInvestor": "निवेशक",
+    "categoryEducation": "शिक्षा",
+    "admin": {
+      "notFound": "रुचि की अभिव्यक्ति नहीं मिली।",
+      "updated": "रुचि की अभिव्यक्ति अपडेट की गई।",
+      "invalidStatus": "अमान्य स्थिति। अनुमत: {allowed}"
+    }
+  },
+  "locales": {
+    "en": "English",
+    "zh": "中文",
+    "hi": "हिन्दी",
+    "es": "Español",
+    "ar": "العربية",
+    "fr": "Français",
+    "bn": "বাংলা",
+    "pt": "Português",
+    "ru": "Русский",
+    "ja": "日本語"
+  },
+  "errors": {
+    "rateLimited": "बहुत अधिक अनुरोध। बाद में पुनः प्रयास करें।",
+    "notFound": "संसाधन नहीं मिला।",
+    "invalidInput": "अमान्य इनपुट।",
+    "conflict": "विरोध।",
+    "unauthorized": "प्रमाणीकरण आवश्यक है।",
+    "forbidden": "अपर्याप्त अनुमतियाँ।",
+    "serviceUnavailable": "सेवा अस्थायी रूप से अनुपलब्ध।",
+    "internalError": "एक आंतरिक त्रुटि हुई।"
+  }
+}

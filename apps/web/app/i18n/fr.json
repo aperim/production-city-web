@@ -179,35 +179,35 @@
     "signOut": "Sign Out"
   },
   "eoi": {
-    "formTitle": "Express Your Interest",
-    "nameLabel": "Full name",
-    "namePlaceholder": "Your name",
-    "emailLabel": "Email address",
+    "formTitle": "Exprimez votre intérêt",
+    "nameLabel": "Nom complet",
+    "namePlaceholder": "Votre nom",
+    "emailLabel": "Adresse e-mail",
     "emailPlaceholder": "you@example.com",
-    "messageLabel": "Message (optional)",
-    "messagePlaceholder": "Tell us about your interest...",
-    "categoryLabel": "I am a...",
-    "categoryGeneral": "General Inquiry",
-    "categoryProducer": "Producer",
-    "categoryCreative": "Creative Professional",
-    "categoryPartner": "Partner",
-    "categoryInvestor": "Investor",
-    "categoryEducation": "Education",
-    "consentLabel": "I have read and agree to the {privacyPolicy}",
-    "privacyPolicyLink": "Privacy Policy",
-    "marketingOptInLabel": "I would like to receive updates about Production City",
-    "submitButton": "Submit",
-    "submitting": "Submitting...",
-    "successTitle": "Thank you!",
-    "successMessage": "We have received your expression of interest and will be in touch.",
-    "errorMessage": "Something went wrong. Please try again.",
-    "rateLimited": "Too many submissions. Please try again later."
+    "messageLabel": "Message (optionnel)",
+    "messagePlaceholder": "Parlez-nous de votre intérêt...",
+    "categoryLabel": "Je suis...",
+    "categoryGeneral": "Demande générale",
+    "categoryProducer": "Producteur",
+    "categoryCreative": "Professionnel créatif",
+    "categoryPartner": "Partenaire",
+    "categoryInvestor": "Investisseur",
+    "categoryEducation": "Éducation",
+    "consentLabel": "J'ai lu et j'accepte la {privacyPolicy}",
+    "privacyPolicyLink": "Politique de confidentialité",
+    "marketingOptInLabel": "Je souhaite recevoir des mises à jour sur Production City",
+    "submitButton": "Envoyer",
+    "submitting": "Envoi en cours...",
+    "successTitle": "Merci !",
+    "successMessage": "Nous avons reçu votre expression d'intérêt et vous contacterons.",
+    "errorMessage": "Une erreur est survenue. Veuillez réessayer.",
+    "rateLimited": "Trop de soumissions. Veuillez réessayer plus tard."
   },
   "legal": {
-    "privacyPolicy": "Privacy Policy",
-    "termsOfUse": "Terms of Use",
-    "lastUpdated": "Last updated: {date}",
-    "backToHome": "Back to home",
+    "privacyPolicy": "Politique de confidentialité",
+    "termsOfUse": "Conditions d'utilisation",
+    "lastUpdated": "Dernière mise à jour : {date}",
+    "backToHome": "Retour à l'accueil",
     "privacy": {
       "title": "Privacy Policy",
       "effectiveDate": "Effective date: {date}",
@@ -315,13 +315,13 @@
     }
   },
   "footer": {
-    "privacyPolicy": "Privacy Policy",
-    "termsOfUse": "Terms of Use",
-    "copyright": "© {year} Aperim Pty Ltd. All rights reserved.",
-    "disclaimer": "Production City™ is a trademark of Aperim Pty Ltd."
+    "privacyPolicy": "Politique de confidentialité",
+    "termsOfUse": "Conditions d'utilisation",
+    "copyright": "© {year} Aperim Pty Ltd. Tous droits réservés.",
+    "disclaimer": "Production City™ est une marque déposée d'Aperim Pty Ltd."
   },
   "languageSwitcher": {
-    "label": "Language",
-    "ariaLabel": "Select language"
+    "label": "Langue",
+    "ariaLabel": "Sélectionner la langue"
   }
 }

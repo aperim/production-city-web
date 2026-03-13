@@ -326,6 +326,61 @@ model MediaAsset {
   @@index([archivedAt])
 }
 
+/// Expression of Interest submissions from public landing pages.
+/// Categorised by audience type with structured metadata per category.
+/// Will be JSONB in PostgreSQL; TEXT for D1 compatibility.
+model ExpressionOfInterest {
+  id              String    @id @default(cuid())
+  /// general | producer | creative | partner | investor | education
+  category        String
+  /// new | contacted | converted | archived
+  status          String    @default("new")
+  /// Submission language (validated against supported locales)
+  locale          String    @default("en")
+
+  // Common fields
+  name            String
+  email           String
+  message         String?
+
+  // Category-specific structured data (JSON-as-string for D1 compatibility)
+  metadata        String?
+
+  // Source tracking
+  sourcePage      String
+  sourceCategory  String?
+  utmSource       String?
+  utmMedium       String?
+  utmCampaign     String?
+
+  // Consent tracking (GDPR / Australian Privacy Act)
+  consentVersion     String
+  privacyAcceptedAt  DateTime
+  marketingOptIn     Boolean   @default(false)
+
+  // Confirmation email
+  confirmationSentAt DateTime?
+  postmarkMessageId  String?
+
+  // Timestamps
+  createdAt       DateTime  @default(now())
+  updatedAt       DateTime  @updatedAt
+  archivedAt      DateTime?
+  archivedBy      String?
+
+  // Indexes
+  @@index([email])
+  @@index([category])
+  @@index([status])
+  @@index([createdAt])
+  @@index([sourcePage])
+  @@index([locale])
+  @@index([confirmationSentAt])
+  @@index([category, status, createdAt])
+  @@index([email, createdAt])
+  @@index([status, createdAt])
+}
+
 /// Pairs a light-mode and dark-mode media asset for a content context
 model MediaPair {
   id              String     @id @default(cuid())

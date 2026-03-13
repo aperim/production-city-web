@@ -179,35 +179,35 @@
     "signOut": "Sign Out"
   },
   "eoi": {
-    "formTitle": "Express Your Interest",
-    "nameLabel": "Full name",
-    "namePlaceholder": "Your name",
-    "emailLabel": "Email address",
+    "formTitle": "अपनी रुचि व्यक्त करें",
+    "nameLabel": "पूरा नाम",
+    "namePlaceholder": "आपका नाम",
+    "emailLabel": "ईमेल पता",
     "emailPlaceholder": "you@example.com",
-    "messageLabel": "Message (optional)",
-    "messagePlaceholder": "Tell us about your interest...",
-    "categoryLabel": "I am a...",
-    "categoryGeneral": "General Inquiry",
-    "categoryProducer": "Producer",
-    "categoryCreative": "Creative Professional",
-    "categoryPartner": "Partner",
-    "categoryInvestor": "Investor",
-    "categoryEducation": "Education",
-    "consentLabel": "I have read and agree to the {privacyPolicy}",
-    "privacyPolicyLink": "Privacy Policy",
-    "marketingOptInLabel": "I would like to receive updates about Production City",
-    "submitButton": "Submit",
-    "submitting": "Submitting...",
-    "successTitle": "Thank you!",
-    "successMessage": "We have received your expression of interest and will be in touch.",
-    "errorMessage": "Something went wrong. Please try again.",
-    "rateLimited": "Too many submissions. Please try again later."
+    "messageLabel": "संदेश (वैकल्पिक)",
+    "messagePlaceholder": "हमें अपनी रुचि के बारे में बताएं...",
+    "categoryLabel": "मैं हूँ...",
+    "categoryGeneral": "सामान्य पूछताछ",
+    "categoryProducer": "निर्माता",
+    "categoryCreative": "रचनात्मक पेशेवर",
+    "categoryPartner": "साझेदार",
+    "categoryInvestor": "निवेशक",
+    "categoryEducation": "शिक्षा",
+    "consentLabel": "मैंने {privacyPolicy} पढ़ी और स्वीकार की है",
+    "privacyPolicyLink": "गोपनीयता नीति",
+    "marketingOptInLabel": "मैं Production City के बारे में अपडेट प्राप्त करना चाहता/चाहती हूँ",
+    "submitButton": "सबमिट करें",
+    "submitting": "सबमिट हो रहा है...",
+    "successTitle": "धन्यवाद!",
+    "successMessage": "हमें आपकी रुचि प्राप्त हुई है और हम संपर्क करेंगे।",
+    "errorMessage": "कुछ गलत हो गया। कृपया पुनः प्रयास करें।",
+    "rateLimited": "बहुत अधिक सबमिशन। कृपया बाद में पुनः प्रयास करें।"
   },
   "legal": {
-    "privacyPolicy": "Privacy Policy",
-    "termsOfUse": "Terms of Use",
-    "lastUpdated": "Last updated: {date}",
-    "backToHome": "Back to home",
+    "privacyPolicy": "गोपनीयता नीति",
+    "termsOfUse": "उपयोग की शर्तें",
+    "lastUpdated": "अंतिम अपडेट: {date}",
+    "backToHome": "होम पर वापस जाएँ",
     "privacy": {
       "title": "Privacy Policy",
       "effectiveDate": "Effective date: {date}",
@@ -315,13 +315,13 @@
     }
   },
   "footer": {
-    "privacyPolicy": "Privacy Policy",
-    "termsOfUse": "Terms of Use",
-    "copyright": "© {year} Aperim Pty Ltd. All rights reserved.",
-    "disclaimer": "Production City™ is a trademark of Aperim Pty Ltd."
+    "privacyPolicy": "गोपनीयता नीति",
+    "termsOfUse": "उपयोग की शर्तें",
+    "copyright": "© {year} Aperim Pty Ltd. सर्वाधिकार सुरक्षित।",
+    "disclaimer": "Production City™ Aperim Pty Ltd का ट्रेडमार्क है।"
   },
   "languageSwitcher": {
-    "label": "Language",
-    "ariaLabel": "Select language"
+    "label": "भाषा",
+    "ariaLabel": "भाषा चुनें"
   }
 }

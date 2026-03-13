@@ -1,0 +1,150 @@
+{
+  "auth": {
+    "login": {
+      "rateLimited": "请求过多，请稍后再试。",
+      "checkEmail": "请检查您的邮箱以获取登录链接",
+      "invalidToken": "无效或已过期的认证令牌。",
+      "invalidCode": "无效或已过期的验证码。",
+      "loggedOut": "已登出",
+      "required": "需要认证。",
+      "invalidSession": "无效或已过期的会话。",
+      "accountInactive": "账户未激活。"
+    },
+    "verify": {
+      "tokenFailed": "令牌验证失败。",
+      "codeFailed": "验证码验证失败。",
+      "tokenInvalid": "此链接无效或已过期。请重新请求。"
+    },
+    "csrf": {
+      "invalidOrigin": "无效的请求来源。",
+      "missingHeader": "缺少 Origin 或 Referer 头。",
+      "originMismatch": "来源不匹配。"
+    }
+  },
+  "admin": {
+    "users": {
+      "notFound": "未找到用户。",
+      "invalidParam": "无效参数。",
+      "invalidSortBy": "无效的排序字段。允许的值：{allowed}",
+      "invalidSortOrder": "无效的排序顺序。允许的值：{allowed}",
+      "searchTooLong": "搜索内容过长（最多200个字符）。",
+      "invalidStatus": "无效状态。允许的值：{allowed}",
+      "nameNoHtml": "姓名不能包含 HTML 标签。",
+      "cannotDeactivateSelf": "不能停用自己的账户。",
+      "cannotDeactivateLastSuperAdmin": "不能停用最后一个活跃的超级管理员。",
+      "cannotActivateNoRoles": "不能激活没有角色的用户。",
+      "rolesNotFound": "一个或多个角色未找到。",
+      "roleNotAssigned": "用户没有该角色。",
+      "cannotRemoveOwnAdminRole": "不能移除自己的{role}角色。",
+      "cannotRemoveLastSuperAdmin": "不能移除最后一个超级管理员角色。",
+      "cannotRemoveLastRole": "不能移除用户的最后一个角色。",
+      "roleRemoved": "角色已移除。"
+    },
+    "invitations": {
+      "messageNoHtml": "消息不能包含 HTML 标签。",
+      "userExists": "该邮箱已有用户。",
+      "pendingExists": "该邮箱已有待处理的邀请。",
+      "rolesNotFound": "一个或多个角色未找到。",
+      "notFound": "未找到邀请。",
+      "notFoundOrProcessed": "未找到邀请或已处理。",
+      "onlyPendingResend": "只能重新发送待处理的邀请。",
+      "revoked": "邀请已撤销。",
+      "resent": "邀请已重新发送。"
+    },
+    "approvals": {
+      "notFound": "未找到用户。",
+      "notPending": "用户不在待批准状态。",
+      "noRoles": "不能批准没有角色的用户。",
+      "approved": "用户已批准。",
+      "rejected": "用户已拒绝。",
+      "reasonNoHtml": "原因不能包含 HTML 标签。"
+    },
+    "auditLog": {
+      "empty": "未找到审计日志条目。"
+    },
+    "media": {
+      "pair": {
+        "notFound": "未找到该内容的媒体配对。",
+        "created": "媒体配对创建成功。",
+        "deleted": "媒体配对已移除。",
+        "alreadyExists": "该内容上下文已有媒体配对。"
+      },
+      "asset": {
+        "notFound": "未找到媒体资产。",
+        "updated": "媒体资产更新成功。",
+        "archived": "媒体资产已归档。",
+        "restored": "媒体资产已恢复。",
+        "invalidId": "无效的媒体资产 ID 格式。",
+        "listEmpty": "未找到匹配条件的媒体资产。"
+      },
+      "validation": {
+        "invalidContext": "无效的内容上下文。必须为字母数字和连字符，最多100个字符。",
+        "invalidSource": "无效的媒体来源。",
+        "invalidVariant": "无效的主题变体。",
+        "invalidStatus": "无效的审核状态。",
+        "missingAlt": "需要替代文本以确保可访问性。",
+        "missingPhotographer": "需要摄影师姓名以进行署名。"
+      }
+    }
+  },
+  "permissions": {
+    "forbidden": "权限不足。"
+  },
+  "email": {
+    "magicLink": {
+      "subject": "登录 Production City",
+      "expiresIn": "15 分钟"
+    },
+    "invitation": {
+      "subject": "您已被邀请加入 Production City",
+      "expiresIn": "7 天"
+    },
+    "rejection": {
+      "subject": "Production City — 访问请求更新",
+      "body": "您的 Production City 访问请求未获批准。如果您认为这是一个错误，请联系管理员。"
+    }
+  },
+  "eoi": {
+    "submitted": "感谢您的关注。确认邮件已发送。",
+    "invalidCategory": "无效的类别。",
+    "invalidLocale": "无效的语言。",
+    "consentRequired": "您必须接受隐私政策才能提交。",
+    "honeypotRejected": "无效的提交。",
+    "emailSuppressed": "无法向该地址发送确认邮件。",
+    "confirmationSubject": "感谢您对 Production City 的关注",
+    "confirmationBody": "感谢您表达对 Production City 的兴趣。我们已收到您的提交，将很快与您联系。",
+    "categoryGeneral": "一般咨询",
+    "categoryProducer": "制作人",
+    "categoryCreative": "创意专业人士",
+    "categoryPartner": "合作伙伴",
+    "categoryInvestor": "投资者",
+    "categoryEducation": "教育",
+    "admin": {
+      "notFound": "未找到意向表达。",
+      "updated": "意向表达已更新。",
+      "invalidStatus": "无效状态。允许的值：{allowed}"
+    }
+  },
+  "locales": {
+    "en": "English",
+    "zh": "中文",
+    "hi": "हिन्दी",
+    "es": "Español",
+    "ar": "العربية",
+    "fr": "Français",
+    "bn": "বাংলা",
+    "pt": "Português",
+    "ru": "Русский",
+    "ja": "日本語"
+  },
+  "errors": {
+    "rateLimited": "请求过多，请稍后再试。",
+    "notFound": "未找到资源。",
+    "invalidInput": "无效输入。",
+    "conflict": "冲突。",
+    "unauthorized": "需要认证。",
+    "forbidden": "权限不足。",
+    "serviceUnavailable": "服务暂时不可用。",
+    "internalError": "发生内部错误。"
+  }
+}

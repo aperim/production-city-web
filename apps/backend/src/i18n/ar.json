@@ -1,0 +1,150 @@
+{
+  "auth": {
+    "login": {
+      "rateLimited": "طلبات كثيرة جدًا. حاول مرة أخرى لاحقًا.",
+      "checkEmail": "تحقق من بريدك الإلكتروني للحصول على رابط تسجيل الدخول",
+      "invalidToken": "رمز المصادقة غير صالح أو منتهي الصلاحية.",
+      "invalidCode": "الرمز غير صالح أو منتهي الصلاحية.",
+      "loggedOut": "تم تسجيل الخروج",
+      "required": "المصادقة مطلوبة.",
+      "invalidSession": "الجلسة غير صالحة أو منتهية الصلاحية.",
+      "accountInactive": "الحساب غير نشط."
+    },
+    "verify": {
+      "tokenFailed": "فشل التحقق من الرمز.",
+      "codeFailed": "فشل التحقق من الكود.",
+      "tokenInvalid": "هذا الرابط غير صالح أو منتهي الصلاحية. يرجى طلب رابط جديد."
+    },
+    "csrf": {
+      "invalidOrigin": "مصدر الطلب غير صالح.",
+      "missingHeader": "رأس Origin أو Referer مفقود.",
+      "originMismatch": "عدم تطابق المصدر."
+    }
+  },
+  "admin": {
+    "users": {
+      "notFound": "المستخدم غير موجود.",
+      "invalidParam": "معلمة غير صالحة.",
+      "invalidSortBy": "حقل الترتيب غير صالح. المسموح: {allowed}",
+      "invalidSortOrder": "ترتيب الفرز غير صالح. المسموح: {allowed}",
+      "searchTooLong": "استعلام البحث طويل جدًا (الحد الأقصى 200 حرف).",
+      "invalidStatus": "الحالة غير صالحة. المسموح: {allowed}",
+      "nameNoHtml": "يجب ألا يحتوي الاسم على وسوم HTML.",
+      "cannotDeactivateSelf": "لا يمكنك إلغاء تنشيط حسابك الخاص.",
+      "cannotDeactivateLastSuperAdmin": "لا يمكن إلغاء تنشيط آخر مشرف عام نشط.",
+      "cannotActivateNoRoles": "لا يمكن تنشيط مستخدم بدون أدوار.",
+      "rolesNotFound": "دور واحد أو أكثر غير موجود.",
+      "roleNotAssigned": "المستخدم لا يملك هذا الدور.",
+      "cannotRemoveOwnAdminRole": "لا يمكنك إزالة دور {role} الخاص بك.",
+      "cannotRemoveLastSuperAdmin": "لا يمكن إزالة آخر دور مشرف عام.",
+      "cannotRemoveLastRole": "لا يمكن إزالة الدور الأخير من المستخدم.",
+      "roleRemoved": "تمت إزالة الدور."
+    },
+    "invitations": {
+      "messageNoHtml": "يجب ألا تحتوي الرسالة على وسوم HTML.",
+      "userExists": "يوجد مستخدم بهذا البريد الإلكتروني بالفعل.",
+      "pendingExists": "توجد دعوة معلقة بالفعل لهذا البريد الإلكتروني.",
+      "rolesNotFound": "دور واحد أو أكثر غير موجود.",
+      "notFound": "الدعوة غير موجودة.",
+      "notFoundOrProcessed": "الدعوة غير موجودة أو تمت معالجتها بالفعل.",
+      "onlyPendingResend": "يمكن إعادة إرسال الدعوات المعلقة فقط.",
+      "revoked": "تم إلغاء الدعوة.",
+      "resent": "تمت إعادة إرسال الدعوة."
+    },
+    "approvals": {
+      "notFound": "المستخدم غير موجود.",
+      "notPending": "المستخدم ليس في انتظار الموافقة.",
+      "noRoles": "لا يمكن الموافقة على مستخدم بدون أدوار.",
+      "approved": "تمت الموافقة على المستخدم.",
+      "rejected": "تم رفض المستخدم.",
+      "reasonNoHtml": "يجب ألا يحتوي السبب على وسوم HTML."
+    },
+    "auditLog": {
+      "empty": "لم يتم العثور على سجلات تدقيق."
+    },
+    "media": {
+      "pair": {
+        "notFound": "لم يتم العثور على زوج وسائط لهذا المحتوى.",
+        "created": "تم إنشاء زوج الوسائط بنجاح.",
+        "deleted": "تمت إزالة زوج الوسائط بنجاح.",
+        "alreadyExists": "يوجد زوج وسائط بالفعل لسياق المحتوى هذا."
+      },
+      "asset": {
+        "notFound": "أصل الوسائط غير موجود.",
+        "updated": "تم تحديث أصل الوسائط بنجاح.",
+        "archived": "تمت أرشفة أصل الوسائط بنجاح.",
+        "restored": "تمت استعادة أصل الوسائط بنجاح.",
+        "invalidId": "تنسيق معرف أصل الوسائط غير صالح.",
+        "listEmpty": "لم يتم العثور على أصول وسائط مطابقة للمعايير."
+      },
+      "validation": {
+        "invalidContext": "سياق المحتوى غير صالح. يجب أن يكون أبجديًا رقميًا مع شرطات، بحد أقصى 100 حرف.",
+        "invalidSource": "مصدر الوسائط غير صالح.",
+        "invalidVariant": "متغير السمة غير صالح.",
+        "invalidStatus": "حالة المراجعة غير صالحة.",
+        "missingAlt": "النص البديل مطلوب لإمكانية الوصول.",
+        "missingPhotographer": "اسم المصور مطلوب للإسناد."
+      }
+    }
+  },
+  "permissions": {
+    "forbidden": "صلاحيات غير كافية."
+  },
+  "email": {
+    "magicLink": {
+      "subject": "تسجيل الدخول إلى Production City",
+      "expiresIn": "15 دقيقة"
+    },
+    "invitation": {
+      "subject": "تمت دعوتك إلى Production City",
+      "expiresIn": "7 أيام"
+    },
+    "rejection": {
+      "subject": "Production City — تحديث طلب الوصول",
+      "body": "لم تتم الموافقة على طلب الوصول الخاص بك إلى Production City. إذا كنت تعتقد أن هذا خطأ، يرجى الاتصال بالمسؤول."
+    }
+  },
+  "eoi": {
+    "submitted": "شكرًا لاهتمامك. تم إرسال بريد تأكيد.",
+    "invalidCategory": "فئة غير صالحة.",
+    "invalidLocale": "لغة غير صالحة.",
+    "consentRequired": "يجب قبول سياسة الخصوصية للإرسال.",
+    "honeypotRejected": "إرسال غير صالح.",
+    "emailSuppressed": "تعذر إرسال التأكيد إلى هذا العنوان.",
+    "confirmationSubject": "شكرًا لاهتمامك بـ Production City",
+    "confirmationBody": "شكرًا لتعبيرك عن اهتمامك بـ Production City. لقد تلقينا طلبك وسنتواصل معك.",
+    "categoryGeneral": "استفسار عام",
+    "categoryProducer": "منتج",
+    "categoryCreative": "محترف إبداعي",
+    "categoryPartner": "شريك",
+    "categoryInvestor": "مستثمر",
+    "categoryEducation": "تعليم",
+    "admin": {
+      "notFound": "لم يتم العثور على التعبير عن الاهتمام.",
+      "updated": "تم تحديث التعبير عن الاهتمام.",
+      "invalidStatus": "الحالة غير صالحة. المسموح: {allowed}"
+    }
+  },
+  "locales": {
+    "en": "English",
+    "zh": "中文",
+    "hi": "हिन्दी",
+    "es": "Español",
+    "ar": "العربية",
+    "fr": "Français",
+    "bn": "বাংলা",
+    "pt": "Português",
+    "ru": "Русский",
+    "ja": "日本語"
+  },
+  "errors": {
+    "rateLimited": "طلبات كثيرة جدًا. حاول مرة أخرى لاحقًا.",
+    "notFound": "المورد غير موجود.",
+    "invalidInput": "إدخال غير صالح.",
+    "conflict": "تعارض.",
+    "unauthorized": "المصادقة مطلوبة.",
+    "forbidden": "صلاحيات غير كافية.",
+    "serviceUnavailable": "الخدمة غير متاحة مؤقتًا.",
+    "internalError": "حدث خطأ داخلي."
+  }
+}

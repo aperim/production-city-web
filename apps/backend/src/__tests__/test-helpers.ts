@@ -51,6 +51,17 @@ const SCHEMA_STATEMENTS = [
   `CREATE UNIQUE INDEX IF NOT EXISTS "MediaPair_contentContext_key" ON "MediaPair"("contentContext")`,
   `CREATE INDEX IF NOT EXISTS "MediaPair_lightAssetId_idx" ON "MediaPair"("lightAssetId")`,
   `CREATE INDEX IF NOT EXISTS "MediaPair_darkAssetId_idx" ON "MediaPair"("darkAssetId")`,
+  `CREATE TABLE IF NOT EXISTS "ExpressionOfInterest" ("id" TEXT NOT NULL PRIMARY KEY, "category" TEXT NOT NULL, "status" TEXT NOT NULL DEFAULT 'new', "locale" TEXT NOT NULL DEFAULT 'en', "name" TEXT NOT NULL, "email" TEXT NOT NULL, "message" TEXT, "metadata" TEXT, "sourcePage" TEXT NOT NULL, "sourceCategory" TEXT, "utmSource" TEXT, "utmMedium" TEXT, "utmCampaign" TEXT, "consentVersion" TEXT NOT NULL, "privacyAcceptedAt" DATETIME NOT NULL, "marketingOptIn" BOOLEAN NOT NULL DEFAULT false, "confirmationSentAt" DATETIME, "postmarkMessageId" TEXT, "createdAt" DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP, "updatedAt" DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP, "archivedAt" DATETIME, "archivedBy" TEXT)`,
+  `CREATE INDEX IF NOT EXISTS "ExpressionOfInterest_email_idx" ON "ExpressionOfInterest"("email")`,
+  `CREATE INDEX IF NOT EXISTS "ExpressionOfInterest_category_idx" ON "ExpressionOfInterest"("category")`,
+  `CREATE INDEX IF NOT EXISTS "ExpressionOfInterest_status_idx" ON "ExpressionOfInterest"("status")`,
+  `CREATE INDEX IF NOT EXISTS "ExpressionOfInterest_createdAt_idx" ON "ExpressionOfInterest"("createdAt")`,
+  `CREATE INDEX IF NOT EXISTS "ExpressionOfInterest_sourcePage_idx" ON "ExpressionOfInterest"("sourcePage")`,
+  `CREATE INDEX IF NOT EXISTS "ExpressionOfInterest_locale_idx" ON "ExpressionOfInterest"("locale")`,
+  `CREATE INDEX IF NOT EXISTS "ExpressionOfInterest_confirmationSentAt_idx" ON "ExpressionOfInterest"("confirmationSentAt")`,
+  `CREATE INDEX IF NOT EXISTS "ExpressionOfInterest_category_status_createdAt_idx" ON "ExpressionOfInterest"("category", "status", "createdAt")`,
+  `CREATE INDEX IF NOT EXISTS "ExpressionOfInterest_email_createdAt_idx" ON "ExpressionOfInterest"("email", "createdAt")`,
+  `CREATE INDEX IF NOT EXISTS "ExpressionOfInterest_status_createdAt_idx" ON "ExpressionOfInterest"("status", "createdAt")`,
 ];
 
 let _initialized = false;

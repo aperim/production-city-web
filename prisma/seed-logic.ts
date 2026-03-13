@@ -212,8 +212,89 @@ export async function seedDatabase(
     }
   }
 
-  // 4. Dev admin user — only in development or test environments
-  const allowedEnvs = ["development", "test"];
+  // 4. EOI seed data — only in development or test environments
+  const eoiAllowedEnvs = ["development", "test"];
+  if (nodeEnv && eoiAllowedEnvs.includes(nodeEnv)) {
+    const eoiSeeds = [
+      {
+        email: "producer@example.com",
+        category: "producer",
+        name: "Sarah Chen",
+        locale: "en",
+        status: "new" as const,
+        sourcePage: "/facilities",
+        metadata: JSON.stringify({ company: "Chen Studios", productionType: "film", timeline: "6months" }),
+        consentVersion: "2026-03-01",
+        privacyAcceptedAt: new Date(),
+        marketingOptIn: true,
+        utmSource: "google",
+        utmMedium: "cpc",
+        utmCampaign: "facilities-launch",
+      },
+      {
+        email: "creative@example.com",
+        category: "creative",
+        name: "Aiko Tanaka",
+        locale: "ja",
+        status: "new" as const,
+        sourcePage: "/creative-services",
+        metadata: JSON.stringify({ discipline: "visual-effects", portfolioUrl: "https://example.com/portfolio" }),
+        consentVersion: "2026-03-01",
+        privacyAcceptedAt: new Date(),
+      },
+      {
+        email: "partner@example.com",
+        category: "partner",
+        name: "María García",
+        locale: "es",
+        status: "contacted" as const,
+        sourcePage: "/partnerships",
+        metadata: JSON.stringify({ partnershipArea: "technology", organisation: "TechCo" }),
+        consentVersion: "2026-03-01",
+        privacyAcceptedAt: new Date(),
+        marketingOptIn: true,
+      },
+      {
+        email: "general@example.com",
+        category: "general",
+        name: "Ahmed Al-Rashid",
+        locale: "ar",
+        status: "new" as const,
+        sourcePage: "/",
+        message: "I would like to learn more about Production City.",
+        consentVersion: "2026-03-01",
+        privacyAcceptedAt: new Date(),
+      },
+      {
+        email: "education@example.com",
+        category: "education",
+        name: "Li Wei",
+        locale: "zh",
+        status: "archived" as const,
+        sourcePage: "/education",
+        metadata: JSON.stringify({ institution: "Beijing Film Academy", programArea: "cinematography" }),
+        consentVersion: "2026-03-01",
+        privacyAcceptedAt: new Date(),
+        archivedAt: new Date(),
+        archivedBy: "system",
+        utmSource: "linkedin",
+        utmMedium: "social",
+      },
+    ];
+
+    for (const seed of eoiSeeds) {
+      const existing = await prisma.expressionOfInterest.findFirst({
+        where: { email: seed.email, category: seed.category },
+      });
+      if (!existing) {
+        await prisma.expressionOfInterest.create({ data: seed });
+      }
+    }
+    console.log("[SEED] EOI seed data created/verified");
+  }
+
+  // 5. Dev admin user — only in development or test environments
+  const allowedEnvs = eoiAllowedEnvs;
   if (nodeEnv && allowedEnvs.includes(nodeEnv)) {
     console.warn(
       `[SEED] Creating dev admin user (${adminEmail}) — NODE_ENV=${nodeEnv}`,

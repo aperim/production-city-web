@@ -1,0 +1,150 @@
+{
+  "auth": {
+    "login": {
+      "rateLimited": "অনেক বেশি অনুরোধ। পরে আবার চেষ্টা করুন।",
+      "checkEmail": "সাইন-ইন লিংকের জন্য আপনার ইমেইল দেখুন",
+      "invalidToken": "অবৈধ বা মেয়াদোত্তীর্ণ প্রমাণীকরণ টোকেন।",
+      "invalidCode": "অবৈধ বা মেয়াদোত্তীর্ণ কোড।",
+      "loggedOut": "লগ আউট হয়েছে",
+      "required": "প্রমাণীকরণ প্রয়োজন।",
+      "invalidSession": "অবৈধ বা মেয়াদোত্তীর্ণ সেশন।",
+      "accountInactive": "অ্যাকাউন্ট সক্রিয় নয়।"
+    },
+    "verify": {
+      "tokenFailed": "টোকেন যাচাই ব্যর্থ।",
+      "codeFailed": "কোড যাচাই ব্যর্থ।",
+      "tokenInvalid": "এই লিংক অবৈধ বা মেয়াদোত্তীর্ণ। অনুগ্রহ করে একটি নতুন অনুরোধ করুন।"
+    },
+    "csrf": {
+      "invalidOrigin": "অবৈধ অনুরোধ উৎস।",
+      "missingHeader": "Origin বা Referer হেডার অনুপস্থিত।",
+      "originMismatch": "উৎস মিলছে না।"
+    }
+  },
+  "admin": {
+    "users": {
+      "notFound": "ব্যবহারকারী পাওয়া যায়নি।",
+      "invalidParam": "অবৈধ প্যারামিটার।",
+      "invalidSortBy": "অবৈধ সাজানোর ক্ষেত্র। অনুমোদিত: {allowed}",
+      "invalidSortOrder": "অবৈধ সাজানোর ক্রম। অনুমোদিত: {allowed}",
+      "searchTooLong": "অনুসন্ধান খুব দীর্ঘ (সর্বোচ্চ ২০০ অক্ষর)।",
+      "invalidStatus": "অবৈধ অবস্থা। অনুমোদিত: {allowed}",
+      "nameNoHtml": "নামে HTML ট্যাগ থাকা উচিত নয়।",
+      "cannotDeactivateSelf": "নিজের অ্যাকাউন্ট নিষ্ক্রিয় করা যায় না।",
+      "cannotDeactivateLastSuperAdmin": "শেষ সক্রিয় super_admin নিষ্ক্রিয় করা যায় না।",
+      "cannotActivateNoRoles": "ভূমিকাহীন ব্যবহারকারীকে সক্রিয় করা যায় না।",
+      "rolesNotFound": "এক বা একাধিক ভূমিকা পাওয়া যায়নি।",
+      "roleNotAssigned": "ব্যবহারকারীর এই ভূমিকা নেই।",
+      "cannotRemoveOwnAdminRole": "নিজের {role} ভূমিকা সরানো যায় না।",
+      "cannotRemoveLastSuperAdmin": "শেষ super_admin ভূমিকা সরানো যায় না।",
+      "cannotRemoveLastRole": "ব্যবহারকারীর শেষ ভূমিকা সরানো যায় না।",
+      "roleRemoved": "ভূমিকা সরানো হয়েছে।"
+    },
+    "invitations": {
+      "messageNoHtml": "বার্তায় HTML ট্যাগ থাকা উচিত নয়।",
+      "userExists": "এই ইমেইলে একজন ব্যবহারকারী ইতিমধ্যে আছে।",
+      "pendingExists": "এই ইমেইলের জন্য একটি মুলতুবি আমন্ত্রণ ইতিমধ্যে আছে।",
+      "rolesNotFound": "এক বা একাধিক ভূমিকা পাওয়া যায়নি।",
+      "notFound": "আমন্ত্রণ পাওয়া যায়নি।",
+      "notFoundOrProcessed": "আমন্ত্রণ পাওয়া যায়নি বা ইতিমধ্যে প্রক্রিয়া করা হয়েছে।",
+      "onlyPendingResend": "শুধুমাত্র মুলতুবি আমন্ত্রণ পুনরায় পাঠানো যায়।",
+      "revoked": "আমন্ত্রণ বাতিল করা হয়েছে।",
+      "resent": "আমন্ত্রণ পুনরায় পাঠানো হয়েছে।"
+    },
+    "approvals": {
+      "notFound": "ব্যবহারকারী পাওয়া যায়নি।",
+      "notPending": "ব্যবহারকারী অনুমোদনের অপেক্ষায় নেই।",
+      "noRoles": "ভূমিকাহীন ব্যবহারকারীকে অনুমোদন করা যায় না।",
+      "approved": "ব্যবহারকারী অনুমোদিত।",
+      "rejected": "ব্যবহারকারী প্রত্যাখ্যাত।",
+      "reasonNoHtml": "কারণে HTML ট্যাগ থাকা উচিত নয়।"
+    },
+    "auditLog": {
+      "empty": "কোনো অডিট লগ এন্ট্রি পাওয়া যায়নি।"
+    },
+    "media": {
+      "pair": {
+        "notFound": "এই বিষয়বস্তুর জন্য কোনো মিডিয়া জুটি পাওয়া যায়নি।",
+        "created": "মিডিয়া জুটি সফলভাবে তৈরি হয়েছে।",
+        "deleted": "মিডিয়া জুটি সফলভাবে সরানো হয়েছে।",
+        "alreadyExists": "এই বিষয়বস্তু প্রসঙ্গের জন্য একটি মিডিয়া জুটি ইতিমধ্যে আছে।"
+      },
+      "asset": {
+        "notFound": "মিডিয়া সম্পদ পাওয়া যায়নি।",
+        "updated": "মিডিয়া সম্পদ সফলভাবে আপডেট হয়েছে।",
+        "archived": "মিডিয়া সম্পদ সফলভাবে আর্কাইভ হয়েছে।",
+        "restored": "মিডিয়া সম্পদ সফলভাবে পুনরুদ্ধার হয়েছে।",
+        "invalidId": "অবৈধ মিডিয়া সম্পদ ID ফরম্যাট।",
+        "listEmpty": "মানদণ্ডের সাথে মেলে এমন কোনো মিডিয়া সম্পদ পাওয়া যায়নি।"
+      },
+      "validation": {
+        "invalidContext": "অবৈধ বিষয়বস্তু প্রসঙ্গ। আলফানিউমেরিক এবং হাইফেন হতে হবে, সর্বোচ্চ ১০০ অক্ষর।",
+        "invalidSource": "অবৈধ মিডিয়া উৎস।",
+        "invalidVariant": "অবৈধ থিম ভ্যারিয়েন্ট।",
+        "invalidStatus": "অবৈধ পর্যালোচনা অবস্থা।",
+        "missingAlt": "অ্যাক্সেসিবিলিটির জন্য বিকল্প টেক্সট প্রয়োজন।",
+        "missingPhotographer": "অ্যাট্রিবিউশনের জন্য ফটোগ্রাফারের নাম প্রয়োজন।"
+      }
+    }
+  },
+  "permissions": {
+    "forbidden": "অপর্যাপ্ত অনুমতি।"
+  },
+  "email": {
+    "magicLink": {
+      "subject": "Production City-তে সাইন ইন করুন",
+      "expiresIn": "১৫ মিনিট"
+    },
+    "invitation": {
+      "subject": "আপনাকে Production City-তে আমন্ত্রণ জানানো হয়েছে",
+      "expiresIn": "৭ দিন"
+    },
+    "rejection": {
+      "subject": "Production City — অ্যাক্সেস অনুরোধ আপডেট",
+      "body": "Production City-র জন্য আপনার অ্যাক্সেস অনুরোধ অনুমোদিত হয়নি। আপনি যদি মনে করেন এটি একটি ত্রুটি, অনুগ্রহ করে প্রশাসকের সাথে যোগাযোগ করুন।"
+    }
+  },
+  "eoi": {
+    "submitted": "আপনার আগ্রহের জন্য ধন্যবাদ। একটি নিশ্চিতকরণ ইমেইল পাঠানো হয়েছে।",
+    "invalidCategory": "অবৈধ শ্রেণী।",
+    "invalidLocale": "অবৈধ ভাষা।",
+    "consentRequired": "জমা দিতে আপনাকে অবশ্যই গোপনীয়তা নীতি গ্রহণ করতে হবে।",
+    "honeypotRejected": "অবৈধ জমা।",
+    "emailSuppressed": "এই ঠিকানায় নিশ্চিতকরণ পাঠানো যায়নি।",
+    "confirmationSubject": "Production City-তে আপনার আগ্রহের জন্য ধন্যবাদ",
+    "confirmationBody": "Production City-তে আপনার আগ্রহ প্রকাশের জন্য ধন্যবাদ। আমরা আপনার জমা পেয়েছি এবং যোগাযোগ করব।",
+    "categoryGeneral": "সাধারণ অনুসন্ধান",
+    "categoryProducer": "প্রযোজক",
+    "categoryCreative": "সৃজনশীল পেশাদার",
+    "categoryPartner": "অংশীদার",
+    "categoryInvestor": "বিনিয়োগকারী",
+    "categoryEducation": "শিক্ষা",
+    "admin": {
+      "notFound": "আগ্রহের প্রকাশ পাওয়া যায়নি।",
+      "updated": "আগ্রহের প্রকাশ আপডেট হয়েছে।",
+      "invalidStatus": "অবৈধ অবস্থা। অনুমোদিত: {allowed}"
+    }
+  },
+  "locales": {
+    "en": "English",
+    "zh": "中文",
+    "hi": "हिन्दी",
+    "es": "Español",
+    "ar": "العربية",
+    "fr": "Français",
+    "bn": "বাংলা",
+    "pt": "Português",
+    "ru": "Русский",
+    "ja": "日本語"
+  },
+  "errors": {
+    "rateLimited": "অনেক বেশি অনুরোধ। পরে আবার চেষ্টা করুন।",
+    "notFound": "সম্পদ পাওয়া যায়নি।",
+    "invalidInput": "অবৈধ ইনপুট।",
+    "conflict": "দ্বন্দ্ব।",
+    "unauthorized": "প্রমাণীকরণ প্রয়োজন।",
+    "forbidden": "অপর্যাপ্ত অনুমতি।",
+    "serviceUnavailable": "সেবা সাময়িকভাবে অনুপলব্ধ।",
+    "internalError": "একটি অভ্যন্তরীণ ত্রুটি ঘটেছে।"
+  }
+}

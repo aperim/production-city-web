@@ -1,213 +1,213 @@
 {
   "auth": {
     "login": {
-      "title": "Sign in",
-      "emailLabel": "Email address",
+      "title": "登录",
+      "emailLabel": "电子邮箱",
       "emailPlaceholder": "you@example.com",
-      "submitButton": "Send magic link",
-      "submitting": "Sending...",
-      "checkEmail": "Check your email for a sign-in link",
-      "codeLabel": "Verification code",
+      "submitButton": "发送魔术链接",
+      "submitting": "发送中...",
+      "checkEmail": "请检查邮箱获取登录链接",
+      "codeLabel": "验证码",
       "codePlaceholder": "000000",
-      "verifyButton": "Verify code",
-      "verifying": "Verifying...",
-      "orSeparator": "or",
-      "resendLink": "Resend magic link",
-      "backToLogin": "Back to sign in"
+      "verifyButton": "验证码",
+      "verifying": "验证中...",
+      "orSeparator": "或",
+      "resendLink": "重新发送魔术链接",
+      "backToLogin": "返回登录"
     },
     "logout": {
-      "button": "Sign out",
-      "success": "You have been signed out."
+      "button": "退出登录",
+      "success": "您已退出登录。"
     },
     "session": {
-      "expired": "Your session has expired. Please sign in again."
+      "expired": "您的会话已过期，请重新登录。"
     }
   },
   "admin": {
     "dashboard": {
-      "title": "Admin Dashboard",
-      "welcome": "Welcome, {name}"
+      "title": "管理面板",
+      "welcome": "欢迎，{name}"
     },
     "users": {
-      "title": "Users",
-      "searchPlaceholder": "Search users...",
-      "filterStatus": "Filter by status",
-      "filterRole": "Filter by role",
-      "sortBy": "Sort by",
-      "emptyState": "No users found.",
+      "title": "用户",
+      "searchPlaceholder": "搜索用户...",
+      "filterStatus": "按状态筛选",
+      "filterRole": "按角色筛选",
+      "sortBy": "排序方式",
+      "emptyState": "未找到用户。",
       "tableHeaders": {
-        "email": "Email",
-        "name": "Name",
-        "status": "Status",
-        "roles": "Roles",
-        "lastLogin": "Last Login",
-        "actions": "Actions"
+        "email": "邮箱",
+        "name": "姓名",
+        "status": "状态",
+        "roles": "角色",
+        "lastLogin": "最后登录",
+        "actions": "操作"
       },
-      "statusActive": "Active",
-      "statusPending": "Pending Approval",
-      "statusDeactivated": "Deactivated",
-      "actionDeactivate": "Deactivate",
-      "actionActivate": "Activate",
-      "actionManageRoles": "Manage Roles",
-      "confirmDeactivate": "Are you sure you want to deactivate this user?",
-      "confirmActivate": "Are you sure you want to activate this user?"
+      "statusActive": "活跃",
+      "statusPending": "待批准",
+      "statusDeactivated": "已停用",
+      "actionDeactivate": "停用",
+      "actionActivate": "激活",
+      "actionManageRoles": "管理角色",
+      "confirmDeactivate": "确定要停用此用户吗？",
+      "confirmActivate": "确定要激活此用户吗？"
     },
     "invitations": {
-      "title": "Invitations",
-      "createButton": "Send Invitation",
-      "emailLabel": "Email address",
+      "title": "邀请",
+      "createButton": "发送邀请",
+      "emailLabel": "电子邮箱",
       "emailPlaceholder": "newuser@example.com",
-      "rolesLabel": "Assign roles",
-      "messageLabel": "Personal message (optional)",
-      "messagePlaceholder": "Welcome to the team!",
-      "emptyState": "No invitations found.",
+      "rolesLabel": "分配角色",
+      "messageLabel": "个人消息（可选）",
+      "messagePlaceholder": "欢迎加入团队！",
+      "emptyState": "未找到邀请。",
       "tableHeaders": {
-        "email": "Email",
-        "status": "Status",
-        "createdAt": "Sent",
-        "expiresAt": "Expires",
-        "actions": "Actions"
+        "email": "邮箱",
+        "status": "状态",
+        "createdAt": "发送时间",
+        "expiresAt": "过期时间",
+        "actions": "操作"
       },
-      "statusPending": "Pending",
-      "statusAccepted": "Accepted",
-      "statusRevoked": "Revoked",
-      "statusExpired": "Expired",
-      "actionRevoke": "Revoke",
-      "actionResend": "Resend",
-      "confirmRevoke": "Are you sure you want to revoke this invitation?"
+      "statusPending": "待处理",
+      "statusAccepted": "已接受",
+      "statusRevoked": "已撤销",
+      "statusExpired": "已过期",
+      "actionRevoke": "撤销",
+      "actionResend": "重新发送",
+      "confirmRevoke": "确定要撤销此邀请吗？"
     },
     "approvals": {
-      "title": "Pending Approvals",
-      "emptyState": "No users pending approval.",
-      "approveButton": "Approve",
-      "rejectButton": "Reject",
-      "rejectReasonLabel": "Reason (optional)",
-      "confirmApprove": "Are you sure you want to approve this user?",
-      "confirmReject": "Are you sure you want to reject this user?"
+      "title": "待批准",
+      "emptyState": "没有待批准的用户。",
+      "approveButton": "批准",
+      "rejectButton": "拒绝",
+      "rejectReasonLabel": "原因（可选）",
+      "confirmApprove": "确定要批准此用户吗？",
+      "confirmReject": "确定要拒绝此用户吗？"
     },
     "roles": {
-      "title": "Roles & Permissions",
-      "emptyState": "No roles configured."
+      "title": "角色与权限",
+      "emptyState": "未配置角色。"
     },
     "auditLog": {
-      "title": "Audit Log",
-      "emptyState": "No audit entries found.",
-      "loadMore": "Load more",
+      "title": "审计日志",
+      "emptyState": "未找到审计条目。",
+      "loadMore": "加载更多",
       "tableHeaders": {
-        "action": "Action",
-        "actor": "Actor",
-        "subject": "Subject",
-        "details": "Details",
-        "timestamp": "Timestamp"
+        "action": "操作",
+        "actor": "执行者",
+        "subject": "对象",
+        "details": "详情",
+        "timestamp": "时间戳"
       }
     }
   },
   "common": {
-    "loading": "Loading...",
-    "error": "An error occurred.",
-    "retry": "Retry",
-    "cancel": "Cancel",
-    "confirm": "Confirm",
-    "save": "Save",
-    "delete": "Delete",
-    "edit": "Edit",
-    "close": "Close",
-    "back": "Back",
-    "next": "Next",
-    "previous": "Previous",
-    "noResults": "No results found."
+    "loading": "加载中...",
+    "error": "发生错误。",
+    "retry": "重试",
+    "cancel": "取消",
+    "confirm": "确认",
+    "save": "保存",
+    "delete": "删除",
+    "edit": "编辑",
+    "close": "关闭",
+    "back": "返回",
+    "next": "下一步",
+    "previous": "上一步",
+    "noResults": "未找到结果。"
   },
   "media": {
     "attribution": {
-      "photoBy": "Photo by {photographer} on {source}",
-      "videoBy": "Video by {photographer} on {source}",
-      "providedBy": "Media provided by {source}",
-      "viewProfile": "View {photographer}'s profile",
-      "viewSource": "View on {source}"
+      "photoBy": "{photographer} 在 {source} 上的照片",
+      "videoBy": "{photographer} 在 {source} 上的视频",
+      "providedBy": "媒体由 {source} 提供",
+      "viewProfile": "查看 {photographer} 的个人资料",
+      "viewSource": "在 {source} 上查看"
     },
     "badges": {
-      "aiAssisted": "AI-assisted content",
-      "aiAssistedTooltip": "This media was created with AI assistance",
-      "aiGenerated": "AI-generated content",
-      "aiGeneratedTooltip": "This media was generated by artificial intelligence",
-      "firstNations": "First Nations cultural permission",
-      "firstNationsTooltip": "Used with permissions of First Nations Peoples",
-      "firstNationsExpanded": "This media is used with the explicit permission of First Nations Peoples"
+      "aiAssisted": "AI辅助内容",
+      "aiAssistedTooltip": "此媒体使用AI辅助创建",
+      "aiGenerated": "AI生成内容",
+      "aiGeneratedTooltip": "此媒体由人工智能生成",
+      "firstNations": "原住民文化许可",
+      "firstNationsTooltip": "经原住民许可使用",
+      "firstNationsExpanded": "此媒体经原住民明确许可使用"
     },
     "states": {
-      "loading": "Loading media...",
-      "error": "Image unavailable",
-      "errorDescription": "This image could not be loaded",
-      "noMedia": "No media available",
-      "retryLoad": "Retry loading",
-      "themeChanged": "Image updated for {theme} theme"
+      "loading": "加载媒体...",
+      "error": "图片不可用",
+      "errorDescription": "无法加载此图片",
+      "noMedia": "无可用媒体",
+      "retryLoad": "重新加载",
+      "themeChanged": "图片已更新为{theme}主题"
     },
     "admin": {
-      "title": "Media Assets",
-      "searchPlaceholder": "Search by photographer, description, or context...",
-      "filterSource": "Filter by source",
-      "filterVariant": "Filter by theme variant",
-      "filterStatus": "Filter by review status",
+      "title": "媒体资产",
+      "searchPlaceholder": "按摄影师、描述或上下文搜索...",
+      "filterSource": "按来源筛选",
+      "filterVariant": "按主题变体筛选",
+      "filterStatus": "按审核状态筛选",
       "columns": {
-        "preview": "Preview",
-        "photographer": "Photographer",
-        "source": "Source",
-        "context": "Context",
-        "variant": "Theme",
-        "status": "Status",
-        "flags": "Flags",
-        "actions": "Actions"
+        "preview": "预览",
+        "photographer": "摄影师",
+        "source": "来源",
+        "context": "上下文",
+        "variant": "主题",
+        "status": "状态",
+        "flags": "标记",
+        "actions": "操作"
       },
       "actions": {
-        "edit": "Edit metadata",
-        "archive": "Archive asset",
-        "createPair": "Create pair",
-        "removePair": "Remove pair",
-        "restore": "Restore asset",
-        "confirmArchive": "Are you sure you want to archive this media asset?",
-        "confirmRemovePair": "Are you sure you want to remove this media pair?"
+        "edit": "编辑元数据",
+        "archive": "归档资产",
+        "createPair": "创建配对",
+        "removePair": "移除配对",
+        "restore": "恢复资产",
+        "confirmArchive": "确定要归档此媒体资产吗？",
+        "confirmRemovePair": "确定要移除此媒体配对吗？"
       }
     }
   },
   "nav": {
-    "dashboard": "Dashboard",
-    "users": "Users",
-    "invitations": "Invitations",
-    "approvals": "Approvals",
-    "roles": "Roles",
-    "auditLog": "Audit Log",
-    "signOut": "Sign Out"
+    "dashboard": "仪表盘",
+    "users": "用户",
+    "invitations": "邀请",
+    "approvals": "审批",
+    "roles": "角色",
+    "auditLog": "审计日志",
+    "signOut": "退出"
   },
   "eoi": {
-    "formTitle": "Express Your Interest",
-    "nameLabel": "Full name",
-    "namePlaceholder": "Your name",
-    "emailLabel": "Email address",
+    "formTitle": "表达您的兴趣",
+    "nameLabel": "全名",
+    "namePlaceholder": "您的姓名",
+    "emailLabel": "电子邮箱",
     "emailPlaceholder": "you@example.com",
-    "messageLabel": "Message (optional)",
-    "messagePlaceholder": "Tell us about your interest...",
-    "categoryLabel": "I am a...",
-    "categoryGeneral": "General Inquiry",
-    "categoryProducer": "Producer",
-    "categoryCreative": "Creative Professional",
-    "categoryPartner": "Partner",
-    "categoryInvestor": "Investor",
-    "categoryEducation": "Education",
-    "consentLabel": "I have read and agree to the {privacyPolicy}",
-    "privacyPolicyLink": "Privacy Policy",
-    "marketingOptInLabel": "I would like to receive updates about Production City",
-    "submitButton": "Submit",
-    "submitting": "Submitting...",
-    "successTitle": "Thank you!",
-    "successMessage": "We have received your expression of interest and will be in touch.",
-    "errorMessage": "Something went wrong. Please try again.",
-    "rateLimited": "Too many submissions. Please try again later."
+    "messageLabel": "留言（可选）",
+    "messagePlaceholder": "告诉我们您的兴趣...",
+    "categoryLabel": "我是...",
+    "categoryGeneral": "一般咨询",
+    "categoryProducer": "制作人",
+    "categoryCreative": "创意专业人士",
+    "categoryPartner": "合作伙伴",
+    "categoryInvestor": "投资者",
+    "categoryEducation": "教育",
+    "consentLabel": "我已阅读并同意{privacyPolicy}",
+    "privacyPolicyLink": "隐私政策",
+    "marketingOptInLabel": "我想接收有关 Production City 的更新",
+    "submitButton": "提交",
+    "submitting": "提交中...",
+    "successTitle": "谢谢！",
+    "successMessage": "我们已收到您的意向，将与您联系。",
+    "errorMessage": "出了点问题，请重试。",
+    "rateLimited": "提交过多，请稍后再试。"
   },
   "legal": {
-    "privacyPolicy": "Privacy Policy",
-    "termsOfUse": "Terms of Use",
-    "lastUpdated": "Last updated: {date}",
-    "backToHome": "Back to home",
+    "privacyPolicy": "隐私政策",
+    "termsOfUse": "使用条款",
+    "lastUpdated": "最后更新：{date}",
+    "backToHome": "返回首页",
     "privacy": {
       "title": "Privacy Policy",
       "effectiveDate": "Effective date: {date}",
@@ -315,13 +315,13 @@
     }
   },
   "footer": {
-    "privacyPolicy": "Privacy Policy",
-    "termsOfUse": "Terms of Use",
-    "copyright": "© {year} Aperim Pty Ltd. All rights reserved.",
-    "disclaimer": "Production City™ is a trademark of Aperim Pty Ltd."
+    "privacyPolicy": "隐私政策",
+    "termsOfUse": "使用条款",
+    "copyright": "© {year} Aperim Pty Ltd. 保留所有权利。",
+    "disclaimer": "Production City™ 是 Aperim Pty Ltd 的商标。"
   },
   "languageSwitcher": {
-    "label": "Language",
-    "ariaLabel": "Select language"
+    "label": "语言",
+    "ariaLabel": "选择语言"
   }
 }

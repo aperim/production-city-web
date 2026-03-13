@@ -179,35 +179,35 @@
     "signOut": "Sign Out"
   },
   "eoi": {
-    "formTitle": "Express Your Interest",
-    "nameLabel": "Full name",
-    "namePlaceholder": "Your name",
-    "emailLabel": "Email address",
+    "formTitle": "関心を表明する",
+    "nameLabel": "氏名",
+    "namePlaceholder": "お名前",
+    "emailLabel": "メールアドレス",
     "emailPlaceholder": "you@example.com",
-    "messageLabel": "Message (optional)",
-    "messagePlaceholder": "Tell us about your interest...",
-    "categoryLabel": "I am a...",
-    "categoryGeneral": "General Inquiry",
-    "categoryProducer": "Producer",
-    "categoryCreative": "Creative Professional",
-    "categoryPartner": "Partner",
-    "categoryInvestor": "Investor",
-    "categoryEducation": "Education",
-    "consentLabel": "I have read and agree to the {privacyPolicy}",
-    "privacyPolicyLink": "Privacy Policy",
-    "marketingOptInLabel": "I would like to receive updates about Production City",
-    "submitButton": "Submit",
-    "submitting": "Submitting...",
-    "successTitle": "Thank you!",
-    "successMessage": "We have received your expression of interest and will be in touch.",
-    "errorMessage": "Something went wrong. Please try again.",
-    "rateLimited": "Too many submissions. Please try again later."
+    "messageLabel": "メッセージ（任意）",
+    "messagePlaceholder": "ご関心についてお聞かせください...",
+    "categoryLabel": "私は...",
+    "categoryGeneral": "一般的なお問い合わせ",
+    "categoryProducer": "プロデューサー",
+    "categoryCreative": "クリエイティブプロフェッショナル",
+    "categoryPartner": "パートナー",
+    "categoryInvestor": "投資家",
+    "categoryEducation": "教育",
+    "consentLabel": "{privacyPolicy}を読み、同意しました",
+    "privacyPolicyLink": "プライバシーポリシー",
+    "marketingOptInLabel": "Production Cityに関する最新情報を受け取りたい",
+    "submitButton": "送信",
+    "submitting": "送信中...",
+    "successTitle": "ありがとうございます！",
+    "successMessage": "ご関心の表明を受け取りました。ご連絡いたします。",
+    "errorMessage": "エラーが発生しました。もう一度お試しください。",
+    "rateLimited": "送信が多すぎます。後でもう一度お試しください。"
   },
   "legal": {
-    "privacyPolicy": "Privacy Policy",
-    "termsOfUse": "Terms of Use",
-    "lastUpdated": "Last updated: {date}",
-    "backToHome": "Back to home",
+    "privacyPolicy": "プライバシーポリシー",
+    "termsOfUse": "利用規約",
+    "lastUpdated": "最終更新日：{date}",
+    "backToHome": "ホームに戻る",
     "privacy": {
       "title": "Privacy Policy",
       "effectiveDate": "Effective date: {date}",
@@ -315,13 +315,13 @@
     }
   },
   "footer": {
-    "privacyPolicy": "Privacy Policy",
-    "termsOfUse": "Terms of Use",
-    "copyright": "© {year} Aperim Pty Ltd. All rights reserved.",
-    "disclaimer": "Production City™ is a trademark of Aperim Pty Ltd."
+    "privacyPolicy": "プライバシーポリシー",
+    "termsOfUse": "利用規約",
+    "copyright": "© {year} Aperim Pty Ltd. 全著作権所有。",
+    "disclaimer": "Production City™はAperim Pty Ltdの商標です。"
   },
   "languageSwitcher": {
-    "label": "Language",
-    "ariaLabel": "Select language"
+    "label": "言語",
+    "ariaLabel": "言語を選択"
   }
 }
