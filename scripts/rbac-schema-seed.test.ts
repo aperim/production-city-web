@@ -1,4 +1,4 @@
-import { readFileSync, unlinkSync } from "node:fs";
+import { readFileSync, readdirSync, unlinkSync } from "node:fs";
 import { resolve } from "node:path";
 import { describe, it, expect, beforeAll, afterAll } from "vitest";
 import { PrismaClient } from "@prisma/client";
@@ -6,13 +6,28 @@ import { PrismaBetterSqlite3 } from "@prisma/adapter-better-sqlite3";
 import Database from "better-sqlite3";
 
 const ROOT = resolve(import.meta.dirname, "..");
-const MIGRATION_SQL = readFileSync(
-  resolve(ROOT, "prisma/migrations/0001_rbac_schema.sql"),
-  "utf-8",
-);
+const MIGRATIONS_DIR = resolve(ROOT, "prisma/migrations");
+
+/**
+ * Read all migration SQL files from prisma/migrations/ in sorted order.
+ * This ensures the test DB has every table the seed logic expects.
+ */
+const MIGRATION_SQL_FILES = readdirSync(MIGRATIONS_DIR)
+  .filter((f) => f.endsWith(".sql"))
+  .sort()
+  .map((f) => ({
+    name: f,
+    sql: readFileSync(resolve(MIGRATIONS_DIR, f), "utf-8"),
+  }));
+
+/** Combined SQL from the first RBAC migration (used by schema compilation test). */
+const MIGRATION_SQL = MIGRATION_SQL_FILES.find(
+  (f) => f.name === "0001_rbac_schema.sql",
+)!.sql;
 
 /**
  * Helper: create a test database file and return a PrismaClient pointed at it.
+ * Applies ALL migration SQL files so every table the seed logic needs exists.
  */
 function createTestPrisma() {
   const tmpFile = `/tmp/test-rbac-${Date.now()}-${Math.random().toString(36).slice(2)}.db`;
@@ -20,7 +35,9 @@ function createTestPrisma() {
   sqliteDb.pragma("journal_mode = WAL");
   sqliteDb.pragma("foreign_keys = ON");
 
-  sqliteDb.exec(MIGRATION_SQL);
+  for (const migration of MIGRATION_SQL_FILES) {
+    sqliteDb.exec(migration.sql);
+  }
   sqliteDb.close();
 
   const adapter = new PrismaBetterSqlite3({ url: `file:${tmpFile}` });
