@@ -47,8 +47,11 @@ describe("Issue #236 — app.css Cinematic Base Styles", () => {
     }
   });
 
-  it("sets color-scheme on body via inherit (defers to :root / .light override)", () => {
-    // body should use color-scheme: inherit so .light class on html can override
-    expect(css).toMatch(/color-scheme:\s*inherit/);
+  it("does not set color-scheme on body (inherits from :root via globals.css)", () => {
+    // color-scheme is set on :root in globals.css (dark default).
+    // body inherits naturally — no explicit override needed.
+    // Previously set to `inherit` but that resolved to `normal` in production,
+    // overriding the dark theme.
+    expect(css).not.toMatch(/body\s*\{[^}]*color-scheme/);
   });
 });
