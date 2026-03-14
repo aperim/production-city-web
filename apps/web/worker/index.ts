@@ -16,10 +16,21 @@ const CANONICAL_HOST = "production.city";
 /** www hostname that redirects to canonical. */
 const WWW_HOST = `www.${CANONICAL_HOST}`;
 
-/** Security headers applied to every response. */
-const SECURITY_HEADERS: Record<string, string> = {
-  "Content-Security-Policy":
-    "default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self'",
+/**
+ * Build Content-Security-Policy header with WebSocket directives.
+ * Dev: allows ws://localhost:* and wss://localhost:*
+ * Production: only allows wss://api.production.city
+ */
+function buildCsp(hostname: string): string {
+  const isDev = hostname === "localhost" || hostname === "127.0.0.1";
+  const connectSrc = isDev
+    ? "connect-src 'self' ws://localhost:* wss://localhost:*"
+    : "connect-src 'self' wss://api.production.city";
+  return `default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; ${connectSrc}`;
+}
+
+/** Security headers applied to every response (CSP set dynamically). */
+const STATIC_SECURITY_HEADERS: Record<string, string> = {
   "X-Content-Type-Options": "nosniff",
   "X-Frame-Options": "DENY",
   "Referrer-Policy": "strict-origin-when-cross-origin",
@@ -48,9 +59,10 @@ export default {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any -- vinext handler types are opaque
     const response = await (handler as any).fetch(request, env, ctx);
     const newResponse = new Response(response.body, response);
-    for (const [key, value] of Object.entries(SECURITY_HEADERS)) {
+    for (const [key, value] of Object.entries(STATIC_SECURITY_HEADERS)) {
       newResponse.headers.set(key, value);
     }
+    newResponse.headers.set("Content-Security-Policy", buildCsp(url.hostname));
     return newResponse;
   },
 } satisfies ExportedHandler;

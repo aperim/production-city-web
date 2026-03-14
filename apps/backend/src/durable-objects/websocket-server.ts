@@ -40,6 +40,21 @@ const MESSAGE_RATE_WINDOW_MS = 1000;
 /** Session revalidation interval (5 minutes) */
 const SESSION_REVALIDATION_INTERVAL_MS = 5 * 60 * 1000;
 
+/** Idle timeout: close connections idle for 10 minutes */
+const IDLE_TIMEOUT_MS = 10 * 60 * 1000;
+
+/** Zombie detection: close if no pong within 2 minutes */
+const ZOMBIE_TIMEOUT_MS = 2 * 60 * 1000;
+
+/** Alarm check interval (30 seconds — aligns with auto-response ping) */
+const ALARM_INTERVAL_MS = 30 * 1000;
+
+/** Maximum total WebSocket connections per DO instance */
+const MAX_CONNECTIONS_PER_DO = 1000;
+
+/** Audit log rate limit: max validation failures logged per source per minute */
+const MAX_AUDIT_LOGS_PER_SOURCE_PER_MINUTE = 5;
+
 /** Channel authorization rules */
 const CHANNEL_PERMISSIONS: Record<string, string[]> = {
   "admin:notifications": ["user:read"],
@@ -75,12 +90,77 @@ export class WebSocketHibernationServer extends DurableObject<Env> {
   /** Whether channels have been reconstructed after hibernation wake */
   private channelsReconstructed = false;
 
+  /** Tracks last activity time per WebSocket for idle timeout */
+  private lastActivity = new Map<WebSocket, number>();
+
+  /** Audit log rate limiting: source -> { count, windowStart } */
+  private auditLogRates = new Map<string, { count: number; windowStart: number }>();
+
   constructor(ctx: DurableObjectState, env: Env) {
     super(ctx, env);
     // Configure auto-response for ping/pong (does not wake DO from hibernation)
     this.ctx.setWebSocketAutoResponse(
       new WebSocketRequestResponsePair('{"v":1,"type":"ping","payload":null,"ts":0,"id":"auto"}', '{"v":1,"type":"pong","payload":null,"ts":0,"id":"auto"}'),
     );
+    // Schedule alarm for idle/zombie cleanup
+    this.ctx.storage.setAlarm(Date.now() + ALARM_INTERVAL_MS);
+  }
+
+  /**
+   * Alarm handler — runs periodically for idle timeout, zombie detection,
+   * and session revalidation.
+   */
+  async alarm(): Promise<void> {
+    const now = Date.now();
+    const sockets = this.ctx.getWebSockets();
+
+    for (const ws of sockets) {
+      const attachment = ws.deserializeAttachment() as WSAttachment | null;
+      if (!attachment) continue;
+
+      // Zombie detection: check last auto-response pong timestamp.
+      // getWebSocketAutoResponseTimestamp returns the last time the auto-response
+      // was triggered. If it's been more than ZOMBIE_TIMEOUT_MS, the client
+      // likely disconnected without sending a close frame.
+      const lastPong = this.ctx.getWebSocketAutoResponseTimestamp(ws);
+      if (lastPong !== null) {
+        const pongAge = now - lastPong.getTime();
+        if (pongAge > ZOMBIE_TIMEOUT_MS) {
+          console.log(JSON.stringify({
+            event: "ws.zombie_detected",
+            userId: attachment.userId,
+            lastPongAge: pongAge,
+          }));
+          ws.close(1001, "Connection timed out (no pong)");
+          continue;
+        }
+      }
+
+      // Idle timeout: close connections with no subscriptions and no recent activity
+      if (attachment.channels.length === 0 && !attachment.deliveryOnly) {
+        const lastActive = this.lastActivity.get(ws) ?? attachment.connectedAt;
+        if (now - lastActive > IDLE_TIMEOUT_MS) {
+          console.log(JSON.stringify({
+            event: "ws.idle_timeout",
+            userId: attachment.userId,
+            idleDuration: now - lastActive,
+          }));
+          ws.close(1000, "Idle timeout");
+          continue;
+        }
+      }
+
+      // Session revalidation: mark stale sessions for revalidation on next message
+      if (now - attachment.sessionEpoch > SESSION_REVALIDATION_INTERVAL_MS) {
+        attachment.sessionEpoch = now;
+        ws.serializeAttachment(attachment);
+      }
+    }
+
+    // Re-schedule alarm if there are active connections
+    if (sockets.length > 0) {
+      this.ctx.storage.setAlarm(now + ALARM_INTERVAL_MS);
+    }
   }
 
   /**
@@ -137,9 +217,14 @@ export class WebSocketHibernationServer extends DurableObject<Env> {
       return new Response("Stale auth payload", { status: 403 });
     }
 
-    // Connection limit: close oldest if exceeded
+    // Per-DO connection cap
+    const existingConnections = this.ctx.getWebSockets();
+    if (existingConnections.length >= MAX_CONNECTIONS_PER_DO) {
+      return new Response("Connection limit exceeded", { status: 503 });
+    }
+
+    // Per-user connection limit: close oldest if exceeded
     if (!auth.deliveryOnly) {
-      const existingConnections = this.ctx.getWebSockets();
       const userConnections = existingConnections.filter((ws) => {
         const attachment = ws.deserializeAttachment() as WSAttachment | null;
         return attachment?.userId === auth.userId;
@@ -218,6 +303,9 @@ export class WebSocketHibernationServer extends DurableObject<Env> {
    * Handle inbound WebSocket messages.
    */
   async webSocketMessage(ws: WebSocket, message: string | ArrayBuffer): Promise<void> {
+    // Track activity for idle timeout
+    this.lastActivity.set(ws, Date.now());
+
     // Enforce message size limit BEFORE parsing
     const messageSize = typeof message === "string"
       ? new TextEncoder().encode(message).byteLength
@@ -304,6 +392,7 @@ export class WebSocketHibernationServer extends DurableObject<Env> {
 
     this.channelManager.unsubscribeAll(ws);
     this.rateLimits.delete(ws);
+    this.lastActivity.delete(ws);
   }
 
   /**
@@ -319,6 +408,7 @@ export class WebSocketHibernationServer extends DurableObject<Env> {
     }));
 
     this.rateLimits.delete(ws);
+    this.lastActivity.delete(ws);
   }
 
   /**
@@ -421,6 +511,24 @@ export class WebSocketHibernationServer extends DurableObject<Env> {
   }
 
   /**
+   * Broadcast server_shutdown to all connected clients.
+   * Called before deployment to allow graceful reconnection.
+   */
+  broadcastShutdown(reason = "deployment"): void {
+    const shutdownMsg = createServerMessage("server_shutdown", { reason });
+    const serialized = JSON.stringify(shutdownMsg);
+    const sockets = this.ctx.getWebSockets();
+
+    for (const ws of sockets) {
+      try {
+        ws.send(serialized);
+      } catch {
+        // Connection may already be closing
+      }
+    }
+  }
+
+  /**
    * Handle internal broadcast (HMAC-authenticated from Worker).
    */
   private async handleBroadcast(request: Request): Promise<Response> {
@@ -478,11 +586,41 @@ export class WebSocketHibernationServer extends DurableObject<Env> {
   }
 
   /**
-   * Send an error message to a WebSocket.
+   * Send an error message to a WebSocket. Logs validation failures
+   * with rate limiting (max 5 per source per minute).
    */
   private sendError(ws: WebSocket, code: string, message: string): void {
     const errorMsg = createServerMessage<ErrorPayload>("error", { code, message });
     ws.send(JSON.stringify(errorMsg));
+
+    // Rate-limited audit logging
+    const attachment = ws.deserializeAttachment() as WSAttachment | null;
+    const source = attachment?.userId ?? "unknown";
+    this.logAuditEvent(source, code, message);
+  }
+
+  /**
+   * Log a validation failure, rate-limited per source.
+   */
+  private logAuditEvent(source: string, code: string, message: string): void {
+    const now = Date.now();
+    let rateState = this.auditLogRates.get(source);
+
+    if (!rateState || now - rateState.windowStart > 60_000) {
+      rateState = { count: 0, windowStart: now };
+      this.auditLogRates.set(source, rateState);
+    }
+
+    if (rateState.count >= MAX_AUDIT_LOGS_PER_SOURCE_PER_MINUTE) return;
+    rateState.count++;
+
+    console.log(JSON.stringify({
+      event: "ws.validation_failure",
+      source,
+      code,
+      message,
+      timestamp: now,
+    }));
   }
 
   /**

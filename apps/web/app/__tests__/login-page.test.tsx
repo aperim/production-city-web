@@ -13,9 +13,10 @@ vi.mock("../lib/api-client", () => ({
   verifyCode: vi.fn(),
 }));
 
-vi.mock("../lib/use-delivery-polling", () => ({
-  useDeliveryPolling: vi.fn().mockReturnValue({
+vi.mock("../lib/websocket/useDeliveryStatus", () => ({
+  useDeliveryStatus: vi.fn().mockReturnValue({
     status: null,
+    isConnected: false,
     timedOut: false,
     sendingTooLong: false,
   }),

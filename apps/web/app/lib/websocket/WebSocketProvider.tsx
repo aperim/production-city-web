@@ -40,6 +40,7 @@ const BACKOFF_JITTER = 0.2;
 const DEPLOY_BACKOFF_MS = 1000;
 const DEPLOY_JITTER = 0.5;
 const MAX_RETRIES = 10;
+const PING_INTERVAL_MS = 30_000;
 
 function addJitter(base: number, jitter: number): number {
   const range = base * jitter;
@@ -59,6 +60,8 @@ export function WebSocketProvider({ children }: { children: ReactNode }) {
   const reconnectTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const lastMessageTsRef = useRef(0);
   const mountedRef = useRef(true);
+  const deployReconnectRef = useRef(false);
+  const pingTimerRef = useRef<ReturnType<typeof setInterval> | null>(null);
 
   // Channel subscription handlers: channel -> Set<handler>
   const handlersRef = useRef<Map<string, Set<MessageHandler>>>(new Map());
@@ -75,6 +78,12 @@ export function WebSocketProvider({ children }: { children: ReactNode }) {
 
     const envelope = data as WSEnvelope;
     if (!envelope?.id || !envelope?.type) return;
+
+    // Handle server_shutdown — set flag so onclose uses short backoff
+    if (envelope.type === "server_shutdown") {
+      deployReconnectRef.current = true;
+      return;
+    }
 
     // Deduplicate
     if (!deduplicatorRef.current.check(envelope.id)) return;
@@ -129,6 +138,14 @@ export function WebSocketProvider({ children }: { children: ReactNode }) {
       retriesRef.current = 0;
       backoffRef.current = INITIAL_BACKOFF_MS;
 
+      // Start periodic ping (keeps DO auto-response timestamp fresh for zombie detection)
+      if (pingTimerRef.current) clearInterval(pingTimerRef.current);
+      pingTimerRef.current = setInterval(() => {
+        if (ws.readyState === WebSocket.OPEN) {
+          ws.send('{"v":1,"type":"ping","payload":null,"ts":0,"id":"auto"}');
+        }
+      }, PING_INTERVAL_MS);
+
       // Re-subscribe to all active channels
       for (const channel of handlersRef.current.keys()) {
         if (!channel.startsWith("__type:")) {
@@ -170,10 +187,17 @@ export function WebSocketProvider({ children }: { children: ReactNode }) {
 
     ws.onclose = (event: CloseEvent) => {
       wsRef.current = null;
+      if (pingTimerRef.current) {
+        clearInterval(pingTimerRef.current);
+        pingTimerRef.current = null;
+      }
       if (!mountedRef.current) return;
 
-      // Determine if this was a deployment disconnect
-      const isDeployDisconnect = event.code === 1012;
+      // Determine if this was a deployment disconnect:
+      // - 1012 "Service Restart" from Cloudflare
+      // - deploymentReconnect flag set by server_shutdown message
+      const isDeployDisconnect = event.code === 1012 || deployReconnectRef.current;
+      deployReconnectRef.current = false;
 
       setState("disconnected");
 
@@ -319,6 +343,10 @@ export function WebSocketProvider({ children }: { children: ReactNode }) {
     return () => {
       mountedRef.current = false;
       clearReconnectTimer();
+      if (pingTimerRef.current) {
+        clearInterval(pingTimerRef.current);
+        pingTimerRef.current = null;
+      }
       coordinator.destroy();
       tabCoordinatorRef.current = null;
 
