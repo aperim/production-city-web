@@ -20,10 +20,8 @@ const MIGRATION_SQL_FILES = readdirSync(MIGRATIONS_DIR)
     sql: readFileSync(resolve(MIGRATIONS_DIR, f), "utf-8"),
   }));
 
-/** Combined SQL from the first RBAC migration (used by schema compilation test). */
-const MIGRATION_SQL = MIGRATION_SQL_FILES.find(
-  (f) => f.name === "0001_rbac_schema.sql",
-)!.sql;
+/** Combined SQL from all migrations (for schema validation). */
+const ALL_MIGRATION_SQL = MIGRATION_SQL_FILES.map((f) => f.sql).join("\n");
 
 /**
  * Helper: create a test database file and return a PrismaClient pointed at it.
@@ -72,8 +70,8 @@ describe("Schema compilation", () => {
     expect(PC).toBeDefined();
   });
 
-  it("migration SQL file exists and contains all tables", () => {
-    expect(MIGRATION_SQL.length).toBeGreaterThan(100);
+  it("migration SQL files exist and contain all tables", () => {
+    expect(ALL_MIGRATION_SQL.length).toBeGreaterThan(100);
     const expectedTables = [
       "User",
       "Role",
@@ -86,9 +84,12 @@ describe("Schema compilation", () => {
       "InvitationRole",
       "AuditLog",
       "EmailSuppression",
+      "MediaAsset",
+      "MediaPair",
+      "ExpressionOfInterest",
     ];
     for (const table of expectedTables) {
-      expect(MIGRATION_SQL).toContain(`CREATE TABLE "${table}"`);
+      expect(ALL_MIGRATION_SQL).toContain(`CREATE TABLE "${table}"`);
     }
   });
 });

@@ -103,11 +103,11 @@ export function VisionPage() {
       />
 
       {/* 5. Operating Model */}
-      <section className="py-8">
+      <div className="py-8">
         <p className="text-sm text-muted-foreground">
           {t("vision.global.operatingModel")}
         </p>
-      </section>
+      </div>
 
       {/* 6. Market Position */}
       <section className="py-8" aria-labelledby="market-heading">
