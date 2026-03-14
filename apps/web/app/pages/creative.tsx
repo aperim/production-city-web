@@ -10,7 +10,7 @@ import {
   ServiceGrid,
   EOISection,
 } from "@productioncity/holding-ui";
-import { useTranslation } from "../i18n/context";
+import { I18nProvider, useTranslation } from "../i18n/context";
 import {
   useLandingNav,
   useLandingFooter,
@@ -20,6 +20,14 @@ import {
 } from "../lib/use-landing-layout";
 
 export function CreativePage() {
+  return (
+    <I18nProvider>
+      <CreativePageContent />
+    </I18nProvider>
+  );
+}
+
+function CreativePageContent() {
   const { t } = useTranslation();
   const nav = useLandingNav();
   const footer = useLandingFooter();

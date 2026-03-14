@@ -12,7 +12,7 @@ import {
   ForwardLookingDisclaimer,
   EOISection,
 } from "@productioncity/holding-ui";
-import { useTranslation } from "../i18n/context";
+import { I18nProvider, useTranslation } from "../i18n/context";
 import {
   useLandingNav,
   useLandingFooter,
@@ -22,6 +22,14 @@ import {
 } from "../lib/use-landing-layout";
 
 export function VisionPage() {
+  return (
+    <I18nProvider>
+      <VisionPageContent />
+    </I18nProvider>
+  );
+}
+
+function VisionPageContent() {
   const { t } = useTranslation();
   const nav = useLandingNav();
   const footer = useLandingFooter();

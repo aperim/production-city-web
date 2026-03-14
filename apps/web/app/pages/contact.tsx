@@ -10,7 +10,7 @@ import {
   LandingPageTemplate,
   EOISection,
 } from "@productioncity/holding-ui";
-import { useTranslation } from "../i18n/context";
+import { I18nProvider, useTranslation } from "../i18n/context";
 import {
   useLandingNav,
   useLandingFooter,
@@ -38,6 +38,14 @@ function useDefaultCategory(): string {
 }
 
 export function ContactPage() {
+  return (
+    <I18nProvider>
+      <ContactPageContent />
+    </I18nProvider>
+  );
+}
+
+function ContactPageContent() {
   const { t } = useTranslation();
   const nav = useLandingNav();
   const footer = useLandingFooter();

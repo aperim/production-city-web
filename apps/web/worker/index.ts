@@ -17,15 +17,15 @@ const CANONICAL_HOST = "production.city";
 const WWW_HOST = `www.${CANONICAL_HOST}`;
 
 /**
- * Build Content-Security-Policy header with WebSocket directives.
+ * Build Content-Security-Policy header with WebSocket and API directives.
  * Dev: allows ws://localhost:* and wss://localhost:*
- * Production: only allows wss://api.production.city
+ * Production: allows wss://api.production.city (WebSocket) and https://api.production.city (API)
  */
 function buildCsp(hostname: string): string {
   const isDev = hostname === "localhost" || hostname === "127.0.0.1";
   const connectSrc = isDev
     ? "connect-src 'self' ws://localhost:* wss://localhost:*"
-    : "connect-src 'self' wss://api.production.city";
+    : "connect-src 'self' https://api.production.city wss://api.production.city";
   return `default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; ${connectSrc}`;
 }
 

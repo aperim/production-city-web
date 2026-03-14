@@ -25,6 +25,10 @@ migrations_dir = "../../prisma/migrations"
 
 [env.preview]
 name = "holding-backend-preview"
+[env.preview.vars]
+ALLOWED_ORIGIN = "https://preview.production.city"
+# HMAC_SECRET must be set via `wrangler secret put HMAC_SECRET --env preview`
+# POSTMARK_API_TOKEN must be set via `wrangler secret put POSTMARK_API_TOKEN --env preview`
 [[env.preview.durable_objects.bindings]]
 name = "WEBSOCKET_SERVER"
 class_name = "WebSocketHibernationServer"
@@ -36,6 +40,10 @@ migrations_dir = "../../prisma/migrations"
 
 [env.staging]
 name = "holding-backend-staging"
+[env.staging.vars]
+ALLOWED_ORIGIN = "https://staging.production.city"
+# HMAC_SECRET must be set via `wrangler secret put HMAC_SECRET --env staging`
+# POSTMARK_API_TOKEN must be set via `wrangler secret put POSTMARK_API_TOKEN --env staging`
 [[env.staging.durable_objects.bindings]]
 name = "WEBSOCKET_SERVER"
 class_name = "WebSocketHibernationServer"
@@ -53,6 +61,8 @@ class_name = "WebSocketHibernationServer"
 
 [env.production.vars]
 ALLOWED_ORIGIN = "https://production.city"
+# HMAC_SECRET must be set via `wrangler secret put HMAC_SECRET --env production`
+# POSTMARK_API_TOKEN must be set via `wrangler secret put POSTMARK_API_TOKEN --env production`
 
 [[env.production.routes]]
 pattern = "api.production.city/*"

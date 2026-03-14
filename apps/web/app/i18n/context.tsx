@@ -1,3 +1,5 @@
+"use client";
+
 /**
  * React context and hook for i18n locale management.
  * Provides the current locale, direction, and translation function to the component tree.

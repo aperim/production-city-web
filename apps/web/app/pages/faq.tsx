@@ -12,7 +12,7 @@ import {
   FAQSection,
 } from "@productioncity/holding-ui";
 import type { TranslationKey } from "../i18n/index";
-import { useTranslation } from "../i18n/context";
+import { I18nProvider, useTranslation } from "../i18n/context";
 import {
   useLandingNav,
   useLandingFooter,
@@ -72,6 +72,14 @@ function FAQStructuredData({ entries }: { entries: FAQEntry[] }) {
 }
 
 export function FAQPage() {
+  return (
+    <I18nProvider>
+      <FAQPageContent />
+    </I18nProvider>
+  );
+}
+
+function FAQPageContent() {
   const { t } = useTranslation();
   const nav = useLandingNav();
   const footer = useLandingFooter();

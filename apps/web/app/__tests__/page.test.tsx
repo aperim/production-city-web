@@ -4,6 +4,7 @@ import { renderToString } from "react-dom/server";
 
 // Mock the i18n context to avoid needing a full I18nProvider
 vi.mock("../i18n/context", () => ({
+  I18nProvider: ({ children }: { children: React.ReactNode }) => children,
   useTranslation: () => ({
     t: (key: string) => key,
     locale: "en",

@@ -10,7 +10,7 @@ import {
   FacilityShowcase,
   EOISection,
 } from "@productioncity/holding-ui";
-import { useTranslation } from "../i18n/context";
+import { I18nProvider, useTranslation } from "../i18n/context";
 import {
   useLandingNav,
   useLandingFooter,
@@ -20,6 +20,14 @@ import {
 } from "../lib/use-landing-layout";
 
 export function FacilitiesPage() {
+  return (
+    <I18nProvider>
+      <FacilitiesPageContent />
+    </I18nProvider>
+  );
+}
+
+function FacilitiesPageContent() {
   const { t } = useTranslation();
   const nav = useLandingNav();
   const footer = useLandingFooter();

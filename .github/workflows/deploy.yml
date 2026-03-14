@@ -137,6 +137,17 @@ jobs:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
 
+      - name: Set backend secrets (staging)
+        working-directory: apps/backend
+        run: |
+          echo "$HMAC_SECRET" | pnpm exec wrangler secret put HMAC_SECRET --env staging
+          echo "$POSTMARK_API_TOKEN" | pnpm exec wrangler secret put POSTMARK_API_TOKEN --env staging
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          HMAC_SECRET: ${{ secrets.HMAC_SECRET_STAGING }}
+          POSTMARK_API_TOKEN: ${{ secrets.POSTMARK_API_TOKEN_STAGING }}
+
       - name: Deploy backend (staging)
         working-directory: apps/backend
         run: pnpm exec wrangler deploy --env staging
@@ -202,12 +213,34 @@ jobs:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
 
+      - name: Set backend secrets (production)
+        working-directory: apps/backend
+        run: |
+          echo "$HMAC_SECRET" | pnpm exec wrangler secret put HMAC_SECRET --env production
+          echo "$POSTMARK_API_TOKEN" | pnpm exec wrangler secret put POSTMARK_API_TOKEN --env production
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          HMAC_SECRET: ${{ secrets.HMAC_SECRET_PRODUCTION }}
+          POSTMARK_API_TOKEN: ${{ secrets.POSTMARK_API_TOKEN_PRODUCTION }}
+
       - name: Deploy backend (production)
         working-directory: apps/backend
         run: pnpm exec wrangler deploy --env production
         env:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+
+      - name: Verify backend health (production)
+        run: |
+          sleep 5
+          STATUS=$(curl -s -o /dev/null -w '%{http_code}' https://api.production.city/live)
+          if [ "$STATUS" != "200" ]; then
+            echo "::error::Backend /live health check failed with status $STATUS"
+            curl -s https://api.production.city/live
+            exit 1
+          fi
+          echo "Backend /live health check passed (HTTP $STATUS)"
 
       - name: Deploy workers (production)
         working-directory: apps/workers
