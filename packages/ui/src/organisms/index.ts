@@ -99,3 +99,15 @@ export { StakeholderGrid } from './StakeholderGrid/StakeholderGrid';
 export type { StakeholderGridProps, StakeholderItem } from './StakeholderGrid/StakeholderGrid';
 export { ForwardLookingDisclaimer } from './ForwardLookingDisclaimer/ForwardLookingDisclaimer';
 export type { ForwardLookingDisclaimerProps } from './ForwardLookingDisclaimer/ForwardLookingDisclaimer';
+
+// Issue #238: Cinematic Core Components
+export { CinematicHero } from './CinematicHero/CinematicHero';
+export type { CinematicHeroProps, CinematicHeroCTA, CinematicHeroAttribution } from './CinematicHero/CinematicHero';
+export { ScrollRevealSection } from './ScrollRevealSection/ScrollRevealSection';
+export type { ScrollRevealSectionProps } from './ScrollRevealSection/ScrollRevealSection';
+export { MediaPanel } from './MediaPanel/MediaPanel';
+export type { MediaPanelProps, MediaPanelAttribution } from './MediaPanel/MediaPanel';
+export { StatementBlock } from './StatementBlock/StatementBlock';
+export type { StatementBlockProps } from './StatementBlock/StatementBlock';
+export { BrandAccentDivider } from './BrandAccentDivider/BrandAccentDivider';
+export type { BrandAccentDividerProps } from './BrandAccentDivider/BrandAccentDivider';

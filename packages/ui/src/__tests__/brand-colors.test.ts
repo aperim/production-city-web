@@ -22,7 +22,7 @@ function getVarValue(selectorPart: string, varName: string): string | null {
 }
 
 describe("Issue #213 — Brand Color Theme Variables", () => {
-  describe("Light mode (:root)", () => {
+  describe("Dark mode (:root — default)", () => {
     it("--color-primary uses primary blue token, not neutral", () => {
       const val = getVarValue(":root", "--color-primary");
       expect(val).not.toBeNull();
@@ -45,7 +45,6 @@ describe("Issue #213 — Brand Color Theme Variables", () => {
     it("--color-accent uses a brand color token for CTAs", () => {
       const val = getVarValue(":root", "--color-accent");
       expect(val).not.toBeNull();
-      // Accent should not be plain neutral-100
       expect(val!).not.toBe("var(--pc-color-neutral-100)");
     });
 
@@ -55,7 +54,7 @@ describe("Issue #213 — Brand Color Theme Variables", () => {
       expect(val!).toMatch(/--pc-color-primary-/);
     });
 
-    it("--color-background remains neutral (per Uncodixify)", () => {
+    it("--color-background remains neutral", () => {
       const val = getVarValue(":root", "--color-background");
       expect(val).not.toBeNull();
       expect(val!).toMatch(/--pc-color-neutral-/);
@@ -68,35 +67,35 @@ describe("Issue #213 — Brand Color Theme Variables", () => {
     });
   });
 
-  describe("Dark mode", () => {
+  describe("Light mode (.light class)", () => {
     it("--color-primary uses primary blue token, not neutral", () => {
-      const val = getVarValue('data-theme="dark"', "--color-primary");
+      const val = getVarValue(".light", "--color-primary");
       expect(val).not.toBeNull();
       expect(val!).toMatch(/--pc-color-primary-/);
       expect(val!).not.toMatch(/--pc-color-neutral-/);
     });
 
     it("--color-secondary uses secondary magenta token, not neutral", () => {
-      const val = getVarValue('data-theme="dark"', "--color-secondary");
+      const val = getVarValue(".light", "--color-secondary");
       expect(val).not.toBeNull();
       expect(val!).toMatch(/--pc-color-secondary-/);
       expect(val!).not.toMatch(/--pc-color-neutral-/);
     });
 
     it("--color-accent uses a brand color, not neutral-800", () => {
-      const val = getVarValue('data-theme="dark"', "--color-accent");
+      const val = getVarValue(".light", "--color-accent");
       expect(val).not.toBeNull();
       expect(val!).not.toBe("var(--pc-color-neutral-800)");
     });
 
     it("--color-ring uses brand color for focus rings", () => {
-      const val = getVarValue('data-theme="dark"', "--color-ring");
+      const val = getVarValue(".light", "--color-ring");
       expect(val).not.toBeNull();
       expect(val!).toMatch(/--pc-color-primary-/);
     });
 
-    it("--color-background remains neutral (not blue-black per Uncodixify)", () => {
-      const val = getVarValue('data-theme="dark"', "--color-background");
+    it("--color-background remains neutral", () => {
+      const val = getVarValue(".light", "--color-background");
       expect(val).not.toBeNull();
       expect(val!).toMatch(/--pc-color-neutral-/);
     });

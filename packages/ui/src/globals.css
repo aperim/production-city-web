@@ -1,8 +1,53 @@
 @import "@productioncity/holding-design-tokens/tokens.css";
 @import "tailwindcss";
 
-:root,
+/* ==========================================================================
+   Dark-Mode-First Cinematic Theme — Issue #236
+   Production City uses a dark-mode-first approach. :root is dark.
+   Light mode is activated via the .light class on <html>.
+   ========================================================================== */
+
+:root {
+  color-scheme: dark;
+
+  /* --- Dark palette (default) --- */
+  --color-background: var(--pc-color-neutral-950);
+  --color-foreground: var(--pc-color-neutral-100);
+  --color-muted: var(--pc-color-neutral-800);
+  --color-muted-foreground: var(--pc-color-neutral-400);
+  --color-border: var(--pc-color-neutral-700);
+  --color-primary: var(--pc-color-primary-400);
+  --color-primary-foreground: var(--pc-color-primary-950);
+  --color-secondary: var(--pc-color-secondary-400);
+  --color-secondary-foreground: var(--pc-color-secondary-950);
+  --color-destructive: var(--pc-color-semantic-error-500);
+  --color-destructive-foreground: var(--pc-color-neutral-50);
+  --color-accent: var(--pc-color-primary-950);
+  --color-accent-foreground: var(--pc-color-primary-300);
+  --color-ring: var(--pc-color-primary-400);
+
+  /* --- Radius --- */
+  --radius-sm: var(--pc-spacing-1); /* 4px */
+  --radius-md: var(--pc-spacing-2); /* 8px */
+  --radius-lg: var(--pc-spacing-3); /* 12px */
+
+  /* --- Cinematic layout tokens --- */
+  --section-padding: clamp(5rem, 8vw, 7.5rem);
+  --hero-height: 100vh;
+  --content-max-width: 75rem; /* 1200px */
+
+  /* --- Typography scale --- */
+  --font-size-display: clamp(3rem, 5vw, 4.5rem);    /* 48-72px */
+  --font-size-heading: clamp(1.5rem, 2.5vw, 2.25rem); /* 24-36px */
+  --font-size-body: clamp(1rem, 1.2vw, 1.125rem);     /* 16-18px */
+  --font-size-caption: clamp(0.75rem, 1vw, 0.875rem);  /* 12-14px */
+}
+
+/* --- Light mode override via .light class or data-theme attribute --- */
+.light,
 [data-theme="light"] {
+  color-scheme: light;
+
   --color-background: var(--pc-color-neutral-50);
   --color-foreground: var(--pc-color-neutral-950);
   --color-muted: var(--pc-color-neutral-100);
@@ -17,15 +62,14 @@
   --color-accent: var(--pc-color-primary-50);
   --color-accent-foreground: var(--pc-color-primary-900);
   --color-ring: var(--pc-color-primary-700);
-
-  --radius-sm: var(--pc-spacing-1); /* 4px */
-  --radius-md: var(--pc-spacing-2); /* 8px */
-  --radius-lg: var(--pc-spacing-3); /* 12px */
 }
 
+/* Storybook data-theme="dark" — reinforces :root dark defaults */
 [data-theme="dark"] {
+  color-scheme: dark;
+
   --color-background: var(--pc-color-neutral-950);
-  --color-foreground: var(--pc-color-neutral-50);
+  --color-foreground: var(--pc-color-neutral-100);
   --color-muted: var(--pc-color-neutral-800);
   --color-muted-foreground: var(--pc-color-neutral-400);
   --color-border: var(--pc-color-neutral-700);
@@ -41,6 +85,7 @@
 }
 
 @theme inline {
+  /* --- Color tokens for Tailwind v4 --- */
   --color-background: var(--color-background);
   --color-foreground: var(--color-foreground);
   --color-muted: var(--color-muted);
@@ -55,9 +100,22 @@
   --color-accent: var(--color-accent);
   --color-accent-foreground: var(--color-accent-foreground);
   --color-ring: var(--color-ring);
+
+  /* --- Radius tokens --- */
   --radius-sm: var(--radius-sm);
   --radius-md: var(--radius-md);
   --radius-lg: var(--radius-lg);
+
+  /* --- Cinematic layout tokens --- */
+  --section-padding: var(--section-padding);
+  --hero-height: var(--hero-height);
+  --content-max-width: var(--content-max-width);
+
+  /* --- Typography scale tokens --- */
+  --font-size-display: var(--font-size-display);
+  --font-size-heading: var(--font-size-heading);
+  --font-size-body: var(--font-size-body);
+  --font-size-caption: var(--font-size-caption);
 }
 
 html {

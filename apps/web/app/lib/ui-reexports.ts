@@ -51,6 +51,16 @@ export { ForwardLookingDisclaimer } from "../../../../packages/ui/src/organisms/
 export { MediaHero } from "../../../../packages/ui/src/organisms/MediaHero/MediaHero";
 export type { MediaHeroProps } from "../../../../packages/ui/src/organisms/MediaHero/MediaHero";
 export { NotificationBell } from "../../../../packages/ui/src/organisms/NotificationBell/NotificationBell";
+export { CinematicHero } from "../../../../packages/ui/src/organisms/CinematicHero/CinematicHero";
+export type { CinematicHeroProps } from "../../../../packages/ui/src/organisms/CinematicHero/CinematicHero";
+export { ScrollRevealSection } from "../../../../packages/ui/src/organisms/ScrollRevealSection/ScrollRevealSection";
+export type { ScrollRevealSectionProps } from "../../../../packages/ui/src/organisms/ScrollRevealSection/ScrollRevealSection";
+export { MediaPanel } from "../../../../packages/ui/src/organisms/MediaPanel/MediaPanel";
+export type { MediaPanelProps } from "../../../../packages/ui/src/organisms/MediaPanel/MediaPanel";
+export { StatementBlock } from "../../../../packages/ui/src/organisms/StatementBlock/StatementBlock";
+export type { StatementBlockProps } from "../../../../packages/ui/src/organisms/StatementBlock/StatementBlock";
+export { BrandAccentDivider } from "../../../../packages/ui/src/organisms/BrandAccentDivider/BrandAccentDivider";
+export type { BrandAccentDividerProps } from "../../../../packages/ui/src/organisms/BrandAccentDivider/BrandAccentDivider";
 export * from "../../../../packages/ui/src/templates";
 export * from "../../../../packages/ui/src/pages";
 export * from "../../../../packages/ui/src/foundations";

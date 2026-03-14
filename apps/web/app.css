@@ -3,3 +3,28 @@
 @theme {
   --color-brand: var(--pc-color-primary-700);
 }
+
+/* ==========================================================================
+   app.css — Cinematic Base Styles (Issue #236)
+   ========================================================================== */
+
+/* Finding #19: Set color-scheme on body — inherits from :root (dark default).
+   The .light class on <html> overrides via globals.css color-scheme: light. */
+body {
+  color-scheme: inherit;
+}
+
+/* Finding #5: smooth scrolling gated behind prefers-reduced-motion */
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+/* Font loading with proper fallbacks */
+html {
+  font-family: "Inter", system-ui, -apple-system, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
