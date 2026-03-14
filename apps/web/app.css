@@ -1,5 +1,10 @@
 @import "../../packages/ui/src/globals.css";
 
+/* Tailwind v4 auto-scans from the CSS file's directory. Since our components
+   live in packages/ui/src/ (outside apps/web/), we must explicitly tell
+   Tailwind to scan them. See: https://tailwindcss.com/docs/detecting-classes-in-source-files */
+@source "../../packages/ui/src";
+
 @theme {
   --color-brand: var(--pc-color-primary-700);
 }
