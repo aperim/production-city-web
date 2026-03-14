@@ -17,6 +17,7 @@ export interface MagicLinkResponse {
   requestId: string;
   status: string;
   message: string;
+  deliveryToken: string;
 }
 
 export interface VerifyResponse {

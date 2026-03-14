@@ -214,6 +214,7 @@ export interface MagicLinkResponse {
   requestId: string;
   status: string;
   message: string;
+  deliveryToken: string;
 }
 
 export interface SendMagicLinkDeps {
@@ -300,6 +301,8 @@ export async function handleMagicLinkRequest(
     `${email}${purpose}${requestIdHash}${code}`,
   );
 
+  const deliveryToken = crypto.randomUUID();
+
   await prisma.magicLink.create({
     data: {
       userId: user?.id ?? null,
@@ -309,6 +312,7 @@ export async function handleMagicLinkRequest(
       purpose,
       deliveryStatus: shouldSend ? "sending" : "pending",
       expiresAt,
+      deliveryToken,
     },
   });
 
@@ -378,12 +382,14 @@ export async function handleMagicLinkRequest(
   }
 
   // Anti-enumeration: always return the same response
+  // Include deliveryToken for WebSocket delivery status tracking
   return {
     status: 200,
     body: {
       requestId,
       status: "sending",
       message: t("auth.login.checkEmail"),
+      deliveryToken,
     },
   };
 }

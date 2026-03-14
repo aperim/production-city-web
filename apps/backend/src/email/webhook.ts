@@ -112,6 +112,10 @@ export interface WebhookPayload {
 export interface WebhookProcessResult {
   processed: boolean;
   reason?: string;
+  /** Magic link ID for WebSocket push (only set when delivery status changes) */
+  magicLinkId?: string;
+  /** New delivery status (only set when delivery status changes) */
+  newStatus?: string;
 }
 
 /**
@@ -159,7 +163,7 @@ export async function processWebhookEvent(
         where: { id: magicLink.id },
         data: { deliveryStatus: "delivered" },
       });
-      return { processed: true };
+      return { processed: true, magicLinkId: magicLink.id, newStatus: "delivered" };
     }
 
     case "Bounce": {
@@ -189,7 +193,7 @@ export async function processWebhookEvent(
           update: {}, // Already suppressed, no update needed
         });
       }
-      return { processed: true };
+      return { processed: true, magicLinkId: magicLink.id, newStatus: "bounced" };
     }
 
     case "SpamComplaint": {

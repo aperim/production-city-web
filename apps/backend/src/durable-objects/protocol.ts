@@ -53,7 +53,7 @@ export const WSEnvelopeSchema = z.object({
 });
 
 /** Client -> Server message types */
-export type ClientMessageType = "subscribe" | "unsubscribe" | "ping";
+export type ClientMessageType = "subscribe" | "unsubscribe" | "ping" | "replay";
 
 /** Client -> Server message payloads */
 export interface SubscribePayload {

@@ -27,6 +27,8 @@ import {
   truncateCloseReason,
 } from "./protocol.js";
 import { hmacSha256Hex, timingSafeEqual } from "../auth/token.js";
+import { ChannelManager } from "./channel-manager.js";
+import { EventLog } from "./event-log.js";
 
 /** Rate limiting constants */
 const MAX_CONNECTIONS_PER_USER = 10;
@@ -64,12 +66,31 @@ export class WebSocketHibernationServer extends DurableObject<Env> {
   /** In-memory rate limiting state per WebSocket (resets on hibernation wake) */
   private rateLimits = new Map<WebSocket, ConnectionRateState>();
 
+  /** Channel subscription manager (reconstructed on hibernation wake) */
+  private channelManager = new ChannelManager();
+
+  /** Bounded event log for replay on reconnection */
+  private eventLog = new EventLog();
+
+  /** Whether channels have been reconstructed after hibernation wake */
+  private channelsReconstructed = false;
+
   constructor(ctx: DurableObjectState, env: Env) {
     super(ctx, env);
     // Configure auto-response for ping/pong (does not wake DO from hibernation)
     this.ctx.setWebSocketAutoResponse(
       new WebSocketRequestResponsePair('{"v":1,"type":"ping","payload":null,"ts":0,"id":"auto"}', '{"v":1,"type":"pong","payload":null,"ts":0,"id":"auto"}'),
     );
+  }
+
+  /**
+   * Ensure channels are reconstructed after hibernation wake.
+   * Called lazily on first message/broadcast after wake.
+   */
+  private ensureChannelsReconstructed(): void {
+    if (this.channelsReconstructed) return;
+    this.channelManager.reconstructFromWebSockets(this.ctx.getWebSockets());
+    this.channelsReconstructed = true;
   }
 
   /**
@@ -160,6 +181,12 @@ export class WebSocketHibernationServer extends DurableObject<Env> {
     this.ctx.acceptWebSocket(server);
     server.serializeAttachment(attachment);
 
+    // Register delivery-only connections in ChannelManager
+    if (auth.deliveryOnly && auth.deliveryChannel) {
+      this.ensureChannelsReconstructed();
+      this.channelManager.subscribe(server, auth.deliveryChannel);
+    }
+
     // Send connection_ack
     const ackPayload: ConnectionAckPayload = {
       sessionId: auth.sessionId,
@@ -167,6 +194,16 @@ export class WebSocketHibernationServer extends DurableObject<Env> {
       protocolVersion: WS_PROTOCOL_VERSION,
     };
     server.send(JSON.stringify(createServerMessage("connection_ack", ackPayload)));
+
+    // For delivery-only connections, replay the latest event so the client
+    // gets current status immediately without waiting for a new webhook
+    if (auth.deliveryOnly && auth.deliveryChannel) {
+      const recent = this.eventLog.replay(0, [auth.deliveryChannel]);
+      const lastEvent = recent[recent.length - 1];
+      if (lastEvent) {
+        server.send(JSON.stringify(lastEvent.message));
+      }
+    }
 
     return new Response(null, {
       status: 101,
@@ -236,6 +273,9 @@ export class WebSocketHibernationServer extends DurableObject<Env> {
       case "unsubscribe":
         this.handleUnsubscribe(ws, envelope, attachment);
         break;
+      case "replay":
+        this.handleReplay(ws, envelope, attachment);
+        break;
       case "ping":
         ws.send(JSON.stringify(createServerMessage("pong", null)));
         break;
@@ -262,6 +302,7 @@ export class WebSocketHibernationServer extends DurableObject<Env> {
       duration: attachment ? Date.now() - attachment.connectedAt : undefined,
     }));
 
+    this.channelManager.unsubscribeAll(ws);
     this.rateLimits.delete(ws);
   }
 
@@ -310,8 +351,10 @@ export class WebSocketHibernationServer extends DurableObject<Env> {
       return;
     }
 
+    this.ensureChannelsReconstructed();
     attachment.channels.push(channel);
     ws.serializeAttachment(attachment);
+    this.channelManager.subscribe(ws, channel);
     ws.send(JSON.stringify(createServerMessage<SubscribedPayload>("subscribed", { channel }, channel)));
   }
 
@@ -327,9 +370,29 @@ export class WebSocketHibernationServer extends DurableObject<Env> {
       return;
     }
 
+    this.ensureChannelsReconstructed();
     attachment.channels = attachment.channels.filter((c) => c !== channel);
     ws.serializeAttachment(attachment);
+    this.channelManager.unsubscribe(ws, channel);
     ws.send(JSON.stringify(createServerMessage<UnsubscribedPayload>("unsubscribed", { channel }, channel)));
+  }
+
+  /**
+   * Handle replay request — send missed events since the given timestamp.
+   */
+  private handleReplay(ws: WebSocket, envelope: WSEnvelope, attachment: WSAttachment): void {
+    const payload = envelope.payload as { lastMessageTs?: number };
+    const lastMessageTs = payload?.lastMessageTs;
+
+    if (typeof lastMessageTs !== "number" || lastMessageTs <= 0) {
+      this.sendError(ws, "INVALID_REPLAY", "lastMessageTs must be a positive number");
+      return;
+    }
+
+    const missed = this.eventLog.replay(lastMessageTs, attachment.channels);
+    for (const entry of missed) {
+      ws.send(JSON.stringify(entry.message));
+    }
   }
 
   /**
@@ -388,14 +451,23 @@ export class WebSocketHibernationServer extends DurableObject<Env> {
       return new Response("Invalid broadcast body", { status: 400 });
     }
 
-    // Send to all WebSockets subscribed to this channel
-    const sockets = this.ctx.getWebSockets();
-    let sent = 0;
-    for (const ws of sockets) {
-      const attachment = ws.deserializeAttachment() as WSAttachment | null;
-      if (attachment?.channels.includes(parsed.channel)) {
-        ws.send(JSON.stringify(parsed.message));
-        sent++;
+    // Reconstruct channels if waking from hibernation
+    this.ensureChannelsReconstructed();
+
+    // Log the event for replay
+    this.eventLog.push(parsed.channel, parsed.message);
+
+    // Send to all WebSockets subscribed to this channel via ChannelManager
+    const sent = this.channelManager.broadcast(parsed.channel, parsed.message);
+
+    // Auto-close delivery channels on terminal status
+    if (parsed.channel.startsWith("delivery:") && parsed.message.type === "delivery_status") {
+      const payload = parsed.message.payload as { status?: string };
+      if (payload?.status && ["delivered", "bounced", "failed", "sent"].includes(payload.status)) {
+        const subscribers = this.channelManager.getSubscribers(parsed.channel);
+        for (const ws of subscribers) {
+          ws.close(1000, "Delivery complete");
+        }
       }
     }
 

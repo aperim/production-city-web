@@ -14,7 +14,7 @@ import {
   type DeliveryStatus,
 } from "@productioncity/holding-ui";
 import { requestMagicLink, verifyCode } from "../lib/api-client";
-import { useDeliveryPolling } from "../lib/use-delivery-polling";
+import { useDeliveryStatus } from "../lib/websocket/useDeliveryStatus";
 import { useAuth } from "../lib/auth-context";
 
 type LoginView = "email" | "code";
@@ -24,15 +24,17 @@ export default function LoginPage() {
   const [view, setView] = useState<LoginView>("email");
   const [email, setEmail] = useState("");
   const [requestId, setRequestId] = useState<string | null>(null);
+  const [deliveryToken, setDeliveryToken] = useState<string | null>(null);
   const [error, setError] = useState<string | undefined>();
   const [codeError, setCodeError] = useState<string | undefined>();
   const [rateLimited, setRateLimited] = useState(false);
   const [rateLimitMessage, setRateLimitMessage] = useState<string | undefined>();
   const [locked, setLocked] = useState(false);
 
-  const { status: pollingStatus, timedOut } = useDeliveryPolling({
+  const { status: pollingStatus, timedOut } = useDeliveryStatus(
     requestId,
-  });
+    deliveryToken,
+  );
 
   // Redirect if already authenticated
   if (!isLoading && isAuthenticated) {
@@ -57,6 +59,7 @@ export default function LoginPage() {
       if (result.ok) {
         setEmail(submittedEmail);
         setRequestId(result.data.requestId);
+        setDeliveryToken(result.data.deliveryToken);
         setView("code");
       } else {
         if (result.status === 429) {
@@ -96,9 +99,11 @@ export default function LoginPage() {
       setCodeError(undefined);
       setLocked(false);
       setRequestId(null);
+      setDeliveryToken(null);
       requestMagicLink(email).then((result) => {
         if (result.ok) {
           setRequestId(result.data.requestId);
+          setDeliveryToken(result.data.deliveryToken);
         }
       });
     }
@@ -108,6 +113,7 @@ export default function LoginPage() {
     setView("email");
     setEmail("");
     setRequestId(null);
+    setDeliveryToken(null);
     setCodeError(undefined);
     setLocked(false);
     setError(undefined);
