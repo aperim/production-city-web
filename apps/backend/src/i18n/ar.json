@@ -146,5 +146,16 @@
     "forbidden": "صلاحيات غير كافية.",
     "serviceUnavailable": "الخدمة غير متاحة مؤقتًا.",
     "internalError": "حدث خطأ داخلي."
+  },
+  "ws": {
+    "errors": {
+      "invalidMessage": "تنسيق رسالة WebSocket غير صالح.",
+      "channelNotAllowed": "ليس لديك إذن للاشتراك في هذه القناة.",
+      "rateLimited": "رسائل كثيرة جداً. يرجى التباطؤ.",
+      "messageTooLarge": "الرسالة تتجاوز الحد الأقصى للحجم.",
+      "invalidChannel": "تنسيق اسم القناة غير صالح.",
+      "connectionLimitReached": "تم الوصول إلى الحد الأقصى للاتصالات.",
+      "serverShutdown": "الخادم يعيد التشغيل. يرجى إعادة الاتصال."
+    }
   }
 }

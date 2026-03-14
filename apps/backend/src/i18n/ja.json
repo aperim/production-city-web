@@ -146,5 +146,16 @@
     "forbidden": "権限が不足しています。",
     "serviceUnavailable": "サービスは一時的に利用できません。",
     "internalError": "内部エラーが発生しました。"
+  },
+  "ws": {
+    "errors": {
+      "invalidMessage": "無効なWebSocketメッセージ形式です。",
+      "channelNotAllowed": "このチャンネルへのサブスクライブ権限がありません。",
+      "rateLimited": "メッセージが多すぎます。速度を落としてください。",
+      "messageTooLarge": "メッセージが最大サイズ制限を超えています。",
+      "invalidChannel": "無効なチャンネル名形式です。",
+      "connectionLimitReached": "最大接続数に達しました。",
+      "serverShutdown": "サーバーが再起動中です。再接続してください。"
+    }
   }
 }

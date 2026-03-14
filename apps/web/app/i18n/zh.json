@@ -799,5 +799,63 @@
     "acknowledgement": {
       "heading": "Acknowledgement of Country"
     }
+  },
+  "ws": {
+    "status": {
+      "connected": "已连接",
+      "connecting": "正在连接...",
+      "reconnecting": "正在重新连接...",
+      "disconnected": "已断开连接",
+      "failed": "连接丢失",
+      "unavailable": "实时更新不可用",
+      "updating": "正在更新...即将重新连接"
+    },
+    "banner": {
+      "disconnected": "实时更新不可用。您可能会遇到延迟。",
+      "reconnecting": "正在重新连接到实时更新...",
+      "stale": "实时更新不可用，数据可能已过期。",
+      "dismiss": "关闭"
+    }
+  },
+  "notifications": {
+    "title": "通知",
+    "empty": "没有通知",
+    "markAllRead": "全部标为已读",
+    "new_eoi": "新的{{category}}意向表达",
+    "approval_needed": "新用户等待审批",
+    "user_approved": "用户审批已处理",
+    "user_rejected": "用户申请被拒绝",
+    "invitation_sent": "邀请已发送",
+    "delivery_sent": "邮件已发送",
+    "delivery_delivered": "邮件已送达",
+    "delivery_bounced": "邮件投递失败",
+    "delivery_failed": "邮件无法送达",
+    "timeAgo": {
+      "justNow": "刚刚",
+      "minutesAgo": "{{count}}分钟前",
+      "hoursAgo": "{{count}}小时前",
+      "daysAgo": "{{count}}天前"
+    },
+    "viewDetails": "查看详情",
+    "preferences": {
+      "title": "通知偏好",
+      "description": "选择您要接收的实时通知",
+      "channel": {
+        "eoi": "新意向表达",
+        "approvals": "审批请求",
+        "notifications": "一般通知",
+        "audit": "审计日志事件"
+      },
+      "enabled": "已启用",
+      "disabled": "已禁用"
+    }
+  },
+  "delivery": {
+    "sent": "邮件已发送",
+    "delivered": "邮件已送达",
+    "bounced": "投递失败",
+    "failed": "邮件无法送达",
+    "pending": "正在发送...",
+    "unknown": "状态未知"
   }
 }

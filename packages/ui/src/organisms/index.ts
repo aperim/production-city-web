@@ -66,6 +66,14 @@ export type { MediaGalleryProps } from './MediaGallery/MediaGallery';
 export { MediaHero } from './MediaHero/MediaHero';
 export type { MediaHeroProps } from './MediaHero/MediaHero';
 
+// Issue #190: WebSocket UI Organisms
+export { NotificationPanel } from './NotificationPanel/NotificationPanel';
+export type { NotificationPanelProps, NotificationEntry } from './NotificationPanel/NotificationPanel';
+export { NotificationBell } from './NotificationBell/NotificationBell';
+export type { NotificationBellProps } from './NotificationBell/NotificationBell';
+export { ConnectionBanner } from './ConnectionBanner/ConnectionBanner';
+export type { ConnectionBannerProps, BannerState } from './ConnectionBanner/ConnectionBanner';
+
 // Issue #143: Landing Page Organisms
 export { LandingNavigation } from './LandingNavigation/LandingNavigation';
 export type { LandingNavigationProps, NavLinkItem } from './LandingNavigation/LandingNavigation';

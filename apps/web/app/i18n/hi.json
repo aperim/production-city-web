@@ -799,5 +799,63 @@
     "acknowledgement": {
       "heading": "Acknowledgement of Country"
     }
+  },
+  "ws": {
+    "status": {
+      "connected": "कनेक्टेड",
+      "connecting": "कनेक्ट हो रहा है...",
+      "reconnecting": "पुनः कनेक्ट हो रहा है...",
+      "disconnected": "डिस्कनेक्टेड",
+      "failed": "कनेक्शन टूट गया",
+      "unavailable": "रीयल-टाइम अपडेट उपलब्ध नहीं हैं",
+      "updating": "अपडेट हो रहा है... शीघ्र पुनः कनेक्ट होगा"
+    },
+    "banner": {
+      "disconnected": "रीयल-टाइम अपडेट उपलब्ध नहीं हैं। आपको देरी हो सकती है।",
+      "reconnecting": "रीयल-टाइम अपडेट से पुनः कनेक्ट हो रहा है...",
+      "stale": "रीयल-टाइम अपडेट उपलब्ध नहीं हैं, डेटा पुराना हो सकता है।",
+      "dismiss": "खारिज करें"
+    }
+  },
+  "notifications": {
+    "title": "सूचनाएँ",
+    "empty": "कोई सूचना नहीं",
+    "markAllRead": "सभी को पढ़ा हुआ चिह्नित करें",
+    "new_eoi": "नई {{category}} रुचि अभिव्यक्ति",
+    "approval_needed": "नया उपयोगकर्ता अनुमोदन की प्रतीक्षा में",
+    "user_approved": "उपयोगकर्ता अनुमोदन संसाधित",
+    "user_rejected": "उपयोगकर्ता आवेदन अस्वीकृत",
+    "invitation_sent": "निमंत्रण भेजा गया",
+    "delivery_sent": "ईमेल भेजा गया",
+    "delivery_delivered": "ईमेल वितरित",
+    "delivery_bounced": "ईमेल वितरण विफल",
+    "delivery_failed": "ईमेल वितरित नहीं हो सका",
+    "timeAgo": {
+      "justNow": "अभी",
+      "minutesAgo": "{{count}} मिनट पहले",
+      "hoursAgo": "{{count}} घंटे पहले",
+      "daysAgo": "{{count}} दिन पहले"
+    },
+    "viewDetails": "विवरण देखें",
+    "preferences": {
+      "title": "सूचना प्राथमिकताएँ",
+      "description": "चुनें कि आप कौन सी रीयल-टाइम सूचनाएँ प्राप्त करना चाहते हैं",
+      "channel": {
+        "eoi": "नई रुचि अभिव्यक्तियाँ",
+        "approvals": "अनुमोदन अनुरोध",
+        "notifications": "सामान्य सूचनाएँ",
+        "audit": "ऑडिट लॉग ईवेंट"
+      },
+      "enabled": "सक्षम",
+      "disabled": "अक्षम"
+    }
+  },
+  "delivery": {
+    "sent": "ईमेल भेजा गया",
+    "delivered": "ईमेल वितरित",
+    "bounced": "वितरण विफल",
+    "failed": "ईमेल वितरित नहीं हो सका",
+    "pending": "भेजा जा रहा है...",
+    "unknown": "स्थिति अज्ञात"
   }
 }

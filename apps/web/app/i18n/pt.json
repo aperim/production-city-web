@@ -799,5 +799,63 @@
     "acknowledgement": {
       "heading": "Acknowledgement of Country"
     }
+  },
+  "ws": {
+    "status": {
+      "connected": "Conectado",
+      "connecting": "Conectando...",
+      "reconnecting": "Reconectando...",
+      "disconnected": "Desconectado",
+      "failed": "Conexao perdida",
+      "unavailable": "Atualizacoes em tempo real indisponiveis",
+      "updating": "Atualizando... reconectando em breve"
+    },
+    "banner": {
+      "disconnected": "Atualizacoes em tempo real indisponiveis. Voce pode experimentar atrasos.",
+      "reconnecting": "Reconectando as atualizacoes em tempo real...",
+      "stale": "Atualizacoes em tempo real indisponiveis, os dados podem estar desatualizados.",
+      "dismiss": "Fechar"
+    }
+  },
+  "notifications": {
+    "title": "Notificacoes",
+    "empty": "Sem notificacoes",
+    "markAllRead": "Marcar tudo como lido",
+    "new_eoi": "Nova expressao de interesse em {{category}}",
+    "approval_needed": "Novo usuario aguardando aprovacao",
+    "user_approved": "Aprovacao de usuario processada",
+    "user_rejected": "Solicitacao de usuario recusada",
+    "invitation_sent": "Convite enviado",
+    "delivery_sent": "E-mail enviado",
+    "delivery_delivered": "E-mail entregue",
+    "delivery_bounced": "Falha na entrega do e-mail",
+    "delivery_failed": "O e-mail nao pode ser entregue",
+    "timeAgo": {
+      "justNow": "Agora mesmo",
+      "minutesAgo": "Ha {{count}} min",
+      "hoursAgo": "Ha {{count}} h",
+      "daysAgo": "Ha {{count}} dias"
+    },
+    "viewDetails": "Ver detalhes",
+    "preferences": {
+      "title": "Preferencias de notificacao",
+      "description": "Escolha quais notificacoes em tempo real deseja receber",
+      "channel": {
+        "eoi": "Novas expressoes de interesse",
+        "approvals": "Solicitacoes de aprovacao",
+        "notifications": "Notificacoes gerais",
+        "audit": "Eventos do log de auditoria"
+      },
+      "enabled": "Ativado",
+      "disabled": "Desativado"
+    }
+  },
+  "delivery": {
+    "sent": "E-mail enviado",
+    "delivered": "E-mail entregue",
+    "bounced": "Falha na entrega",
+    "failed": "O e-mail nao pode ser entregue",
+    "pending": "Enviando...",
+    "unknown": "Status desconhecido"
   }
 }

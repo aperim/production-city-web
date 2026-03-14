@@ -62,6 +62,14 @@ export type { ThemedImageProps } from "./ThemedImage/ThemedImage";
 export { MediaAttribution } from "./MediaAttribution/MediaAttribution";
 export type { MediaAttributionProps } from "./MediaAttribution/MediaAttribution";
 
+// Issue #190: WebSocket UI Molecules
+export { ConnectionStatus } from "./ConnectionStatus/ConnectionStatus";
+export type { ConnectionStatusProps, ConnectionState } from "./ConnectionStatus/ConnectionStatus";
+export { NotificationToast, notificationToastVariants } from "./NotificationToast/NotificationToast";
+export type { NotificationToastProps } from "./NotificationToast/NotificationToast";
+export { NotificationItem } from "./NotificationItem/NotificationItem";
+export type { NotificationItemProps } from "./NotificationItem/NotificationItem";
+
 // Issue #142: Landing Page Molecules
 export { LanguageSwitcher } from "./LanguageSwitcher/LanguageSwitcher";
 export type { LanguageSwitcherProps, LanguageOption } from "./LanguageSwitcher/LanguageSwitcher";

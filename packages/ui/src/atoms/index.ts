@@ -41,6 +41,12 @@ export type { AttributionLinkProps } from "./AttributionLink/AttributionLink";
 export { ImageSkeleton } from "./ImageSkeleton/ImageSkeleton";
 export type { ImageSkeletonProps } from "./ImageSkeleton/ImageSkeleton";
 
+// Issue #190: WebSocket UI Atoms
+export { ConnectionDot, connectionDotVariants } from "./ConnectionDot/ConnectionDot";
+export type { ConnectionDotProps } from "./ConnectionDot/ConnectionDot";
+export { NotificationBadge } from "./NotificationBadge/NotificationBadge";
+export type { NotificationBadgeProps } from "./NotificationBadge/NotificationBadge";
+
 // Issue #142: Landing Page Atoms
 export { SectionDivider, sectionDividerVariants } from "./SectionDivider/SectionDivider";
 export type { SectionDividerProps } from "./SectionDivider/SectionDivider";

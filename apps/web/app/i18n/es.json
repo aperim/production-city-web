@@ -799,5 +799,63 @@
     "acknowledgement": {
       "heading": "Acknowledgement of Country"
     }
+  },
+  "ws": {
+    "status": {
+      "connected": "Conectado",
+      "connecting": "Conectando...",
+      "reconnecting": "Reconectando...",
+      "disconnected": "Desconectado",
+      "failed": "Conexion perdida",
+      "unavailable": "Actualizaciones en tiempo real no disponibles",
+      "updating": "Actualizando... reconectando en breve"
+    },
+    "banner": {
+      "disconnected": "Actualizaciones en tiempo real no disponibles. Puede experimentar retrasos.",
+      "reconnecting": "Reconectando a actualizaciones en tiempo real...",
+      "stale": "Actualizaciones en tiempo real no disponibles, los datos pueden estar desactualizados.",
+      "dismiss": "Cerrar"
+    }
+  },
+  "notifications": {
+    "title": "Notificaciones",
+    "empty": "Sin notificaciones",
+    "markAllRead": "Marcar todas como leidas",
+    "new_eoi": "Nueva expresion de interes en {{category}}",
+    "approval_needed": "Nuevo usuario esperando aprobacion",
+    "user_approved": "Aprobacion de usuario procesada",
+    "user_rejected": "Solicitud de usuario rechazada",
+    "invitation_sent": "Invitacion enviada",
+    "delivery_sent": "Correo enviado",
+    "delivery_delivered": "Correo entregado",
+    "delivery_bounced": "Entrega de correo fallida",
+    "delivery_failed": "El correo no pudo ser entregado",
+    "timeAgo": {
+      "justNow": "Ahora mismo",
+      "minutesAgo": "Hace {{count}} min",
+      "hoursAgo": "Hace {{count}} h",
+      "daysAgo": "Hace {{count}} dias"
+    },
+    "viewDetails": "Ver detalles",
+    "preferences": {
+      "title": "Preferencias de notificacion",
+      "description": "Elija que notificaciones en tiempo real desea recibir",
+      "channel": {
+        "eoi": "Nuevas expresiones de interes",
+        "approvals": "Solicitudes de aprobacion",
+        "notifications": "Notificaciones generales",
+        "audit": "Eventos del registro de auditoria"
+      },
+      "enabled": "Activado",
+      "disabled": "Desactivado"
+    }
+  },
+  "delivery": {
+    "sent": "Correo enviado",
+    "delivered": "Correo entregado",
+    "bounced": "Entrega fallida",
+    "failed": "El correo no pudo ser entregado",
+    "pending": "Enviando...",
+    "unknown": "Estado desconocido"
   }
 }

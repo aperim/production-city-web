@@ -146,5 +146,16 @@
     "forbidden": "权限不足。",
     "serviceUnavailable": "服务暂时不可用。",
     "internalError": "发生内部错误。"
+  },
+  "ws": {
+    "errors": {
+      "invalidMessage": "无效的WebSocket消息格式。",
+      "channelNotAllowed": "您没有权限订阅此频道。",
+      "rateLimited": "消息过多，请稍候。",
+      "messageTooLarge": "消息超过最大大小限制。",
+      "invalidChannel": "无效的频道名称格式。",
+      "connectionLimitReached": "已达到最大连接数限制。",
+      "serverShutdown": "服务器正在重启，请重新连接。"
+    }
   }
 }

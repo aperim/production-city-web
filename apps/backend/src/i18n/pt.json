@@ -146,5 +146,16 @@
     "forbidden": "Permissões insuficientes.",
     "serviceUnavailable": "Serviço temporariamente indisponível.",
     "internalError": "Ocorreu um erro interno."
+  },
+  "ws": {
+    "errors": {
+      "invalidMessage": "Formato de mensagem WebSocket invalido.",
+      "channelNotAllowed": "Voce nao tem permissao para se inscrever neste canal.",
+      "rateLimited": "Muitas mensagens. Por favor, diminua a velocidade.",
+      "messageTooLarge": "A mensagem excede o limite maximo de tamanho.",
+      "invalidChannel": "Formato de nome de canal invalido.",
+      "connectionLimitReached": "Limite maximo de conexoes atingido.",
+      "serverShutdown": "O servidor esta reiniciando. Por favor, reconecte."
+    }
   }
 }

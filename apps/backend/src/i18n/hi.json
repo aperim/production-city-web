@@ -146,5 +146,16 @@
     "forbidden": "अपर्याप्त अनुमतियाँ।",
     "serviceUnavailable": "सेवा अस्थायी रूप से अनुपलब्ध।",
     "internalError": "एक आंतरिक त्रुटि हुई।"
+  },
+  "ws": {
+    "errors": {
+      "invalidMessage": "अमान्य WebSocket संदेश प्रारूप।",
+      "channelNotAllowed": "आपके पास इस चैनल की सदस्यता लेने की अनुमति नहीं है।",
+      "rateLimited": "बहुत अधिक संदेश। कृपया धीरे करें।",
+      "messageTooLarge": "संदेश अधिकतम आकार सीमा से अधिक है।",
+      "invalidChannel": "अमान्य चैनल नाम प्रारूप।",
+      "connectionLimitReached": "अधिकतम कनेक्शन सीमा पहुँच गई।",
+      "serverShutdown": "सर्वर पुनरारंभ हो रहा है। कृपया पुनः कनेक्ट करें।"
+    }
   }
 }

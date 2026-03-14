@@ -799,5 +799,63 @@
     "acknowledgement": {
       "heading": "Acknowledgement of Country"
     }
+  },
+  "ws": {
+    "status": {
+      "connected": "সংযুক্ত",
+      "connecting": "সংযোগ হচ্ছে...",
+      "reconnecting": "পুনরায় সংযোগ হচ্ছে...",
+      "disconnected": "সংযোগ বিচ্ছিন্ন",
+      "failed": "সংযোগ হারিয়েছে",
+      "unavailable": "রিয়েল-টাইম আপডেট উপলব্ধ নেই",
+      "updating": "আপডেট হচ্ছে... শীঘ্রই পুনরায় সংযোগ হবে"
+    },
+    "banner": {
+      "disconnected": "রিয়েল-টাইম আপডেট উপলব্ধ নেই। আপনি বিলম্ব অনুভব করতে পারেন।",
+      "reconnecting": "রিয়েল-টাইম আপডেটে পুনরায় সংযোগ হচ্ছে...",
+      "stale": "রিয়েল-টাইম আপডেট উপলব্ধ নেই, তথ্য পুরানো হতে পারে।",
+      "dismiss": "বাতিল"
+    }
+  },
+  "notifications": {
+    "title": "বিজ্ঞপ্তি",
+    "empty": "কোনো বিজ্ঞপ্তি নেই",
+    "markAllRead": "সব পঠিত হিসেবে চিহ্নিত করুন",
+    "new_eoi": "নতুন {{category}} আগ্রহ প্রকাশ",
+    "approval_needed": "নতুন ব্যবহারকারী অনুমোদনের অপেক্ষায়",
+    "user_approved": "ব্যবহারকারী অনুমোদন প্রক্রিয়াকৃত",
+    "user_rejected": "ব্যবহারকারীর আবেদন প্রত্যাখ্যাত",
+    "invitation_sent": "আমন্ত্রণ পাঠানো হয়েছে",
+    "delivery_sent": "ইমেল পাঠানো হয়েছে",
+    "delivery_delivered": "ইমেল বিতরণ করা হয়েছে",
+    "delivery_bounced": "ইমেল বিতরণ ব্যর্থ",
+    "delivery_failed": "ইমেল বিতরণ করা যায়নি",
+    "timeAgo": {
+      "justNow": "এইমাত্র",
+      "minutesAgo": "{{count}} মিনিট আগে",
+      "hoursAgo": "{{count}} ঘণ্টা আগে",
+      "daysAgo": "{{count}} দিন আগে"
+    },
+    "viewDetails": "বিস্তারিত দেখুন",
+    "preferences": {
+      "title": "বিজ্ঞপ্তি পছন্দসমূহ",
+      "description": "আপনি কোন রিয়েল-টাইম বিজ্ঞপ্তি পেতে চান তা বেছে নিন",
+      "channel": {
+        "eoi": "নতুন আগ্রহ প্রকাশ",
+        "approvals": "অনুমোদন অনুরোধ",
+        "notifications": "সাধারণ বিজ্ঞপ্তি",
+        "audit": "অডিট লগ ইভেন্ট"
+      },
+      "enabled": "সক্রিয়",
+      "disabled": "নিষ্ক্রিয়"
+    }
+  },
+  "delivery": {
+    "sent": "ইমেল পাঠানো হয়েছে",
+    "delivered": "ইমেল বিতরণ করা হয়েছে",
+    "bounced": "বিতরণ ব্যর্থ",
+    "failed": "ইমেল বিতরণ করা যায়নি",
+    "pending": "পাঠানো হচ্ছে...",
+    "unknown": "অবস্থা অজানা"
   }
 }

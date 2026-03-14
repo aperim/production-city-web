@@ -799,5 +799,63 @@
     "acknowledgement": {
       "heading": "Acknowledgement of Country"
     }
+  },
+  "ws": {
+    "status": {
+      "connected": "Connecte",
+      "connecting": "Connexion en cours...",
+      "reconnecting": "Reconnexion en cours...",
+      "disconnected": "Deconnecte",
+      "failed": "Connexion perdue",
+      "unavailable": "Mises a jour en temps reel indisponibles",
+      "updating": "Mise a jour... reconnexion imminente"
+    },
+    "banner": {
+      "disconnected": "Mises a jour en temps reel indisponibles. Vous pourriez rencontrer des delais.",
+      "reconnecting": "Reconnexion aux mises a jour en temps reel...",
+      "stale": "Mises a jour en temps reel indisponibles, les donnees peuvent etre obsoletes.",
+      "dismiss": "Fermer"
+    }
+  },
+  "notifications": {
+    "title": "Notifications",
+    "empty": "Aucune notification",
+    "markAllRead": "Tout marquer comme lu",
+    "new_eoi": "Nouvelle expression d'interet {{category}}",
+    "approval_needed": "Nouvel utilisateur en attente d'approbation",
+    "user_approved": "Approbation de l'utilisateur traitee",
+    "user_rejected": "Demande de l'utilisateur refusee",
+    "invitation_sent": "Invitation envoyee",
+    "delivery_sent": "E-mail envoye",
+    "delivery_delivered": "E-mail livre",
+    "delivery_bounced": "Echec de la livraison de l'e-mail",
+    "delivery_failed": "L'e-mail n'a pas pu etre livre",
+    "timeAgo": {
+      "justNow": "A l'instant",
+      "minutesAgo": "Il y a {{count}} min",
+      "hoursAgo": "Il y a {{count}} h",
+      "daysAgo": "Il y a {{count}} jours"
+    },
+    "viewDetails": "Voir les details",
+    "preferences": {
+      "title": "Preferences de notification",
+      "description": "Choisissez les notifications en temps reel que vous souhaitez recevoir",
+      "channel": {
+        "eoi": "Nouvelles expressions d'interet",
+        "approvals": "Demandes d'approbation",
+        "notifications": "Notifications generales",
+        "audit": "Evenements du journal d'audit"
+      },
+      "enabled": "Active",
+      "disabled": "Desactive"
+    }
+  },
+  "delivery": {
+    "sent": "E-mail envoye",
+    "delivered": "E-mail livre",
+    "bounced": "Echec de la livraison",
+    "failed": "L'e-mail n'a pas pu etre livre",
+    "pending": "Envoi en cours...",
+    "unknown": "Statut inconnu"
   }
 }

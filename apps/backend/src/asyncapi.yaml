@@ -1,0 +1,450 @@
+asyncapi: 3.0.0
+info:
+  title: Production City WebSocket API
+  version: 1.0.0
+  description: |
+    Real-time WebSocket API using Cloudflare Durable Objects with Hibernation.
+
+    Two upgrade endpoints are available:
+    - `/v1/ws` — Authenticated (cookie-based) for admin/user channels
+    - `/v1/ws/delivery` — Token-authenticated for magic link delivery status
+
+    All messages use the WSEnvelope format with protocol version 1.
+
+servers:
+  production:
+    host: api.production.city
+    protocol: wss
+    description: Production WebSocket server
+
+channels:
+  userChannel:
+    address: "user:{userId}"
+    description: Per-user notifications (authenticated only). Endpoint `/v1/ws`.
+    parameters:
+      userId:
+        description: Authenticated user ID (UUID)
+    messages:
+      notification:
+        $ref: "#/components/messages/Notification"
+
+  adminNotifications:
+    address: "admin:notifications"
+    description: Admin-wide broadcast notifications. Endpoint `/v1/ws`.
+    messages:
+      notification:
+        $ref: "#/components/messages/Notification"
+
+  adminEoi:
+    address: "admin:eoi"
+    description: New expression of interest notifications for admins. Endpoint `/v1/ws`.
+    messages:
+      newEOI:
+        $ref: "#/components/messages/NewEOI"
+
+  adminApprovals:
+    address: "admin:approvals"
+    description: Approval request notifications for admins. Endpoint `/v1/ws`.
+    messages:
+      approvalNeeded:
+        $ref: "#/components/messages/ApprovalNeeded"
+
+  deliveryChannel:
+    address: "delivery:{magicLinkId}"
+    description: |
+      Magic link delivery status updates. Endpoint `/v1/ws/delivery`.
+      Authenticated via one-time delivery token (query param `token`).
+      Auto-subscribed on connection.
+    parameters:
+      magicLinkId:
+        description: Magic link identifier (UUID)
+    messages:
+      deliveryStatus:
+        $ref: "#/components/messages/DeliveryStatus"
+
+operations:
+  subscribe:
+    action: send
+    channel:
+      $ref: "#/channels/userChannel"
+    summary: Subscribe to a channel
+    description: |
+      Client sends a subscribe message to join a channel.
+      Server responds with a `subscribed` confirmation.
+    messages:
+      - $ref: "#/components/messages/Subscribe"
+
+  unsubscribe:
+    action: send
+    channel:
+      $ref: "#/channels/userChannel"
+    summary: Unsubscribe from a channel
+    messages:
+      - $ref: "#/components/messages/Unsubscribe"
+
+  ping:
+    action: send
+    channel:
+      $ref: "#/channels/userChannel"
+    summary: Client ping (auto-response enabled)
+    description: |
+      Ping messages are handled by Cloudflare's setWebSocketAutoResponse()
+      without waking the Durable Object from hibernation.
+    messages:
+      - $ref: "#/components/messages/Ping"
+
+  replay:
+    action: send
+    channel:
+      $ref: "#/channels/userChannel"
+    summary: Request missed events since a timestamp
+    description: |
+      Client sends a replay request on reconnect to receive events
+      that occurred while disconnected.
+    messages:
+      - $ref: "#/components/messages/Replay"
+
+  receiveNotification:
+    action: receive
+    channel:
+      $ref: "#/channels/adminNotifications"
+    summary: Receive a notification
+    messages:
+      - $ref: "#/components/messages/Notification"
+
+  receiveDeliveryStatus:
+    action: receive
+    channel:
+      $ref: "#/channels/deliveryChannel"
+    summary: Receive delivery status update
+    messages:
+      - $ref: "#/components/messages/DeliveryStatus"
+
+  receiveConnectionAck:
+    action: receive
+    channel:
+      $ref: "#/channels/userChannel"
+    summary: Connection acknowledgement on upgrade
+    messages:
+      - $ref: "#/components/messages/ConnectionAck"
+
+  receiveSubscribed:
+    action: receive
+    channel:
+      $ref: "#/channels/userChannel"
+    summary: Subscription confirmed
+    messages:
+      - $ref: "#/components/messages/Subscribed"
+
+  receiveUnsubscribed:
+    action: receive
+    channel:
+      $ref: "#/channels/userChannel"
+    summary: Unsubscription confirmed
+    messages:
+      - $ref: "#/components/messages/Unsubscribed"
+
+  receivePong:
+    action: receive
+    channel:
+      $ref: "#/channels/userChannel"
+    summary: Heartbeat response
+    messages:
+      - $ref: "#/components/messages/Pong"
+
+  receiveServerShutdown:
+    action: receive
+    channel:
+      $ref: "#/channels/userChannel"
+    summary: Server shutdown notice before deploy
+    messages:
+      - $ref: "#/components/messages/ServerShutdown"
+
+  receiveError:
+    action: receive
+    channel:
+      $ref: "#/channels/userChannel"
+    summary: Protocol error
+    messages:
+      - $ref: "#/components/messages/Error"
+
+components:
+  messages:
+    Subscribe:
+      name: subscribe
+      summary: Subscribe to a channel
+      payload:
+        $ref: "#/components/schemas/SubscribeEnvelope"
+
+    Unsubscribe:
+      name: unsubscribe
+      summary: Unsubscribe from a channel
+      payload:
+        $ref: "#/components/schemas/UnsubscribeEnvelope"
+
+    Ping:
+      name: ping
+      summary: Client heartbeat
+      payload:
+        $ref: "#/components/schemas/PingEnvelope"
+
+    Replay:
+      name: replay
+      summary: Request missed events since a timestamp
+      payload:
+        $ref: "#/components/schemas/ReplayEnvelope"
+
+    Subscribed:
+      name: subscribed
+      summary: Server confirms channel subscription
+      payload:
+        $ref: "#/components/schemas/SubscribedEnvelope"
+
+    Unsubscribed:
+      name: unsubscribed
+      summary: Server confirms channel unsubscription
+      payload:
+        $ref: "#/components/schemas/UnsubscribedEnvelope"
+
+    Pong:
+      name: pong
+      summary: Server heartbeat response
+      payload:
+        $ref: "#/components/schemas/PongEnvelope"
+
+    ConnectionAck:
+      name: connection_ack
+      summary: Server acknowledges connection
+      payload:
+        $ref: "#/components/schemas/ConnectionAckEnvelope"
+
+    Notification:
+      name: notification
+      summary: Real-time notification
+      payload:
+        $ref: "#/components/schemas/NotificationEnvelope"
+
+    DeliveryStatus:
+      name: delivery_status
+      summary: Email delivery status update
+      payload:
+        $ref: "#/components/schemas/DeliveryStatusEnvelope"
+
+    NewEOI:
+      name: notification
+      summary: New expression of interest notification
+      payload:
+        $ref: "#/components/schemas/NotificationEnvelope"
+
+    ApprovalNeeded:
+      name: notification
+      summary: Approval request notification
+      payload:
+        $ref: "#/components/schemas/NotificationEnvelope"
+
+    ServerShutdown:
+      name: server_shutdown
+      summary: Server shutting down, client should reconnect
+      payload:
+        $ref: "#/components/schemas/ServerShutdownEnvelope"
+
+    Error:
+      name: error
+      summary: Protocol error
+      payload:
+        $ref: "#/components/schemas/ErrorEnvelope"
+
+  schemas:
+    WSEnvelope:
+      type: object
+      required: [v, type, payload, ts, id]
+      properties:
+        v:
+          type: integer
+          const: 1
+          description: Protocol version
+        type:
+          type: string
+          maxLength: 64
+          description: Message type identifier
+        channel:
+          type: string
+          maxLength: 200
+          description: Channel name (optional)
+          pattern: "^(user|admin|delivery):[a-zA-Z0-9_-]{1,128}$"
+        payload:
+          description: Message-specific payload
+        ts:
+          type: integer
+          description: Unix timestamp in milliseconds
+        id:
+          type: string
+          format: uuid
+          description: Unique message identifier
+
+    SubscribeEnvelope:
+      allOf:
+        - $ref: "#/components/schemas/WSEnvelope"
+        - properties:
+            type:
+              const: subscribe
+            payload:
+              type: object
+              required: [channel]
+              properties:
+                channel:
+                  type: string
+                  pattern: "^(user|admin|delivery):[a-zA-Z0-9_-]{1,128}$"
+
+    UnsubscribeEnvelope:
+      allOf:
+        - $ref: "#/components/schemas/WSEnvelope"
+        - properties:
+            type:
+              const: unsubscribe
+            payload:
+              type: object
+              required: [channel]
+              properties:
+                channel:
+                  type: string
+
+    PingEnvelope:
+      allOf:
+        - $ref: "#/components/schemas/WSEnvelope"
+        - properties:
+            type:
+              const: ping
+            payload:
+              type: object
+
+    ReplayEnvelope:
+      allOf:
+        - $ref: "#/components/schemas/WSEnvelope"
+        - properties:
+            type:
+              const: replay
+            payload:
+              type: object
+              required: [since]
+              properties:
+                since:
+                  type: integer
+                  description: Unix timestamp (ms) to replay events from
+
+    SubscribedEnvelope:
+      allOf:
+        - $ref: "#/components/schemas/WSEnvelope"
+        - properties:
+            type:
+              const: subscribed
+            payload:
+              type: object
+              required: [channel]
+              properties:
+                channel:
+                  type: string
+
+    UnsubscribedEnvelope:
+      allOf:
+        - $ref: "#/components/schemas/WSEnvelope"
+        - properties:
+            type:
+              const: unsubscribed
+            payload:
+              type: object
+              required: [channel]
+              properties:
+                channel:
+                  type: string
+
+    PongEnvelope:
+      allOf:
+        - $ref: "#/components/schemas/WSEnvelope"
+        - properties:
+            type:
+              const: pong
+            payload:
+              type: object
+
+    ConnectionAckEnvelope:
+      allOf:
+        - $ref: "#/components/schemas/WSEnvelope"
+        - properties:
+            type:
+              const: connection_ack
+            payload:
+              type: object
+              required: [sessionId, channels, protocolVersion]
+              properties:
+                sessionId:
+                  type: string
+                channels:
+                  type: array
+                  items:
+                    type: string
+                protocolVersion:
+                  type: integer
+
+    NotificationEnvelope:
+      allOf:
+        - $ref: "#/components/schemas/WSEnvelope"
+        - properties:
+            type:
+              const: notification
+            payload:
+              type: object
+              required: [title, body]
+              properties:
+                title:
+                  type: string
+                body:
+                  type: string
+                category:
+                  type: string
+
+    DeliveryStatusEnvelope:
+      allOf:
+        - $ref: "#/components/schemas/WSEnvelope"
+        - properties:
+            type:
+              const: delivery_status
+            payload:
+              type: object
+              required: [magicLinkId, status, timestamp]
+              properties:
+                magicLinkId:
+                  type: string
+                status:
+                  type: string
+                  enum: [sent, delivered, bounced, failed]
+                timestamp:
+                  type: integer
+
+    ServerShutdownEnvelope:
+      allOf:
+        - $ref: "#/components/schemas/WSEnvelope"
+        - properties:
+            type:
+              const: server_shutdown
+            payload:
+              type: object
+              required: [reason]
+              properties:
+                reason:
+                  type: string
+
+    ErrorEnvelope:
+      allOf:
+        - $ref: "#/components/schemas/WSEnvelope"
+        - properties:
+            type:
+              const: error
+            payload:
+              type: object
+              required: [code, message]
+              properties:
+                code:
+                  type: string
+                message:
+                  type: string

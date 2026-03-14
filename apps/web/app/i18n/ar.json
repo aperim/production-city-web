@@ -799,5 +799,63 @@
     "acknowledgement": {
       "heading": "Acknowledgement of Country"
     }
+  },
+  "ws": {
+    "status": {
+      "connected": "متصل",
+      "connecting": "جاري الاتصال...",
+      "reconnecting": "جاري إعادة الاتصال...",
+      "disconnected": "غير متصل",
+      "failed": "فقد الاتصال",
+      "unavailable": "التحديثات الفورية غير متوفرة",
+      "updating": "جاري التحديث... سيتم إعادة الاتصال قريباً"
+    },
+    "banner": {
+      "disconnected": "التحديثات الفورية غير متوفرة. قد تواجه تأخيرات.",
+      "reconnecting": "جاري إعادة الاتصال بالتحديثات الفورية...",
+      "stale": "التحديثات الفورية غير متوفرة، قد تكون البيانات قديمة.",
+      "dismiss": "إغلاق"
+    }
+  },
+  "notifications": {
+    "title": "الإشعارات",
+    "empty": "لا توجد إشعارات",
+    "markAllRead": "تحديد الكل كمقروء",
+    "new_eoi": "تعبير اهتمام جديد في {{category}}",
+    "approval_needed": "مستخدم جديد ينتظر الموافقة",
+    "user_approved": "تمت معالجة موافقة المستخدم",
+    "user_rejected": "تم رفض طلب المستخدم",
+    "invitation_sent": "تم إرسال الدعوة",
+    "delivery_sent": "تم إرسال البريد الإلكتروني",
+    "delivery_delivered": "تم تسليم البريد الإلكتروني",
+    "delivery_bounced": "فشل تسليم البريد الإلكتروني",
+    "delivery_failed": "تعذر تسليم البريد الإلكتروني",
+    "timeAgo": {
+      "justNow": "الآن",
+      "minutesAgo": "منذ {{count}} دقيقة",
+      "hoursAgo": "منذ {{count}} ساعة",
+      "daysAgo": "منذ {{count}} يوم"
+    },
+    "viewDetails": "عرض التفاصيل",
+    "preferences": {
+      "title": "تفضيلات الإشعارات",
+      "description": "اختر الإشعارات الفورية التي تريد تلقيها",
+      "channel": {
+        "eoi": "تعبيرات اهتمام جديدة",
+        "approvals": "طلبات الموافقة",
+        "notifications": "إشعارات عامة",
+        "audit": "أحداث سجل المراجعة"
+      },
+      "enabled": "مفعل",
+      "disabled": "معطل"
+    }
+  },
+  "delivery": {
+    "sent": "تم إرسال البريد الإلكتروني",
+    "delivered": "تم تسليم البريد الإلكتروني",
+    "bounced": "فشل التسليم",
+    "failed": "تعذر تسليم البريد الإلكتروني",
+    "pending": "جاري الإرسال...",
+    "unknown": "الحالة غير معروفة"
   }
 }

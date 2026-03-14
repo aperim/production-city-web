@@ -799,5 +799,63 @@
     "acknowledgement": {
       "heading": "Acknowledgement of Country"
     }
+  },
+  "ws": {
+    "status": {
+      "connected": "Connected",
+      "connecting": "Connecting...",
+      "reconnecting": "Reconnecting...",
+      "disconnected": "Disconnected",
+      "failed": "Connection lost",
+      "unavailable": "Real-time updates unavailable",
+      "updating": "Updating... reconnecting shortly"
+    },
+    "banner": {
+      "disconnected": "Real-time updates unavailable. You may experience delays.",
+      "reconnecting": "Reconnecting to real-time updates...",
+      "stale": "Real-time updates unavailable, data may be stale.",
+      "dismiss": "Dismiss"
+    }
+  },
+  "notifications": {
+    "title": "Notifications",
+    "empty": "No notifications",
+    "markAllRead": "Mark all as read",
+    "new_eoi": "New {{category}} expression of interest",
+    "approval_needed": "New user waiting for approval",
+    "user_approved": "User approval processed",
+    "user_rejected": "User application declined",
+    "invitation_sent": "Invitation sent",
+    "delivery_sent": "Email sent",
+    "delivery_delivered": "Email delivered",
+    "delivery_bounced": "Email delivery failed",
+    "delivery_failed": "Email could not be delivered",
+    "timeAgo": {
+      "justNow": "Just now",
+      "minutesAgo": "{{count}} min ago",
+      "hoursAgo": "{{count}} hr ago",
+      "daysAgo": "{{count}} days ago"
+    },
+    "viewDetails": "View details",
+    "preferences": {
+      "title": "Notification preferences",
+      "description": "Choose which real-time notifications you receive",
+      "channel": {
+        "eoi": "New expressions of interest",
+        "approvals": "Approval requests",
+        "notifications": "General notifications",
+        "audit": "Audit log events"
+      },
+      "enabled": "Enabled",
+      "disabled": "Disabled"
+    }
+  },
+  "delivery": {
+    "sent": "Email sent",
+    "delivered": "Email delivered",
+    "bounced": "Delivery failed",
+    "failed": "Email could not be delivered",
+    "pending": "Sending...",
+    "unknown": "Status unknown"
   }
 }
