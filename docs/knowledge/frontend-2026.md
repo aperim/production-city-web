@@ -1,483 +1,411 @@
-# Frontend Technology Knowledge Base (2026)
+# Frontend Technology Reference — March 2026
 
-**Created:** 2026-02-01
-**Purpose:** Document current library versions, patterns, and breaking changes from 2024 training data
+**Last verified:** 2026-03-14
+**Owner:** Engineering team
+**Review cadence:** Monthly, or when any dependency is upgraded
 
-## Current Version Summary
-
-| Library | Current Version | Breaking Changes Since 2024 |
-|---------|-----------------|----------------------------|
-| React | 19.2.x | New hooks, Actions, Activity component |
-| Tailwind CSS | 4.x | CSS-first config, @theme directive |
-| shadcn/ui | Latest (2026) | RTL support, new design systems |
-| dnd-kit | Latest | Stable, recommended for complex DnD |
-| Vite | 7.x | Native Tailwind plugin |
-| cmdk | Latest | Stable, via shadcn Command |
+> **This document is the source of truth for frontend tooling.**
+> Agent training data is stale (2024). ALWAYS verify versions at task time.
+> ALWAYS read this document before ANY frontend work.
 
 ---
 
-## React 19.x
+## Current Versions (Verified 2026-03-14)
 
-### Key Changes from React 18
+| Package | Latest | Installed | Action Required |
+|---------|--------|-----------|-----------------|
+| React | 19.2.4 | ^19.2.4 | None |
+| Tailwind CSS | 4.2.1 | ^4.2.1 | None |
+| Vite | **8.0.0** | ^7.3.1 | Upgrade planned |
+| @tailwindcss/vite | 4.2.1 | ^4.2.1 | None |
+| shadcn/ui CLI | v4 | — | March 2026 release |
+| tw-animate-css | latest | — | Replaces tailwindcss-animate |
 
-1. **React Compiler (New)**: Built-in compiler handles optimizations automatically. Reduces need for `useMemo`, `useCallback`, and `memo`.
-
-2. **Actions & Server Actions**: Replace traditional REST/GraphQL APIs for data mutations in framework contexts (Next.js, Remix).
-
-3. **New Hooks**:
-   - `useActionState` - Track async action states (pending, fulfilled, rejected)
-   - `useOptimistic` - Enable optimistic UI updates
-   - `useFormStatus` - Access form state without prop drilling
-   - `use` - Read promises/context in render (experimental)
-
-4. **Concurrent Rendering by Default**: React can interrupt/pause renders, improving UI responsiveness.
-
-5. **Server Components Stable**: Full production support for server-side rendering without client JS.
-
-6. **Document Metadata**: Native `<title>`, `<link>`, `<meta>` hoisting to `<head>`.
-
-### React 19.2 Features (October 2025)
-
-1. **`<Activity />` Component** - Control render states:
-   ```jsx
-   <Activity mode={isVisible ? 'visible' : 'hidden'}>
-     <Page />
-   </Activity>
-   ```
-   - `visible`: Normal rendering
-   - `hidden`: Hides children, unmounts effects, defers updates
-   - Use for pre-rendering, state preservation, background loading
-
-2. **`useEffectEvent`** - Separate event logic from effect logic:
-   ```jsx
-   const onConnected = useEffectEvent(() => {
-     showNotification('Connected!', theme);
-   });
-
-   useEffect(() => {
-     connection.on('connected', () => onConnected());
-   }, [roomId]); // Only reactive deps
-   ```
-
-3. **`cacheSignal`** - Server Components cleanup signal
-
-4. **Performance Tracks** - Chrome DevTools integration for scheduler/component visualization
-
-5. **Partial Pre-rendering** - Pre-render static shells, resume with dynamic content
-
-### Deprecated Patterns to Avoid
-
-- Excessive manual memoization (compiler handles this)
-- Legacy Context API (use modern Context with hooks)
-- Class components for new code
-- `componentWillMount`, `componentWillUpdate`, `componentWillReceiveProps`
-
-### Recommended Patterns
-
-```jsx
-// Use Actions for form handling
-async function submitAction(formData) {
-  'use server'
-  await saveData(formData)
-}
-
-// Use useActionState for loading states
-const [state, formAction, isPending] = useActionState(submitAction, initialState)
-
-// Use useOptimistic for instant UI feedback
-const [optimisticItems, addOptimisticItem] = useOptimistic(items)
-
-// Use Activity for pre-rendering
-<Activity mode={tab === 'settings' ? 'visible' : 'hidden'}>
-  <SettingsPanel />
-</Activity>
+**Verify at task time:**
+```bash
+pnpm view tailwindcss dist-tags.latest
+pnpm view vite dist-tags.latest
+pnpm view react dist-tags.latest
 ```
 
 ---
 
-## Tailwind CSS v4.x
+## Tailwind CSS v4 — Complete Reference
 
-### Breaking Changes from v3
+### CSS Entry Point Pattern
 
-1. **CSS-First Configuration**: No more `tailwind.config.js` for most projects
-2. **@theme directive** replaces JS config
-3. **Automatic content detection** - No need to configure `content` paths
-4. **No @tailwind directives** - Use `@import "tailwindcss"` instead
-5. **Built-in imports** - No need for `postcss-import` or `autoprefixer`
+Every Tailwind v4 project has ONE CSS entry point. Ours is `apps/web/app.css`:
 
-### Configuration Approach
-
-**Old (v3):**
-```js
-// tailwind.config.js
-module.exports = {
-  content: ['./src/**/*.{js,jsx,ts,tsx}'],
-  theme: {
-    extend: {
-      colors: { primary: '#6366F1' }
-    }
-  }
-}
-```
-
-**New (v4):**
 ```css
-/* src/app.css */
-@import "tailwindcss";
+@import "../../packages/ui/src/globals.css";  /* design tokens + tailwind + theme */
+@source "../../packages/ui/src";               /* scan UI package for class names */
+```
 
+**Critical rules:**
+- `@import "tailwindcss"` appears ONCE (in globals.css), never duplicated
+- `@source` is REQUIRED for monorepo packages outside the CSS file's directory
+- Without `@source`, Tailwind will not generate utilities for classes in external packages
+
+### @source Directive (Monorepo Critical)
+
+Tailwind v4 auto-scans from the CSS file's directory. In a monorepo, component packages are elsewhere.
+
+```css
+/* Tell Tailwind to scan external packages */
+@source "../../packages/ui/src";
+
+/* Set base path for all scanning */
+@import "tailwindcss" source("../../");
+
+/* Ignore a directory */
+@source not "../../packages/legacy";
+
+/* Disable auto-detect, only scan explicit sources */
+@import "tailwindcss" source(none);
+@source "../../packages/ui/src";
+@source "../../apps/web/app";
+
+/* Force-generate a specific class */
+@source inline("underline");
+
+/* Force-generate with variants */
+@source inline("{hover:,focus:,}bg-red-{50,{100..900..100},950}");
+```
+
+### @theme vs @theme inline
+
+| Feature | `@theme` | `@theme inline` |
+|---------|----------|-----------------|
+| Generates global CSS vars | Yes | No |
+| Generates utility classes | Yes | Yes |
+| Runtime theme switching | No — value baked at build | Yes — var() resolved at runtime |
+| Dark mode override | Must override theme var | Override the referenced var |
+
+**Use `@theme inline` for any value that changes between light/dark mode.**
+
+```css
+/* CORRECT — runtime theme switching works */
+:root {
+  --background: oklch(0.145 0 0);
+}
+.dark {
+  --background: oklch(0.985 0 0);
+}
+@theme inline {
+  --color-background: var(--background);
+}
+
+/* WRONG — value baked at build time, dark mode won't work */
 @theme {
-  --color-primary: #6366F1;
-  --font-sans: "Inter", sans-serif;
-  --breakpoint-3xl: 1920px;
+  --color-background: var(--background);
 }
 ```
 
-### Utility Renames
+### Color Format — OKLCH
 
-| v3 | v4 |
-|----|-----|
-| `shadow` | `shadow-sm` |
+shadcn/ui (2026) and Tailwind v4 use **OKLCH** color format, not HSL or hex.
+
+```css
+/* CORRECT (oklch) */
+:root {
+  --primary: oklch(0.205 0 0);
+  --primary-foreground: oklch(0.985 0 0);
+}
+
+/* WRONG (hex via var indirection) */
+:root {
+  --color-primary: var(--pc-color-primary-400);  /* resolves to hex — works but non-standard */
+}
+
+/* WRONG (raw hex) */
+:root {
+  --primary: #38bdf8;
+}
+```
+
+> **Note:** Our current codebase uses hex via `var(--pc-color-*)` indirection from design tokens.
+> This works but is non-standard. Future refactoring should move to direct OKLCH values.
+
+### shadcn/ui Color Convention
+
+| CSS Variable | Background Utility | Text Utility |
+|-------------|-------------------|--------------|
+| `--background` | `bg-background` | — |
+| `--foreground` | — | `text-foreground` |
+| `--primary` | `bg-primary` | `text-primary` |
+| `--primary-foreground` | — | `text-primary-foreground` |
+| `--muted` | `bg-muted` | — |
+| `--muted-foreground` | — | `text-muted-foreground` |
+
+The `-foreground` suffix = text color for use ON that background.
+
+### Dark Mode Strategy
+
+We use the **class strategy** — dark is default, light via `.light` class:
+
+```html
+<html>          <!-- dark by default (our :root is dark) -->
+<html class="light">  <!-- light mode override -->
+```
+
+In globals.css:
+```css
+:root { --background: oklch(0.145 0 0); }  /* dark values */
+.light { --background: oklch(0.985 0 0); }  /* light overrides */
+```
+
+### Renamed Utilities (v3 to v4)
+
+| v3 Class | v4 Class |
+|----------|----------|
 | `shadow-sm` | `shadow-xs` |
-| `rounded` | `rounded-sm` |
+| `shadow` | `shadow-sm` |
 | `rounded-sm` | `rounded-xs` |
+| `rounded` | `rounded-sm` |
 | `outline-none` | `outline-hidden` |
+| `ring` | `ring-3` |
+| `bg-opacity-50` | `bg-black/50` |
+| `blur-sm` | `blur-xs` |
+| `blur` | `blur-sm` |
 | `bg-gradient-to-r` | `bg-linear-to-r` |
 | `decoration-slice` | `box-decoration-slice` |
 
-### New Features
+### Hover Behavior Change (v4)
 
-- **3D Transforms**: `rotate-x-*`, `rotate-y-*`, `scale-z-*`, `translate-z-*`, `perspective-*`
-- **Container Queries**: Built-in `@container`, `@min-*`, `@max-*`
-- **Starting Style**: `starting:` variant for enter/exit animations
-- **Not Variant**: `not-hover:`, `not-supports-*:`
-- **New Utilities**: `inset-shadow-*`, `field-sizing`, `color-scheme`, `font-stretch`
-- **Conic/Radial Gradients**: `bg-conic-*`, `bg-radial-*`
+Tailwind v4 automatically gates `hover:` behind `@media (hover: hover)`.
+Touch devices will NOT trigger hover states. This is correct behavior — no manual gating needed.
 
-### Performance Improvements
+### Important Modifier Position (v4)
 
-- Full builds: ~3.78x faster
-- Incremental builds: ~8.8x faster
-- No new CSS incremental: ~182x faster (microseconds)
+```html
+<!-- v3 -->
+<div class="!flex !bg-red-500">
 
-### Vite Integration (Recommended)
-
-```typescript
-// vite.config.ts
-import { defineConfig } from "vite";
-import react from "@vitejs/plugin-react";
-import tailwindcss from "@tailwindcss/vite";
-
-export default defineConfig({
-  plugins: [react(), tailwindcss()],
-});
+<!-- v4: ! goes at the END -->
+<div class="flex! bg-red-500!">
 ```
+
+### Arbitrary Values with CSS Variables (v4)
+
+```html
+<!-- v3 -->
+<div class="bg-[--brand-color]">
+
+<!-- v4: use parentheses -->
+<div class="bg-(--brand-color)">
+```
+
+### Custom Utilities (v4)
 
 ```css
-/* src/index.css */
-@import "tailwindcss";
-
-@theme {
-  /* Custom theme variables */
+/* v3 */
+@layer utilities {
+  .tab-4 { tab-size: 4; }
 }
+
+/* v4 */
+@utility tab-4 {
+  tab-size: 4;
+}
+```
+
+### @apply in Separate Files (v4)
+
+Separate CSS files (Vue SFC, CSS Modules) need `@reference`:
+
+```css
+@reference "../../app.css";
+
+h1 {
+  @apply text-2xl font-bold text-red-500;
+}
+```
+
+### Animation Library
+
+`tailwindcss-animate` is **deprecated**. Use `tw-animate-css`:
+```css
+@import "tw-animate-css";
+```
+
+### Default Border and Ring Colors Changed
+
+v3 defaulted borders to `gray-200`. v4 uses `currentColor`. Specify colors explicitly:
+```html
+<div class="border border-gray-200">  <!-- must specify color -->
+```
+
+### Space and Divide Selectors Changed
+
+Use flex/grid `gap` instead of `space-*`:
+```html
+<!-- v3 -->
+<div class="space-y-4">
+
+<!-- v4 recommended -->
+<div class="flex flex-col gap-4">
+```
+
+### Variant Stacking Order Changed
+
+```html
+<!-- v3: right to left -->
+<ul class="first:*:pt-0">
+
+<!-- v4: left to right -->
+<ul class="*:first:pt-0">
 ```
 
 ---
 
-## shadcn/ui (2026)
+## React 19.2 — Key APIs
 
-### Installation with Vite
+### Stable Hooks
+- `useActionState(action, initialState)` — async action states (pending/fulfilled/rejected)
+- `useOptimistic(state)` — optimistic UI updates
+- `useFormStatus()` — form state without prop drilling
+- `use(promise | context)` — read promises/context in render
+- `useEffectEvent(fn)` — event handlers that see latest state without being effect deps
+
+### Activity Component
+```jsx
+<Activity mode={isVisible ? 'visible' : 'hidden'}>
+  <Page />  {/* pre-rendered but hidden, effects unmounted */}
+</Activity>
+```
+
+### Removed / Deprecated
+- `forwardRef` — ref is a regular prop in React 19
+- Excessive `useMemo`/`useCallback` — React Compiler handles this
+- `propTypes` — use TypeScript
+
+### "use client" Directive
+
+Components using hooks (`useState`, `useEffect`, `useRef`, etc.) MUST have `"use client"` at the top of the file, OR be imported through a barrel file that has `"use client"`.
+
+**If a component uses any React hook and doesn't have "use client", it will fail silently in RSC environments** — hooks won't execute, state won't update, effects won't run.
+
+---
+
+## Vite 8.0 (Released 2026-03-12)
+
+### Breaking Changes from v7
+- **Rolldown bundler** — Rust-based, replaces esbuild+Rollup. 10-30x faster builds.
+- **Node.js 20.19+ or 22.12+** required
+- **@vitejs/plugin-react v6** — Babel removed, uses Oxc
+- **ESM-only distribution**
+- `resolve.tsconfigPaths: true` — built-in tsconfig paths (no plugin needed)
+- `devtools` option — built-in Vite Devtools
+
+---
+
+## Our CSS Architecture
+
+### File Structure
+
+```
+apps/web/app.css                              <- CSS entry point (imported by layout.tsx)
+  |-- @import globals.css                     <- relative path to packages/ui
+  |-- @source "../../packages/ui/src"         <- Tailwind scans UI package
+  +-- app-specific styles (smooth scroll, fonts)
+
+packages/ui/src/globals.css                   <- Design system CSS
+  |-- @import design-tokens/dist/tokens.css   <- --pc-color-*, --pc-font-*, --pc-spacing-*
+  |-- @import "tailwindcss"                   <- Tailwind base (ONLY instance)
+  |-- :root { ... }                           <- Dark palette defaults
+  |-- .light { ... }                          <- Light mode overrides
+  |-- @theme inline { ... }                   <- Bridge CSS vars to Tailwind utilities
+  |-- html/body base styles                   <- Background, color, font
+  +-- Custom utility classes                  <- .pc-btn-hover, .pc-parallax-img, etc.
+
+packages/design-tokens/dist/tokens.css        <- Generated from TS (must be built first)
+  +-- :root { --pc-color-primary-50: #f0f9ff; ... }
+```
+
+### Build Order (Critical)
+
+```
+1. packages/design-tokens  (generates dist/tokens.css)
+2. packages/ui             (compiles TS, copies globals.css)
+3. apps/web                (vinext build — processes CSS through Tailwind)
+```
+
+If design-tokens is not built first, globals.css can't import tokens.css and ALL design variables will be undefined.
+
+### Deploy Workflow Requirements
+
+The deploy workflow (`.github/workflows/deploy.yml`) must:
+1. Build `packages/design-tokens` before `packages/ui`
+2. Include `packages/design-tokens/dist` in uploaded build artifacts
+3. These artifacts must be available to staging/production deploy jobs
+
+---
+
+## Mistakes We've Made (Don't Repeat)
+
+### 1. Missing @source in monorepo
+**Symptom:** 59% of CSS utility classes missing in production.
+**Cause:** Tailwind v4 only scans from the CSS file's directory. UI components in `packages/ui/src/` were never scanned.
+**Fix:** `@source "../../packages/ui/src"` in app.css.
+
+### 2. globals.css not imported
+**Symptom:** All CSS custom properties undefined, site renders unstyled.
+**Cause:** `app.css` imported `tailwindcss` directly but never imported `globals.css`.
+**Fix:** `@import "../../packages/ui/src/globals.css"` in app.css.
+
+### 3. Design tokens not built in CI
+**Symptom:** Deploy fails with "Can't resolve tokens.css".
+**Cause:** Deploy workflow built `packages/ui` but not `packages/design-tokens`.
+**Fix:** Add `pnpm --filter ./packages/design-tokens build` before UI build.
+
+### 4. Unit tests don't verify CSS
+**Symptom:** All tests pass but production CSS is completely broken.
+**Cause:** jsdom/happy-dom don't process real CSS. Tailwind utilities aren't generated in test environments.
+**Lesson:** ALWAYS verify visual output in a real browser. ALWAYS check `vinext build` output locally. Test passing does not equal CSS working.
+
+### 5. Missing "use client" directive
+**Symptom:** Component renders but hooks don't execute.
+**Cause:** Component uses React hooks but doesn't have `"use client"`. In RSC, hooks are silently ignored.
+**Fix:** Add `"use client"` to the top of any component file using hooks.
+
+---
+
+## Verification Checklist (Before Every Frontend PR)
 
 ```bash
-# Create Vite project
-pnpm create vite@latest my-app -- --template react-ts
-cd my-app
+# 1. Build locally (catches CSS/import issues that tests miss)
+pnpm --filter ./packages/design-tokens build
+pnpm --filter ./packages/ui build
+pnpm --filter ./apps/web... build
 
-# Add Tailwind
-pnpm add tailwindcss @tailwindcss/vite
+# 2. Check CSS output size (should be 50KB+ for a styled site)
+wc -c apps/web/dist/client/assets/*.css
 
-# Configure vite.config.ts
-import path from "path"
-import tailwindcss from "@tailwindcss/vite"
-import react from "@vitejs/plugin-react"
-import { defineConfig } from "vite"
+# 3. Check critical classes exist in output
+grep -c "inset-0\|h-full\|lg:grid-cols" apps/web/dist/client/assets/*.css
 
-export default defineConfig({
-  plugins: [react(), tailwindcss()],
-  resolve: {
-    alias: {
-      "@": path.resolve(__dirname, "./src"),
-    },
-  },
-})
+# 4. Run dev server and check in a real browser
+pnpm --filter ./apps/web dev
+# Open http://localhost:4321 — visually verify the page
 
-# Initialize shadcn
-pnpm dlx shadcn@latest init
-
-# Add components
-pnpm dlx shadcn@latest add button dialog command
-```
-
-### Recent Changes (2025-2026)
-
-1. **RTL Support** (Jan 2026): First-class right-to-left support
-   - Automatic class transformation: `ml-4` → `ms-4`, `left-2` → `start-2`
-   - Migrate existing: `pnpm dlx shadcn@latest migrate rtl`
-
-2. **New Design Systems** (Dec 2025):
-   - Vega (classic)
-   - Nova (compact)
-   - Maia (rounded)
-   - Lyra (boxy)
-   - Mira (dense)
-
-3. **Base UI Documentation**: Alternative to Radix primitives
-
-4. **Component Dependencies**: Components ship their own Tailwind keyframes, CLI auto-updates config
-
-5. **Remote Components**: Install from URLs for private registries
-
-### Command Component (cmdk)
-
-The Command component wraps cmdk by pacocoursey:
-
-```tsx
-import {
-  Command,
-  CommandDialog,
-  CommandInput,
-  CommandList,
-  CommandEmpty,
-  CommandGroup,
-  CommandItem,
-  CommandSeparator,
-} from "@/components/ui/command"
-
-// Usage
-<CommandDialog open={open} onOpenChange={setOpen}>
-  <CommandInput placeholder="Type a command..." />
-  <CommandList>
-    <CommandEmpty>No results found.</CommandEmpty>
-    <CommandGroup heading="Suggestions">
-      <CommandItem>Calendar</CommandItem>
-      <CommandItem>Search</CommandItem>
-    </CommandGroup>
-  </CommandList>
-</CommandDialog>
-```
-
----
-
-## dnd-kit
-
-### Why dnd-kit (Not react-dnd or react-beautiful-dnd)
-
-1. **Modern React Hooks**: Built with `useDraggable`, `useDroppable`
-2. **Performance**: Smooth 60fps animations
-3. **Customizable**: Collision detection, activators, constraints
-4. **Accessible**: Built-in keyboard/screen reader support
-5. **Lightweight**: ~10kb minified, no external deps
-
-### Basic Setup
-
-```tsx
-import {
-  DndContext,
-  closestCenter,
-  KeyboardSensor,
-  PointerSensor,
-  useSensor,
-  useSensors,
-} from '@dnd-kit/core';
-import {
-  arrayMove,
-  SortableContext,
-  sortableKeyboardCoordinates,
-  verticalListSortingStrategy,
-} from '@dnd-kit/sortable';
-
-function SortableList({ items, onReorder }) {
-  const sensors = useSensors(
-    useSensor(PointerSensor),
-    useSensor(KeyboardSensor, {
-      coordinateGetter: sortableKeyboardCoordinates,
-    })
-  );
-
-  function handleDragEnd(event) {
-    const { active, over } = event;
-    if (active.id !== over?.id) {
-      const oldIndex = items.indexOf(active.id);
-      const newIndex = items.indexOf(over.id);
-      onReorder(arrayMove(items, oldIndex, newIndex));
-    }
-  }
-
-  return (
-    <DndContext sensors={sensors} collisionDetection={closestCenter} onDragEnd={handleDragEnd}>
-      <SortableContext items={items} strategy={verticalListSortingStrategy}>
-        {items.map(id => <SortableItem key={id} id={id} />)}
-      </SortableContext>
-    </DndContext>
-  );
-}
-```
-
-### Best Practices
-
-1. **Always add `touch-action: none`** to draggable elements for mobile
-2. **Use `DragOverlay`** for smooth visual feedback during drag
-3. **Implement keyboard sensors** for accessibility
-4. **Consider collision detection algorithms** for complex layouts
-
-### Limitations
-
-- No desktop-to-browser drag (HTML5 DnD API limitation)
-- No cross-window drag support
-- For those use cases, use `react-dnd` with HTML5 backend
-
----
-
-## Vite 7.x
-
-### Tailwind Integration
-
-Use the first-party Vite plugin (better performance than PostCSS):
-
-```typescript
-// vite.config.ts
-import { defineConfig } from "vite";
-import react from "@vitejs/plugin-react";
-import tailwindcss from "@tailwindcss/vite";
-
-export default defineConfig({
-  plugins: [react(), tailwindcss()],
-  resolve: {
-    alias: {
-      "@": path.resolve(__dirname, "./src"),
-    },
-  },
-});
-```
-
-### Key Points
-
-- Use `@tailwindcss/vite` plugin, NOT PostCSS for best performance
-- No need for `tailwindcss.config.js` - use CSS `@theme` instead
-- No need for `postcss.config.js` - Vite plugin handles everything
-- Remove `autoprefixer` - handled automatically
-
----
-
-## Migration Checklist
-
-### From React 18 to React 19
-
-- [ ] Update `react` and `react-dom` to ^19.x
-- [ ] Update `@types/react` and `@types/react-dom`
-- [ ] Remove unnecessary `useMemo`/`useCallback` (compiler handles this)
-- [ ] Consider `useActionState` for form handling
-- [ ] Consider `useOptimistic` for instant UI feedback
-- [ ] Test concurrent rendering behavior
-
-### From Tailwind v3 to v4
-
-- [ ] Install `@tailwindcss/vite` plugin
-- [ ] Remove `tailwindcss.config.js` (migrate to CSS @theme)
-- [ ] Remove `postcss.config.js` if only using Tailwind
-- [ ] Replace `@tailwind base/components/utilities` with `@import "tailwindcss"`
-- [ ] Update renamed utilities (shadow, rounded, etc.)
-- [ ] Update gradient classes if using `bg-gradient-to-*`
-
-### Adding shadcn/ui
-
-- [ ] Initialize with `pnpm dlx shadcn@latest init`
-- [ ] Configure path aliases in `tsconfig.json`
-- [ ] Add components as needed with `pnpm dlx shadcn@latest add <component>`
-- [ ] Consider RTL migration if needed
-
----
-
-## Package.json Updates
-
-**Note:** These changes should be applied in Issue #81 (shadcn/ui installation), not in this research spike. Making these changes requires coordinated updates to vite.config.ts and CSS files.
-
-### Target Dependencies
-
-```json
-{
-  "devDependencies": {
-    "@types/node": "^22.x",
-    "@types/react": "^19.x",
-    "@types/react-dom": "^19.x",
-    "@tailwindcss/vite": "^4.x",
-    "@vitejs/plugin-react": "^5.x",
-    "tailwindcss": "^4.x",
-    "typescript": "^5.x",
-    "vite": "^7.x"
-  },
-  "dependencies": {
-    "react": "^19.x",
-    "react-dom": "^19.x",
-    "@dnd-kit/core": "^6.x",
-    "@dnd-kit/sortable": "^8.x",
-    "@dnd-kit/utilities": "^3.x"
-  }
-}
-```
-
-### Dependencies to Remove
-
-```json
-{
-  "devDependencies": {
-    "autoprefixer": "remove - handled by Tailwind v4",
-    "postcss": "remove - not needed with @tailwindcss/vite"
-  }
-}
-```
-
-### Current vs Target Versions
-
-| Package | Current | Target | Action |
-|---------|---------|--------|--------|
-| react | ^19.2.4 | ^19.2.x | Keep |
-| react-dom | ^19.2.4 | ^19.2.x | Keep |
-| @types/react | ^19.2.10 | ^19.x | Keep |
-| @types/react-dom | ^19.2.3 | ^19.x | Keep |
-| tailwindcss | ^3.4.17 | ^4.x | **Upgrade** |
-| @tailwindcss/vite | N/A | ^4.x | **Add** |
-| postcss | ^8.5.3 | - | **Remove** |
-| autoprefixer | ^10.4.21 | - | **Remove** |
-| vite | ^7.3.1 | ^7.x | Keep |
-| @dnd-kit/core | N/A | ^6.x | **Add** |
-| @dnd-kit/sortable | N/A | ^8.x | **Add** |
+# 5. Standard quality gates
+pnpm test
+pnpm lint
+pnpm typecheck
+pnpm build-storybook
 ```
 
 ---
 
 ## Sources
 
-### React 19
+- [Tailwind CSS v4 — Theme Variables](https://tailwindcss.com/docs/theme)
+- [Tailwind CSS v4 — Detecting Classes](https://tailwindcss.com/docs/detecting-classes-in-source-files)
+- [Tailwind CSS v4 — Upgrade Guide](https://tailwindcss.com/docs/upgrade-guide)
+- [shadcn/ui — Theming](https://ui.shadcn.com/docs/theming)
+- [shadcn/ui — Tailwind v4](https://ui.shadcn.com/docs/tailwind-v4)
+- [shadcn/ui — Changelog](https://ui.shadcn.com/docs/changelog)
+- [Vite 8.0 Announcement](https://vite.dev/blog/announcing-vite8)
 - [React 19.2 Release](https://react.dev/blog/2025/10/01/react-19-2)
-- [React 19 Release](https://react.dev/blog/2024/12/05/react-19)
-- [React Blog](https://react.dev/blog)
-
-### Tailwind CSS v4
-- [Tailwind CSS v4.0 Announcement](https://tailwindcss.com/blog/tailwindcss-v4)
-- [Migration Guide](https://dev.to/ippatev/migration-guide-tailwind-css-v3-to-v4-f5h)
-- [CSS-First Configuration](https://medium.com/better-dev-nextjs-react/tailwind-v4-migration-from-javascript-config-to-css-first-in-2025-ff3f59b215ca)
-
-### shadcn/ui
-- [shadcn/ui Installation](https://ui.shadcn.com/docs/installation)
-- [shadcn/ui Vite Guide](https://ui.shadcn.com/docs/installation/vite)
-- [shadcn/ui Changelog](https://ui.shadcn.com/docs/changelog)
-- [Command Component](https://ui.shadcn.com/docs/components/command)
-
-### dnd-kit
-- [dnd-kit Documentation](https://docs.dndkit.com)
-- [dnd-kit GitHub](https://github.com/clauderic/dnd-kit)
-- [Top DnD Libraries 2026](https://puckeditor.com/blog/top-5-drag-and-drop-libraries-for-react)
-
-### Vite
-- [Vite + Tailwind Setup 2026](https://medium.com/@fasihuddin102/how-to-set-up-tailwindcss-in-a-react-vite-project-2025-edition-999e0541a493)
-- [Tailwind CSS Vite Installation](https://tailwindcss.com/docs)
+- [Tailwind v4 Monorepo Setup (Nx)](https://nx.dev/blog/setup-tailwind-4-npm-workspace)
+- [GitHub #13136 — Monorepo Detection](https://github.com/tailwindlabs/tailwindcss/issues/13136)

@@ -43,12 +43,15 @@ item **`Cloudflare API - Production City`** (Global API Key).
 
 **Agent training data is stale (typically 2024). It is currently March 2026.**
 
-Before ANY frontend work, read **both**:
+Before ANY frontend work, read **all three**:
 
-- `docs/knowledge/frontend-2026.md` — React 19, Tailwind v4, shadcn/ui, Vite 7 breaking changes
+- `docs/knowledge/frontend-2026.md` — React 19.2, Tailwind v4 (with monorepo `@source`), shadcn/ui OKLCH theming, Vite 8, CSS architecture, past mistakes to avoid
+- `docs/knowledge/design-guidelines.md` — Cinematic storytelling design philosophy, color usage, typography, spacing, motion
 - `docs/knowledge/Uncodixify.md` — UI anti-patterns to avoid
 
 Non-compliance produces incorrect, stale, or low-quality frontend code.
+
+**Critical Tailwind v4 monorepo rule:** `app.css` MUST have `@source "../../packages/ui/src"` or Tailwind will not generate utility classes for components in the UI package. See `frontend-2026.md` § "Mistakes We've Made" for the full list of CSS architecture pitfalls.
 
 ### Storybook-first (Atomic Design)
 
@@ -101,7 +104,7 @@ production-city/
 ├── packages/
 │   └── ui/           # Storybook component library (Atomic Design, shadcn/ui base)
 ├── prisma/           # Shared Prisma schema, migrations, seeds
-└── docs/knowledge/   # frontend-2026.md, Uncodixify.md
+└── docs/knowledge/   # frontend-2026.md, design-guidelines.md, Uncodixify.md
 ```
 
 ---
