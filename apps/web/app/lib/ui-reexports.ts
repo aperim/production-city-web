@@ -48,6 +48,7 @@ export { ServiceGrid } from "../../../../packages/ui/src/organisms/ServiceGrid/S
 export { StakeholderGrid } from "../../../../packages/ui/src/organisms/StakeholderGrid/StakeholderGrid";
 export { GlobalCampusMap } from "../../../../packages/ui/src/organisms/GlobalCampusMap/GlobalCampusMap";
 export { ForwardLookingDisclaimer } from "../../../../packages/ui/src/organisms/ForwardLookingDisclaimer/ForwardLookingDisclaimer";
+export { NotificationBell } from "../../../../packages/ui/src/organisms/NotificationBell/NotificationBell";
 export * from "../../../../packages/ui/src/templates";
 export * from "../../../../packages/ui/src/pages";
 export * from "../../../../packages/ui/src/foundations";
