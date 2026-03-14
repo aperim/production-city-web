@@ -96,23 +96,52 @@ test.describe("FAQ page content", () => {
     await expect(buttons).toHaveCount(6);
   });
 
-  test("category filtering works", async ({ page }) => {
+  test("category filtering reduces visible questions", async ({ page }) => {
     await page.goto("/faq");
-    // Click a category
+    // Count all FAQ items before filtering — each FAQItem has one button[aria-expanded]
+    const faqButtons = page.locator("button[aria-expanded]");
+    const allItemsBefore = await faqButtons.count();
+    expect(allItemsBefore).toBe(20);
+
+    // Click Facilities category
     const facilitiesBtn = page.getByRole("button", {
       name: /Facilities/i,
     });
     await facilitiesBtn.click();
-    // Should filter to only facilities questions
     await expect(facilitiesBtn).toHaveAttribute("aria-pressed", "true");
+
+    // Fewer questions should be visible after filtering
+    const filteredCount = await faqButtons.count();
+    expect(filteredCount).toBeLessThan(allItemsBefore);
+    expect(filteredCount).toBeGreaterThan(0);
   });
 
-  test("search filtering works", async ({ page }) => {
+  test("search filtering hides non-matching questions", async ({ page }) => {
     await page.goto("/faq");
+    const faqButtons = page.locator("button[aria-expanded]");
+    const allBefore = await faqButtons.count();
+    expect(allBefore).toBe(20);
+
     const search = page.getByRole("searchbox");
     await search.fill("sound stages");
-    // Should show filtered results
+
+    // Should have fewer questions visible
+    const filteredCount = await faqButtons.count();
+    expect(filteredCount).toBeLessThan(allBefore);
+    expect(filteredCount).toBeGreaterThan(0);
+    // Matching text should still be visible
     await expect(page.getByText(/sound stages/i).first()).toBeVisible();
+  });
+
+  test("FAQ items expand on click", async ({ page }) => {
+    await page.goto("/faq");
+    const firstButton = page.locator("button[aria-expanded]").first();
+    await expect(firstButton).toHaveAttribute("aria-expanded", "false");
+    await firstButton.click();
+    await expect(firstButton).toHaveAttribute("aria-expanded", "true");
+    // The associated region should be visible
+    const panelId = await firstButton.getAttribute("aria-controls");
+    await expect(page.locator(`#${panelId}`)).toBeVisible();
   });
 
   test("FAQ has Schema.org structured data", async ({ page }) => {

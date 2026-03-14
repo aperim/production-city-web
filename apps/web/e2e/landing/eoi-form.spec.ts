@@ -1,6 +1,6 @@
 /**
- * E2E tests: EOI form flows.
- * Validates form presence, fields, consent, and submission states.
+ * E2E tests: EOI form structure and accessibility.
+ * Validates form presence, fields, labels, category pre-selection, and keyboard navigation.
  */
 
 import { test, expect } from "@playwright/test";
@@ -43,11 +43,12 @@ test.describe("EOI form fields", () => {
     await expect(page.getByRole("button", { name: /submit/i })).toBeVisible();
   });
 
-  test("form has all 6 category options", async ({ page }) => {
+  test("form has all category options plus placeholder", async ({ page }) => {
     await page.goto("/contact");
     const select = page.locator("#eoi-category");
     const options = select.locator("option");
-    await expect(options).toHaveCount(6);
+    // 1 empty placeholder + 6 categories = 7
+    await expect(options).toHaveCount(7);
   });
 });
 
