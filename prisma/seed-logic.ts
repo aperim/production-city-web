@@ -319,6 +319,22 @@ export async function seedDatabase(
       update: {},
       create: { userId: user.id, roleId: superAdminRole.id },
     });
+
+    // Default notification preferences for dev admin
+    const defaultChannels = [
+      "admin:notifications",
+      "admin:eoi",
+      "admin:approvals",
+      "admin:audit",
+    ];
+    for (const channel of defaultChannels) {
+      await prisma.notificationPreference.upsert({
+        where: { userId_channel: { userId: user.id, channel } },
+        update: {},
+        create: { userId: user.id, channel, enabled: true },
+      });
+    }
+    console.log("[SEED] Notification preferences created/verified for dev admin");
   } else {
     console.log(
       `[SEED] Skipping dev admin creation — NODE_ENV=${String(nodeEnv ?? "undefined")} (only allowed in: ${allowedEnvs.join(", ")})`,

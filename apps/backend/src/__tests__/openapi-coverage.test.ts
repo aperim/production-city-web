@@ -27,7 +27,8 @@ describe("OpenAPI coverage", () => {
     // Only exclude: meta-routes (/v1/openapi.json, /v1/docs) and middleware
     // registered via app.use() which show up as method "ALL" on "/*".
     // Issue #98: meta paths moved to /v1/ prefix.
-    const metaPaths = new Set(["/v1/openapi.json", "/v1/docs"]);
+    // WebSocket upgrade routes return 101 (not JSON), so they are not OpenAPI routes
+    const metaPaths = new Set(["/v1/openapi.json", "/v1/docs", "/v1/ws", "/v1/ws/delivery"]);
 
     // Normalize Hono :param to OpenAPI {param} for matching
     function normalizePath(path: string): string {

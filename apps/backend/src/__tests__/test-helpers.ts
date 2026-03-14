@@ -22,7 +22,7 @@ const SCHEMA_STATEMENTS = [
   `CREATE UNIQUE INDEX IF NOT EXISTS "Session_token_key" ON "Session"("token")`,
   `CREATE INDEX IF NOT EXISTS "Session_userId_idx" ON "Session"("userId")`,
   `CREATE INDEX IF NOT EXISTS "Session_expiresAt_idx" ON "Session"("expiresAt")`,
-  `CREATE TABLE IF NOT EXISTS "MagicLink" ("id" TEXT NOT NULL PRIMARY KEY, "userId" TEXT, "email" TEXT NOT NULL, "tokenHash" TEXT NOT NULL, "codeHash" TEXT NOT NULL, "purpose" TEXT NOT NULL, "postmarkMessageId" TEXT, "deliveryStatus" TEXT NOT NULL DEFAULT 'pending', "attempts" INTEGER NOT NULL DEFAULT 0, "maxAttempts" INTEGER NOT NULL DEFAULT 5, "createdAt" DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP, "expiresAt" DATETIME NOT NULL, "usedAt" DATETIME, CONSTRAINT "MagicLink_userId_fkey" FOREIGN KEY ("userId") REFERENCES "User" ("id") ON DELETE CASCADE ON UPDATE CASCADE)`,
+  `CREATE TABLE IF NOT EXISTS "MagicLink" ("id" TEXT NOT NULL PRIMARY KEY, "userId" TEXT, "email" TEXT NOT NULL, "tokenHash" TEXT NOT NULL, "codeHash" TEXT NOT NULL, "purpose" TEXT NOT NULL, "postmarkMessageId" TEXT, "deliveryStatus" TEXT NOT NULL DEFAULT 'pending', "attempts" INTEGER NOT NULL DEFAULT 0, "maxAttempts" INTEGER NOT NULL DEFAULT 5, "createdAt" DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP, "expiresAt" DATETIME NOT NULL, "usedAt" DATETIME, "deliveryToken" TEXT, "deliveryTokenUsed" BOOLEAN NOT NULL DEFAULT false, CONSTRAINT "MagicLink_userId_fkey" FOREIGN KEY ("userId") REFERENCES "User" ("id") ON DELETE CASCADE ON UPDATE CASCADE)`,
   `CREATE UNIQUE INDEX IF NOT EXISTS "MagicLink_tokenHash_key" ON "MagicLink"("tokenHash")`,
   `CREATE INDEX IF NOT EXISTS "MagicLink_email_createdAt_idx" ON "MagicLink"("email", "createdAt")`,
   `CREATE INDEX IF NOT EXISTS "MagicLink_expiresAt_idx" ON "MagicLink"("expiresAt")`,
@@ -62,6 +62,12 @@ const SCHEMA_STATEMENTS = [
   `CREATE INDEX IF NOT EXISTS "ExpressionOfInterest_category_status_createdAt_idx" ON "ExpressionOfInterest"("category", "status", "createdAt")`,
   `CREATE INDEX IF NOT EXISTS "ExpressionOfInterest_email_createdAt_idx" ON "ExpressionOfInterest"("email", "createdAt")`,
   `CREATE INDEX IF NOT EXISTS "ExpressionOfInterest_status_createdAt_idx" ON "ExpressionOfInterest"("status", "createdAt")`,
+  // Migration 0004: WebSocket models
+  `CREATE UNIQUE INDEX IF NOT EXISTS "MagicLink_deliveryToken_key" ON "MagicLink"("deliveryToken")`,
+  `CREATE TABLE IF NOT EXISTS "NotificationPreference" ("id" TEXT NOT NULL PRIMARY KEY, "userId" TEXT NOT NULL, "channel" TEXT NOT NULL, "enabled" BOOLEAN NOT NULL DEFAULT true, "createdAt" DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP, "updatedAt" DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP, CONSTRAINT "NotificationPreference_userId_fkey" FOREIGN KEY ("userId") REFERENCES "User" ("id") ON DELETE CASCADE ON UPDATE CASCADE)`,
+  `CREATE UNIQUE INDEX IF NOT EXISTS "NotificationPreference_userId_channel_key" ON "NotificationPreference"("userId", "channel")`,
+  `CREATE INDEX IF NOT EXISTS "NotificationPreference_userId_idx" ON "NotificationPreference"("userId")`,
+  `CREATE INDEX IF NOT EXISTS "NotificationPreference_channel_idx" ON "NotificationPreference"("channel")`,
 ];
 
 let _initialized = false;

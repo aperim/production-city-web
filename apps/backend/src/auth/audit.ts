@@ -52,6 +52,12 @@ const DETAIL_ALLOWLIST: Record<string, string[]> = {
   "media.asset.restored": ["assetId"],
   "media.pair.created": ["contentContext"],
   "media.pair.deleted": ["contentContext"],
+  // WebSocket audit actions
+  "ws_connect": ["durableObjectId", "userAgent"],
+  "ws_disconnect": ["durableObjectId", "reason", "durationMs"],
+  "ws_auth_failure": ["reason", "origin"],
+  "ws_rate_limited": ["limitType", "currentCount"],
+  "ws_channel_denied": ["channel", "missingPermission"],
 };
 
 /** Filter details to only allowed keys for the given action. */

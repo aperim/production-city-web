@@ -44,6 +44,7 @@ model User {
   auditLogs              AuditLog[]          @relation("AuditSubject")
   auditLogsActed         AuditLog[]          @relation("AuditActor")
   suppressionsRemoved    EmailSuppression[]
+  notificationPreferences NotificationPreference[]
 
   // @@index([email]) — omitted: @unique already creates an index
   @@index([status])
@@ -144,6 +145,10 @@ model MagicLink {
   /// Must be set explicitly (15 min for login, 7 days for invitations)
   expiresAt         DateTime
   usedAt            DateTime?
+  /// One-time token for WebSocket delivery tracking (unauthenticated)
+  deliveryToken     String?   @unique
+  /// Marks delivery token as consumed after first WebSocket connection
+  deliveryTokenUsed Boolean   @default(false)
 
   user User? @relation(fields: [userId], references: [id], onDelete: Cascade)
 
@@ -402,4 +407,21 @@ model MediaPair {
   @@unique([contentContext])
   @@index([lightAssetId])
   @@index([darkAssetId])
+}
+
+/// Per-user notification preference for real-time WebSocket channels.
+/// Controls which notification channels a user receives updates for.
+model NotificationPreference {
+  id        String   @id @default(cuid())
+  userId    String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  /// Channel name, e.g. "admin:eoi", "admin:approvals"
+  channel   String
+  enabled   Boolean  @default(true)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@unique([userId, channel])
+  @@index([userId])
+  @@index([channel])
 }

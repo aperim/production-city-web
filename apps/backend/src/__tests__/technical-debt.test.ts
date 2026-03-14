@@ -114,6 +114,7 @@ describe("Environment validation", () => {
         DB: {},
         ALLOWED_ORIGIN: "http://localhost:4321",
         HMAC_SECRET: "test-secret",
+        WEBSOCKET_SERVER: {},
       }),
     ).not.toThrow();
   });
@@ -123,6 +124,7 @@ describe("Environment validation", () => {
       validateEnv({
         ALLOWED_ORIGIN: "http://localhost:4321",
         HMAC_SECRET: "test-secret",
+        WEBSOCKET_SERVER: {},
       }),
     ).toThrow("Missing required D1 database binding: DB");
   });
@@ -132,6 +134,7 @@ describe("Environment validation", () => {
       validateEnv({
         DB: {},
         HMAC_SECRET: "test-secret",
+        WEBSOCKET_SERVER: {},
       }),
     ).toThrow("ALLOWED_ORIGIN");
   });
@@ -141,6 +144,7 @@ describe("Environment validation", () => {
       validateEnv({
         DB: {},
         ALLOWED_ORIGIN: "http://localhost:4321",
+        WEBSOCKET_SERVER: {},
       }),
     ).toThrow("HMAC_SECRET");
   });
@@ -151,8 +155,19 @@ describe("Environment validation", () => {
         DB: {},
         ALLOWED_ORIGIN: "http://localhost:4321",
         HMAC_SECRET: "test-secret",
+        WEBSOCKET_SERVER: {},
       }),
     ).not.toThrow();
+  });
+
+  it("throws if WEBSOCKET_SERVER binding is missing", () => {
+    expect(() =>
+      validateEnv({
+        DB: {},
+        ALLOWED_ORIGIN: "http://localhost:4321",
+        HMAC_SECRET: "test-secret",
+      }),
+    ).toThrow("Missing required Durable Object binding: WEBSOCKET_SERVER");
   });
 });
 

@@ -13,6 +13,7 @@ type Bindings = {
   ALLOWED_ORIGIN: string;
   HMAC_SECRET: string;
   POSTMARK_API_TOKEN: string;
+  WEBSOCKET_SERVER: DurableObjectNamespace;
 };
 
 export const app = new OpenAPIHono<{ Bindings: Bindings }>();
@@ -140,5 +141,8 @@ app.onError((err, c) => {
     500,
   );
 });
+
+// Export Durable Object class for Cloudflare runtime discovery
+export { WebSocketHibernationServer } from "./durable-objects/websocket-server.js";
 
 export default app;

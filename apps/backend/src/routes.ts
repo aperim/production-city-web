@@ -14,6 +14,7 @@ import { mediaAdminApp } from "./admin/media.js";
 import { mediaApp } from "./media/handlers.js";
 import { eoiApp } from "./eoi/handlers.js";
 import { eoiAdminApp } from "./admin/eoi.js";
+import { wsApp } from "./routes/ws.js";
 
 /**
  * Mount all auth and admin routes onto the main app.
@@ -42,6 +43,9 @@ export function mountRoutes(app: OpenAPIHono<{ Bindings: Record<string, unknown>
 
   // Public EOI and locales routes (no auth required)
   app.route("/", eoiApp);
+
+  // WebSocket upgrade routes (auth handled per-route, NOT by CSRF middleware)
+  app.route("/", wsApp as unknown as OpenAPIHono<{ Bindings: Record<string, unknown> }>);
 
   // Test routes — only in test environment (build-time conditional import).
   // Requires BOTH NODE_ENV=test AND TEST_ENABLED=true.

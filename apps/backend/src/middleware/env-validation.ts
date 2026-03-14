@@ -28,6 +28,11 @@ export function validateEnv(env: Record<string, unknown>): void {
     throw new Error("Missing required D1 database binding: DB");
   }
 
+  // Validate Durable Object binding exists
+  if (!env.WEBSOCKET_SERVER) {
+    throw new Error("Missing required Durable Object binding: WEBSOCKET_SERVER");
+  }
+
   // Validate string bindings
   const result = EnvSchema.safeParse(env);
   if (!result.success) {
