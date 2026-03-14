@@ -18,12 +18,6 @@ const ALL_MIGRATION_SQL = MIGRATION_FILES.map((f) =>
   readFileSync(resolve(MIGRATIONS_DIR, f), "utf-8"),
 ).join("\n");
 
-/** RBAC migration — kept for backward-compatible assertions. */
-const MIGRATION_SQL = readFileSync(
-  resolve(MIGRATIONS_DIR, "0001_rbac_schema.sql"),
-  "utf-8",
-);
-
 /**
  * Helper: create a test database file and return a PrismaClient pointed at it.
  * Applies ALL migration files in order so every table is available.
