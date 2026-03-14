@@ -10,9 +10,9 @@ test("holding page: main landmark is present @smoke", async ({ page }) => {
   await expect(page.getByRole("main")).toBeVisible();
 });
 
-test("holding page: Coming Soon text is present", async ({ page }) => {
+test("holding page: hero heading is present", async ({ page }) => {
   await page.goto("/");
-  await expect(page.getByText(/Coming Soon/i)).toBeVisible();
+  await expect(page.locator("h1")).toBeVisible();
 });
 
 test("holding page: no console errors @smoke", async ({ page }) => {

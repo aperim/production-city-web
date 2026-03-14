@@ -20,8 +20,12 @@ test.describe("SEO — meta tags", () => {
 test.describe("SEO — FAQ structured data", () => {
   test("FAQ page has valid Schema.org FAQPage JSON-LD", async ({ page }) => {
     await page.goto("/faq");
+    // Schema.org data is injected via useEffect — wait for it to populate
+    await page.waitForFunction(() => {
+      const el = document.querySelector('script[type="application/ld+json"]');
+      return el && el.textContent && el.textContent.includes("FAQPage");
+    }, { timeout: 10_000 });
     const script = page.locator('script[type="application/ld+json"]');
-    await expect(script).toBeAttached();
     const rawContent = await script.textContent();
     expect(rawContent).not.toBeNull();
     const data = JSON.parse(rawContent!);
@@ -110,7 +114,8 @@ test.describe("Accessibility — focus visibility", () => {
 test.describe("Accessibility — language switcher ARIA", () => {
   test("language switcher has accessible trigger", async ({ page }) => {
     await page.goto("/");
-    const trigger = page.getByRole("button", { name: /language/i });
+    // Two language switchers exist (nav + footer) — scope to nav
+    const trigger = page.getByRole("navigation").getByRole("button", { name: /language/i });
     await expect(trigger).toBeVisible();
     await expect(trigger).toHaveAttribute("aria-expanded");
   });

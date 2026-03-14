@@ -87,7 +87,7 @@ export function LandingFooter({
         <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4">
           {linkGroups.map((group) => (
             <div key={group.heading}>
-              <h4 className="text-sm font-semibold text-foreground">{group.heading}</h4>
+              <p className="text-sm font-semibold text-foreground">{group.heading}</p>
               <ul className="mt-3 flex flex-col gap-2">
                 {group.links.map((link) => (
                   <li key={link.href}>
@@ -103,7 +103,7 @@ export function LandingFooter({
             </div>
           ))}
           <div>
-            <h4 className="text-sm font-semibold text-foreground">Contact</h4>
+            <p className="text-sm font-semibold text-foreground">Contact</p>
             <ul className="mt-3 flex flex-col gap-2">
               <li>
                 <a

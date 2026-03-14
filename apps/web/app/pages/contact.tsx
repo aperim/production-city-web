@@ -6,6 +6,7 @@
 
 "use client";
 
+import { useState, useEffect } from "react";
 import {
   LandingPageTemplate,
   EOISection,
@@ -29,13 +30,19 @@ const VALID_CATEGORIES = new Set([
   "employment",
 ]);
 
-/** Read ?category= from URL search params. */
+/** Read ?category= from URL search params after hydration. */
 function useDefaultCategory(): string {
-  if (typeof window === "undefined") return "general";
-  const params = new URLSearchParams(window.location.search);
-  const cat = params.get("category");
-  if (cat && VALID_CATEGORIES.has(cat)) return cat;
-  return "general";
+  const [category, setCategory] = useState("general");
+
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    const cat = params.get("category");
+    if (cat && VALID_CATEGORIES.has(cat)) {
+      setCategory(cat);
+    }
+  }, []);
+
+  return category;
 }
 
 export function ContactPage() {
@@ -130,9 +137,10 @@ function ContactPageContent() {
         </p>
       </section>
 
-      {/* 4. EOI Form */}
+      {/* 4. EOI Form — key forces re-mount when URL category changes */}
       <div id="eoi-section">
         <EOISection
+          key={defaultCategory}
           heading={t("contact.eoi.heading")}
           contextText={t("contact.eoi.context")}
           formLabels={eoiLabels}

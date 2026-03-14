@@ -168,7 +168,7 @@ function FAQPageContent() {
       {/* 4. FAQ List */}
       {filteredEntries.length > 0 ? (
         <FAQSection
-          heading=""
+          heading={t("faq.questionsHeading")}
           items={filteredEntries.map((e) => ({
             question: e.question,
             answer: e.answer,

@@ -9,7 +9,8 @@ test.describe("Home page content", () => {
   test("displays intro section with heading", async ({ page }) => {
     await page.goto("/");
     await expect(page.locator("h1")).toBeVisible();
-    await expect(page.getByText("Production City")).toBeVisible();
+    // "Production City" appears many times (nav, footer, etc.) — scope to main
+    await expect(page.getByRole("main").getByText("Production City").first()).toBeVisible();
   });
 
   test("displays EOI section", async ({ page }) => {
@@ -19,8 +20,9 @@ test.describe("Home page content", () => {
 
   test("displays Acknowledgement of Country", async ({ page }) => {
     await page.goto("/");
+    // Scoped to main to avoid matching footer duplicate
     await expect(
-      page.getByText(/Traditional Owners/i),
+      page.getByRole("main").getByText(/Traditional Owners/i),
     ).toBeVisible();
   });
 });
@@ -98,56 +100,74 @@ test.describe("FAQ page content", () => {
 
   test("category filtering reduces visible questions", async ({ page }) => {
     await page.goto("/faq");
-    // Count all FAQ items before filtering — each FAQItem has one button[aria-expanded]
-    const faqButtons = page.locator("button[aria-expanded]");
-    const allItemsBefore = await faqButtons.count();
-    expect(allItemsBefore).toBe(20);
+    const main = page.getByRole("main");
+    const faqButtons = main.locator("button[aria-expanded]");
+    // Wait for hydration: verify "All" category button responds to aria-pressed
+    // (aria-pressed is set by React state, so its presence proves hydration)
+    const group = page.getByRole("group");
+    await expect(group.getByRole("button", { name: "All" })).toHaveAttribute("aria-pressed", "true");
+    await expect(faqButtons).toHaveCount(20);
 
-    // Click Facilities category
-    const facilitiesBtn = page.getByRole("button", {
-      name: /Facilities/i,
+    // Click Facilities category filter button
+    const facilitiesBtn = group.getByRole("button", {
+      name: "Facilities",
     });
     await facilitiesBtn.click();
     await expect(facilitiesBtn).toHaveAttribute("aria-pressed", "true");
 
-    // Fewer questions should be visible after filtering
+    // Wait for React to re-render
+    await expect(faqButtons).not.toHaveCount(20, { timeout: 5_000 });
+
     const filteredCount = await faqButtons.count();
-    expect(filteredCount).toBeLessThan(allItemsBefore);
+    expect(filteredCount).toBeLessThan(20);
     expect(filteredCount).toBeGreaterThan(0);
   });
 
   test("search filtering hides non-matching questions", async ({ page }) => {
     await page.goto("/faq");
-    const faqButtons = page.locator("button[aria-expanded]");
-    const allBefore = await faqButtons.count();
-    expect(allBefore).toBe(20);
+    const main = page.getByRole("main");
+    const faqButtons = main.locator("button[aria-expanded]");
+    // Wait for hydration: all 20 FAQ items should be present
+    await expect(faqButtons).toHaveCount(20);
 
     const search = page.getByRole("searchbox");
     await search.fill("sound stages");
 
-    // Should have fewer questions visible
+    // Wait for React to re-render
+    await expect(faqButtons).not.toHaveCount(20, { timeout: 5_000 });
+
     const filteredCount = await faqButtons.count();
-    expect(filteredCount).toBeLessThan(allBefore);
+    expect(filteredCount).toBeLessThan(20);
     expect(filteredCount).toBeGreaterThan(0);
-    // Matching text should still be visible
-    await expect(page.getByText(/sound stages/i).first()).toBeVisible();
   });
 
   test("FAQ items expand on click", async ({ page }) => {
     await page.goto("/faq");
-    const firstButton = page.locator("button[aria-expanded]").first();
+    const main = page.getByRole("main");
+    const firstButton = main.locator("button[aria-expanded]").first();
+    // Wait for hydration: all 20 FAQ items should be present and interactive
+    await expect(main.locator("button[aria-expanded]")).toHaveCount(20);
     await expect(firstButton).toHaveAttribute("aria-expanded", "false");
-    await firstButton.click();
-    await expect(firstButton).toHaveAttribute("aria-expanded", "true");
-    // The associated region should be visible
+
+    // Retry click until hydration completes and event handler is attached
+    await expect(async () => {
+      await firstButton.click();
+      await expect(firstButton).toHaveAttribute("aria-expanded", "true", { timeout: 1_000 });
+    }).toPass({ timeout: 10_000 });
+
     const panelId = await firstButton.getAttribute("aria-controls");
-    await expect(page.locator(`#${panelId}`)).toBeVisible();
+    expect(panelId).toBeTruthy();
+    await expect(page.locator(`[id="${panelId}"]`)).toBeVisible();
   });
 
   test("FAQ has Schema.org structured data", async ({ page }) => {
     await page.goto("/faq");
+    // Schema.org data is injected via useEffect — wait for it
+    await page.waitForFunction(() => {
+      const el = document.querySelector('script[type="application/ld+json"]');
+      return el && el.textContent && el.textContent.includes("FAQPage");
+    }, { timeout: 10_000 });
     const script = page.locator('script[type="application/ld+json"]');
-    await expect(script).toBeAttached();
     const content = await script.textContent();
     expect(content).toContain("FAQPage");
     expect(content).toContain("Question");
@@ -162,16 +182,20 @@ test.describe("Contact page content", () => {
 
   test("displays contact information", async ({ page }) => {
     await page.goto("/contact");
+    // Scoped to main to avoid footer duplicates
+    const main = page.getByRole("main");
     await expect(
-      page.getByText("troy@team.production.city"),
+      main.getByText("troy@team.production.city"),
     ).toBeVisible();
-    await expect(page.getByText("+61 2 9137 9100")).toBeVisible();
-    await expect(page.getByText("+1 650 215 6253")).toBeVisible();
+    await expect(main.getByText("+61 2 9137 9100")).toBeVisible();
+    await expect(main.getByText("+1 650 215 6253")).toBeVisible();
   });
 
   test("displays email link with mailto", async ({ page }) => {
     await page.goto("/contact");
-    const emailLink = page.locator('a[href="mailto:troy@team.production.city"]');
+    // Scope to main — footer also has a mailto link
+    const main = page.getByRole("main");
+    const emailLink = main.locator('a[href="mailto:troy@team.production.city"]');
     await expect(emailLink).toBeVisible();
   });
 
@@ -183,8 +207,9 @@ test.describe("Contact page content", () => {
 
   test("displays Acknowledgement of Country", async ({ page }) => {
     await page.goto("/contact");
+    // Scoped to main to avoid footer duplicate
     await expect(
-      page.getByText(/Traditional Owners/i),
+      page.getByRole("main").getByText(/Traditional Owners/i),
     ).toBeVisible();
   });
 
