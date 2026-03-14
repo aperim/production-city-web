@@ -48,6 +48,15 @@ jobs:
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           CF_D1_DATABASE_ID_STAGING: ${{ secrets.CF_D1_DATABASE_ID_STAGING }}
 
+      - name: Apply migrations to local DB for seeding
+        run: |
+          for migration in prisma/migrations/*.sql; do
+            echo "Applying $migration ..."
+            sqlite3 local.db < "$migration"
+          done
+          echo "Local DB tables:"
+          sqlite3 local.db ".tables"
+
       - name: Seed database (staging only)
         run: |
           if [[ "${DEPLOY_ENV}" == "production" ]]; then
@@ -62,6 +71,7 @@ jobs:
         env:
           NODE_ENV: staging
           DEPLOY_ENV: staging
+          DATABASE_URL: "file:./local.db"
 
       - name: Build shared packages
         run: pnpm --filter ./packages/ui build
