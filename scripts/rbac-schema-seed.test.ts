@@ -8,19 +8,24 @@ import Database from "better-sqlite3";
 const ROOT = resolve(import.meta.dirname, "..");
 const MIGRATIONS_DIR = resolve(ROOT, "prisma/migrations");
 
-/** All migration SQL files in order. */
-const MIGRATION_FILES = readdirSync(MIGRATIONS_DIR)
+/**
+ * Read all migration SQL files from prisma/migrations/ in sorted order.
+ * This ensures the test DB has every table the seed logic expects.
+ */
+const MIGRATION_SQL_FILES = readdirSync(MIGRATIONS_DIR)
   .filter((f) => f.endsWith(".sql"))
-  .sort();
+  .sort()
+  .map((f) => ({
+    name: f,
+    sql: readFileSync(resolve(MIGRATIONS_DIR, f), "utf-8"),
+  }));
 
 /** Combined SQL from all migrations (for schema validation). */
-const ALL_MIGRATION_SQL = MIGRATION_FILES.map((f) =>
-  readFileSync(resolve(MIGRATIONS_DIR, f), "utf-8"),
-).join("\n");
+const ALL_MIGRATION_SQL = MIGRATION_SQL_FILES.map((f) => f.sql).join("\n");
 
 /**
  * Helper: create a test database file and return a PrismaClient pointed at it.
- * Applies ALL migration files in order so every table is available.
+ * Applies ALL migration SQL files so every table the seed logic needs exists.
  */
 function createTestPrisma() {
   const tmpFile = `/tmp/test-rbac-${Date.now()}-${Math.random().toString(36).slice(2)}.db`;
@@ -28,9 +33,8 @@ function createTestPrisma() {
   sqliteDb.pragma("journal_mode = WAL");
   sqliteDb.pragma("foreign_keys = ON");
 
-  for (const file of MIGRATION_FILES) {
-    const sql = readFileSync(resolve(MIGRATIONS_DIR, file), "utf-8");
-    sqliteDb.exec(sql);
+  for (const migration of MIGRATION_SQL_FILES) {
+    sqliteDb.exec(migration.sql);
   }
   sqliteDb.close();
 
