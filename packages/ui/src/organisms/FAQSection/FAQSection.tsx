@@ -47,7 +47,7 @@ export function FAQSection({
 
   return (
     <section className={cn("py-8", className)}>
-      <h2 className="text-xl font-semibold text-foreground">{heading}</h2>
+      {heading && <h2 className="text-xl font-semibold text-foreground">{heading}</h2>}
 
       {searchPlaceholder && (
         <div className="mt-4">

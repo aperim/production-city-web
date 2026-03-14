@@ -176,7 +176,14 @@
     "approvals": "Approvals",
     "roles": "Roles",
     "auditLog": "Audit Log",
-    "signOut": "Sign Out"
+    "signOut": "Sign Out",
+    "home": "Home",
+    "facilities": "Facilities",
+    "creative": "Creative",
+    "vision": "Vision",
+    "community": "Community",
+    "faq": "FAQ",
+    "contact": "Contact"
   },
   "eoi": {
     "formTitle": "Express Your Interest",
@@ -318,10 +325,479 @@
     "privacyPolicy": "Privacy Policy",
     "termsOfUse": "Terms of Use",
     "copyright": "© {year} Aperim Pty Ltd. All rights reserved.",
-    "disclaimer": "Production City™ is a trademark of Aperim Pty Ltd."
+    "disclaimer": "Production City™ is a trademark of Aperim Pty Ltd.",
+    "explore": "Explore",
+    "resources": "Resources",
+    "company": "Company",
+    "acknowledgement": "Production City acknowledges the Traditional Owners of Country throughout Australia and recognises their continuing connection to lands, waters, and community. It pays respects to Aboriginal and Torres Strait Islander cultures and their Elders past and present."
   },
   "languageSwitcher": {
     "label": "Language",
     "ariaLabel": "Select language"
+  },
+  "home": {
+    "meta": {
+      "title": "Production City — We Make Stories",
+      "description": "Production City fuses tradition and innovation for screen, stage, and experiential storytelling. Register your interest today."
+    },
+    "intro": {
+      "tagline": "We make stories",
+      "positioning": "Production City is a revolutionary production institution combining established screen and stage craft with advanced production technology, including virtual production, LED volumes, broadcast infrastructure, and an integrated service model.",
+      "ctaPrimary": "Register Your Interest",
+      "ctaSecondary": "Explore Our Facilities"
+    },
+    "whatIs": {
+      "heading": "What is Production City?",
+      "claim1": "Fuses tradition and innovation for screen, stage, and experiential storytelling.",
+      "claim2": "Offers state-of-the-art sound stages, a first-of-its-kind broadcast theatre, control rooms, and integrated production services.",
+      "claim3": "Plans to create a global network of interconnected campuses, beginning in Queensland.",
+      "claim4": "Designed to reduce risk in adopting new production technologies by grounding them in established practices."
+    },
+    "facilitiesPreview": {
+      "heading": "Planned Facilities",
+      "viewAll": "Explore all facilities"
+    },
+    "creativePreview": {
+      "heading": "An Integrated Creative Ecosystem",
+      "description": "Production City is being designed as an interconnected production ecosystem where all services and facilities will operate in coordination. From pre-production through post, every discipline under one roof.",
+      "viewAll": "Discover the creative ecosystem"
+    },
+    "visionTeaser": {
+      "heading": "A Global Vision",
+      "description": "Production City plans to create a global network of interconnected campuses, beginning in Queensland, Australia, and extending to Singapore, Hawaii, Europe, and mainland USA.",
+      "viewAll": "Learn about our vision"
+    },
+    "acknowledgement": {
+      "heading": "Acknowledgement of Country"
+    },
+    "eoi": {
+      "heading": "Stay Informed",
+      "context": "Register your interest to stay informed about Production City's progress."
+    }
+  },
+  "facilities": {
+    "meta": {
+      "title": "Facilities — Production City",
+      "description": "Explore Production City's planned production facilities: screen sound stages, commercial sound stages, broadcast theatre, broadcast control room, and more."
+    },
+    "overview": {
+      "heading": "Planned Facilities",
+      "intro": "Production City is designed to house a comprehensive portfolio of production facilities, each built to professional broadcast and film specifications."
+    },
+    "screenStages": {
+      "name": "Screen Sound Stages",
+      "description": "Large-format sound stages designed for grand-scale productions with configurable LED volume environments.",
+      "dimensions": "Dimensions",
+      "height": "Height to Grid",
+      "soundproofing": "Soundproofing",
+      "ledConfigs": "LED Volume Configurations",
+      "gridCatwalk": "Grid & Catwalk",
+      "usage": "Intended Usage",
+      "usageFilm": "Feature film production",
+      "usageTv": "Television series production",
+      "usageBroadcast": "Live television broadcasting"
+    },
+    "commercialStages": {
+      "name": "Commercial Sound Stages",
+      "description": "Compact sound stages for commercials, TVCs, music videos, and other smaller-scale content, with configurable LED environments.",
+      "usage": "Intended Usage",
+      "usageTvc": "TV commercials and infomercials",
+      "usageMusic": "Music video production",
+      "usageDigital": "Small-scale digital content production"
+    },
+    "broadcastTheatre": {
+      "name": "Broadcast Theatre",
+      "description": "A multi-purpose venue planned for live performance, live broadcast, and immersive theatre experiences with VR/AR compatibility.",
+      "seating": "Seating Capacity",
+      "theatre": "Theatre",
+      "cabaret": "Cabaret",
+      "cameras": "Robotic Camera Positions",
+      "ledSets": "LED Virtual Sets",
+      "compliance": "Broadcast Partner Compliant"
+    },
+    "controlRoom": {
+      "name": "Broadcast Control Room",
+      "description": "Planned central command post for live production coordination, synchronisation, and multi-platform broadcasting.",
+      "management": "Centralised Production Management",
+      "broadcast": "Live Broadcast Control",
+      "sync": "Advanced Synchronisation"
+    },
+    "ancillary": {
+      "heading": "Ancillary Spaces",
+      "description": "The campus is planned to include supporting spaces and services for complete production operations.",
+      "recordingStudio": "Recording Studio",
+      "dressingRooms": "Dressing Rooms",
+      "storage": "Storage",
+      "orchestraPit": "Orchestra Pit",
+      "offices": "Office & Studios",
+      "restaurant": "Restaurant & Bar",
+      "kitchen": "Kitchen",
+      "exhibition": "Exhibition Space",
+      "foyer": "Entry Foyer",
+      "warehouse": "Warehouse & Workshop",
+      "laundry": "Dressing Rooms & Laundry"
+    },
+    "eoi": {
+      "heading": "Planning a Production?",
+      "context": "Register your interest to discuss your production needs with our team."
+    },
+    "units": {
+      "sqm": "sqm",
+      "sqft": "sqft",
+      "metres": "m",
+      "feet": "ft"
+    }
+  },
+  "creative": {
+    "meta": {
+      "title": "Creative & Ecosystem — Production City",
+      "description": "Discover Production City's integrated creative ecosystem: 17 service areas covering production, post-production, design, and technology."
+    },
+    "ecosystem": {
+      "heading": "The Ecosystem Model",
+      "summary": "Production City is being designed as an interconnected production ecosystem where all services and facilities will operate in coordination rather than as isolated units.",
+      "principles": "Operational Principles",
+      "principle1": "Physical and digital workflows are integrated.",
+      "principle2": "Departments will operate concurrently rather than sequentially where possible.",
+      "principle3": "Props, set construction, shooting, post, script development, and digital work will be co-located.",
+      "principle4": "Real-time problem solving and synchronised communication are core design advantages.",
+      "principle5": "Vertical integration is intended to reduce logistical complexity, risk, time, and cost.",
+      "benefits": "Intended Benefits",
+      "benefit1": "Shorter production timelines",
+      "benefit2": "Reduced coordination overhead",
+      "benefit3": "Smoother transitions between project phases",
+      "benefit4": "Improved efficiency",
+      "benefit5": "Potential cost savings",
+      "benefit6": "Reduced production risk"
+    },
+    "services": {
+      "heading": "Creative Collaboration Services",
+      "production": "Production",
+      "postProduction": "Post-Production",
+      "designCraft": "Design & Craft",
+      "technology": "Technology",
+      "stuntRigging": "Stunt Equipment & Rigging",
+      "stuntRiggingDesc": "Stunt coordinators and rigging experts using specialist equipment for complex action.",
+      "audioMusic": "Audio & Music Production",
+      "audioMusicDesc": "On-set sound recording, sound design, voice-over, music production, and score development.",
+      "scriptScreenplay": "Script & Screenplay Development",
+      "scriptScreenplayDesc": "Writers and story developers evolving concepts into scripts and narrative frameworks.",
+      "graphicDesign": "Graphic Design & Creative Consultancy",
+      "graphicDesignDesc": "Visuals, branding, posters, and aesthetic consistency across media.",
+      "animation": "Animation & Motion Graphics",
+      "animationDesc": "2D/3D animation, motion graphics, and digital frame-by-frame enhancements.",
+      "postEditing": "Post-Production Editing & Colour Grading",
+      "postEditingDesc": "Editing, colour correction, colour grading, and narrative assembly.",
+      "modelling3d": "3D Modelling & CGI",
+      "modelling3dDesc": "3D artists mapping designs and captures into detailed models, integrating CGI with live footage.",
+      "motionCapture": "Motion Capture & Performance Recording",
+      "motionCaptureDesc": "Recording actor movements and facial expressions for application to digital characters.",
+      "arVr": "AR/VR Solutions",
+      "arVrDesc": "Immersive audience experiences that blur reality and fiction.",
+      "broadcastCoord": "Broadcast Coordination & Management",
+      "broadcastCoordDesc": "Scheduling, managing, and executing live broadcasts for real-time coverage.",
+      "specialEffects": "Special Effects Design",
+      "specialEffectsDesc": "Mechanical, optical, and visual effects for practical and simulated phenomena.",
+      "virtualProd": "Virtual Production",
+      "virtualProdDesc": "Previsualisation through post-production using advanced digital tools.",
+      "conceptDev": "Design & Concept Development",
+      "conceptDevDesc": "Visual narratives from ideation through final design.",
+      "setConstruc": "Set Construction & Prototyping",
+      "setConstructDesc": "Turning blueprints into physical sets with attention to safety and aesthetics.",
+      "propsDesign": "Props Design & Fabrication",
+      "propsDesignDesc": "From historically accurate replicas to fantastical objects.",
+      "costumeDesign": "Costume Design & Manufacturing",
+      "costumeDesignDesc": "Costumes spanning historical, futuristic, and culture-specific needs.",
+      "makeupProsthetics": "Makeup & Prosthetics",
+      "makeupProstheticsDesc": "Age progression, creature prosthetics, and character transformation."
+    },
+    "caseStudies": {
+      "heading": "How It Could Work",
+      "disclaimer": "Illustrative scenario — not based on actual events",
+      "featureFilm": "Producing a Feature Film",
+      "featureFilmDesc": "A producer of a historical drama uses Production City for stages, workshops, props, costumes, LED volumes, hospitality, dressing rooms, and post-production under one roof.",
+      "liveBroadcast": "Hosting a Live Television Broadcast",
+      "liveBroadcastDesc": "A leading television network uses Production City for a large live entertainment show, combining large soundstages, smaller stages with VR/AR, and broadcast control.",
+      "modernTheatre": "Modernising Stage Theatre",
+      "modernTheatreDesc": "A contemporary theatre company stages a technologically advanced play using the broadcast theatre, LED environments, live broadcasting, and VR/AR."
+    },
+    "eoi": {
+      "heading": "Join the Creative Community",
+      "context": "Register your interest as a creative professional."
+    }
+  },
+  "vision": {
+    "meta": {
+      "title": "Vision & Global Network — Production City",
+      "description": "Discover Production City's vision for a global network of interconnected production campuses, beginning in Queensland, Australia."
+    },
+    "mission": {
+      "heading": "Vision & Mission",
+      "vision": "To redefine screen, stage, and experiential storytelling through a singular fusion of established techniques and trailblazing technology, across an interconnected global network of campuses.",
+      "themes": "Mission Themes",
+      "theme1": "Make stories come to life",
+      "theme2": "Enable immersive storytelling",
+      "theme3": "Create a holistic, integrated production ecosystem",
+      "theme4": "Foster research, education, and innovation",
+      "theme5": "Expand accessibility for both creators and audiences",
+      "theme6": "Support inclusive, globally connected storytelling",
+      "theme7": "Operate with sustainability and community benefit in mind",
+      "philosophy": "Philosophy",
+      "phil1": "Technology should enhance rather than displace storytelling fundamentals.",
+      "phil2": "Production should be vertically integrated to reduce complexity and friction.",
+      "phil3": "Innovation should be practical, user-friendly, and production-ready.",
+      "phil4": "Creative ecosystems should support diverse voices and global collaboration."
+    },
+    "global": {
+      "heading": "Global Campus Network",
+      "operatingModel": "Interconnected campuses under a unified Production City brand, intended to provide consistent service standards and support concurrent multi-location productions.",
+      "queensland": "Queensland, Australia",
+      "queenslandStatus": "Launch Location (Planned)",
+      "queenslandDesc": "The first Production City campus, beginning in Queensland.",
+      "singapore": "Singapore",
+      "singaporeStatus": "Future Expansion (Planned)",
+      "singaporeDesc": "Planned expansion to serve the Asia-Pacific market.",
+      "hawaii": "Hawaii",
+      "hawaiiStatus": "Future Expansion (Planned)",
+      "hawaiiDesc": "Planned expansion bridging the Pacific.",
+      "europe": "Europe",
+      "europeStatus": "Future Expansion (Planned)",
+      "europeDesc": "Planned expansion to serve the European market.",
+      "usa": "Mainland USA",
+      "usaStatus": "Future Expansion (Planned)",
+      "usaDesc": "Planned expansion to serve the North American market."
+    },
+    "market": {
+      "heading": "Market Position",
+      "context1": "Demand for high-quality content is rising across media platforms.",
+      "context2": "AR and VR are redefining viewing experiences.",
+      "context3": "Streaming services and global production demand create opportunities for modern production infrastructure.",
+      "accessibility": "Accessibility Commitments",
+      "access1": "Democratise access to theatre and live performance through broadcast technology",
+      "access2": "Support underrepresented storytellers",
+      "access3": "Provide tools and services for diverse creators"
+    },
+    "why": {
+      "heading": "Why Production City?",
+      "arg1": "Merges proven industry methods with cutting-edge technology",
+      "arg2": "Offers vertically integrated end-to-end production",
+      "arg3": "Supports education and innovation through institutional partnerships",
+      "arg4": "Pursues a global campus network model",
+      "arg5": "Commits to eco-friendly practices and sustainability",
+      "arg6": "Keeps creators focused on the work by reducing operational friction"
+    },
+    "stakeholders": {
+      "heading": "Stakeholder Benefits",
+      "creators": "Creators",
+      "creatorsDesc": "Global stage for work, cross-cultural learning, and exposure to worldwide techniques.",
+      "industry": "Industry Collaborators",
+      "industryDesc": "Partnerships with suppliers and specialist providers, participation in cutting-edge facilities.",
+      "investors": "Investors",
+      "investorsDesc": "Portfolio diversification across markets and currencies, geographic spread of opportunity.",
+      "governments": "Governments & Communities",
+      "governmentsDesc": "Employment opportunities, skill development, local commerce stimulation."
+    },
+    "team": {
+      "heading": "The Team",
+      "leaderName": "Troy Kelly",
+      "leaderRole": "Founder & Visionary",
+      "leaderBio": "Experience in stage and screen production, toured theatrical shows globally, served as Chief Technology Officer for AFTRS, worked in machine learning in Silicon Valley, and led the design, build, and operation of data centres and broadcast facilities in Australia.",
+      "teamDesc": "The broader project team includes professionals across entertainment production, technology, project management, and financial strategy."
+    },
+    "eoi": {
+      "heading": "Explore Partnership Opportunities",
+      "context": "Register your interest to discuss partnership or investment opportunities."
+    },
+    "disclaimer": {
+      "forwardLooking": "This page contains forward-looking statements about Production City's plans, objectives, and expected development. These statements involve known and unknown risks, uncertainties, and other factors that may cause actual results to differ materially. This is not a financial prospectus or investment solicitation."
+    }
+  },
+  "community": {
+    "meta": {
+      "title": "Community — Production City",
+      "description": "Learn about Production City's commitment to education, sustainability, strategic alliances, and community engagement."
+    },
+    "heading": "Community & Engagement",
+    "intro": "Production City is being designed as more than a production facility — it will be a hub for education, innovation, sustainability, and community engagement.",
+    "education": {
+      "heading": "Education & Innovation",
+      "strategy1": "Collaborate with educational institutions to open access to fresh talent",
+      "strategy2": "Provide skill development and hands-on learning opportunities",
+      "strategy3": "Create an environment of continuous learning and professional growth",
+      "strategy4": "Maintain a state-of-the-art R&D facility for targeted innovation",
+      "rdHeading": "Research & Development",
+      "rd1": "Pursue targeted innovation rather than unfocused experimentation",
+      "rd2": "Focus on practical, client-benefiting outcomes",
+      "rd3": "Advance VR/AR and other production technologies",
+      "crossSector": "Cross-Sector Interests",
+      "crossSector1": "Sports",
+      "crossSector2": "Chip/Sensor & Product Design",
+      "crossSector3": "Robotics/Automation",
+      "crossSector4": "Machine Learning",
+      "outcomes": "Intended Outcomes",
+      "outcome1": "Enhanced production quality",
+      "outcome2": "Cost-effective solutions",
+      "outcome3": "New storytelling possibilities",
+      "outcome4": "Knowledge hub positioning"
+    },
+    "sustainability": {
+      "heading": "Sustainability",
+      "goal": "Production City aims to achieve operational excellence while contributing to environmental preservation and sustainability.",
+      "principle1": "Sustainable design principles in facility construction",
+      "principle2": "Energy efficiency and regular assessment",
+      "principle3": "Responsible waste management",
+      "principle4": "Maximise recycling and responsible resource usage",
+      "principle5": "Green spaces and biodiversity enhancement",
+      "principle6": "Ongoing dialogue with local communities"
+    },
+    "synergies": {
+      "heading": "Synergies & Opportunities",
+      "creators": "For Creators",
+      "creatorsItems": "Global stage for work, cross-cultural learning, exposure to worldwide narratives and techniques, and potential global recognition.",
+      "industry": "For Industry Collaborators",
+      "industryItems": "Partnerships with suppliers and specialist providers, participation in cutting-edge facilities, and mutual growth and innovation opportunities.",
+      "investors": "For Investors",
+      "investorsItems": "Portfolio diversification across markets and currencies, and geographic spread of opportunity.",
+      "communities": "For Governments & Communities",
+      "communitiesItems": "Employment opportunities, skill development, local commerce stimulation, and creation of mini ecosystems around campuses."
+    },
+    "alliances": {
+      "heading": "Strategic Alliances",
+      "type1": "Educational institutions",
+      "type2": "Major technology providers",
+      "type3": "Industry trailblazers",
+      "type4": "Sovereign funds",
+      "type5": "Research and development facilities",
+      "valueHeading": "Intended Value",
+      "value1": "Talent pipeline and fresh ideas",
+      "value2": "Access to cutting-edge technology",
+      "value3": "Shared development opportunities",
+      "value4": "Trust, credibility, and financial confidence"
+    },
+    "bridges": {
+      "heading": "Building Bridges with the Industry",
+      "producers": "For Producers",
+      "producer1": "Single-stop production solution",
+      "producer2": "Reduced vendor coordination complexity",
+      "producer3": "End-to-end workflows",
+      "producer4": "Support for multi-location shoots",
+      "government": "For Government Bodies",
+      "gov1": "Direct and indirect jobs",
+      "gov2": "Tourism stimulation",
+      "gov3": "Upskilling opportunities",
+      "gov4": "Research partnerships",
+      "gov5": "Foreign investment attraction",
+      "gov6": "Support for local creators"
+    },
+    "eoi": {
+      "heading": "Join the Community",
+      "context": "Register your interest to learn about education, partnership, and community opportunities."
+    },
+    "disclaimer": {
+      "forwardLooking": "This page contains forward-looking statements about Production City's plans for community engagement, education, and sustainability. These statements involve known and unknown risks, uncertainties, and other factors that may cause actual results to differ materially."
+    }
+  },
+  "faq": {
+    "meta": {
+      "title": "FAQ — Production City",
+      "description": "Frequently asked questions about Production City's facilities, services, global network, and community engagement."
+    },
+    "heading": "Frequently Asked Questions",
+    "searchPlaceholder": "Search questions...",
+    "categoriesLabel": "FAQ categories",
+    "allCategories": "All",
+    "categoryFacilities": "Facilities",
+    "categoryServices": "Services",
+    "categoryGlobal": "Global",
+    "categoryCommunity": "Community",
+    "categoryEngagement": "Engagement",
+    "noResults": "No questions match your search.",
+    "q1": "What types of facilities will Production City offer?",
+    "a1": "Production City plans to offer Screen Sound Stages, Commercial Sound Stages, a Broadcast Control Room, a multi-functional Broadcast Theatre, and spaces for research & development and educational collaborations.",
+    "c1": "Facilities",
+    "q2": "Will Production City's services be available for international locations?",
+    "a2": "Yes. Production City plans to expand to Singapore, Hawaii, Europe, and mainland USA with consistent facilities and services across all campuses.",
+    "c2": "Global",
+    "q3": "What virtual production services will Production City provide?",
+    "a3": "Production City will offer comprehensive services from pre-production visualization and conceptualisation to post-production editing and effects, plus 3D modelling, CGI, motion capture, and VR/AR.",
+    "c3": "Services",
+    "q4": "How will Production City support educational initiatives?",
+    "a4": "Through planned partnerships with educational institutions, experiential learning opportunities, R&D facilities, and practical skill development programs.",
+    "c4": "Community",
+    "q5": "What research and development facilities will Production City include?",
+    "a5": "A dedicated facility is planned to be embedded in operations to encourage exploration, innovation, and development of future production technologies and storytelling methods.",
+    "c5": "Facilities",
+    "q6": "What kinds of projects will be suitable for Production City?",
+    "a6": "Feature films, TV series, live telecasts, stage productions, music videos, VR/AR content, and other forms of content creation.",
+    "c6": "Services",
+    "q7": "What will set Production City apart from other production facilities or studios?",
+    "a7": "Its planned combination of advanced technology, proven industry techniques, interconnected global campuses, and commitments to education and sustainability.",
+    "c7": "Services",
+    "q8": "What kind of support services will Production City offer for a smooth production process?",
+    "a8": "End-to-end virtual production, pre-production, filming, post-production, VFX, sound mixing, dressing rooms, catering, on-site set and prop construction, and digitisation services.",
+    "c8": "Services",
+    "q9": "What will make Production City's sound stages unique?",
+    "a9": "Large scale, 15m height to grid, advanced soundproofing, and LED Volume configurations designed for different production needs.",
+    "c9": "Facilities",
+    "q10": "How will Production City's services simplify the production workflow?",
+    "a10": "By co-locating pre-production, production, and post-production services on one campus to reduce transport, coordination, and scheduling complexity.",
+    "c10": "Services",
+    "q11": "What benefits will the LED volume offer for productions?",
+    "a11": "Flexible configurations, real-time visual effects, efficient background changes, and a cost/time-effective alternative to traditional green screen methods.",
+    "c11": "Facilities",
+    "q12": "How will Production City commit to sustainability efforts?",
+    "a12": "Through conscious design, energy-efficient systems, waste management, green spaces, and biodiversity-supporting landscaping.",
+    "c12": "Community",
+    "q13": "Will the Production City facilities accommodate pre-production and post-production processes?",
+    "a13": "Yes. Script development, storyboarding, concept design, editing, sound mixing, colour grading, and visual effects will all be part of the planned offering.",
+    "c13": "Services",
+    "q14": "How will being a part of the Production City network enrich a creative professional's experience?",
+    "a14": "Through access to advanced facilities, full production services, a global creative community, workshops, collaborations, and exposure to diverse ideation methods.",
+    "c14": "Community",
+    "q15": "Will clients be able to provide their own technical crew, or will Production City supply them?",
+    "a15": "Both options are planned. Clients will be able to bring their own crew, and Production City will also be able to provide technical support personnel.",
+    "c15": "Services",
+    "q16": "How can clients stay updated with the latest developments or offerings at Production City?",
+    "a16": "By registering interest on the website, subscribing to the newsletter, or following Production City's social media channels.",
+    "c16": "Engagement",
+    "q17": "How will Production City foster talent growth and innovation?",
+    "a17": "By partnering with educational institutions, offering hands-on learning, maintaining R&D facilities, and running workshops and skill development programs.",
+    "c17": "Community",
+    "q18": "What measures will Production City have to ensure safety and security?",
+    "a18": "Security personnel, surveillance, secure access controls, fire safety systems, and health and safety protocols aligned with industry standards.",
+    "c18": "Facilities",
+    "q19": "How will Production City cater to different scale productions — from independent creators to corporate entities?",
+    "a19": "By offering facilities planned for all scales of production and the same level of professional support regardless of project size.",
+    "c19": "Services",
+    "q20": "What kinds of engagements beyond facility rentals will be possible?",
+    "a20": "Technology partnerships, education and research collaborations, joint development of filming methods and techniques, and collaborative business models.",
+    "c20": "Engagement"
+  },
+  "contact": {
+    "meta": {
+      "title": "Contact — Production City",
+      "description": "Get in touch with Production City. Register your expression of interest or contact us directly."
+    },
+    "heading": "Get in Touch",
+    "intro": "Whether you are a producer, creative professional, investor, educator, or simply interested in Production City, we would love to hear from you.",
+    "info": {
+      "heading": "Contact Information",
+      "email": "Email",
+      "emailAddress": "troy@team.production.city",
+      "phoneAU": "Australia",
+      "phoneAUNumber": "+61 2 9137 9100",
+      "phoneUS": "United States",
+      "phoneUSNumber": "+1 650 215 6253",
+      "website": "Website",
+      "websiteUrl": "www.production.city"
+    },
+    "eoi": {
+      "heading": "Register Your Interest",
+      "context": "Tell us about yourself and how you would like to engage with Production City."
+    },
+    "rateLimited": "You have submitted too many requests. Please try again in {seconds} seconds.",
+    "acknowledgement": {
+      "heading": "Acknowledgement of Country"
+    }
   }
 }

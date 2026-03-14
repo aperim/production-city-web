@@ -1,14 +1,15 @@
-import { HoldingPage } from "@productioncity/holding-ui";
-import { ErrorBoundary } from "./error-boundary";
-
 /**
- * Root page — renders the HoldingPage template from packages/ui,
- * wrapped in an error boundary for resilience.
+ * Home landing page — the primary entry point for Production City.
+ * Route: / and /:locale/
  */
+
+import { ErrorBoundary } from "./error-boundary";
+import { HomePage } from "./pages/home";
+
 export default function Page() {
   return (
     <ErrorBoundary>
-      <HoldingPage />
+      <HomePage />
     </ErrorBoundary>
   );
 }

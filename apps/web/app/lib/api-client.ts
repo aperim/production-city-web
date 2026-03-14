@@ -355,3 +355,32 @@ export function fetchMediaPairs(contexts: string[], options?: { signal?: AbortSi
     return data.pairs;
   });
 }
+
+/** EOI submission payload. */
+export interface EoiSubmitData {
+  category: string;
+  name: string;
+  email: string;
+  message?: string;
+  sourcePage: string;
+  locale: string;
+  consentVersion: string;
+  privacyAccepted: boolean;
+  marketingOptIn: boolean;
+}
+
+/** Submit an expression of interest. */
+export async function submitEoi(data: EoiSubmitData): Promise<{ id: string; message: string }> {
+  const res = await fetch(`${API_BASE}/v1/eoi`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(data),
+  });
+
+  if (!res.ok) {
+    const error = await res.json().catch(() => ({ error: 'unknown', message: res.statusText })) as ApiError;
+    throw new Error(error.message);
+  }
+
+  return res.json() as Promise<{ id: string; message: string }>;
+}
