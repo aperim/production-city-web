@@ -53,7 +53,7 @@ const EducationMetadataSchema = z.object({
 
 /** Employment-specific metadata fields. */
 const EmploymentMetadataSchema = z.object({
-  desiredRole: z.string().min(1).max(200).transform(stripHtml).pipe(z.string().trim().min(1, "desiredRole must not be empty after sanitization")),
+  desiredRole: z.string().min(1).max(200).transform(escapeHtml).pipe(z.string().trim().min(1, "desiredRole must not be empty after sanitization")),
   experienceLevel: z.enum([
     "entry", "1-3years", "3-5years", "5-10years", "10plus",
   ]).optional(),
@@ -113,9 +113,26 @@ const UtmSchema = z.object({
   campaign: z.string().max(200).optional(),
 }).strict();
 
-/** Strip HTML tags from a string. */
-export function stripHtml(input: string): string {
-  return input.replace(/<[^>]*>/g, "");
+/**
+ * Escape HTML entities in a string.
+ *
+ * Replaces the five standard HTML special characters with their entity
+ * equivalents. This is strictly safer than the previous tag-stripping regex
+ * (`/<[^>]*>/`) which was bypassable via unclosed tags, attribute tricks,
+ * and nested constructs (e.g. `<img src=x onerror=alert(1)>`).
+ *
+ * User input that passes through this function is safe to embed in HTML
+ * email bodies without risk of script injection.
+ *
+ * @see Issue #223 — Finding #27: stripHtml regex replaced with entity escaping
+ */
+export function escapeHtml(input: string): string {
+  return input
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#39;");
 }
 
 /**
@@ -143,9 +160,9 @@ export const EoiSubmissionPublicSchema = z.object({
 /** Full runtime schema with honeypot and transforms (not exposed in OpenAPI). */
 export const EoiSubmissionSchema = z.object({
   category: z.enum(EOI_CATEGORIES),
-  name: z.string().min(1).max(200).transform((v) => stripHtml(v.trim())),
+  name: z.string().min(1).max(200).transform((v) => escapeHtml(v.trim())),
   email: z.string().email().max(254).transform((v) => v.toLowerCase().trim()),
-  message: z.string().max(2000).optional().transform((v) => v ? stripHtml(v.trim()) : v),
+  message: z.string().max(2000).optional().transform((v) => v ? escapeHtml(v.trim()) : v),
   metadata: z.record(z.string(), z.unknown()).optional(),
   sourcePage: z.string().min(1).max(500).refine(isValidSourcePage, "Unknown source page"),
   sourceCategory: z.enum(EOI_CATEGORIES).optional(),

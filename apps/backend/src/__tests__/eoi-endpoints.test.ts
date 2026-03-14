@@ -119,13 +119,13 @@ describe("EOI Public Endpoints", () => {
       expect(res.status).toBe(400);
     });
 
-    it("strips HTML from name and message", async () => {
+    it("escapes HTML entities in name and message (not strip)", async () => {
       const res = await app.fetch(
         makeEoiRequest({
           ...validEoi,
           name: "Test <script>alert(1)</script> User",
           message: "Hello <b>world</b>",
-          email: "html-test@example.com",
+          email: "html-escape-test@example.com",
         }),
         env,
       );
@@ -228,7 +228,7 @@ describe("EOI Public Endpoints", () => {
       expect(res.status).toBe(201);
     });
 
-    it("rejects tag-only desiredRole that becomes empty after sanitization", async () => {
+    it("escapes HTML in desiredRole rather than stripping (safe for storage)", async () => {
       const res = await app.fetch(
         makeEoiRequest({
           ...validEoi,
@@ -240,7 +240,9 @@ describe("EOI Public Endpoints", () => {
         }),
         env,
       );
-      expect(res.status).toBe(400);
+      // With escapeHtml, the input becomes "&lt;img src=x&gt;&lt;br/&gt;"
+      // which is a non-empty string — accepted but safely escaped
+      expect(res.status).toBe(201);
     });
 
     it("rejects whitespace-only desiredRole", async () => {
@@ -499,18 +501,42 @@ describe("EOI Public Endpoints", () => {
   });
 });
 
-describe("stripHtml Security", () => {
-  it("strips unclosed HTML tags", async () => {
-    const { stripHtml } = await import("../eoi/validation.js");
-    expect(stripHtml("<script>alert(1)")).toBe("alert(1)");
-    expect(stripHtml("hello<b")).toBe("hello<b");
-    expect(stripHtml("test<img src=x onerror=alert(1)>value")).toBe("testvalue");
+describe("escapeHtml Security (#223 Finding #27)", () => {
+  it("escapes angle brackets to prevent tag injection", async () => {
+    const { escapeHtml } = await import("../eoi/validation.js");
+    expect(escapeHtml("<script>alert(1)</script>")).toBe("&lt;script&gt;alert(1)&lt;/script&gt;");
+    expect(escapeHtml("hello<b>bold</b>")).toBe("hello&lt;b&gt;bold&lt;/b&gt;");
   });
 
-  it("strips nested HTML tags", async () => {
-    const { stripHtml } = await import("../eoi/validation.js");
-    expect(stripHtml("<div><b>bold</b></div>")).toBe("bold");
-    expect(stripHtml("<a href='x'><img src='y'></a>")).toBe("");
+  it("escapes ampersands, quotes, and apostrophes", async () => {
+    const { escapeHtml } = await import("../eoi/validation.js");
+    expect(escapeHtml("Tom & Jerry")).toBe("Tom &amp; Jerry");
+    expect(escapeHtml('say "hello"')).toBe("say &quot;hello&quot;");
+    expect(escapeHtml("it's fine")).toBe("it&#39;s fine");
+  });
+
+  it("blocks XSS bypass vectors that defeated the old stripHtml regex", async () => {
+    const { escapeHtml } = await import("../eoi/validation.js");
+    // Unclosed tags — old regex let these through
+    const unclosed = escapeHtml("<img src=x onerror=alert(1)>");
+    expect(unclosed).not.toContain("<");
+    expect(unclosed).not.toContain(">");
+    // Nested/attribute tricks — tags are fully escaped, cannot be parsed as HTML
+    const nested = escapeHtml('<a href="javascript:alert(1)">click</a>');
+    expect(nested).not.toContain("<a");
+    // The angle brackets are escaped, so even though "javascript:" appears in
+    // the text, it is NOT inside an actual HTML tag and cannot execute
+    expect(nested).toContain("&lt;a");
+    expect(nested).toContain("&quot;");
+    // The old stripHtml could not handle this: the regex skipped unclosed <b
+    expect(escapeHtml("hello<b")).toBe("hello&lt;b");
+  });
+
+  it("preserves plain text without modification (except & which is escaped)", async () => {
+    const { escapeHtml } = await import("../eoi/validation.js");
+    expect(escapeHtml("Production Designer")).toBe("Production Designer");
+    expect(escapeHtml("John Smith")).toBe("John Smith");
+    expect(escapeHtml("")).toBe("");
   });
 });
 
