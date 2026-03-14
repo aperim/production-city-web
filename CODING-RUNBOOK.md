@@ -283,9 +283,10 @@ Before writing any component code:
 ### 3) Implement with meaningful local testing
 
 - Follow TDD per `CODING.md`.
-- Run locally before PR:
+- Run locally before PR (**all must pass — no exceptions**):
+  - Prisma generate: `pnpm exec prisma generate` (required per worktree)
   - Unit tests: `pnpm test` or `pnpm --filter ./apps/<pkg> test`
-  - E2E tests: `pnpm test:e2e`
+  - E2E tests: `pnpm test:e2e` (**mandatory** — E2E does not run in CI)
   - Lint: `pnpm lint`
   - Typecheck: `pnpm typecheck`
 - Dev servers:

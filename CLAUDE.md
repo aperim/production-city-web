@@ -212,10 +212,30 @@ D1 has no rollback. Use **forward-only compensating migrations** through CI.
 Before starting work each session:
 
 ```bash
+pnpm exec prisma generate                                           # regenerate Prisma Client
 wrangler d1 migrations apply <D1_BINDING_NAME> --local --dry-run  # confirm no pending
 pnpm test                                                           # confirm passing
 pnpm build-storybook                                               # confirm stories clean
 ```
+
+**`prisma generate` is mandatory.** Backend tests will fail with `No such module "@prisma/client"` if the Prisma Client hasn't been generated in the current worktree. This is a per-worktree operation — each git worktree needs its own `prisma generate` run.
+
+---
+
+## E2E Tests — Local Only (Pre-PR Gate)
+
+E2E tests do **not** run in GitHub Actions CI. The vinext dev server requires Cloudflare Workers D1 bindings that are unavailable on bare GitHub Actions runners. E2E will be added to CI at a later time.
+
+**Before raising any PR, you MUST run E2E locally and confirm all tests pass:**
+
+```bash
+pnpm test:e2e                           # full E2E suite (Playwright)
+pnpm test:e2e:smoke                     # smoke subset (faster, minimum bar)
+```
+
+E2E requires the dev server running (`pnpm --filter ./apps/web dev`) or Playwright's `webServer` auto-start (configured in `playwright.config.ts`).
+
+**Never raise a PR without passing E2E.** If E2E cannot run (e.g., missing infrastructure), document why in the PR description and flag it for review.
 
 ---
 
