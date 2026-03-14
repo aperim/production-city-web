@@ -93,7 +93,7 @@ jobs:
 
       - name: Install Playwright browsers
         working-directory: apps/web
-        run: pnpm exec playwright install chromium --with-deps
+        run: pnpm exec playwright install --with-deps
 
       - name: E2E tests
         run: pnpm test:e2e

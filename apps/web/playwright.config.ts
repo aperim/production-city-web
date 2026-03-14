@@ -42,12 +42,10 @@ export default defineConfig({
     },
   ],
 
-  webServer: CI
-    ? undefined
-    : {
-        command: "pnpm run dev",
-        port: 4321,
-        reuseExistingServer: true,
-        timeout: 60_000,
-      },
+  webServer: {
+    command: "pnpm run dev",
+    port: 4321,
+    reuseExistingServer: !CI,
+    timeout: 120_000,
+  },
 });
