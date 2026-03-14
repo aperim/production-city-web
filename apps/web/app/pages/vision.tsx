@@ -1,5 +1,6 @@
 /**
- * Vision & Global Network page component — global vision and stakeholder value.
+ * Vision & Global Network page — global vision, market position, and stakeholders.
+ * Hero with media, global footprint, team, investor-focused CTAs.
  * All text from i18n, all content pre-groundbreaking (future tense).
  */
 
@@ -7,6 +8,7 @@
 
 import {
   LandingPageTemplate,
+  MediaHero,
   GlobalCampusMap,
   StakeholderGrid,
   ForwardLookingDisclaimer,
@@ -20,6 +22,7 @@ import {
   useEoiCategories,
   useEoiSubmit,
 } from "../lib/use-landing-layout";
+import { MEDIA } from "../lib/media-config";
 
 export function VisionPage() {
   return (
@@ -37,122 +40,170 @@ function VisionPageContent() {
   const eoiCategories = useEoiCategories();
   const handleEoiSubmit = useEoiSubmit();
 
+  const heroMedia = MEDIA["vision-hero"];
+
   return (
     <LandingPageTemplate nav={nav} footer={footer}>
-      {/* 1. Vision & Mission */}
-      <section className="py-12 sm:py-16" aria-labelledby="vision-heading">
-        <h1 id="vision-heading" className="text-2xl font-semibold text-foreground sm:text-3xl">
-          {t("vision.mission.heading")}
-        </h1>
-        <p className="mt-4 max-w-2xl text-base text-muted-foreground">
-          {t("vision.mission.vision")}
-        </p>
-      </section>
+      {/* Hero */}
+      {heroMedia && (
+        <MediaHero
+          lightSrc={heroMedia.lightSrc}
+          darkSrc={heroMedia.darkSrc}
+          alt={heroMedia.alt}
+          width={heroMedia.width}
+          height={heroMedia.height}
+          averageColor={heroMedia.averageColor}
+          photographer={heroMedia.photographer}
+          source={heroMedia.source}
+          className="max-h-[60vh] -mx-4 sm:-mx-6"
+        >
+          <div className="pb-8">
+            <h1 id="page-heading" className="text-3xl font-semibold text-white sm:text-4xl">
+              {t("vision.mission.heading")}
+            </h1>
+            <p className="mt-2 max-w-2xl text-base text-white/90">
+              {t("vision.mission.vision")}
+            </p>
+          </div>
+        </MediaHero>
+      )}
 
-      {/* 2. Mission Themes */}
-      <section className="py-8" aria-labelledby="themes-heading">
+      {/* Mission Themes */}
+      <section className="py-10" aria-labelledby="themes-heading">
         <h2 id="themes-heading" className="text-xl font-semibold text-foreground">
           {t("vision.mission.themes")}
         </h2>
-        <ul className="mt-4 flex flex-col gap-2">
-          <li className="text-sm text-muted-foreground">{t("vision.mission.theme1")}</li>
-          <li className="text-sm text-muted-foreground">{t("vision.mission.theme2")}</li>
-          <li className="text-sm text-muted-foreground">{t("vision.mission.theme3")}</li>
-          <li className="text-sm text-muted-foreground">{t("vision.mission.theme4")}</li>
-          <li className="text-sm text-muted-foreground">{t("vision.mission.theme5")}</li>
-          <li className="text-sm text-muted-foreground">{t("vision.mission.theme6")}</li>
-          <li className="text-sm text-muted-foreground">{t("vision.mission.theme7")}</li>
-        </ul>
+        <div className="mt-4 grid grid-cols-1 gap-3 sm:grid-cols-2">
+          {[1, 2, 3, 4, 5, 6, 7].map((n) => (
+            <div key={n} className="border-l-2 border-primary pl-4 py-1">
+              <p className="text-sm text-foreground">{t(`vision.mission.theme${n}` as Parameters<typeof t>[0])}</p>
+            </div>
+          ))}
+        </div>
       </section>
 
-      {/* 3. Philosophy */}
-      <section className="py-8" aria-labelledby="philosophy-heading">
+      {/* Philosophy */}
+      <section className="py-10 border-t border-border" aria-labelledby="philosophy-heading">
         <h2 id="philosophy-heading" className="text-xl font-semibold text-foreground">
           {t("vision.mission.philosophy")}
         </h2>
-        <ul className="mt-4 flex flex-col gap-2">
-          <li className="text-sm text-muted-foreground">{t("vision.mission.phil1")}</li>
-          <li className="text-sm text-muted-foreground">{t("vision.mission.phil2")}</li>
-          <li className="text-sm text-muted-foreground">{t("vision.mission.phil3")}</li>
-          <li className="text-sm text-muted-foreground">{t("vision.mission.phil4")}</li>
-        </ul>
+        <div className="mt-4 grid grid-cols-1 gap-3 sm:grid-cols-2">
+          {[1, 2, 3, 4].map((n) => (
+            <div key={n} className="border border-border rounded-sm p-4">
+              <p className="text-sm text-foreground">{t(`vision.mission.phil${n}` as Parameters<typeof t>[0])}</p>
+            </div>
+          ))}
+        </div>
       </section>
 
-      {/* 4. Global Campus Network */}
-      <GlobalCampusMap
-        heading={t("vision.global.heading")}
-        locations={[
-          {
-            name: t("vision.global.queensland"),
-            status: t("vision.global.queenslandStatus"),
-            description: t("vision.global.queenslandDesc"),
-          },
-          {
-            name: t("vision.global.singapore"),
-            status: t("vision.global.singaporeStatus"),
-            description: t("vision.global.singaporeDesc"),
-          },
-          {
-            name: t("vision.global.hawaii"),
-            status: t("vision.global.hawaiiStatus"),
-            description: t("vision.global.hawaiiDesc"),
-          },
-          {
-            name: t("vision.global.europe"),
-            status: t("vision.global.europeStatus"),
-            description: t("vision.global.europeDesc"),
-          },
-          {
-            name: t("vision.global.usa"),
-            status: t("vision.global.usaStatus"),
-            description: t("vision.global.usaDesc"),
-          },
-        ]}
-      />
-
-      {/* 5. Operating Model */}
-      <div className="py-8">
-        <p className="text-sm text-muted-foreground">
+      {/* Global Campus Network with media */}
+      <section className="py-10 border-t border-border" aria-labelledby="global-heading">
+        <div className="grid grid-cols-1 gap-8 lg:grid-cols-2 lg:items-start">
+          <div>
+            <GlobalCampusMap
+              heading={t("vision.global.heading")}
+              locations={[
+                {
+                  name: t("vision.global.queensland"),
+                  status: t("vision.global.queenslandStatus"),
+                  description: t("vision.global.queenslandDesc"),
+                },
+                {
+                  name: t("vision.global.singapore"),
+                  status: t("vision.global.singaporeStatus"),
+                  description: t("vision.global.singaporeDesc"),
+                },
+                {
+                  name: t("vision.global.hawaii"),
+                  status: t("vision.global.hawaiiStatus"),
+                  description: t("vision.global.hawaiiDesc"),
+                },
+                {
+                  name: t("vision.global.europe"),
+                  status: t("vision.global.europeStatus"),
+                  description: t("vision.global.europeDesc"),
+                },
+                {
+                  name: t("vision.global.usa"),
+                  status: t("vision.global.usaStatus"),
+                  description: t("vision.global.usaDesc"),
+                },
+              ]}
+            />
+          </div>
+          <div className="flex flex-col gap-4">
+            {MEDIA["vision-queensland"] && (
+              <div className="overflow-hidden rounded-sm">
+                <img
+                  src={MEDIA["vision-queensland"].lightSrc}
+                  alt={MEDIA["vision-queensland"].alt}
+                  width={1920}
+                  height={1080}
+                  loading="lazy"
+                  className="h-auto w-full object-cover"
+                  style={{ aspectRatio: "16 / 9" }}
+                />
+              </div>
+            )}
+            {MEDIA["vision-global"] && (
+              <div className="overflow-hidden rounded-sm">
+                <img
+                  src={MEDIA["vision-global"].lightSrc}
+                  alt={MEDIA["vision-global"].alt}
+                  width={1920}
+                  height={1080}
+                  loading="lazy"
+                  className="h-auto w-full object-cover"
+                  style={{ aspectRatio: "16 / 9" }}
+                />
+              </div>
+            )}
+          </div>
+        </div>
+        <p className="mt-6 text-sm text-muted-foreground">
           {t("vision.global.operatingModel")}
         </p>
-      </div>
+      </section>
 
-      {/* 6. Market Position */}
-      <section className="py-8" aria-labelledby="market-heading">
+      {/* Market Position */}
+      <section className="py-10 border-t border-border" aria-labelledby="market-heading">
         <h2 id="market-heading" className="text-xl font-semibold text-foreground">
           {t("vision.market.heading")}
         </h2>
-        <ul className="mt-4 flex flex-col gap-2">
-          <li className="text-sm text-muted-foreground">{t("vision.market.context1")}</li>
-          <li className="text-sm text-muted-foreground">{t("vision.market.context2")}</li>
-          <li className="text-sm text-muted-foreground">{t("vision.market.context3")}</li>
-        </ul>
-        <h3 className="mt-6 text-sm font-semibold text-foreground">
+        <div className="mt-4 flex flex-col gap-3">
+          {[1, 2, 3].map((n) => (
+            <div key={n} className="border-l-2 border-secondary pl-4 py-1">
+              <p className="text-sm text-foreground">{t(`vision.market.context${n}` as Parameters<typeof t>[0])}</p>
+            </div>
+          ))}
+        </div>
+        <h3 className="mt-8 text-base font-semibold text-foreground">
           {t("vision.market.accessibility")}
         </h3>
-        <ul className="mt-2 flex flex-col gap-2">
-          <li className="text-sm text-muted-foreground">{t("vision.market.access1")}</li>
-          <li className="text-sm text-muted-foreground">{t("vision.market.access2")}</li>
-          <li className="text-sm text-muted-foreground">{t("vision.market.access3")}</li>
-        </ul>
+        <div className="mt-3 grid grid-cols-1 gap-3 sm:grid-cols-3">
+          {[1, 2, 3].map((n) => (
+            <div key={n} className="border border-border rounded-sm p-4">
+              <p className="text-sm text-foreground">{t(`vision.market.access${n}` as Parameters<typeof t>[0])}</p>
+            </div>
+          ))}
+        </div>
       </section>
 
-      {/* 7. Why Production City */}
-      <section className="py-8" aria-labelledby="why-heading">
+      {/* Why Production City */}
+      <section className="py-10 border-t border-border" aria-labelledby="why-heading">
         <h2 id="why-heading" className="text-xl font-semibold text-foreground">
           {t("vision.why.heading")}
         </h2>
-        <ul className="mt-4 flex flex-col gap-2">
-          <li className="text-sm text-muted-foreground">{t("vision.why.arg1")}</li>
-          <li className="text-sm text-muted-foreground">{t("vision.why.arg2")}</li>
-          <li className="text-sm text-muted-foreground">{t("vision.why.arg3")}</li>
-          <li className="text-sm text-muted-foreground">{t("vision.why.arg4")}</li>
-          <li className="text-sm text-muted-foreground">{t("vision.why.arg5")}</li>
-          <li className="text-sm text-muted-foreground">{t("vision.why.arg6")}</li>
-        </ul>
+        <div className="mt-4 grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
+          {[1, 2, 3, 4, 5, 6].map((n) => (
+            <div key={n} className="border-l-2 border-primary pl-4 py-2">
+              <p className="text-sm text-foreground">{t(`vision.why.arg${n}` as Parameters<typeof t>[0])}</p>
+            </div>
+          ))}
+        </div>
       </section>
 
-      {/* 8. Stakeholder Benefits */}
+      {/* Stakeholder Benefits */}
       <StakeholderGrid
         heading={t("vision.stakeholders.heading")}
         stakeholders={[
@@ -179,19 +230,19 @@ function VisionPageContent() {
         ]}
       />
 
-      {/* 9. The Team */}
-      <section className="py-8" aria-labelledby="team-heading">
+      {/* The Team */}
+      <section className="py-10 border-t border-border" aria-labelledby="team-heading">
         <h2 id="team-heading" className="text-xl font-semibold text-foreground">
           {t("vision.team.heading")}
         </h2>
-        <div className="mt-4 border border-border rounded-md p-4">
-          <h3 className="text-sm font-semibold text-foreground">
+        <div className="mt-4 border border-border rounded-sm p-6">
+          <h3 className="text-base font-semibold text-foreground">
             {t("vision.team.leaderName")}
           </h3>
-          <p className="text-xs text-muted-foreground">
+          <p className="text-sm text-muted-foreground">
             {t("vision.team.leaderRole")}
           </p>
-          <p className="mt-2 text-sm text-muted-foreground">
+          <p className="mt-3 text-sm text-muted-foreground">
             {t("vision.team.leaderBio")}
           </p>
         </div>
@@ -200,8 +251,8 @@ function VisionPageContent() {
         </p>
       </section>
 
-      {/* 10. Partnership EOI */}
-      <div id="eoi-section">
+      {/* Investor EOI */}
+      <div id="eoi-section" className="border-t border-border">
         <EOISection
           heading={t("vision.eoi.heading")}
           contextText={t("vision.eoi.context")}
@@ -212,7 +263,7 @@ function VisionPageContent() {
         />
       </div>
 
-      {/* 11. Forward-Looking Disclaimer */}
+      {/* Forward-Looking Disclaimer */}
       <ForwardLookingDisclaimer text={t("vision.disclaimer.forwardLooking")} />
     </LandingPageTemplate>
   );

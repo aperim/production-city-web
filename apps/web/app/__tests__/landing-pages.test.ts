@@ -141,9 +141,9 @@ describe("landing page component-specific content", () => {
     expect(content).toContain("acknowledgement");
   });
 
-  it("Facilities page uses FacilityShowcase", () => {
+  it("Facilities page renders facility sections", () => {
     const content = readFileSync(resolve(APP_ROOT, "pages/facilities.tsx"), "utf-8");
-    expect(content).toContain("FacilityShowcase");
+    expect(content).toContain("FacilitySection");
   });
 
   it("Creative page uses ServiceGrid", () => {

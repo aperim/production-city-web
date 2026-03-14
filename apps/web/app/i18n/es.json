@@ -235,7 +235,13 @@
       "portfolioUrlPlaceholder": "https://your-portfolio.com",
       "submitButton": "Submit",
       "successMessage": "Thank you for your interest. We will be in touch about opportunities."
-    }
+    },
+    "desiredRoleLabel": "Desired role",
+    "desiredRolePlaceholder": "What role are you interested in?",
+    "experienceLevelLabel": "Experience level",
+    "availabilityLabel": "Availability",
+    "portfolioUrlLabel": "Portfolio URL (optional)",
+    "portfolioUrlPlaceholder": "https://your-portfolio.com"
   },
   "legal": {
     "privacyPolicy": "Política de privacidad",
@@ -356,7 +362,11 @@
     "explore": "Explore",
     "company": "Company",
     "acknowledgement": "Production City acknowledges the Traditional Owners of Country throughout Australia and recognises their continuing connection to lands, waters, and community. It pays respects to Aboriginal and Torres Strait Islander cultures and their Elders past and present.",
-    "resources": "Resources"
+    "resources": "Resources",
+    "brand": {
+      "tagline": "We make stories"
+    },
+    "contactHeading": "Contact"
   },
   "languageSwitcher": {
     "label": "Idioma",
@@ -371,7 +381,10 @@
       "tagline": "We make stories",
       "positioning": "Production City is a revolutionary production institution combining established screen and stage craft with advanced production technology, including virtual production, LED volumes, broadcast infrastructure, and an integrated service model.",
       "ctaPrimary": "Register Your Interest",
-      "ctaSecondary": "Explore Our Facilities"
+      "ctaSecondary": "Explore Our Facilities",
+      "brand": "Production City",
+      "tagline2": "Where tradition meets innovation",
+      "tagline3": "Screen. Stage. Experiential."
     },
     "whatIs": {
       "heading": "What is Production City?",
@@ -400,6 +413,11 @@
     "eoi": {
       "heading": "Stay Informed",
       "context": "Register your interest to stay informed about Production City's progress."
+    },
+    "communityPreview": {
+      "heading": "Community & Sustainability",
+      "description": "Production City is designed to serve the broader community through education partnerships, sustainability commitments, and cross-sector innovation in sports, robotics, and machine learning.",
+      "viewAll": "Explore community partnerships"
     }
   },
   "facilities": {
@@ -799,7 +817,11 @@
     "q20": "What kinds of engagements beyond facility rentals will be possible?",
     "a20": "Technology partnerships, education and research collaborations, joint development of filming methods and techniques, and collaborative business models.",
     "c20": "Engagement",
-    "categoriesLabel": "FAQ categories"
+    "categoriesLabel": "FAQ categories",
+    "searchLabel": "Search frequently asked questions",
+    "cantFindHeading": "Can't find what you're looking for?",
+    "cantFindDescription": "Our team is here to help with any questions about Production City.",
+    "cantFindCta": "Contact Us"
   },
   "contact": {
     "meta": {
@@ -826,6 +848,23 @@
     "rateLimited": "You have submitted too many requests. Please try again in {seconds} seconds.",
     "acknowledgement": {
       "heading": "Acknowledgement of Country"
+    },
+    "personaSelect": {
+      "title": "How can we help?",
+      "producer": "I am a Producer",
+      "producerDesc": "Interested in booking facilities or production services",
+      "investor": "I am an Investor",
+      "investorDesc": "Interested in investment opportunities",
+      "creative": "I am a Creative Professional",
+      "creativeDesc": "Interested in joining the creative ecosystem",
+      "partner": "I am a Technology Partner",
+      "partnerDesc": "Interested in technology partnerships",
+      "education": "I am an Educator",
+      "educationDesc": "Interested in education partnerships",
+      "employment": "I am looking for Employment",
+      "employmentDesc": "Interested in career opportunities",
+      "general": "I just want to stay informed",
+      "generalDesc": "Keep me updated on Production City progress"
     }
   },
   "ws": {

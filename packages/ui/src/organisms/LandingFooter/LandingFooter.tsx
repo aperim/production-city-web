@@ -40,12 +40,18 @@ export interface FooterContactInfo {
 
 /** Props for the LandingFooter organism */
 export interface LandingFooterProps {
+  /** Brand name. */
+  brandName?: string;
+  /** Brand tagline (i18n). */
+  brandTagline?: string;
   /** Navigation link groups. */
   linkGroups: FooterLinkGroup[];
   /** Legal text. */
   legalText: FooterLegalText;
   /** Contact info. */
   contactInfo: FooterContactInfo;
+  /** Contact heading (i18n). */
+  contactHeading?: string;
   /** Legal page links (privacy, terms). */
   legalLinks: FooterLink[];
   /** Available languages. */
@@ -65,9 +71,12 @@ export interface LandingFooterProps {
  * Grouped navigation, contact info, legal links, language switcher.
  */
 export function LandingFooter({
+  brandName,
+  brandTagline,
   linkGroups,
   legalText,
   contactInfo,
+  contactHeading,
   legalLinks,
   languages,
   currentLanguage,
@@ -83,6 +92,19 @@ export function LandingFooter({
       role="contentinfo"
     >
       <div className="mx-auto max-w-[1400px] px-4 py-8 sm:px-6">
+        {/* Brand identity */}
+        {brandName && (
+          <div className="mb-8 flex items-center gap-2">
+            <span className="inline-block h-6 w-1 rounded-sm bg-primary" aria-hidden="true" />
+            <div>
+              <p className="text-base font-semibold text-foreground">{brandName}</p>
+              {brandTagline && (
+                <p className="text-sm text-muted-foreground">{brandTagline}</p>
+              )}
+            </div>
+          </div>
+        )}
+
         {/* Link groups + contact */}
         <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4">
           {linkGroups.map((group) => (
@@ -103,7 +125,7 @@ export function LandingFooter({
             </div>
           ))}
           <div>
-            <p className="text-sm font-semibold text-foreground">Contact</p>
+            <p className="text-sm font-semibold text-foreground">{contactHeading ?? "Contact"}</p>
             <ul className="mt-3 flex flex-col gap-2">
               <li>
                 <a

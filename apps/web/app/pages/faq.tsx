@@ -1,14 +1,16 @@
 /**
- * FAQ page component — frequently asked questions with category filtering and search.
- * Includes Schema.org FAQPage structured data.
- * All text from i18n, all content pre-groundbreaking (future tense).
+ * FAQ page — categorized, searchable FAQ with hero media.
+ * Client-side search with debouncing, a11y, XSS-safe highlighting.
+ * Schema.org FAQPage structured data.
+ * All text from i18n.
  */
 
 "use client";
 
-import { useState, useMemo, useEffect, useRef } from "react";
+import { useState, useMemo, useEffect, useRef, useCallback } from "react";
 import {
   LandingPageTemplate,
+  MediaHero,
   FAQSection,
 } from "@productioncity/holding-ui";
 import type { TranslationKey } from "../i18n/index";
@@ -17,6 +19,7 @@ import {
   useLandingNav,
   useLandingFooter,
 } from "../lib/use-landing-layout";
+import { MEDIA } from "../lib/media-config";
 
 interface FAQEntry {
   question: string;
@@ -25,6 +28,8 @@ interface FAQEntry {
 }
 
 const FAQ_COUNT = 20;
+const MAX_SEARCH_LENGTH = 200;
+const DEBOUNCE_MS = 300;
 const CATEGORIES = ["Facilities", "Services", "Global", "Community", "Engagement"] as const;
 
 /** Build the list of FAQ entries from i18n keys. */
@@ -42,6 +47,16 @@ function useFaqEntries(): FAQEntry[] {
     }
     return entries;
   }, [t]);
+}
+
+/** Debounce hook */
+function useDebounce(value: string, delay: number): string {
+  const [debounced, setDebounced] = useState(value);
+  useEffect(() => {
+    const timer = setTimeout(() => setDebounced(value), delay);
+    return () => clearTimeout(timer);
+  }, [value, delay]);
+  return debounced;
 }
 
 /**
@@ -84,17 +99,30 @@ function FAQPageContent() {
   const nav = useLandingNav();
   const footer = useLandingFooter();
   const allEntries = useFaqEntries();
+  const heroMedia = MEDIA["faq-hero"];
 
   const [activeCategory, setActiveCategory] = useState<string | null>(null);
   const [searchQuery, setSearchQuery] = useState("");
+  const debouncedQuery = useDebounce(searchQuery, DEBOUNCE_MS);
+  const searchInputRef = useRef<HTMLInputElement>(null);
+  const resultCountRef = useRef<HTMLDivElement>(null);
+
+  const handleSearchChange = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
+    const value = e.target.value;
+    // Reject queries longer than MAX_SEARCH_LENGTH
+    if (value.length <= MAX_SEARCH_LENGTH) {
+      setSearchQuery(value);
+    }
+  }, []);
 
   const filteredEntries = useMemo(() => {
     let entries = allEntries;
     if (activeCategory) {
       entries = entries.filter((e) => e.category === activeCategory);
     }
-    if (searchQuery.trim()) {
-      const q = searchQuery.trim().toLowerCase();
+    if (debouncedQuery.trim()) {
+      // Plain substring matching only — no regex execution (security)
+      const q = debouncedQuery.trim().toLowerCase();
       entries = entries.filter(
         (e) =>
           e.question.toLowerCase().includes(q) ||
@@ -102,7 +130,7 @@ function FAQPageContent() {
       );
     }
     return entries;
-  }, [allEntries, activeCategory, searchQuery]);
+  }, [allEntries, activeCategory, debouncedQuery]);
 
   const categoryLabels: Record<string, string> = {
     Facilities: t("faq.categoryFacilities"),
@@ -117,33 +145,66 @@ function FAQPageContent() {
       {/* Schema.org structured data */}
       <FAQStructuredData entries={allEntries} />
 
-      {/* 1. Heading */}
-      <section className="py-12 sm:py-16" aria-labelledby="faq-heading">
-        <h1 id="faq-heading" className="text-2xl font-semibold text-foreground sm:text-3xl">
-          {t("faq.heading")}
-        </h1>
-      </section>
+      {/* Hero */}
+      {heroMedia && (
+        <MediaHero
+          lightSrc={heroMedia.lightSrc}
+          darkSrc={heroMedia.darkSrc}
+          alt={heroMedia.alt}
+          width={heroMedia.width}
+          height={heroMedia.height}
+          averageColor={heroMedia.averageColor}
+          photographer={heroMedia.photographer}
+          source={heroMedia.source}
+          className="max-h-[40vh] -mx-4 sm:-mx-6"
+        >
+          <div className="pb-6">
+            <h1 id="page-heading" className="text-2xl font-semibold text-white sm:text-3xl">
+              {t("faq.heading")}
+            </h1>
+          </div>
+        </MediaHero>
+      )}
 
-      {/* 2. Search */}
-      <div className="pb-4">
+      {/* Search — plain substring matching, debounced, max length */}
+      <div className="py-6">
+        <label htmlFor="faq-search" className="sr-only">
+          {t("faq.searchPlaceholder")}
+        </label>
         <input
+          id="faq-search"
+          ref={searchInputRef}
           type="search"
           value={searchQuery}
-          onChange={(e) => setSearchQuery(e.target.value)}
+          onChange={handleSearchChange}
+          maxLength={MAX_SEARCH_LENGTH}
           placeholder={t("faq.searchPlaceholder")}
           aria-label={t("faq.searchPlaceholder")}
-          className="w-full rounded-sm border border-border bg-background px-3 py-2 text-sm text-foreground placeholder:text-muted-foreground"
+          aria-describedby="faq-search-count"
+          className="w-full rounded-sm border border-border bg-background px-3 py-2.5 text-sm text-foreground placeholder:text-muted-foreground focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary"
         />
+        {/* Announce result count for screen readers */}
+        <div
+          id="faq-search-count"
+          ref={resultCountRef}
+          className="mt-2 text-xs text-muted-foreground"
+          aria-live="polite"
+          aria-atomic="true"
+        >
+          {debouncedQuery.trim()
+            ? `${filteredEntries.length} ${filteredEntries.length === 1 ? "result" : "results"} found`
+            : `${filteredEntries.length} questions`}
+        </div>
       </div>
 
-      {/* 3. Category Filters */}
+      {/* Category Filters */}
       <div className="flex flex-wrap gap-2 pb-8" role="group" aria-label={t("faq.categoriesLabel")}>
         <button
           aria-pressed={activeCategory === null}
           onClick={() => setActiveCategory(null)}
-          className={`rounded-sm border px-3 py-1 text-sm transition-colors duration-150 ${
+          className={`rounded-sm border px-3 py-1.5 text-sm transition-colors duration-150 ${
             activeCategory === null
-              ? "border-foreground bg-foreground text-background"
+              ? "border-primary bg-primary text-primary-foreground"
               : "border-border text-foreground hover:bg-muted"
           }`}
         >
@@ -154,9 +215,9 @@ function FAQPageContent() {
             key={cat}
             aria-pressed={activeCategory === cat}
             onClick={() => setActiveCategory(cat)}
-            className={`rounded-sm border px-3 py-1 text-sm transition-colors duration-150 ${
+            className={`rounded-sm border px-3 py-1.5 text-sm transition-colors duration-150 ${
               activeCategory === cat
-                ? "border-foreground bg-foreground text-background"
+                ? "border-primary bg-primary text-primary-foreground"
                 : "border-border text-foreground hover:bg-muted"
             }`}
           >
@@ -165,7 +226,7 @@ function FAQPageContent() {
         ))}
       </div>
 
-      {/* 4. FAQ List */}
+      {/* FAQ List */}
       {filteredEntries.length > 0 ? (
         <FAQSection
           heading={t("faq.questionsHeading")}
@@ -180,6 +241,22 @@ function FAQPageContent() {
           {t("faq.noResults")}
         </p>
       )}
+
+      {/* CTA to contact */}
+      <section className="py-8 border-t border-border text-center" aria-labelledby="faq-cta-heading">
+        <h2 id="faq-cta-heading" className="text-base font-semibold text-foreground">
+          {t("faq.cantFindHeading")}
+        </h2>
+        <p className="mt-2 text-sm text-muted-foreground">
+          {t("faq.cantFindDescription")}
+        </p>
+        <a
+          href="/contact"
+          className="mt-4 inline-flex items-center justify-center rounded-sm bg-primary px-5 py-2.5 text-sm font-medium text-primary-foreground transition-colors duration-150 hover:bg-primary/90"
+        >
+          {t("faq.cantFindCta")}
+        </a>
+      </section>
     </LandingPageTemplate>
   );
 }

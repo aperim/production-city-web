@@ -269,9 +269,11 @@ describe("WCAG 2.4.6 — Headings and labels", () => {
           .replace(/<[^>]+>/g, "")
           .trim();
         // If there's plain text, it should be "Production City" brand only
+        // Also allow JSX expression variables like {heading}, {spec.label}, etc.
         if (innerText && !innerText.includes("{t(") && !innerText.includes("t(\"")) {
+          const isJsxExpression = /^\{[a-zA-Z_.[\]()]+\}$/.test(innerText.trim());
           expect(
-            innerText === "Production City" || innerText === "",
+            innerText === "Production City" || innerText === "" || isJsxExpression,
             `${page}: heading contains hardcoded text: "${innerText}"`,
           ).toBe(true);
         }

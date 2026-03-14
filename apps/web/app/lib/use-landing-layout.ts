@@ -17,6 +17,9 @@ export function useLandingNav(): LandingNavigationProps {
 
   const prefix = locale === "en" ? "" : `/${locale}`;
 
+  // Detect active path for nav highlighting
+  const activePath = typeof window !== "undefined" ? window.location.pathname : "/";
+
   return {
     brand: "Production City",
     links: [
@@ -34,6 +37,7 @@ export function useLandingNav(): LandingNavigationProps {
     })),
     currentLanguage: locale,
     onLanguageChange: (code: string) => setLocale(code as SupportedLocale),
+    activePath,
   };
 }
 
@@ -44,10 +48,14 @@ export function useLandingFooter(): LandingFooterProps {
   const year = new Date().getFullYear().toString();
 
   return {
+    brandName: "Production City",
+    brandTagline: t("footer.brand.tagline"),
+    contactHeading: t("footer.contactHeading"),
     linkGroups: [
       {
         heading: t("footer.explore"),
         links: [
+          { label: t("nav.home"), href: `${prefix}/` },
           { label: t("nav.facilities"), href: `${prefix}/facilities` },
           { label: t("nav.creative"), href: `${prefix}/creative` },
           { label: t("nav.vision"), href: `${prefix}/vision` },

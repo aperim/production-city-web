@@ -23,6 +23,8 @@ export interface LandingNavigationProps {
   currentLanguage: string;
   /** Language change handler. */
   onLanguageChange: (code: string) => void;
+  /** Current active path for active state indicator. */
+  activePath?: string;
   /** Additional CSS classes. */
   className?: string;
 }
@@ -39,6 +41,7 @@ export function LandingNavigation({
   languages,
   currentLanguage,
   onLanguageChange,
+  activePath,
   className,
 }: LandingNavigationProps) {
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -52,20 +55,32 @@ export function LandingNavigation({
       aria-label="Main navigation"
     >
       <div className="mx-auto flex max-w-[1400px] items-center justify-between px-4 py-3 sm:px-6">
-        {/* Brand */}
-        <span className="text-base font-semibold text-foreground">{brand}</span>
+        {/* Brand with primary color accent — href from first nav link for locale awareness */}
+        <a href={links[0]?.href ?? "/"} className="flex items-center gap-2 text-base font-semibold text-foreground">
+          <span className="inline-block h-5 w-1 rounded-sm bg-primary" aria-hidden="true" />
+          {brand}
+        </a>
 
-        {/* Desktop links */}
+        {/* Desktop links with active underline indicator */}
         <div className="hidden items-center gap-6 lg:flex">
-          {links.map((link) => (
-            <a
-              key={link.href}
-              href={sanitizeHref(link.href)}
-              className="text-sm text-muted-foreground transition-colors duration-150 hover:text-foreground"
-            >
-              {link.label}
-            </a>
-          ))}
+          {links.map((link) => {
+            const isActive = activePath === link.href || (link.href !== "/" && activePath?.startsWith(link.href));
+            return (
+              <a
+                key={link.href}
+                href={sanitizeHref(link.href)}
+                className={cn(
+                  "text-sm transition-colors duration-150",
+                  isActive
+                    ? "font-medium text-foreground underline underline-offset-4 decoration-primary decoration-2"
+                    : "text-muted-foreground hover:text-foreground",
+                )}
+                aria-current={isActive ? "page" : undefined}
+              >
+                {link.label}
+              </a>
+            );
+          })}
           <LanguageSwitcher
             languages={languages}
             currentLanguage={currentLanguage}
@@ -89,19 +104,28 @@ export function LandingNavigation({
         </button>
       </div>
 
-      {/* Mobile menu */}
+      {/* Mobile menu with proper background */}
       {mobileOpen && (
-        <div className="border-t border-border px-4 py-4 lg:hidden">
+        <div className="border-t border-border bg-background px-4 py-4 lg:hidden">
           <div className="flex flex-col gap-3">
-            {links.map((link) => (
-              <a
-                key={link.href}
-                href={sanitizeHref(link.href)}
-                className="text-sm text-muted-foreground transition-colors duration-150 hover:text-foreground"
-              >
-                {link.label}
-              </a>
-            ))}
+            {links.map((link) => {
+              const isActive = activePath === link.href || (link.href !== "/" && activePath?.startsWith(link.href));
+              return (
+                <a
+                  key={link.href}
+                  href={sanitizeHref(link.href)}
+                  className={cn(
+                    "text-sm transition-colors duration-150",
+                    isActive
+                      ? "font-medium text-foreground"
+                      : "text-muted-foreground hover:text-foreground",
+                  )}
+                  aria-current={isActive ? "page" : undefined}
+                >
+                  {link.label}
+                </a>
+              );
+            })}
             <div className="pt-2">
               <LanguageSwitcher
                 languages={languages}

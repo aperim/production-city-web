@@ -1,0 +1,23 @@
+{
+  "pexelsId": null,
+  "photographer": "Placeholder",
+  "photographerUrl": "",
+  "pexelsUrl": "",
+  "source": "Pexels",
+  "sourceUrl": "https://www.pexels.com",
+  "localPath": "public/media/creative-vfx/light.jpg",
+  "checksum": "e140516e89fbc4f8ecc481a88dc72552f81f06f71c95a7712a72ae5803cf753d",
+  "contentContext": "creative-vfx",
+  "themeVariant": "light",
+  "description": "Visual effects / CGI work, green screen",
+  "searchQuery": "visual effects green screen",
+  "width": 1920,
+  "height": 1080,
+  "downloadedSize": "placeholder",
+  "aiGenerated": false,
+  "aiAssisted": false,
+  "hasFirstNationsPermission": false,
+  "culturalNotes": "",
+  "license": "Pexels License — free for personal and commercial use",
+  "placeholder": true
+}

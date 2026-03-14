@@ -1,0 +1,23 @@
+{
+  "pexelsId": null,
+  "photographer": "Placeholder",
+  "photographerUrl": "",
+  "pexelsUrl": "",
+  "source": "Pexels",
+  "sourceUrl": "https://www.pexels.com",
+  "localPath": "public/media/facilities-ancillary/dark.jpg",
+  "checksum": "02a4cd12cf02fd6bed619f1e38c8ba650d4cb72ccee82c7ef2b8dc32bc2d0660",
+  "contentContext": "facilities-ancillary",
+  "themeVariant": "dark",
+  "description": "Recording studio or workshop space",
+  "searchQuery": "recording studio workshop",
+  "width": 1920,
+  "height": 1080,
+  "downloadedSize": "placeholder",
+  "aiGenerated": false,
+  "aiAssisted": false,
+  "hasFirstNationsPermission": false,
+  "culturalNotes": "",
+  "license": "Pexels License — free for personal and commercial use",
+  "placeholder": true
+}
