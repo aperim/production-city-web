@@ -348,24 +348,28 @@ For packages with complex dependency graphs, use `pnpm --filter ./apps/web... bu
 
 ### CI sequence on merge to `main`
 
+**CI workflow** (quality gates — runs on push and PR):
 ```
 1.  pnpm install --frozen-lockfile
 2.  pnpm exec prisma generate
-3.  pnpm lint
-4.  pnpm typecheck
-5.  pnpm test                              # unit tests (Vitest)
-6.  wrangler d1 migrations apply <DB>      # apply pending migrations (atomic, idempotent)
-7.  pnpm db:seed                           # seed non-production environments (idempotent)
-8.  pnpm build                             # compile all packages
-9.  pnpm test:e2e                          # E2E tests (Playwright, against built artefacts)
-10. pnpm --filter ./apps/web deploy        # vinext deploy → Cloudflare Workers
-11. pnpm --filter ./apps/backend deploy    # wrangler deploy → Cloudflare Workers
-12. pnpm --filter ./apps/workers deploy    # wrangler deploy → Cloudflare Workers (queues)
+3.  pnpm audit --audit-level=high --prod
+4.  pnpm lint
+5.  pnpm typecheck
+6.  pnpm test                              # unit tests (Vitest)
+7.  pnpm build-storybook                   # Storybook build + a11y tests
 ```
 
+**Deploy workflow** (runs on push to `main` only):
+```
+1.  Build all apps
+2.  Deploy to staging (web, backend, workers)
+3.  Deploy to production (migrate D1, then deploy web, backend, workers)
+```
+
+> **E2E tests do NOT run in CI.** They require Cloudflare Workers D1 bindings unavailable on GitHub Actions runners. E2E must pass locally before raising a PR. See `CLAUDE.md` § "E2E Tests — Local Only."
+
 **Critical ordering rules:**
-- Migrations (step 6) run **before** E2E tests (step 9) — E2E must test against the current schema
-- Migrations run **before** deploys (steps 10–12) — code and schema must be in sync
+- Migrations run **before** deploys — code and schema must be in sync
 - If any step fails, the pipeline stops — no partial deploys
 
 **Seeds policy:**

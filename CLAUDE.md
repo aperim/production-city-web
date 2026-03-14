@@ -213,12 +213,12 @@ Before starting work each session:
 
 ```bash
 pnpm exec prisma generate                                           # regenerate Prisma Client
-wrangler d1 migrations apply <D1_BINDING_NAME> --local --dry-run  # confirm no pending
+wrangler d1 migrations list DB --local --config apps/backend/wrangler.toml  # confirm no pending
 pnpm test                                                           # confirm passing
 pnpm build-storybook                                               # confirm stories clean
 ```
 
-**`prisma generate` is mandatory.** Backend tests will fail with `No such module "@prisma/client"` if the Prisma Client hasn't been generated in the current worktree. This is a per-worktree operation — each git worktree needs its own `prisma generate` run.
+**`prisma generate` is mandatory.** Any code importing `@prisma/client` (backend, web, workers, seeds) will fail with `No such module "@prisma/client"` if the Prisma Client hasn't been generated in the current worktree. This is a per-worktree operation — each git worktree needs its own `prisma generate` run.
 
 ---
 
@@ -226,11 +226,10 @@ pnpm build-storybook                                               # confirm sto
 
 E2E tests do **not** run in GitHub Actions CI. The vinext dev server requires Cloudflare Workers D1 bindings that are unavailable on bare GitHub Actions runners. E2E will be added to CI at a later time.
 
-**Before raising any PR, you MUST run E2E locally and confirm all tests pass:**
+**Before raising any PR, you MUST run the full E2E suite locally and confirm all tests pass:**
 
 ```bash
-pnpm test:e2e                           # full E2E suite (Playwright)
-pnpm test:e2e:smoke                     # smoke subset (faster, minimum bar)
+pnpm test:e2e                           # REQUIRED — full E2E suite (Playwright)
 ```
 
 E2E requires the dev server running (`pnpm --filter ./apps/web dev`) or Playwright's `webServer` auto-start (configured in `playwright.config.ts`).
