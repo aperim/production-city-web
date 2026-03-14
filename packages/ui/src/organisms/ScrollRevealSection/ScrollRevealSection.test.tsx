@@ -130,6 +130,26 @@ describe("ScrollRevealSection", () => {
     expect(wrapper.className).toMatch(/motion-reduce/);
   });
 
+  it("applies stagger delay via transitionDelay style", () => {
+    const { container } = render(
+      <ScrollRevealSection delay={200}>
+        <p>Content</p>
+      </ScrollRevealSection>,
+    );
+    const wrapper = container.firstElementChild as HTMLElement;
+    expect(wrapper.style.transitionDelay).toBe("200ms");
+  });
+
+  it("applies zero delay by default", () => {
+    const { container } = render(
+      <ScrollRevealSection>
+        <p>Content</p>
+      </ScrollRevealSection>,
+    );
+    const wrapper = container.firstElementChild as HTMLElement;
+    expect(wrapper.style.transitionDelay).toBe("0ms");
+  });
+
   it("stays revealed when prefers-reduced-motion is active", () => {
     window.matchMedia = vi.fn().mockImplementation((query: string) => ({
       matches: query === "(prefers-reduced-motion: reduce)",

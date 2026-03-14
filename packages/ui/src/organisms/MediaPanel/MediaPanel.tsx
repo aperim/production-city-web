@@ -47,16 +47,16 @@ function MediaPanel({
       {/* Image side */}
       <div
         data-testid="media-panel-image"
-        className="relative w-full overflow-hidden md:w-1/2"
+        className="relative w-full overflow-hidden md:w-1/2 pc-img-hover"
       >
         <img
           src={imageSrc}
           alt={imageAlt}
           loading="lazy"
-          className="h-full w-full object-cover transition-transform duration-300 hover:scale-[1.03]"
+          className="h-full w-full object-cover"
         />
         {attribution && (
-          <div className="absolute bottom-2 right-3 text-xs text-white/60">
+          <div className="absolute bottom-2 end-3 text-xs text-white/60">
             Photo by {attribution.photographer} / {attribution.source}
           </div>
         )}
@@ -65,7 +65,7 @@ function MediaPanel({
       {/* Text side */}
       <div className="flex w-full items-center md:w-1/2">
         <div
-          className="w-full border-l-2 border-[var(--color-primary)] p-6 sm:p-8 lg:p-12"
+          className="w-full border-s-2 border-[var(--color-primary)] p-6 sm:p-8 lg:p-12"
           style={{ fontSize: "var(--font-size-body, 1rem)" }}
         >
           {children}

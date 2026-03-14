@@ -14,6 +14,7 @@ import {
   StakeholderGrid,
   ForwardLookingDisclaimer,
   EOISection,
+  ScrollRevealSection,
 } from "@productioncity/holding-ui";
 import { I18nProvider, useTranslation } from "../i18n/context";
 import {
@@ -70,6 +71,7 @@ function VisionPageContent() {
       )}
 
       {/* The Vision — StatementBlock */}
+      <ScrollRevealSection delay={0}>
       <section className="py-12" aria-labelledby="vision-statement-heading">
         <h2 id="vision-statement-heading" className="sr-only">
           {t("vision.mission.themes")}
@@ -85,8 +87,10 @@ function VisionPageContent() {
           ))}
         </div>
       </section>
+      </ScrollRevealSection>
 
       {/* Queensland First — with media */}
+      <ScrollRevealSection delay={100}>
       <section className="py-10 border-t border-border" aria-labelledby="queensland-heading">
         <div className="grid grid-cols-1 gap-8 lg:grid-cols-2 lg:items-start">
           {MEDIA["vision-queensland"] && (
@@ -115,8 +119,10 @@ function VisionPageContent() {
           </div>
         </div>
       </section>
+      </ScrollRevealSection>
 
       {/* Global Expansion — with media */}
+      <ScrollRevealSection delay={100}>
       <section className="py-10 border-t border-border" aria-labelledby="global-expansion-heading">
         <div className="grid grid-cols-1 gap-8 lg:grid-cols-2 lg:items-start">
           <div className="order-2 lg:order-1">
@@ -142,8 +148,10 @@ function VisionPageContent() {
           )}
         </div>
       </section>
+      </ScrollRevealSection>
 
       {/* Global Campus Map */}
+      <ScrollRevealSection delay={200}>
       <section className="py-10 border-t border-border" aria-labelledby="global-heading">
         <GlobalCampusMap
           heading={t("vision.global.heading")}
@@ -176,6 +184,7 @@ function VisionPageContent() {
           ]}
         />
       </section>
+      </ScrollRevealSection>
 
       {/* Philosophy */}
       <section className="py-10 border-t border-border" aria-labelledby="philosophy-heading">

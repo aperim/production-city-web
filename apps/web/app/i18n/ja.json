@@ -1,189 +1,189 @@
 {
   "auth": {
     "login": {
-      "title": "Sign in",
-      "emailLabel": "Email address",
+      "title": "サインイン",
+      "emailLabel": "メールアドレス",
       "emailPlaceholder": "you@example.com",
-      "submitButton": "Send magic link",
-      "submitting": "Sending...",
-      "checkEmail": "Check your email for a sign-in link",
-      "codeLabel": "Verification code",
+      "submitButton": "マジックリンクを送信",
+      "submitting": "送信中...",
+      "checkEmail": "サインインリンクをメールでご確認ください",
+      "codeLabel": "確認コード",
       "codePlaceholder": "000000",
-      "verifyButton": "Verify code",
-      "verifying": "Verifying...",
-      "orSeparator": "or",
-      "resendLink": "Resend magic link",
-      "backToLogin": "Back to sign in"
+      "verifyButton": "コードを確認",
+      "verifying": "確認中...",
+      "orSeparator": "または",
+      "resendLink": "マジックリンクを再送信",
+      "backToLogin": "サインインに戻る"
     },
     "logout": {
-      "button": "Sign out",
-      "success": "You have been signed out."
+      "button": "サインアウト",
+      "success": "サインアウトしました。"
     },
     "session": {
-      "expired": "Your session has expired. Please sign in again."
+      "expired": "セッションが期限切れです。再度サインインしてください。"
     }
   },
   "admin": {
     "dashboard": {
-      "title": "Admin Dashboard",
-      "welcome": "Welcome, {name}"
+      "title": "管理ダッシュボード",
+      "welcome": "ようこそ、{name}"
     },
     "users": {
-      "title": "Users",
-      "searchPlaceholder": "Search users...",
-      "filterStatus": "Filter by status",
-      "filterRole": "Filter by role",
-      "sortBy": "Sort by",
-      "emptyState": "No users found.",
+      "title": "ユーザー",
+      "searchPlaceholder": "ユーザーを検索...",
+      "filterStatus": "ステータスで絞り込み",
+      "filterRole": "役割で絞り込み",
+      "sortBy": "並び替え",
+      "emptyState": "ユーザーが見つかりません。",
       "tableHeaders": {
-        "email": "Email",
-        "name": "Name",
-        "status": "Status",
-        "roles": "Roles",
-        "lastLogin": "Last Login",
-        "actions": "Actions"
+        "email": "メール",
+        "name": "名前",
+        "status": "ステータス",
+        "roles": "役割",
+        "lastLogin": "最終ログイン",
+        "actions": "操作"
       },
-      "statusActive": "Active",
-      "statusPending": "Pending Approval",
-      "statusDeactivated": "Deactivated",
-      "actionDeactivate": "Deactivate",
-      "actionActivate": "Activate",
-      "actionManageRoles": "Manage Roles",
-      "confirmDeactivate": "Are you sure you want to deactivate this user?",
-      "confirmActivate": "Are you sure you want to activate this user?"
+      "statusActive": "アクティブ",
+      "statusPending": "承認待ち",
+      "statusDeactivated": "無効化済み",
+      "actionDeactivate": "無効化",
+      "actionActivate": "有効化",
+      "actionManageRoles": "役割の管理",
+      "confirmDeactivate": "このユーザーを無効化してもよろしいですか？",
+      "confirmActivate": "このユーザーを有効化してもよろしいですか？"
     },
     "invitations": {
-      "title": "Invitations",
-      "createButton": "Send Invitation",
-      "emailLabel": "Email address",
+      "title": "招待",
+      "createButton": "招待を送信",
+      "emailLabel": "メールアドレス",
       "emailPlaceholder": "newuser@example.com",
-      "rolesLabel": "Assign roles",
-      "messageLabel": "Personal message (optional)",
-      "messagePlaceholder": "Welcome to the team!",
-      "emptyState": "No invitations found.",
+      "rolesLabel": "役割を割り当て",
+      "messageLabel": "個人メッセージ（任意）",
+      "messagePlaceholder": "チームへようこそ！",
+      "emptyState": "招待が見つかりません。",
       "tableHeaders": {
-        "email": "Email",
-        "status": "Status",
-        "createdAt": "Sent",
-        "expiresAt": "Expires",
-        "actions": "Actions"
+        "email": "メール",
+        "status": "ステータス",
+        "createdAt": "送信日",
+        "expiresAt": "有効期限",
+        "actions": "操作"
       },
-      "statusPending": "Pending",
-      "statusAccepted": "Accepted",
-      "statusRevoked": "Revoked",
-      "statusExpired": "Expired",
-      "actionRevoke": "Revoke",
-      "actionResend": "Resend",
-      "confirmRevoke": "Are you sure you want to revoke this invitation?"
+      "statusPending": "保留中",
+      "statusAccepted": "承諾済み",
+      "statusRevoked": "取り消し済み",
+      "statusExpired": "期限切れ",
+      "actionRevoke": "取り消し",
+      "actionResend": "再送信",
+      "confirmRevoke": "この招待を取り消してもよろしいですか？"
     },
     "approvals": {
-      "title": "Pending Approvals",
-      "emptyState": "No users pending approval.",
-      "approveButton": "Approve",
-      "rejectButton": "Reject",
-      "rejectReasonLabel": "Reason (optional)",
-      "confirmApprove": "Are you sure you want to approve this user?",
-      "confirmReject": "Are you sure you want to reject this user?"
+      "title": "承認待ち",
+      "emptyState": "承認待ちのユーザーはいません。",
+      "approveButton": "承認",
+      "rejectButton": "却下",
+      "rejectReasonLabel": "理由（任意）",
+      "confirmApprove": "このユーザーを承認してもよろしいですか？",
+      "confirmReject": "このユーザーを却下してもよろしいですか？"
     },
     "roles": {
-      "title": "Roles & Permissions",
-      "emptyState": "No roles configured."
+      "title": "役割と権限",
+      "emptyState": "役割が設定されていません。"
     },
     "auditLog": {
-      "title": "Audit Log",
-      "emptyState": "No audit entries found.",
-      "loadMore": "Load more",
+      "title": "監査ログ",
+      "emptyState": "監査エントリが見つかりません。",
+      "loadMore": "さらに読み込む",
       "tableHeaders": {
-        "action": "Action",
-        "actor": "Actor",
-        "subject": "Subject",
-        "details": "Details",
-        "timestamp": "Timestamp"
+        "action": "アクション",
+        "actor": "実行者",
+        "subject": "対象",
+        "details": "詳細",
+        "timestamp": "日時"
       }
     }
   },
   "common": {
-    "loading": "Loading...",
-    "error": "An error occurred.",
-    "retry": "Retry",
-    "cancel": "Cancel",
-    "confirm": "Confirm",
-    "save": "Save",
-    "delete": "Delete",
-    "edit": "Edit",
-    "close": "Close",
-    "back": "Back",
-    "next": "Next",
-    "previous": "Previous",
-    "noResults": "No results found."
+    "loading": "読み込み中...",
+    "error": "エラーが発生しました。",
+    "retry": "再試行",
+    "cancel": "キャンセル",
+    "confirm": "確認",
+    "save": "保存",
+    "delete": "削除",
+    "edit": "編集",
+    "close": "閉じる",
+    "back": "戻る",
+    "next": "次へ",
+    "previous": "前へ",
+    "noResults": "結果が見つかりません。"
   },
   "media": {
     "attribution": {
-      "photoBy": "Photo by {photographer} on {source}",
-      "videoBy": "Video by {photographer} on {source}",
-      "providedBy": "Media provided by {source}",
-      "viewProfile": "View {photographer}'s profile",
-      "viewSource": "View on {source}"
+      "photoBy": "{source}の{photographer}による写真",
+      "videoBy": "{source}の{photographer}による動画",
+      "providedBy": "{source}提供のメディア",
+      "viewProfile": "{photographer}のプロフィールを見る",
+      "viewSource": "{source}で見る"
     },
     "badges": {
-      "aiAssisted": "AI-assisted content",
-      "aiAssistedTooltip": "This media was created with AI assistance",
-      "aiGenerated": "AI-generated content",
-      "aiGeneratedTooltip": "This media was generated by artificial intelligence",
-      "firstNations": "First Nations cultural permission",
-      "firstNationsTooltip": "Used with permissions of First Nations Peoples",
-      "firstNationsExpanded": "This media is used with the explicit permission of First Nations Peoples"
+      "aiAssisted": "AI支援コンテンツ",
+      "aiAssistedTooltip": "このメディアはAIの支援を受けて作成されました",
+      "aiGenerated": "AI生成コンテンツ",
+      "aiGeneratedTooltip": "このメディアはAIによって生成されました",
+      "firstNations": "先住民族の文化的許可",
+      "firstNationsTooltip": "先住民族の許可を得て使用",
+      "firstNationsExpanded": "このメディアは先住民族の明示的な許可を得て使用されています"
     },
     "states": {
-      "loading": "Loading media...",
-      "error": "Image unavailable",
-      "errorDescription": "This image could not be loaded",
-      "noMedia": "No media available",
-      "retryLoad": "Retry loading",
-      "themeChanged": "Image updated for {theme} theme"
+      "loading": "メディアを読み込み中...",
+      "error": "画像が利用できません",
+      "errorDescription": "この画像を読み込めませんでした",
+      "noMedia": "利用可能なメディアがありません",
+      "retryLoad": "読み込みを再試行",
+      "themeChanged": "{theme}テーマ用に画像を更新しました"
     },
     "admin": {
-      "title": "Media Assets",
-      "searchPlaceholder": "Search by photographer, description, or context...",
-      "filterSource": "Filter by source",
-      "filterVariant": "Filter by theme variant",
-      "filterStatus": "Filter by review status",
+      "title": "メディア管理",
+      "searchPlaceholder": "メディアを検索...",
+      "filterSource": "ソースで絞り込み",
+      "filterVariant": "テーマバリアントで絞り込み",
+      "filterStatus": "レビュー状況で絞り込み",
       "columns": {
-        "preview": "Preview",
-        "photographer": "Photographer",
-        "source": "Source",
-        "context": "Context",
-        "variant": "Theme",
-        "status": "Status",
-        "flags": "Flags",
-        "actions": "Actions"
+        "preview": "プレビュー",
+        "photographer": "フォトグラファー",
+        "source": "ソース",
+        "context": "コンテキスト",
+        "variant": "テーマ",
+        "status": "ステータス",
+        "flags": "フラグ",
+        "actions": "操作"
       },
       "actions": {
-        "edit": "Edit metadata",
-        "archive": "Archive asset",
-        "createPair": "Create pair",
-        "removePair": "Remove pair",
-        "restore": "Restore asset",
-        "confirmArchive": "Are you sure you want to archive this media asset?",
-        "confirmRemovePair": "Are you sure you want to remove this media pair?"
+        "edit": "メタデータを編集",
+        "archive": "アセットをアーカイブ",
+        "createPair": "ペアを作成",
+        "removePair": "ペアを解除",
+        "restore": "アセットを復元",
+        "confirmArchive": "このメディアアセットをアーカイブしてもよろしいですか？",
+        "confirmRemovePair": "このメディアペアを解除してもよろしいですか？"
       }
     }
   },
   "nav": {
-    "dashboard": "Dashboard",
-    "users": "Users",
-    "invitations": "Invitations",
-    "approvals": "Approvals",
-    "roles": "Roles",
-    "auditLog": "Audit Log",
-    "signOut": "Sign Out",
-    "home": "Home",
-    "facilities": "Facilities",
-    "creative": "Creative",
-    "vision": "Vision",
-    "contact": "Contact",
-    "community": "Community",
-    "faq": "FAQ"
+    "dashboard": "ダッシュボード",
+    "users": "ユーザー",
+    "invitations": "招待",
+    "approvals": "承認",
+    "roles": "役割",
+    "auditLog": "監査ログ",
+    "signOut": "サインアウト",
+    "home": "ホーム",
+    "facilities": "施設",
+    "creative": "クリエイティブ",
+    "vision": "ビジョン",
+    "contact": "お問い合わせ",
+    "community": "コミュニティ",
+    "faq": "よくある質問"
   },
   "eoi": {
     "formTitle": "関心を表明する",
@@ -211,36 +211,36 @@
     "rateLimited": "送信が多すぎます。後でもう一度お試しください。",
     "categoryEmployment": "採用",
     "employment": {
-      "title": "Career Interest",
-      "description": "Tell us about yourself and the role you are interested in.",
-      "desiredRoleLabel": "Desired Role",
-      "desiredRolePlaceholder": "e.g. Sound Engineer, VFX Artist",
-      "experienceLevelLabel": "Experience Level",
+      "title": "採用",
+      "description": "Production Cityの求人に応募する。",
+      "desiredRoleLabel": "希望する役割",
+      "desiredRolePlaceholder": "例：撮影監督、サウンドデザイナー",
+      "experienceLevelLabel": "経験レベル",
       "experienceLevelOptions": {
-        "entry": "Entry Level",
-        "1-3years": "1-3 Years",
-        "3-5years": "3-5 Years",
-        "5-10years": "5-10 Years",
-        "10plus": "10+ Years"
+        "entry": "エントリーレベル",
+        "1-3years": "1〜3年",
+        "3-5years": "3〜5年",
+        "5-10years": "5〜10年",
+        "10plus": "10年以上"
       },
-      "availabilityLabel": "Availability",
+      "availabilityLabel": "勤務可能形態",
       "availabilityOptions": {
-        "immediate": "Immediate",
-        "1-3months": "1-3 Months",
-        "3-6months": "3-6 Months",
-        "6plus-months": "6+ Months",
-        "flexible": "Flexible"
+        "immediate": "即時",
+        "1-3months": "1〜3ヶ月",
+        "3-6months": "3〜6ヶ月",
+        "6plus-months": "6ヶ月以上",
+        "flexible": "フレキシブル"
       },
-      "portfolioUrlLabel": "Portfolio URL",
+      "portfolioUrlLabel": "ポートフォリオURL",
       "portfolioUrlPlaceholder": "https://your-portfolio.com",
-      "submitButton": "Submit",
-      "successMessage": "Thank you for your interest. We will be in touch about opportunities."
+      "submitButton": "送信",
+      "successMessage": "ご関心をお寄せいただきありがとうございます。機会についてご連絡いたします。"
     },
-    "desiredRoleLabel": "Desired role",
-    "desiredRolePlaceholder": "What role are you interested in?",
-    "experienceLevelLabel": "Experience level",
-    "availabilityLabel": "Availability",
-    "portfolioUrlLabel": "Portfolio URL (optional)",
+    "desiredRoleLabel": "希望する役割",
+    "desiredRolePlaceholder": "どのような役割に興味がありますか？",
+    "experienceLevelLabel": "経験レベル",
+    "availabilityLabel": "勤務可能時期",
+    "portfolioUrlLabel": "ポートフォリオURL",
     "portfolioUrlPlaceholder": "https://your-portfolio.com"
   },
   "legal": {
@@ -249,12 +249,12 @@
     "lastUpdated": "最終更新日：{date}",
     "backToHome": "ホームに戻る",
     "privacy": {
-      "title": "Privacy Policy",
-      "effectiveDate": "Effective date: {date}",
-      "intro": "Aperim Pty Ltd (\"we\", \"us\", \"our\") operates the Production City platform. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you visit our website or submit an expression of interest.",
+      "title": "プライバシーポリシー",
+      "effectiveDate": "発効日: {date}",
+      "intro": "Aperim Pty Ltd（「当社」）はProduction Cityプラットフォームを運営しています。このプライバシーポリシーは、当社ウェブサイトの訪問または関心の表明の提出時に、お客様の情報をどのように収集、使用、開示、保護するかを説明します。",
       "dataCollection": {
-        "title": "Information We Collect",
-        "description": "When you submit an expression of interest, we collect:",
+        "title": "収集する情報",
+        "description": "関心の表明を提出する際、以下を収集します：",
         "items": [
           "Your name and email address",
           "Your selected category of interest",
@@ -265,8 +265,8 @@
         ]
       },
       "purpose": {
-        "title": "How We Use Your Information",
-        "description": "We use the information we collect to:",
+        "title": "情報の利用方法",
+        "description": "収集した情報を以下の目的で使用します：",
         "items": [
           "Respond to your expression of interest",
           "Send a confirmation email acknowledging your submission",
@@ -276,27 +276,27 @@
         ]
       },
       "lawfulBasis": {
-        "title": "Lawful Basis for Processing",
-        "consent": "Consent: We process your expression of interest based on your explicit consent, indicated by accepting this privacy policy.",
-        "legitimateInterest": "Legitimate interest: We send operational emails (confirmation of submission) based on our legitimate interest in providing the service you requested.",
-        "marketing": "Marketing: Marketing communications are sent only with your explicit opt-in consent and you may withdraw consent at any time."
+        "title": "処理の法的根拠",
+        "consent": "同意：お客様の関心の表明は、本プライバシーポリシーへの同意に基づいて処理されます。",
+        "legitimateInterest": "正当な利益：運用メール（送信確認）は、お客様が要求したサービスを提供するという正当な利益に基づいて送信されます。",
+        "marketing": "マーケティング：マーケティング通信はお客様の明示的な同意がある場合にのみ送信され、いつでも同意を撤回できます。"
       },
       "retention": {
-        "title": "Data Retention",
-        "description": "We retain expression of interest data for up to 24 months after the last point of contact. After this period, data is anonymised or deleted. You may request earlier deletion at any time."
+        "title": "データ保持",
+        "description": "関心の表明データは最後の連絡から最大24ヶ月間保持されます。この期間後、データは匿名化または削除されます。いつでも早期削除を要求できます。"
       },
       "thirdParties": {
-        "title": "Third-Party Services",
-        "description": "We share your data with the following service providers:",
+        "title": "サードパーティサービス",
+        "description": "以下のサービスプロバイダーとデータを共有します：",
         "items": [
           "Postmark (Wildbit LLC): Email delivery for confirmation and marketing communications",
           "Cloudflare: Website hosting, CDN, and security services"
         ],
-        "note": "These providers process data on our behalf under data processing agreements. We do not sell your personal data."
+        "note": "これらのプロバイダーはデータ処理契約に基づき当社に代わってデータを処理します。個人データの販売は行いません。"
       },
       "rights": {
-        "title": "Your Rights",
-        "description": "Under applicable privacy legislation, you have the right to:",
+        "title": "お客様の権利",
+        "description": "適用されるプライバシー法に基づき、以下の権利があります：",
         "items": [
           "Access the personal data we hold about you",
           "Request correction of inaccurate data",
@@ -305,52 +305,52 @@
           "Withdraw consent for marketing communications",
           "Lodge a complaint with the relevant supervisory authority"
         ],
-        "contact": "To exercise these rights, contact us at privacy@production.city."
+        "contact": "これらの権利を行使するには、privacy@production.cityまでご連絡ください。"
       },
       "jurisdiction": {
-        "title": "Governing Law",
-        "description": "This privacy policy is governed by the laws of New South Wales, Australia, and the Australian Privacy Act 1988."
+        "title": "準拠法",
+        "description": "このプライバシーポリシーはオーストラリア・ニューサウスウェールズ州の法律およびオーストラリアプライバシー法1988に準拠します。"
       },
       "changes": {
-        "title": "Changes to This Policy",
-        "description": "We may update this privacy policy from time to time. The consent version recorded with your submission refers to the version of this policy you accepted."
+        "title": "ポリシーの変更",
+        "description": "このプライバシーポリシーは随時更新される場合があります。送信時に記録される同意バージョンは、お客様が承諾したポリシーのバージョンを指します。"
       },
       "contact": {
-        "title": "Contact Us",
-        "description": "For privacy inquiries, contact: privacy@production.city"
+        "title": "お問い合わせ",
+        "description": "プライバシーに関するお問い合わせ先: privacy@production.city"
       }
     },
     "terms": {
-      "title": "Terms of Use",
-      "effectiveDate": "Effective date: {date}",
-      "intro": "These Terms of Use govern your access to and use of the Production City website operated by Aperim Pty Ltd.",
+      "title": "利用規約",
+      "effectiveDate": "発効日: {date}",
+      "intro": "この利用規約は、Aperim Pty Ltdが運営するProduction Cityウェブサイトへのアクセスと利用を規定します。",
       "usage": {
-        "title": "Use of Website",
-        "description": "You may use this website for lawful purposes only. You agree not to use this website in any way that could damage, disable, or impair the website or interfere with any other party's use."
+        "title": "ウェブサイトの利用",
+        "description": "本ウェブサイトは合法的な目的にのみ使用できます。ウェブサイトに損害を与えたり、他者の利用を妨害する方法での使用に同意しないものとします。"
       },
       "ip": {
-        "title": "Intellectual Property",
-        "description": "Production City™ is a trademark of Aperim Pty Ltd. All content, design, and technology on this website are the property of Aperim Pty Ltd or its licensors and are protected by intellectual property laws."
+        "title": "知的財産",
+        "description": "Production City™はAperim Pty Ltdの商標です。本ウェブサイト上のすべてのコンテンツ、デザイン、技術はAperim Pty Ltdまたはそのライセンサーの財産であり、知的財産法により保護されています。"
       },
       "disclaimer": {
-        "title": "Disclaimer",
-        "description": "Production City is in pre-launch development. All information, features, timelines, and projections are subject to change without notice. Nothing on this website constitutes a binding offer, guarantee of availability, or commitment to deliver any particular service or feature."
+        "title": "免責事項",
+        "description": "Production Cityはローンチ前の開発段階にあります。すべての情報、機能、スケジュール、予測は予告なく変更される場合があります。本ウェブサイト上のいかなる内容も、拘束力のある提案、可用性の保証、または特定のサービスや機能の提供に関する約束を構成するものではありません。"
       },
       "forwardLooking": {
-        "title": "Forward-Looking Statements",
-        "description": "This website may contain forward-looking statements about Production City's plans, objectives, and expected development. These statements involve known and unknown risks, uncertainties, and other factors that may cause actual results to differ materially from those expressed or implied."
+        "title": "将来の見通しに関する記述",
+        "description": "本ウェブサイトにはProduction Cityの計画、目標、予想される開発に関する将来の見通しに関する記述が含まれている場合があります。これらの記述には、実際の結果が大きく異なる原因となりうるリスクと不確実性が伴います。"
       },
       "liability": {
-        "title": "Limitation of Liability",
-        "description": "To the maximum extent permitted by law, Aperim Pty Ltd shall not be liable for any indirect, incidental, special, consequential, or punitive damages arising from your use of this website."
+        "title": "責任の制限",
+        "description": "法律で許容される最大限の範囲で、Aperim Pty Ltdは本ウェブサイトの使用から生じる間接的、付随的、特別、結果的損害について責任を負いません。"
       },
       "jurisdiction": {
-        "title": "Governing Law",
-        "description": "These terms are governed by the laws of New South Wales, Australia. Any disputes shall be subject to the exclusive jurisdiction of the courts of New South Wales."
+        "title": "準拠法",
+        "description": "この規約はオーストラリア・ニューサウスウェールズ州の法律に準拠します。紛争はニューサウスウェールズ州の裁判所の専属管轄に従います。"
       },
       "changes": {
-        "title": "Changes to These Terms",
-        "description": "We reserve the right to modify these terms at any time. Continued use of the website after changes constitutes acceptance of the modified terms."
+        "title": "規約の変更",
+        "description": "当社はいつでもこの規約を変更する権利を留保します。変更後のウェブサイトの継続使用は、変更された規約への同意とみなされます。"
       }
     }
   },
@@ -359,14 +359,14 @@
     "termsOfUse": "利用規約",
     "copyright": "© {year} Aperim Pty Ltd. 全著作権所有。",
     "disclaimer": "Production City™はAperim Pty Ltdの商標です。",
-    "explore": "Explore",
-    "company": "Company",
-    "acknowledgement": "Production City acknowledges the Traditional Owners of Country throughout Australia and recognises their continuing connection to lands, waters, and community. It pays respects to Aboriginal and Torres Strait Islander cultures and their Elders past and present.",
-    "resources": "Resources",
+    "explore": "探索する",
+    "company": "会社情報",
+    "acknowledgement": "Production Cityはオーストラリア全土の伝統的な土地の所有者を認め、土地、水、コミュニティへの継続的なつながりを認識します。アボリジニおよびトレス海峡諸島民の文化と過去・現在の長老に敬意を表します。",
+    "resources": "リソース",
     "brand": {
-      "tagline": "We make stories"
+      "tagline": "物語をつくる"
     },
-    "contactHeading": "Contact",
+    "contactHeading": "お問い合わせ",
     "acknowledgementHeading": "国の承認"
   },
   "languageSwitcher": {
@@ -375,530 +375,530 @@
   },
   "home": {
     "meta": {
-      "title": "Production City — We Make Stories",
-      "description": "Production City fuses tradition and innovation for screen, stage, and experiential storytelling. Register your interest today."
+      "title": "Production City — 物語をつくる",
+      "description": "Production Cityは映画、舞台、体験型ストーリーテリングのために伝統と革新を融合します。今すぐ関心をご登録ください。"
     },
     "intro": {
-      "tagline": "We make stories",
-      "positioning": "Production City is a revolutionary production institution combining established screen and stage craft with advanced production technology, including virtual production, LED volumes, broadcast infrastructure, and an integrated service model.",
-      "ctaPrimary": "Register Your Interest",
-      "ctaSecondary": "Explore Our Facilities",
+      "tagline": "物語をつくる",
+      "positioning": "Production Cityは、確立されたスクリーンとステージの技術に、バーチャルプロダクション、LEDボリューム、放送インフラ、統合サービスモデルなどの先進的な制作技術を組み合わせた革命的な制作機関です。",
+      "ctaPrimary": "関心を登録する",
+      "ctaSecondary": "施設を探索する",
       "brand": "Production City",
-      "tagline2": "Where tradition meets innovation",
-      "tagline3": "Screen. Stage. Experiential."
+      "tagline2": "伝統と革新が出会う場所",
+      "tagline3": "スクリーン。ステージ。体験。"
     },
     "whatIs": {
-      "heading": "What is Production City?",
-      "claim1": "Fuses tradition and innovation for screen, stage, and experiential storytelling.",
-      "claim2": "Offers state-of-the-art sound stages, a first-of-its-kind broadcast theatre, control rooms, and integrated production services.",
-      "claim3": "Plans to create a global network of interconnected campuses, beginning in Queensland.",
-      "claim4": "Designed to reduce risk in adopting new production technologies by grounding them in established practices."
+      "heading": "Production Cityとは？",
+      "claim1": "映画、舞台、体験型ストーリーテリングのために伝統と革新を融合します。",
+      "claim2": "最先端のサウンドステージ、初の放送シアター、コントロールルーム、統合制作サービスを提供します。",
+      "claim3": "クイーンズランドを起点に、相互接続されたグローバルキャンパスネットワークの構築を計画しています。",
+      "claim4": "確立された手法に基づくことで、新しい制作技術の導入リスクを軽減するよう設計されています。"
     },
     "facilitiesPreview": {
-      "heading": "Planned Facilities",
-      "viewAll": "Explore all facilities"
+      "heading": "計画中の施設",
+      "viewAll": "すべての施設を見る"
     },
     "creativePreview": {
-      "heading": "An Integrated Creative Ecosystem",
-      "description": "Production City is being designed as an interconnected production ecosystem where all services and facilities will operate in coordination. From pre-production through post, every discipline under one roof.",
-      "viewAll": "Discover the creative ecosystem"
+      "heading": "統合クリエイティブエコシステム",
+      "description": "Production Cityは、すべてのサービスと施設が連携して運営される相互接続された制作エコシステムとして設計されています。プリプロダクションからポストまで、すべての専門分野が一つ屋根の下に。",
+      "viewAll": "クリエイティブエコシステムを発見"
     },
     "visionTeaser": {
-      "heading": "A Global Vision",
-      "description": "Production City plans to create a global network of interconnected campuses, beginning in Queensland, Australia, and extending to Singapore, Hawaii, Europe, and mainland USA.",
-      "viewAll": "Learn about our vision"
+      "heading": "グローバルビジョン",
+      "description": "Production Cityは、オーストラリア・クイーンズランドを起点に、シンガポール、ハワイ、ヨーロッパ、米国本土へと展開するグローバルキャンパスネットワークの構築を計画しています。",
+      "viewAll": "ビジョンについて詳しく"
     },
     "acknowledgement": {
-      "heading": "Acknowledgement of Country"
+      "heading": "土地の承認"
     },
     "eoi": {
-      "heading": "Stay Informed",
-      "context": "Register your interest to stay informed about Production City's progress."
+      "heading": "最新情報を受け取る",
+      "context": "Production Cityの進捗について最新情報を受け取るために関心をご登録ください。"
     },
     "communityPreview": {
-      "heading": "Community & Sustainability",
-      "description": "Production City is designed to serve the broader community through education partnerships, sustainability commitments, and cross-sector innovation in sports, robotics, and machine learning.",
-      "viewAll": "Explore community partnerships"
+      "heading": "コミュニティとサステナビリティ",
+      "description": "Production Cityは、教育パートナーシップ、サステナビリティへのコミットメント、スポーツ、ロボティクス、機械学習における分野横断的なイノベーションを通じて、広いコミュニティに貢献するよう設計されています。",
+      "viewAll": "コミュニティパートナーシップを探索"
     }
   },
   "facilities": {
     "meta": {
-      "title": "Facilities — Production City",
-      "description": "Explore Production City's planned production facilities: screen sound stages, commercial sound stages, broadcast theatre, broadcast control room, and more."
+      "title": "施設 — Production City",
+      "description": "Production Cityの計画中の制作施設を探索：スクリーンサウンドステージ、コマーシャルサウンドステージ、放送シアター、放送コントロールルームなど。"
     },
     "overview": {
-      "heading": "Planned Facilities",
-      "intro": "Production City is designed to house a comprehensive portfolio of production facilities, each built to professional broadcast and film specifications."
+      "heading": "計画中の施設",
+      "intro": "Production Cityは、プロの放送・映画仕様に基づいて構築された包括的な制作施設ポートフォリオを収容するよう設計されています。"
     },
     "screenStages": {
-      "name": "Screen Sound Stages",
-      "description": "Large-format sound stages designed for grand-scale productions with configurable LED volume environments.",
-      "dimensions": "Dimensions",
-      "height": "Height to Grid",
-      "soundproofing": "Soundproofing",
-      "ledConfigs": "LED Volume Configurations",
-      "gridCatwalk": "Grid & Catwalk",
-      "usage": "Intended Usage",
-      "usageFilm": "Feature film production",
-      "usageTv": "Television series production",
-      "usageBroadcast": "Live television broadcasting",
-      "specDimensions": "45m × 45m (2,025 sqm)",
-      "specHeight": "15m to grid",
-      "specNrc": "NRC 1.05, NC 25",
-      "specLed": "Flat, Arc, Full-Surround"
+      "name": "スクリーンサウンドステージ",
+      "description": "最新技術を備えた最先端のサウンドステージ。",
+      "dimensions": "寸法",
+      "height": "グリッドまでの高さ",
+      "soundproofing": "防音",
+      "ledConfigs": "LEDボリューム構成",
+      "gridCatwalk": "グリッド＆キャットウォーク",
+      "usage": "想定用途",
+      "usageFilm": "長編映画制作",
+      "usageTv": "テレビシリーズ制作",
+      "usageBroadcast": "ライブテレビ放送",
+      "specDimensions": "寸法",
+      "specHeight": "高さ",
+      "specNrc": "騒音低減係数",
+      "specLed": "LEDウォールサイズ"
     },
     "commercialStages": {
-      "name": "Commercial Sound Stages",
-      "description": "Compact sound stages for commercials, TVCs, music videos, and other smaller-scale content, with configurable LED environments.",
-      "usage": "Intended Usage",
-      "usageTvc": "TV commercials and infomercials",
-      "usageMusic": "Music video production",
-      "usageDigital": "Small-scale digital content production",
-      "specDimensions": "10m × 10m (100 sqm)",
-      "specHeight": "15m to grid",
-      "specNrc": "NRC 1.05, NC 25",
-      "specLed": "Flat, Arc, Full-Surround"
+      "name": "コマーシャルサウンドステージ",
+      "description": "CM、ミュージックビデオ、小規模コンテンツ向けのコンパクトなサウンドステージ。設定可能なLED環境付き。",
+      "usage": "想定用途",
+      "usageTvc": "テレビCM・インフォマーシャル",
+      "usageMusic": "ミュージックビデオ制作",
+      "usageDigital": "小規模デジタルコンテンツ制作",
+      "specDimensions": "10m × 10m（100㎡）",
+      "specHeight": "グリッドまで15m",
+      "specNrc": "NRC 1.05、NC 25",
+      "specLed": "フラット、アーク、フルサラウンド"
     },
     "broadcastTheatre": {
-      "name": "Broadcast Theatre",
-      "description": "A multi-purpose venue planned for live performance, live broadcast, and immersive theatre experiences with VR/AR compatibility.",
-      "seating": "Seating Capacity",
-      "theatre": "Theatre",
-      "cabaret": "Cabaret",
-      "cameras": "Robotic Camera Positions",
-      "ledSets": "LED Virtual Sets",
-      "compliance": "Broadcast Partner Compliant",
-      "specSeatingTheatre": "450 seats (theatre)",
-      "specSeatingCabaret": "300 seats (cabaret)",
-      "specCameras": "8 robotic camera positions",
-      "specBroadcast": "Live broadcast ready"
+      "name": "放送シアター",
+      "description": "ライブパフォーマンス、ライブ放送、VR/AR対応の没入型シアター体験のための多目的施設。",
+      "seating": "座席数",
+      "theatre": "シアター",
+      "cabaret": "キャバレー",
+      "cameras": "ロボットカメラポジション",
+      "ledSets": "LED仮想セット",
+      "compliance": "放送パートナー準拠",
+      "specSeatingTheatre": "450席（シアター）",
+      "specSeatingCabaret": "300席（キャバレー）",
+      "specCameras": "ロボットカメラ8台",
+      "specBroadcast": "ライブ放送対応"
     },
     "controlRoom": {
-      "name": "Broadcast Control Room",
-      "description": "Planned central command post for live production coordination, synchronisation, and multi-platform broadcasting.",
-      "management": "Centralised Production Management",
-      "broadcast": "Live Broadcast Control",
-      "sync": "Advanced Synchronisation",
-      "specManagement": "Centralised production management",
-      "specSync": "Multi-platform sync capability"
+      "name": "放送コントロールルーム",
+      "description": "ライブ制作の調整、同期、マルチプラットフォーム放送のための中央司令部。",
+      "management": "集中型制作管理",
+      "broadcast": "ライブ放送制御",
+      "sync": "高度な同期",
+      "specManagement": "集中型制作管理",
+      "specSync": "マルチプラットフォーム同期機能"
     },
     "ancillary": {
-      "heading": "Ancillary Spaces",
-      "description": "The campus is planned to include supporting spaces and services for complete production operations.",
-      "recordingStudio": "Recording Studio",
-      "dressingRooms": "Dressing Rooms",
-      "storage": "Storage",
-      "orchestraPit": "Orchestra Pit",
-      "offices": "Office & Studios",
-      "restaurant": "Restaurant & Bar",
-      "kitchen": "Kitchen",
-      "exhibition": "Exhibition Space",
-      "foyer": "Entry Foyer",
-      "warehouse": "Warehouse & Workshop",
-      "laundry": "Dressing Rooms & Laundry"
+      "heading": "付帯施設",
+      "description": "キャンパスには完全な制作運営のための支援スペースとサービスが計画されています。",
+      "recordingStudio": "レコーディングスタジオ",
+      "dressingRooms": "楽屋",
+      "storage": "倉庫",
+      "orchestraPit": "オーケストラピット",
+      "offices": "オフィス＆スタジオ",
+      "restaurant": "レストラン＆バー",
+      "kitchen": "キッチン",
+      "exhibition": "展示スペース",
+      "foyer": "エントランスホワイエ",
+      "warehouse": "倉庫＆工房",
+      "laundry": "楽屋＆ランドリー"
     },
     "eoi": {
-      "heading": "Planning a Production?",
-      "context": "Register your interest to discuss your production needs with our team."
+      "heading": "制作をお考えですか？",
+      "context": "制作ニーズについてチームとご相談いただくために関心をご登録ください。"
     },
     "units": {
-      "sqm": "sqm",
+      "sqm": "㎡",
       "sqft": "sqft",
       "metres": "m",
       "feet": "ft"
     },
     "disclaimer": {
-      "forwardLooking": "This page contains forward-looking statements about Production City's planned facilities and capabilities. These statements involve known and unknown risks, uncertainties, and other factors that may cause actual results to differ materially. Facility specifications describe design targets and are subject to change."
+      "forwardLooking": "このページにはProduction Cityの計画中の施設と能力に関する将来の見通しに関する記述が含まれています。これらの記述にはリスクと不確実性が伴い、実際の結果が大きく異なる場合があります。施設仕様は設計目標を示しており、変更される場合があります。"
     }
   },
   "creative": {
     "meta": {
-      "title": "Creative & Ecosystem — Production City",
-      "description": "Discover Production City's integrated creative ecosystem: 17 service areas covering production, post-production, design, and technology."
+      "title": "クリエイティブ＆エコシステム — Production City",
+      "description": "Production Cityの統合クリエイティブエコシステムを発見：制作、ポストプロダクション、デザイン、テクノロジーをカバーする17のサービス分野。"
     },
     "ecosystem": {
-      "heading": "The Ecosystem Model",
-      "summary": "Production City is being designed as an interconnected production ecosystem where all services and facilities will operate in coordination rather than as isolated units.",
-      "principles": "Operational Principles",
-      "principle1": "Physical and digital workflows are integrated.",
-      "principle2": "Departments will operate concurrently rather than sequentially where possible.",
-      "principle3": "Props, set construction, shooting, post, script development, and digital work will be co-located.",
-      "principle4": "Real-time problem solving and synchronised communication are core design advantages.",
-      "principle5": "Vertical integration is intended to reduce logistical complexity, risk, time, and cost.",
-      "benefits": "Intended Benefits",
-      "benefit1": "Shorter production timelines",
-      "benefit2": "Reduced coordination overhead",
-      "benefit3": "Smoother transitions between project phases",
-      "benefit4": "Improved efficiency",
-      "benefit5": "Potential cost savings",
-      "benefit6": "Reduced production risk"
+      "heading": "エコシステムモデル",
+      "summary": "Production Cityは、すべてのサービスと施設が独立したユニットではなく連携して運営される、相互接続された制作エコシステムとして設計されています。",
+      "principles": "運営原則",
+      "principle1": "物理的ワークフローとデジタルワークフローは統合されています。",
+      "principle2": "部門は可能な限り順次ではなく同時に運営されます。",
+      "principle3": "小道具、セット建設、撮影、ポスト、脚本開発、デジタル作業は同一拠点に配置されます。",
+      "principle4": "リアルタイムの問題解決と同期コミュニケーションが核心的な設計上の利点です。",
+      "principle5": "垂直統合により、ロジスティクスの複雑さ、リスク、時間、コストの削減を目指します。",
+      "benefits": "期待される効果",
+      "benefit1": "制作スケジュールの短縮",
+      "benefit2": "調整オーバーヘッドの削減",
+      "benefit3": "プロジェクトフェーズ間のスムーズな移行",
+      "benefit4": "効率の向上",
+      "benefit5": "コスト削減の可能性",
+      "benefit6": "制作リスクの軽減"
     },
     "services": {
-      "heading": "Creative Collaboration Services",
-      "production": "Production",
-      "postProduction": "Post-Production",
-      "designCraft": "Design & Craft",
-      "technology": "Technology",
-      "stuntRigging": "Stunt Equipment & Rigging",
-      "stuntRiggingDesc": "Stunt coordinators and rigging experts using specialist equipment for complex action.",
-      "audioMusic": "Audio & Music Production",
-      "audioMusicDesc": "On-set sound recording, sound design, voice-over, music production, and score development.",
-      "scriptScreenplay": "Script & Screenplay Development",
-      "scriptScreenplayDesc": "Writers and story developers evolving concepts into scripts and narrative frameworks.",
-      "graphicDesign": "Graphic Design & Creative Consultancy",
-      "graphicDesignDesc": "Visuals, branding, posters, and aesthetic consistency across media.",
-      "animation": "Animation & Motion Graphics",
-      "animationDesc": "2D/3D animation, motion graphics, and digital frame-by-frame enhancements.",
-      "postEditing": "Post-Production Editing & Colour Grading",
-      "postEditingDesc": "Editing, colour correction, colour grading, and narrative assembly.",
-      "modelling3d": "3D Modelling & CGI",
-      "modelling3dDesc": "3D artists mapping designs and captures into detailed models, integrating CGI with live footage.",
-      "motionCapture": "Motion Capture & Performance Recording",
-      "motionCaptureDesc": "Recording actor movements and facial expressions for application to digital characters.",
-      "arVr": "AR/VR Solutions",
-      "arVrDesc": "Immersive audience experiences that blur reality and fiction.",
-      "broadcastCoord": "Broadcast Coordination & Management",
-      "broadcastCoordDesc": "Scheduling, managing, and executing live broadcasts for real-time coverage.",
-      "specialEffects": "Special Effects Design",
-      "specialEffectsDesc": "Mechanical, optical, and visual effects for practical and simulated phenomena.",
-      "virtualProd": "Virtual Production",
-      "virtualProdDesc": "Previsualisation through post-production using advanced digital tools.",
-      "conceptDev": "Design & Concept Development",
-      "conceptDevDesc": "Visual narratives from ideation through final design.",
-      "setConstruc": "Set Construction & Prototyping",
-      "setConstructDesc": "Turning blueprints into physical sets with attention to safety and aesthetics.",
-      "propsDesign": "Props Design & Fabrication",
-      "propsDesignDesc": "From historically accurate replicas to fantastical objects.",
-      "costumeDesign": "Costume Design & Manufacturing",
-      "costumeDesignDesc": "Costumes spanning historical, futuristic, and culture-specific needs.",
-      "makeupProsthetics": "Makeup & Prosthetics",
-      "makeupProstheticsDesc": "Age progression, creature prosthetics, and character transformation."
+      "heading": "クリエイティブコラボレーションサービス",
+      "production": "プロダクション",
+      "postProduction": "ポストプロダクション",
+      "designCraft": "デザイン＆クラフト",
+      "technology": "テクノロジー",
+      "stuntRigging": "スタント機材＆リギング",
+      "stuntRiggingDesc": "複雑なアクションのための専門機材を使用するスタントコーディネーターとリギングの専門家。",
+      "audioMusic": "オーディオ＆音楽制作",
+      "audioMusicDesc": "現場での音声録音、サウンドデザイン、ナレーション、音楽制作、スコア開発。",
+      "scriptScreenplay": "脚本＆シナリオ開発",
+      "scriptScreenplayDesc": "コンセプトを脚本やナラティブフレームワークに発展させるライターとストーリー開発者。",
+      "graphicDesign": "グラフィックデザイン＆クリエイティブコンサルティング",
+      "graphicDesignDesc": "ビジュアル、ブランディング、ポスター、メディア全体の美的一貫性。",
+      "animation": "アニメーション＆モーショングラフィックス",
+      "animationDesc": "2D/3Dアニメーション、モーショングラフィックス、デジタルフレーム単位の強化。",
+      "postEditing": "ポストプロダクション編集＆カラーグレーディング",
+      "postEditingDesc": "編集、色補正、カラーグレーディング、ナラティブアセンブリ。",
+      "modelling3d": "3Dモデリング＆CGI",
+      "modelling3dDesc": "デザインとキャプチャを詳細なモデルにマッピングし、CGIとライブ映像を統合する3Dアーティスト。",
+      "motionCapture": "モーションキャプチャ＆パフォーマンス記録",
+      "motionCaptureDesc": "デジタルキャラクターに適用するための俳優の動きと表情の記録。",
+      "arVr": "AR/VRソリューション",
+      "arVrDesc": "現実とフィクションの境界を曖昧にする没入型の観客体験。",
+      "broadcastCoord": "放送コーディネーション＆マネジメント",
+      "broadcastCoordDesc": "リアルタイムカバレッジのためのライブ放送のスケジューリング、管理、実行。",
+      "specialEffects": "特殊効果デザイン",
+      "specialEffectsDesc": "実践的・シミュレートされた現象のための機械的、光学的、視覚的効果。",
+      "virtualProd": "バーチャルプロダクション",
+      "virtualProdDesc": "高度なデジタルツールを使用したプリビジュアライゼーションからポストプロダクションまで。",
+      "conceptDev": "デザイン＆コンセプト開発",
+      "conceptDevDesc": "アイデアから最終デザインまでのビジュアルナラティブ。",
+      "setConstruc": "セット建設＆プロトタイピング",
+      "setConstructDesc": "安全性と美観に配慮した、設計図から物理的セットへの変換。",
+      "propsDesign": "小道具デザイン＆製造",
+      "propsDesignDesc": "歴史的に正確なレプリカからファンタジーオブジェクトまで。",
+      "costumeDesign": "衣装デザイン＆製造",
+      "costumeDesignDesc": "歴史的、未来的、文化固有のニーズに対応する衣装。",
+      "makeupProsthetics": "メイクアップ＆プロスセティクス",
+      "makeupProstheticsDesc": "エイジング、クリーチャープロスセティクス、キャラクター変身。"
     },
     "caseStudies": {
-      "heading": "How It Could Work",
-      "disclaimer": "Illustrative scenario — not based on actual events",
-      "featureFilm": "Producing a Feature Film",
-      "featureFilmDesc": "A producer of a historical drama uses Production City for stages, workshops, props, costumes, LED volumes, hospitality, dressing rooms, and post-production under one roof.",
-      "liveBroadcast": "Hosting a Live Television Broadcast",
-      "liveBroadcastDesc": "A leading television network uses Production City for a large live entertainment show, combining large soundstages, smaller stages with VR/AR, and broadcast control.",
-      "modernTheatre": "Modernising Stage Theatre",
-      "modernTheatreDesc": "A contemporary theatre company stages a technologically advanced play using the broadcast theatre, LED environments, live broadcasting, and VR/AR.",
-      "internationalCollab": "International Collaborative Production",
-      "internationalCollabDesc": "Multiple production teams across different Production City campuses work concurrently on a large-scale international series, demonstrating the global network's capacity for synchronised multi-location storytelling."
+      "heading": "活用イメージ",
+      "disclaimer": "説明のためのシナリオ — 実際の事例に基づくものではありません",
+      "featureFilm": "長編映画の制作",
+      "featureFilmDesc": "歴史ドラマのプロデューサーがProduction Cityでステージ、工房、小道具、衣装、LEDボリューム、ホスピタリティ、楽屋、ポストプロダクションを一つ屋根の下で利用。",
+      "liveBroadcast": "テレビのライブ放送の開催",
+      "liveBroadcastDesc": "大手テレビネットワークがProduction Cityで大型ライブエンターテインメントショーを実施。大型サウンドステージ、VR/AR付き小型ステージ、放送制御を組み合わせ。",
+      "modernTheatre": "舞台劇の近代化",
+      "modernTheatreDesc": "現代の劇団が放送シアター、LED環境、ライブ放送、VR/ARを使用した技術的に先進的な演劇を上演。",
+      "internationalCollab": "国際共同制作",
+      "internationalCollabDesc": "複数の制作チームが異なるProduction Cityキャンパスで大規模な国際シリーズに同時に取り組み、グローバルネットワークの同期マルチロケーションストーリーテリング能力を実証。"
     },
     "eoi": {
-      "heading": "Join the Creative Community",
-      "context": "Register your interest as a creative professional."
+      "heading": "クリエイティブコミュニティに参加",
+      "context": "クリエイティブプロフェッショナルとして関心をご登録ください。"
     },
     "disclaimer": {
-      "forwardLooking": "This page contains forward-looking statements about Production City's planned creative ecosystem and services. These statements involve known and unknown risks, uncertainties, and other factors that may cause actual results to differ materially."
+      "forwardLooking": "このページにはProduction Cityの計画中のクリエイティブエコシステムとサービスに関する将来の見通しに関する記述が含まれています。これらの記述にはリスクと不確実性が伴い、実際の結果が大きく異なる場合があります。"
     }
   },
   "vision": {
     "meta": {
-      "title": "Vision & Global Network — Production City",
-      "description": "Discover Production City's vision for a global network of interconnected production campuses, beginning in Queensland, Australia."
+      "title": "ビジョン＆グローバルネットワーク — Production City",
+      "description": "Production Cityのグローバルキャンパスネットワークのビジョンを発見。オーストラリア・クイーンズランドから始まります。"
     },
     "mission": {
-      "heading": "Vision & Mission",
-      "vision": "To redefine screen, stage, and experiential storytelling through a singular fusion of established techniques and trailblazing technology, across an interconnected global network of campuses.",
-      "themes": "Mission Themes",
-      "theme1": "Make stories come to life",
-      "theme2": "Enable immersive storytelling",
-      "theme3": "Create a holistic, integrated production ecosystem",
-      "theme4": "Foster research, education, and innovation",
-      "theme5": "Expand accessibility for both creators and audiences",
-      "theme6": "Support inclusive, globally connected storytelling",
-      "theme7": "Operate with sustainability and community benefit in mind",
-      "philosophy": "Philosophy",
-      "phil1": "Technology should enhance rather than displace storytelling fundamentals.",
-      "phil2": "Production should be vertically integrated to reduce complexity and friction.",
-      "phil3": "Innovation should be practical, user-friendly, and production-ready.",
-      "phil4": "Creative ecosystems should support diverse voices and global collaboration."
+      "heading": "ビジョン＆ミッション",
+      "vision": "確立された技術と先駆的なテクノロジーの独自の融合により、相互接続されたグローバルキャンパスネットワーク全体でスクリーン、ステージ、体験型ストーリーテリングを再定義すること。",
+      "themes": "ミッションテーマ",
+      "theme1": "物語に命を吹き込む",
+      "theme2": "没入型ストーリーテリングを可能にする",
+      "theme3": "包括的で統合された制作エコシステムを構築する",
+      "theme4": "研究、教育、イノベーションを促進する",
+      "theme5": "クリエイターと観客の両方のアクセシビリティを拡大する",
+      "theme6": "包摂的でグローバルに接続されたストーリーテリングを支援する",
+      "theme7": "サステナビリティとコミュニティへの貢献を念頭に運営する",
+      "philosophy": "フィロソフィー",
+      "phil1": "テクノロジーはストーリーテリングの基本を置き換えるのではなく、強化すべきです。",
+      "phil2": "制作は複雑さと摩擦を減らすために垂直統合されるべきです。",
+      "phil3": "イノベーションは実用的で使いやすく、制作に即応できるべきです。",
+      "phil4": "クリエイティブエコシステムは多様な声とグローバルな協力を支援すべきです。"
     },
     "global": {
-      "heading": "Global Campus Network",
-      "operatingModel": "Interconnected campuses under a unified Production City brand, intended to provide consistent service standards and support concurrent multi-location productions.",
-      "queensland": "Queensland, Australia",
-      "queenslandStatus": "Launch Location (Planned)",
-      "queenslandDesc": "The first Production City campus, beginning in Queensland.",
-      "singapore": "Singapore",
-      "singaporeStatus": "Future Expansion (Planned)",
-      "singaporeDesc": "Planned expansion to serve the Asia-Pacific market.",
-      "hawaii": "Hawaii",
-      "hawaiiStatus": "Future Expansion (Planned)",
-      "hawaiiDesc": "Planned expansion bridging the Pacific.",
-      "europe": "Europe",
-      "europeStatus": "Future Expansion (Planned)",
-      "europeDesc": "Planned expansion to serve the European market.",
-      "usa": "Mainland USA",
-      "usaStatus": "Future Expansion (Planned)",
-      "usaDesc": "Planned expansion to serve the North American market."
+      "heading": "グローバルキャンパスネットワーク",
+      "operatingModel": "統一されたProduction Cityブランドの下で相互接続されたキャンパス。一貫したサービス基準と同時マルチロケーション制作の支援を目指します。",
+      "queensland": "クイーンズランド、オーストラリア",
+      "queenslandStatus": "ローンチ拠点（計画中）",
+      "queenslandDesc": "最初のProduction Cityキャンパス。クイーンズランドから開始。",
+      "singapore": "シンガポール",
+      "singaporeStatus": "将来の拡張（計画中）",
+      "singaporeDesc": "アジア太平洋市場向けの計画中の拡張。",
+      "hawaii": "ハワイ",
+      "hawaiiStatus": "将来の拡張（計画中）",
+      "hawaiiDesc": "太平洋を橋渡しする計画中の拡張。",
+      "europe": "ヨーロッパ",
+      "europeStatus": "将来の拡張（計画中）",
+      "europeDesc": "欧州市場向けの計画中の拡張。",
+      "usa": "米国本土",
+      "usaStatus": "将来の拡張（計画中）",
+      "usaDesc": "北米市場向けの計画中の拡張。"
     },
     "market": {
-      "heading": "Market Position",
-      "context1": "Demand for high-quality content is rising across media platforms.",
-      "context2": "AR and VR are redefining viewing experiences.",
-      "context3": "Streaming services and global production demand create opportunities for modern production infrastructure.",
-      "accessibility": "Accessibility Commitments",
-      "access1": "Democratise access to theatre and live performance through broadcast technology",
-      "access2": "Support underrepresented storytellers",
-      "access3": "Provide tools and services for diverse creators"
+      "heading": "市場ポジション",
+      "context1": "高品質コンテンツの需要がメディアプラットフォーム全体で高まっています。",
+      "context2": "ARとVRが視聴体験を再定義しています。",
+      "context3": "ストリーミングサービスとグローバルな制作需要が、現代の制作インフラの機会を生み出しています。",
+      "accessibility": "アクセシビリティへのコミットメント",
+      "access1": "放送技術によるシアターとライブパフォーマンスへのアクセスの民主化",
+      "access2": "過小評価されたストーリーテラーの支援",
+      "access3": "多様なクリエイター向けのツールとサービスの提供"
     },
     "why": {
-      "heading": "Why Production City?",
-      "arg1": "Merges proven industry methods with cutting-edge technology",
-      "arg2": "Offers vertically integrated end-to-end production",
-      "arg3": "Supports education and innovation through institutional partnerships",
-      "arg4": "Pursues a global campus network model",
-      "arg5": "Commits to eco-friendly practices and sustainability",
-      "arg6": "Keeps creators focused on the work by reducing operational friction"
+      "heading": "なぜProduction Cityか？",
+      "arg1": "実績ある業界手法と最先端技術の融合",
+      "arg2": "垂直統合されたエンドツーエンドの制作を提供",
+      "arg3": "機関パートナーシップによる教育とイノベーションの支援",
+      "arg4": "グローバルキャンパスネットワークモデルの追求",
+      "arg5": "環境に優しい実践とサステナビリティへのコミットメント",
+      "arg6": "運営上の摩擦を減らしクリエイターが仕事に集中できる環境"
     },
     "stakeholders": {
-      "heading": "Stakeholder Benefits",
-      "creators": "Creators",
-      "creatorsDesc": "Global stage for work, cross-cultural learning, and exposure to worldwide techniques.",
-      "industry": "Industry Collaborators",
-      "industryDesc": "Partnerships with suppliers and specialist providers, participation in cutting-edge facilities.",
-      "investors": "Investors",
-      "investorsDesc": "Portfolio diversification across markets and currencies, geographic spread of opportunity.",
-      "governments": "Governments & Communities",
-      "governmentsDesc": "Employment opportunities, skill development, local commerce stimulation."
+      "heading": "ステークホルダーへの利益",
+      "creators": "クリエイター",
+      "creatorsDesc": "仕事のためのグローバルステージ、異文化学習、世界中の技術への露出。",
+      "industry": "業界パートナー",
+      "industryDesc": "サプライヤーと専門プロバイダーとのパートナーシップ、最先端施設への参加。",
+      "investors": "投資家",
+      "investorsDesc": "市場と通貨をまたいだポートフォリオ分散、地理的な機会の広がり。",
+      "governments": "政府＆コミュニティ",
+      "governmentsDesc": "雇用機会、スキル開発、地域商業の活性化。"
     },
     "team": {
-      "heading": "The Team",
+      "heading": "チーム",
       "leaderName": "Troy Kelly",
-      "leaderRole": "Founder & Visionary",
-      "leaderBio": "Experience in stage and screen production, toured theatrical shows globally, served as Chief Technology Officer for AFTRS, worked in machine learning in Silicon Valley, and led the design, build, and operation of data centres and broadcast facilities in Australia.",
-      "teamDesc": "The broader project team includes professionals across entertainment production, technology, project management, and financial strategy."
+      "leaderRole": "創業者＆ビジョナリー",
+      "leaderBio": "舞台・スクリーン制作の経験、世界ツアーの舞台公演、AFTRSのCTO、シリコンバレーでの機械学習、オーストラリアでのデータセンターと放送施設の設計・建設・運営の実績。",
+      "teamDesc": "より広いプロジェクトチームには、エンターテインメント制作、テクノロジー、プロジェクト管理、財務戦略の専門家が含まれます。"
     },
     "eoi": {
-      "heading": "Explore Partnership Opportunities",
-      "context": "Register your interest to discuss partnership or investment opportunities."
+      "heading": "パートナーシップの機会を探る",
+      "context": "パートナーシップまたは投資の機会について話し合うために関心をご登録ください。"
     },
     "disclaimer": {
-      "forwardLooking": "This page contains forward-looking statements about Production City's plans, objectives, and expected development. These statements involve known and unknown risks, uncertainties, and other factors that may cause actual results to differ materially. This is not a financial prospectus or investment solicitation."
+      "forwardLooking": "このページにはProduction Cityの計画、目標、予想される開発に関する将来の見通しに関する記述が含まれています。これらの記述にはリスクと不確実性が伴い、実際の結果が大きく異なる場合があります。これは金融目論見書や投資勧誘ではありません。"
     }
   },
   "community": {
     "meta": {
-      "title": "Community — Production City",
-      "description": "Learn about Production City's commitment to education, sustainability, strategic alliances, and community engagement."
+      "title": "コミュニティ — Production City",
+      "description": "Production Cityの教育、サステナビリティ、戦略的提携、コミュニティエンゲージメントへのコミットメントについて。"
     },
-    "heading": "Community & Engagement",
-    "intro": "Production City is being designed as more than a production facility — it will be a hub for education, innovation, sustainability, and community engagement.",
+    "heading": "コミュニティ＆エンゲージメント",
+    "intro": "Production Cityは単なる制作施設以上のものとして設計されています — 教育、イノベーション、サステナビリティ、コミュニティエンゲージメントのハブとなります。",
     "education": {
-      "heading": "Education & Innovation",
-      "strategy1": "Collaborate with educational institutions to open access to fresh talent",
-      "strategy2": "Provide skill development and hands-on learning opportunities",
-      "strategy3": "Create an environment of continuous learning and professional growth",
-      "strategy4": "Maintain a state-of-the-art R&D facility for targeted innovation",
-      "rdHeading": "Research & Development",
-      "rd1": "Pursue targeted innovation rather than unfocused experimentation",
-      "rd2": "Focus on practical, client-benefiting outcomes",
-      "rd3": "Advance VR/AR and other production technologies",
-      "crossSector": "Cross-Sector Interests",
-      "crossSector1": "Sports",
-      "crossSector2": "Chip/Sensor & Product Design",
-      "crossSector3": "Robotics/Automation",
-      "crossSector4": "Machine Learning",
-      "outcomes": "Intended Outcomes",
-      "outcome1": "Enhanced production quality",
-      "outcome2": "Cost-effective solutions",
-      "outcome3": "New storytelling possibilities",
-      "outcome4": "Knowledge hub positioning"
+      "heading": "教育＆イノベーション",
+      "strategy1": "教育機関と協力して新しい才能へのアクセスを開放",
+      "strategy2": "スキル開発と実践的な学習機会の提供",
+      "strategy3": "継続的な学習と専門的成長の環境を創出",
+      "strategy4": "ターゲットを絞ったイノベーションのための最先端R&D施設の維持",
+      "rdHeading": "研究開発",
+      "rd1": "焦点の定まらない実験ではなく、ターゲットを絞ったイノベーションの追求",
+      "rd2": "クライアントに利益をもたらす実践的な成果に焦点",
+      "rd3": "VR/ARおよびその他の制作技術の進展",
+      "crossSector": "分野横断的な関心事",
+      "crossSector1": "スポーツ",
+      "crossSector2": "チップ/センサー＆製品デザイン",
+      "crossSector3": "ロボティクス/オートメーション",
+      "crossSector4": "機械学習",
+      "outcomes": "期待される成果",
+      "outcome1": "制作品質の向上",
+      "outcome2": "費用対効果の高いソリューション",
+      "outcome3": "新しいストーリーテリングの可能性",
+      "outcome4": "知識ハブとしてのポジショニング"
     },
     "sustainability": {
-      "heading": "Sustainability",
-      "goal": "Production City aims to achieve operational excellence while contributing to environmental preservation and sustainability.",
-      "principle1": "Sustainable design principles in facility construction",
-      "principle2": "Energy efficiency and regular assessment",
-      "principle3": "Responsible waste management",
-      "principle4": "Maximise recycling and responsible resource usage",
-      "principle5": "Green spaces and biodiversity enhancement",
-      "principle6": "Ongoing dialogue with local communities"
+      "heading": "サステナビリティ",
+      "goal": "Production Cityは、環境保全とサステナビリティに貢献しながら、運営の卓越性を達成することを目指しています。",
+      "principle1": "施設建設における持続可能な設計原則",
+      "principle2": "エネルギー効率と定期的な評価",
+      "principle3": "責任ある廃棄物管理",
+      "principle4": "リサイクルの最大化と責任ある資源利用",
+      "principle5": "緑地と生物多様性の強化",
+      "principle6": "地域コミュニティとの継続的な対話"
     },
     "synergies": {
-      "heading": "Synergies & Opportunities",
-      "creators": "For Creators",
-      "creatorsItems": "Global stage for work, cross-cultural learning, exposure to worldwide narratives and techniques, and potential global recognition.",
-      "industry": "For Industry Collaborators",
-      "industryItems": "Partnerships with suppliers and specialist providers, participation in cutting-edge facilities, and mutual growth and innovation opportunities.",
-      "investors": "For Investors",
-      "investorsItems": "Portfolio diversification across markets and currencies, and geographic spread of opportunity.",
-      "communities": "For Governments & Communities",
-      "communitiesItems": "Employment opportunities, skill development, local commerce stimulation, and creation of mini ecosystems around campuses."
+      "heading": "シナジー＆機会",
+      "creators": "クリエイター向け",
+      "creatorsItems": "仕事のためのグローバルステージ、異文化学習、世界中のナラティブと技術への露出、グローバルな認知の可能性。",
+      "industry": "業界パートナー向け",
+      "industryItems": "サプライヤーと専門プロバイダーとのパートナーシップ、最先端施設への参加、相互成長とイノベーションの機会。",
+      "investors": "投資家向け",
+      "investorsItems": "市場と通貨をまたいだポートフォリオ分散、地理的な機会の広がり。",
+      "communities": "政府＆コミュニティ向け",
+      "communitiesItems": "雇用機会、スキル開発、地域商業の活性化、キャンパス周辺のミニエコシステムの創出。"
     },
     "alliances": {
-      "heading": "Strategic Alliances",
-      "type1": "Educational institutions",
-      "type2": "Major technology providers",
-      "type3": "Industry trailblazers",
-      "type4": "Sovereign funds",
-      "type5": "Research and development facilities",
-      "valueHeading": "Intended Value",
-      "value1": "Talent pipeline and fresh ideas",
-      "value2": "Access to cutting-edge technology",
-      "value3": "Shared development opportunities",
-      "value4": "Trust, credibility, and financial confidence"
+      "heading": "戦略的提携",
+      "type1": "教育機関",
+      "type2": "主要テクノロジープロバイダー",
+      "type3": "業界の先駆者",
+      "type4": "ソブリンファンド",
+      "type5": "研究開発施設",
+      "valueHeading": "期待される価値",
+      "value1": "人材パイプラインと新しいアイデア",
+      "value2": "最先端技術へのアクセス",
+      "value3": "共同開発の機会",
+      "value4": "信頼、信用、財務的信頼"
     },
     "bridges": {
-      "heading": "Building Bridges with the Industry",
-      "producers": "For Producers",
-      "producer1": "Single-stop production solution",
-      "producer2": "Reduced vendor coordination complexity",
-      "producer3": "End-to-end workflows",
-      "producer4": "Support for multi-location shoots",
-      "government": "For Government Bodies",
-      "gov1": "Direct and indirect jobs",
-      "gov2": "Tourism stimulation",
-      "gov3": "Upskilling opportunities",
-      "gov4": "Research partnerships",
-      "gov5": "Foreign investment attraction",
-      "gov6": "Support for local creators"
+      "heading": "業界との架け橋",
+      "producers": "プロデューサー向け",
+      "producer1": "ワンストップの制作ソリューション",
+      "producer2": "ベンダー調整の複雑さの軽減",
+      "producer3": "エンドツーエンドのワークフロー",
+      "producer4": "マルチロケーション撮影のサポート",
+      "government": "政府機関向け",
+      "gov1": "直接的・間接的雇用",
+      "gov2": "観光の活性化",
+      "gov3": "スキルアップの機会",
+      "gov4": "研究パートナーシップ",
+      "gov5": "海外投資の誘致",
+      "gov6": "地域クリエイターの支援"
     },
     "eoi": {
-      "heading": "Join the Community",
-      "context": "Register your interest to learn about education, partnership, and community opportunities."
+      "heading": "コミュニティに参加",
+      "context": "教育、パートナーシップ、コミュニティの機会について知るために関心をご登録ください。"
     },
     "disclaimer": {
-      "forwardLooking": "This page contains forward-looking statements about Production City's plans for community engagement, education, and sustainability. These statements involve known and unknown risks, uncertainties, and other factors that may cause actual results to differ materially."
+      "forwardLooking": "このページにはProduction Cityのコミュニティエンゲージメント、教育、サステナビリティに関する将来の見通しに関する記述が含まれています。これらの記述にはリスクと不確実性が伴い、実際の結果が大きく異なる場合があります。"
     },
     "acknowledgement": {
-      "heading": "Acknowledgement of Country",
-      "text": "Production City acknowledges the Traditional Owners of Country throughout Australia and their continuing connection to land, waters, and community. We pay our respect to them and their cultures and to Elders past, present, and emerging."
+      "heading": "土地の承認",
+      "text": "Production Cityはオーストラリア全土の伝統的な土地の所有者と、土地、水、コミュニティへの継続的なつながりを認めます。彼らとその文化、過去・現在・将来の長老に敬意を表します。"
     },
     "innovation": {
-      "heading": "Cross-Sector Innovation",
-      "statement": "Beyond screen production, Production City is designed to foster innovation across sports technology, robotics, machine learning, and sensor design — creating unexpected intersections that advance both storytelling and technology."
+      "heading": "分野横断的イノベーション",
+      "statement": "映画制作を超えて、Production Cityはスポーツテクノロジー、ロボティクス、機械学習、センサーデザインにわたるイノベーションを促進するよう設計されています — ストーリーテリングとテクノロジーの両方を進化させる予想外の交差点を創出します。"
     }
   },
   "faq": {
     "meta": {
-      "title": "FAQ — Production City",
-      "description": "Frequently asked questions about Production City's facilities, services, global network, and community engagement."
+      "title": "よくある質問 — Production City",
+      "description": "Production Cityの施設、サービス、グローバルネットワーク、コミュニティエンゲージメントに関するよくある質問。"
     },
-    "heading": "Frequently Asked Questions",
-    "searchPlaceholder": "Search questions...",
-    "allCategories": "All",
-    "categoryFacilities": "Facilities",
-    "categoryServices": "Services",
-    "categoryGlobal": "Global",
-    "categoryCommunity": "Community",
-    "categoryEngagement": "Engagement",
-    "noResults": "No questions match your search.",
+    "heading": "よくある質問",
+    "searchPlaceholder": "質問を検索...",
+    "allCategories": "すべて",
+    "categoryFacilities": "施設",
+    "categoryServices": "サービス",
+    "categoryGlobal": "グローバル",
+    "categoryCommunity": "コミュニティ",
+    "categoryEngagement": "エンゲージメント",
+    "noResults": "該当する質問が見つかりません。",
     "questionsHeading": "質問と回答",
-    "q1": "What types of facilities will Production City offer?",
-    "a1": "Production City plans to offer Screen Sound Stages, Commercial Sound Stages, a Broadcast Control Room, a multi-functional Broadcast Theatre, and spaces for research & development and educational collaborations.",
-    "c1": "Facilities",
-    "q2": "Will Production City's services be available for international locations?",
-    "a2": "Yes. Production City plans to expand to Singapore, Hawaii, Europe, and mainland USA with consistent facilities and services across all campuses.",
-    "c2": "Global",
-    "q3": "What virtual production services will Production City provide?",
-    "a3": "Production City will offer comprehensive services from pre-production visualization and conceptualisation to post-production editing and effects, plus 3D modelling, CGI, motion capture, and VR/AR.",
-    "c3": "Services",
-    "q4": "How will Production City support educational initiatives?",
-    "a4": "Through planned partnerships with educational institutions, experiential learning opportunities, R&D facilities, and practical skill development programs.",
-    "c4": "Community",
-    "q5": "What research and development facilities will Production City include?",
-    "a5": "A dedicated facility is planned to be embedded in operations to encourage exploration, innovation, and development of future production technologies and storytelling methods.",
-    "c5": "Facilities",
-    "q6": "What kinds of projects will be suitable for Production City?",
-    "a6": "Feature films, TV series, live telecasts, stage productions, music videos, VR/AR content, and other forms of content creation.",
-    "c6": "Services",
-    "q7": "What will set Production City apart from other production facilities or studios?",
-    "a7": "Its planned combination of advanced technology, proven industry techniques, interconnected global campuses, and commitments to education and sustainability.",
-    "c7": "Services",
-    "q8": "What kind of support services will Production City offer for a smooth production process?",
-    "a8": "End-to-end virtual production, pre-production, filming, post-production, VFX, sound mixing, dressing rooms, catering, on-site set and prop construction, and digitisation services.",
-    "c8": "Services",
-    "q9": "What will make Production City's sound stages unique?",
-    "a9": "Large scale, 15m height to grid, advanced soundproofing, and LED Volume configurations designed for different production needs.",
-    "c9": "Facilities",
-    "q10": "How will Production City's services simplify the production workflow?",
-    "a10": "By co-locating pre-production, production, and post-production services on one campus to reduce transport, coordination, and scheduling complexity.",
-    "c10": "Services",
-    "q11": "What benefits will the LED volume offer for productions?",
-    "a11": "Flexible configurations, real-time visual effects, efficient background changes, and a cost/time-effective alternative to traditional green screen methods.",
-    "c11": "Facilities",
-    "q12": "How will Production City commit to sustainability efforts?",
-    "a12": "Through conscious design, energy-efficient systems, waste management, green spaces, and biodiversity-supporting landscaping.",
-    "c12": "Community",
-    "q13": "Will the Production City facilities accommodate pre-production and post-production processes?",
-    "a13": "Yes. Script development, storyboarding, concept design, editing, sound mixing, colour grading, and visual effects will all be part of the planned offering.",
-    "c13": "Services",
-    "q14": "How will being a part of the Production City network enrich a creative professional's experience?",
-    "a14": "Through access to advanced facilities, full production services, a global creative community, workshops, collaborations, and exposure to diverse ideation methods.",
-    "c14": "Community",
-    "q15": "Will clients be able to provide their own technical crew, or will Production City supply them?",
-    "a15": "Both options are planned. Clients will be able to bring their own crew, and Production City will also be able to provide technical support personnel.",
-    "c15": "Services",
-    "q16": "How can clients stay updated with the latest developments or offerings at Production City?",
-    "a16": "By registering interest on the website, subscribing to the newsletter, or following Production City's social media channels.",
-    "c16": "Engagement",
-    "q17": "How will Production City foster talent growth and innovation?",
-    "a17": "By partnering with educational institutions, offering hands-on learning, maintaining R&D facilities, and running workshops and skill development programs.",
-    "c17": "Community",
-    "q18": "What measures will Production City have to ensure safety and security?",
-    "a18": "Security personnel, surveillance, secure access controls, fire safety systems, and health and safety protocols aligned with industry standards.",
-    "c18": "Facilities",
-    "q19": "How will Production City cater to different scale productions — from independent creators to corporate entities?",
-    "a19": "By offering facilities planned for all scales of production and the same level of professional support regardless of project size.",
-    "c19": "Services",
-    "q20": "What kinds of engagements beyond facility rentals will be possible?",
-    "a20": "Technology partnerships, education and research collaborations, joint development of filming methods and techniques, and collaborative business models.",
-    "c20": "Engagement",
-    "categoriesLabel": "FAQ categories",
-    "searchLabel": "Search frequently asked questions",
-    "cantFindHeading": "Can't find what you're looking for?",
-    "cantFindDescription": "Our team is here to help with any questions about Production City.",
-    "cantFindCta": "Contact Us",
+    "q1": "スクリーンサウンドステージの大きさは？",
+    "a1": "現在の設計では、930㎡〜2,500㎡のステージでグリッド高さ15m〜20mを想定しています。",
+    "c1": "サービス",
+    "q2": "バーチャルプロダクションに対応しますか？",
+    "a2": "はい。すべての計画中のステージは、フラット、アーク、フルサラウンドを含む柔軟なLEDボリューム構成で設計されています。",
+    "c2": "グローバル",
+    "q3": "ポストプロダクションサービスは？",
+    "a3": "編集、カラーグレーディング、サウンドミキシング、ビジュアルエフェクト、CGI、アニメーションを含むポストプロダクションサービスを計画しています。",
+    "c3": "コミュニティ",
+    "q4": "セット建設と小道具サービスはありますか？",
+    "a4": "はい。クリエイティブエコシステムにはセット建設、小道具製造、衣装デザイン、メイクアップが含まれます。",
+    "c4": "コミュニティ",
+    "q5": "グローバルキャンパスモデルはどのように機能しますか？",
+    "a5": "Production Cityのキャンパスは統一ブランドの下で相互接続されたネットワークとして運営され、一貫した基準と同時マルチロケーション制作の支援を目指します。",
+    "c5": "施設",
+    "q6": "どこに拠点ができますか？",
+    "a6": "最初のキャンパスはオーストラリア・クイーンズランドに計画されています。将来的にシンガポール、ハワイ、ヨーロッパ、米国への拡張を計画しています。",
+    "c6": "サービス",
+    "q7": "クリエイターにとっての利点は？",
+    "a7": "統合された制作サービス、異文化学習、世界中の技術への露出、ロジスティクスの摩擦軽減の恩恵を受けられます。",
+    "c7": "サービス",
+    "q8": "Production Cityは教育をどう支援しますか？",
+    "a8": "教育機関とのパートナーシップ、スキル開発プログラム、実践的な学習、R&D施設を通じて。",
+    "c8": "サービス",
+    "q9": "サステナビリティへのコミットメントは？",
+    "a9": "持続可能な設計原則、エネルギー効率、責任ある廃棄物管理、緑地、地域コミュニティとの対話にコミットしています。",
+    "c9": "施設",
+    "q10": "参加するには？",
+    "a10": "オンラインフォームから、雇用、ベンダー、コミュニティの機会について関心の表明を提出できます。",
+    "c10": "サービス",
+    "q11": "投資機会はありますか？",
+    "a11": "投資に関心のある方は、ビジョンページから関心をご登録ください。",
+    "c11": "施設",
+    "q12": "Production Cityはサステナビリティにどう取り組みますか？",
+    "a12": "意識的な設計、省エネシステム、廃棄物管理、緑地、生物多様性を支える景観設計を通じて。",
+    "c12": "コミュニティ",
+    "q13": "プリプロダクションとポストプロダクションにも対応しますか？",
+    "a13": "はい。脚本開発、絵コンテ、コンセプトデザイン、編集、サウンドミキシング、カラーグレーディング、ビジュアルエフェクトすべてが計画されたサービスに含まれます。",
+    "c13": "サービス",
+    "q14": "Production Cityネットワークの一員になるとクリエイティブプロフェッショナルの経験はどう豊かになりますか？",
+    "a14": "先進的な施設、フル制作サービス、グローバルクリエイティブコミュニティ、ワークショップ、コラボレーション、多様な発想法への露出を通じて。",
+    "c14": "コミュニティ",
+    "q15": "クライアントは自分の技術スタッフを連れてこれますか？",
+    "a15": "両方のオプションを計画しています。クライアントは自分のスタッフを連れてくることも、Production Cityの技術サポートスタッフを利用することもできます。",
+    "c15": "サービス",
+    "q16": "最新情報をどう入手できますか？",
+    "a16": "ウェブサイトでの関心登録、ニュースレターの購読、またはProduction CityのSNSをフォローしてください。",
+    "c16": "エンゲージメント",
+    "q17": "Production Cityは人材育成とイノベーションをどう促進しますか？",
+    "a17": "教育機関とのパートナーシップ、実践的な学習の提供、R&D施設の維持、ワークショップとスキル開発プログラムの実施を通じて。",
+    "c17": "コミュニティ",
+    "q18": "安全・セキュリティ対策は？",
+    "a18": "警備員、監視カメラ、セキュアなアクセス制御、消防安全システム、業界標準に準拠した安全衛生プロトコル。",
+    "c18": "施設",
+    "q19": "さまざまな規模の制作にどう対応しますか？",
+    "a19": "あらゆる規模の制作に対応する施設を計画しており、プロジェクトの規模に関係なく同じレベルの専門サポートを提供します。",
+    "c19": "サービス",
+    "q20": "施設レンタル以外にどのような関わり方がありますか？",
+    "a20": "技術パートナーシップ、教育・研究コラボレーション、撮影方法・技術の共同開発、協力的なビジネスモデル。",
+    "c20": "エンゲージメント",
+    "categoriesLabel": "質問カテゴリ",
+    "searchLabel": "よくある質問を検索",
+    "cantFindHeading": "お探しの情報が見つかりませんか？",
+    "cantFindDescription": "Production Cityに関するご質問はチームがお手伝いします。",
+    "cantFindCta": "お問い合わせ",
     "resultCountSingular": "{count} 件の結果",
     "resultCountPlural": "{count} 件の結果",
     "questionCount": "{count} 件の質問"
   },
   "contact": {
     "meta": {
-      "title": "Contact — Production City",
-      "description": "Get in touch with Production City. Register your expression of interest or contact us directly."
+      "title": "お問い合わせ — Production City",
+      "description": "Production Cityチームにお問い合わせください。一般的なお問い合わせ、ビジネスパートナーシップ、投資機会。"
     },
-    "heading": "Get in Touch",
-    "intro": "Whether you are a producer, creative professional, investor, educator, or simply interested in Production City, we would love to hear from you.",
+    "heading": "お問い合わせ",
+    "intro": "Production Cityに関するお問い合わせを歓迎します。以下のいずれかのチャネルからご連絡ください。",
     "info": {
-      "heading": "Contact Information",
-      "email": "Email",
+      "heading": "連絡先情報",
+      "email": "hello@productioncity.com",
       "emailAddress": "troy@team.production.city",
-      "phoneAU": "Australia",
+      "phoneAU": "オーストラリア",
       "phoneAUNumber": "+61 2 9137 9100",
-      "phoneUS": "United States",
+      "phoneUS": "アメリカ",
       "phoneUSNumber": "+1 650 215 6253",
-      "website": "Website",
+      "website": "ウェブサイト",
       "websiteUrl": "www.production.city"
     },
     "eoi": {
-      "heading": "Register Your Interest",
-      "context": "Tell us about yourself and how you would like to engage with Production City."
+      "heading": "関心を登録",
+      "context": "チームと連絡を取るために関心の表明フォームにご記入ください。"
     },
-    "rateLimited": "You have submitted too many requests. Please try again in {seconds} seconds.",
+    "rateLimited": "リクエストが多すぎます。{seconds}秒後にもう一度お試しください。",
     "acknowledgement": {
-      "heading": "Acknowledgement of Country"
+      "heading": "土地の承認"
     },
     "personaSelect": {
-      "title": "How can we help?",
-      "producer": "I am a Producer",
-      "producerDesc": "Interested in booking facilities or production services",
-      "investor": "I am an Investor",
-      "investorDesc": "Interested in investment opportunities",
-      "creative": "I am a Creative Professional",
-      "creativeDesc": "Interested in joining the creative ecosystem",
-      "partner": "I am a Technology Partner",
-      "partnerDesc": "Interested in technology partnerships",
-      "education": "I am an Educator",
-      "educationDesc": "Interested in education partnerships",
-      "employment": "I am looking for Employment",
-      "employmentDesc": "Interested in career opportunities",
-      "general": "I just want to stay informed",
-      "generalDesc": "Keep me updated on Production City progress"
+      "title": "ご用件は？",
+      "producer": "プロデューサーです",
+      "producerDesc": "施設の予約や制作サービスに興味があります",
+      "investor": "投資家です",
+      "investorDesc": "投資機会に興味があります",
+      "creative": "クリエイティブプロフェッショナルです",
+      "creativeDesc": "クリエイティブエコシステムへの参加に興味があります",
+      "partner": "テクノロジーパートナーです",
+      "partnerDesc": "技術パートナーシップに興味があります",
+      "education": "教育者です",
+      "educationDesc": "教育パートナーシップに興味があります",
+      "employment": "就職を希望しています",
+      "employmentDesc": "キャリアの機会に興味があります",
+      "general": "最新情報を受け取りたいです",
+      "generalDesc": "Production Cityの進捗について情報をお知らせください"
     }
   },
   "ws": {

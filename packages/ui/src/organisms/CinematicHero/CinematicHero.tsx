@@ -49,6 +49,8 @@ interface CinematicHeroProps {
   height?: "full" | "tall" | "medium";
   /** Image credit */
   attribution?: CinematicHeroAttribution;
+  /** Parallax offset in pixels (applied via CSS transform). Use useParallax hook. */
+  parallaxOffset?: number;
   className?: string;
 }
 
@@ -73,6 +75,7 @@ function CinematicHero({
   overlay = "dark",
   height = "full",
   attribution,
+  parallaxOffset = 0,
   className,
 }: CinematicHeroProps) {
   const dvh = heightMap[height];
@@ -83,12 +86,14 @@ function CinematicHero({
       style={{ height: dvh }}
     >
       {/* Semantic image — Finding #3: must be <img>, not background-image */}
+      {/* Finding #6: parallax via CSS transform: translateY(), NEVER background-attachment: fixed */}
       <img
         src={imageSrc}
         alt={imageAlt}
         loading="eager"
         fetchPriority="high"
-        className="absolute inset-0 h-full w-full object-cover"
+        className="absolute inset-0 h-full w-full object-cover pc-parallax-img"
+        style={parallaxOffset !== 0 ? { transform: `translateY(${parallaxOffset}px)` } : undefined}
       />
 
       {/* Overlay gradient for text readability — Finding #8 */}
@@ -137,13 +142,13 @@ function CinematicHero({
                     key={cta.href}
                     href={safeHref}
                     className={cn(
-                      "inline-flex items-center rounded-sm px-6 py-3 font-medium transition-colors duration-200",
+                      "inline-flex items-center rounded-sm px-6 py-3 font-medium pc-btn-hover",
                       cta.variant === "primary" &&
-                        "bg-[var(--color-primary)] text-white hover:opacity-90",
+                        "bg-[var(--color-primary)] text-white",
                       cta.variant === "secondary" && overlay === "light"
-                        ? "border border-neutral-950/40 text-neutral-950 hover:bg-neutral-950/10"
+                        ? "border border-neutral-950/40 text-neutral-950"
                         : cta.variant === "secondary" &&
-                          "border border-white/40 text-white hover:bg-white/10",
+                          "border border-white/40 text-white",
                     )}
                   >
                     {cta.label}
@@ -158,7 +163,7 @@ function CinematicHero({
       {/* Attribution — bottom-right corner */}
       {attribution && (
         <div className={cn(
-          "absolute bottom-2 right-3 z-20 text-xs",
+          "absolute bottom-2 end-3 z-20 text-xs",
           overlay === "light" ? "text-neutral-950/60" : "text-white/60",
         )}>
           Photo by {attribution.photographer} / {attribution.source}

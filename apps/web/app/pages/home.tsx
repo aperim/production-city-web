@@ -15,6 +15,7 @@ import {
   EOISection,
   AcknowledgementOfCountry,
   LandingPageTemplate,
+  useParallax,
 } from "@productioncity/holding-ui";
 import { I18nProvider, useTranslation } from "../i18n/context";
 import {
@@ -43,6 +44,8 @@ function HomePageContent() {
   const eoiCategories = useEoiCategories();
   const handleEoiSubmit = useEoiSubmit();
 
+  const { ref: parallaxRef, offset: parallaxOffset } = useParallax<HTMLDivElement>({ maxOffset: 15 });
+
   const heroMedia = MEDIA["home-hero"];
   const facilitiesMedia = MEDIA["home-facilities-preview"];
   const creativeMedia = MEDIA["home-creative-preview"];
@@ -50,36 +53,39 @@ function HomePageContent() {
 
   return (
     <LandingPageTemplate nav={{ ...nav, transparent: true }} footer={footer}>
-      {/* 1. Hero — CinematicHero at full viewport */}
+      {/* 1. Hero — CinematicHero at full viewport with parallax */}
       {heroMedia && (
-        <CinematicHero
-          imageSrc={heroMedia.darkSrc}
-          imageAlt={heroMedia.alt}
-          title={t("home.intro.tagline")}
-          subtitle={t("home.intro.tagline3")}
-          height="full"
-          overlay="dark"
-          attribution={{
-            photographer: heroMedia.photographer,
-            source: heroMedia.source,
-          }}
-          ctas={[
-            {
-              label: t("home.intro.ctaSecondary"),
-              href: `${prefix}/facilities`,
-              variant: "primary",
-            },
-            {
-              label: t("home.intro.ctaPrimary"),
-              href: "#eoi-section",
-              variant: "secondary",
-            },
-          ]}
-        />
+        <div ref={parallaxRef}>
+          <CinematicHero
+            imageSrc={heroMedia.darkSrc}
+            imageAlt={heroMedia.alt}
+            title={t("home.intro.tagline")}
+            subtitle={t("home.intro.tagline3")}
+            height="full"
+            overlay="dark"
+            parallaxOffset={parallaxOffset}
+            attribution={{
+              photographer: heroMedia.photographer,
+              source: heroMedia.source,
+            }}
+            ctas={[
+              {
+                label: t("home.intro.ctaSecondary"),
+                href: `${prefix}/facilities`,
+                variant: "primary",
+              },
+              {
+                label: t("home.intro.ctaPrimary"),
+                href: "#eoi-section",
+                variant: "secondary",
+              },
+            ]}
+          />
+        </div>
       )}
 
       {/* 2. What Is Production City — StatementBlock */}
-      <ScrollRevealSection>
+      <ScrollRevealSection delay={0}>
         <StatementBlock
           text={t("home.whatIs.claim1")}
           accent="primary"
@@ -89,7 +95,7 @@ function HomePageContent() {
       <BrandAccentDivider variant="gradient" width="centered" />
 
       {/* 3. Facilities Preview — MediaPanel (image left) */}
-      <ScrollRevealSection>
+      <ScrollRevealSection delay={100}>
         <MediaPanel
           imageSrc={facilitiesMedia?.darkSrc ?? ""}
           imageAlt={facilitiesMedia?.alt ?? ""}
@@ -117,7 +123,7 @@ function HomePageContent() {
       <BrandAccentDivider variant="gradient" width="centered" />
 
       {/* 4. Creative Ecosystem — MediaPanel (image right) */}
-      <ScrollRevealSection>
+      <ScrollRevealSection delay={100}>
         <MediaPanel
           imageSrc={creativeMedia?.darkSrc ?? ""}
           imageAlt={creativeMedia?.alt ?? ""}
@@ -145,7 +151,7 @@ function HomePageContent() {
       <BrandAccentDivider variant="gradient" width="centered" />
 
       {/* 5. Global Vision — MediaPanel (image left) */}
-      <ScrollRevealSection>
+      <ScrollRevealSection delay={100}>
         <MediaPanel
           imageSrc={visionMedia?.darkSrc ?? ""}
           imageAlt={visionMedia?.alt ?? ""}
@@ -173,7 +179,7 @@ function HomePageContent() {
       <BrandAccentDivider variant="gradient" width="centered" />
 
       {/* 6. Community */}
-      <ScrollRevealSection>
+      <ScrollRevealSection delay={200}>
         <section className="py-12 px-6" aria-labelledby="community-preview-heading">
           <div className="mx-auto max-w-3xl text-center">
             <h2 id="community-preview-heading" className="text-xl font-semibold text-foreground">
@@ -201,7 +207,7 @@ function HomePageContent() {
       </ScrollRevealSection>
 
       {/* 8. Expression of Interest */}
-      <ScrollRevealSection>
+      <ScrollRevealSection delay={100}>
         <div id="eoi-section">
           <EOISection
             heading={t("home.eoi.heading")}

@@ -13,6 +13,7 @@ import {
   ForwardLookingDisclaimer,
   EOISection,
   AcknowledgementOfCountry,
+  ScrollRevealSection,
 } from "@productioncity/holding-ui";
 import { I18nProvider, useTranslation } from "../i18n/context";
 import {
@@ -69,6 +70,7 @@ function CommunityPageContent() {
       )}
 
       {/* Education & Innovation with media */}
+      <ScrollRevealSection delay={0}>
       <section className="py-10" aria-labelledby="education-heading">
         <div className="grid grid-cols-1 gap-8 lg:grid-cols-2 lg:items-start">
           <div>
@@ -107,8 +109,10 @@ function CommunityPageContent() {
           )}
         </div>
       </section>
+      </ScrollRevealSection>
 
       {/* Sustainability with media */}
+      <ScrollRevealSection delay={100}>
       <section className="py-10 border-t border-border" aria-labelledby="sustainability-heading">
         <div className="grid grid-cols-1 gap-8 lg:grid-cols-2 lg:items-start">
           {MEDIA["community-sustainability"] && (
@@ -141,6 +145,7 @@ function CommunityPageContent() {
           </div>
         </div>
       </section>
+      </ScrollRevealSection>
 
       {/* Innovation — StatementBlock style */}
       <section className="py-10 border-t border-border" aria-labelledby="innovation-heading">

@@ -91,20 +91,20 @@
     },
     "auditLog": {
       "title": "Registro de auditoría",
-      "emptyState": "No se encontraron entradas.",
+      "emptyState": "No se encontraron entradas de auditoría.",
       "loadMore": "Cargar más",
       "tableHeaders": {
         "action": "Acción",
         "actor": "Actor",
-        "subject": "Sujeto",
+        "subject": "Asunto",
         "details": "Detalles",
-        "timestamp": "Fecha"
+        "timestamp": "Fecha y hora"
       }
     }
   },
   "common": {
     "loading": "Cargando...",
-    "error": "Se produjo un error.",
+    "error": "Ocurrió un error.",
     "retry": "Reintentar",
     "cancel": "Cancelar",
     "confirm": "Confirmar",
@@ -120,8 +120,8 @@
   "media": {
     "attribution": {
       "photoBy": "Foto de {photographer} en {source}",
-      "videoBy": "Video de {photographer} en {source}",
-      "providedBy": "Medios proporcionados por {source}",
+      "videoBy": "Vídeo de {photographer} en {source}",
+      "providedBy": "Medio proporcionado por {source}",
       "viewProfile": "Ver perfil de {photographer}",
       "viewSource": "Ver en {source}"
     },
@@ -132,18 +132,18 @@
       "aiGeneratedTooltip": "Este medio fue generado por inteligencia artificial",
       "firstNations": "Permiso cultural de Pueblos Originarios",
       "firstNationsTooltip": "Usado con permiso de los Pueblos Originarios",
-      "firstNationsExpanded": "Este medio se usa con el permiso explícito de los Pueblos Originarios"
+      "firstNationsExpanded": "Este medio se utiliza con el permiso explícito de los Pueblos Originarios"
     },
     "states": {
-      "loading": "Cargando medios...",
+      "loading": "Cargando medio...",
       "error": "Imagen no disponible",
       "errorDescription": "No se pudo cargar esta imagen",
-      "noMedia": "No hay medios disponibles",
+      "noMedia": "Sin medio disponible",
       "retryLoad": "Reintentar carga",
-      "themeChanged": "Imagen actualizada para tema {theme}"
+      "themeChanged": "Imagen actualizada para el tema {theme}"
     },
     "admin": {
-      "title": "Activos multimedia",
+      "title": "Recursos multimedia",
       "searchPlaceholder": "Buscar por fotógrafo, descripción o contexto...",
       "filterSource": "Filtrar por fuente",
       "filterVariant": "Filtrar por variante de tema",
@@ -155,16 +155,16 @@
         "context": "Contexto",
         "variant": "Tema",
         "status": "Estado",
-        "flags": "Marcas",
+        "flags": "Indicadores",
         "actions": "Acciones"
       },
       "actions": {
         "edit": "Editar metadatos",
-        "archive": "Archivar activo",
+        "archive": "Archivar recurso",
         "createPair": "Crear par",
         "removePair": "Eliminar par",
-        "restore": "Restaurar activo",
-        "confirmArchive": "¿Está seguro de que desea archivar este activo multimedia?",
+        "restore": "Restaurar recurso",
+        "confirmArchive": "¿Está seguro de que desea archivar este recurso multimedia?",
         "confirmRemovePair": "¿Está seguro de que desea eliminar este par multimedia?"
       }
     }
@@ -175,15 +175,15 @@
     "invitations": "Invitaciones",
     "approvals": "Aprobaciones",
     "roles": "Roles",
-    "auditLog": "Auditoría",
+    "auditLog": "Registro de auditoría",
     "signOut": "Cerrar sesión",
-    "home": "Home",
-    "facilities": "Facilities",
-    "creative": "Creative",
-    "vision": "Vision",
-    "contact": "Contact",
-    "community": "Community",
-    "faq": "FAQ"
+    "home": "Inicio",
+    "facilities": "Instalaciones",
+    "creative": "Creativo",
+    "vision": "Visión",
+    "community": "Comunidad",
+    "faq": "Preguntas frecuentes",
+    "contact": "Contacto"
   },
   "eoi": {
     "formTitle": "Exprese su interés",
@@ -200,174 +200,174 @@
     "categoryPartner": "Socio",
     "categoryInvestor": "Inversor",
     "categoryEducation": "Educación",
+    "categoryEmployment": "Empleo",
     "consentLabel": "He leído y acepto la {privacyPolicy}",
     "privacyPolicyLink": "Política de privacidad",
-    "marketingOptInLabel": "Deseo recibir actualizaciones sobre Production City",
+    "marketingOptInLabel": "Me gustaría recibir novedades sobre Production City",
     "submitButton": "Enviar",
     "submitting": "Enviando...",
     "successTitle": "¡Gracias!",
     "successMessage": "Hemos recibido su expresión de interés y nos pondremos en contacto.",
     "errorMessage": "Algo salió mal. Intente de nuevo.",
-    "rateLimited": "Demasiados envíos. Intente más tarde.",
-    "categoryEmployment": "Empleo",
+    "rateLimited": "Demasiados envíos. Intente de nuevo más tarde.",
     "employment": {
-      "title": "Career Interest",
-      "description": "Tell us about yourself and the role you are interested in.",
-      "desiredRoleLabel": "Desired Role",
-      "desiredRolePlaceholder": "e.g. Sound Engineer, VFX Artist",
-      "experienceLevelLabel": "Experience Level",
+      "title": "Interés laboral",
+      "description": "Cuéntenos sobre usted y el puesto que le interesa.",
+      "desiredRoleLabel": "Puesto deseado",
+      "desiredRolePlaceholder": "p. ej. Ingeniero de sonido, Artista VFX",
+      "experienceLevelLabel": "Nivel de experiencia",
       "experienceLevelOptions": {
-        "entry": "Entry Level",
-        "1-3years": "1-3 Years",
-        "3-5years": "3-5 Years",
-        "5-10years": "5-10 Years",
-        "10plus": "10+ Years"
+        "entry": "Nivel inicial",
+        "1-3years": "1-3 años",
+        "3-5years": "3-5 años",
+        "5-10years": "5-10 años",
+        "10plus": "Más de 10 años"
       },
-      "availabilityLabel": "Availability",
+      "availabilityLabel": "Disponibilidad",
       "availabilityOptions": {
-        "immediate": "Immediate",
-        "1-3months": "1-3 Months",
-        "3-6months": "3-6 Months",
-        "6plus-months": "6+ Months",
+        "immediate": "Inmediata",
+        "1-3months": "1-3 meses",
+        "3-6months": "3-6 meses",
+        "6plus-months": "Más de 6 meses",
         "flexible": "Flexible"
       },
-      "portfolioUrlLabel": "Portfolio URL",
+      "portfolioUrlLabel": "URL del portafolio",
       "portfolioUrlPlaceholder": "https://your-portfolio.com",
-      "submitButton": "Submit",
-      "successMessage": "Thank you for your interest. We will be in touch about opportunities."
+      "submitButton": "Enviar",
+      "successMessage": "Gracias por su interés. Nos pondremos en contacto sobre oportunidades."
     },
-    "desiredRoleLabel": "Desired role",
-    "desiredRolePlaceholder": "What role are you interested in?",
-    "experienceLevelLabel": "Experience level",
-    "availabilityLabel": "Availability",
-    "portfolioUrlLabel": "Portfolio URL (optional)",
+    "desiredRoleLabel": "Puesto deseado",
+    "desiredRolePlaceholder": "¿En qué puesto está interesado?",
+    "experienceLevelLabel": "Nivel de experiencia",
+    "availabilityLabel": "Disponibilidad",
+    "portfolioUrlLabel": "URL del portafolio (opcional)",
     "portfolioUrlPlaceholder": "https://your-portfolio.com"
   },
   "legal": {
     "privacyPolicy": "Política de privacidad",
-    "termsOfUse": "Términos de uso",
+    "termsOfUse": "Condiciones de uso",
     "lastUpdated": "Última actualización: {date}",
     "backToHome": "Volver al inicio",
     "privacy": {
-      "title": "Privacy Policy",
-      "effectiveDate": "Effective date: {date}",
-      "intro": "Aperim Pty Ltd (\"we\", \"us\", \"our\") operates the Production City platform. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you visit our website or submit an expression of interest.",
+      "title": "Política de privacidad",
+      "effectiveDate": "Fecha de vigencia: {date}",
+      "intro": "Aperim Pty Ltd (\"nosotros\") opera la plataforma Production City. Esta Política de Privacidad explica cómo recopilamos, usamos, divulgamos y protegemos su información cuando visita nuestro sitio web o envía una expresión de interés.",
       "dataCollection": {
-        "title": "Information We Collect",
-        "description": "When you submit an expression of interest, we collect:",
+        "title": "Información que recopilamos",
+        "description": "Cuando envía una expresión de interés, recopilamos:",
         "items": [
-          "Your name and email address",
-          "Your selected category of interest",
-          "Any optional message you provide",
-          "Category-specific information (e.g., company name, portfolio URL)",
-          "Technical data: IP address, browser type, referring page, UTM campaign parameters",
-          "Consent records: privacy policy version accepted, timestamp, marketing preference"
+          "Su nombre y dirección de correo electrónico",
+          "Su categoría de interés seleccionada",
+          "Cualquier mensaje opcional que proporcione",
+          "Información específica de la categoría (p. ej., nombre de la empresa, URL del portafolio)",
+          "Datos técnicos: dirección IP, tipo de navegador, página de referencia, parámetros de campaña UTM",
+          "Registros de consentimiento: versión de la política de privacidad aceptada, marca de tiempo, preferencia de marketing"
         ]
       },
       "purpose": {
-        "title": "How We Use Your Information",
-        "description": "We use the information we collect to:",
+        "title": "Cómo usamos su información",
+        "description": "Usamos la información recopilada para:",
         "items": [
-          "Respond to your expression of interest",
-          "Send a confirmation email acknowledging your submission",
-          "Send marketing communications (only if you opted in)",
-          "Analyse submission trends to improve our services",
-          "Comply with legal obligations"
+          "Responder a su expresión de interés",
+          "Enviar un correo de confirmación de su envío",
+          "Enviar comunicaciones de marketing (solo si optó por recibirlas)",
+          "Analizar tendencias de envíos para mejorar nuestros servicios",
+          "Cumplir con obligaciones legales"
         ]
       },
       "lawfulBasis": {
-        "title": "Lawful Basis for Processing",
-        "consent": "Consent: We process your expression of interest based on your explicit consent, indicated by accepting this privacy policy.",
-        "legitimateInterest": "Legitimate interest: We send operational emails (confirmation of submission) based on our legitimate interest in providing the service you requested.",
-        "marketing": "Marketing: Marketing communications are sent only with your explicit opt-in consent and you may withdraw consent at any time."
+        "title": "Base legal para el procesamiento",
+        "consent": "Consentimiento: procesamos su expresión de interés basándonos en su consentimiento explícito al aceptar esta política de privacidad.",
+        "legitimateInterest": "Interés legítimo: enviamos correos operativos (confirmación de envío) basándonos en nuestro interés legítimo de proporcionar el servicio solicitado.",
+        "marketing": "Marketing: las comunicaciones de marketing se envían solo con su consentimiento explícito y puede retirarlo en cualquier momento."
       },
       "retention": {
-        "title": "Data Retention",
-        "description": "We retain expression of interest data for up to 24 months after the last point of contact. After this period, data is anonymised or deleted. You may request earlier deletion at any time."
+        "title": "Retención de datos",
+        "description": "Conservamos los datos de expresión de interés hasta 24 meses después del último contacto. Después, los datos se anonimizan o eliminan. Puede solicitar la eliminación anticipada en cualquier momento."
       },
       "thirdParties": {
-        "title": "Third-Party Services",
-        "description": "We share your data with the following service providers:",
+        "title": "Servicios de terceros",
+        "description": "Compartimos sus datos con los siguientes proveedores:",
         "items": [
-          "Postmark (Wildbit LLC): Email delivery for confirmation and marketing communications",
-          "Cloudflare: Website hosting, CDN, and security services"
+          "Postmark (Wildbit LLC): entrega de correos de confirmación y marketing",
+          "Cloudflare: alojamiento web, CDN y servicios de seguridad"
         ],
-        "note": "These providers process data on our behalf under data processing agreements. We do not sell your personal data."
+        "note": "Estos proveedores procesan datos en nuestro nombre bajo acuerdos de procesamiento. No vendemos sus datos personales."
       },
       "rights": {
-        "title": "Your Rights",
-        "description": "Under applicable privacy legislation, you have the right to:",
+        "title": "Sus derechos",
+        "description": "Bajo la legislación de privacidad aplicable, usted tiene derecho a:",
         "items": [
-          "Access the personal data we hold about you",
-          "Request correction of inaccurate data",
-          "Request deletion of your data",
-          "Request portability of your data",
-          "Withdraw consent for marketing communications",
-          "Lodge a complaint with the relevant supervisory authority"
+          "Acceder a los datos personales que tenemos sobre usted",
+          "Solicitar la corrección de datos inexactos",
+          "Solicitar la eliminación de sus datos",
+          "Solicitar la portabilidad de sus datos",
+          "Retirar el consentimiento para comunicaciones de marketing",
+          "Presentar una queja ante la autoridad supervisora correspondiente"
         ],
-        "contact": "To exercise these rights, contact us at privacy@production.city."
+        "contact": "Para ejercer estos derechos, contáctenos en privacy@production.city."
       },
       "jurisdiction": {
-        "title": "Governing Law",
-        "description": "This privacy policy is governed by the laws of New South Wales, Australia, and the Australian Privacy Act 1988."
+        "title": "Ley aplicable",
+        "description": "Esta política se rige por las leyes de Nueva Gales del Sur, Australia, y la Ley de Privacidad de Australia de 1988."
       },
       "changes": {
-        "title": "Changes to This Policy",
-        "description": "We may update this privacy policy from time to time. The consent version recorded with your submission refers to the version of this policy you accepted."
+        "title": "Cambios en esta política",
+        "description": "Podemos actualizar esta política periódicamente. La versión de consentimiento registrada con su envío se refiere a la versión que aceptó."
       },
       "contact": {
-        "title": "Contact Us",
-        "description": "For privacy inquiries, contact: privacy@production.city"
+        "title": "Contáctenos",
+        "description": "Para consultas de privacidad: privacy@production.city"
       }
     },
     "terms": {
-      "title": "Terms of Use",
-      "effectiveDate": "Effective date: {date}",
-      "intro": "These Terms of Use govern your access to and use of the Production City website operated by Aperim Pty Ltd.",
+      "title": "Condiciones de uso",
+      "effectiveDate": "Fecha de vigencia: {date}",
+      "intro": "Estas Condiciones de Uso rigen su acceso y uso del sitio web de Production City operado por Aperim Pty Ltd.",
       "usage": {
-        "title": "Use of Website",
-        "description": "You may use this website for lawful purposes only. You agree not to use this website in any way that could damage, disable, or impair the website or interfere with any other party's use."
+        "title": "Uso del sitio web",
+        "description": "Puede usar este sitio solo con fines legales. Acepta no usarlo de ninguna manera que pueda dañar, deshabilitar o perjudicar el sitio web o interferir con el uso de otros."
       },
       "ip": {
-        "title": "Intellectual Property",
-        "description": "Production City™ is a trademark of Aperim Pty Ltd. All content, design, and technology on this website are the property of Aperim Pty Ltd or its licensors and are protected by intellectual property laws."
+        "title": "Propiedad intelectual",
+        "description": "Production City™ es una marca de Aperim Pty Ltd. El contenido, diseño y tecnología de este sitio son propiedad de Aperim Pty Ltd o sus licenciantes y están protegidos por leyes de propiedad intelectual."
       },
       "disclaimer": {
-        "title": "Disclaimer",
-        "description": "Production City is in pre-launch development. All information, features, timelines, and projections are subject to change without notice. Nothing on this website constitutes a binding offer, guarantee of availability, or commitment to deliver any particular service or feature."
+        "title": "Descargo de responsabilidad",
+        "description": "Production City está en desarrollo previo al lanzamiento. Toda la información, características, plazos y proyecciones están sujetos a cambios sin previo aviso. Nada en este sitio constituye una oferta vinculante, garantía de disponibilidad o compromiso de brindar un servicio o función en particular."
       },
       "forwardLooking": {
-        "title": "Forward-Looking Statements",
-        "description": "This website may contain forward-looking statements about Production City's plans, objectives, and expected development. These statements involve known and unknown risks, uncertainties, and other factors that may cause actual results to differ materially from those expressed or implied."
+        "title": "Declaraciones prospectivas",
+        "description": "Este sitio puede contener declaraciones prospectivas sobre planes, objetivos y desarrollo esperado de Production City. Estas declaraciones implican riesgos conocidos y desconocidos, incertidumbres y otros factores que pueden hacer que los resultados reales difieran materialmente."
       },
       "liability": {
-        "title": "Limitation of Liability",
-        "description": "To the maximum extent permitted by law, Aperim Pty Ltd shall not be liable for any indirect, incidental, special, consequential, or punitive damages arising from your use of this website."
+        "title": "Limitación de responsabilidad",
+        "description": "En la máxima medida permitida por la ley, Aperim Pty Ltd no será responsable de ningún daño indirecto, incidental, especial, consecuente o punitivo derivado del uso de este sitio."
       },
       "jurisdiction": {
-        "title": "Governing Law",
-        "description": "These terms are governed by the laws of New South Wales, Australia. Any disputes shall be subject to the exclusive jurisdiction of the courts of New South Wales."
+        "title": "Ley aplicable",
+        "description": "Estas condiciones se rigen por las leyes de Nueva Gales del Sur, Australia. Las disputas estarán sujetas a la jurisdicción exclusiva de los tribunales de Nueva Gales del Sur."
       },
       "changes": {
-        "title": "Changes to These Terms",
-        "description": "We reserve the right to modify these terms at any time. Continued use of the website after changes constitutes acceptance of the modified terms."
+        "title": "Cambios en estas condiciones",
+        "description": "Nos reservamos el derecho de modificar estas condiciones en cualquier momento. El uso continuado del sitio después de los cambios constituye la aceptación de las condiciones modificadas."
       }
     }
   },
   "footer": {
     "privacyPolicy": "Política de privacidad",
-    "termsOfUse": "Términos de uso",
+    "termsOfUse": "Condiciones de uso",
     "copyright": "© {year} Aperim Pty Ltd. Todos los derechos reservados.",
-    "disclaimer": "Production City™ es una marca registrada de Aperim Pty Ltd.",
-    "explore": "Explore",
-    "company": "Company",
-    "acknowledgement": "Production City acknowledges the Traditional Owners of Country throughout Australia and recognises their continuing connection to lands, waters, and community. It pays respects to Aboriginal and Torres Strait Islander cultures and their Elders past and present.",
-    "resources": "Resources",
+    "disclaimer": "Production City™ es una marca de Aperim Pty Ltd.",
+    "explore": "Explorar",
+    "resources": "Recursos",
+    "company": "Empresa",
+    "acknowledgement": "Production City reconoce a los Propietarios Tradicionales del territorio en toda Australia y su conexión continua con la tierra, las aguas y la comunidad. Rinde homenaje a las culturas aborígenes y de los isleños del Estrecho de Torres, y a sus Ancianos pasados y presentes.",
+    "acknowledgementHeading": "Reconocimiento del territorio",
     "brand": {
-      "tagline": "We make stories"
+      "tagline": "Creamos historias"
     },
-    "contactHeading": "Contact",
-    "acknowledgementHeading": "Reconocimiento del País"
+    "contactHeading": "Contacto"
   },
   "languageSwitcher": {
     "label": "Idioma",
@@ -375,530 +375,530 @@
   },
   "home": {
     "meta": {
-      "title": "Production City — We Make Stories",
-      "description": "Production City fuses tradition and innovation for screen, stage, and experiential storytelling. Register your interest today."
+      "title": "Production City — Creamos historias",
+      "description": "Production City fusiona tradición e innovación para la narrativa en pantalla, escenario y experiencial. Registre su interés hoy."
     },
     "intro": {
-      "tagline": "We make stories",
-      "positioning": "Production City is a revolutionary production institution combining established screen and stage craft with advanced production technology, including virtual production, LED volumes, broadcast infrastructure, and an integrated service model.",
-      "ctaPrimary": "Register Your Interest",
-      "ctaSecondary": "Explore Our Facilities",
+      "tagline": "Creamos historias",
+      "positioning": "Production City es una institución de producción revolucionaria que combina técnicas consagradas de pantalla y escenario con tecnología de producción avanzada, incluyendo producción virtual, volúmenes LED, infraestructura de transmisión y un modelo de servicio integrado.",
+      "ctaPrimary": "Registre su interés",
+      "ctaSecondary": "Explore nuestras instalaciones",
       "brand": "Production City",
-      "tagline2": "Where tradition meets innovation",
-      "tagline3": "Screen. Stage. Experiential."
+      "tagline2": "Donde la tradición se encuentra con la innovación",
+      "tagline3": "Pantalla. Escenario. Experiencial."
     },
     "whatIs": {
-      "heading": "What is Production City?",
-      "claim1": "Fuses tradition and innovation for screen, stage, and experiential storytelling.",
-      "claim2": "Offers state-of-the-art sound stages, a first-of-its-kind broadcast theatre, control rooms, and integrated production services.",
-      "claim3": "Plans to create a global network of interconnected campuses, beginning in Queensland.",
-      "claim4": "Designed to reduce risk in adopting new production technologies by grounding them in established practices."
+      "heading": "¿Qué es Production City?",
+      "claim1": "Fusiona tradición e innovación para la narrativa en pantalla, escenario y experiencial.",
+      "claim2": "Ofrece estudios de sonido de última generación, un teatro de transmisión único, salas de control y servicios de producción integrados.",
+      "claim3": "Planea crear una red global de campus interconectados, comenzando en Queensland.",
+      "claim4": "Diseñado para reducir el riesgo en la adopción de nuevas tecnologías de producción al cimentarlas en prácticas establecidas."
     },
     "facilitiesPreview": {
-      "heading": "Planned Facilities",
-      "viewAll": "Explore all facilities"
+      "heading": "Instalaciones planificadas",
+      "viewAll": "Explore todas las instalaciones"
     },
     "creativePreview": {
-      "heading": "An Integrated Creative Ecosystem",
-      "description": "Production City is being designed as an interconnected production ecosystem where all services and facilities will operate in coordination. From pre-production through post, every discipline under one roof.",
-      "viewAll": "Discover the creative ecosystem"
+      "heading": "Un ecosistema creativo integrado",
+      "description": "Production City está diseñado como un ecosistema de producción interconectado donde todos los servicios e instalaciones operarán de forma coordinada. Desde la preproducción hasta la posproducción, todas las disciplinas bajo un mismo techo.",
+      "viewAll": "Descubra el ecosistema creativo"
     },
     "visionTeaser": {
-      "heading": "A Global Vision",
-      "description": "Production City plans to create a global network of interconnected campuses, beginning in Queensland, Australia, and extending to Singapore, Hawaii, Europe, and mainland USA.",
-      "viewAll": "Learn about our vision"
+      "heading": "Una visión global",
+      "description": "Production City planea crear una red global de campus interconectados, comenzando en Queensland, Australia, extendiéndose a Singapur, Hawái, Europa y EE. UU.",
+      "viewAll": "Conozca nuestra visión"
     },
     "acknowledgement": {
-      "heading": "Acknowledgement of Country"
+      "heading": "Reconocimiento del territorio"
     },
     "eoi": {
-      "heading": "Stay Informed",
-      "context": "Register your interest to stay informed about Production City's progress."
+      "heading": "Manténgase informado",
+      "context": "Registre su interés para estar al tanto del progreso de Production City."
     },
     "communityPreview": {
-      "heading": "Community & Sustainability",
-      "description": "Production City is designed to serve the broader community through education partnerships, sustainability commitments, and cross-sector innovation in sports, robotics, and machine learning.",
-      "viewAll": "Explore community partnerships"
+      "heading": "Comunidad y sostenibilidad",
+      "description": "Production City está diseñado para servir a la comunidad a través de alianzas educativas, compromisos de sostenibilidad e innovación transversal en deportes, robótica y aprendizaje automático.",
+      "viewAll": "Explore las alianzas comunitarias"
     }
   },
   "facilities": {
     "meta": {
-      "title": "Facilities — Production City",
-      "description": "Explore Production City's planned production facilities: screen sound stages, commercial sound stages, broadcast theatre, broadcast control room, and more."
+      "title": "Instalaciones — Production City",
+      "description": "Explore las instalaciones de producción planificadas de Production City: estudios de sonido, estudios comerciales, teatro de transmisión, sala de control y más."
     },
     "overview": {
-      "heading": "Planned Facilities",
-      "intro": "Production City is designed to house a comprehensive portfolio of production facilities, each built to professional broadcast and film specifications."
+      "heading": "Instalaciones planificadas",
+      "intro": "Production City está diseñado para albergar un portafolio integral de instalaciones de producción, cada una construida según especificaciones profesionales de transmisión y cine."
     },
     "screenStages": {
-      "name": "Screen Sound Stages",
-      "description": "Large-format sound stages designed for grand-scale productions with configurable LED volume environments.",
-      "dimensions": "Dimensions",
-      "height": "Height to Grid",
-      "soundproofing": "Soundproofing",
-      "ledConfigs": "LED Volume Configurations",
-      "gridCatwalk": "Grid & Catwalk",
-      "usage": "Intended Usage",
-      "usageFilm": "Feature film production",
-      "usageTv": "Television series production",
-      "usageBroadcast": "Live television broadcasting",
-      "specDimensions": "45m × 45m (2,025 sqm)",
-      "specHeight": "15m to grid",
-      "specNrc": "NRC 1.05, NC 25",
-      "specLed": "Flat, Arc, Full-Surround"
+      "name": "Estudios de sonido para pantalla",
+      "description": "Estudios de sonido de gran formato diseñados para producciones a gran escala con entornos LED configurables.",
+      "dimensions": "Dimensiones",
+      "height": "Altura a la parrilla",
+      "soundproofing": "Insonorización",
+      "ledConfigs": "Configuraciones de volumen LED",
+      "gridCatwalk": "Parrilla y pasarela",
+      "usage": "Uso previsto",
+      "usageFilm": "Producción de largometrajes",
+      "usageTv": "Producción de series de televisión",
+      "usageBroadcast": "Transmisión en vivo",
+      "specDimensions": "Dimensiones",
+      "specHeight": "Altura",
+      "specNrc": "Coeficiente de reducción de ruido",
+      "specLed": "Tamaño de pared LED"
     },
     "commercialStages": {
-      "name": "Commercial Sound Stages",
-      "description": "Compact sound stages for commercials, TVCs, music videos, and other smaller-scale content, with configurable LED environments.",
-      "usage": "Intended Usage",
-      "usageTvc": "TV commercials and infomercials",
-      "usageMusic": "Music video production",
-      "usageDigital": "Small-scale digital content production",
+      "name": "Estudios de sonido comerciales",
+      "description": "Estudios compactos para comerciales, anuncios de TV, videos musicales y contenido de menor escala, con entornos LED configurables.",
+      "usage": "Uso previsto",
+      "usageTvc": "Comerciales de TV e infomerciales",
+      "usageMusic": "Producción de videos musicales",
+      "usageDigital": "Producción de contenido digital a pequeña escala",
       "specDimensions": "10m × 10m (100 sqm)",
       "specHeight": "15m to grid",
       "specNrc": "NRC 1.05, NC 25",
       "specLed": "Flat, Arc, Full-Surround"
     },
     "broadcastTheatre": {
-      "name": "Broadcast Theatre",
-      "description": "A multi-purpose venue planned for live performance, live broadcast, and immersive theatre experiences with VR/AR compatibility.",
-      "seating": "Seating Capacity",
-      "theatre": "Theatre",
+      "name": "Teatro de transmisión",
+      "description": "Recinto multiuso planificado para presentaciones en vivo, transmisión en directo y experiencias de teatro inmersivo con compatibilidad VR/AR.",
+      "seating": "Capacidad de asientos",
+      "theatre": "Teatro",
       "cabaret": "Cabaret",
-      "cameras": "Robotic Camera Positions",
-      "ledSets": "LED Virtual Sets",
-      "compliance": "Broadcast Partner Compliant",
+      "cameras": "Posiciones de cámara robótica",
+      "ledSets": "Sets virtuales LED",
+      "compliance": "Compatible con socios de transmisión",
       "specSeatingTheatre": "450 seats (theatre)",
       "specSeatingCabaret": "300 seats (cabaret)",
       "specCameras": "8 robotic camera positions",
       "specBroadcast": "Live broadcast ready"
     },
     "controlRoom": {
-      "name": "Broadcast Control Room",
-      "description": "Planned central command post for live production coordination, synchronisation, and multi-platform broadcasting.",
-      "management": "Centralised Production Management",
-      "broadcast": "Live Broadcast Control",
-      "sync": "Advanced Synchronisation",
+      "name": "Sala de control de transmisión",
+      "description": "Puesto de mando central planificado para la coordinación de producción en vivo, sincronización y transmisión multiplataforma.",
+      "management": "Gestión centralizada de producción",
+      "broadcast": "Control de transmisión en vivo",
+      "sync": "Sincronización avanzada",
       "specManagement": "Centralised production management",
       "specSync": "Multi-platform sync capability"
     },
     "ancillary": {
-      "heading": "Ancillary Spaces",
-      "description": "The campus is planned to include supporting spaces and services for complete production operations.",
-      "recordingStudio": "Recording Studio",
-      "dressingRooms": "Dressing Rooms",
-      "storage": "Storage",
-      "orchestraPit": "Orchestra Pit",
-      "offices": "Office & Studios",
-      "restaurant": "Restaurant & Bar",
-      "kitchen": "Kitchen",
-      "exhibition": "Exhibition Space",
-      "foyer": "Entry Foyer",
-      "warehouse": "Warehouse & Workshop",
-      "laundry": "Dressing Rooms & Laundry"
+      "heading": "Espacios auxiliares",
+      "description": "El campus incluirá espacios y servicios de apoyo para operaciones de producción completas.",
+      "recordingStudio": "Estudio de grabación",
+      "dressingRooms": "Camerinos",
+      "storage": "Almacenamiento",
+      "orchestraPit": "Foso de orquesta",
+      "offices": "Oficinas y estudios",
+      "restaurant": "Restaurante y bar",
+      "kitchen": "Cocina",
+      "exhibition": "Espacio de exhibición",
+      "foyer": "Vestíbulo de entrada",
+      "warehouse": "Almacén y taller",
+      "laundry": "Camerinos y lavandería"
     },
     "eoi": {
-      "heading": "Planning a Production?",
-      "context": "Register your interest to discuss your production needs with our team."
+      "heading": "¿Planea una producción?",
+      "context": "Registre su interés para hablar sobre sus necesidades de producción."
     },
     "units": {
-      "sqm": "sqm",
-      "sqft": "sqft",
+      "sqm": "m²",
+      "sqft": "pies²",
       "metres": "m",
-      "feet": "ft"
+      "feet": "pies"
     },
     "disclaimer": {
-      "forwardLooking": "This page contains forward-looking statements about Production City's planned facilities and capabilities. These statements involve known and unknown risks, uncertainties, and other factors that may cause actual results to differ materially. Facility specifications describe design targets and are subject to change."
+      "forwardLooking": "Esta página contiene declaraciones prospectivas sobre las instalaciones y capacidades planificadas de Production City. Las especificaciones describen objetivos de diseño y están sujetas a cambios."
     }
   },
   "creative": {
     "meta": {
-      "title": "Creative & Ecosystem — Production City",
-      "description": "Discover Production City's integrated creative ecosystem: 17 service areas covering production, post-production, design, and technology."
+      "title": "Creativo y ecosistema — Production City",
+      "description": "Descubra el ecosistema creativo integrado de Production City: 17 áreas de servicio que cubren producción, posproducción, diseño y tecnología."
     },
     "ecosystem": {
-      "heading": "The Ecosystem Model",
-      "summary": "Production City is being designed as an interconnected production ecosystem where all services and facilities will operate in coordination rather than as isolated units.",
-      "principles": "Operational Principles",
-      "principle1": "Physical and digital workflows are integrated.",
-      "principle2": "Departments will operate concurrently rather than sequentially where possible.",
-      "principle3": "Props, set construction, shooting, post, script development, and digital work will be co-located.",
-      "principle4": "Real-time problem solving and synchronised communication are core design advantages.",
-      "principle5": "Vertical integration is intended to reduce logistical complexity, risk, time, and cost.",
-      "benefits": "Intended Benefits",
-      "benefit1": "Shorter production timelines",
-      "benefit2": "Reduced coordination overhead",
-      "benefit3": "Smoother transitions between project phases",
-      "benefit4": "Improved efficiency",
-      "benefit5": "Potential cost savings",
-      "benefit6": "Reduced production risk"
+      "heading": "El modelo de ecosistema",
+      "summary": "Production City está diseñado como un ecosistema de producción interconectado donde todos los servicios e instalaciones operarán de forma coordinada.",
+      "principles": "Principios operativos",
+      "principle1": "Los flujos de trabajo físicos y digitales están integrados.",
+      "principle2": "Los departamentos operarán de forma concurrente en lugar de secuencial.",
+      "principle3": "Utilería, construcción de sets, rodaje, posproducción, desarrollo de guiones y trabajo digital estarán co-ubicados.",
+      "principle4": "La resolución de problemas en tiempo real y la comunicación sincronizada son ventajas fundamentales.",
+      "principle5": "La integración vertical reduce la complejidad logística, el riesgo, el tiempo y el costo.",
+      "benefits": "Beneficios previstos",
+      "benefit1": "Plazos de producción más cortos",
+      "benefit2": "Reducción de la carga de coordinación",
+      "benefit3": "Transiciones más fluidas entre fases",
+      "benefit4": "Mayor eficiencia",
+      "benefit5": "Ahorro potencial de costos",
+      "benefit6": "Reducción del riesgo de producción"
     },
     "services": {
-      "heading": "Creative Collaboration Services",
-      "production": "Production",
-      "postProduction": "Post-Production",
-      "designCraft": "Design & Craft",
-      "technology": "Technology",
-      "stuntRigging": "Stunt Equipment & Rigging",
-      "stuntRiggingDesc": "Stunt coordinators and rigging experts using specialist equipment for complex action.",
-      "audioMusic": "Audio & Music Production",
-      "audioMusicDesc": "On-set sound recording, sound design, voice-over, music production, and score development.",
-      "scriptScreenplay": "Script & Screenplay Development",
-      "scriptScreenplayDesc": "Writers and story developers evolving concepts into scripts and narrative frameworks.",
-      "graphicDesign": "Graphic Design & Creative Consultancy",
-      "graphicDesignDesc": "Visuals, branding, posters, and aesthetic consistency across media.",
-      "animation": "Animation & Motion Graphics",
-      "animationDesc": "2D/3D animation, motion graphics, and digital frame-by-frame enhancements.",
-      "postEditing": "Post-Production Editing & Colour Grading",
-      "postEditingDesc": "Editing, colour correction, colour grading, and narrative assembly.",
-      "modelling3d": "3D Modelling & CGI",
-      "modelling3dDesc": "3D artists mapping designs and captures into detailed models, integrating CGI with live footage.",
-      "motionCapture": "Motion Capture & Performance Recording",
-      "motionCaptureDesc": "Recording actor movements and facial expressions for application to digital characters.",
-      "arVr": "AR/VR Solutions",
-      "arVrDesc": "Immersive audience experiences that blur reality and fiction.",
-      "broadcastCoord": "Broadcast Coordination & Management",
-      "broadcastCoordDesc": "Scheduling, managing, and executing live broadcasts for real-time coverage.",
-      "specialEffects": "Special Effects Design",
-      "specialEffectsDesc": "Mechanical, optical, and visual effects for practical and simulated phenomena.",
-      "virtualProd": "Virtual Production",
-      "virtualProdDesc": "Previsualisation through post-production using advanced digital tools.",
-      "conceptDev": "Design & Concept Development",
-      "conceptDevDesc": "Visual narratives from ideation through final design.",
-      "setConstruc": "Set Construction & Prototyping",
-      "setConstructDesc": "Turning blueprints into physical sets with attention to safety and aesthetics.",
-      "propsDesign": "Props Design & Fabrication",
-      "propsDesignDesc": "From historically accurate replicas to fantastical objects.",
-      "costumeDesign": "Costume Design & Manufacturing",
-      "costumeDesignDesc": "Costumes spanning historical, futuristic, and culture-specific needs.",
-      "makeupProsthetics": "Makeup & Prosthetics",
-      "makeupProstheticsDesc": "Age progression, creature prosthetics, and character transformation."
+      "heading": "Servicios de colaboración creativa",
+      "production": "Producción",
+      "postProduction": "Posproducción",
+      "designCraft": "Diseño y artesanía",
+      "technology": "Tecnología",
+      "stuntRigging": "Equipamiento de acrobacias y rigging",
+      "stuntRiggingDesc": "Coordinadores de acrobacias y expertos en rigging con equipamiento especializado para escenas de acción complejas.",
+      "audioMusic": "Producción de audio y música",
+      "audioMusicDesc": "Grabación de sonido en set, diseño sonoro, locución, producción musical y desarrollo de bandas sonoras.",
+      "scriptScreenplay": "Desarrollo de guión y libreto",
+      "scriptScreenplayDesc": "Escritores y desarrolladores de historias que evolucionan conceptos en guiones y marcos narrativos.",
+      "graphicDesign": "Diseño gráfico y consultoría creativa",
+      "graphicDesignDesc": "Elementos visuales, branding, carteles y coherencia estética entre medios.",
+      "animation": "Animación y gráficos en movimiento",
+      "animationDesc": "Animación 2D/3D, gráficos en movimiento y mejoras digitales cuadro por cuadro.",
+      "postEditing": "Edición de posproducción y corrección de color",
+      "postEditingDesc": "Edición, corrección de color, etalonaje y ensamblaje narrativo.",
+      "modelling3d": "Modelado 3D y CGI",
+      "modelling3dDesc": "Artistas 3D que crean modelos detallados integrando CGI con metraje real.",
+      "motionCapture": "Captura de movimiento y grabación de interpretaciones",
+      "motionCaptureDesc": "Grabación de movimientos de actores y expresiones faciales para personajes digitales.",
+      "arVr": "Soluciones de AR/VR",
+      "arVrDesc": "Experiencias inmersivas que difuminan la línea entre realidad y ficción.",
+      "broadcastCoord": "Coordinación y gestión de transmisión",
+      "broadcastCoordDesc": "Programación, gestión y ejecución de transmisiones en vivo.",
+      "specialEffects": "Diseño de efectos especiales",
+      "specialEffectsDesc": "Efectos mecánicos, ópticos y visuales para fenómenos prácticos y simulados.",
+      "virtualProd": "Producción virtual",
+      "virtualProdDesc": "Desde la previsualización hasta la posproducción con herramientas digitales avanzadas.",
+      "conceptDev": "Diseño y desarrollo de conceptos",
+      "conceptDevDesc": "Narrativas visuales desde la ideación hasta el diseño final.",
+      "setConstruc": "Construcción de sets y prototipos",
+      "setConstructDesc": "Transformar planos en sets físicos con atención a la seguridad y la estética.",
+      "propsDesign": "Diseño y fabricación de utilería",
+      "propsDesignDesc": "Desde réplicas históricamente precisas hasta objetos fantásticos.",
+      "costumeDesign": "Diseño y confección de vestuario",
+      "costumeDesignDesc": "Vestuario que abarca necesidades históricas, futuristas y culturales.",
+      "makeupProsthetics": "Maquillaje y prótesis",
+      "makeupProstheticsDesc": "Envejecimiento progresivo, prótesis de criaturas y transformación de personajes."
     },
     "caseStudies": {
-      "heading": "How It Could Work",
-      "disclaimer": "Illustrative scenario — not based on actual events",
-      "featureFilm": "Producing a Feature Film",
-      "featureFilmDesc": "A producer of a historical drama uses Production City for stages, workshops, props, costumes, LED volumes, hospitality, dressing rooms, and post-production under one roof.",
-      "liveBroadcast": "Hosting a Live Television Broadcast",
-      "liveBroadcastDesc": "A leading television network uses Production City for a large live entertainment show, combining large soundstages, smaller stages with VR/AR, and broadcast control.",
-      "modernTheatre": "Modernising Stage Theatre",
-      "modernTheatreDesc": "A contemporary theatre company stages a technologically advanced play using the broadcast theatre, LED environments, live broadcasting, and VR/AR.",
-      "internationalCollab": "International Collaborative Production",
-      "internationalCollabDesc": "Multiple production teams across different Production City campuses work concurrently on a large-scale international series, demonstrating the global network's capacity for synchronised multi-location storytelling."
+      "heading": "Cómo podría funcionar",
+      "disclaimer": "Escenario ilustrativo — no basado en hechos reales",
+      "featureFilm": "Producir un largometraje",
+      "featureFilmDesc": "Un productor de un drama histórico utiliza Production City para estudios, talleres, utilería, vestuario, volúmenes LED, hospitalidad, camerinos y posproducción bajo un mismo techo.",
+      "liveBroadcast": "Realizar una transmisión en vivo",
+      "liveBroadcastDesc": "Una cadena de televisión líder utiliza Production City para un gran espectáculo en vivo, combinando grandes estudios, estudios más pequeños con VR/AR y control de transmisión.",
+      "modernTheatre": "Modernizar el teatro escénico",
+      "modernTheatreDesc": "Una compañía de teatro contemporáneo monta una obra tecnológicamente avanzada usando el teatro de transmisión, entornos LED, transmisión en vivo y VR/AR.",
+      "internationalCollab": "Producción colaborativa internacional",
+      "internationalCollabDesc": "Equipos de producción en diferentes campus de Production City trabajan simultáneamente en una serie internacional a gran escala."
     },
     "eoi": {
-      "heading": "Join the Creative Community",
-      "context": "Register your interest as a creative professional."
+      "heading": "Únase a la comunidad creativa",
+      "context": "Registre su interés como profesional creativo."
     },
     "disclaimer": {
-      "forwardLooking": "This page contains forward-looking statements about Production City's planned creative ecosystem and services. These statements involve known and unknown risks, uncertainties, and other factors that may cause actual results to differ materially."
+      "forwardLooking": "Esta página contiene declaraciones prospectivas sobre el ecosistema creativo planificado de Production City. Estas declaraciones implican riesgos e incertidumbres."
     }
   },
   "vision": {
     "meta": {
-      "title": "Vision & Global Network — Production City",
-      "description": "Discover Production City's vision for a global network of interconnected production campuses, beginning in Queensland, Australia."
+      "title": "Visión y red global — Production City",
+      "description": "Descubra la visión de Production City para una red global de campus de producción interconectados, comenzando en Queensland, Australia."
     },
     "mission": {
-      "heading": "Vision & Mission",
-      "vision": "To redefine screen, stage, and experiential storytelling through a singular fusion of established techniques and trailblazing technology, across an interconnected global network of campuses.",
-      "themes": "Mission Themes",
-      "theme1": "Make stories come to life",
-      "theme2": "Enable immersive storytelling",
-      "theme3": "Create a holistic, integrated production ecosystem",
-      "theme4": "Foster research, education, and innovation",
-      "theme5": "Expand accessibility for both creators and audiences",
-      "theme6": "Support inclusive, globally connected storytelling",
-      "theme7": "Operate with sustainability and community benefit in mind",
-      "philosophy": "Philosophy",
-      "phil1": "Technology should enhance rather than displace storytelling fundamentals.",
-      "phil2": "Production should be vertically integrated to reduce complexity and friction.",
-      "phil3": "Innovation should be practical, user-friendly, and production-ready.",
-      "phil4": "Creative ecosystems should support diverse voices and global collaboration."
+      "heading": "Visión y misión",
+      "vision": "Redefinir la narrativa en pantalla, escenario y experiencial a través de una fusión singular de técnicas establecidas y tecnología pionera, en una red global interconectada de campus.",
+      "themes": "Temas de la misión",
+      "theme1": "Dar vida a las historias",
+      "theme2": "Permitir la narrativa inmersiva",
+      "theme3": "Crear un ecosistema de producción holístico e integrado",
+      "theme4": "Fomentar la investigación, la educación y la innovación",
+      "theme5": "Ampliar la accesibilidad para creadores y audiencias",
+      "theme6": "Apoyar la narrativa inclusiva y globalmente conectada",
+      "theme7": "Operar con sostenibilidad y beneficio comunitario",
+      "philosophy": "Filosofía",
+      "phil1": "La tecnología debe mejorar, no desplazar, los fundamentos de la narrativa.",
+      "phil2": "La producción debe estar integrada verticalmente para reducir complejidad y fricción.",
+      "phil3": "La innovación debe ser práctica, accesible y lista para producción.",
+      "phil4": "Los ecosistemas creativos deben apoyar voces diversas y la colaboración global."
     },
     "global": {
-      "heading": "Global Campus Network",
-      "operatingModel": "Interconnected campuses under a unified Production City brand, intended to provide consistent service standards and support concurrent multi-location productions.",
+      "heading": "Red global de campus",
+      "operatingModel": "Campus interconectados bajo una marca unificada, con estándares de servicio consistentes y soporte para producciones simultáneas en múltiples ubicaciones.",
       "queensland": "Queensland, Australia",
-      "queenslandStatus": "Launch Location (Planned)",
-      "queenslandDesc": "The first Production City campus, beginning in Queensland.",
-      "singapore": "Singapore",
-      "singaporeStatus": "Future Expansion (Planned)",
-      "singaporeDesc": "Planned expansion to serve the Asia-Pacific market.",
-      "hawaii": "Hawaii",
-      "hawaiiStatus": "Future Expansion (Planned)",
-      "hawaiiDesc": "Planned expansion bridging the Pacific.",
-      "europe": "Europe",
-      "europeStatus": "Future Expansion (Planned)",
-      "europeDesc": "Planned expansion to serve the European market.",
-      "usa": "Mainland USA",
-      "usaStatus": "Future Expansion (Planned)",
-      "usaDesc": "Planned expansion to serve the North American market."
+      "queenslandStatus": "Ubicación de lanzamiento (planificado)",
+      "queenslandDesc": "El primer campus de Production City, comenzando en Queensland.",
+      "singapore": "Singapur",
+      "singaporeStatus": "Expansión futura (planificada)",
+      "singaporeDesc": "Expansión planificada para servir al mercado de Asia-Pacífico.",
+      "hawaii": "Hawái",
+      "hawaiiStatus": "Expansión futura (planificada)",
+      "hawaiiDesc": "Expansión planificada como puente del Pacífico.",
+      "europe": "Europa",
+      "europeStatus": "Expansión futura (planificada)",
+      "europeDesc": "Expansión planificada para servir al mercado europeo.",
+      "usa": "EE. UU. continental",
+      "usaStatus": "Expansión futura (planificada)",
+      "usaDesc": "Expansión planificada para servir al mercado norteamericano."
     },
     "market": {
-      "heading": "Market Position",
-      "context1": "Demand for high-quality content is rising across media platforms.",
-      "context2": "AR and VR are redefining viewing experiences.",
-      "context3": "Streaming services and global production demand create opportunities for modern production infrastructure.",
-      "accessibility": "Accessibility Commitments",
-      "access1": "Democratise access to theatre and live performance through broadcast technology",
-      "access2": "Support underrepresented storytellers",
-      "access3": "Provide tools and services for diverse creators"
+      "heading": "Posición en el mercado",
+      "context1": "La demanda de contenido de alta calidad aumenta en todas las plataformas.",
+      "context2": "La AR y VR están redefiniendo las experiencias de visualización.",
+      "context3": "Los servicios de streaming y la demanda global crean oportunidades para infraestructura de producción moderna.",
+      "accessibility": "Compromisos de accesibilidad",
+      "access1": "Democratizar el acceso al teatro y las presentaciones en vivo mediante tecnología de transmisión",
+      "access2": "Apoyar a narradores subrepresentados",
+      "access3": "Proporcionar herramientas y servicios para creadores diversos"
     },
     "why": {
-      "heading": "Why Production City?",
-      "arg1": "Merges proven industry methods with cutting-edge technology",
-      "arg2": "Offers vertically integrated end-to-end production",
-      "arg3": "Supports education and innovation through institutional partnerships",
-      "arg4": "Pursues a global campus network model",
-      "arg5": "Commits to eco-friendly practices and sustainability",
-      "arg6": "Keeps creators focused on the work by reducing operational friction"
+      "heading": "¿Por qué Production City?",
+      "arg1": "Fusiona métodos probados con tecnología de vanguardia",
+      "arg2": "Ofrece producción integral integrada verticalmente",
+      "arg3": "Apoya la educación e innovación a través de alianzas institucionales",
+      "arg4": "Persigue un modelo de red de campus global",
+      "arg5": "Se compromete con prácticas ecológicas y sostenibilidad",
+      "arg6": "Mantiene a los creadores enfocados al reducir la fricción operativa"
     },
     "stakeholders": {
-      "heading": "Stakeholder Benefits",
-      "creators": "Creators",
-      "creatorsDesc": "Global stage for work, cross-cultural learning, and exposure to worldwide techniques.",
-      "industry": "Industry Collaborators",
-      "industryDesc": "Partnerships with suppliers and specialist providers, participation in cutting-edge facilities.",
-      "investors": "Investors",
-      "investorsDesc": "Portfolio diversification across markets and currencies, geographic spread of opportunity.",
-      "governments": "Governments & Communities",
-      "governmentsDesc": "Employment opportunities, skill development, local commerce stimulation."
+      "heading": "Beneficios para las partes interesadas",
+      "creators": "Creadores",
+      "creatorsDesc": "Escenario global, aprendizaje intercultural y exposición a técnicas de distintas partes del mundo.",
+      "industry": "Colaboradores de la industria",
+      "industryDesc": "Alianzas con proveedores y especialistas, participación en instalaciones de vanguardia.",
+      "investors": "Inversores",
+      "investorsDesc": "Diversificación de cartera entre mercados y monedas, distribución geográfica de oportunidades.",
+      "governments": "Gobiernos y comunidades",
+      "governmentsDesc": "Oportunidades de empleo, desarrollo de habilidades, estímulo del comercio local."
     },
     "team": {
-      "heading": "The Team",
+      "heading": "El equipo",
       "leaderName": "Troy Kelly",
-      "leaderRole": "Founder & Visionary",
-      "leaderBio": "Experience in stage and screen production, toured theatrical shows globally, served as Chief Technology Officer for AFTRS, worked in machine learning in Silicon Valley, and led the design, build, and operation of data centres and broadcast facilities in Australia.",
-      "teamDesc": "The broader project team includes professionals across entertainment production, technology, project management, and financial strategy."
+      "leaderRole": "Fundador y visionario",
+      "leaderBio": "Experiencia en producción teatral y cinematográfica, giras internacionales de espectáculos teatrales, Director de Tecnología de AFTRS, trabajo en aprendizaje automático en Silicon Valley, y liderazgo en diseño, construcción y operación de centros de datos e instalaciones de transmisión en Australia.",
+      "teamDesc": "El equipo incluye profesionales de producción de entretenimiento, tecnología, gestión de proyectos y estrategia financiera."
     },
     "eoi": {
-      "heading": "Explore Partnership Opportunities",
-      "context": "Register your interest to discuss partnership or investment opportunities."
+      "heading": "Explore oportunidades de asociación",
+      "context": "Registre su interés para discutir oportunidades de asociación o inversión."
     },
     "disclaimer": {
-      "forwardLooking": "This page contains forward-looking statements about Production City's plans, objectives, and expected development. These statements involve known and unknown risks, uncertainties, and other factors that may cause actual results to differ materially. This is not a financial prospectus or investment solicitation."
+      "forwardLooking": "Esta página contiene declaraciones prospectivas sobre los planes y desarrollo de Production City. Estas declaraciones implican riesgos e incertidumbres. Esto no es un prospecto financiero ni una solicitud de inversión."
     }
   },
   "community": {
     "meta": {
-      "title": "Community — Production City",
-      "description": "Learn about Production City's commitment to education, sustainability, strategic alliances, and community engagement."
+      "title": "Comunidad — Production City",
+      "description": "Conozca el compromiso de Production City con la educación, la sostenibilidad, las alianzas estratégicas y la participación comunitaria."
     },
-    "heading": "Community & Engagement",
-    "intro": "Production City is being designed as more than a production facility — it will be a hub for education, innovation, sustainability, and community engagement.",
+    "heading": "Comunidad y participación",
+    "intro": "Production City está diseñado como más que una instalación de producción — será un centro para la educación, la innovación, la sostenibilidad y la participación comunitaria.",
     "education": {
-      "heading": "Education & Innovation",
-      "strategy1": "Collaborate with educational institutions to open access to fresh talent",
-      "strategy2": "Provide skill development and hands-on learning opportunities",
-      "strategy3": "Create an environment of continuous learning and professional growth",
-      "strategy4": "Maintain a state-of-the-art R&D facility for targeted innovation",
-      "rdHeading": "Research & Development",
-      "rd1": "Pursue targeted innovation rather than unfocused experimentation",
-      "rd2": "Focus on practical, client-benefiting outcomes",
-      "rd3": "Advance VR/AR and other production technologies",
-      "crossSector": "Cross-Sector Interests",
-      "crossSector1": "Sports",
-      "crossSector2": "Chip/Sensor & Product Design",
-      "crossSector3": "Robotics/Automation",
-      "crossSector4": "Machine Learning",
-      "outcomes": "Intended Outcomes",
-      "outcome1": "Enhanced production quality",
-      "outcome2": "Cost-effective solutions",
-      "outcome3": "New storytelling possibilities",
-      "outcome4": "Knowledge hub positioning"
+      "heading": "Educación e innovación",
+      "strategy1": "Colaborar con instituciones educativas para acceder a nuevos talentos",
+      "strategy2": "Proporcionar desarrollo de habilidades y aprendizaje práctico",
+      "strategy3": "Crear un entorno de aprendizaje continuo y crecimiento profesional",
+      "strategy4": "Mantener una instalación de I+D de última generación",
+      "rdHeading": "Investigación y desarrollo",
+      "rd1": "Perseguir la innovación dirigida en lugar de la experimentación sin enfoque",
+      "rd2": "Enfocarse en resultados prácticos que beneficien al cliente",
+      "rd3": "Avanzar en tecnologías de producción VR/AR y otras",
+      "crossSector": "Intereses transversales",
+      "crossSector1": "Deportes",
+      "crossSector2": "Diseño de chips/sensores y productos",
+      "crossSector3": "Robótica y automatización",
+      "crossSector4": "Aprendizaje automático",
+      "outcomes": "Resultados previstos",
+      "outcome1": "Mejora en la calidad de producción",
+      "outcome2": "Soluciones rentables",
+      "outcome3": "Nuevas posibilidades narrativas",
+      "outcome4": "Posicionamiento como centro de conocimiento"
     },
     "sustainability": {
-      "heading": "Sustainability",
-      "goal": "Production City aims to achieve operational excellence while contributing to environmental preservation and sustainability.",
-      "principle1": "Sustainable design principles in facility construction",
-      "principle2": "Energy efficiency and regular assessment",
-      "principle3": "Responsible waste management",
-      "principle4": "Maximise recycling and responsible resource usage",
-      "principle5": "Green spaces and biodiversity enhancement",
-      "principle6": "Ongoing dialogue with local communities"
+      "heading": "Sostenibilidad",
+      "goal": "Production City aspira a la excelencia operativa mientras contribuye a la preservación ambiental.",
+      "principle1": "Principios de diseño sostenible en la construcción",
+      "principle2": "Eficiencia energética y evaluación periódica",
+      "principle3": "Gestión responsable de residuos",
+      "principle4": "Maximizar el reciclaje y el uso responsable de recursos",
+      "principle5": "Espacios verdes y mejora de la biodiversidad",
+      "principle6": "Diálogo continuo con las comunidades locales"
     },
     "synergies": {
-      "heading": "Synergies & Opportunities",
-      "creators": "For Creators",
-      "creatorsItems": "Global stage for work, cross-cultural learning, exposure to worldwide narratives and techniques, and potential global recognition.",
-      "industry": "For Industry Collaborators",
-      "industryItems": "Partnerships with suppliers and specialist providers, participation in cutting-edge facilities, and mutual growth and innovation opportunities.",
-      "investors": "For Investors",
-      "investorsItems": "Portfolio diversification across markets and currencies, and geographic spread of opportunity.",
-      "communities": "For Governments & Communities",
-      "communitiesItems": "Employment opportunities, skill development, local commerce stimulation, and creation of mini ecosystems around campuses."
+      "heading": "Sinergias y oportunidades",
+      "creators": "Para creadores",
+      "creatorsItems": "Escenario global, aprendizaje intercultural, exposición a narrativas y técnicas mundiales, y potencial reconocimiento global.",
+      "industry": "Para colaboradores de la industria",
+      "industryItems": "Alianzas con proveedores y especialistas, participación en instalaciones de vanguardia y oportunidades de crecimiento mutuo.",
+      "investors": "Para inversores",
+      "investorsItems": "Diversificación de cartera entre mercados y monedas, y distribución geográfica de oportunidades.",
+      "communities": "Para gobiernos y comunidades",
+      "communitiesItems": "Oportunidades de empleo, desarrollo de habilidades, estímulo del comercio local y creación de ecosistemas alrededor de los campus."
     },
     "alliances": {
-      "heading": "Strategic Alliances",
-      "type1": "Educational institutions",
-      "type2": "Major technology providers",
-      "type3": "Industry trailblazers",
-      "type4": "Sovereign funds",
-      "type5": "Research and development facilities",
-      "valueHeading": "Intended Value",
-      "value1": "Talent pipeline and fresh ideas",
-      "value2": "Access to cutting-edge technology",
-      "value3": "Shared development opportunities",
-      "value4": "Trust, credibility, and financial confidence"
+      "heading": "Alianzas estratégicas",
+      "type1": "Instituciones educativas",
+      "type2": "Principales proveedores de tecnología",
+      "type3": "Pioneros de la industria",
+      "type4": "Fondos soberanos",
+      "type5": "Instalaciones de investigación y desarrollo",
+      "valueHeading": "Valor previsto",
+      "value1": "Flujo de talento e ideas frescas",
+      "value2": "Acceso a tecnología de vanguardia",
+      "value3": "Oportunidades de desarrollo compartido",
+      "value4": "Confianza, credibilidad y solidez financiera"
     },
     "bridges": {
-      "heading": "Building Bridges with the Industry",
-      "producers": "For Producers",
-      "producer1": "Single-stop production solution",
-      "producer2": "Reduced vendor coordination complexity",
-      "producer3": "End-to-end workflows",
-      "producer4": "Support for multi-location shoots",
-      "government": "For Government Bodies",
-      "gov1": "Direct and indirect jobs",
-      "gov2": "Tourism stimulation",
-      "gov3": "Upskilling opportunities",
-      "gov4": "Research partnerships",
-      "gov5": "Foreign investment attraction",
-      "gov6": "Support for local creators"
+      "heading": "Construyendo puentes con la industria",
+      "producers": "Para productores",
+      "producer1": "Solución de producción integral",
+      "producer2": "Reducción de la complejidad con proveedores",
+      "producer3": "Flujos de trabajo de principio a fin",
+      "producer4": "Soporte para rodajes en múltiples ubicaciones",
+      "government": "Para entidades gubernamentales",
+      "gov1": "Empleos directos e indirectos",
+      "gov2": "Estímulo del turismo",
+      "gov3": "Oportunidades de capacitación",
+      "gov4": "Alianzas de investigación",
+      "gov5": "Atracción de inversión extranjera",
+      "gov6": "Apoyo a creadores locales"
     },
     "eoi": {
-      "heading": "Join the Community",
-      "context": "Register your interest to learn about education, partnership, and community opportunities."
+      "heading": "Únase a la comunidad",
+      "context": "Registre su interés para conocer oportunidades de educación, asociación y comunidad."
     },
     "disclaimer": {
-      "forwardLooking": "This page contains forward-looking statements about Production City's plans for community engagement, education, and sustainability. These statements involve known and unknown risks, uncertainties, and other factors that may cause actual results to differ materially."
+      "forwardLooking": "Esta página contiene declaraciones prospectivas sobre los planes de Production City para participación comunitaria, educación y sostenibilidad."
     },
     "acknowledgement": {
-      "heading": "Acknowledgement of Country",
-      "text": "Production City acknowledges the Traditional Owners of Country throughout Australia and their continuing connection to land, waters, and community. We pay our respect to them and their cultures and to Elders past, present, and emerging."
+      "heading": "Reconocimiento del territorio",
+      "text": "Production City reconoce a los Propietarios Tradicionales del territorio en toda Australia y su conexión continua con la tierra, las aguas y la comunidad. Rendimos nuestro respeto a ellos y sus culturas, y a los Ancianos pasados, presentes y futuros."
     },
     "innovation": {
-      "heading": "Cross-Sector Innovation",
-      "statement": "Beyond screen production, Production City is designed to foster innovation across sports technology, robotics, machine learning, and sensor design — creating unexpected intersections that advance both storytelling and technology."
+      "heading": "Innovación transversal",
+      "statement": "Más allá de la producción audiovisual, Production City fomenta la innovación en tecnología deportiva, robótica, aprendizaje automático y diseño de sensores — creando intersecciones que avanzan tanto la narrativa como la tecnología."
     }
   },
   "faq": {
     "meta": {
-      "title": "FAQ — Production City",
-      "description": "Frequently asked questions about Production City's facilities, services, global network, and community engagement."
+      "title": "Preguntas frecuentes — Production City",
+      "description": "Preguntas frecuentes sobre las instalaciones, servicios, red global y participación comunitaria de Production City."
     },
-    "heading": "Frequently Asked Questions",
-    "searchPlaceholder": "Search questions...",
-    "allCategories": "All",
-    "categoryFacilities": "Facilities",
-    "categoryServices": "Services",
+    "heading": "Preguntas frecuentes",
+    "searchPlaceholder": "Buscar preguntas...",
+    "categoriesLabel": "Categorías",
+    "allCategories": "Todas",
+    "categoryFacilities": "Instalaciones",
+    "categoryServices": "Servicios",
     "categoryGlobal": "Global",
-    "categoryCommunity": "Community",
-    "categoryEngagement": "Engagement",
-    "noResults": "No questions match your search.",
-    "questionsHeading": "Preguntas y Respuestas",
-    "q1": "What types of facilities will Production City offer?",
-    "a1": "Production City plans to offer Screen Sound Stages, Commercial Sound Stages, a Broadcast Control Room, a multi-functional Broadcast Theatre, and spaces for research & development and educational collaborations.",
-    "c1": "Facilities",
-    "q2": "Will Production City's services be available for international locations?",
-    "a2": "Yes. Production City plans to expand to Singapore, Hawaii, Europe, and mainland USA with consistent facilities and services across all campuses.",
-    "c2": "Global",
-    "q3": "What virtual production services will Production City provide?",
-    "a3": "Production City will offer comprehensive services from pre-production visualization and conceptualisation to post-production editing and effects, plus 3D modelling, CGI, motion capture, and VR/AR.",
-    "c3": "Services",
-    "q4": "How will Production City support educational initiatives?",
-    "a4": "Through planned partnerships with educational institutions, experiential learning opportunities, R&D facilities, and practical skill development programs.",
-    "c4": "Community",
-    "q5": "What research and development facilities will Production City include?",
-    "a5": "A dedicated facility is planned to be embedded in operations to encourage exploration, innovation, and development of future production technologies and storytelling methods.",
-    "c5": "Facilities",
-    "q6": "What kinds of projects will be suitable for Production City?",
-    "a6": "Feature films, TV series, live telecasts, stage productions, music videos, VR/AR content, and other forms of content creation.",
-    "c6": "Services",
-    "q7": "What will set Production City apart from other production facilities or studios?",
-    "a7": "Its planned combination of advanced technology, proven industry techniques, interconnected global campuses, and commitments to education and sustainability.",
-    "c7": "Services",
-    "q8": "What kind of support services will Production City offer for a smooth production process?",
-    "a8": "End-to-end virtual production, pre-production, filming, post-production, VFX, sound mixing, dressing rooms, catering, on-site set and prop construction, and digitisation services.",
-    "c8": "Services",
-    "q9": "What will make Production City's sound stages unique?",
-    "a9": "Large scale, 15m height to grid, advanced soundproofing, and LED Volume configurations designed for different production needs.",
-    "c9": "Facilities",
-    "q10": "How will Production City's services simplify the production workflow?",
-    "a10": "By co-locating pre-production, production, and post-production services on one campus to reduce transport, coordination, and scheduling complexity.",
-    "c10": "Services",
-    "q11": "What benefits will the LED volume offer for productions?",
-    "a11": "Flexible configurations, real-time visual effects, efficient background changes, and a cost/time-effective alternative to traditional green screen methods.",
-    "c11": "Facilities",
-    "q12": "How will Production City commit to sustainability efforts?",
-    "a12": "Through conscious design, energy-efficient systems, waste management, green spaces, and biodiversity-supporting landscaping.",
-    "c12": "Community",
-    "q13": "Will the Production City facilities accommodate pre-production and post-production processes?",
-    "a13": "Yes. Script development, storyboarding, concept design, editing, sound mixing, colour grading, and visual effects will all be part of the planned offering.",
-    "c13": "Services",
-    "q14": "How will being a part of the Production City network enrich a creative professional's experience?",
-    "a14": "Through access to advanced facilities, full production services, a global creative community, workshops, collaborations, and exposure to diverse ideation methods.",
-    "c14": "Community",
-    "q15": "Will clients be able to provide their own technical crew, or will Production City supply them?",
-    "a15": "Both options are planned. Clients will be able to bring their own crew, and Production City will also be able to provide technical support personnel.",
-    "c15": "Services",
-    "q16": "How can clients stay updated with the latest developments or offerings at Production City?",
-    "a16": "By registering interest on the website, subscribing to the newsletter, or following Production City's social media channels.",
-    "c16": "Engagement",
-    "q17": "How will Production City foster talent growth and innovation?",
-    "a17": "By partnering with educational institutions, offering hands-on learning, maintaining R&D facilities, and running workshops and skill development programs.",
-    "c17": "Community",
-    "q18": "What measures will Production City have to ensure safety and security?",
-    "a18": "Security personnel, surveillance, secure access controls, fire safety systems, and health and safety protocols aligned with industry standards.",
-    "c18": "Facilities",
-    "q19": "How will Production City cater to different scale productions — from independent creators to corporate entities?",
-    "a19": "By offering facilities planned for all scales of production and the same level of professional support regardless of project size.",
-    "c19": "Services",
-    "q20": "What kinds of engagements beyond facility rentals will be possible?",
-    "a20": "Technology partnerships, education and research collaborations, joint development of filming methods and techniques, and collaborative business models.",
-    "c20": "Engagement",
-    "categoriesLabel": "FAQ categories",
-    "searchLabel": "Search frequently asked questions",
-    "cantFindHeading": "Can't find what you're looking for?",
-    "cantFindDescription": "Our team is here to help with any questions about Production City.",
-    "cantFindCta": "Contact Us",
+    "categoryCommunity": "Comunidad",
+    "categoryEngagement": "Participación",
     "resultCountSingular": "{count} resultado encontrado",
     "resultCountPlural": "{count} resultados encontrados",
-    "questionCount": "{count} preguntas"
+    "questionCount": "{count} preguntas",
+    "noResults": "No se encontraron preguntas que coincidan con su búsqueda.",
+    "questionsHeading": "Preguntas y respuestas",
+    "q1": "¿Qué tipos de instalaciones ofrecerá Production City?",
+    "a1": "Production City planea ofrecer estudios de sonido para pantalla, estudios comerciales, una sala de control de transmisión, un teatro de transmisión multifuncional y espacios para I+D y colaboraciones educativas.",
+    "c1": "Instalaciones",
+    "q2": "¿Los servicios de Production City estarán disponibles en ubicaciones internacionales?",
+    "a2": "Sí. Production City planea expandirse a Singapur, Hawái, Europa y EE. UU. continental con instalaciones y servicios consistentes en todos los campus.",
+    "c2": "Global",
+    "q3": "¿Qué servicios de producción virtual ofrecerá Production City?",
+    "a3": "Production City ofrecerá servicios integrales desde la previsualización y conceptualización hasta la edición y efectos de posproducción, además de modelado 3D, CGI, captura de movimiento y VR/AR.",
+    "c3": "Servicios",
+    "q4": "¿Cómo apoyará Production City las iniciativas educativas?",
+    "a4": "A través de alianzas planificadas con instituciones educativas, oportunidades de aprendizaje experiencial, instalaciones de I+D y programas de desarrollo de habilidades prácticas.",
+    "c4": "Comunidad",
+    "q5": "¿Qué instalaciones de investigación y desarrollo incluirá Production City?",
+    "a5": "Una instalación dedicada integrada en las operaciones para fomentar la exploración, innovación y desarrollo de futuras tecnologías de producción y métodos narrativos.",
+    "c5": "Instalaciones",
+    "q6": "¿Qué tipos de proyectos serán adecuados para Production City?",
+    "a6": "Largometrajes, series de TV, transmisiones en vivo, producciones teatrales, videos musicales, contenido VR/AR y otras formas de creación de contenido.",
+    "c6": "Servicios",
+    "q7": "¿Qué diferenciará a Production City de otras instalaciones de producción?",
+    "a7": "Su combinación planificada de tecnología avanzada, técnicas probadas de la industria, campus globales interconectados y compromisos con la educación y la sostenibilidad.",
+    "c7": "Servicios",
+    "q8": "¿Qué servicios de apoyo ofrecerá Production City para un proceso de producción fluido?",
+    "a8": "Producción virtual integral, preproducción, rodaje, posproducción, VFX, mezcla de sonido, camerinos, catering, construcción de sets y utilería en el lugar, y servicios de digitalización.",
+    "c8": "Servicios",
+    "q9": "¿Qué hará únicos a los estudios de sonido de Production City?",
+    "a9": "Gran escala, 15 m de altura a la parrilla, insonorización avanzada y configuraciones de volumen LED diseñadas para diferentes necesidades de producción.",
+    "c9": "Instalaciones",
+    "q10": "¿Cómo simplificarán los servicios de Production City el flujo de trabajo de producción?",
+    "a10": "Al co-ubicar servicios de preproducción, producción y posproducción en un campus para reducir transporte, coordinación y complejidad de programación.",
+    "c10": "Servicios",
+    "q11": "¿Qué beneficios ofrecerá el volumen LED para las producciones?",
+    "a11": "Configuraciones flexibles, efectos visuales en tiempo real, cambios de fondo eficientes y una alternativa rentable a los métodos tradicionales de pantalla verde.",
+    "c11": "Instalaciones",
+    "q12": "¿Cómo se comprometerá Production City con los esfuerzos de sostenibilidad?",
+    "a12": "A través de diseño consciente, sistemas eficientes en energía, gestión de residuos, espacios verdes y paisajismo que favorezca la biodiversidad.",
+    "c12": "Comunidad",
+    "q13": "¿Las instalaciones de Production City acomodarán procesos de preproducción y posproducción?",
+    "a13": "Sí. Desarrollo de guiones, storyboards, diseño de conceptos, edición, mezcla de sonido, corrección de color y efectos visuales formarán parte de la oferta planificada.",
+    "c13": "Servicios",
+    "q14": "¿Cómo enriquecerá la red de Production City la experiencia de un profesional creativo?",
+    "a14": "A través de acceso a instalaciones avanzadas, servicios de producción completos, una comunidad creativa global, talleres, colaboraciones y exposición a diversos métodos de ideación.",
+    "c14": "Comunidad",
+    "q15": "¿Los clientes podrán traer su propio equipo técnico?",
+    "a15": "Ambas opciones están planificadas. Los clientes podrán traer su propio equipo y Production City también proporcionará personal de soporte técnico.",
+    "c15": "Servicios",
+    "q16": "¿Cómo pueden los clientes mantenerse actualizados sobre los últimos desarrollos de Production City?",
+    "a16": "Registrando su interés en el sitio web, suscribiéndose al boletín informativo o siguiendo los canales de redes sociales de Production City.",
+    "c16": "Participación",
+    "q17": "¿Cómo fomentará Production City el crecimiento del talento y la innovación?",
+    "a17": "Asociándose con instituciones educativas, ofreciendo aprendizaje práctico, manteniendo instalaciones de I+D y realizando talleres y programas de desarrollo de habilidades.",
+    "c17": "Comunidad",
+    "q18": "¿Qué medidas tendrá Production City para garantizar la seguridad?",
+    "a18": "Personal de seguridad, vigilancia, controles de acceso, sistemas contra incendios y protocolos de salud y seguridad alineados con estándares de la industria.",
+    "c18": "Instalaciones",
+    "q19": "¿Cómo atenderá Production City producciones de diferentes escalas?",
+    "a19": "Ofreciendo instalaciones planificadas para todas las escalas de producción y el mismo nivel de soporte profesional independientemente del tamaño del proyecto.",
+    "c19": "Servicios",
+    "q20": "¿Qué tipos de participación más allá del alquiler de instalaciones serán posibles?",
+    "a20": "Alianzas tecnológicas, colaboraciones educativas y de investigación, desarrollo conjunto de métodos de filmación y modelos de negocio colaborativos.",
+    "c20": "Participación",
+    "searchLabel": "Buscar preguntas frecuentes",
+    "cantFindHeading": "¿No encuentra lo que busca?",
+    "cantFindDescription": "Nuestro equipo está aquí para ayudarle con cualquier pregunta sobre Production City.",
+    "cantFindCta": "Contáctenos"
   },
   "contact": {
     "meta": {
-      "title": "Contact — Production City",
-      "description": "Get in touch with Production City. Register your expression of interest or contact us directly."
+      "title": "Contacto — Production City",
+      "description": "Póngase en contacto con Production City. Registre su expresión de interés o contáctenos directamente."
     },
-    "heading": "Get in Touch",
-    "intro": "Whether you are a producer, creative professional, investor, educator, or simply interested in Production City, we would love to hear from you.",
+    "heading": "Contáctenos",
+    "intro": "Ya sea productor, profesional creativo, inversor, educador o simplemente interesado en Production City, nos encantaría saber de usted.",
     "info": {
-      "heading": "Contact Information",
-      "email": "Email",
+      "heading": "Información de contacto",
+      "email": "Correo electrónico",
       "emailAddress": "troy@team.production.city",
       "phoneAU": "Australia",
       "phoneAUNumber": "+61 2 9137 9100",
-      "phoneUS": "United States",
+      "phoneUS": "Estados Unidos",
       "phoneUSNumber": "+1 650 215 6253",
-      "website": "Website",
+      "website": "Sitio web",
       "websiteUrl": "www.production.city"
     },
     "eoi": {
-      "heading": "Register Your Interest",
-      "context": "Tell us about yourself and how you would like to engage with Production City."
+      "heading": "Registre su interés",
+      "context": "Cuéntenos sobre usted y cómo le gustaría participar en Production City."
     },
-    "rateLimited": "You have submitted too many requests. Please try again in {seconds} seconds.",
+    "rateLimited": "Ha enviado demasiadas solicitudes. Intente de nuevo en {seconds} segundos.",
     "acknowledgement": {
-      "heading": "Acknowledgement of Country"
+      "heading": "Reconocimiento del territorio"
     },
     "personaSelect": {
-      "title": "How can we help?",
-      "producer": "I am a Producer",
-      "producerDesc": "Interested in booking facilities or production services",
-      "investor": "I am an Investor",
-      "investorDesc": "Interested in investment opportunities",
-      "creative": "I am a Creative Professional",
-      "creativeDesc": "Interested in joining the creative ecosystem",
-      "partner": "I am a Technology Partner",
-      "partnerDesc": "Interested in technology partnerships",
-      "education": "I am an Educator",
-      "educationDesc": "Interested in education partnerships",
-      "employment": "I am looking for Employment",
-      "employmentDesc": "Interested in career opportunities",
-      "general": "I just want to stay informed",
-      "generalDesc": "Keep me updated on Production City progress"
+      "title": "¿Cómo podemos ayudarle?",
+      "producer": "Soy productor",
+      "producerDesc": "Interesado en reservar instalaciones o servicios de producción",
+      "investor": "Soy inversor",
+      "investorDesc": "Interesado en oportunidades de inversión",
+      "creative": "Soy profesional creativo",
+      "creativeDesc": "Interesado en unirme al ecosistema creativo",
+      "partner": "Soy socio tecnológico",
+      "partnerDesc": "Interesado en alianzas tecnológicas",
+      "education": "Soy educador",
+      "educationDesc": "Interesado en alianzas educativas",
+      "employment": "Busco empleo",
+      "employmentDesc": "Interesado en oportunidades laborales",
+      "general": "Solo quiero estar informado",
+      "generalDesc": "Manténganme actualizado sobre el progreso de Production City"
     }
   },
   "ws": {
@@ -907,12 +907,12 @@
       "connecting": "Conectando...",
       "reconnecting": "Reconectando...",
       "disconnected": "Desconectado",
-      "failed": "Conexion perdida",
+      "failed": "Conexión perdida",
       "unavailable": "Actualizaciones en tiempo real no disponibles",
       "updating": "Actualizando... reconectando en breve"
     },
     "banner": {
-      "disconnected": "Actualizaciones en tiempo real no disponibles. Puede experimentar retrasos.",
+      "disconnected": "Actualizaciones en tiempo real no disponibles. Puede haber demoras.",
       "reconnecting": "Reconectando a actualizaciones en tiempo real...",
       "stale": "Actualizaciones en tiempo real no disponibles, los datos pueden estar desactualizados.",
       "dismiss": "Cerrar"
@@ -921,31 +921,31 @@
   "notifications": {
     "title": "Notificaciones",
     "empty": "Sin notificaciones",
-    "markAllRead": "Marcar todas como leidas",
-    "new_eoi": "Nueva expresion de interes en {{category}}",
-    "approval_needed": "Nuevo usuario esperando aprobacion",
-    "user_approved": "Aprobacion de usuario procesada",
+    "markAllRead": "Marcar leídas",
+    "new_eoi": "Nueva expresión de interés de {{category}}",
+    "approval_needed": "Nuevo usuario esperando aprobación",
+    "user_approved": "Aprobación de usuario procesada",
     "user_rejected": "Solicitud de usuario rechazada",
-    "invitation_sent": "Invitacion enviada",
+    "invitation_sent": "Invitación enviada",
     "delivery_sent": "Correo enviado",
     "delivery_delivered": "Correo entregado",
-    "delivery_bounced": "Entrega de correo fallida",
-    "delivery_failed": "El correo no pudo ser entregado",
+    "delivery_bounced": "Error en la entrega del correo",
+    "delivery_failed": "No se pudo entregar el correo",
     "timeAgo": {
       "justNow": "Ahora mismo",
       "minutesAgo": "Hace {{count}} min",
       "hoursAgo": "Hace {{count}} h",
-      "daysAgo": "Hace {{count}} dias"
+      "daysAgo": "Hace {{count}} días"
     },
     "viewDetails": "Ver detalles",
     "preferences": {
-      "title": "Preferencias de notificacion",
-      "description": "Elija que notificaciones en tiempo real desea recibir",
+      "title": "Preferencias de notificación",
+      "description": "Elija qué notificaciones en tiempo real recibe",
       "channel": {
-        "eoi": "Nuevas expresiones de interes",
-        "approvals": "Solicitudes de aprobacion",
+        "eoi": "Nuevas expresiones de interés",
+        "approvals": "Solicitudes de aprobación",
         "notifications": "Notificaciones generales",
-        "audit": "Eventos del registro de auditoria"
+        "audit": "Eventos del registro de auditoría"
       },
       "enabled": "Activado",
       "disabled": "Desactivado"
@@ -954,8 +954,8 @@
   "delivery": {
     "sent": "Correo enviado",
     "delivered": "Correo entregado",
-    "bounced": "Entrega fallida",
-    "failed": "El correo no pudo ser entregado",
+    "bounced": "Error en la entrega",
+    "failed": "No se pudo entregar el correo",
     "pending": "Enviando...",
     "unknown": "Estado desconocido"
   }

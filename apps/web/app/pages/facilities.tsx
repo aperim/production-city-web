@@ -11,6 +11,7 @@ import {
   MediaHero,
   ForwardLookingDisclaimer,
   EOISection,
+  ScrollRevealSection,
 } from "@productioncity/holding-ui";
 import { I18nProvider, useTranslation } from "../i18n/context";
 import {
@@ -122,64 +123,73 @@ function FacilitiesPageContent() {
       )}
 
       {/* Screen Sound Stages */}
-      <FacilitySection
-        id="screen-stages"
-        heading={t("facilities.screenStages.name")}
-        description={t("facilities.screenStages.description")}
-        imageSrc={MEDIA["facilities-screen-stage"]?.lightSrc}
-        imageAlt={MEDIA["facilities-screen-stage"]?.alt}
-        specs={[
-          { label: t("facilities.screenStages.dimensions"), value: t("facilities.screenStages.specDimensions") },
-          { label: t("facilities.screenStages.height"), value: t("facilities.screenStages.specHeight") },
-          { label: t("facilities.screenStages.soundproofing"), value: t("facilities.screenStages.specNrc") },
-          { label: t("facilities.screenStages.ledConfigs"), value: t("facilities.screenStages.specLed") },
-        ]}
-      />
+      <ScrollRevealSection delay={0}>
+        <FacilitySection
+          id="screen-stages"
+          heading={t("facilities.screenStages.name")}
+          description={t("facilities.screenStages.description")}
+          imageSrc={MEDIA["facilities-screen-stage"]?.lightSrc}
+          imageAlt={MEDIA["facilities-screen-stage"]?.alt}
+          specs={[
+            { label: t("facilities.screenStages.dimensions"), value: t("facilities.screenStages.specDimensions") },
+            { label: t("facilities.screenStages.height"), value: t("facilities.screenStages.specHeight") },
+            { label: t("facilities.screenStages.soundproofing"), value: t("facilities.screenStages.specNrc") },
+            { label: t("facilities.screenStages.ledConfigs"), value: t("facilities.screenStages.specLed") },
+          ]}
+        />
+      </ScrollRevealSection>
 
       {/* Commercial Sound Stages */}
-      <FacilitySection
-        id="commercial-stages"
-        heading={t("facilities.commercialStages.name")}
-        description={t("facilities.commercialStages.description")}
-        imageSrc={MEDIA["facilities-commercial-stage"]?.lightSrc}
-        imageAlt={MEDIA["facilities-commercial-stage"]?.alt}
-        specs={[
-          { label: t("facilities.screenStages.dimensions"), value: t("facilities.commercialStages.specDimensions") },
-          { label: t("facilities.screenStages.height"), value: t("facilities.commercialStages.specHeight") },
-          { label: t("facilities.screenStages.soundproofing"), value: t("facilities.commercialStages.specNrc") },
-          { label: t("facilities.screenStages.ledConfigs"), value: t("facilities.commercialStages.specLed") },
-        ]}
-      />
+      <ScrollRevealSection delay={100}>
+        <FacilitySection
+          id="commercial-stages"
+          heading={t("facilities.commercialStages.name")}
+          description={t("facilities.commercialStages.description")}
+          imageSrc={MEDIA["facilities-commercial-stage"]?.lightSrc}
+          imageAlt={MEDIA["facilities-commercial-stage"]?.alt}
+          specs={[
+            { label: t("facilities.screenStages.dimensions"), value: t("facilities.commercialStages.specDimensions") },
+            { label: t("facilities.screenStages.height"), value: t("facilities.commercialStages.specHeight") },
+            { label: t("facilities.screenStages.soundproofing"), value: t("facilities.commercialStages.specNrc") },
+            { label: t("facilities.screenStages.ledConfigs"), value: t("facilities.commercialStages.specLed") },
+          ]}
+        />
+      </ScrollRevealSection>
 
       {/* Broadcast Theatre */}
-      <FacilitySection
-        id="broadcast-theatre"
-        heading={t("facilities.broadcastTheatre.name")}
-        description={t("facilities.broadcastTheatre.description")}
-        imageSrc={MEDIA["facilities-broadcast-theatre"]?.lightSrc}
-        imageAlt={MEDIA["facilities-broadcast-theatre"]?.alt}
-        specs={[
-          { label: t("facilities.broadcastTheatre.seating"), value: t("facilities.broadcastTheatre.specSeatingTheatre") },
-          { label: t("facilities.broadcastTheatre.cabaret"), value: t("facilities.broadcastTheatre.specSeatingCabaret") },
-          { label: t("facilities.broadcastTheatre.cameras"), value: t("facilities.broadcastTheatre.specCameras") },
-          { label: t("facilities.broadcastTheatre.compliance"), value: t("facilities.broadcastTheatre.specBroadcast") },
-        ]}
-      />
+      <ScrollRevealSection delay={100}>
+        <FacilitySection
+          id="broadcast-theatre"
+          heading={t("facilities.broadcastTheatre.name")}
+          description={t("facilities.broadcastTheatre.description")}
+          imageSrc={MEDIA["facilities-broadcast-theatre"]?.lightSrc}
+          imageAlt={MEDIA["facilities-broadcast-theatre"]?.alt}
+          specs={[
+            { label: t("facilities.broadcastTheatre.seating"), value: t("facilities.broadcastTheatre.specSeatingTheatre") },
+            { label: t("facilities.broadcastTheatre.cabaret"), value: t("facilities.broadcastTheatre.specSeatingCabaret") },
+            { label: t("facilities.broadcastTheatre.cameras"), value: t("facilities.broadcastTheatre.specCameras") },
+            { label: t("facilities.broadcastTheatre.compliance"), value: t("facilities.broadcastTheatre.specBroadcast") },
+          ]}
+        />
+      </ScrollRevealSection>
 
       {/* Broadcast Control Room */}
-      <FacilitySection
-        id="control-room"
-        heading={t("facilities.controlRoom.name")}
-        description={t("facilities.controlRoom.description")}
-        imageSrc={MEDIA["facilities-control-room"]?.lightSrc}
-        imageAlt={MEDIA["facilities-control-room"]?.alt}
-        specs={[
-          { label: t("facilities.controlRoom.management"), value: t("facilities.controlRoom.specManagement") },
-          { label: t("facilities.controlRoom.sync"), value: t("facilities.controlRoom.specSync") },
-        ]}
-      />
+      <ScrollRevealSection delay={200}>
+        <FacilitySection
+          id="control-room"
+          heading={t("facilities.controlRoom.name")}
+          description={t("facilities.controlRoom.description")}
+          imageSrc={MEDIA["facilities-control-room"]?.lightSrc}
+          imageAlt={MEDIA["facilities-control-room"]?.alt}
+          specs={[
+            { label: t("facilities.controlRoom.management"), value: t("facilities.controlRoom.specManagement") },
+            { label: t("facilities.controlRoom.sync"), value: t("facilities.controlRoom.specSync") },
+          ]}
+        />
+      </ScrollRevealSection>
 
       {/* Ancillary Spaces */}
+      <ScrollRevealSection delay={100}>
       <section className="py-10 border-t border-border" aria-labelledby="ancillary-heading">
         <div className="grid grid-cols-1 gap-8 lg:grid-cols-2 lg:items-start">
           {MEDIA["facilities-ancillary"] && (
@@ -217,6 +227,7 @@ function FacilitiesPageContent() {
           </div>
         </div>
       </section>
+      </ScrollRevealSection>
 
       {/* Producer EOI */}
       <div id="eoi-section" className="border-t border-border">

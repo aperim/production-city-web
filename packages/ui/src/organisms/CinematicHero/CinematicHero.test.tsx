@@ -172,6 +172,25 @@ describe("isSafeHref", () => {
   });
 });
 
+describe("CinematicHero — parallax (Finding #6)", () => {
+  it("does NOT use background-attachment:fixed", () => {
+    const { container } = render(<CinematicHero {...defaultProps} />);
+    const allEls = container.querySelectorAll("*");
+    allEls.forEach((el) => {
+      const style = (el as HTMLElement).style;
+      expect(style.backgroundAttachment).not.toBe("fixed");
+    });
+  });
+
+  it("uses transform-based parallax on the image (not background-attachment)", () => {
+    render(<CinematicHero {...defaultProps} />);
+    const img = screen.getByRole("img", { name: "Cinematic studio interior" });
+    // Image should exist and be styled with object-cover (semantic img, not bg-image)
+    expect(img.tagName).toBe("IMG");
+    expect(img.className).toContain("object-cover");
+  });
+});
+
 describe("CinematicHero — light overlay contrast", () => {
   it("uses dark text on light overlay", () => {
     render(

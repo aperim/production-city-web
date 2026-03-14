@@ -72,3 +72,10 @@ export const WithAttribution: Story = {
     },
   },
 };
+
+export const WithParallax: Story = {
+  args: {
+    subtitle: "Scroll to see parallax effect (10px offset demo)",
+    parallaxOffset: 10,
+  },
+};

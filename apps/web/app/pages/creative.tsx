@@ -12,6 +12,7 @@ import {
   ServiceGrid,
   ForwardLookingDisclaimer,
   EOISection,
+  ScrollRevealSection,
 } from "@productioncity/holding-ui";
 import { I18nProvider, useTranslation } from "../i18n/context";
 import {
@@ -68,6 +69,7 @@ function CreativePageContent() {
       )}
 
       {/* Operating Principles */}
+      <ScrollRevealSection delay={0}>
       <section className="py-10" aria-labelledby="principles-heading">
         <h2 id="principles-heading" className="text-xl font-semibold text-foreground">
           {t("creative.ecosystem.principles")}
@@ -80,8 +82,10 @@ function CreativePageContent() {
           ))}
         </div>
       </section>
+      </ScrollRevealSection>
 
       {/* VFX & Digital — with media */}
+      <ScrollRevealSection delay={100}>
       <section className="py-10 border-t border-border" aria-labelledby="vfx-heading">
         <div className="grid grid-cols-1 gap-8 lg:grid-cols-2 lg:items-start">
           {MEDIA["creative-vfx"] && (
@@ -107,8 +111,10 @@ function CreativePageContent() {
           </div>
         </div>
       </section>
+      </ScrollRevealSection>
 
       {/* Post-Production — with media */}
+      <ScrollRevealSection delay={100}>
       <section className="py-10 border-t border-border" aria-labelledby="post-heading">
         <div className="grid grid-cols-1 gap-8 lg:grid-cols-2 lg:items-start">
           <div className="order-2 lg:order-1">
@@ -134,8 +140,10 @@ function CreativePageContent() {
           )}
         </div>
       </section>
+      </ScrollRevealSection>
 
       {/* Motion Capture — with media */}
+      <ScrollRevealSection delay={200}>
       <section className="py-10 border-t border-border" aria-labelledby="mocap-heading">
         <div className="grid grid-cols-1 gap-8 lg:grid-cols-2 lg:items-start">
           {MEDIA["creative-motion-capture"] && (
@@ -161,8 +169,10 @@ function CreativePageContent() {
           </div>
         </div>
       </section>
+      </ScrollRevealSection>
 
       {/* Costume & Props — with media */}
+      <ScrollRevealSection delay={100}>
       <section className="py-10 border-t border-border" aria-labelledby="costume-heading">
         <div className="grid grid-cols-1 gap-8 lg:grid-cols-2 lg:items-start">
           <div className="order-2 lg:order-1">
@@ -188,8 +198,10 @@ function CreativePageContent() {
           )}
         </div>
       </section>
+      </ScrollRevealSection>
 
       {/* Benefits */}
+      <ScrollRevealSection delay={100}>
       <section className="py-10 border-t border-border" aria-labelledby="benefits-heading">
         <h2 id="benefits-heading" className="text-xl font-semibold text-foreground">
           {t("creative.ecosystem.benefits")}
@@ -202,8 +214,10 @@ function CreativePageContent() {
           ))}
         </div>
       </section>
+      </ScrollRevealSection>
 
       {/* Creative Services — 17 disciplines grid */}
+      <ScrollRevealSection delay={100}>
       <section className="py-10 border-t border-border" aria-labelledby="services-heading">
         <ServiceGrid
           heading={t("creative.services.heading")}
@@ -228,8 +242,10 @@ function CreativePageContent() {
           ]}
         />
       </section>
+      </ScrollRevealSection>
 
       {/* Illustrative Scenarios — 4 case studies */}
+      <ScrollRevealSection delay={200}>
       <section className="py-10 border-t border-border" aria-labelledby="scenarios-heading">
         <h2 id="scenarios-heading" className="text-xl font-semibold text-foreground">
           {t("creative.caseStudies.heading")}
@@ -250,6 +266,7 @@ function CreativePageContent() {
           ))}
         </div>
       </section>
+      </ScrollRevealSection>
 
       {/* Creative EOI */}
       <div id="eoi-section" className="border-t border-border">
