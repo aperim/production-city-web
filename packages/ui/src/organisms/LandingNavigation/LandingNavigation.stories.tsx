@@ -13,9 +13,9 @@ const links = [
 
 const languages = [
   { code: "en", label: "English" },
-  { code: "ar", label: "العربية" },
-  { code: "zh", label: "中文" },
-  { code: "ja", label: "日本語" },
+  { code: "ar", label: "\u0627\u0644\u0639\u0631\u0628\u064a\u0629" },
+  { code: "zh", label: "\u4e2d\u6587" },
+  { code: "ja", label: "\u65e5\u672c\u8a9e" },
 ];
 
 const meta = {
@@ -35,6 +35,19 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {};
+
+export const Transparent: Story = {
+  args: { transparent: true },
+  decorators: [(Story) => (
+    <div style={{ minHeight: "200vh", background: "linear-gradient(to bottom, #1a1a2e, #16213e)" }}>
+      <Story />
+    </div>
+  )],
+};
+
+export const WithActivePage: Story = {
+  args: { activePath: "/facilities" },
+};
 
 export const RTL: Story = {
   args: { currentLanguage: "ar" },

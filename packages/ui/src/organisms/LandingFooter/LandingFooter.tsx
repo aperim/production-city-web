@@ -1,6 +1,7 @@
 import { cn } from "../../lib/utils";
 import { sanitizeHref } from "../../atoms/Link/Link";
 import { LanguageSwitcher, type LanguageOption } from "../../molecules/LanguageSwitcher/LanguageSwitcher";
+import { AcknowledgementOfCountry } from "../../molecules/AcknowledgementOfCountry/AcknowledgementOfCountry";
 
 /** A link in the footer. */
 export interface FooterLink {
@@ -24,8 +25,10 @@ export interface FooterLegalText {
   copyright: string;
   /** Trademark notice. */
   trademark: string;
-  /** Acknowledgement of country. */
+  /** Acknowledgement of country body text. */
   acknowledgement: string;
+  /** Acknowledgement of country heading. */
+  acknowledgementHeading?: string;
 }
 
 /** Contact information. */
@@ -67,6 +70,7 @@ export interface LandingFooterProps {
 /**
  * LandingFooter organism — site footer for all landing pages.
  *
+ * Brand accent divider at top per issue #243.
  * Simple layout, minimal height per Uncodixify.
  * Grouped navigation, contact info, legal links, language switcher.
  */
@@ -91,6 +95,13 @@ export function LandingFooter({
       )}
       role="contentinfo"
     >
+      {/* Brand accent divider at top */}
+      <div
+        data-testid="brand-accent-divider"
+        className="h-1 bg-primary"
+        aria-hidden="true"
+      />
+
       <div className="mx-auto max-w-[1400px] px-4 py-8 sm:px-6">
         {/* Brand identity */}
         {brandName && (
@@ -141,12 +152,20 @@ export function LandingFooter({
           </div>
         </div>
 
+        {/* Acknowledgement of Country — shared molecule with compact mode */}
+        <div className="mt-8 border-t border-border pt-6">
+          <AcknowledgementOfCountry
+            heading={legalText.acknowledgementHeading ?? "Acknowledgement of Country"}
+            text={legalText.acknowledgement}
+            compact
+          />
+        </div>
+
         {/* Bottom bar: legal + language */}
-        <div className="mt-8 flex flex-col gap-4 border-t border-border pt-6 sm:flex-row sm:items-center sm:justify-between">
+        <div className="mt-4 flex flex-col gap-4 border-t border-border pt-6 sm:flex-row sm:items-center sm:justify-between">
           <div className="flex flex-col gap-1">
             <p className="text-xs text-muted-foreground">{legalText.copyright}</p>
             <p className="text-xs text-muted-foreground">{legalText.trademark}</p>
-            <p className="text-xs text-muted-foreground">{legalText.acknowledgement}</p>
           </div>
           <div className="flex items-center gap-4">
             {legalLinks.map((link) => (

@@ -81,6 +81,7 @@ export function useLandingFooter(): LandingFooterProps {
       copyright: t("footer.copyright", { year }),
       trademark: t("footer.disclaimer"),
       acknowledgement: t("footer.acknowledgement"),
+      acknowledgementHeading: t("footer.acknowledgementHeading"),
     },
     contactInfo: {
       email: "troy@team.production.city",

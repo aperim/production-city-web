@@ -24,25 +24,52 @@ import { MEDIA } from "../lib/media-config";
 interface FAQEntry {
   question: string;
   answer: string;
+  /** The translated category label (for display). */
   category: string;
+  /** The internal category key (locale-independent, for filtering). */
+  categoryKey: string;
 }
 
 const FAQ_COUNT = 20;
 const MAX_SEARCH_LENGTH = 200;
 const DEBOUNCE_MS = 300;
-const CATEGORIES = ["Facilities", "Services", "Global", "Community", "Engagement"] as const;
+
+/**
+ * Category keys used as internal identifiers.
+ * These map to i18n keys like `faq.categoryFacilities`, `faq.categoryServices`, etc.
+ * FAQ entries store translated category strings; we match them via a reverse lookup.
+ */
+const CATEGORY_KEYS = ["Facilities", "Services", "Global", "Community", "Engagement"] as const;
+type CategoryKey = typeof CATEGORY_KEYS[number];
+
+/** Map from i18n translation key suffix to the category key. */
+const CATEGORY_I18N_MAP: Record<CategoryKey, TranslationKey> = {
+  Facilities: "faq.categoryFacilities" as TranslationKey,
+  Services: "faq.categoryServices" as TranslationKey,
+  Global: "faq.categoryGlobal" as TranslationKey,
+  Community: "faq.categoryCommunity" as TranslationKey,
+  Engagement: "faq.categoryEngagement" as TranslationKey,
+};
 
 /** Build the list of FAQ entries from i18n keys. */
 function useFaqEntries(): FAQEntry[] {
   const { t } = useTranslation();
 
   return useMemo(() => {
+    // Build reverse lookup: translated category label → internal key
+    const translatedToKey = new Map<string, CategoryKey>();
+    for (const key of CATEGORY_KEYS) {
+      translatedToKey.set(t(CATEGORY_I18N_MAP[key]), key);
+    }
+
     const entries: FAQEntry[] = [];
     for (let i = 1; i <= FAQ_COUNT; i++) {
+      const translatedCategory = t(`faq.c${i}` as TranslationKey);
       entries.push({
         question: t(`faq.q${i}` as TranslationKey),
         answer: t(`faq.a${i}` as TranslationKey),
-        category: t(`faq.c${i}` as TranslationKey),
+        category: translatedCategory,
+        categoryKey: translatedToKey.get(translatedCategory) ?? translatedCategory,
       });
     }
     return entries;
@@ -118,7 +145,7 @@ function FAQPageContent() {
   const filteredEntries = useMemo(() => {
     let entries = allEntries;
     if (activeCategory) {
-      entries = entries.filter((e) => e.category === activeCategory);
+      entries = entries.filter((e) => e.categoryKey === activeCategory);
     }
     if (debouncedQuery.trim()) {
       // Plain substring matching only — no regex execution (security)
@@ -132,13 +159,8 @@ function FAQPageContent() {
     return entries;
   }, [allEntries, activeCategory, debouncedQuery]);
 
-  const categoryLabels: Record<string, string> = {
-    Facilities: t("faq.categoryFacilities"),
-    Services: t("faq.categoryServices"),
-    Global: t("faq.categoryGlobal"),
-    Community: t("faq.categoryCommunity"),
-    Engagement: t("faq.categoryEngagement"),
-  };
+  const locale = useTranslation().locale;
+  const prefix = locale === "en" ? "" : `/${locale}`;
 
   return (
     <LandingPageTemplate nav={nav} footer={footer}>
@@ -192,8 +214,8 @@ function FAQPageContent() {
           aria-atomic="true"
         >
           {debouncedQuery.trim()
-            ? `${filteredEntries.length} ${filteredEntries.length === 1 ? "result" : "results"} found`
-            : `${filteredEntries.length} questions`}
+            ? t((filteredEntries.length === 1 ? "faq.resultCountSingular" : "faq.resultCountPlural") as TranslationKey, { count: filteredEntries.length })
+            : t("faq.questionCount" as TranslationKey, { count: filteredEntries.length })}
         </div>
       </div>
 
@@ -210,7 +232,7 @@ function FAQPageContent() {
         >
           {t("faq.allCategories")}
         </button>
-        {CATEGORIES.map((cat) => (
+        {CATEGORY_KEYS.map((cat) => (
           <button
             key={cat}
             aria-pressed={activeCategory === cat}
@@ -221,7 +243,7 @@ function FAQPageContent() {
                 : "border-border text-foreground hover:bg-muted"
             }`}
           >
-            {categoryLabels[cat]}
+            {t(CATEGORY_I18N_MAP[cat])}
           </button>
         ))}
       </div>
@@ -251,7 +273,7 @@ function FAQPageContent() {
           {t("faq.cantFindDescription")}
         </p>
         <a
-          href="/contact"
+          href={`${prefix}/contact`}
           className="mt-4 inline-flex items-center justify-center rounded-sm bg-primary px-5 py-2.5 text-sm font-medium text-primary-foreground transition-colors duration-150 hover:bg-primary/90"
         >
           {t("faq.cantFindCta")}

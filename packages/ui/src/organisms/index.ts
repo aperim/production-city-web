@@ -111,3 +111,4 @@ export { StatementBlock } from './StatementBlock/StatementBlock';
 export type { StatementBlockProps } from './StatementBlock/StatementBlock';
 export { BrandAccentDivider } from './BrandAccentDivider/BrandAccentDivider';
 export type { BrandAccentDividerProps } from './BrandAccentDivider/BrandAccentDivider';
+// AcknowledgementOfCountry lives in molecules (shared component with compact mode for footer)

@@ -1,7 +1,8 @@
 /**
- * Vision & Global Network page — global vision, market position, and stakeholders.
- * Hero with media, global footprint, team, investor-focused CTAs.
- * All text from i18n, all content pre-groundbreaking (future tense).
+ * Vision & Global Network page — global vision, market position, stakeholders.
+ * Hero with media, statement block, Queensland + Global sections,
+ * GlobalCampusMap, StakeholderGrid, split CTAs, forward-looking disclaimer.
+ * All text from i18n.
  */
 
 "use client";
@@ -68,18 +69,112 @@ function VisionPageContent() {
         </MediaHero>
       )}
 
-      {/* Mission Themes */}
-      <section className="py-10" aria-labelledby="themes-heading">
-        <h2 id="themes-heading" className="text-xl font-semibold text-foreground">
+      {/* The Vision — StatementBlock */}
+      <section className="py-12" aria-labelledby="vision-statement-heading">
+        <h2 id="vision-statement-heading" className="sr-only">
           {t("vision.mission.themes")}
         </h2>
-        <div className="mt-4 grid grid-cols-1 gap-3 sm:grid-cols-2">
+        <p className="text-lg font-semibold text-foreground max-w-3xl">
+          {t("vision.mission.vision")}
+        </p>
+        <div className="mt-6 grid grid-cols-1 gap-3 sm:grid-cols-2">
           {[1, 2, 3, 4, 5, 6, 7].map((n) => (
             <div key={n} className="border-l-2 border-primary pl-4 py-1">
               <p className="text-sm text-foreground">{t(`vision.mission.theme${n}` as Parameters<typeof t>[0])}</p>
             </div>
           ))}
         </div>
+      </section>
+
+      {/* Queensland First — with media */}
+      <section className="py-10 border-t border-border" aria-labelledby="queensland-heading">
+        <div className="grid grid-cols-1 gap-8 lg:grid-cols-2 lg:items-start">
+          {MEDIA["vision-queensland"] && (
+            <div className="overflow-hidden rounded-sm">
+              <img
+                src={MEDIA["vision-queensland"].lightSrc}
+                alt={MEDIA["vision-queensland"].alt}
+                width={1920}
+                height={1080}
+                loading="lazy"
+                className="h-auto w-full object-cover"
+                style={{ aspectRatio: "16 / 9" }}
+              />
+            </div>
+          )}
+          <div>
+            <h2 id="queensland-heading" className="text-xl font-semibold text-foreground">
+              {t("vision.global.queensland")}
+            </h2>
+            <p className="mt-1 text-xs text-muted-foreground">
+              {t("vision.global.queenslandStatus")}
+            </p>
+            <p className="mt-3 text-sm text-muted-foreground">
+              {t("vision.global.queenslandDesc")}
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* Global Expansion — with media */}
+      <section className="py-10 border-t border-border" aria-labelledby="global-expansion-heading">
+        <div className="grid grid-cols-1 gap-8 lg:grid-cols-2 lg:items-start">
+          <div className="order-2 lg:order-1">
+            <h2 id="global-expansion-heading" className="text-xl font-semibold text-foreground">
+              {t("vision.global.heading")}
+            </h2>
+            <p className="mt-3 text-sm text-muted-foreground">
+              {t("vision.global.operatingModel")}
+            </p>
+          </div>
+          {MEDIA["vision-global"] && (
+            <div className="order-1 overflow-hidden rounded-sm lg:order-2">
+              <img
+                src={MEDIA["vision-global"].lightSrc}
+                alt={MEDIA["vision-global"].alt}
+                width={1920}
+                height={1080}
+                loading="lazy"
+                className="h-auto w-full object-cover"
+                style={{ aspectRatio: "16 / 9" }}
+              />
+            </div>
+          )}
+        </div>
+      </section>
+
+      {/* Global Campus Map */}
+      <section className="py-10 border-t border-border" aria-labelledby="global-heading">
+        <GlobalCampusMap
+          heading={t("vision.global.heading")}
+          locations={[
+            {
+              name: t("vision.global.queensland"),
+              status: t("vision.global.queenslandStatus"),
+              description: t("vision.global.queenslandDesc"),
+            },
+            {
+              name: t("vision.global.singapore"),
+              status: t("vision.global.singaporeStatus"),
+              description: t("vision.global.singaporeDesc"),
+            },
+            {
+              name: t("vision.global.hawaii"),
+              status: t("vision.global.hawaiiStatus"),
+              description: t("vision.global.hawaiiDesc"),
+            },
+            {
+              name: t("vision.global.europe"),
+              status: t("vision.global.europeStatus"),
+              description: t("vision.global.europeDesc"),
+            },
+            {
+              name: t("vision.global.usa"),
+              status: t("vision.global.usaStatus"),
+              description: t("vision.global.usaDesc"),
+            },
+          ]}
+        />
       </section>
 
       {/* Philosophy */}
@@ -91,113 +186,6 @@ function VisionPageContent() {
           {[1, 2, 3, 4].map((n) => (
             <div key={n} className="border border-border rounded-sm p-4">
               <p className="text-sm text-foreground">{t(`vision.mission.phil${n}` as Parameters<typeof t>[0])}</p>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* Global Campus Network with media */}
-      <section className="py-10 border-t border-border" aria-labelledby="global-heading">
-        <div className="grid grid-cols-1 gap-8 lg:grid-cols-2 lg:items-start">
-          <div>
-            <GlobalCampusMap
-              heading={t("vision.global.heading")}
-              locations={[
-                {
-                  name: t("vision.global.queensland"),
-                  status: t("vision.global.queenslandStatus"),
-                  description: t("vision.global.queenslandDesc"),
-                },
-                {
-                  name: t("vision.global.singapore"),
-                  status: t("vision.global.singaporeStatus"),
-                  description: t("vision.global.singaporeDesc"),
-                },
-                {
-                  name: t("vision.global.hawaii"),
-                  status: t("vision.global.hawaiiStatus"),
-                  description: t("vision.global.hawaiiDesc"),
-                },
-                {
-                  name: t("vision.global.europe"),
-                  status: t("vision.global.europeStatus"),
-                  description: t("vision.global.europeDesc"),
-                },
-                {
-                  name: t("vision.global.usa"),
-                  status: t("vision.global.usaStatus"),
-                  description: t("vision.global.usaDesc"),
-                },
-              ]}
-            />
-          </div>
-          <div className="flex flex-col gap-4">
-            {MEDIA["vision-queensland"] && (
-              <div className="overflow-hidden rounded-sm">
-                <img
-                  src={MEDIA["vision-queensland"].lightSrc}
-                  alt={MEDIA["vision-queensland"].alt}
-                  width={1920}
-                  height={1080}
-                  loading="lazy"
-                  className="h-auto w-full object-cover"
-                  style={{ aspectRatio: "16 / 9" }}
-                />
-              </div>
-            )}
-            {MEDIA["vision-global"] && (
-              <div className="overflow-hidden rounded-sm">
-                <img
-                  src={MEDIA["vision-global"].lightSrc}
-                  alt={MEDIA["vision-global"].alt}
-                  width={1920}
-                  height={1080}
-                  loading="lazy"
-                  className="h-auto w-full object-cover"
-                  style={{ aspectRatio: "16 / 9" }}
-                />
-              </div>
-            )}
-          </div>
-        </div>
-        <p className="mt-6 text-sm text-muted-foreground">
-          {t("vision.global.operatingModel")}
-        </p>
-      </section>
-
-      {/* Market Position */}
-      <section className="py-10 border-t border-border" aria-labelledby="market-heading">
-        <h2 id="market-heading" className="text-xl font-semibold text-foreground">
-          {t("vision.market.heading")}
-        </h2>
-        <div className="mt-4 flex flex-col gap-3">
-          {[1, 2, 3].map((n) => (
-            <div key={n} className="border-l-2 border-secondary pl-4 py-1">
-              <p className="text-sm text-foreground">{t(`vision.market.context${n}` as Parameters<typeof t>[0])}</p>
-            </div>
-          ))}
-        </div>
-        <h3 className="mt-8 text-base font-semibold text-foreground">
-          {t("vision.market.accessibility")}
-        </h3>
-        <div className="mt-3 grid grid-cols-1 gap-3 sm:grid-cols-3">
-          {[1, 2, 3].map((n) => (
-            <div key={n} className="border border-border rounded-sm p-4">
-              <p className="text-sm text-foreground">{t(`vision.market.access${n}` as Parameters<typeof t>[0])}</p>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* Why Production City */}
-      <section className="py-10 border-t border-border" aria-labelledby="why-heading">
-        <h2 id="why-heading" className="text-xl font-semibold text-foreground">
-          {t("vision.why.heading")}
-        </h2>
-        <div className="mt-4 grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
-          {[1, 2, 3, 4, 5, 6].map((n) => (
-            <div key={n} className="border-l-2 border-primary pl-4 py-2">
-              <p className="text-sm text-foreground">{t(`vision.why.arg${n}` as Parameters<typeof t>[0])}</p>
             </div>
           ))}
         </div>

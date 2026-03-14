@@ -366,7 +366,8 @@
     "brand": {
       "tagline": "We make stories"
     },
-    "contactHeading": "Contact"
+    "contactHeading": "Contact",
+    "acknowledgementHeading": "国の承認"
   },
   "languageSwitcher": {
     "label": "言語",
@@ -440,7 +441,11 @@
       "usage": "Intended Usage",
       "usageFilm": "Feature film production",
       "usageTv": "Television series production",
-      "usageBroadcast": "Live television broadcasting"
+      "usageBroadcast": "Live television broadcasting",
+      "specDimensions": "45m × 45m (2,025 sqm)",
+      "specHeight": "15m to grid",
+      "specNrc": "NRC 1.05, NC 25",
+      "specLed": "Flat, Arc, Full-Surround"
     },
     "commercialStages": {
       "name": "Commercial Sound Stages",
@@ -448,7 +453,11 @@
       "usage": "Intended Usage",
       "usageTvc": "TV commercials and infomercials",
       "usageMusic": "Music video production",
-      "usageDigital": "Small-scale digital content production"
+      "usageDigital": "Small-scale digital content production",
+      "specDimensions": "10m × 10m (100 sqm)",
+      "specHeight": "15m to grid",
+      "specNrc": "NRC 1.05, NC 25",
+      "specLed": "Flat, Arc, Full-Surround"
     },
     "broadcastTheatre": {
       "name": "Broadcast Theatre",
@@ -458,14 +467,20 @@
       "cabaret": "Cabaret",
       "cameras": "Robotic Camera Positions",
       "ledSets": "LED Virtual Sets",
-      "compliance": "Broadcast Partner Compliant"
+      "compliance": "Broadcast Partner Compliant",
+      "specSeatingTheatre": "450 seats (theatre)",
+      "specSeatingCabaret": "300 seats (cabaret)",
+      "specCameras": "8 robotic camera positions",
+      "specBroadcast": "Live broadcast ready"
     },
     "controlRoom": {
       "name": "Broadcast Control Room",
       "description": "Planned central command post for live production coordination, synchronisation, and multi-platform broadcasting.",
       "management": "Centralised Production Management",
       "broadcast": "Live Broadcast Control",
-      "sync": "Advanced Synchronisation"
+      "sync": "Advanced Synchronisation",
+      "specManagement": "Centralised production management",
+      "specSync": "Multi-platform sync capability"
     },
     "ancillary": {
       "heading": "Ancillary Spaces",
@@ -491,6 +506,9 @@
       "sqft": "sqft",
       "metres": "m",
       "feet": "ft"
+    },
+    "disclaimer": {
+      "forwardLooking": "This page contains forward-looking statements about Production City's planned facilities and capabilities. These statements involve known and unknown risks, uncertainties, and other factors that may cause actual results to differ materially. Facility specifications describe design targets and are subject to change."
     }
   },
   "creative": {
@@ -564,11 +582,16 @@
       "liveBroadcast": "Hosting a Live Television Broadcast",
       "liveBroadcastDesc": "A leading television network uses Production City for a large live entertainment show, combining large soundstages, smaller stages with VR/AR, and broadcast control.",
       "modernTheatre": "Modernising Stage Theatre",
-      "modernTheatreDesc": "A contemporary theatre company stages a technologically advanced play using the broadcast theatre, LED environments, live broadcasting, and VR/AR."
+      "modernTheatreDesc": "A contemporary theatre company stages a technologically advanced play using the broadcast theatre, LED environments, live broadcasting, and VR/AR.",
+      "internationalCollab": "International Collaborative Production",
+      "internationalCollabDesc": "Multiple production teams across different Production City campuses work concurrently on a large-scale international series, demonstrating the global network's capacity for synchronised multi-location storytelling."
     },
     "eoi": {
       "heading": "Join the Creative Community",
       "context": "Register your interest as a creative professional."
+    },
+    "disclaimer": {
+      "forwardLooking": "This page contains forward-looking statements about Production City's planned creative ecosystem and services. These statements involve known and unknown risks, uncertainties, and other factors that may cause actual results to differ materially."
     }
   },
   "vision": {
@@ -740,6 +763,14 @@
     },
     "disclaimer": {
       "forwardLooking": "This page contains forward-looking statements about Production City's plans for community engagement, education, and sustainability. These statements involve known and unknown risks, uncertainties, and other factors that may cause actual results to differ materially."
+    },
+    "acknowledgement": {
+      "heading": "Acknowledgement of Country",
+      "text": "Production City acknowledges the Traditional Owners of Country throughout Australia and their continuing connection to land, waters, and community. We pay our respect to them and their cultures and to Elders past, present, and emerging."
+    },
+    "innovation": {
+      "heading": "Cross-Sector Innovation",
+      "statement": "Beyond screen production, Production City is designed to foster innovation across sports technology, robotics, machine learning, and sensor design — creating unexpected intersections that advance both storytelling and technology."
     }
   },
   "faq": {
@@ -821,7 +852,10 @@
     "searchLabel": "Search frequently asked questions",
     "cantFindHeading": "Can't find what you're looking for?",
     "cantFindDescription": "Our team is here to help with any questions about Production City.",
-    "cantFindCta": "Contact Us"
+    "cantFindCta": "Contact Us",
+    "resultCountSingular": "{count} 件の結果",
+    "resultCountPlural": "{count} 件の結果",
+    "questionCount": "{count} 件の質問"
   },
   "contact": {
     "meta": {

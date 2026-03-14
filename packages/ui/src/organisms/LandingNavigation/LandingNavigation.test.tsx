@@ -12,104 +12,127 @@ const defaultLinks = [
 
 const languages = [
   { code: "en", label: "English" },
-  { code: "ar", label: "العربية" },
+  { code: "ar", label: "\u0627\u0644\u0639\u0631\u0628\u064a\u0629" },
 ];
+
+const defaultProps = {
+  brand: "Production City" as const,
+  links: defaultLinks,
+  languages,
+  currentLanguage: "en",
+  onLanguageChange: () => {},
+};
 
 describe("LandingNavigation", () => {
   it("renders brand text", () => {
-    render(
-      <LandingNavigation
-        brand="Production City"
-        links={defaultLinks}
-        languages={languages}
-        currentLanguage="en"
-        onLanguageChange={() => {}}
-      />
-    );
+    render(<LandingNavigation {...defaultProps} />);
     expect(screen.getByText("Production City")).toBeInTheDocument();
   });
 
   it("renders all navigation links", () => {
-    render(
-      <LandingNavigation
-        brand="Production City"
-        links={defaultLinks}
-        languages={languages}
-        currentLanguage="en"
-        onLanguageChange={() => {}}
-      />
-    );
+    render(<LandingNavigation {...defaultProps} />);
     for (const link of defaultLinks) {
       expect(screen.getByText(link.label)).toBeInTheDocument();
     }
   });
 
   it("renders navigation landmark", () => {
-    render(
-      <LandingNavigation
-        brand="Production City"
-        links={defaultLinks}
-        languages={languages}
-        currentLanguage="en"
-        onLanguageChange={() => {}}
-      />
-    );
+    render(<LandingNavigation {...defaultProps} />);
     expect(screen.getByRole("navigation")).toBeInTheDocument();
   });
 
   it("renders mobile menu button", () => {
-    render(
-      <LandingNavigation
-        brand="Production City"
-        links={defaultLinks}
-        languages={languages}
-        currentLanguage="en"
-        onLanguageChange={() => {}}
-      />
-    );
+    render(<LandingNavigation {...defaultProps} />);
     expect(screen.getByRole("button", { name: /navigation menu/i })).toBeInTheDocument();
   });
 
   it("toggles mobile menu on button click", async () => {
     const user = userEvent.setup();
-    render(
-      <LandingNavigation
-        brand="Production City"
-        links={defaultLinks}
-        languages={languages}
-        currentLanguage="en"
-        onLanguageChange={() => {}}
-      />
-    );
+    render(<LandingNavigation {...defaultProps} />);
     const menuBtn = screen.getByRole("button", { name: /navigation menu/i });
     await user.click(menuBtn);
     expect(menuBtn).toHaveAttribute("aria-expanded", "true");
   });
 
   it("renders language switcher", () => {
-    render(
-      <LandingNavigation
-        brand="Production City"
-        links={defaultLinks}
-        languages={languages}
-        currentLanguage="en"
-        onLanguageChange={() => {}}
-      />
-    );
+    render(<LandingNavigation {...defaultProps} />);
     expect(screen.getByRole("button", { name: /language/i })).toBeInTheDocument();
   });
 
   it("has simple border-bottom styling per Uncodixify", () => {
-    const { container } = render(
-      <LandingNavigation
-        brand="Production City"
-        links={defaultLinks}
-        languages={languages}
-        currentLanguage="en"
-        onLanguageChange={() => {}}
-      />
-    );
+    const { container } = render(<LandingNavigation {...defaultProps} />);
     const nav = container.querySelector("nav");
     expect(nav?.getAttribute("class")).toContain("border-b");
+  });
+
+  it("marks active page link with aria-current", () => {
+    render(<LandingNavigation {...defaultProps} activePath="/facilities" />);
+    const facilityLink = screen.getAllByText("Facilities")[0]!;
+    expect(facilityLink).toHaveAttribute("aria-current", "page");
+  });
+});
+
+describe("LandingNavigation — mobile overlay (Finding #10)", () => {
+  it("mobile menu opens as full-screen overlay", async () => {
+    const user = userEvent.setup();
+    render(<LandingNavigation {...defaultProps} />);
+    const menuBtn = screen.getByRole("button", { name: /navigation menu/i });
+    await user.click(menuBtn);
+    // Should have a dialog/overlay with role
+    const overlay = screen.getByRole("dialog");
+    expect(overlay).toBeInTheDocument();
+  });
+
+  it("mobile overlay has aria-modal for focus trap", async () => {
+    const user = userEvent.setup();
+    render(<LandingNavigation {...defaultProps} />);
+    const menuBtn = screen.getByRole("button", { name: /navigation menu/i });
+    await user.click(menuBtn);
+    const overlay = screen.getByRole("dialog");
+    expect(overlay).toHaveAttribute("aria-modal", "true");
+  });
+
+  it("Escape key closes the mobile menu", async () => {
+    const user = userEvent.setup();
+    render(<LandingNavigation {...defaultProps} />);
+    const menuBtn = screen.getByRole("button", { name: /navigation menu/i });
+    await user.click(menuBtn);
+    expect(screen.getByRole("dialog")).toBeInTheDocument();
+    await user.keyboard("{Escape}");
+    expect(screen.queryByRole("dialog")).not.toBeInTheDocument();
+  });
+
+  it("focus returns to hamburger button on close", async () => {
+    const user = userEvent.setup();
+    render(<LandingNavigation {...defaultProps} />);
+    const menuBtn = screen.getByRole("button", { name: /navigation menu/i });
+    await user.click(menuBtn);
+    await user.keyboard("{Escape}");
+    expect(document.activeElement).toBe(menuBtn);
+  });
+
+  it("renders close button inside the mobile overlay", async () => {
+    const user = userEvent.setup();
+    render(<LandingNavigation {...defaultProps} />);
+    const menuBtn = screen.getByRole("button", { name: /navigation menu/i });
+    await user.click(menuBtn);
+    expect(screen.getByRole("button", { name: /close/i })).toBeInTheDocument();
+  });
+});
+
+describe("LandingNavigation — scroll behavior", () => {
+  it("accepts transparent prop for hero overlay mode", () => {
+    const { container } = render(
+      <LandingNavigation {...defaultProps} transparent />
+    );
+    const nav = container.querySelector("nav");
+    // When transparent, should not have solid bg class
+    expect(nav?.getAttribute("class")).not.toContain("bg-background");
+  });
+
+  it("defaults to solid background when transparent is not set", () => {
+    const { container } = render(<LandingNavigation {...defaultProps} />);
+    const nav = container.querySelector("nav");
+    expect(nav?.getAttribute("class")).toContain("bg-background");
   });
 });

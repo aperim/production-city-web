@@ -1,7 +1,8 @@
 /**
- * Community & Engagement page — education, sustainability, and partnerships.
+ * Community & Engagement page — education, sustainability, innovation,
+ * acknowledgement of country, and partnerships.
  * Hero with media, community sections, education/government CTAs.
- * All text from i18n, all content pre-groundbreaking (future tense).
+ * All text from i18n.
  */
 
 "use client";
@@ -11,6 +12,7 @@ import {
   MediaHero,
   ForwardLookingDisclaimer,
   EOISection,
+  AcknowledgementOfCountry,
 } from "@productioncity/holding-ui";
 import { I18nProvider, useTranslation } from "../i18n/context";
 import {
@@ -89,17 +91,6 @@ function CommunityPageContent() {
                 <p key={n} className="text-sm text-muted-foreground">{t(`community.education.rd${n}` as Parameters<typeof t>[0])}</p>
               ))}
             </div>
-
-            <h3 className="mt-6 text-base font-semibold text-foreground">
-              {t("community.education.crossSector")}
-            </h3>
-            <div className="mt-3 grid grid-cols-2 gap-2">
-              {[1, 2, 3, 4].map((n) => (
-                <div key={n} className="border border-border rounded-sm p-3">
-                  <p className="text-sm text-foreground">{t(`community.education.crossSector${n}` as Parameters<typeof t>[0])}</p>
-                </div>
-              ))}
-            </div>
           </div>
           {MEDIA["community-education"] && (
             <div className="overflow-hidden rounded-sm">
@@ -114,20 +105,6 @@ function CommunityPageContent() {
               />
             </div>
           )}
-        </div>
-      </section>
-
-      {/* Education Outcomes */}
-      <section className="py-10 border-t border-border" aria-labelledby="outcomes-heading">
-        <h2 id="outcomes-heading" className="text-base font-semibold text-foreground">
-          {t("community.education.outcomes")}
-        </h2>
-        <div className="mt-4 grid grid-cols-1 gap-3 sm:grid-cols-2">
-          {[1, 2, 3, 4].map((n) => (
-            <div key={n} className="border-l-2 border-secondary pl-4 py-1">
-              <p className="text-sm text-foreground">{t(`community.education.outcome${n}` as Parameters<typeof t>[0])}</p>
-            </div>
-          ))}
         </div>
       </section>
 
@@ -162,6 +139,23 @@ function CommunityPageContent() {
               ))}
             </div>
           </div>
+        </div>
+      </section>
+
+      {/* Innovation — StatementBlock style */}
+      <section className="py-10 border-t border-border" aria-labelledby="innovation-heading">
+        <h2 id="innovation-heading" className="text-xl font-semibold text-foreground">
+          {t("community.innovation.heading")}
+        </h2>
+        <p className="mt-3 max-w-3xl text-sm text-muted-foreground">
+          {t("community.innovation.statement")}
+        </p>
+        <div className="mt-4 grid grid-cols-2 gap-2 sm:grid-cols-4">
+          {[1, 2, 3, 4].map((n) => (
+            <div key={n} className="border border-border rounded-sm p-3">
+              <p className="text-sm text-foreground">{t(`community.education.crossSector${n}` as Parameters<typeof t>[0])}</p>
+            </div>
+          ))}
         </div>
       </section>
 
@@ -236,6 +230,12 @@ function CommunityPageContent() {
           </div>
         </div>
       </section>
+
+      {/* Acknowledgement of Country — shared molecule (Finding #22) */}
+      <AcknowledgementOfCountry
+        heading={t("community.acknowledgement.heading")}
+        text={t("community.acknowledgement.text")}
+      />
 
       {/* Community EOI */}
       <div id="eoi-section" className="border-t border-border">

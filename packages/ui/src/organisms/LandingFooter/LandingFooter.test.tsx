@@ -76,4 +76,30 @@ describe("LandingFooter", () => {
     const { container } = render(<LandingFooter {...defaultProps} className="custom" />);
     expect(container.firstElementChild?.getAttribute("class")).toContain("custom");
   });
+
+  it("renders brand accent divider at top of footer", () => {
+    const { container } = render(
+      <LandingFooter {...defaultProps} brandName="Production City" />
+    );
+    // BrandAccentDivider should render a primary-colored bar at the top
+    const divider = container.querySelector("[data-testid='brand-accent-divider']");
+    expect(divider).toBeInTheDocument();
+  });
+
+  it("renders Acknowledgement of Country text", () => {
+    render(<LandingFooter {...defaultProps} />);
+    expect(screen.getByText(/Traditional Owners/)).toBeInTheDocument();
+  });
+
+  it("renders brand name and tagline", () => {
+    render(
+      <LandingFooter
+        {...defaultProps}
+        brandName="Production City"
+        brandTagline="We Make Stories"
+      />
+    );
+    expect(screen.getByText("Production City")).toBeInTheDocument();
+    expect(screen.getByText("We Make Stories")).toBeInTheDocument();
+  });
 });

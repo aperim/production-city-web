@@ -1,7 +1,7 @@
 /**
  * Facilities page — deep-dive into Production City's planned facilities.
- * Hero with media, facility sections with images, specs, persona CTAs.
- * All text from i18n, all content pre-groundbreaking (future tense).
+ * Hero with media, facility sections with images, specs grid, case studies,
+ * forward-looking disclaimer, persona CTAs. All text from i18n.
  */
 
 "use client";
@@ -9,6 +9,7 @@
 import {
   LandingPageTemplate,
   MediaHero,
+  ForwardLookingDisclaimer,
   EOISection,
 } from "@productioncity/holding-ui";
 import { I18nProvider, useTranslation } from "../i18n/context";
@@ -29,7 +30,7 @@ export function FacilitiesPage() {
   );
 }
 
-/** Facility section with image and specs */
+/** Facility section with image and specs grid */
 function FacilitySection({
   id,
   heading,
@@ -69,21 +70,13 @@ function FacilitySection({
             {description}
           </p>
           {specs && specs.length > 0 && (
-            <div className="mt-4 border border-border rounded-sm overflow-hidden">
-              <table className="w-full text-sm">
-                <tbody>
-                  {specs.map((spec, i) => (
-                    <tr key={spec.label} className={i % 2 === 0 ? "bg-muted/30" : ""}>
-                      <td className="px-3 py-2 font-medium text-foreground whitespace-nowrap">
-                        {spec.label}
-                      </td>
-                      <td className="px-3 py-2 text-muted-foreground">
-                        {spec.value}
-                      </td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
+            <div className="mt-4 grid grid-cols-2 gap-3">
+              {specs.map((spec) => (
+                <div key={spec.label} className="border-l-2 border-primary pl-3 py-1">
+                  <p className="text-xs text-muted-foreground">{spec.label}</p>
+                  <p className="text-sm font-medium text-foreground">{spec.value}</p>
+                </div>
+              ))}
             </div>
           )}
         </div>
@@ -136,9 +129,10 @@ function FacilitiesPageContent() {
         imageSrc={MEDIA["facilities-screen-stage"]?.lightSrc}
         imageAlt={MEDIA["facilities-screen-stage"]?.alt}
         specs={[
-          { label: t("facilities.screenStages.usage"), value: t("facilities.screenStages.usageFilm") },
-          { label: t("facilities.screenStages.ledConfigs"), value: t("facilities.screenStages.ledConfigs") },
-          { label: t("facilities.screenStages.soundproofing"), value: t("facilities.screenStages.soundproofing") },
+          { label: t("facilities.screenStages.dimensions"), value: t("facilities.screenStages.specDimensions") },
+          { label: t("facilities.screenStages.height"), value: t("facilities.screenStages.specHeight") },
+          { label: t("facilities.screenStages.soundproofing"), value: t("facilities.screenStages.specNrc") },
+          { label: t("facilities.screenStages.ledConfigs"), value: t("facilities.screenStages.specLed") },
         ]}
       />
 
@@ -150,7 +144,10 @@ function FacilitiesPageContent() {
         imageSrc={MEDIA["facilities-commercial-stage"]?.lightSrc}
         imageAlt={MEDIA["facilities-commercial-stage"]?.alt}
         specs={[
-          { label: t("facilities.commercialStages.usage"), value: t("facilities.commercialStages.usageTvc") },
+          { label: t("facilities.screenStages.dimensions"), value: t("facilities.commercialStages.specDimensions") },
+          { label: t("facilities.screenStages.height"), value: t("facilities.commercialStages.specHeight") },
+          { label: t("facilities.screenStages.soundproofing"), value: t("facilities.commercialStages.specNrc") },
+          { label: t("facilities.screenStages.ledConfigs"), value: t("facilities.commercialStages.specLed") },
         ]}
       />
 
@@ -162,9 +159,10 @@ function FacilitiesPageContent() {
         imageSrc={MEDIA["facilities-broadcast-theatre"]?.lightSrc}
         imageAlt={MEDIA["facilities-broadcast-theatre"]?.alt}
         specs={[
-          { label: t("facilities.broadcastTheatre.seating"), value: `${t("facilities.broadcastTheatre.theatre")} / ${t("facilities.broadcastTheatre.cabaret")}` },
-          { label: t("facilities.broadcastTheatre.cameras"), value: t("facilities.broadcastTheatre.cameras") },
-          { label: t("facilities.broadcastTheatre.compliance"), value: t("facilities.broadcastTheatre.compliance") },
+          { label: t("facilities.broadcastTheatre.seating"), value: t("facilities.broadcastTheatre.specSeatingTheatre") },
+          { label: t("facilities.broadcastTheatre.cabaret"), value: t("facilities.broadcastTheatre.specSeatingCabaret") },
+          { label: t("facilities.broadcastTheatre.cameras"), value: t("facilities.broadcastTheatre.specCameras") },
+          { label: t("facilities.broadcastTheatre.compliance"), value: t("facilities.broadcastTheatre.specBroadcast") },
         ]}
       />
 
@@ -176,9 +174,8 @@ function FacilitiesPageContent() {
         imageSrc={MEDIA["facilities-control-room"]?.lightSrc}
         imageAlt={MEDIA["facilities-control-room"]?.alt}
         specs={[
-          { label: t("facilities.controlRoom.management"), value: t("facilities.controlRoom.management") },
-          { label: t("facilities.controlRoom.broadcast"), value: t("facilities.controlRoom.broadcast") },
-          { label: t("facilities.controlRoom.sync"), value: t("facilities.controlRoom.sync") },
+          { label: t("facilities.controlRoom.management"), value: t("facilities.controlRoom.specManagement") },
+          { label: t("facilities.controlRoom.sync"), value: t("facilities.controlRoom.specSync") },
         ]}
       />
 
@@ -232,6 +229,9 @@ function FacilitiesPageContent() {
           onSubmit={handleEoiSubmit}
         />
       </div>
+
+      {/* Forward-Looking Disclaimer */}
+      <ForwardLookingDisclaimer text={t("facilities.disclaimer.forwardLooking")} />
     </LandingPageTemplate>
   );
 }

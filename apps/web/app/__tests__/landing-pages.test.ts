@@ -80,14 +80,17 @@ describe("landing page i18n completeness", () => {
     "facilities.meta", "facilities.overview", "facilities.screenStages",
     "facilities.commercialStages", "facilities.broadcastTheatre",
     "facilities.controlRoom", "facilities.ancillary", "facilities.eoi",
+    "facilities.disclaimer",
     "creative.meta", "creative.ecosystem", "creative.services",
     "creative.caseStudies", "creative.eoi",
+    "creative.disclaimer",
     "vision.meta", "vision.mission", "vision.global", "vision.market",
     "vision.why", "vision.stakeholders", "vision.team", "vision.eoi",
     "vision.disclaimer",
     "community.meta", "community.education", "community.sustainability",
     "community.synergies", "community.alliances", "community.bridges",
     "community.eoi", "community.disclaimer",
+    "community.acknowledgement", "community.innovation",
     "faq.meta", "faq.q1", "faq.a1", "faq.c1",
     "contact.meta", "contact.info", "contact.eoi",
   ];
@@ -146,9 +149,42 @@ describe("landing page component-specific content", () => {
     expect(content).toContain("FacilitySection");
   });
 
+  it("Facilities page includes ForwardLookingDisclaimer", () => {
+    const content = readFileSync(resolve(APP_ROOT, "pages/facilities.tsx"), "utf-8");
+    expect(content).toContain("ForwardLookingDisclaimer");
+  });
+
+  it("Facilities page displays facility specs with real values", () => {
+    const content = readFileSync(resolve(APP_ROOT, "pages/facilities.tsx"), "utf-8");
+    expect(content).toContain("specDimensions");
+    expect(content).toContain("specHeight");
+    expect(content).toContain("specNrc");
+  });
+
   it("Creative page uses ServiceGrid", () => {
     const content = readFileSync(resolve(APP_ROOT, "pages/creative.tsx"), "utf-8");
     expect(content).toContain("ServiceGrid");
+  });
+
+  it("Creative page includes ForwardLookingDisclaimer", () => {
+    const content = readFileSync(resolve(APP_ROOT, "pages/creative.tsx"), "utf-8");
+    expect(content).toContain("ForwardLookingDisclaimer");
+  });
+
+  it("Creative page has 4 case studies including international collaborative", () => {
+    const content = readFileSync(resolve(APP_ROOT, "pages/creative.tsx"), "utf-8");
+    expect(content).toContain("featureFilm");
+    expect(content).toContain("liveBroadcast");
+    expect(content).toContain("internationalCollab");
+    expect(content).toContain("modernTheatre");
+  });
+
+  it("Creative page has dedicated discipline media sections", () => {
+    const content = readFileSync(resolve(APP_ROOT, "pages/creative.tsx"), "utf-8");
+    expect(content).toContain("creative-vfx");
+    expect(content).toContain("creative-post-production");
+    expect(content).toContain("creative-motion-capture");
+    expect(content).toContain("creative-costume");
   });
 
   it("Vision page uses GlobalCampusMap", () => {
@@ -189,6 +225,16 @@ describe("landing page component-specific content", () => {
   it("Community page sets defaultCategory to education", () => {
     const content = readFileSync(resolve(APP_ROOT, "pages/community.tsx"), "utf-8");
     expect(content).toContain('defaultCategory="education"');
+  });
+
+  it("Community page includes Acknowledgement of Country", () => {
+    const content = readFileSync(resolve(APP_ROOT, "pages/community.tsx"), "utf-8");
+    expect(content).toContain("acknowledgement");
+  });
+
+  it("Community page includes innovation section", () => {
+    const content = readFileSync(resolve(APP_ROOT, "pages/community.tsx"), "utf-8");
+    expect(content).toContain("innovation");
   });
 
   it("FAQ page uses FAQSection", () => {

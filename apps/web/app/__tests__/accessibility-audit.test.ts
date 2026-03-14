@@ -25,20 +25,32 @@ function readFile(relativePath: string, root = APP_ROOT): string {
 // 1.3.1 Info and Relationships — Heading hierarchy, landmark regions, form labels
 // ============================================================================
 describe("WCAG 1.3.1 — Info and Relationships", () => {
-  it("every page has exactly one h1 element", () => {
+  it("every page has exactly one h1 element (inline or via CinematicHero)", () => {
     for (const page of PAGE_FILES) {
       const content = readFile(page);
       const h1Matches = content.match(/<h1[\s>]/g);
-      expect(
-        h1Matches?.length,
-        `${page} should have exactly 1 <h1>, found ${h1Matches?.length ?? 0}`,
-      ).toBe(1);
+      const usesCinematicHero = content.includes("<CinematicHero");
+      // CinematicHero renders an h1 internally, so pages using it
+      // should NOT also have an inline h1 (would create duplicates).
+      if (usesCinematicHero) {
+        expect(
+          h1Matches?.length ?? 0,
+          `${page} uses CinematicHero (provides h1) but also has inline <h1>`,
+        ).toBe(0);
+      } else {
+        expect(
+          h1Matches?.length,
+          `${page} should have exactly 1 <h1>, found ${h1Matches?.length ?? 0}`,
+        ).toBe(1);
+      }
     }
   });
 
   it("h1 elements have id for aria-labelledby references", () => {
     for (const page of PAGE_FILES) {
       const content = readFile(page);
+      // Skip pages using CinematicHero — h1 is rendered in the component
+      if (content.includes("<CinematicHero")) continue;
       const h1Match = content.match(/<h1[^>]*>/);
       if (h1Match) {
         expect(
@@ -126,6 +138,16 @@ describe("WCAG 2.1.1 — Keyboard accessibility", () => {
     );
     expect(nav).toContain("aria-expanded={mobileOpen}");
     expect(nav).toContain('aria-label="Navigation menu"');
+  });
+
+  it("mobile overlay uses dialog role with focus trap (Finding #10)", () => {
+    const nav = readFile(
+      "organisms/LandingNavigation/LandingNavigation.tsx",
+      UI_ROOT,
+    );
+    expect(nav).toContain('role="dialog"');
+    expect(nav).toContain('aria-modal="true"');
+    expect(nav).toContain('"Escape"');
   });
 });
 
@@ -508,5 +530,14 @@ describe("Decorative content handling", () => {
   it("FAQ expand/collapse arrows are aria-hidden", () => {
     const faqItem = readFile("molecules/FAQItem/FAQItem.tsx", UI_ROOT);
     expect(faqItem).toContain('aria-hidden="true"');
+  });
+
+  it("AcknowledgementOfCountry shared component has region role (Finding #22)", () => {
+    const aoc = readFile(
+      "molecules/AcknowledgementOfCountry/AcknowledgementOfCountry.tsx",
+      UI_ROOT,
+    );
+    expect(aoc).toContain('role="region"');
+    expect(aoc).toContain("aria-labelledby");
   });
 });

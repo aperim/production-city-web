@@ -85,3 +85,7 @@ export { FAQItem } from "./FAQItem/FAQItem";
 export type { FAQItemProps } from "./FAQItem/FAQItem";
 export { EOIForm } from "./EOIForm/EOIForm";
 export type { EOIFormProps, EOIFormLabels, EOIFormData, EOICategoryOption } from "./EOIForm/EOIForm";
+
+// Issue #243: Shared Acknowledgement of Country (Finding #22)
+export { AcknowledgementOfCountry } from "./AcknowledgementOfCountry/AcknowledgementOfCountry";
+export type { AcknowledgementOfCountryProps } from "./AcknowledgementOfCountry/AcknowledgementOfCountry";
