@@ -74,16 +74,36 @@ test.describe("Accessibility — heading hierarchy", () => {
 });
 
 test.describe("Accessibility — focus visibility", () => {
-  test("interactive elements have visible focus", async ({ page }) => {
+  test("interactive elements have visible focus indicator", async ({ page }) => {
     await page.goto("/");
     // Tab to first focusable element
     await page.keyboard.press("Tab");
 
-    // Check that some element is focused
-    const focusedTag = await page.evaluate(
-      () => document.activeElement?.tagName ?? "",
-    );
-    expect(focusedTag).toBeTruthy();
+    // Verify an element is focused and it is interactive
+    const focusInfo = await page.evaluate(() => {
+      const el = document.activeElement;
+      if (!el || el === document.body) return null;
+      const style = window.getComputedStyle(el);
+      return {
+        tagName: el.tagName,
+        outline: style.outline,
+        outlineStyle: style.outlineStyle,
+        outlineWidth: style.outlineWidth,
+        boxShadow: style.boxShadow,
+      };
+    });
+
+    expect(focusInfo).not.toBeNull();
+    expect(focusInfo!.tagName).toBeTruthy();
+    // Element must have a visible focus indicator: either outline or box-shadow
+    const hasOutline =
+      focusInfo!.outlineStyle !== "none" && focusInfo!.outlineWidth !== "0px";
+    const hasBoxShadow =
+      focusInfo!.boxShadow !== "none" && focusInfo!.boxShadow !== "";
+    expect(
+      hasOutline || hasBoxShadow,
+      `Focused element <${focusInfo!.tagName}> has no visible focus indicator. outline: ${focusInfo!.outline}, box-shadow: ${focusInfo!.boxShadow}`,
+    ).toBe(true);
   });
 });
 

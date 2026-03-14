@@ -35,24 +35,34 @@ export async function assertLocale(page: Page, locale: string) {
   }
 }
 
+/** Locale display names for matching menu items. */
+const LOCALE_NAMES: Record<string, string> = {
+  en: "English",
+  zh: "中文",
+  hi: "हिन्दी",
+  es: "Español",
+  ar: "العربية",
+  fr: "Français",
+  bn: "বাংলা",
+  pt: "Português",
+  ru: "Русский",
+  ja: "日本語",
+};
+
 /** Switch language using the language switcher dropdown. */
 export async function switchLanguage(page: Page, locale: string) {
   // Open the language switcher
   const trigger = page.getByRole("button", { name: /language/i });
   await trigger.click();
 
-  // Find the menu item for the target locale
-  const menuItems = page.getByRole("menuitemradio");
-  const count = await menuItems.count();
-
-  for (let i = 0; i < count; i++) {
-    const item = menuItems.nth(i);
-    const code = await item.getAttribute("data-locale");
-    if (code === locale) {
-      await item.click();
-      break;
-    }
+  // Find and click the menu item by its display name
+  const displayName = LOCALE_NAMES[locale];
+  if (!displayName) {
+    throw new Error(`Unknown locale: ${locale}`);
   }
+
+  const menuItem = page.getByRole("menuitemradio", { name: displayName });
+  await menuItem.click();
 }
 
 /** Generate a unique email for test isolation. */

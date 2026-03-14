@@ -45,23 +45,54 @@ function loadLocale(dir: string, locale: string): Record<string, unknown> {
   ) as Record<string, unknown>;
 }
 
-/** Check for duplicate keys by comparing parsed key count with raw occurrences. */
+/**
+ * Check for duplicate keys by scanning raw JSON text.
+ * JSON.parse silently collapses duplicates, so we use a regex to
+ * extract all key strings and count occurrences per nesting depth.
+ */
 function findDuplicateKeys(filePath: string): string[] {
   const raw = readFileSync(filePath, "utf-8");
-  const parsed = JSON.parse(raw) as Record<string, unknown>;
-  const flatParsed = flattenEntries(parsed);
-  const flatKeys = flatParsed.map(([k]) => k);
-  const uniqueKeys = new Set(flatKeys);
   const duplicates: string[] = [];
+  // Track keys at each nesting depth
+  const keysByDepth = new Map<number, Map<string, number>>();
+  let depth = 0;
 
-  if (flatKeys.length !== uniqueKeys.size) {
-    const keyCounts = new Map<string, number>();
-    for (const k of flatKeys) {
-      keyCounts.set(k, (keyCounts.get(k) ?? 0) + 1);
+  // Walk character by character to track depth and extract keys
+  let i = 0;
+  while (i < raw.length) {
+    const ch = raw[i];
+    if (ch === "{") {
+      depth++;
+      if (!keysByDepth.has(depth)) keysByDepth.set(depth, new Map());
+    } else if (ch === "}") {
+      // Check for duplicates at this depth before leaving
+      const keysAtDepth = keysByDepth.get(depth);
+      if (keysAtDepth) {
+        for (const [key, count] of keysAtDepth) {
+          if (count > 1) duplicates.push(key);
+        }
+        keysAtDepth.clear();
+      }
+      depth--;
+    } else if (ch === '"') {
+      // Extract string
+      const start = i + 1;
+      i++;
+      while (i < raw.length && raw[i] !== '"') {
+        if (raw[i] === "\\") i++; // skip escaped char
+        i++;
+      }
+      const str = raw.slice(start, i);
+      // Check if this string is a key (followed by colon)
+      let j = i + 1;
+      while (j < raw.length && /\s/.test(raw[j]!)) j++;
+      if (raw[j] === ":") {
+        const keysAtDepth = keysByDepth.get(depth) ?? new Map<string, number>();
+        keysByDepth.set(depth, keysAtDepth);
+        keysAtDepth.set(str, (keysAtDepth.get(str) ?? 0) + 1);
+      }
     }
-    for (const [k, count] of keyCounts) {
-      if (count > 1) duplicates.push(k);
-    }
+    i++;
   }
 
   return duplicates;
