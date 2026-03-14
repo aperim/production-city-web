@@ -112,9 +112,9 @@ export function EOIForm({
   );
 
   return (
-    <form onSubmit={handleSubmit} className={cn("flex flex-col gap-4", className)}>
+    <form onSubmit={handleSubmit} className={cn("relative flex flex-col gap-4", className)}>
       {/* Honeypot field — invisible to users, catches bots */}
-      <div className="absolute -left-[9999px] h-0 w-0 overflow-hidden" aria-hidden="true">
+      <div className="sr-only" aria-hidden="true">
         <label htmlFor="website">Website</label>
         <input
           type="text"

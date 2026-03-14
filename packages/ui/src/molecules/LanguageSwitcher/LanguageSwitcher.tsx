@@ -167,7 +167,7 @@ export function LanguageSwitcher({
           aria-labelledby={triggerId}
           onKeyDown={handleMenuKeyDown}
           className={cn(
-            "absolute top-full z-50 mt-1 min-w-40 rounded-md border border-border bg-background py-1 shadow-sm",
+            "absolute top-full z-50 mt-1 min-w-40 rounded-md border border-border bg-background py-1 shadow-md",
             "end-0",
           )}
         >

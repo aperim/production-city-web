@@ -8,16 +8,16 @@
   --color-muted: var(--pc-color-neutral-100);
   --color-muted-foreground: var(--pc-color-neutral-500);
   --color-border: var(--pc-color-neutral-200);
-  --color-primary: var(--pc-color-neutral-900);
+  --color-primary: var(--pc-color-primary-700);
   --color-primary-foreground: var(--pc-color-neutral-50);
-  --color-secondary: var(--pc-color-neutral-100);
-  --color-secondary-foreground: var(--pc-color-neutral-900);
+  --color-secondary: var(--pc-color-secondary-700);
+  --color-secondary-foreground: var(--pc-color-neutral-50);
   --color-destructive: var(--pc-color-semantic-error-500);
   --color-destructive-foreground: var(--pc-color-neutral-50);
-  --color-accent: var(--pc-color-neutral-100);
-  --color-accent-foreground: var(--pc-color-neutral-900);
-  --color-ring: var(--pc-color-neutral-950);
-  
+  --color-accent: var(--pc-color-primary-50);
+  --color-accent-foreground: var(--pc-color-primary-900);
+  --color-ring: var(--pc-color-primary-700);
+
   --radius-sm: var(--pc-spacing-1); /* 4px */
   --radius-md: var(--pc-spacing-2); /* 8px */
   --radius-lg: var(--pc-spacing-3); /* 12px */
@@ -29,15 +29,15 @@
   --color-muted: var(--pc-color-neutral-800);
   --color-muted-foreground: var(--pc-color-neutral-400);
   --color-border: var(--pc-color-neutral-700);
-  --color-primary: var(--pc-color-neutral-50);
-  --color-primary-foreground: var(--pc-color-neutral-950);
-  --color-secondary: var(--pc-color-neutral-800);
-  --color-secondary-foreground: var(--pc-color-neutral-50);
+  --color-primary: var(--pc-color-primary-400);
+  --color-primary-foreground: var(--pc-color-primary-950);
+  --color-secondary: var(--pc-color-secondary-400);
+  --color-secondary-foreground: var(--pc-color-secondary-950);
   --color-destructive: var(--pc-color-semantic-error-500);
   --color-destructive-foreground: var(--pc-color-neutral-50);
-  --color-accent: var(--pc-color-neutral-800);
-  --color-accent-foreground: var(--pc-color-neutral-50);
-  --color-ring: var(--pc-color-neutral-300);
+  --color-accent: var(--pc-color-primary-950);
+  --color-accent-foreground: var(--pc-color-primary-300);
+  --color-ring: var(--pc-color-primary-400);
 }
 
 @theme inline {
@@ -65,7 +65,7 @@ html {
 }
 
 body {
-  font-family: var(--pc-font-family-primary);
+  font-family: var(--pc-font-font-family-primary);
   color: var(--color-foreground);
   background-color: var(--color-background);
 }
@@ -144,5 +144,5 @@ body {
 
 .guide-page__token-value {
   margin-top: 0.5rem;
-  font-family: var(--pc-font-family-mono);
+  font-family: var(--pc-font-font-family-mono);
 }

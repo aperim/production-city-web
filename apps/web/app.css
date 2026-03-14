@@ -1,5 +1,5 @@
 @import "tailwindcss";
 
 @theme {
-  --color-brand: #0f172a;
+  --color-brand: var(--pc-color-primary-700);
 }

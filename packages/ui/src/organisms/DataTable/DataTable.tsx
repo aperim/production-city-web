@@ -274,7 +274,7 @@ export function DataTable<T extends { id: string | number }>({
                 role="listbox"
                 aria-multiselectable="true"
                 aria-label="Toggle columns"
-                className="absolute end-0 z-20 mt-1 w-40 rounded-md border border-border bg-background shadow-sm py-1"
+                className="absolute end-0 z-20 mt-1 w-40 rounded-md border border-border bg-background shadow-md py-1"
               >
                 {columns.map((col) => (
                   <div
