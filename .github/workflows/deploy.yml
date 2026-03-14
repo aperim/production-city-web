@@ -89,6 +89,7 @@ jobs:
         with:
           name: build-artifacts
           path: |
+            packages/design-tokens/dist
             apps/web/dist
             apps/backend/dist
             apps/workers/dist

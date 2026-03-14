@@ -1,4 +1,4 @@
-@import "@productioncity/holding-design-tokens/tokens.css";
+@import "../../design-tokens/dist/tokens.css";
 @import "tailwindcss";
 
 /* ==========================================================================
