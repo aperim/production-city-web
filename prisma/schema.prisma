@@ -336,7 +336,7 @@ model MediaAsset {
 /// Will be JSONB in PostgreSQL; TEXT for D1 compatibility.
 model ExpressionOfInterest {
   id              String    @id @default(cuid())
-  /// general | producer | creative | partner | investor | education
+  /// general | producer | creative | partner | investor | education | employment
   category        String
   /// new | contacted | converted | archived
   status          String    @default("new")

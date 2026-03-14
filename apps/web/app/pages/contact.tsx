@@ -26,6 +26,7 @@ const VALID_CATEGORIES = new Set([
   "partner",
   "investor",
   "education",
+  "employment",
 ]);
 
 /** Read ?category= from URL search params. */

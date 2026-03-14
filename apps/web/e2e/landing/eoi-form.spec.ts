@@ -47,8 +47,8 @@ test.describe("EOI form fields", () => {
     await page.goto("/contact");
     const select = page.locator("#eoi-category");
     const options = select.locator("option");
-    // 1 empty placeholder + 6 categories = 7
-    await expect(options).toHaveCount(7);
+    // 1 empty placeholder + 7 categories = 8
+    await expect(options).toHaveCount(8);
   });
 });
 
@@ -82,6 +82,7 @@ test.describe("EOI category pre-selection", () => {
     { page: "/contact?category=education", expected: "education" },
     { page: "/contact?category=investor", expected: "investor" },
     { page: "/contact?category=partner", expected: "partner" },
+    { page: "/contact?category=employment", expected: "employment" },
   ];
 
   for (const ct of categoryTests) {

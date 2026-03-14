@@ -119,6 +119,7 @@
     "categoryPartner": "Partner",
     "categoryInvestor": "Investor",
     "categoryEducation": "Education",
+    "categoryEmployment": "Employment",
     "admin": {
       "notFound": "Expression of interest not found.",
       "updated": "Expression of interest updated.",

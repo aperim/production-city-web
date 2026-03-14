@@ -123,7 +123,8 @@
       "notFound": "Expresión de interés no encontrada.",
       "updated": "Expresión de interés actualizada.",
       "invalidStatus": "Estado inválido. Permitidos: {allowed}"
-    }
+    },
+    "categoryEmployment": "Empleo"
   },
   "locales": {
     "en": "English",

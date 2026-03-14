@@ -123,7 +123,8 @@
       "notFound": "関心表明が見つかりません。",
       "updated": "関心表明が更新されました。",
       "invalidStatus": "無効なステータスです。許可: {allowed}"
-    }
+    },
+    "categoryEmployment": "採用"
   },
   "locales": {
     "en": "English",

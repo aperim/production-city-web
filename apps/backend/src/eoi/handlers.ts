@@ -156,11 +156,11 @@ eoiApp.openapi(submitEoiRoute, async (c) => {
   const data = parsed.data;
   const locale = data.locale;
 
-  // Honeypot check — before rate limit per review findings
+  // Honeypot check — return fake 201 so bots cannot adapt
   if (data.website) {
     return c.json(
-      { error: "validation_error", message: t("eoi.honeypotRejected", undefined, locale) },
-      400,
+      { id: crypto.randomUUID(), message: t("eoi.submitted", undefined, locale) },
+      201,
     );
   }
 

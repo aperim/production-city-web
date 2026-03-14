@@ -123,7 +123,8 @@
       "notFound": "未找到意向表达。",
       "updated": "意向表达已更新。",
       "invalidStatus": "无效状态。允许的值：{allowed}"
-    }
+    },
+    "categoryEmployment": "就业"
   },
   "locales": {
     "en": "English",

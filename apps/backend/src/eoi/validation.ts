@@ -8,7 +8,7 @@ import { SUPPORTED_LOCALES } from "../i18n/index.js";
 
 /** Valid EOI categories. */
 export const EOI_CATEGORIES = [
-  "general", "producer", "creative", "partner", "investor", "education",
+  "general", "producer", "creative", "partner", "investor", "education", "employment",
 ] as const;
 
 export type EoiCategory = (typeof EOI_CATEGORIES)[number];
@@ -28,7 +28,9 @@ const ProducerMetadataSchema = z.object({
 /** Creative-specific metadata fields. */
 const CreativeMetadataSchema = z.object({
   discipline: z.string().max(200).optional(),
-  portfolioUrl: z.string().url().max(500).optional(),
+  portfolioUrl: z.string().url().max(500)
+    .refine((u) => /^https?:\/\//i.test(u), "Must be HTTP or HTTPS")
+    .optional(),
 }).strict();
 
 /** Partner-specific metadata fields. */
@@ -49,6 +51,20 @@ const EducationMetadataSchema = z.object({
   programArea: z.string().max(200).optional(),
 }).strict();
 
+/** Employment-specific metadata fields. */
+const EmploymentMetadataSchema = z.object({
+  desiredRole: z.string().min(1).max(200).transform(stripHtml).pipe(z.string().trim().min(1, "desiredRole must not be empty after sanitization")),
+  experienceLevel: z.enum([
+    "entry", "1-3years", "3-5years", "5-10years", "10plus",
+  ]).optional(),
+  availability: z.enum([
+    "immediate", "1-3months", "3-6months", "6plus-months", "flexible",
+  ]).optional(),
+  portfolioUrl: z.string().url().max(500)
+    .refine((u) => /^https?:\/\//i.test(u), "Must be HTTP or HTTPS")
+    .optional(),
+}).strict();
+
 /** General metadata (empty — no category-specific fields). */
 const GeneralMetadataSchema = z.object({}).strict();
 
@@ -60,7 +76,35 @@ export const CATEGORY_METADATA_SCHEMAS: Record<EoiCategory, z.ZodTypeAny> = {
   partner: PartnerMetadataSchema,
   investor: InvestorMetadataSchema,
   education: EducationMetadataSchema,
+  employment: EmploymentMetadataSchema,
 };
+
+/** Valid source pages (known routes, without locale prefix). */
+export const VALID_SOURCE_PAGES = [
+  "/", "/facilities", "/creative", "/vision", "/community", "/faq", "/contact",
+  "/privacy", "/terms",
+] as const;
+
+/** Locale codes that may appear as path prefix (e.g. /es/contact). */
+const LOCALE_PREFIXES = ["zh", "hi", "es", "ar", "fr", "bn", "pt", "ru", "ja"] as const;
+
+/**
+ * Check if a path is a known route, optionally with a locale prefix.
+ * Accepts: "/", "/contact", "/es/contact", "/ja/facilities"
+ */
+export function isValidSourcePage(path: string): boolean {
+  if ((VALID_SOURCE_PAGES as readonly string[]).includes(path)) return true;
+  // Check for locale-prefixed paths
+  for (const loc of LOCALE_PREFIXES) {
+    const prefix = `/${loc}`;
+    if (path === prefix || path === `${prefix}/`) return true;
+    if (path.startsWith(`${prefix}/`)) {
+      const rest = path.slice(prefix.length);
+      if ((VALID_SOURCE_PAGES as readonly string[]).includes(rest)) return true;
+    }
+  }
+  return false;
+}
 
 /** UTM parameters schema. */
 const UtmSchema = z.object({
@@ -85,8 +129,8 @@ export const EoiSubmissionPublicSchema = z.object({
   email: z.string().email().max(254),
   message: z.string().max(2000).optional(),
   metadata: z.record(z.string(), z.unknown()).optional(),
-  sourcePage: z.string().min(1).max(500),
-  sourceCategory: z.string().max(200).optional(),
+  sourcePage: z.string().min(1).max(500).refine(isValidSourcePage, "Unknown source page"),
+  sourceCategory: z.enum(EOI_CATEGORIES).optional(),
   locale: z.enum(SUPPORTED_LOCALES as unknown as readonly [string, ...string[]]).default("en"),
   utm: UtmSchema.optional(),
   consentVersion: z.string().min(1).max(50),
@@ -103,8 +147,8 @@ export const EoiSubmissionSchema = z.object({
   email: z.string().email().max(254).transform((v) => v.toLowerCase().trim()),
   message: z.string().max(2000).optional().transform((v) => v ? stripHtml(v.trim()) : v),
   metadata: z.record(z.string(), z.unknown()).optional(),
-  sourcePage: z.string().min(1).max(500),
-  sourceCategory: z.string().max(200).optional(),
+  sourcePage: z.string().min(1).max(500).refine(isValidSourcePage, "Unknown source page"),
+  sourceCategory: z.enum(EOI_CATEGORIES).optional(),
   locale: z.enum(SUPPORTED_LOCALES as unknown as readonly [string, ...string[]]).default("en"),
   utm: UtmSchema.optional(),
   consentVersion: z.string().min(1).max(50),

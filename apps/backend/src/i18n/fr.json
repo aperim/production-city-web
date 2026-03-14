@@ -123,7 +123,8 @@
       "notFound": "Expression d'intérêt non trouvée.",
       "updated": "Expression d'intérêt mise à jour.",
       "invalidStatus": "Statut invalide. Autorisés : {allowed}"
-    }
+    },
+    "categoryEmployment": "Emploi"
   },
   "locales": {
     "en": "English",

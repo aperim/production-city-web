@@ -123,7 +123,8 @@
       "notFound": "আগ্রহের প্রকাশ পাওয়া যায়নি।",
       "updated": "আগ্রহের প্রকাশ আপডেট হয়েছে।",
       "invalidStatus": "অবৈধ অবস্থা। অনুমোদিত: {allowed}"
-    }
+    },
+    "categoryEmployment": "চাকরি"
   },
   "locales": {
     "en": "English",

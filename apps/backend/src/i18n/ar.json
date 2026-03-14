@@ -123,7 +123,8 @@
       "notFound": "لم يتم العثور على التعبير عن الاهتمام.",
       "updated": "تم تحديث التعبير عن الاهتمام.",
       "invalidStatus": "الحالة غير صالحة. المسموح: {allowed}"
-    }
+    },
+    "categoryEmployment": "توظيف"
   },
   "locales": {
     "en": "English",

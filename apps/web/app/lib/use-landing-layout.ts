@@ -123,6 +123,7 @@ export function useEoiCategories(): EOICategoryOption[] {
     { value: "partner", label: t("eoi.categoryPartner") },
     { value: "investor", label: t("eoi.categoryInvestor") },
     { value: "education", label: t("eoi.categoryEducation") },
+    { value: "employment", label: t("eoi.categoryEmployment") },
   ];
 }
 

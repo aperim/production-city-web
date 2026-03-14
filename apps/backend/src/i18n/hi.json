@@ -123,7 +123,8 @@
       "notFound": "रुचि की अभिव्यक्ति नहीं मिली।",
       "updated": "रुचि की अभिव्यक्ति अपडेट की गई।",
       "invalidStatus": "अमान्य स्थिति। अनुमत: {allowed}"
-    }
+    },
+    "categoryEmployment": "रोज़गार"
   },
   "locales": {
     "en": "English",
