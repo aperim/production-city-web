@@ -102,21 +102,18 @@ test.describe("FAQ page content", () => {
     await page.goto("/faq");
     const main = page.getByRole("main");
     const faqButtons = main.locator("button[aria-expanded]");
-    // Wait for hydration: verify "All" category button responds to aria-pressed
-    // (aria-pressed is set by React state, so its presence proves hydration)
-    const group = page.getByRole("group");
-    await expect(group.getByRole("button", { name: "All" })).toHaveAttribute("aria-pressed", "true");
     await expect(faqButtons).toHaveCount(20);
 
-    // Click Facilities category filter button
+    const group = page.getByRole("group");
     const facilitiesBtn = group.getByRole("button", {
       name: "Facilities",
     });
-    await facilitiesBtn.click();
-    await expect(facilitiesBtn).toHaveAttribute("aria-pressed", "true");
 
-    // Wait for React to re-render
-    await expect(faqButtons).not.toHaveCount(20, { timeout: 5_000 });
+    // Retry click until hydration completes and event handler is attached
+    await expect(async () => {
+      await facilitiesBtn.click();
+      await expect(facilitiesBtn).toHaveAttribute("aria-pressed", "true", { timeout: 1_000 });
+    }).toPass({ timeout: 15_000 });
 
     const filteredCount = await faqButtons.count();
     expect(filteredCount).toBeLessThan(20);
@@ -127,14 +124,17 @@ test.describe("FAQ page content", () => {
     await page.goto("/faq");
     const main = page.getByRole("main");
     const faqButtons = main.locator("button[aria-expanded]");
-    // Wait for hydration: all 20 FAQ items should be present
     await expect(faqButtons).toHaveCount(20);
 
     const search = page.getByRole("searchbox");
-    await search.fill("sound stages");
 
-    // Wait for React to re-render
-    await expect(faqButtons).not.toHaveCount(20, { timeout: 5_000 });
+    // Retry until hydration completes — clear and type keystroke-by-keystroke
+    // to ensure React's onChange fires
+    await expect(async () => {
+      await search.clear();
+      await search.pressSequentially("sound stages", { delay: 50 });
+      await expect(faqButtons).not.toHaveCount(20, { timeout: 2_000 });
+    }).toPass({ timeout: 15_000 });
 
     const filteredCount = await faqButtons.count();
     expect(filteredCount).toBeLessThan(20);

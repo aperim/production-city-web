@@ -27,11 +27,14 @@ test.describe("i18n — language switcher", () => {
 test.describe("i18n — client-side locale switching", () => {
   test("language switcher opens and shows locale options", async ({ page }) => {
     await page.goto("/");
-    // Click the language switcher trigger (nav has one, footer has another — use first)
-    const trigger = page.getByRole("navigation").getByRole("button", { name: /language/i });
-    await trigger.click();
-    // Should show locale options in a menu
-    await expect(page.getByText("English").first()).toBeVisible();
+    // Use footer language switcher — nav switcher may be hidden behind hamburger menu
+    const trigger = page.getByRole("contentinfo").getByRole("button", { name: /language/i });
+
+    // Retry click until hydration completes and menu opens
+    await expect(async () => {
+      await trigger.click();
+      await expect(page.getByRole("menuitemradio", { name: "English" })).toBeVisible({ timeout: 1_000 });
+    }).toPass({ timeout: 15_000 });
   });
 });
 

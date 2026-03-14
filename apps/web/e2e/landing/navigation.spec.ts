@@ -21,6 +21,16 @@ test.describe("Landing page navigation", () => {
     const nav = page.getByRole("navigation");
     await expect(nav).toBeVisible();
 
+    // Open mobile menu if nav links are hidden (hamburger layout)
+    // Retry click until hydration completes and menu opens
+    const menuBtn = nav.getByRole("button", { name: /navigation menu/i });
+    if (await menuBtn.isVisible()) {
+      await expect(async () => {
+        await menuBtn.click();
+        await expect(nav.getByRole("link", { name: /facilities/i })).toBeVisible({ timeout: 1_000 });
+      }).toPass({ timeout: 15_000 });
+    }
+
     // Check key nav links exist
     await expect(nav.getByRole("link", { name: /facilities/i })).toBeVisible();
     await expect(nav.getByRole("link", { name: /creative/i })).toBeVisible();
@@ -29,9 +39,20 @@ test.describe("Landing page navigation", () => {
 
   test("navigation between pages works", async ({ page }) => {
     await page.goto("/");
+    const nav = page.getByRole("navigation");
+
+    // Open mobile menu if nav links are hidden (hamburger layout)
+    // Retry click until hydration completes and menu opens
+    const menuBtn = nav.getByRole("button", { name: /navigation menu/i });
+    if (await menuBtn.isVisible()) {
+      await expect(async () => {
+        await menuBtn.click();
+        await expect(nav.getByRole("link", { name: /facilities/i })).toBeVisible({ timeout: 1_000 });
+      }).toPass({ timeout: 15_000 });
+    }
 
     // Click Facilities link
-    await page.getByRole("navigation").getByRole("link", { name: /facilities/i }).click();
+    await nav.getByRole("link", { name: /facilities/i }).click();
     await expect(page).toHaveURL(/\/facilities/);
     await expect(page.getByRole("main")).toBeVisible();
   });

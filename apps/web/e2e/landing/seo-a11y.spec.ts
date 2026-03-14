@@ -114,8 +114,8 @@ test.describe("Accessibility — focus visibility", () => {
 test.describe("Accessibility — language switcher ARIA", () => {
   test("language switcher has accessible trigger", async ({ page }) => {
     await page.goto("/");
-    // Two language switchers exist (nav + footer) — scope to nav
-    const trigger = page.getByRole("navigation").getByRole("button", { name: /language/i });
+    // Nav language switcher is hidden at <1024px (lg breakpoint) — use footer switcher
+    const trigger = page.getByRole("contentinfo").getByRole("button", { name: /language/i });
     await expect(trigger).toBeVisible();
     await expect(trigger).toHaveAttribute("aria-expanded");
   });
