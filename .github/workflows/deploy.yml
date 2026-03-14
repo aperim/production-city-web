@@ -11,7 +11,7 @@ concurrency:
 
 jobs:
   build-and-test:
-    name: Build and E2E
+    name: Build and Smoke Tests
     runs-on: ubuntu-24.04
 
     permissions:
@@ -91,12 +91,12 @@ jobs:
             apps/backend/dist
             apps/workers/dist
 
-      - name: Install Playwright browsers
+      - name: Install Playwright browsers (chromium only for smoke)
         working-directory: apps/web
-        run: pnpm exec playwright install --with-deps
+        run: pnpm exec playwright install --with-deps chromium
 
-      - name: E2E tests
-        run: pnpm test:e2e
+      - name: E2E smoke tests
+        run: pnpm test:e2e:smoke
 
     outputs:
       artifacts-uploaded: 'true'

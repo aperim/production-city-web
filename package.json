@@ -8,6 +8,7 @@
     "build": "pnpm --filter './packages/design-tokens' build && pnpm --filter './packages/ui' build && pnpm --filter '!./packages/ui' --filter '!./packages/design-tokens' -r run build",
     "test": "vitest run && pnpm -r run test",
     "test:e2e": "pnpm --filter ./apps/web run test:e2e",
+    "test:e2e:smoke": "pnpm --filter ./apps/web run test:e2e:smoke",
     "lint": "pnpm -r run lint",
     "lint:media-src": "bash scripts/ci/check-no-external-media-src.sh",
     "typecheck": "pnpm -r run typecheck",

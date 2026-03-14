@@ -1,13 +1,13 @@
 import { test, expect } from "@playwright/test";
 
-test("homepage loads and returns 200", async ({ page }) => {
+test("homepage loads and returns 200 @smoke", async ({ page }) => {
   const response = await page.goto("/");
   expect(response).not.toBeNull();
   expect(response!.status()).toBe(200);
   await expect(page.locator("html")).toBeVisible();
 });
 
-test("security headers are present on response", async ({ page }) => {
+test("security headers are present on response @smoke", async ({ page }) => {
   const response = await page.goto("/");
   expect(response).not.toBeNull();
 
@@ -18,7 +18,7 @@ test("security headers are present on response", async ({ page }) => {
   expect(headers["x-frame-options"]).toBe("DENY");
 });
 
-test("robots.txt disallows all indexing", async ({ page }) => {
+test("robots.txt disallows all indexing @smoke", async ({ page }) => {
   const response = await page.goto("/robots.txt");
   expect(response).not.toBeNull();
   expect(response!.status()).toBe(200);
