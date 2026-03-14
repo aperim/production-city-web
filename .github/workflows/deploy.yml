@@ -74,7 +74,9 @@ jobs:
           DATABASE_URL: "file:./local.db"
 
       - name: Build shared packages
-        run: pnpm --filter ./packages/ui build
+        run: |
+          pnpm --filter ./packages/design-tokens build
+          pnpm --filter ./packages/ui build
 
       - name: Build all apps
         run: |
