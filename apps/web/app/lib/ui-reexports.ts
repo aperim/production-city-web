@@ -64,4 +64,5 @@ export type { BrandAccentDividerProps } from "../../../../packages/ui/src/organi
 export * from "../../../../packages/ui/src/templates";
 export * from "../../../../packages/ui/src/pages";
 export * from "../../../../packages/ui/src/foundations";
+export * from "../../../../packages/ui/src/hooks";
 export { cn } from "../../../../packages/ui/src/lib/utils";
