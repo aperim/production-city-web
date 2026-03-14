@@ -1,4 +1,4 @@
-import { readFileSync, unlinkSync } from "node:fs";
+import { readFileSync, readdirSync, unlinkSync } from "node:fs";
 import { resolve } from "node:path";
 import { describe, it, expect, beforeAll, afterAll } from "vitest";
 import { PrismaClient } from "@prisma/client";
@@ -6,13 +6,27 @@ import { PrismaBetterSqlite3 } from "@prisma/adapter-better-sqlite3";
 import Database from "better-sqlite3";
 
 const ROOT = resolve(import.meta.dirname, "..");
+const MIGRATIONS_DIR = resolve(ROOT, "prisma/migrations");
+
+/** All migration SQL files in order. */
+const MIGRATION_FILES = readdirSync(MIGRATIONS_DIR)
+  .filter((f) => f.endsWith(".sql"))
+  .sort();
+
+/** Combined SQL from all migrations (for schema validation). */
+const ALL_MIGRATION_SQL = MIGRATION_FILES.map((f) =>
+  readFileSync(resolve(MIGRATIONS_DIR, f), "utf-8"),
+).join("\n");
+
+/** RBAC migration — kept for backward-compatible assertions. */
 const MIGRATION_SQL = readFileSync(
-  resolve(ROOT, "prisma/migrations/0001_rbac_schema.sql"),
+  resolve(MIGRATIONS_DIR, "0001_rbac_schema.sql"),
   "utf-8",
 );
 
 /**
  * Helper: create a test database file and return a PrismaClient pointed at it.
+ * Applies ALL migration files in order so every table is available.
  */
 function createTestPrisma() {
   const tmpFile = `/tmp/test-rbac-${Date.now()}-${Math.random().toString(36).slice(2)}.db`;
@@ -20,7 +34,10 @@ function createTestPrisma() {
   sqliteDb.pragma("journal_mode = WAL");
   sqliteDb.pragma("foreign_keys = ON");
 
-  sqliteDb.exec(MIGRATION_SQL);
+  for (const file of MIGRATION_FILES) {
+    const sql = readFileSync(resolve(MIGRATIONS_DIR, file), "utf-8");
+    sqliteDb.exec(sql);
+  }
   sqliteDb.close();
 
   const adapter = new PrismaBetterSqlite3({ url: `file:${tmpFile}` });
@@ -55,8 +72,8 @@ describe("Schema compilation", () => {
     expect(PC).toBeDefined();
   });
 
-  it("migration SQL file exists and contains all tables", () => {
-    expect(MIGRATION_SQL.length).toBeGreaterThan(100);
+  it("migration SQL files exist and contain all tables", () => {
+    expect(ALL_MIGRATION_SQL.length).toBeGreaterThan(100);
     const expectedTables = [
       "User",
       "Role",
@@ -69,9 +86,12 @@ describe("Schema compilation", () => {
       "InvitationRole",
       "AuditLog",
       "EmailSuppression",
+      "MediaAsset",
+      "MediaPair",
+      "ExpressionOfInterest",
     ];
     for (const table of expectedTables) {
-      expect(MIGRATION_SQL).toContain(`CREATE TABLE "${table}"`);
+      expect(ALL_MIGRATION_SQL).toContain(`CREATE TABLE "${table}"`);
     }
   });
 });
