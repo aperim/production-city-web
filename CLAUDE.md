@@ -305,6 +305,40 @@ Plural forms per locale: Arabic (6), Russian (3), French/Spanish/Portuguese (2),
 
 ---
 
+## Dashboard Architecture — Registry-Driven Feature Gating
+
+The dashboard uses a **registry-driven scaffold** with 502 features, 26 sections, and 10 user roles. Features are defined in `docs/superpowers/specs/2026-03-15-dashboard-feature-registry.json` and compiled to a route manifest at `apps/backend/src/_generated/route-manifest.ts`.
+
+### Key Concepts
+
+- **Dashboard roles** are detected from `dashboard:{role}` permission markers (not DB role names)
+- **Permission resolution** supports wildcards (`hr:*`) and self-scope modifiers (`:self`, `:own`)
+- **Anti-enumeration**: unauthorized features return 404 (not 403); GET /notify returns `{subscribed: false}`
+- **Fail-closed**: RegistryProvider clears visible features on error
+
+### API Endpoints
+
+| Endpoint | Method | Description |
+|----------|--------|-------------|
+| `/v1/registry/visible` | GET | Filtered feature IDs per user role |
+| `/v1/features/:featureId/notify` | POST | Subscribe to feature notification |
+| `/v1/features/:featureId/notify` | DELETE | Unsubscribe |
+| `/v1/features/:featureId/notify` | GET | Check subscription status |
+
+### Frontend Integration
+
+- `apps/web/app/lib/registry-context.tsx` — `RegistryProvider` + `useRegistry` hook
+- `apps/web/app/lib/api-client.ts` — `getRegistryVisible()`, `subscribeToFeature()`, etc.
+- Build-time manifest intersection prevents stale features from appearing
+
+### Seed Data (dev/test)
+
+10 test users seeded at `{role}@dashboard.test` (one per dashboard role). See `prisma/seed-logic.ts` step 7.
+
+Full API documentation: `docs/api/dashboard-registry.md`
+
+---
+
 ## CI/CD — GitHub Actions Only
 
 No Cloudflare Git integration. All deploys go through GitHub Actions on merge to `main`.

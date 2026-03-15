@@ -98,6 +98,41 @@ const PERMISSIONS: ReadonlyArray<{
   { resource: "guest", action: "create", description: "Register guests" },
   { resource: "guest", action: "update", description: "Edit guest info" },
   { resource: "guest", action: "delete", description: "Remove guests" },
+  // Dashboard permissions (for dashboard role detection)
+  { resource: "dashboard", action: "admin", description: "Dashboard admin role" },
+  { resource: "dashboard", action: "executive", description: "Dashboard executive role" },
+  { resource: "dashboard", action: "staff", description: "Dashboard staff role" },
+  { resource: "dashboard", action: "client", description: "Dashboard client role" },
+  { resource: "dashboard", action: "vendor", description: "Dashboard vendor role" },
+  { resource: "dashboard", action: "investor", description: "Dashboard investor role" },
+  { resource: "dashboard", action: "guest", description: "Dashboard guest role" },
+  { resource: "dashboard", action: "government", description: "Dashboard government role" },
+  { resource: "dashboard", action: "partner", description: "Dashboard partner role" },
+  { resource: "dashboard", action: "first_nations", description: "Dashboard First Nations role" },
+  // Dashboard-specific permissions
+  { resource: "hr", action: "read", description: "Read HR data" },
+  { resource: "legal", action: "read", description: "Read legal data" },
+  { resource: "company_finance", action: "read", description: "Read company finance" },
+  { resource: "productions", action: "read", description: "Read productions" },
+  { resource: "facilities", action: "read", description: "Read facilities" },
+  { resource: "facilities", action: "book", description: "Book facilities" },
+  { resource: "analytics", action: "read", description: "Read analytics" },
+  { resource: "investor", action: "read", description: "Read investor data" },
+  { resource: "events", action: "browse", description: "Browse events" },
+  { resource: "education", action: "browse", description: "Browse education" },
+  { resource: "education", action: "collaborate", description: "Collaborate on education" },
+  { resource: "workflow", action: "read", description: "Read workflow" },
+  { resource: "workflow", action: "review", description: "Review workflows" },
+  { resource: "vendors", action: "read", description: "Read vendor data" },
+  { resource: "data_rooms", action: "investor", description: "Investor data room access" },
+  { resource: "data_rooms", action: "government", description: "Government data room access" },
+  { resource: "data_rooms", action: "partner", description: "Partner data room access" },
+  { resource: "gov_policy", action: "read", description: "Read government policy" },
+  { resource: "analytics", action: "economic_impact", description: "View economic impact analytics" },
+  { resource: "partnerships", action: "read", description: "Read partnerships" },
+  { resource: "first_nations", action: "read", description: "Read First Nations data" },
+  { resource: "community", action: "read", description: "Read community data" },
+  { resource: "talent", action: "read", description: "Read talent data" },
   // Announcements permissions
   { resource: "announcement", action: "read", description: "Public read access to announcements" },
   { resource: "announcement", action: "read_admin", description: "Admin dashboard access to announcements" },
@@ -428,6 +463,202 @@ export async function seedDatabase(
       });
     }
     console.log("[SEED] Notification preferences created/verified for dev admin");
+
+    // 7. Dashboard test users — one per dashboard role (dev/test only)
+    const DASHBOARD_TEST_USERS: Array<{
+      email: string;
+      name: string;
+      dashboardRole: string;
+      /** Permissions granted via the user's seeded role. */
+      permissions: [string, string][];
+    }> = [
+      {
+        email: "admin@dashboard.test",
+        name: "Dashboard Admin",
+        dashboardRole: "admin",
+        permissions: [["dashboard", "admin"]],
+      },
+      {
+        email: "executive@dashboard.test",
+        name: "Dashboard Executive",
+        dashboardRole: "executive",
+        permissions: [
+          ["dashboard", "executive"],
+          ["hr", "read"],
+          ["legal", "read"],
+          ["company_finance", "read"],
+          ["productions", "read"],
+          ["facilities", "read"],
+          ["analytics", "read"],
+          ["investor", "read"],
+        ],
+      },
+      {
+        email: "staff@dashboard.test",
+        name: "Dashboard Staff",
+        dashboardRole: "staff",
+        permissions: [
+          ["dashboard", "staff"],
+          ["hr", "read"],
+          ["productions", "read"],
+          ["facilities", "book"],
+          ["workflow", "read"],
+          ["talent", "read"],
+        ],
+      },
+      {
+        email: "client@dashboard.test",
+        name: "Dashboard Client",
+        dashboardRole: "client",
+        permissions: [
+          ["dashboard", "client"],
+          ["productions", "read"],
+          ["facilities", "book"],
+          ["workflow", "review"],
+        ],
+      },
+      {
+        email: "vendor@dashboard.test",
+        name: "Dashboard Vendor",
+        dashboardRole: "vendor",
+        permissions: [
+          ["dashboard", "vendor"],
+          ["vendors", "read"],
+        ],
+      },
+      {
+        email: "investor@dashboard.test",
+        name: "Dashboard Investor",
+        dashboardRole: "investor",
+        permissions: [
+          ["dashboard", "investor"],
+          ["investor", "read"],
+          ["data_rooms", "investor"],
+        ],
+      },
+      {
+        email: "guest@dashboard.test",
+        name: "Dashboard Guest",
+        dashboardRole: "guest",
+        permissions: [
+          ["dashboard", "guest"],
+          ["events", "browse"],
+          ["education", "browse"],
+        ],
+      },
+      {
+        email: "government@dashboard.test",
+        name: "Dashboard Government",
+        dashboardRole: "government",
+        permissions: [
+          ["dashboard", "government"],
+          ["gov_policy", "read"],
+          ["data_rooms", "government"],
+          ["analytics", "economic_impact"],
+        ],
+      },
+      {
+        email: "partner@dashboard.test",
+        name: "Dashboard Partner",
+        dashboardRole: "partner",
+        permissions: [
+          ["dashboard", "partner"],
+          ["partnerships", "read"],
+          ["data_rooms", "partner"],
+          ["education", "collaborate"],
+        ],
+      },
+      {
+        email: "first_nations@dashboard.test",
+        name: "Dashboard First Nations",
+        dashboardRole: "first_nations",
+        permissions: [
+          ["dashboard", "first_nations"],
+          ["first_nations", "read"],
+          ["community", "read"],
+        ],
+      },
+    ];
+
+    for (const testUser of DASHBOARD_TEST_USERS) {
+      // Upsert the user
+      const dashUser = await prisma.user.upsert({
+        where: { email: testUser.email },
+        update: { status: "active", emailVerified: true },
+        create: {
+          email: testUser.email,
+          name: testUser.name,
+          status: "active",
+          emailVerified: true,
+        },
+      });
+
+      // Create a dedicated role for this dashboard user
+      const roleName = `dashboard_${testUser.dashboardRole}`;
+      const dashRole = await prisma.role.upsert({
+        where: { name: roleName },
+        update: { description: `Dashboard ${testUser.dashboardRole} role`, isSystem: true },
+        create: {
+          name: roleName,
+          description: `Dashboard ${testUser.dashboardRole} role`,
+          isSystem: true,
+        },
+      });
+
+      // Grant permissions to the role
+      for (const [resource, action] of testUser.permissions) {
+        const permId = permMap.get(`${resource}:${action}`);
+        if (!permId) {
+          console.warn(`Warning: permission ${resource}:${action} not found for dashboard role ${testUser.dashboardRole}, skipping`);
+          continue;
+        }
+        await prisma.rolePermission.upsert({
+          where: {
+            roleId_permissionId: { roleId: dashRole.id, permissionId: permId },
+          },
+          update: {},
+          create: { roleId: dashRole.id, permissionId: permId },
+        });
+      }
+
+      // Assign role to user
+      await prisma.userRole.upsert({
+        where: {
+          userId_roleId: { userId: dashUser.id, roleId: dashRole.id },
+        },
+        update: {},
+        create: { userId: dashUser.id, roleId: dashRole.id },
+      });
+    }
+    console.log("[SEED] Dashboard test users created/verified (10 roles)");
+
+    // 8. Sample feature notifications (dev/test only)
+    const SAMPLE_NOTIFICATIONS: Array<{
+      userEmail: string;
+      featureId: string;
+    }> = [
+      { userEmail: "admin@dashboard.test", featureId: "administration.users.user_management" },
+      { userEmail: "executive@dashboard.test", featureId: "home.overview.executive" },
+      { userEmail: "guest@dashboard.test", featureId: "home.overview.guest" },
+      { userEmail: "staff@dashboard.test", featureId: "home.overview.staff" },
+    ];
+
+    for (const notif of SAMPLE_NOTIFICATIONS) {
+      const notifUser = await prisma.user.findUnique({ where: { email: notif.userEmail } });
+      if (!notifUser) continue;
+
+      const existing = await prisma.featureNotification.findUnique({
+        where: {
+          userId_featureId: { userId: notifUser.id, featureId: notif.featureId },
+        },
+      });
+      if (!existing) {
+        await prisma.featureNotification.create({
+          data: { userId: notifUser.id, featureId: notif.featureId },
+        });
+      }
+    }
+    console.log("[SEED] Sample feature notifications created/verified");
   } else {
     console.log(
       `[SEED] Skipping dev admin creation — NODE_ENV=${String(nodeEnv ?? "undefined")} (only allowed in: ${allowedEnvs.join(", ")})`,

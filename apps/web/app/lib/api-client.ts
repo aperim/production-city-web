@@ -894,3 +894,44 @@ export interface RoleItem {
 export function listRoles() {
   return request<{ roles: RoleItem[] }>('GET', '/v1/admin/roles');
 }
+
+// --- Dashboard Registry API ---
+
+export interface RegistryVisibleResponse {
+  registry_version: string;
+  phase: string;
+  visible_feature_ids: string[];
+}
+
+/** Get visible dashboard features for authenticated user (GET /v1/registry/visible) */
+export function getRegistryVisible() {
+  return request<RegistryVisibleResponse>('GET', '/v1/registry/visible');
+}
+
+// --- Feature Notification API ---
+
+export interface FeatureNotificationResponse {
+  id: string;
+  featureId: string;
+  createdAt: string;
+}
+
+export interface FeatureNotificationStatus {
+  subscribed: boolean;
+  subscribedAt: string | null;
+}
+
+/** Subscribe to feature launch notification (POST /v1/features/:featureId/notify) */
+export function subscribeToFeature(featureId: string) {
+  return request<FeatureNotificationResponse>('POST', `/v1/features/${encodeURIComponent(featureId)}/notify`);
+}
+
+/** Unsubscribe from feature launch notification (DELETE /v1/features/:featureId/notify) */
+export function unsubscribeFromFeature(featureId: string) {
+  return request<void>('DELETE', `/v1/features/${encodeURIComponent(featureId)}/notify`);
+}
+
+/** Check feature notification subscription status (GET /v1/features/:featureId/notify) */
+export function getFeatureNotificationStatus(featureId: string) {
+  return request<FeatureNotificationStatus>('GET', `/v1/features/${encodeURIComponent(featureId)}/notify`);
+}
