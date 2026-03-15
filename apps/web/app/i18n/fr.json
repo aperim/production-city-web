@@ -340,7 +340,7 @@
     "privacy": {
       "title": "Politique de confidentialité",
       "effectiveDate": "Date d'entrée en vigueur : {date}",
-      "intro": "Aperim Pty Ltd (« nous ») exploite la plateforme Production City. Cette Politique de Confidentialité explique comment nous collectons, utilisons, divulguons et protégeons vos informations lorsque vous visitez notre site web ou soumettez une expression d'intérêt.",
+      "intro": "Aperim Pty Ltd (« nous ») exploite la plateforme Production City. Cette politique de confidentialité explique comment nous collectons, utilisons, divulguons et protégeons vos informations lorsque vous visitez notre site web ou soumettez une expression d'intérêt.",
       "dataCollection": {
         "title": "Informations que nous collectons",
         "description": "Lorsque vous soumettez une expression d'intérêt, nous collectons :",
@@ -354,7 +354,7 @@
         ]
       },
       "purpose": {
-        "title": "Comment nous utilisons vos informations",
+        "title": "Utilisation de vos informations",
         "description": "Nous utilisons les informations collectées pour :",
         "items": [
           "Répondre à votre expression d'intérêt",
@@ -366,17 +366,17 @@
       },
       "lawfulBasis": {
         "title": "Base juridique du traitement",
-        "consent": "Consentement : nous traitons votre expression d'intérêt sur la base de votre consentement explicite en acceptant cette politique.",
-        "legitimateInterest": "Intérêt légitime : nous envoyons des e-mails opérationnels (confirmation de soumission) sur la base de notre intérêt légitime à fournir le service demandé.",
-        "marketing": "Marketing : les communications marketing sont envoyées uniquement avec votre consentement explicite, que vous pouvez retirer à tout moment."
+        "consent": "Consentement : nous traitons votre expression d'intérêt sur la base de votre consentement explicite, indiqué par l'acceptation de cette politique de confidentialité.",
+        "legitimateInterest": "Intérêt légitime : nous envoyons des courriels opérationnels (confirmation de soumission) sur la base de notre intérêt légitime à fournir le service que vous avez demandé.",
+        "marketing": "Marketing : les communications marketing ne sont envoyées qu'avec votre consentement explicite et vous pouvez retirer votre consentement à tout moment."
       },
       "retention": {
         "title": "Conservation des données",
-        "description": "Nous conservons les données d'expression d'intérêt jusqu'à 24 mois après le dernier contact. Après cette période, les données sont anonymisées ou supprimées. Vous pouvez demander une suppression anticipée à tout moment."
+        "description": "Nous conservons les données d'expression d'intérêt pendant 24 mois maximum après le dernier point de contact. Après cette période, les données sont anonymisées ou supprimées. Vous pouvez demander une suppression anticipée à tout moment."
       },
       "thirdParties": {
         "title": "Services tiers",
-        "description": "Nous partageons vos données avec les prestataires suivants :",
+        "description": "Nous partageons vos données avec les prestataires de services suivants :",
         "items": [
           "Postmark (Wildbit LLC) : livraison d'e-mails de confirmation et marketing",
           "Cloudflare : hébergement web, CDN et services de sécurité"
@@ -545,8 +545,8 @@
       "usageDigital": "Production de contenu numérique à petite échelle",
       "specDimensions": "10m × 10m (100 sqm)",
       "specHeight": "15m to grid",
-      "specNrc": "NRC 1.05, NC 25",
-      "specLed": "Flat, Arc, Full-Surround"
+      "specNrc": "NRC 75+",
+      "specLed": "Plat, arc, immersion complète"
     },
     "broadcastTheatre": {
       "name": "Théâtre de diffusion",
@@ -560,7 +560,7 @@
       "specSeatingTheatre": "450 seats (theatre)",
       "specSeatingCabaret": "300 seats (cabaret)",
       "specCameras": "8 robotic camera positions",
-      "specBroadcast": "Live broadcast ready"
+      "specBroadcast": "Prêt pour la diffusion en direct"
     },
     "controlRoom": {
       "name": "Régie de diffusion",
@@ -568,8 +568,8 @@
       "management": "Gestion centralisée de la production",
       "broadcast": "Contrôle de diffusion en direct",
       "sync": "Synchronisation avancée",
-      "specManagement": "Centralised production management",
-      "specSync": "Multi-platform sync capability"
+      "specManagement": "Gestion de production centralisée",
+      "specSync": "Capacité de synchronisation multiplateforme"
     },
     "ancillary": {
       "heading": "Espaces annexes",

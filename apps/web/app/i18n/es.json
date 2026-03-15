@@ -545,8 +545,8 @@
       "usageDigital": "Producción de contenido digital a pequeña escala",
       "specDimensions": "10m × 10m (100 sqm)",
       "specHeight": "15m to grid",
-      "specNrc": "NRC 1.05, NC 25",
-      "specLed": "Flat, Arc, Full-Surround"
+      "specNrc": "NRC 75+",
+      "specLed": "Plano, arco, envolvente completo"
     },
     "broadcastTheatre": {
       "name": "Teatro de transmisión",
@@ -560,7 +560,7 @@
       "specSeatingTheatre": "450 seats (theatre)",
       "specSeatingCabaret": "300 seats (cabaret)",
       "specCameras": "8 robotic camera positions",
-      "specBroadcast": "Live broadcast ready"
+      "specBroadcast": "Listo para transmisión en vivo"
     },
     "controlRoom": {
       "name": "Sala de control de transmisión",
@@ -568,8 +568,8 @@
       "management": "Gestión centralizada de producción",
       "broadcast": "Control de transmisión en vivo",
       "sync": "Sincronización avanzada",
-      "specManagement": "Centralised production management",
-      "specSync": "Multi-platform sync capability"
+      "specManagement": "Gestión de producción centralizada",
+      "specSync": "Capacidad de sincronización multiplataforma"
     },
     "ancillary": {
       "heading": "Espacios auxiliares",
@@ -949,26 +949,26 @@
   "contact": {
     "meta": {
       "title": "Contacto — Production City",
-      "description": "Póngase en contacto con Production City. Registre su expresión de interés o contáctenos directamente."
+      "description": "Ponte en contacto con Production City. Registra tu expresión de interés o contáctanos directamente."
     },
-    "heading": "Contáctenos",
-    "intro": "Ya sea productor, profesional creativo, inversor, educador o simplemente interesado en Production City, nos encantaría saber de usted.",
+    "heading": "Contáctanos",
+    "intro": "Ya sea que seas productor, profesional creativo, inversionista, educador o simplemente estés interesado en Production City, nos encantaría saber de ti.",
     "info": {
       "heading": "Información de contacto",
       "email": "Correo electrónico",
       "emailAddress": "troy@team.production.city",
       "phoneAU": "Australia",
       "phoneAUNumber": "+61 2 9137 9100",
-      "phoneUS": "Estados Unidos",
+      "phoneUS": "EE. UU.",
       "phoneUSNumber": "+1 650 215 6253",
       "website": "Sitio web",
       "websiteUrl": "www.production.city"
     },
     "eoi": {
-      "heading": "Registre su interés",
-      "context": "Cuéntenos sobre usted y cómo le gustaría participar en Production City."
+      "heading": "Expresión de interés",
+      "context": "Envía una expresión de interés para contarnos cómo te gustaría participar en Production City."
     },
-    "rateLimited": "Ha enviado demasiadas solicitudes. Intente de nuevo en {seconds} segundos.",
+    "rateLimited": "Has enviado demasiadas solicitudes. Por favor, inténtalo de nuevo en {seconds} segundos.",
     "acknowledgement": {
       "heading": "Reconocimiento del territorio"
     },

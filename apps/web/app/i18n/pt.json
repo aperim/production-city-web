@@ -545,7 +545,7 @@
       "usageDigital": "Produção de conteúdo digital de pequena escala",
       "specDimensions": "10m × 10m (100 sqm)",
       "specHeight": "15m to grid",
-      "specNrc": "NRC 1.05, NC 25",
+      "specNrc": "NRC 75+",
       "specLed": "Flat, Arc, Full-Surround"
     },
     "broadcastTheatre": {
@@ -951,7 +951,7 @@
       "title": "Contato — Production City",
       "description": "Entre em contato com a Production City. Registre sua expressão de interesse ou entre em contato diretamente."
     },
-    "heading": "Entre em contato",
+    "heading": "Entre em Contato",
     "intro": "Seja você um produtor, profissional criativo, investidor, educador ou simplesmente interessado na Production City, adoraríamos ouvir de você.",
     "info": {
       "heading": "Informações de contato",
@@ -959,16 +959,16 @@
       "emailAddress": "troy@team.production.city",
       "phoneAU": "Austrália",
       "phoneAUNumber": "+61 2 9137 9100",
-      "phoneUS": "Estados Unidos",
+      "phoneUS": "EUA",
       "phoneUSNumber": "+1 650 215 6253",
       "website": "Site",
       "websiteUrl": "www.production.city"
     },
     "eoi": {
-      "heading": "Registre seu interesse",
-      "context": "Conte-nos sobre você e como gostaria de se envolver com a Production City."
+      "heading": "Expressão de interesse",
+      "context": "Envie uma expressão de interesse para nos contar como gostaria de participar da Production City."
     },
-    "rateLimited": "Você enviou muitas solicitações. Tente novamente em {seconds} segundos.",
+    "rateLimited": "Você enviou muitas solicitações. Por favor, tente novamente em {seconds} segundos.",
     "acknowledgement": {
       "heading": "Reconhecimento do Território"
     },

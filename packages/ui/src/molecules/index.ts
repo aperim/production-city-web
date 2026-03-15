@@ -73,6 +73,7 @@ export type { NotificationItemProps } from "./NotificationItem/NotificationItem"
 // Issue #142: Landing Page Molecules
 export { LanguageSwitcher } from "./LanguageSwitcher/LanguageSwitcher";
 export type { LanguageSwitcherProps, LanguageOption } from "./LanguageSwitcher/LanguageSwitcher";
+export { buildLocaleUrl } from "./LanguageSwitcher/url-utils";
 export { FacilityCard } from "./FacilityCard/FacilityCard";
 export type { FacilityCardProps, FacilitySpec } from "./FacilityCard/FacilityCard";
 export { ServiceCard } from "./ServiceCard/ServiceCard";

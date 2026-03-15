@@ -338,12 +338,12 @@
     "lastUpdated": "Последнее обновление: {date}",
     "backToHome": "Вернуться на главную",
     "privacy": {
-      "title": "Privacy Policy",
-      "effectiveDate": "Effective date: {date}",
-      "intro": "Aperim Pty Ltd (\"we\", \"us\", \"our\") operates the Production City platform. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you visit our website or submit an expression of interest.",
+      "title": "Политика конфиденциальности",
+      "effectiveDate": "Дата вступления в силу: {date}",
+      "intro": "Aperim Pty Ltd управляет платформой Production City. Настоящая политика конфиденциальности объясняет, как мы собираем, используем, раскрываем и защищаем вашу информацию при посещении нашего веб-сайта или подаче заявки о заинтересованности.",
       "dataCollection": {
-        "title": "Information We Collect",
-        "description": "When you submit an expression of interest, we collect:",
+        "title": "Информация, которую мы собираем",
+        "description": "При подаче заявки о заинтересованности мы собираем:",
         "items": [
           "Your name and email address",
           "Your selected category of interest",
@@ -354,8 +354,8 @@
         ]
       },
       "purpose": {
-        "title": "How We Use Your Information",
-        "description": "We use the information we collect to:",
+        "title": "Как мы используем вашу информацию",
+        "description": "Мы используем собранную информацию для:",
         "items": [
           "Respond to your expression of interest",
           "Send a confirmation email acknowledging your submission",
@@ -365,27 +365,27 @@
         ]
       },
       "lawfulBasis": {
-        "title": "Lawful Basis for Processing",
-        "consent": "Consent: We process your expression of interest based on your explicit consent, indicated by accepting this privacy policy.",
-        "legitimateInterest": "Legitimate interest: We send operational emails (confirmation of submission) based on our legitimate interest in providing the service you requested.",
-        "marketing": "Marketing: Marketing communications are sent only with your explicit opt-in consent and you may withdraw consent at any time."
+        "title": "Правовое основание обработки",
+        "consent": "Согласие: мы обрабатываем вашу заявку о заинтересованности на основании вашего явного согласия.",
+        "legitimateInterest": "Законный интерес: мы отправляем операционные электронные письма на основании нашего законного интереса.",
+        "marketing": "Маркетинг: маркетинговые сообщения отправляются только с вашего явного согласия."
       },
       "retention": {
-        "title": "Data Retention",
-        "description": "We retain expression of interest data for up to 24 months after the last point of contact. After this period, data is anonymised or deleted. You may request earlier deletion at any time."
+        "title": "Хранение данных",
+        "description": "Мы храним данные заявок о заинтересованности до 24 месяцев после последнего контакта."
       },
       "thirdParties": {
-        "title": "Third-Party Services",
-        "description": "We share your data with the following service providers:",
+        "title": "Сторонние сервисы",
+        "description": "Мы передаём ваши данные следующим поставщикам услуг:",
         "items": [
           "Postmark (Wildbit LLC): Email delivery for confirmation and marketing communications",
           "Cloudflare: Website hosting, CDN, and security services"
         ],
-        "note": "These providers process data on our behalf under data processing agreements. We do not sell your personal data."
+        "note": "Эти поставщики обрабатывают данные от нашего имени. Мы не продаём ваши персональные данные."
       },
       "rights": {
-        "title": "Your Rights",
-        "description": "Under applicable privacy legislation, you have the right to:",
+        "title": "Ваши права",
+        "description": "В соответствии с применимым законодательством о конфиденциальности вы имеете право:",
         "items": [
           "Access the personal data we hold about you",
           "Request correction of inaccurate data",
@@ -394,52 +394,52 @@
           "Withdraw consent for marketing communications",
           "Lodge a complaint with the relevant supervisory authority"
         ],
-        "contact": "To exercise these rights, contact us at privacy@production.city."
+        "contact": "Для реализации этих прав свяжитесь с нами по адресу privacy@production.city."
       },
       "jurisdiction": {
-        "title": "Governing Law",
-        "description": "This privacy policy is governed by the laws of New South Wales, Australia, and the Australian Privacy Act 1988."
+        "title": "Применимое право",
+        "description": "Настоящая политика конфиденциальности регулируется законодательством штата Новый Южный Уэльс, Австралия."
       },
       "changes": {
-        "title": "Changes to This Policy",
-        "description": "We may update this privacy policy from time to time. The consent version recorded with your submission refers to the version of this policy you accepted."
+        "title": "Изменения в политике",
+        "description": "Мы можем время от времени обновлять настоящую политику конфиденциальности."
       },
       "contact": {
         "title": "Contact Us",
-        "description": "For privacy inquiries, contact: privacy@production.city"
+        "description": "По вопросам конфиденциальности обращайтесь: privacy@production.city"
       }
     },
     "terms": {
-      "title": "Terms of Use",
-      "effectiveDate": "Effective date: {date}",
-      "intro": "These Terms of Use govern your access to and use of the Production City website operated by Aperim Pty Ltd.",
+      "title": "Условия использования",
+      "effectiveDate": "Дата вступления в силу: {date}",
+      "intro": "Добро пожаловать на веб-сайт Production City. Используя этот веб-сайт, вы соглашаетесь соблюдать следующие условия.",
       "usage": {
-        "title": "Use of Website",
-        "description": "You may use this website for lawful purposes only. You agree not to use this website in any way that could damage, disable, or impair the website or interfere with any other party's use."
+        "title": "Использование веб-сайта",
+        "description": "Этот веб-сайт предназначен только для информационных целей."
       },
       "ip": {
-        "title": "Intellectual Property",
-        "description": "Production City™ is a trademark of Aperim Pty Ltd. All content, design, and technology on this website are the property of Aperim Pty Ltd or its licensors and are protected by intellectual property laws."
+        "title": "Интеллектуальная собственность",
+        "description": "Всё содержимое этого веб-сайта является собственностью Aperim Pty Ltd или её лицензиаров."
       },
       "disclaimer": {
         "title": "Disclaimer",
-        "description": "Production City is in pre-launch development. All information, features, timelines, and projections are subject to change without notice. Nothing on this website constitutes a binding offer, guarantee of availability, or commitment to deliver any particular service or feature."
+        "description": "Этот веб-сайт предоставляется без каких-либо гарантий."
       },
       "forwardLooking": {
-        "title": "Forward-Looking Statements",
-        "description": "This website may contain forward-looking statements about Production City's plans, objectives, and expected development. These statements involve known and unknown risks, uncertainties, and other factors that may cause actual results to differ materially from those expressed or implied."
+        "title": "Прогнозные заявления",
+        "description": "Этот веб-сайт содержит прогнозные заявления о проекте Production City."
       },
       "liability": {
-        "title": "Limitation of Liability",
-        "description": "To the maximum extent permitted by law, Aperim Pty Ltd shall not be liable for any indirect, incidental, special, consequential, or punitive damages arising from your use of this website."
+        "title": "Ограничение ответственности",
+        "description": "Aperim Pty Ltd не несёт ответственности за любой ущерб, возникший в результате использования этого веб-сайта."
       },
       "jurisdiction": {
-        "title": "Governing Law",
-        "description": "These terms are governed by the laws of New South Wales, Australia. Any disputes shall be subject to the exclusive jurisdiction of the courts of New South Wales."
+        "title": "Юрисдикция",
+        "description": "Настоящие условия регулируются законодательством штата Новый Южный Уэльс, Австралия."
       },
       "changes": {
-        "title": "Changes to These Terms",
-        "description": "We reserve the right to modify these terms at any time. Continued use of the website after changes constitutes acceptance of the modified terms."
+        "title": "Изменение условий",
+        "description": "Мы оставляем за собой право изменять эти условия в любое время."
       }
     }
   },
@@ -472,7 +472,7 @@
       "positioning": "Production City — революционное продюсерское учреждение, объединяющее устоявшееся мастерство кино и театра с передовыми технологиями производства, включая виртуальное производство, LED-объёмы, вещательную инфраструктуру и интегрированную сервисную модель.",
       "ctaPrimary": "Зарегистрировать интерес",
       "ctaSecondary": "Изучить объекты",
-      "brand": "Production City",
+      "brand": "Production City™ — это интегрированный кампус креативных индустрий, объединяющий производственные мощности, творческие пространства и инновационные технологии.",
       "tagline2": "Где традиции встречают инновации",
       "tagline3": "Экран. Сцена. Иммерсивный опыт."
     },
@@ -545,7 +545,7 @@
       "usageDigital": "Малобюджетное цифровое производство",
       "specDimensions": "10 м × 10 м (100 кв. м)",
       "specHeight": "15 м до грида",
-      "specNrc": "NRC 1,05, NC 25",
+      "specNrc": "NRC 75+",
       "specLed": "Плоский, дуговой, полное окружение"
     },
     "broadcastTheatre": {
@@ -948,46 +948,46 @@
   },
   "contact": {
     "meta": {
-      "title": "Contact — Production City",
-      "description": "Get in touch with Production City. Register your expression of interest or contact us directly."
+      "title": "Контакты — Production City",
+      "description": "Свяжитесь с Production City. Зарегистрируйте свою заинтересованность или свяжитесь с нами напрямую."
     },
-    "heading": "Get in Touch",
-    "intro": "Whether you are a producer, creative professional, investor, educator, or simply interested in Production City, we would love to hear from you.",
+    "heading": "Свяжитесь с нами",
+    "intro": "Независимо от того, являетесь ли вы продюсером, творческим профессионалом, инвестором, преподавателем или просто интересуетесь Production City, мы будем рады вас услышать.",
     "info": {
-      "heading": "Contact Information",
+      "heading": "Контактная информация",
       "email": "hello@productioncity.com",
       "emailAddress": "troy@team.production.city",
       "phoneAU": "Australia",
       "phoneAUNumber": "+61 2 9137 9100",
-      "phoneUS": "United States",
+      "phoneUS": "США",
       "phoneUSNumber": "+1 650 215 6253",
       "website": "Website",
       "websiteUrl": "www.production.city"
     },
     "eoi": {
-      "heading": "Register Your Interest",
-      "context": "Tell us about yourself and how you would like to engage with Production City."
+      "heading": "Заявка о заинтересованности",
+      "context": "Подайте заявку о заинтересованности, чтобы рассказать нам, как вы хотели бы участвовать в Production City."
     },
-    "rateLimited": "You have submitted too many requests. Please try again in {seconds} seconds.",
+    "rateLimited": "Вы отправили слишком много запросов. Пожалуйста, попробуйте снова через {seconds} секунд.",
     "acknowledgement": {
-      "heading": "Acknowledgement of Country"
+      "heading": "Признание земель коренных народов"
     },
     "personaSelect": {
-      "title": "How can we help?",
-      "producer": "I am a Producer",
-      "producerDesc": "Interested in booking facilities or production services",
-      "investor": "I am an Investor",
-      "investorDesc": "Interested in investment opportunities",
-      "creative": "I am a Creative Professional",
-      "creativeDesc": "Interested in joining the creative ecosystem",
-      "partner": "I am a Technology Partner",
-      "partnerDesc": "Interested in technology partnerships",
-      "education": "I am an Educator",
-      "educationDesc": "Interested in education partnerships",
-      "employment": "I am looking for Employment",
-      "employmentDesc": "Interested in career opportunities",
-      "general": "I just want to stay informed",
-      "generalDesc": "Keep me updated on Production City progress"
+      "title": "Какой вы тип участника?",
+      "producer": "Продюсер",
+      "producerDesc": "Меня интересует использование Production City для съёмок или производства.",
+      "investor": "Инвестор",
+      "investorDesc": "Меня интересуют инвестиционные возможности в Production City.",
+      "creative": "Творческий специалист",
+      "creativeDesc": "Я творческий профессионал и хочу присоединиться к сообществу Production City.",
+      "partner": "Партнёр",
+      "partnerDesc": "Я представляю организацию, заинтересованную в партнёрстве с Production City.",
+      "education": "Образование",
+      "educationDesc": "Меня интересуют образовательные и учебные программы Production City.",
+      "employment": "Трудоустройство",
+      "employmentDesc": "Меня интересует работа в Production City.",
+      "general": "Общий вопрос",
+      "generalDesc": "У меня есть общий вопрос о Production City."
     }
   },
   "ws": {

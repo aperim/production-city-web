@@ -338,12 +338,12 @@
     "lastUpdated": "अंतिम अपडेट: {date}",
     "backToHome": "होम पर वापस जाएँ",
     "privacy": {
-      "title": "Privacy Policy",
-      "effectiveDate": "Effective date: {date}",
-      "intro": "Aperim Pty Ltd (\"we\", \"us\", \"our\") operates the Production City platform. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you visit our website or submit an expression of interest.",
+      "title": "गोपनीयता नीति",
+      "effectiveDate": "प्रभावी तिथि: {date}",
+      "intro": "Aperim Pty Ltd Production City प्लेटफ़ॉर्म का संचालन करता है। यह गोपनीयता नीति बताती है कि जब आप हमारी वेबसाइट पर जाते हैं या रुचि की अभिव्यक्ति प्रस्तुत करते हैं तो हम आपकी जानकारी कैसे एकत्र, उपयोग, प्रकट और सुरक्षित करते हैं।",
       "dataCollection": {
-        "title": "Information We Collect",
-        "description": "When you submit an expression of interest, we collect:",
+        "title": "हम कौन सी जानकारी एकत्र करते हैं",
+        "description": "जब आप रुचि की अभिव्यक्ति प्रस्तुत करते हैं, तो हम एकत्र करते हैं:",
         "items": [
           "Your name and email address",
           "Your selected category of interest",
@@ -354,8 +354,8 @@
         ]
       },
       "purpose": {
-        "title": "How We Use Your Information",
-        "description": "We use the information we collect to:",
+        "title": "हम आपकी जानकारी का उपयोग कैसे करते हैं",
+        "description": "हम एकत्र की गई जानकारी का उपयोग इसके लिए करते हैं:",
         "items": [
           "Respond to your expression of interest",
           "Send a confirmation email acknowledging your submission",
@@ -365,27 +365,27 @@
         ]
       },
       "lawfulBasis": {
-        "title": "Lawful Basis for Processing",
-        "consent": "Consent: We process your expression of interest based on your explicit consent, indicated by accepting this privacy policy.",
-        "legitimateInterest": "Legitimate interest: We send operational emails (confirmation of submission) based on our legitimate interest in providing the service you requested.",
-        "marketing": "Marketing: Marketing communications are sent only with your explicit opt-in consent and you may withdraw consent at any time."
+        "title": "प्रसंस्करण का वैध आधार",
+        "consent": "सहमति: हम आपकी स्पष्ट सहमति के आधार पर आपकी रुचि की अभिव्यक्ति को संसाधित करते हैं, जो इस गोपनीयता नीति को स्वीकार करने से प्रकट होती है।",
+        "legitimateInterest": "वैध हित: हम आपके द्वारा अनुरोधित सेवा प्रदान करने में हमारे वैध हित के आधार पर परिचालन ईमेल भेजते हैं।",
+        "marketing": "विपणन: विपणन संचार केवल आपकी स्पष्ट सहमति से भेजे जाते हैं और आप किसी भी समय सहमति वापस ले सकते हैं।"
       },
       "retention": {
-        "title": "Data Retention",
-        "description": "We retain expression of interest data for up to 24 months after the last point of contact. After this period, data is anonymised or deleted. You may request earlier deletion at any time."
+        "title": "डेटा प्रतिधारण",
+        "description": "हम अंतिम संपर्क बिंदु के बाद 24 महीने तक रुचि की अभिव्यक्ति डेटा को बनाए रखते हैं। इस अवधि के बाद, डेटा को अनामित या हटा दिया जाता है।"
       },
       "thirdParties": {
-        "title": "Third-Party Services",
-        "description": "We share your data with the following service providers:",
+        "title": "तृतीय-पक्ष सेवाएँ",
+        "description": "हम निम्नलिखित सेवा प्रदाताओं के साथ आपका डेटा साझा करते हैं:",
         "items": [
           "Postmark (Wildbit LLC): Email delivery for confirmation and marketing communications",
           "Cloudflare: Website hosting, CDN, and security services"
         ],
-        "note": "These providers process data on our behalf under data processing agreements. We do not sell your personal data."
+        "note": "ये प्रदाता डेटा प्रसंस्करण समझौतों के तहत हमारी ओर से डेटा संसाधित करते हैं। हम आपका व्यक्तिगत डेटा नहीं बेचते।"
       },
       "rights": {
-        "title": "Your Rights",
-        "description": "Under applicable privacy legislation, you have the right to:",
+        "title": "आपके अधिकार",
+        "description": "लागू गोपनीयता कानून के तहत, आपके पास निम्नलिखित अधिकार हैं:",
         "items": [
           "Access the personal data we hold about you",
           "Request correction of inaccurate data",
@@ -394,52 +394,52 @@
           "Withdraw consent for marketing communications",
           "Lodge a complaint with the relevant supervisory authority"
         ],
-        "contact": "To exercise these rights, contact us at privacy@production.city."
+        "contact": "इन अधिकारों का प्रयोग करने के लिए, privacy@production.city पर हमसे संपर्क करें।"
       },
       "jurisdiction": {
-        "title": "Governing Law",
-        "description": "This privacy policy is governed by the laws of New South Wales, Australia, and the Australian Privacy Act 1988."
+        "title": "शासी कानून",
+        "description": "यह गोपनीयता नीति ऑस्ट्रेलिया के न्यू साउथ वेल्स के कानूनों और ऑस्ट्रेलियाई गोपनीयता अधिनियम 1988 द्वारा शासित है।"
       },
       "changes": {
-        "title": "Changes to This Policy",
-        "description": "We may update this privacy policy from time to time. The consent version recorded with your submission refers to the version of this policy you accepted."
+        "title": "नीति में परिवर्तन",
+        "description": "हम समय-समय पर इस गोपनीयता नीति को अपडेट कर सकते हैं।"
       },
       "contact": {
         "title": "Contact Us",
-        "description": "For privacy inquiries, contact: privacy@production.city"
+        "description": "गोपनीयता संबंधी पूछताछ के लिए संपर्क करें: privacy@production.city"
       }
     },
     "terms": {
-      "title": "Terms of Use",
-      "effectiveDate": "Effective date: {date}",
-      "intro": "These Terms of Use govern your access to and use of the Production City website operated by Aperim Pty Ltd.",
+      "title": "उपयोग की शर्तें",
+      "effectiveDate": "प्रभावी तिथि: {date}",
+      "intro": "Production City वेबसाइट पर आपका स्वागत है। इस वेबसाइट का उपयोग करके, आप निम्नलिखित नियमों और शर्तों का पालन करने के लिए सहमत होते हैं।",
       "usage": {
-        "title": "Use of Website",
-        "description": "You may use this website for lawful purposes only. You agree not to use this website in any way that could damage, disable, or impair the website or interfere with any other party's use."
+        "title": "वेबसाइट का उपयोग",
+        "description": "यह वेबसाइट केवल सूचनात्मक उद्देश्यों के लिए है।"
       },
       "ip": {
-        "title": "Intellectual Property",
-        "description": "Production City™ is a trademark of Aperim Pty Ltd. All content, design, and technology on this website are the property of Aperim Pty Ltd or its licensors and are protected by intellectual property laws."
+        "title": "बौद्धिक संपदा",
+        "description": "इस वेबसाइट पर सभी सामग्री Aperim Pty Ltd या उसके लाइसेंसधारकों की संपत्ति है।"
       },
       "disclaimer": {
         "title": "Disclaimer",
-        "description": "Production City is in pre-launch development. All information, features, timelines, and projections are subject to change without notice. Nothing on this website constitutes a binding offer, guarantee of availability, or commitment to deliver any particular service or feature."
+        "description": "यह वेबसाइट बिना किसी वारंटी के प्रदान की जाती है।"
       },
       "forwardLooking": {
-        "title": "Forward-Looking Statements",
-        "description": "This website may contain forward-looking statements about Production City's plans, objectives, and expected development. These statements involve known and unknown risks, uncertainties, and other factors that may cause actual results to differ materially from those expressed or implied."
+        "title": "भविष्योन्मुखी बयान",
+        "description": "इस वेबसाइट में Production City परियोजना के बारे में भविष्योन्मुखी बयान हैं।"
       },
       "liability": {
-        "title": "Limitation of Liability",
-        "description": "To the maximum extent permitted by law, Aperim Pty Ltd shall not be liable for any indirect, incidental, special, consequential, or punitive damages arising from your use of this website."
+        "title": "दायित्व की सीमा",
+        "description": "कानून द्वारा अनुमत अधिकतम सीमा तक, Aperim Pty Ltd इस वेबसाइट के उपयोग से उत्पन्न किसी भी नुकसान के लिए उत्तरदायी नहीं होगा।"
       },
       "jurisdiction": {
-        "title": "Governing Law",
-        "description": "These terms are governed by the laws of New South Wales, Australia. Any disputes shall be subject to the exclusive jurisdiction of the courts of New South Wales."
+        "title": "क्षेत्राधिकार",
+        "description": "ये शर्तें ऑस्ट्रेलिया के न्यू साउथ वेल्स के कानूनों द्वारा शासित हैं।"
       },
       "changes": {
-        "title": "Changes to These Terms",
-        "description": "We reserve the right to modify these terms at any time. Continued use of the website after changes constitutes acceptance of the modified terms."
+        "title": "शर्तों में परिवर्तन",
+        "description": "हम किसी भी समय इन शर्तों को संशोधित करने का अधिकार सुरक्षित रखते हैं।"
       }
     }
   },
@@ -472,7 +472,7 @@
       "positioning": "Production City एक क्रांतिकारी प्रोडक्शन संस्थान है जो स्थापित स्क्रीन और मंच कला को उन्नत प्रोडक्शन तकनीक के साथ जोड़ता है, जिसमें वर्चुअल प्रोडक्शन, LED वॉल्यूम, ब्रॉडकास्ट इन्फ्रास्ट्रक्चर और एकीकृत सेवा मॉडल शामिल हैं।",
       "ctaPrimary": "अपनी रुचि दर्ज करें",
       "ctaSecondary": "हमारी सुविधाएं देखें",
-      "brand": "Production City",
+      "brand": "Production City™ एक एकीकृत रचनात्मक उद्योग परिसर है जो उत्पादन सुविधाओं, रचनात्मक स्थानों और नवीन प्रौद्योगिकी को एक साथ लाता है।",
       "tagline2": "जहां परंपरा नवाचार से मिलती है",
       "tagline3": "स्क्रीन। मंच। अनुभवात्मक।"
     },
@@ -545,7 +545,7 @@
       "usageDigital": "छोटे पैमाने का डिजिटल कंटेंट प्रोडक्शन",
       "specDimensions": "10m × 10m (100 वर्ग मीटर)",
       "specHeight": "ग्रिड तक 15 मीटर",
-      "specNrc": "NRC 1.05, NC 25",
+      "specNrc": "NRC 75+",
       "specLed": "फ्लैट, आर्क, फुल-सराउंड"
     },
     "broadcastTheatre": {
@@ -948,46 +948,46 @@
   },
   "contact": {
     "meta": {
-      "title": "Contact — Production City",
-      "description": "Get in touch with Production City. Register your expression of interest or contact us directly."
+      "title": "संपर्क करें — Production City",
+      "description": "Production City से संपर्क करें। अपनी रुचि की अभिव्यक्ति दर्ज करें या सीधे हमसे संपर्क करें।"
     },
-    "heading": "Get in Touch",
-    "intro": "Whether you are a producer, creative professional, investor, educator, or simply interested in Production City, we would love to hear from you.",
+    "heading": "संपर्क करें",
+    "intro": "चाहे आप निर्माता हों, रचनात्मक पेशेवर हों, निवेशक हों, शिक्षक हों, या बस Production City में रुचि रखते हों, हम आपसे सुनना चाहेंगे।",
     "info": {
-      "heading": "Contact Information",
+      "heading": "संपर्क जानकारी",
       "email": "hello@productioncity.com",
       "emailAddress": "troy@team.production.city",
       "phoneAU": "Australia",
       "phoneAUNumber": "+61 2 9137 9100",
-      "phoneUS": "United States",
+      "phoneUS": "अमेरिका",
       "phoneUSNumber": "+1 650 215 6253",
       "website": "Website",
       "websiteUrl": "www.production.city"
     },
     "eoi": {
-      "heading": "Register Your Interest",
-      "context": "Tell us about yourself and how you would like to engage with Production City."
+      "heading": "रुचि की अभिव्यक्ति",
+      "context": "Production City में आप कैसे भाग लेना चाहते हैं, यह बताने के लिए रुचि की अभिव्यक्ति प्रस्तुत करें।"
     },
-    "rateLimited": "You have submitted too many requests. Please try again in {seconds} seconds.",
+    "rateLimited": "आपने बहुत अधिक अनुरोध भेजे हैं। कृपया {seconds} सेकंड बाद पुनः प्रयास करें।",
     "acknowledgement": {
-      "heading": "Acknowledgement of Country"
+      "heading": "आदिवासी भूमि स्वीकृति"
     },
     "personaSelect": {
-      "title": "How can we help?",
-      "producer": "I am a Producer",
-      "producerDesc": "Interested in booking facilities or production services",
-      "investor": "I am an Investor",
-      "investorDesc": "Interested in investment opportunities",
-      "creative": "I am a Creative Professional",
-      "creativeDesc": "Interested in joining the creative ecosystem",
-      "partner": "I am a Technology Partner",
-      "partnerDesc": "Interested in technology partnerships",
-      "education": "I am an Educator",
-      "educationDesc": "Interested in education partnerships",
-      "employment": "I am looking for Employment",
-      "employmentDesc": "Interested in career opportunities",
-      "general": "I just want to stay informed",
-      "generalDesc": "Keep me updated on Production City progress"
+      "title": "आप किस प्रकार के प्रतिभागी हैं?",
+      "producer": "निर्माता",
+      "producerDesc": "मैं Production City में शूटिंग या प्रोडक्शन के लिए रुचि रखता हूँ।",
+      "investor": "निवेशक",
+      "investorDesc": "मैं Production City में निवेश के अवसरों के बारे में जानने में रुचि रखता हूँ।",
+      "creative": "रचनात्मक पेशेवर",
+      "creativeDesc": "मैं एक रचनात्मक पेशेवर हूँ जो Production City समुदाय में शामिल होना चाहता है।",
+      "partner": "भागीदार",
+      "partnerDesc": "मैं एक संगठन का प्रतिनिधित्व करता हूँ जो Production City के साथ साझेदारी में रुचि रखता है।",
+      "education": "शिक्षा",
+      "educationDesc": "मैं Production City के शिक्षा और प्रशिक्षण कार्यक्रमों के बारे में जानने में रुचि रखता हूँ।",
+      "employment": "रोज़गार",
+      "employmentDesc": "मैं Production City में काम करने में रुचि रखता हूँ।",
+      "general": "सामान्य पूछताछ",
+      "generalDesc": "मेरे पास Production City के बारे में एक सामान्य प्रश्न है।"
     }
   },
   "ws": {

@@ -64,3 +64,7 @@ export type { SpinnerProps } from "./Spinner/Spinner";
 // Issue #272: Accessibility Atoms
 export { SkipNavLink } from "./SkipNavLink/SkipNavLink";
 export type { SkipNavLinkProps } from "./SkipNavLink/SkipNavLink";
+
+// Issue #275: i18n BidiIsolate
+export { BidiIsolate } from "./BidiIsolate/BidiIsolate";
+export type { BidiIsolateProps } from "./BidiIsolate/BidiIsolate";

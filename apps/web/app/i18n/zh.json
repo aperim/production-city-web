@@ -338,12 +338,12 @@
     "lastUpdated": "最后更新：{date}",
     "backToHome": "返回首页",
     "privacy": {
-      "title": "Privacy Policy",
-      "effectiveDate": "Effective date: {date}",
-      "intro": "Aperim Pty Ltd (\"we\", \"us\", \"our\") operates the Production City platform. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you visit our website or submit an expression of interest.",
+      "title": "隐私政策",
+      "effectiveDate": "生效日期：{date}",
+      "intro": "Aperim Pty Ltd（以下简称“我们”）运营 Production City 平台。本隐私政策说明我们在您访问我们的网站或提交意向登记时，如何收集、使用、披露和保护您的信息。",
       "dataCollection": {
-        "title": "Information We Collect",
-        "description": "When you submit an expression of interest, we collect:",
+        "title": "我们收集的信息",
+        "description": "当您提交意向登记时，我们会收集以下信息：",
         "items": [
           "Your name and email address",
           "Your selected category of interest",
@@ -354,8 +354,8 @@
         ]
       },
       "purpose": {
-        "title": "How We Use Your Information",
-        "description": "We use the information we collect to:",
+        "title": "信息使用方式",
+        "description": "我们将收集的信息用于：",
         "items": [
           "Respond to your expression of interest",
           "Send a confirmation email acknowledging your submission",
@@ -365,27 +365,27 @@
         ]
       },
       "lawfulBasis": {
-        "title": "Lawful Basis for Processing",
-        "consent": "Consent: We process your expression of interest based on your explicit consent, indicated by accepting this privacy policy.",
-        "legitimateInterest": "Legitimate interest: We send operational emails (confirmation of submission) based on our legitimate interest in providing the service you requested.",
-        "marketing": "Marketing: Marketing communications are sent only with your explicit opt-in consent and you may withdraw consent at any time."
+        "title": "处理的合法依据",
+        "consent": "同意：我们基于您的明确同意处理您的意向登记，您接受本隐私政策即表示同意。",
+        "legitimateInterest": "合法权益：我们基于提供您所请求服务的合法权益，发送运营邮件（提交确认）。",
+        "marketing": "营销：营销通讯仅在您明确选择同意后发送，您可以随时撤回同意。"
       },
       "retention": {
-        "title": "Data Retention",
-        "description": "We retain expression of interest data for up to 24 months after the last point of contact. After this period, data is anonymised or deleted. You may request earlier deletion at any time."
+        "title": "数据保留",
+        "description": "我们在最后一次联系后最多保留意向登记数据24个月。此后，数据将被匿名化或删除。您可以随时要求提前删除。"
       },
       "thirdParties": {
-        "title": "Third-Party Services",
-        "description": "We share your data with the following service providers:",
+        "title": "第三方服务",
+        "description": "我们与以下服务提供商共享您的数据：",
         "items": [
           "Postmark (Wildbit LLC): Email delivery for confirmation and marketing communications",
           "Cloudflare: Website hosting, CDN, and security services"
         ],
-        "note": "These providers process data on our behalf under data processing agreements. We do not sell your personal data."
+        "note": "这些提供商根据数据处理协议代表我们处理数据。我们不会出售您的个人数据。"
       },
       "rights": {
-        "title": "Your Rights",
-        "description": "Under applicable privacy legislation, you have the right to:",
+        "title": "您的权利",
+        "description": "根据适用的隐私法律，您有权：",
         "items": [
           "Access the personal data we hold about you",
           "Request correction of inaccurate data",
@@ -394,52 +394,52 @@
           "Withdraw consent for marketing communications",
           "Lodge a complaint with the relevant supervisory authority"
         ],
-        "contact": "To exercise these rights, contact us at privacy@production.city."
+        "contact": "如需行使这些权利，请通过 privacy@production.city 联系我们。"
       },
       "jurisdiction": {
-        "title": "Governing Law",
-        "description": "This privacy policy is governed by the laws of New South Wales, Australia, and the Australian Privacy Act 1988."
+        "title": "适用法律",
+        "description": "本隐私政策受澳大利亚新南威尔士州法律及1988年《澳大利亚隐私法》管辖。"
       },
       "changes": {
-        "title": "Changes to This Policy",
-        "description": "We may update this privacy policy from time to time. The consent version recorded with your submission refers to the version of this policy you accepted."
+        "title": "政策变更",
+        "description": "我们可能不时更新本隐私政策。您提交时记录的同意版本即为您接受的政策版本。"
       },
       "contact": {
         "title": "Contact Us",
-        "description": "For privacy inquiries, contact: privacy@production.city"
+        "description": "如有隐私相关咨询，请联系：privacy@production.city"
       }
     },
     "terms": {
-      "title": "Terms of Use",
-      "effectiveDate": "Effective date: {date}",
-      "intro": "These Terms of Use govern your access to and use of the Production City website operated by Aperim Pty Ltd.",
+      "title": "使用条款",
+      "effectiveDate": "生效日期：{date}",
+      "intro": "欢迎访问 Production City 网站。使用本网站即表示您同意遵守以下条款和条件。",
       "usage": {
-        "title": "Use of Website",
-        "description": "You may use this website for lawful purposes only. You agree not to use this website in any way that could damage, disable, or impair the website or interfere with any other party's use."
+        "title": "网站使用",
+        "description": "本网站仅供信息用途。本网站上的内容，包括关于未来设施和服务的描述，代表我们当前的计划和意向，可能会发生变化。"
       },
       "ip": {
-        "title": "Intellectual Property",
-        "description": "Production City™ is a trademark of Aperim Pty Ltd. All content, design, and technology on this website are the property of Aperim Pty Ltd or its licensors and are protected by intellectual property laws."
+        "title": "知识产权",
+        "description": "本网站上的所有内容，包括文字、图形、标识、图像和软件，均为 Aperim Pty Ltd 或其许可方的财产，受版权和知识产权法保护。"
       },
       "disclaimer": {
         "title": "Disclaimer",
-        "description": "Production City is in pre-launch development. All information, features, timelines, and projections are subject to change without notice. Nothing on this website constitutes a binding offer, guarantee of availability, or commitment to deliver any particular service or feature."
+        "description": "本网站按“原样”提供，不作任何明示或暗示的保证。我们不保证网站不间断、无错误或无有害组件。"
       },
       "forwardLooking": {
-        "title": "Forward-Looking Statements",
-        "description": "This website may contain forward-looking statements about Production City's plans, objectives, and expected development. These statements involve known and unknown risks, uncertainties, and other factors that may cause actual results to differ materially from those expressed or implied."
+        "title": "前瞻性声明",
+        "description": "本网站包含关于 Production City 项目的前瞻性声明。这些声明基于当前的期望和假设，实际结果可能因各种因素而有所不同。"
       },
       "liability": {
-        "title": "Limitation of Liability",
-        "description": "To the maximum extent permitted by law, Aperim Pty Ltd shall not be liable for any indirect, incidental, special, consequential, or punitive damages arising from your use of this website."
+        "title": "责任限制",
+        "description": "在法律允许的最大范围内，Aperim Pty Ltd 对因使用本网站或依赖本网站内容而产生的任何直接、间接、附带、特殊或后果性损害不承担责任。"
       },
       "jurisdiction": {
-        "title": "Governing Law",
-        "description": "These terms are governed by the laws of New South Wales, Australia. Any disputes shall be subject to the exclusive jurisdiction of the courts of New South Wales."
+        "title": "管辖权",
+        "description": "本条款受澳大利亚新南威尔士州法律管辖，并按其解释。您同意接受新南威尔士州法院的专属管辖权。"
       },
       "changes": {
-        "title": "Changes to These Terms",
-        "description": "We reserve the right to modify these terms at any time. Continued use of the website after changes constitutes acceptance of the modified terms."
+        "title": "条款变更",
+        "description": "我们保留随时修改这些条款的权利。变更将在网站上公布后生效。您继续使用网站即表示接受更新后的条款。"
       }
     }
   },
@@ -472,7 +472,7 @@
       "positioning": "Production City 是一家革命性的制作机构，将成熟的影视和舞台工艺与先进的制作技术相结合，包括虚拟制作、LED 体积幕墙、广播基础设施和集成服务模式。",
       "ctaPrimary": "注册您的兴趣",
       "ctaSecondary": "探索我们的设施",
-      "brand": "Production City",
+      "brand": "Production City™ 是一个综合性创意产业园区，汇集制作设施、创意空间和创新技术。",
       "tagline2": "传统与创新的交汇",
       "tagline3": "影视。舞台。沉浸体验。"
     },
@@ -545,7 +545,7 @@
       "usageDigital": "小型数字内容制作",
       "specDimensions": "10米 × 10米（100平方米）",
       "specHeight": "到顶架15米",
-      "specNrc": "NRC 1.05, NC 25",
+      "specNrc": "NRC 75+",
       "specLed": "平面、弧形、全环绕"
     },
     "broadcastTheatre": {
@@ -948,46 +948,46 @@
   },
   "contact": {
     "meta": {
-      "title": "Contact — Production City",
-      "description": "Get in touch with Production City. Register your expression of interest or contact us directly."
+      "title": "联系我们 — Production City",
+      "description": "联系 Production City。注册您的意向或直接与我们联系。"
     },
-    "heading": "Get in Touch",
-    "intro": "Whether you are a producer, creative professional, investor, educator, or simply interested in Production City, we would love to hear from you.",
+    "heading": "联系我们",
+    "intro": "无论您是制片人、创意专业人士、投资者、教育工作者，还是对 Production City 感兴趣，我们都期待您的来信。",
     "info": {
-      "heading": "Contact Information",
+      "heading": "联系方式",
       "email": "hello@productioncity.com",
       "emailAddress": "troy@team.production.city",
       "phoneAU": "Australia",
       "phoneAUNumber": "+61 2 9137 9100",
-      "phoneUS": "United States",
+      "phoneUS": "美国",
       "phoneUSNumber": "+1 650 215 6253",
       "website": "Website",
       "websiteUrl": "www.production.city"
     },
     "eoi": {
-      "heading": "Register Your Interest",
-      "context": "Tell us about yourself and how you would like to engage with Production City."
+      "heading": "意向登记",
+      "context": "提交意向登记，告知我们您希望如何参与 Production City。"
     },
-    "rateLimited": "You have submitted too many requests. Please try again in {seconds} seconds.",
+    "rateLimited": "您提交请求过于频繁。请在 {seconds} 秒后重试。",
     "acknowledgement": {
-      "heading": "Acknowledgement of Country"
+      "heading": "原住民土地致谢"
     },
     "personaSelect": {
-      "title": "How can we help?",
-      "producer": "I am a Producer",
-      "producerDesc": "Interested in booking facilities or production services",
-      "investor": "I am an Investor",
-      "investorDesc": "Interested in investment opportunities",
-      "creative": "I am a Creative Professional",
-      "creativeDesc": "Interested in joining the creative ecosystem",
-      "partner": "I am a Technology Partner",
-      "partnerDesc": "Interested in technology partnerships",
-      "education": "I am an Educator",
-      "educationDesc": "Interested in education partnerships",
-      "employment": "I am looking for Employment",
-      "employmentDesc": "Interested in career opportunities",
-      "general": "I just want to stay informed",
-      "generalDesc": "Keep me updated on Production City progress"
+      "title": "您是哪种类型的参与者？",
+      "producer": "制片人",
+      "producerDesc": "我有兴趣使用 Production City 进行拍摄或制作。",
+      "investor": "投资者",
+      "investorDesc": "我有兴趣了解 Production City 的投资机会。",
+      "creative": "创意人士",
+      "creativeDesc": "我是一名创意专业人士，想加入 Production City 社区。",
+      "partner": "合作伙伴",
+      "partnerDesc": "我代表一个组织，有兴趣与 Production City 合作。",
+      "education": "教育",
+      "educationDesc": "我有兴趣了解 Production City 的教育和培训项目。",
+      "employment": "就业",
+      "employmentDesc": "我有兴趣在 Production City 工作。",
+      "general": "一般咨询",
+      "generalDesc": "我有关于 Production City 的一般性问题。"
     }
   },
   "ws": {

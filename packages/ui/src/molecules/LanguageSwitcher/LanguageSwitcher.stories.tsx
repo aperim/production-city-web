@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { LanguageSwitcher } from "./LanguageSwitcher";
+import { buildLocaleUrl } from "./url-utils";
 
 const languages = [
   { code: "en", label: "English" },
@@ -40,6 +41,51 @@ export const Disabled: Story = {
 
 export const RTL: Story = {
   args: { currentLanguage: "ar" },
+  decorators: [
+    (Story) => (
+      <div dir="rtl" lang="ar">
+        <Story />
+      </div>
+    ),
+  ],
+};
+
+export const URLAware: Story = {
+  args: {
+    onLanguageChange: (code: string) => {
+      const url = buildLocaleUrl(code, "/facilities");
+      console.log("Navigate to:", url);
+    },
+  },
+};
+
+export const URLAwareWithQueryHash: Story = {
+  args: {
+    onLanguageChange: (code: string) => {
+      const url = buildLocaleUrl(code, "/facilities?view=map#studio-a");
+      console.log("Navigate to:", url);
+    },
+  },
+};
+
+export const URLAwareEnglishPrefixRemoval: Story = {
+  args: {
+    currentLanguage: "zh",
+    onLanguageChange: (code: string) => {
+      const url = buildLocaleUrl(code, "/zh/facilities");
+      console.log("Navigate to:", url);
+    },
+  },
+};
+
+export const URLAwareRTL: Story = {
+  args: {
+    currentLanguage: "ar",
+    onLanguageChange: (code: string) => {
+      const url = buildLocaleUrl(code, "/ar/contact");
+      console.log("Navigate to:", url);
+    },
+  },
   decorators: [
     (Story) => (
       <div dir="rtl" lang="ar">

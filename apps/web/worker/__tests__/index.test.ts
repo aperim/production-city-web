@@ -24,7 +24,7 @@ function buildCsp(hostname: string): string {
   const connectSrc = isDev
     ? "connect-src 'self' ws://localhost:* wss://localhost:*"
     : "connect-src 'self' wss://api.production.city";
-  return `default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; ${connectSrc}`;
+  return `default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self' https://fonts.gstatic.com; ${connectSrc}`;
 }
 
 /**
@@ -142,6 +142,6 @@ describe("CSP headers — WebSocket directives (#194)", () => {
     expect(csp).toContain("script-src 'self' 'unsafe-inline'");
     expect(csp).toContain("style-src 'self' 'unsafe-inline'");
     expect(csp).toContain("img-src 'self' data:");
-    expect(csp).toContain("font-src 'self'");
+    expect(csp).toContain("font-src 'self' https://fonts.gstatic.com");
   });
 });

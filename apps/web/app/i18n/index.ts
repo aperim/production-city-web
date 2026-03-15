@@ -4,6 +4,7 @@
  */
 
 import en from "./en.json";
+import { resolvePlural } from "./pluralization.js";
 
 type TranslationTree = typeof en;
 
@@ -149,6 +150,11 @@ export function t(
   }
 
   if (!params) return current;
+
+  // Check for ICU plural syntax and resolve if present
+  if (current.includes(", plural,")) {
+    return resolvePlural(current, params, locale);
+  }
 
   return current.replace(/\{(\w+)\}/g, (_, name: string) =>
     params[name] !== undefined ? String(params[name]) : `{${name}}`,
