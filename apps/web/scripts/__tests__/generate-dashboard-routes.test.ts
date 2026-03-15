@@ -152,6 +152,7 @@ describe("generateRoutes", () => {
     const registry = makeRegistry({ features: [] });
     const output = generateRoutes(registry);
     expect(output).toContain("export const DASHBOARD_ROUTES: DashboardRoute[] = [\n];");
+    expect(output).toContain("export type FeatureId = never;");
   });
 });
 

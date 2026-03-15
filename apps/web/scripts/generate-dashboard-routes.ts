@@ -289,6 +289,13 @@ export function validateRegistry(
           message: `Path contains invalid characters (only lowercase, digits, hyphens, slashes allowed): ${feature.path}`,
         });
       }
+      if (pathAfterDashboard.includes("//") || pathAfterDashboard.endsWith("/")) {
+        errors.push({
+          rule: "path-format",
+          featureId: feature.id,
+          message: `Path has empty segments or trailing slash: ${feature.path}`,
+        });
+      }
     }
   }
 
@@ -387,6 +394,9 @@ export function generateRoutes(registry: Registry, registryHash?: string): strin
 
 export function generateFeatureIdType(registry: Registry): string {
   const features = getAllFeatures(registry);
+  if (features.length === 0) {
+    return "export type FeatureId = never;";
+  }
   const lines: string[] = [];
   lines.push("export type FeatureId =");
   for (const f of features) {
