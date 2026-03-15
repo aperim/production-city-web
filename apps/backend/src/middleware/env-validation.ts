@@ -13,6 +13,11 @@ export const EnvSchema = z.object({
   ALLOWED_ORIGIN: z.string().min(1, "ALLOWED_ORIGIN is required"),
   HMAC_SECRET: z.string().min(1, "HMAC_SECRET is required"),
   POSTMARK_API_TOKEN: z.string().optional(),
+  SUBSCRIPTION_HMAC_SECRET: z.string().optional(),
+  TWILIO_ACCOUNT_SID: z.string().optional(),
+  TWILIO_AUTH_TOKEN: z.string().optional(),
+  TWILIO_STATUS_CALLBACK_URL: z.string().optional(),
+  PUBLIC_ORIGIN: z.string().optional(),
 });
 
 /**

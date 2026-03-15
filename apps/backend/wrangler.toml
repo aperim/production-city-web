@@ -8,6 +8,11 @@ main = "src/index.ts"
 ALLOWED_ORIGIN = "http://localhost:4321"
 HMAC_SECRET = "dev-hmac-secret-do-not-use-in-production"
 POSTMARK_API_TOKEN = ""
+SUBSCRIPTION_HMAC_SECRET = "dev-subscription-hmac-secret-do-not-use-in-production"
+TWILIO_ACCOUNT_SID = ""
+TWILIO_AUTH_TOKEN = "test-twilio-auth-token-do-not-use-in-production"
+TWILIO_STATUS_CALLBACK_URL = "http://localhost:8787/v1/webhooks/twilio/status"
+PUBLIC_ORIGIN = "http://localhost:4321"
 
 [[durable_objects.bindings]]
 name = "WEBSOCKET_SERVER"

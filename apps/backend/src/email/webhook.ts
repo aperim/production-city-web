@@ -91,8 +91,8 @@ export function isValidTransition(from: string, to: string): boolean {
   return VALID_TRANSITIONS[from]?.includes(to) ?? false;
 }
 
-/** Postmark webhook event types we handle. */
-export type WebhookEventType = "Delivery" | "Bounce" | "SpamComplaint";
+/** Extended Postmark webhook event types (including engagement tracking). */
+export type WebhookEventType = "Delivery" | "Bounce" | "SpamComplaint" | "Open" | "Click";
 
 export interface WebhookPayload {
   RecordType: WebhookEventType;
@@ -212,6 +212,240 @@ export async function processWebhookEvent(
         });
       }
       return { processed: true };
+    }
+
+    default:
+      return { processed: false, reason: "unknown_record_type" };
+  }
+}
+
+/** Monotonic status order for announcement deliveries. */
+const ANNOUNCEMENT_STATUS_ORDER: Record<string, number> = {
+  queued: 0,
+  sending: 1,
+  sent: 2,
+  delivered: 3,
+  failed: 4,
+  suppressed: 5,
+};
+
+export interface AnnouncementWebhookResult {
+  processed: boolean;
+  reason?: string;
+  deliveryId?: string;
+  newStatus?: string;
+}
+
+/**
+ * Processes a Postmark webhook event for announcement deliveries.
+ * Looks up delivery by externalMessageId (Postmark MessageID).
+ * Records events in DeliveryEvent table with replay protection.
+ * Updates AnnouncementDelivery status with monotonic progression.
+ */
+export async function processAnnouncementWebhookEvent(
+  prisma: PrismaClient,
+  payload: WebhookPayload,
+): Promise<AnnouncementWebhookResult> {
+  const { RecordType, MessageID } = payload;
+
+  if (!MessageID) {
+    return { processed: false, reason: "missing_message_id" };
+  }
+
+  // Find announcement delivery by externalMessageId
+  const delivery = await prisma.announcementDelivery.findFirst({
+    where: { externalMessageId: MessageID, channel: "email" },
+  });
+
+  if (!delivery) {
+    return { processed: false, reason: "delivery_not_found" };
+  }
+
+  // Create delivery event with providerEventId for dedup
+  const providerEventId = `postmark:${MessageID}:${RecordType}`;
+
+  switch (RecordType) {
+    case "Delivery": {
+      const currentOrder = ANNOUNCEMENT_STATUS_ORDER[delivery.status] ?? -1;
+      const newOrder = ANNOUNCEMENT_STATUS_ORDER["delivered"] ?? 99;
+      if (newOrder <= currentOrder) {
+        return { processed: false, reason: "status_not_progressing" };
+      }
+
+      try {
+        await prisma.deliveryEvent.create({
+          data: {
+            deliveryId: delivery.id,
+            eventType: "delivered",
+            source: "postmark",
+            providerEventId,
+          },
+        });
+      } catch (err: unknown) {
+        if (err && typeof err === "object" && "code" in err && err.code === "P2002") {
+          return { processed: false, reason: "duplicate_event" };
+        }
+        throw err;
+      }
+
+      await prisma.announcementDelivery.update({
+        where: { id: delivery.id },
+        data: {
+          status: "delivered",
+          deliveredAt: new Date(),
+          lastEventAt: new Date(),
+        },
+      });
+      return { processed: true, deliveryId: delivery.id, newStatus: "delivered" };
+    }
+
+    case "Bounce": {
+      const currentOrder = ANNOUNCEMENT_STATUS_ORDER[delivery.status] ?? -1;
+      const newOrder = ANNOUNCEMENT_STATUS_ORDER["failed"] ?? 99;
+      if (newOrder <= currentOrder) {
+        return { processed: false, reason: "status_not_progressing" };
+      }
+
+      const isHardBounce = payload.TypeCode !== undefined && payload.TypeCode >= 1;
+
+      try {
+        await prisma.deliveryEvent.create({
+          data: {
+            deliveryId: delivery.id,
+            eventType: "bounced",
+            source: "postmark",
+            providerEventId,
+            metadata: JSON.stringify({
+              typeCode: payload.TypeCode,
+              description: payload.Description,
+            }),
+          },
+        });
+      } catch (err: unknown) {
+        if (err && typeof err === "object" && "code" in err && err.code === "P2002") {
+          return { processed: false, reason: "duplicate_event" };
+        }
+        throw err;
+      }
+
+      await prisma.announcementDelivery.update({
+        where: { id: delivery.id },
+        data: {
+          status: "failed",
+          bounceType: isHardBounce ? "hard" : "soft",
+          lastEventAt: new Date(),
+        },
+      });
+
+      // Hard bounce → email suppression
+      if (isHardBounce && payload.Email) {
+        await prisma.emailSuppression.upsert({
+          where: { email: payload.Email.toLowerCase().trim() },
+          create: {
+            email: payload.Email.toLowerCase().trim(),
+            reason: "hard_bounce",
+            details: JSON.stringify({
+              typeCode: payload.TypeCode,
+              description: payload.Description,
+              messageId: MessageID,
+            }),
+          },
+          update: {},
+        });
+      }
+
+      return { processed: true, deliveryId: delivery.id, newStatus: "failed" };
+    }
+
+    case "SpamComplaint": {
+      try {
+        await prisma.deliveryEvent.create({
+          data: {
+            deliveryId: delivery.id,
+            eventType: "spam_complaint",
+            source: "postmark",
+            providerEventId,
+          },
+        });
+      } catch (err: unknown) {
+        if (err && typeof err === "object" && "code" in err && err.code === "P2002") {
+          return { processed: false, reason: "duplicate_event" };
+        }
+        throw err;
+      }
+
+      await prisma.announcementDelivery.update({
+        where: { id: delivery.id },
+        data: { status: "failed", lastEventAt: new Date() },
+      });
+
+      if (payload.Email) {
+        await prisma.emailSuppression.upsert({
+          where: { email: payload.Email.toLowerCase().trim() },
+          create: {
+            email: payload.Email.toLowerCase().trim(),
+            reason: "spam_complaint",
+            details: JSON.stringify({ messageId: MessageID }),
+          },
+          update: {},
+        });
+      }
+
+      return { processed: true, deliveryId: delivery.id, newStatus: "failed" };
+    }
+
+    case "Open": {
+      // Only record first open
+      if (!delivery.openedAt) {
+        try {
+          await prisma.deliveryEvent.create({
+            data: {
+              deliveryId: delivery.id,
+              eventType: "opened",
+              source: "postmark",
+              providerEventId,
+            },
+          });
+        } catch (err: unknown) {
+          if (err && typeof err === "object" && "code" in err && err.code === "P2002") {
+            return { processed: false, reason: "duplicate_event" };
+          }
+          throw err;
+        }
+
+        await prisma.announcementDelivery.update({
+          where: { id: delivery.id },
+          data: { openedAt: new Date(), lastEventAt: new Date() },
+        });
+      }
+      return { processed: true, deliveryId: delivery.id };
+    }
+
+    case "Click": {
+      // Only record first click
+      if (!delivery.clickedAt) {
+        try {
+          await prisma.deliveryEvent.create({
+            data: {
+              deliveryId: delivery.id,
+              eventType: "clicked",
+              source: "postmark",
+              providerEventId,
+            },
+          });
+        } catch (err: unknown) {
+          if (err && typeof err === "object" && "code" in err && err.code === "P2002") {
+            return { processed: false, reason: "duplicate_event" };
+          }
+          throw err;
+        }
+
+        await prisma.announcementDelivery.update({
+          where: { id: delivery.id },
+          data: { clickedAt: new Date(), lastEventAt: new Date() },
+        });
+      }
+      return { processed: true, deliveryId: delivery.id };
     }
 
     default:

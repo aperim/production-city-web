@@ -19,6 +19,11 @@ import { categoriesApp } from "./admin/categories.js";
 import { tagsApp } from "./admin/tags.js";
 import { announcementsApp } from "./admin/announcements.js";
 import { wsApp } from "./routes/ws.js";
+import { subscriptionsApp } from "./routes/subscriptions.js";
+import { adminSubscriptionsApp } from "./admin/subscriptions.js";
+import { twilioInboundApp } from "./routes/twilio-inbound.js";
+import { twilioStatusApp } from "./routes/twilio-status.js";
+import { unsubscribeApp } from "./routes/unsubscribe.js";
 
 /**
  * Mount all auth and admin routes onto the main app.
@@ -54,6 +59,17 @@ export function mountRoutes(app: OpenAPIHono<{ Bindings: Record<string, unknown>
 
   // Notification routes (auth required)
   app.route("/", notificationsApp);
+
+  // Subscription routes (user + public confirm/decline)
+  app.route("/", subscriptionsApp);
+  // Admin subscription routes
+  app.route("/", adminSubscriptionsApp);
+  // Twilio inbound webhook
+  app.route("/", twilioInboundApp);
+  // Twilio status callback webhook
+  app.route("/", twilioStatusApp);
+  // Unsubscribe from email/SMS links
+  app.route("/", unsubscribeApp);
 
   // Public EOI and locales routes (no auth required)
   app.route("/", eoiApp);

@@ -11,6 +11,7 @@ export interface PostmarkSendRequest {
   TextBody: string;
   MessageStream?: string;
   Tag?: string;
+  Headers?: Array<{ Name: string; Value: string }>;
 }
 
 export interface PostmarkSendResponse {

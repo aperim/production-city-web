@@ -1,6 +1,8 @@
 import type { QueueMessage } from "./types.js";
 import { validateQueueMessage } from "./validate.js";
 import { runAllCleanups } from "./cleanup.js";
+import { processDeliveryJob } from "./delivery-handler.js";
+import type { AnnouncementDeliveryPayload, DeliveryEnv } from "./delivery-handler.js";
 
 export type Env = {
   DB: D1Database;
@@ -98,7 +100,25 @@ export default {
           }),
         );
 
-        // TODO: dispatch to domain handlers based on validation.data.type
+        // Dispatch to domain handlers based on type
+        if (validation.data.type === "announcement_delivery") {
+          const deliveryEnv = _env as DeliveryEnv;
+          const [{ PrismaClient: PC }, { PrismaD1: PD }] = await Promise.all([
+            import("@prisma/client"),
+            import("@prisma/adapter-d1"),
+          ]);
+          const adapter = new PD(deliveryEnv.DB);
+          const prisma = new PC({ adapter });
+          try {
+            await processDeliveryJob(
+              prisma,
+              deliveryEnv,
+              validation.data.payload as AnnouncementDeliveryPayload,
+            );
+          } finally {
+            await prisma.$disconnect().catch(() => {});
+          }
+        }
         message.ack();
       } catch (err) {
         // message.body is untrusted; only log envelope metadata, never payload

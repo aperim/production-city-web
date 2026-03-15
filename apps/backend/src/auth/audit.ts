@@ -71,6 +71,16 @@ const DETAIL_ALLOWLIST: Record<string, string[]> = {
   "ws_auth_failure": ["reason", "origin"],
   "ws_rate_limited": ["limitType", "currentCount"],
   "ws_channel_denied": ["channel", "missingPermission"],
+  // Subscription audit actions
+  "subscription:create": ["subscriptionId", "categoryId", "channel"],
+  "subscription:confirm": ["subscriptionId", "channel"],
+  "subscription:decline": ["subscriptionId", "channel"],
+  "subscription:delete": ["subscriptionId", "channel"],
+  "subscription:resend": ["subscriptionId", "channel"],
+  "subscription:unsubscribe": ["subscriptionId", "channel", "categoryId"],
+  // SMS audit actions
+  "sms:stop": ["messageSid"],
+  "sms:start": ["messageSid"],
 };
 
 /** Filter details to only allowed keys for the given action. */
