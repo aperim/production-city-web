@@ -156,6 +156,31 @@ describe("Security: cookie-only auth", () => {
   });
 });
 
+describe("Security: isSafeUrl pattern in layout", () => {
+  it("layout.tsx contains isSafeUrl that rejects protocol-relative and absolute URLs", () => {
+    const content = readFileSync(resolve(APP_ROOT, "dashboard/layout.tsx"), "utf-8");
+    // Verify isSafeUrl exists and checks for "/" prefix and "//" rejection
+    expect(content).toContain("function isSafeUrl");
+    expect(content).toContain('url.startsWith("/")');
+    expect(content).toContain('url.startsWith("//")');
+  });
+
+  it("layout.tsx gates notification navigation on isSafeUrl", () => {
+    const content = readFileSync(resolve(APP_ROOT, "dashboard/layout.tsx"), "utf-8");
+    // Count uses of window.location with actionUrl — each must have a nearby isSafeUrl guard
+    const lines = content.split("\n");
+    const navLines = lines
+      .map((l, i) => ({ line: l, idx: i }))
+      .filter(({ line }) => line.includes("actionUrl") && line.includes("window.location"));
+    expect(navLines.length).toBeGreaterThan(0);
+    for (const { idx } of navLines) {
+      // Check the 5 preceding lines for an isSafeUrl guard
+      const context = lines.slice(Math.max(0, idx - 5), idx + 1).join("\n");
+      expect(context).toContain("isSafeUrl");
+    }
+  });
+});
+
 describe("Security: anti-enumeration", () => {
   it("login page does not distinguish between registered and unregistered emails", () => {
     const content = readFileSync(
