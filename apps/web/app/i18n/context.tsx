@@ -19,6 +19,7 @@ import {
   getDirection,
   setStoredLocale,
   resolveLocale,
+  isSupportedLocale,
 } from "./index.js";
 
 interface I18nContextValue {
@@ -49,7 +50,13 @@ export function I18nProvider({ children, initialLocale, serverLocale }: I18nProv
   const [locale, setLocaleState] = useState<SupportedLocale>(() => {
     // Server locale is authoritative — skip resolveLocale() to avoid hydration mismatch (Finding #6)
     if (serverLocale) return serverLocale;
-    return initialLocale ?? resolveLocale();
+    if (initialLocale) return initialLocale;
+    // Read the server-rendered <html lang> to match root layout (fixes #318 locale drift)
+    if (typeof document !== "undefined") {
+      const htmlLang = document.documentElement.lang;
+      if (htmlLang && isSupportedLocale(htmlLang)) return htmlLang;
+    }
+    return resolveLocale();
   });
   const [ready, setReady] = useState(locale === "en");
 

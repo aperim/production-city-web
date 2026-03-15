@@ -17,7 +17,7 @@ import {
   type NotificationEntry,
   type SidebarSection,
 } from "@productioncity/holding-ui";
-import { useAuth } from "../lib/auth-context";
+import { AuthProvider, useAuth } from "../lib/auth-context";
 import { ProtectedRoute } from "../lib/route-guard";
 import { WebSocketProvider } from "../lib/websocket/WebSocketProvider";
 import { useWebSocket } from "../lib/websocket/useWebSocket";
@@ -29,7 +29,7 @@ import {
   type NotificationData,
 } from "../lib/api-client";
 import { BreadcrumbProvider, useBreadcrumbState } from "./breadcrumb-context";
-import { useTranslation } from "../i18n/context";
+import { I18nProvider, useTranslation } from "../i18n/context";
 
 /** Maps WebSocket connection state to ConnectionDot variant */
 function mapConnectionState(state: string): "connected" | "reconnecting" | "disconnected" {
@@ -315,12 +315,16 @@ function DashboardShell({ children }: { children: ReactNode }) {
 
 export default function DashboardLayout({ children }: { children: ReactNode }) {
   return (
-    <ProtectedRoute>
-      <WebSocketProvider>
-        <BreadcrumbProvider>
-          <DashboardShell>{children}</DashboardShell>
-        </BreadcrumbProvider>
-      </WebSocketProvider>
-    </ProtectedRoute>
+    <I18nProvider>
+      <AuthProvider>
+        <ProtectedRoute>
+          <WebSocketProvider>
+            <BreadcrumbProvider>
+              <DashboardShell>{children}</DashboardShell>
+            </BreadcrumbProvider>
+          </WebSocketProvider>
+        </ProtectedRoute>
+      </AuthProvider>
+    </I18nProvider>
   );
 }

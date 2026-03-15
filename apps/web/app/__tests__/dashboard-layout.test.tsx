@@ -4,6 +4,7 @@ import { renderToString } from "react-dom/server";
 
 vi.mock("../lib/auth-context", () => ({
   useAuth: vi.fn(),
+  AuthProvider: ({ children }: { children: React.ReactNode }) => children,
 }));
 
 vi.mock("../lib/websocket/WebSocketProvider", async () => {
@@ -23,6 +24,7 @@ vi.mock("../lib/websocket/useChannel", () => ({
 }));
 
 vi.mock("../i18n/context", () => ({
+  I18nProvider: ({ children }: { children: React.ReactNode }) => children,
   useTranslation: () => ({
     locale: "en",
     direction: "ltr",
