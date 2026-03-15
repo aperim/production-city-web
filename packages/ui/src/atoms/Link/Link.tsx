@@ -7,7 +7,7 @@ import { cn } from "../../lib/utils";
  * Rejects javascript:, data:, vbscript:, and other dangerous schemes.
  * Protocol-relative URLs (//evil.example) are also rejected.
  */
-const ALLOWED_SCHEMES = /^(https?:|mailto:|tel:|#|\/[^/]|$)/i;
+const ALLOWED_SCHEMES = /^(https?:|mailto:|tel:|#|\/(?:[^/]|$)|$)/i;
 
 /**
  * Sanitises a URL by rejecting dangerous schemes.
