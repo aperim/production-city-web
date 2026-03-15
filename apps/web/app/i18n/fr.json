@@ -272,7 +272,8 @@
     "vision": "Vision",
     "community": "Communauté",
     "faq": "FAQ",
-    "contact": "Contact"
+    "contact": "Contact",
+    "updates": "Actualités"
   },
   "eoi": {
     "formTitle": "Exprimez votre intérêt",
@@ -1052,5 +1053,55 @@
     "failed": "L'e-mail n'a pas pu être livré",
     "pending": "Envoi en cours...",
     "unknown": "Statut inconnu"
+  },
+  "announcements": {
+    "page": {
+      "title": "Actualités",
+      "description": "Dernières nouvelles et mises à jour de Production City",
+      "empty": "Aucune annonce pour le moment. Revenez bientôt pour les mises à jour de l'équipe Production City.",
+      "filter_all": "Tout"
+    },
+    "detail": {
+      "back": "Retour aux Actualités",
+      "updated": "Mis à jour le {date}",
+      "share": "Partager",
+      "share_copied": "Lien copié dans le presse-papiers",
+      "subscribed_banner": "Vous êtes abonné aux actualités {categoryName}",
+      "subscribe_cta": "Recevez des notifications sur les actualités {categoryName}",
+      "not_found": "Non trouvé",
+      "not_found_description": "La page que vous recherchez n'existe pas."
+    }
+  },
+  "subscriptions": {
+    "confirm": {
+      "title": "Abonnement confirmé",
+      "success": "Votre abonnement à {categoryName} par {channel} a été confirmé.",
+      "error": "Lien de confirmation invalide ou expiré."
+    },
+    "decline": {
+      "title": "Abonnement refusé",
+      "success": "Vous avez refusé la demande d'abonnement.",
+      "error": "Lien invalide ou expiré."
+    },
+    "unsubscribe": {
+      "title": "Se désabonner",
+      "confirm": "Se désabonner des actualités {categoryName} par {channel} ?",
+      "button": "Confirmer le désabonnement",
+      "success": "Vous avez été désabonné.",
+      "error": "Lien invalide ou expiré."
+    },
+    "preferences": {
+      "title": "Préférences de notification",
+      "description": "Choisissez les mises à jour que vous souhaitez recevoir et comment.",
+      "email": "E-mail",
+      "sms": "SMS",
+      "pending": "En attente de confirmation",
+      "confirmed": "Actif",
+      "resend": "Renvoyer la confirmation",
+      "no_phone": "Ajoutez un numéro de téléphone pour recevoir des mises à jour par SMS",
+      "subscribe_all": "S'abonner à tout",
+      "confirm_unsubscribe": "Êtes-vous sûr de vouloir vous désabonner de {categoryName} par {channel} ?",
+      "digest_coming_soon": "Résumé hebdomadaire — Bientôt disponible"
+    }
   }
 }

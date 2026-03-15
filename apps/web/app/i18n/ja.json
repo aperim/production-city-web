@@ -272,7 +272,8 @@
     "vision": "ビジョン",
     "contact": "お問い合わせ",
     "community": "コミュニティ",
-    "faq": "よくある質問"
+    "faq": "よくある質問",
+    "updates": "お知らせ"
   },
   "eoi": {
     "formTitle": "関心を表明する",
@@ -1052,5 +1053,55 @@
     "failed": "メールを配信できませんでした",
     "pending": "送信中...",
     "unknown": "ステータス不明"
+  },
+  "announcements": {
+    "page": {
+      "title": "お知らせ",
+      "description": "プロダクションシティの最新ニュースとアップデート",
+      "empty": "まだお知らせはありません。プロダクションシティチームからのアップデートをお待ちください。",
+      "filter_all": "すべて"
+    },
+    "detail": {
+      "back": "お知らせ一覧に戻る",
+      "updated": "{date}に更新",
+      "share": "共有",
+      "share_copied": "リンクがコピーされました",
+      "subscribed_banner": "{categoryName}のアップデートを購読中です",
+      "subscribe_cta": "{categoryName}のアップデート通知を受け取る",
+      "not_found": "見つかりません",
+      "not_found_description": "お探しのページは存在しません。"
+    }
+  },
+  "subscriptions": {
+    "confirm": {
+      "title": "購読確認完了",
+      "success": "{channel}による{categoryName}の購読が確認されました。",
+      "error": "無効または期限切れの確認リンクです。"
+    },
+    "decline": {
+      "title": "購読辞退",
+      "success": "購読リクエストを辞退しました。",
+      "error": "無効または期限切れのリンクです。"
+    },
+    "unsubscribe": {
+      "title": "購読解除",
+      "confirm": "{channel}による{categoryName}のアップデートの購読を解除しますか？",
+      "button": "購読解除を確認",
+      "success": "購読が解除されました。",
+      "error": "無効または期限切れのリンクです。"
+    },
+    "preferences": {
+      "title": "通知設定",
+      "description": "受け取りたいアップデートとその方法を選択してください。",
+      "email": "メール",
+      "sms": "SMS",
+      "pending": "確認待ち",
+      "confirmed": "アクティブ",
+      "resend": "確認メールを再送",
+      "no_phone": "SMS通知を受け取るには電話番号を追加してください",
+      "subscribe_all": "すべて購読",
+      "confirm_unsubscribe": "{channel}による{categoryName}の購読を解除してもよろしいですか？",
+      "digest_coming_soon": "週間ダイジェスト — 近日公開"
+    }
   }
 }

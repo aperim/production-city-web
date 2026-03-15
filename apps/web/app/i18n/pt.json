@@ -272,7 +272,8 @@
     "vision": "Visão",
     "contact": "Contato",
     "community": "Comunidade",
-    "faq": "Perguntas Frequentes"
+    "faq": "Perguntas Frequentes",
+    "updates": "Novidades"
   },
   "eoi": {
     "formTitle": "Expresse seu interesse",
@@ -1052,5 +1053,55 @@
     "failed": "O e-mail nao pode ser entregue",
     "pending": "Enviando...",
     "unknown": "Status desconhecido"
+  },
+  "announcements": {
+    "page": {
+      "title": "Novidades",
+      "description": "Últimas notícias e atualizações da Production City",
+      "empty": "Ainda não há anúncios. Volte em breve para atualizações da equipe Production City.",
+      "filter_all": "Tudo"
+    },
+    "detail": {
+      "back": "Voltar para Novidades",
+      "updated": "Atualizado em {date}",
+      "share": "Compartilhar",
+      "share_copied": "Link copiado",
+      "subscribed_banner": "Você está inscrito nas atualizações de {categoryName}",
+      "subscribe_cta": "Receba notificações sobre atualizações de {categoryName}",
+      "not_found": "Não encontrado",
+      "not_found_description": "A página que você procura não existe."
+    }
+  },
+  "subscriptions": {
+    "confirm": {
+      "title": "Inscrição confirmada",
+      "success": "Sua inscrição em {categoryName} via {channel} foi confirmada.",
+      "error": "Link de confirmação inválido ou expirado."
+    },
+    "decline": {
+      "title": "Inscrição recusada",
+      "success": "Você recusou a solicitação de inscrição.",
+      "error": "Link inválido ou expirado."
+    },
+    "unsubscribe": {
+      "title": "Cancelar inscrição",
+      "confirm": "Cancelar inscrição das atualizações de {categoryName} via {channel}?",
+      "button": "Confirmar cancelamento",
+      "success": "Sua inscrição foi cancelada.",
+      "error": "Link inválido ou expirado."
+    },
+    "preferences": {
+      "title": "Preferências de notificação",
+      "description": "Escolha quais atualizações deseja receber e como.",
+      "email": "E-mail",
+      "sms": "SMS",
+      "pending": "Confirmação pendente",
+      "confirmed": "Ativo",
+      "resend": "Reenviar confirmação",
+      "no_phone": "Adicione um número de telefone para receber atualizações por SMS",
+      "subscribe_all": "Inscrever-se em tudo",
+      "confirm_unsubscribe": "Tem certeza de que deseja cancelar a inscrição de {categoryName} via {channel}?",
+      "digest_coming_soon": "Resumo semanal — Em breve"
+    }
   }
 }

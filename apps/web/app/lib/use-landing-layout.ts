@@ -31,6 +31,7 @@ export function useLandingNav(): LandingNavigationProps {
       { label: t("nav.facilities"), href: `${prefix}/facilities` },
       { label: t("nav.creative"), href: `${prefix}/creative` },
       { label: t("nav.vision"), href: `${prefix}/vision` },
+      { label: t("nav.updates"), href: `${prefix}/announcements` },
       { label: t("nav.community"), href: `${prefix}/community` },
       { label: t("nav.faq"), href: `${prefix}/faq` },
       { label: t("nav.contact"), href: `${prefix}/contact` },
@@ -64,6 +65,7 @@ export function useLandingFooter(): LandingFooterProps {
           { label: t("nav.creative"), href: `${prefix}/creative` },
           { label: t("nav.vision"), href: `${prefix}/vision` },
           { label: t("nav.community"), href: `${prefix}/community` },
+          { label: t("nav.updates"), href: `${prefix}/announcements` },
         ],
       },
       {

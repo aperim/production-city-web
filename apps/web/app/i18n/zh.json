@@ -272,7 +272,8 @@
     "vision": "愿景",
     "contact": "联系我们",
     "community": "社区",
-    "faq": "常见问题"
+    "faq": "常见问题",
+    "updates": "动态"
   },
   "eoi": {
     "formTitle": "表达您的兴趣",
@@ -1052,5 +1053,55 @@
     "failed": "邮件无法送达",
     "pending": "正在发送...",
     "unknown": "状态未知"
+  },
+  "announcements": {
+    "page": {
+      "title": "动态",
+      "description": "Production City 最新消息和动态",
+      "empty": "暂无公告。请稍后查看 Production City 团队的最新动态。",
+      "filter_all": "全部"
+    },
+    "detail": {
+      "back": "返回动态",
+      "updated": "更新于 {date}",
+      "share": "分享",
+      "share_copied": "链接已复制",
+      "subscribed_banner": "您已订阅 {categoryName} 动态",
+      "subscribe_cta": "获取 {categoryName} 动态通知",
+      "not_found": "未找到",
+      "not_found_description": "您查找的页面不存在。"
+    }
+  },
+  "subscriptions": {
+    "confirm": {
+      "title": "订阅已确认",
+      "success": "您通过 {channel} 订阅 {categoryName} 已确认。",
+      "error": "无效或过期的确认链接。"
+    },
+    "decline": {
+      "title": "订阅已拒绝",
+      "success": "您已拒绝订阅请求。",
+      "error": "无效或过期的链接。"
+    },
+    "unsubscribe": {
+      "title": "取消订阅",
+      "confirm": "取消通过 {channel} 订阅 {categoryName} 动态？",
+      "button": "确认取消订阅",
+      "success": "您已取消订阅。",
+      "error": "无效或过期的链接。"
+    },
+    "preferences": {
+      "title": "通知偏好设置",
+      "description": "选择您希望接收的更新及方式。",
+      "email": "电子邮件",
+      "sms": "短信",
+      "pending": "待确认",
+      "confirmed": "已激活",
+      "resend": "重新发送确认",
+      "no_phone": "添加手机号码以接收短信通知",
+      "subscribe_all": "全部订阅",
+      "confirm_unsubscribe": "您确定要取消通过 {channel} 订阅 {categoryName} 吗？",
+      "digest_coming_soon": "每周摘要 — 即将推出"
+    }
   }
 }

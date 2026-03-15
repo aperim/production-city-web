@@ -272,7 +272,8 @@
     "vision": "Visión",
     "community": "Comunidad",
     "faq": "Preguntas frecuentes",
-    "contact": "Contacto"
+    "contact": "Contacto",
+    "updates": "Novedades"
   },
   "eoi": {
     "formTitle": "Exprese su interés",
@@ -1052,5 +1053,55 @@
     "failed": "No se pudo entregar el correo",
     "pending": "Enviando...",
     "unknown": "Estado desconocido"
+  },
+  "announcements": {
+    "page": {
+      "title": "Novedades",
+      "description": "Últimas noticias y novedades de Production City",
+      "empty": "Aún no hay anuncios. Vuelve pronto para ver las novedades del equipo de Production City.",
+      "filter_all": "Todos"
+    },
+    "detail": {
+      "back": "Volver a Novedades",
+      "updated": "Actualizado el {date}",
+      "share": "Compartir",
+      "share_copied": "Enlace copiado al portapapeles",
+      "subscribed_banner": "Estás suscrito a las novedades de {categoryName}",
+      "subscribe_cta": "Recibe notificaciones sobre las novedades de {categoryName}",
+      "not_found": "No encontrado",
+      "not_found_description": "La página que buscas no existe."
+    }
+  },
+  "subscriptions": {
+    "confirm": {
+      "title": "Suscripción confirmada",
+      "success": "Tu suscripción a {categoryName} vía {channel} ha sido confirmada.",
+      "error": "Enlace de confirmación inválido o expirado."
+    },
+    "decline": {
+      "title": "Suscripción rechazada",
+      "success": "Has rechazado la solicitud de suscripción.",
+      "error": "Enlace inválido o expirado."
+    },
+    "unsubscribe": {
+      "title": "Cancelar suscripción",
+      "confirm": "¿Cancelar suscripción de las novedades de {categoryName} vía {channel}?",
+      "button": "Confirmar cancelación",
+      "success": "Tu suscripción ha sido cancelada.",
+      "error": "Enlace inválido o expirado."
+    },
+    "preferences": {
+      "title": "Preferencias de notificación",
+      "description": "Elige qué novedades deseas recibir y cómo.",
+      "email": "Correo electrónico",
+      "sms": "SMS",
+      "pending": "Confirmación pendiente",
+      "confirmed": "Activo",
+      "resend": "Reenviar confirmación",
+      "no_phone": "Agrega un número de teléfono para recibir novedades por SMS",
+      "subscribe_all": "Suscribirse a todas las categorías",
+      "confirm_unsubscribe": "¿Estás seguro de que deseas cancelar la suscripción de {categoryName} vía {channel}?",
+      "digest_coming_soon": "Resumen semanal — Próximamente"
+    }
   }
 }

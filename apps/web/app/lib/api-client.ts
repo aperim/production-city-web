@@ -506,6 +506,126 @@ export function getEoiStats() {
   return request<EoiStatsResponse>('GET', '/v1/admin/eoi/stats');
 }
 
+// --- Announcements Public API ---
+
+export interface PublicAnnouncementCategory {
+  id: string;
+  name: string;
+  slug: string;
+}
+
+export interface PublicAnnouncementTag {
+  id: string;
+  name: string;
+  slug: string;
+}
+
+export interface PublicAnnouncement {
+  id: string;
+  title: string;
+  slug: string;
+  summary: string;
+  contentBlocks: unknown[];
+  visibility: string;
+  categories: PublicAnnouncementCategory[];
+  tags: PublicAnnouncementTag[];
+  author: { id: string; name: string | null };
+  publishedAt: string | null;
+  lastEditedAt: string | null;
+}
+
+export interface AnnouncementListResponse {
+  announcements: PublicAnnouncement[];
+  pagination: {
+    page: number;
+    pageSize: number;
+    total: number;
+    totalPages: number;
+  };
+}
+
+/** List published announcements (GET /v1/announcements) */
+export function listAnnouncements(params?: {
+  page?: number;
+  pageSize?: number;
+  category?: string;
+  tag?: string;
+  search?: string;
+}) {
+  const searchParams = new URLSearchParams();
+  if (params?.page) searchParams.set('page', String(params.page));
+  if (params?.pageSize) searchParams.set('pageSize', String(params.pageSize));
+  if (params?.category) searchParams.set('category', params.category);
+  if (params?.tag) searchParams.set('tag', params.tag);
+  if (params?.search) searchParams.set('search', params.search);
+  const qs = searchParams.toString();
+  return request<AnnouncementListResponse>('GET', `/v1/announcements${qs ? `?${qs}` : ''}`);
+}
+
+/** Get published announcement by slug (GET /v1/announcements/:slug) */
+export function getAnnouncement(slug: string) {
+  return request<PublicAnnouncement>('GET', `/v1/announcements/${encodeURIComponent(slug)}`);
+}
+
+/** List active categories (GET /v1/categories) */
+export function listCategories() {
+  return request<{ categories: PublicAnnouncementCategory[] }>('GET', '/v1/categories');
+}
+
+// --- Subscription API ---
+
+export interface SubscriptionItem {
+  id: string;
+  category: PublicAnnouncementCategory;
+  channel: string;
+  status: string;
+  confirmedAt: string | null;
+  createdAt: string;
+}
+
+export interface SubscriptionListResponse {
+  subscriptions: SubscriptionItem[];
+}
+
+/** List my subscriptions (GET /v1/me/subscriptions) */
+export function listMySubscriptions() {
+  return request<SubscriptionListResponse>('GET', '/v1/me/subscriptions');
+}
+
+/** Subscribe to a category (POST /v1/me/subscriptions) */
+export function createSubscription(categoryId: string, channels: string[]) {
+  return request<{ subscriptions: SubscriptionItem[]; message: string }>(
+    'POST', '/v1/me/subscriptions', { categoryId, channels }
+  );
+}
+
+/** Unsubscribe (DELETE /v1/me/subscriptions/:id) */
+export function deleteSubscription(id: string) {
+  return request<{ message: string }>('DELETE', `/v1/me/subscriptions/${encodeURIComponent(id)}`);
+}
+
+/** Resend confirmation (POST /v1/me/subscriptions/:id/resend) */
+export function resendSubscriptionConfirmation(id: string) {
+  return request<{ message: string }>('POST', `/v1/me/subscriptions/${encodeURIComponent(id)}/resend`);
+}
+
+/** Confirm subscription (POST /v1/subscriptions/confirm) */
+export function confirmSubscription(token: string) {
+  return request<{ message: string; subscription: SubscriptionItem }>(
+    'POST', '/v1/subscriptions/confirm', { token }
+  );
+}
+
+/** Decline subscription (POST /v1/subscriptions/decline) */
+export function declineSubscription(token: string) {
+  return request<{ message: string }>('POST', '/v1/subscriptions/decline', { token });
+}
+
+/** Unsubscribe via token (POST /v1/subscriptions/unsubscribe) */
+export function unsubscribeByToken(token: string) {
+  return request<{ message: string }>('POST', '/v1/subscriptions/unsubscribe', { token });
+}
+
 /** EOI submission payload. */
 export interface EoiSubmitData {
   category: string;

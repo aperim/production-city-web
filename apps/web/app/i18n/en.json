@@ -272,7 +272,58 @@
     "vision": "Vision",
     "community": "Community",
     "faq": "FAQ",
-    "contact": "Contact"
+    "contact": "Contact",
+    "updates": "Updates"
+  },
+  "announcements": {
+    "page": {
+      "title": "Updates",
+      "description": "Latest news and updates from Production City",
+      "empty": "No announcements yet. Check back soon for updates from the Production City team.",
+      "filter_all": "All"
+    },
+    "detail": {
+      "back": "Back to Updates",
+      "updated": "Updated on {date}",
+      "share": "Share",
+      "share_copied": "Link copied to clipboard",
+      "subscribed_banner": "You are subscribed to {categoryName} updates",
+      "subscribe_cta": "Get notified about {categoryName} updates",
+      "not_found": "Not Found",
+      "not_found_description": "The page you are looking for does not exist."
+    }
+  },
+  "subscriptions": {
+    "confirm": {
+      "title": "Subscription Confirmed",
+      "success": "Your subscription to {categoryName} via {channel} has been confirmed.",
+      "error": "Invalid or expired confirmation link."
+    },
+    "decline": {
+      "title": "Subscription Declined",
+      "success": "You have declined the subscription request.",
+      "error": "Invalid or expired link."
+    },
+    "unsubscribe": {
+      "title": "Unsubscribe",
+      "confirm": "Unsubscribe from {categoryName} updates via {channel}?",
+      "button": "Confirm Unsubscribe",
+      "success": "You have been unsubscribed.",
+      "error": "Invalid or expired link."
+    },
+    "preferences": {
+      "title": "Notification Preferences",
+      "description": "Choose which updates you would like to receive and how.",
+      "email": "Email",
+      "sms": "SMS",
+      "pending": "Pending confirmation",
+      "confirmed": "Active",
+      "resend": "Resend confirmation",
+      "no_phone": "Add a phone number to your profile to receive SMS updates",
+      "subscribe_all": "Subscribe to all",
+      "confirm_unsubscribe": "Are you sure you want to unsubscribe from {categoryName} via {channel}?",
+      "digest_coming_soon": "Weekly digest — Coming soon"
+    }
   },
   "eoi": {
     "formTitle": "Express Your Interest",
