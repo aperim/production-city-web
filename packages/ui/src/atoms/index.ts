@@ -80,3 +80,7 @@ export { SubscriptionStatusDot } from "./SubscriptionStatusDot/SubscriptionStatu
 export type { SubscriptionStatusDotProps } from "./SubscriptionStatusDot/SubscriptionStatusDot";
 export { CategoryTag } from "./CategoryTag/CategoryTag";
 export type { CategoryTagProps } from "./CategoryTag/CategoryTag";
+
+// Issue #342: Dashboard CommandBar Trigger
+export { CommandBarTrigger } from "./CommandBarTrigger/CommandBarTrigger";
+export type { CommandBarTriggerProps } from "./CommandBarTrigger/CommandBarTrigger";

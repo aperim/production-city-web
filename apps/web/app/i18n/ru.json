@@ -1150,5 +1150,31 @@
       "confirm_unsubscribe": "Вы уверены что хотите отписаться от {categoryName} через {channel}?",
       "digest_coming_soon": "Еженедельный дайджест — Скоро"
     }
+  },
+  "dashboard": {
+    "sidebar": {
+      "workspace": "Ваше рабочее пространство",
+      "company": "Компания",
+      "development": "Развитие кампуса",
+      "production": "Производство",
+      "people": "Люди",
+      "business": "Бизнес",
+      "operations": "Операции",
+      "insights": "Аналитика",
+      "system": "Система"
+    },
+    "status": {
+      "active": "Активно",
+      "coming_soon": "Скоро",
+      "planned": "Запланировано",
+      "deprecated": "Устарело"
+    },
+    "notify_me": "Уведомить при запуске",
+    "subscribed": "Подписано",
+    "skip_to_content": "Перейти к основному содержимому",
+    "search_placeholder": "Поиск функций...",
+    "breadcrumb_home": "Панель управления",
+    "no_results": "Функции не найдены",
+    "recent": "Недавние"
   }
 }

@@ -1150,5 +1150,31 @@
       "confirm_unsubscribe": "Êtes-vous sûr de vouloir vous désabonner de {categoryName} par {channel} ?",
       "digest_coming_soon": "Résumé hebdomadaire — Bientôt disponible"
     }
+  },
+  "dashboard": {
+    "sidebar": {
+      "workspace": "Votre espace",
+      "company": "Entreprise",
+      "development": "Développement du campus",
+      "production": "Production",
+      "people": "Personnes",
+      "business": "Affaires",
+      "operations": "Opérations",
+      "insights": "Perspectives",
+      "system": "Système"
+    },
+    "status": {
+      "active": "Actif",
+      "coming_soon": "Bientôt disponible",
+      "planned": "Planifié",
+      "deprecated": "Obsolète"
+    },
+    "notify_me": "Me notifier au lancement",
+    "subscribed": "Abonné",
+    "skip_to_content": "Aller au contenu principal",
+    "search_placeholder": "Rechercher des fonctionnalités...",
+    "breadcrumb_home": "Tableau de bord",
+    "no_results": "Aucune fonctionnalité trouvée",
+    "recent": "Récent"
   }
 }

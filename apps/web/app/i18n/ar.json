@@ -1150,5 +1150,31 @@
       "confirm_unsubscribe": "هل أنت متأكد أنك تريد إلغاء الاشتراك من {categoryName} عبر {channel}؟",
       "digest_coming_soon": "الملخص الأسبوعي — قريبًا"
     }
+  },
+  "dashboard": {
+    "sidebar": {
+      "workspace": "مساحة العمل",
+      "company": "الشركة",
+      "development": "تطوير الحرم",
+      "production": "الإنتاج",
+      "people": "الأشخاص",
+      "business": "الأعمال",
+      "operations": "العمليات",
+      "insights": "الرؤى",
+      "system": "النظام"
+    },
+    "status": {
+      "active": "نشط",
+      "coming_soon": "قريبًا",
+      "planned": "مخطط",
+      "deprecated": "متوقف"
+    },
+    "notify_me": "أبلغني عند الإطلاق",
+    "subscribed": "مشترك",
+    "skip_to_content": "تخطي إلى المحتوى الرئيسي",
+    "search_placeholder": "البحث عن الميزات...",
+    "breadcrumb_home": "لوحة التحكم",
+    "no_results": "لم يتم العثور على ميزات",
+    "recent": "الأخيرة"
   }
 }

@@ -1150,5 +1150,31 @@
       "confirm_unsubscribe": "क्या आप वाकई {channel} के माध्यम से {categoryName} से सदस्यता रद्द करना चाहते हैं?",
       "digest_coming_soon": "साप्ताहिक सारांश — जल्द आ रहा है"
     }
+  },
+  "dashboard": {
+    "sidebar": {
+      "workspace": "आपका कार्यस्थान",
+      "company": "कंपनी",
+      "development": "कैंपस विकास",
+      "production": "प्रोडक्शन",
+      "people": "लोग",
+      "business": "व्यापार",
+      "operations": "संचालन",
+      "insights": "अंतर्दृष्टि",
+      "system": "सिस्टम"
+    },
+    "status": {
+      "active": "सक्रिय",
+      "coming_soon": "जल्द आ रहा है",
+      "planned": "नियोजित",
+      "deprecated": "बंद किया गया"
+    },
+    "notify_me": "लॉन्च होने पर सूचित करें",
+    "subscribed": "सदस्यता ली",
+    "skip_to_content": "मुख्य सामग्री पर जाएं",
+    "search_placeholder": "सुविधाएं खोजें...",
+    "breadcrumb_home": "डैशबोर्ड",
+    "no_results": "कोई सुविधा नहीं मिली",
+    "recent": "हाल ही का"
   }
 }

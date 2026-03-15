@@ -1150,5 +1150,31 @@
     "failed": "Email could not be delivered",
     "pending": "Sending...",
     "unknown": "Status unknown"
+  },
+  "dashboard": {
+    "sidebar": {
+      "workspace": "Your Workspace",
+      "company": "Company",
+      "development": "Campus Development",
+      "production": "Production",
+      "people": "People",
+      "business": "Business",
+      "operations": "Operations",
+      "insights": "Insights",
+      "system": "System"
+    },
+    "status": {
+      "active": "Active",
+      "coming_soon": "Coming Soon",
+      "planned": "Planned",
+      "deprecated": "Deprecated"
+    },
+    "notify_me": "Notify me when this launches",
+    "subscribed": "Subscribed",
+    "skip_to_content": "Skip to main content",
+    "search_placeholder": "Search features...",
+    "breadcrumb_home": "Dashboard",
+    "no_results": "No features found",
+    "recent": "Recent"
   }
 }
