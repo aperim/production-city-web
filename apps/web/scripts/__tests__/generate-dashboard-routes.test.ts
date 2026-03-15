@@ -14,7 +14,6 @@ import { describe, it, expect, beforeAll } from "vitest";
 import {
   type Registry,
   type RegistryFeature,
-  type ValidationError,
   parseRegistry,
   validateRegistry,
   generateRoutes,
