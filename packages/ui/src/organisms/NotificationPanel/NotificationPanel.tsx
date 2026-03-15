@@ -9,6 +9,8 @@ interface NotificationEntry {
   id: string;
   message: ReactNode;
   timestamp?: string;
+  /** ISO 8601 datetime for accessible absolute time */
+  timestampIso?: string;
   read: boolean;
   actionLabel?: string;
   onAction?: () => void;
@@ -84,6 +86,7 @@ function NotificationPanel({
               key={n.id}
               message={n.message}
               timestamp={n.timestamp}
+              timestampIso={n.timestampIso}
               read={n.read}
               actionLabel={n.actionLabel}
               onAction={n.onAction}

@@ -541,3 +541,163 @@ describe("Decorative content handling", () => {
     expect(aoc).toContain("aria-labelledby");
   });
 });
+
+// ============================================================================
+// Auth & Dashboard Accessibility (#272)
+// ============================================================================
+
+describe("WCAG 2.4.1 — Dashboard skip navigation", () => {
+  it("AdminDashboardTemplate passes skipNavLabel to NavigationHeader", () => {
+    const template = readFile(
+      "templates/AdminDashboardTemplate/AdminDashboardTemplate.tsx",
+      UI_ROOT,
+    );
+    expect(template).toContain("skipNavLabel");
+    expect(template).toContain("skipToContentLabel={skipNavLabel}");
+  });
+
+  it("NavigationHeader has skip-to-content link", () => {
+    const navHeader = readFile(
+      "organisms/NavigationHeader/NavigationHeader.tsx",
+      UI_ROOT,
+    );
+    expect(navHeader).toContain('href={`#${skipToContentId}`}');
+    expect(navHeader).toContain("sr-only");
+    expect(navHeader).toContain("focus:not-sr-only");
+  });
+
+  it("PageShell main content has id and tabIndex for skip target", () => {
+    const shell = readFile(
+      "organisms/PageShell/PageShell.tsx",
+      UI_ROOT,
+    );
+    expect(shell).toContain('id={mainId}');
+    expect(shell).toContain("tabIndex={-1}");
+    expect(shell).toContain("<main");
+  });
+});
+
+describe("WCAG 2.4.1 — SkipNavLink atom", () => {
+  it("SkipNavLink uses sr-only with focus:not-sr-only", () => {
+    const skipNav = readFile(
+      "atoms/SkipNavLink/SkipNavLink.tsx",
+      UI_ROOT,
+    );
+    expect(skipNav).toContain("sr-only");
+    expect(skipNav).toContain("focus:not-sr-only");
+    expect(skipNav).toContain("focus:outline-2");
+    expect(skipNav).toContain("main-content");
+  });
+});
+
+describe("WCAG — Dashboard layout accessibility", () => {
+  it("dashboard layout uses i18n skipToContent label", () => {
+    const layout = readFile("dashboard/layout.tsx");
+    expect(layout).toContain('t("common.skipToContent")');
+    expect(layout).toContain("skipNavLabel=");
+  });
+
+  it("connection status uses aria-live for screen readers", () => {
+    const layout = readFile("dashboard/layout.tsx");
+    expect(layout).toContain('aria-live="polite"');
+    expect(layout).toContain('role="status"');
+  });
+
+  it("notification timestamps include ISO datetime for accessibility", () => {
+    const layout = readFile("dashboard/layout.tsx");
+    expect(layout).toContain("timestampIso: n.createdAt");
+  });
+
+  it("sidebar items use aria-current on active links", () => {
+    const sidebar = readFile(
+      "organisms/Sidebar/Sidebar.tsx",
+      UI_ROOT,
+    );
+    expect(sidebar).toContain("aria-current={item.active ? 'page' : undefined}");
+  });
+
+  it("sidebar has nav landmark with aria-label", () => {
+    const sidebar = readFile(
+      "organisms/Sidebar/Sidebar.tsx",
+      UI_ROOT,
+    );
+    expect(sidebar).toContain("<nav");
+    expect(sidebar).toContain("aria-label={ariaLabel}");
+  });
+
+  it("sidebar items meet minimum touch target size", () => {
+    const sidebar = readFile(
+      "organisms/Sidebar/Sidebar.tsx",
+      UI_ROOT,
+    );
+    expect(sidebar).toContain("min-h-[44px]");
+  });
+
+  it("sidebar items have focus-visible styles", () => {
+    const sidebar = readFile(
+      "organisms/Sidebar/Sidebar.tsx",
+      UI_ROOT,
+    );
+    expect(sidebar).toContain("focus-visible:outline-2");
+    expect(sidebar).toContain("focus-visible:outline-ring");
+  });
+});
+
+describe("WCAG — NotificationItem accessible timestamps", () => {
+  it("NotificationItem uses <time> element with dateTime attribute", () => {
+    const item = readFile(
+      "molecules/NotificationItem/NotificationItem.tsx",
+      UI_ROOT,
+    );
+    expect(item).toContain("<time");
+    expect(item).toContain("dateTime={timestampIso}");
+    expect(item).toContain("title=");
+  });
+});
+
+describe("WCAG — Auth page accessibility", () => {
+  it("login page loading state uses role=status for screen readers", () => {
+    const login = readFile("login/page.tsx");
+    expect(login).toContain('role="status"');
+    expect(login).toContain("sr-only");
+  });
+
+  it("login form has ariaLabel prop", () => {
+    const login = readFile("login/page.tsx");
+    expect(login).toContain("ariaLabel=");
+  });
+});
+
+describe("WCAG — Reduced motion support", () => {
+  it("globals.css disables all animations for prefers-reduced-motion", () => {
+    const globals = readFile("globals.css", UI_ROOT);
+    expect(globals).toContain("prefers-reduced-motion: reduce");
+    expect(globals).toContain("animation-duration: 0.01ms");
+    expect(globals).toContain("transition-duration: 0.01ms");
+    expect(globals).toContain("animate-pulse");
+  });
+
+  it("app.css gates scroll-behavior behind prefers-reduced-motion", () => {
+    // app.css is at the web root, not inside app/
+    const appCss = readFileSync(
+      resolve(APP_ROOT, "../app.css"),
+      "utf-8",
+    );
+    expect(appCss).toContain("prefers-reduced-motion: no-preference");
+    expect(appCss).toContain("scroll-behavior: smooth");
+  });
+});
+
+describe("WCAG — i18n skipToContent key", () => {
+  const locales = ["en", "zh", "hi", "es", "ar", "fr", "bn", "pt", "ru", "ja"];
+
+  it("all locales have common.skipToContent key", () => {
+    for (const locale of locales) {
+      const data = JSON.parse(readFile(`i18n/${locale}.json`));
+      expect(
+        data.common?.skipToContent,
+        `${locale}.json missing common.skipToContent`,
+      ).toBeTruthy();
+    }
+  });
+});

@@ -203,7 +203,8 @@
     "back": "戻る",
     "next": "次へ",
     "previous": "前へ",
-    "noResults": "結果が見つかりません。"
+    "noResults": "結果が見つかりません。",
+    "skipToContent": "メインコンテンツにスキップ"
   },
   "media": {
     "attribution": {

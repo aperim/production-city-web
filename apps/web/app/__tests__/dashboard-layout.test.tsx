@@ -22,6 +22,21 @@ vi.mock("../lib/websocket/useChannel", () => ({
   useChannel: vi.fn(),
 }));
 
+vi.mock("../i18n/context", () => ({
+  useTranslation: () => ({
+    locale: "en",
+    direction: "ltr",
+    setLocale: vi.fn(),
+    t: (key: string) => {
+      const keys: Record<string, string> = {
+        "common.skipToContent": "Skip to main content",
+        "common.loading": "Loading...",
+      };
+      return keys[key] ?? key;
+    },
+  }),
+}));
+
 vi.mock("../lib/api-client", () => ({
   getSession: vi.fn().mockReturnValue(
     Promise.resolve({ ok: false, error: { error: "unauthorized", message: "Not authenticated" }, status: 401 }),

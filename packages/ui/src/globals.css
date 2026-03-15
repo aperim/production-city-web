@@ -208,6 +208,21 @@ body {
   .pc-img-hover > [data-img] {
     transition: none !important;
   }
+
+  /* Disable skeleton shimmer and pulse animations */
+  .animate-pulse,
+  .animate-shimmer {
+    animation: none !important;
+  }
+
+  /* Disable all CSS transitions and animations globally */
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }
 
 .guide-page {

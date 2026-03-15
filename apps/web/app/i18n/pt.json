@@ -203,7 +203,8 @@
     "back": "Voltar",
     "next": "Próximo",
     "previous": "Anterior",
-    "noResults": "Nenhum resultado encontrado."
+    "noResults": "Nenhum resultado encontrado.",
+    "skipToContent": "Pular para o conteúdo principal"
   },
   "media": {
     "attribution": {

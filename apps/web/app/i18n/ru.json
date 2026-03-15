@@ -203,7 +203,8 @@
     "back": "Назад",
     "next": "Далее",
     "previous": "Назад",
-    "noResults": "Результаты не найдены."
+    "noResults": "Результаты не найдены.",
+    "skipToContent": "Перейти к основному содержанию"
   },
   "media": {
     "attribution": {

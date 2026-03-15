@@ -22,6 +22,43 @@ vi.mock("../lib/websocket/useChannel", () => ({
   useChannel: vi.fn(),
 }));
 
+vi.mock("../i18n/context", () => ({
+  useTranslation: () => ({
+    locale: "en",
+    direction: "ltr",
+    setLocale: vi.fn(),
+    t: (key: string) => {
+      const keys: Record<string, string> = {
+        "common.skipToContent": "Skip to main content",
+        "common.loading": "Loading...",
+        "admin.dashboard.title": "Dashboard",
+        "admin.profile.title": "Profile",
+        "admin.profile.nameLabel": "Display name",
+        "admin.profile.emailLabel": "Email",
+        "admin.profile.rolesLabel": "Roles",
+        "admin.profile.themeLabel": "Appearance",
+        "admin.profile.themeLight": "Light",
+        "admin.profile.themeDark": "Dark",
+        "admin.profile.saveButton": "Save",
+        "admin.profile.sessions.title": "Active sessions",
+        "admin.profile.sessions.currentSession": "Current session",
+        "admin.profile.sessions.revokeButton": "Revoke",
+        "admin.profile.sessions.noOtherSessions": "No other active sessions",
+        "admin.profile.sessions.lastActive": "Last active",
+        "admin.profile.sessions.createdAt": "Created",
+        "admin.profile.sessions.justNow": "Just now",
+        "admin.profile.sessions.minutesAgo": "min ago",
+        "admin.profile.sessions.hoursAgo": "hr ago",
+        "admin.profile.sessions.daysAgo": "d ago",
+        "admin.profile.sessions.onDevice": "on",
+        "admin.profile.emptyNameError": "Name cannot be empty",
+        "admin.profile.genericError": "An error occurred",
+      };
+      return keys[key] ?? key;
+    },
+  }),
+}));
+
 vi.mock("../lib/api-client", () => ({
   listUsers: vi.fn().mockReturnValue(
     Promise.resolve({ ok: true, data: { users: [], total: 0, page: 1, pageSize: 20 }, status: 200 }),

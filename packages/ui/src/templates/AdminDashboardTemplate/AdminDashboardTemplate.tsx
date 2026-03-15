@@ -35,6 +35,12 @@ export interface AdminDashboardTemplateProps {
    */
   children: ReactNode;
   /**
+   * Skip navigation link label (i18n).
+   * Passed through to NavigationHeader's skip-to-content link.
+   * @default "Skip to main content"
+   */
+  skipNavLabel?: string;
+  /**
    * Loading state.
    */
   loading?: boolean;
@@ -45,7 +51,7 @@ export interface AdminDashboardTemplateProps {
 }
 
 /**
- * AdminDashboardTemplate — full admin layout with sidebar, header, breadcrumbs.
+ * AdminDashboardTemplate \u2014 full admin layout with sidebar, header, breadcrumbs.
  *
  * Composes PageShell + Sidebar + NavigationHeader + Breadcrumb + content.
  * Follows Uncodixify: simple sidebar (240px), clean header, no decorative elements.
@@ -58,6 +64,7 @@ export function AdminDashboardTemplate({
   sidebarFooter,
   breadcrumbs,
   children,
+  skipNavLabel,
   loading = false,
   className,
 }: AdminDashboardTemplateProps) {
@@ -70,6 +77,7 @@ export function AdminDashboardTemplate({
           logo={logo}
           navItems={navItems}
           actions={headerActions}
+          skipToContentLabel={skipNavLabel}
           sticky
         />
       }

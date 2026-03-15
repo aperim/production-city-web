@@ -60,3 +60,7 @@ export type { StatValueProps } from "./StatValue/StatValue";
 // Issue #266: Loading Skeleton & Spinner Components
 export { Spinner, spinnerVariants } from "./Spinner/Spinner";
 export type { SpinnerProps } from "./Spinner/Spinner";
+
+// Issue #272: Accessibility Atoms
+export { SkipNavLink } from "./SkipNavLink/SkipNavLink";
+export type { SkipNavLinkProps } from "./SkipNavLink/SkipNavLink";

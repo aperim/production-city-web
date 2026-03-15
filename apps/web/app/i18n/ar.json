@@ -203,7 +203,8 @@
     "back": "رجوع",
     "next": "التالي",
     "previous": "السابق",
-    "noResults": "لم يتم العثور على نتائج."
+    "noResults": "لم يتم العثور على نتائج.",
+    "skipToContent": "تخطي إلى المحتوى الرئيسي"
   },
   "media": {
     "attribution": {

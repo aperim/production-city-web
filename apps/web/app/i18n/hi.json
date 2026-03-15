@@ -203,7 +203,8 @@
     "back": "वापस",
     "next": "अगला",
     "previous": "पिछला",
-    "noResults": "कोई परिणाम नहीं मिला।"
+    "noResults": "कोई परिणाम नहीं मिला।",
+    "skipToContent": "मुख्य सामग्री पर जाएं"
   },
   "media": {
     "attribution": {

@@ -6,7 +6,7 @@
  * Identical UX for registered and unregistered emails (anti-enumeration).
  */
 
-import { useCallback, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import {
   AuthTemplate,
   LoginForm,
@@ -25,6 +25,8 @@ export default function LoginPage() {
   const { isAuthenticated, isLoading } = useAuth();
   const { t } = useTranslation();
   const [view, setView] = useState<LoginView>("email");
+  const codeContainerRef = useRef<HTMLDivElement>(null);
+  const emailFormRef = useRef<HTMLDivElement>(null);
   const [email, setEmail] = useState("");
   const [requestId, setRequestId] = useState<string | null>(null);
   const [deliveryToken, setDeliveryToken] = useState<string | null>(null);
@@ -112,6 +114,21 @@ export default function LoginPage() {
     }
   }, [email]);
 
+  // Focus management: move focus to first input when view changes
+  useEffect(() => {
+    if (view === "code" && codeContainerRef.current) {
+      const firstInput = codeContainerRef.current.querySelector<HTMLElement>("input");
+      if (firstInput) {
+        firstInput.focus();
+      }
+    } else if (view === "email" && emailFormRef.current) {
+      const firstInput = emailFormRef.current.querySelector<HTMLElement>("input");
+      if (firstInput) {
+        firstInput.focus();
+      }
+    }
+  }, [view]);
+
   const handleGoBack = useCallback(() => {
     setView("email");
     setEmail("");
@@ -139,6 +156,7 @@ export default function LoginPage() {
   return (
     <AuthTemplate>
       {view === "email" ? (
+        <div ref={emailFormRef}>
         <LoginForm
           onSubmit={handleEmailSubmit}
           deliveryStatus={deliveryStatus}
@@ -150,8 +168,9 @@ export default function LoginPage() {
           submittingLabel={t("auth.login.submitting")}
           ariaLabel={t("auth.login.title")}
         />
+        </div>
       ) : (
-        <div className="flex flex-col gap-4">
+        <div ref={codeContainerRef} className="flex flex-col gap-4">
           <MagicCodeForm
             onSubmit={handleCodeSubmit}
             onResend={handleResend}
@@ -172,7 +191,7 @@ export default function LoginPage() {
           <button
             type="button"
             onClick={handleGoBack}
-            className="self-start text-sm text-muted-foreground hover:text-foreground underline-offset-4 hover:underline transition-colors duration-150"
+            className="self-start text-sm text-muted-foreground hover:text-foreground underline-offset-4 hover:underline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring transition-colors duration-150"
           >
             {t("auth.login.wrongEmail")}
           </button>

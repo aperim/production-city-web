@@ -41,6 +41,11 @@ export interface NavigationHeaderProps {
    * @default "main-content"
    */
   skipToContentId?: string;
+  /**
+   * Skip-to-content link label (i18n).
+   * @default "Skip to main content"
+   */
+  skipToContentLabel?: string;
   /** Additional class names */
   className?: string;
   /**
@@ -64,6 +69,7 @@ export function NavigationHeader({
   sticky = false,
   variant = 'default',
   skipToContentId = 'main-content',
+  skipToContentLabel = 'Skip to main content',
   className,
   'aria-label': ariaLabel = 'Main navigation',
 }: NavigationHeaderProps) {
@@ -82,7 +88,7 @@ export function NavigationHeader({
         href={`#${skipToContentId}`}
         className="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:z-50 focus:px-4 focus:py-2 focus:rounded-md focus:bg-primary focus:text-primary-foreground focus:outline-2 focus:outline-ring"
       >
-        Skip to main content
+        {skipToContentLabel}
       </a>
 
       <div className="mx-auto max-w-screen-xl px-4 sm:px-6">

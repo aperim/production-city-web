@@ -29,6 +29,7 @@ import {
   type NotificationData,
 } from "../lib/api-client";
 import { BreadcrumbProvider, useBreadcrumbState } from "./breadcrumb-context";
+import { useTranslation } from "../i18n/context";
 
 /** Maps WebSocket connection state to ConnectionDot variant */
 function mapConnectionState(state: string): "connected" | "reconnecting" | "disconnected" {
@@ -46,7 +47,7 @@ function mapConnectionState(state: string): "connected" | "reconnecting" | "disc
 function DashboardStatusBar() {
   const { state } = useWebSocket();
   return (
-    <div className="flex items-center gap-1.5 text-xs text-muted-foreground">
+    <div className="flex items-center gap-1.5 text-xs text-muted-foreground" role="status" aria-live="polite">
       <ConnectionDot
         state={mapConnectionState(state)}
         size="sm"
@@ -150,6 +151,7 @@ function DashboardHeaderActions() {
     id: n.id,
     message: notificationMessage(n),
     timestamp: timeAgo(n.createdAt),
+    timestampIso: n.createdAt,
     read: !!n.readAt,
     onAction: n.actionUrl && isSafeUrl(n.actionUrl) ? () => {
       if (typeof window !== "undefined") window.location.href = n.actionUrl!;
@@ -178,6 +180,7 @@ function DashboardHeaderActions() {
 function DashboardShell({ children }: { children: ReactNode }) {
   const { hasPermission, user, logout } = useAuth();
   const breadcrumbs = useBreadcrumbState();
+  const { t } = useTranslation();
 
   // Active path for sidebar highlighting. Reads on mount and listens
   // for popstate (back/forward). Sidebar links use <a href> (full-page
@@ -272,6 +275,7 @@ function DashboardShell({ children }: { children: ReactNode }) {
         ) : undefined
       }
       breadcrumbs={breadcrumbs.length > 0 ? breadcrumbs : undefined}
+      skipNavLabel={t("common.skipToContent")}
       headerActions={<DashboardHeaderActions />}
     >
       {children}

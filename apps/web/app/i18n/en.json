@@ -203,7 +203,8 @@
     "back": "Back",
     "next": "Next",
     "previous": "Previous",
-    "noResults": "No results found."
+    "noResults": "No results found.",
+    "skipToContent": "Skip to main content"
   },
   "media": {
     "attribution": {

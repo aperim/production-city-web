@@ -7,6 +7,8 @@ interface NotificationItemProps extends Omit<HTMLAttributes<HTMLDivElement>, "ch
   message: ReactNode;
   /** Relative timestamp string (e.g. "2 min ago") */
   timestamp?: string;
+  /** ISO 8601 datetime for the `<time>` element's `dateTime` and `title` attributes */
+  timestampIso?: string;
   /** Whether the notification has been read */
   read?: boolean;
   /** Optional action button label */
@@ -26,6 +28,7 @@ interface NotificationItemProps extends Omit<HTMLAttributes<HTMLDivElement>, "ch
 function NotificationItem({
   message,
   timestamp,
+  timestampIso,
   read = false,
   actionLabel,
   onAction,
@@ -55,7 +58,13 @@ function NotificationItem({
           {message}
         </p>
         {timestamp && (
-          <time className="text-xs text-muted-foreground mt-0.5 block">{timestamp}</time>
+          <time
+            className="text-xs text-muted-foreground mt-0.5 block"
+            dateTime={timestampIso}
+            title={timestampIso ? new Date(timestampIso).toLocaleString() : undefined}
+          >
+            {timestamp}
+          </time>
         )}
       </div>
       {actionLabel && onAction && (
