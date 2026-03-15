@@ -7,11 +7,16 @@
 
 import { useCallback, useEffect, useRef, useState } from "react";
 import { AuditLogEntry } from "@productioncity/holding-ui";
-import { AdminLayout } from "../admin-layout";
+import { useBreadcrumbs } from "../use-breadcrumbs";
 import { PermissionGate } from "../../lib/route-guard";
 import { listAuditLog, type AuditLogEntryData } from "../../lib/api-client";
 
 export default function AuditLogPage() {
+  useBreadcrumbs([
+    { label: "Dashboard", href: "/dashboard" },
+    { label: "Audit Log" },
+  ]);
+
   const [entries, setEntries] = useState<AuditLogEntryData[]>([]);
   const [loading, setLoading] = useState(true);
   const cursorRef = useRef<string | undefined>(undefined);
@@ -60,12 +65,7 @@ export default function AuditLogPage() {
   }, [fetchEntries]);
 
   return (
-    <AdminLayout
-      breadcrumbs={[
-        { label: "Dashboard", href: "/dashboard" },
-        { label: "Audit Log" },
-      ]}
-    >
+
       <PermissionGate permission="audit:read">
         <div className="flex flex-col gap-4">
           {/* Filters */}
@@ -139,6 +139,5 @@ export default function AuditLogPage() {
           )}
         </div>
       </PermissionGate>
-    </AdminLayout>
   );
 }

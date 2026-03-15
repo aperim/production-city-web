@@ -6,6 +6,22 @@ vi.mock("../lib/auth-context", () => ({
   useAuth: vi.fn(),
 }));
 
+vi.mock("../lib/websocket/WebSocketProvider", async () => {
+  const { createContext } = await import("react");
+  return {
+    WebSocketProvider: ({ children }: { children: React.ReactNode }) => children,
+    WebSocketContext: createContext({ state: "disconnected" }),
+  };
+});
+
+vi.mock("../lib/websocket/useWebSocket", () => ({
+  useWebSocket: () => ({ state: "disconnected" }),
+}));
+
+vi.mock("../lib/websocket/useChannel", () => ({
+  useChannel: vi.fn(),
+}));
+
 vi.mock("../lib/api-client", () => ({
   listUsers: vi.fn().mockReturnValue(
     Promise.resolve({ ok: true, data: { users: [], total: 0, page: 1, pageSize: 20 }, status: 200 }),
@@ -84,20 +100,31 @@ function mockLimitedUser() {
   });
 }
 
+/**
+ * Helper: wrap page in BreadcrumbProvider (simulates what layout.tsx does).
+ * Pages now render content-only and rely on the layout for the shell.
+ */
+async function renderPageWithProvider(pagePath: string) {
+  const { BreadcrumbProvider } = await import("../dashboard/breadcrumb-context");
+  const { default: Page } = await import(pagePath);
+  return renderToString(
+    createElement(BreadcrumbProvider, null, createElement(Page)),
+  );
+}
+
 describe("UsersPage", () => {
   beforeEach(() => vi.clearAllMocks());
 
   it("renders with permission", async () => {
     mockAdmin();
-    const { default: UsersPage } = await import("../dashboard/users/page");
-    const html = renderToString(createElement(UsersPage));
-    expect(html).toContain("Users");
+    const html = await renderPageWithProvider("../dashboard/users/page");
+    // Page renders UserTable inside PermissionGate — check for table markup
+    expect(html).toContain("flex flex-col gap-4");
   });
 
   it("shows access denied without permission", async () => {
     mockLimitedUser();
-    const { default: UsersPage } = await import("../dashboard/users/page");
-    const html = renderToString(createElement(UsersPage));
+    const html = await renderPageWithProvider("../dashboard/users/page");
     expect(html).toContain("Access Denied");
   });
 });
@@ -107,16 +134,14 @@ describe("InvitationsPage", () => {
 
   it("renders with permission", async () => {
     mockAdmin();
-    const { default: InvitationsPage } = await import("../dashboard/invitations/page");
-    const html = renderToString(createElement(InvitationsPage));
+    const html = await renderPageWithProvider("../dashboard/invitations/page");
     expect(html).toContain("Invitations");
     expect(html).toContain("Suppressed Emails");
   });
 
   it("shows access denied without permission", async () => {
     mockLimitedUser();
-    const { default: InvitationsPage } = await import("../dashboard/invitations/page");
-    const html = renderToString(createElement(InvitationsPage));
+    const html = await renderPageWithProvider("../dashboard/invitations/page");
     expect(html).toContain("Access Denied");
   });
 });
@@ -126,16 +151,14 @@ describe("ApprovalsPage", () => {
 
   it("renders with permission", async () => {
     mockAdmin();
-    const { default: ApprovalsPage } = await import("../dashboard/approvals/page");
-    const html = renderToString(createElement(ApprovalsPage));
-    // Should contain the approvals layout
-    expect(html).toContain("Pending Approvals");
+    const html = await renderPageWithProvider("../dashboard/approvals/page");
+    // Page renders loading state for pending approvals
+    expect(html).toContain("Loading");
   });
 
   it("shows access denied without permission", async () => {
     mockLimitedUser();
-    const { default: ApprovalsPage } = await import("../dashboard/approvals/page");
-    const html = renderToString(createElement(ApprovalsPage));
+    const html = await renderPageWithProvider("../dashboard/approvals/page");
     expect(html).toContain("Access Denied");
   });
 });
@@ -145,17 +168,14 @@ describe("AuditLogPage", () => {
 
   it("renders with permission", async () => {
     mockAdmin();
-    const { default: AuditLogPage } = await import("../dashboard/audit-log/page");
-    const html = renderToString(createElement(AuditLogPage));
-    expect(html).toContain("Audit Log");
+    const html = await renderPageWithProvider("../dashboard/audit-log/page");
     expect(html).toContain("Filter by action");
     expect(html).toContain("Filter by actor");
   });
 
   it("shows access denied without permission", async () => {
     mockLimitedUser();
-    const { default: AuditLogPage } = await import("../dashboard/audit-log/page");
-    const html = renderToString(createElement(AuditLogPage));
+    const html = await renderPageWithProvider("../dashboard/audit-log/page");
     expect(html).toContain("Access Denied");
   });
 });
@@ -165,25 +185,25 @@ describe("EoiPage", () => {
 
   it("renders with permission", async () => {
     mockAdmin();
-    const { default: EoiPage } = await import("../dashboard/eoi/page");
-    const html = renderToString(createElement(EoiPage));
-    expect(html).toContain("Expressions of Interest");
+    const html = await renderPageWithProvider("../dashboard/eoi/page");
+    // Page renders EoiStats + EoiTable (breadcrumb "Expressions of Interest" is set via context for layout)
+    expect(html).toContain("All categories");
   });
 
   it("shows access denied without permission", async () => {
     mockLimitedUser();
-    const { default: EoiPage } = await import("../dashboard/eoi/page");
-    const html = renderToString(createElement(EoiPage));
+    const html = await renderPageWithProvider("../dashboard/eoi/page");
     expect(html).toContain("Access Denied");
   });
 });
 
-describe("Admin sidebar permission visibility", () => {
+describe("Dashboard layout sidebar permission visibility", () => {
   it("shows all nav items for admin", async () => {
     mockAdmin();
-    const { AdminLayout } = await import("../dashboard/admin-layout");
+
+    const { default: DashboardLayout } = await import("../dashboard/layout");
     const html = renderToString(
-      createElement(AdminLayout, null, createElement("p", null, "content")),
+      createElement(DashboardLayout, null, createElement("p", null, "content")),
     );
     expect(html).toContain("Dashboard");
     expect(html).toContain("Users");
@@ -195,9 +215,10 @@ describe("Admin sidebar permission visibility", () => {
 
   it("hides nav items when user lacks permissions", async () => {
     mockLimitedUser();
-    const { AdminLayout } = await import("../dashboard/admin-layout");
+
+    const { default: DashboardLayout } = await import("../dashboard/layout");
     const html = renderToString(
-      createElement(AdminLayout, null, createElement("p", null, "content")),
+      createElement(DashboardLayout, null, createElement("p", null, "content")),
     );
     expect(html).toContain("Dashboard"); // Always visible
     expect(html).not.toContain("Users");

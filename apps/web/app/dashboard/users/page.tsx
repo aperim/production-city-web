@@ -16,8 +16,8 @@ import {
   type UserDetail,
   type AuditLogEntryProps,
 } from "@productioncity/holding-ui";
-import { AdminLayout } from "../admin-layout";
 import { PermissionGate } from "../../lib/route-guard";
+import { useBreadcrumbs } from "../use-breadcrumbs";
 import {
   listUsers,
   getUser,
@@ -26,6 +26,11 @@ import {
 } from "../../lib/api-client";
 
 export default function UsersPage() {
+  useBreadcrumbs([
+    { label: "Dashboard", href: "/dashboard" },
+    { label: "Users" },
+  ]);
+
   const [users, setUsers] = useState<UserTableUser[]>([]);
   const [pagination, setPagination] = useState<PaginationInfo>({
     page: 1,
@@ -133,12 +138,6 @@ export default function UsersPage() {
   }, []);
 
   return (
-    <AdminLayout
-      breadcrumbs={[
-        { label: "Dashboard", href: "/dashboard" },
-        { label: "Users" },
-      ]}
-    >
       <PermissionGate permission="user:read">
         <UserTable
           users={users}
@@ -157,6 +156,5 @@ export default function UsersPage() {
           auditLog={userAuditLog}
         />
       </PermissionGate>
-    </AdminLayout>
   );
 }

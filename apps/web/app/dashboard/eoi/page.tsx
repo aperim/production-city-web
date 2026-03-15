@@ -14,7 +14,7 @@ import {
   type EoiPagination,
   type EoiDetail,
 } from "@productioncity/holding-ui";
-import { AdminLayout } from "../admin-layout";
+import { useBreadcrumbs } from "../use-breadcrumbs";
 import { PermissionGate } from "../../lib/route-guard";
 import { useAuth } from "../../lib/auth-context";
 import {
@@ -26,6 +26,11 @@ import {
 } from "../../lib/api-client";
 
 export default function EoiPage() {
+  useBreadcrumbs([
+    { label: "Dashboard", href: "/dashboard" },
+    { label: "Expressions of Interest" },
+  ]);
+
   const { hasPermission } = useAuth();
   const canWrite = hasPermission("audit:write");
 
@@ -153,12 +158,7 @@ export default function EoiPage() {
   }, [fetchStats]);
 
   return (
-    <AdminLayout
-      breadcrumbs={[
-        { label: "Dashboard", href: "/dashboard" },
-        { label: "Expressions of Interest" },
-      ]}
-    >
+
       <PermissionGate permission="audit:read">
         <div className="space-y-4">
           <EoiStats
@@ -186,6 +186,5 @@ export default function EoiPage() {
           />
         </div>
       </PermissionGate>
-    </AdminLayout>
   );
 }

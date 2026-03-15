@@ -6,7 +6,6 @@
 
 import { useCallback, useEffect, useState } from "react";
 import { AuditLogEntry } from "@productioncity/holding-ui";
-import { AdminLayout } from "./admin-layout";
 import { useAuth } from "../lib/auth-context";
 import {
   getAdminStats,
@@ -48,7 +47,6 @@ export default function DashboardPage() {
   }, [fetchData]);
 
   return (
-    <AdminLayout>
       <div className="flex flex-col gap-6">
         {/* Stats — only for users with user:read */}
         {canReadUsers && (
@@ -120,7 +118,6 @@ export default function DashboardPage() {
           </div>
         )}
       </div>
-    </AdminLayout>
   );
 }
 

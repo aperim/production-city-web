@@ -1,21 +1,22 @@
 "use client";
 
 /**
- * Admin dashboard layout with sidebar navigation.
- * Sidebar items hidden based on permissions (client-side).
- * Server enforces permissions too — this is cosmetic only.
+ * Shared dashboard layout — wraps all /dashboard/* pages in
+ * ProtectedRoute + WebSocketProvider + AdminDashboardTemplate.
+ *
+ * Individual pages no longer wrap in AdminLayout. They render content only
+ * and declare breadcrumbs via useSetBreadcrumbs().
  */
 
-import { type ReactNode, useState, useCallback, useEffect } from "react";
+import { type ReactNode, useState, useEffect, useCallback } from "react";
 import {
   AdminDashboardTemplate,
-  type BreadcrumbItem,
   ConnectionDot,
   NotificationBell,
   NotificationPanel,
   type NotificationEntry,
+  type SidebarSection,
 } from "@productioncity/holding-ui";
-import type { SidebarSection } from "@productioncity/holding-ui";
 import { useAuth } from "../lib/auth-context";
 import { ProtectedRoute } from "../lib/route-guard";
 import { WebSocketProvider } from "../lib/websocket/WebSocketProvider";
@@ -27,12 +28,7 @@ import {
   markAllNotificationsRead,
   type NotificationData,
 } from "../lib/api-client";
-
-export interface AdminLayoutProps {
-  children: ReactNode;
-  breadcrumbs?: BreadcrumbItem[];
-  pendingApprovalCount?: number;
-}
+import { BreadcrumbProvider, useBreadcrumbState } from "./breadcrumb-context";
 
 /** Maps WebSocket connection state to ConnectionDot variant */
 function mapConnectionState(state: string): "connected" | "reconnecting" | "disconnected" {
@@ -92,7 +88,7 @@ function timeAgo(iso: string): string {
   return `${Math.floor(hrs / 24)} days ago`;
 }
 
-/** Notification bell in the header — wired to real API and WebSocket */
+/** Notification bell in the header */
 function DashboardHeaderActions() {
   const [notifications, setNotifications] = useState<NotificationData[]>([]);
   const [unreadCount, setUnreadCount] = useState(0);
@@ -116,11 +112,9 @@ function DashboardHeaderActions() {
     fetchNotifications();
   }, [fetchNotifications]);
 
-  // Subscribe to WebSocket notifications for real-time updates
   useChannel("admin:notifications", {
     enabled: !!user,
     onMessage: () => {
-      // Refetch when new notification arrives
       fetchNotifications();
     },
   });
@@ -139,7 +133,6 @@ function DashboardHeaderActions() {
     const notif = notifications.find((n) => n.id === id);
     if (!notif) return;
 
-    // Mark as read
     if (!notif.readAt) {
       await markNotificationRead(id);
       setNotifications((prev) =>
@@ -148,7 +141,6 @@ function DashboardHeaderActions() {
       setUnreadCount((c) => Math.max(0, c - 1));
     }
 
-    // Navigate to action URL if available
     if (notif.actionUrl && isSafeUrl(notif.actionUrl) && typeof window !== "undefined") {
       window.location.href = notif.actionUrl;
     }
@@ -182,12 +174,23 @@ function DashboardHeaderActions() {
   );
 }
 
-export function AdminLayout({
-  children,
-  breadcrumbs,
-  pendingApprovalCount,
-}: AdminLayoutProps) {
+/** Inner layout that reads breadcrumbs from context */
+function DashboardShell({ children }: { children: ReactNode }) {
   const { hasPermission, user, logout } = useAuth();
+  const breadcrumbs = useBreadcrumbState();
+
+  // Active path for sidebar highlighting. Reads on mount and listens
+  // for popstate (back/forward). Sidebar links use <a href> (full-page
+  // navigation) so mount-read covers normal clicks; popstate covers
+  // browser history navigation.
+  const [activePath, setActivePath] = useState("/dashboard");
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    setActivePath(window.location.pathname);
+    const onPopState = () => setActivePath(window.location.pathname);
+    window.addEventListener("popstate", onPopState);
+    return () => window.removeEventListener("popstate", onPopState);
+  }, []);
 
   const sidebarItems = [];
 
@@ -195,7 +198,7 @@ export function AdminLayout({
     id: "dashboard",
     label: "Dashboard",
     href: "/dashboard",
-    active: typeof window !== "undefined" && window.location.pathname === "/dashboard",
+    active: activePath === "/dashboard",
   });
 
   if (hasPermission("user:read")) {
@@ -203,7 +206,7 @@ export function AdminLayout({
       id: "users",
       label: "Users",
       href: "/dashboard/users",
-      active: typeof window !== "undefined" && window.location.pathname.startsWith("/dashboard/users"),
+      active: activePath.startsWith("/dashboard/users"),
     });
   }
 
@@ -212,7 +215,7 @@ export function AdminLayout({
       id: "invitations",
       label: "Invitations",
       href: "/dashboard/invitations",
-      active: typeof window !== "undefined" && window.location.pathname.startsWith("/dashboard/invitations"),
+      active: activePath.startsWith("/dashboard/invitations"),
     });
   }
 
@@ -221,8 +224,7 @@ export function AdminLayout({
       id: "approvals",
       label: "Pending Approvals",
       href: "/dashboard/approvals",
-      active: typeof window !== "undefined" && window.location.pathname.startsWith("/dashboard/approvals"),
-      badge: pendingApprovalCount && pendingApprovalCount > 0 ? String(pendingApprovalCount) : undefined,
+      active: activePath.startsWith("/dashboard/approvals"),
     });
   }
 
@@ -231,56 +233,59 @@ export function AdminLayout({
       id: "eoi",
       label: "Expressions of Interest",
       href: "/dashboard/eoi",
-      active: typeof window !== "undefined" && window.location.pathname.startsWith("/dashboard/eoi"),
+      active: activePath.startsWith("/dashboard/eoi"),
     });
     sidebarItems.push({
       id: "audit-log",
       label: "Audit Log",
       href: "/dashboard/audit-log",
-      active: typeof window !== "undefined" && window.location.pathname.startsWith("/dashboard/audit-log"),
+      active: activePath.startsWith("/dashboard/audit-log"),
     });
   }
 
-  const sections: SidebarSection[] = [
-    {
-      id: "main",
-      items: sidebarItems,
-    },
-  ];
+  const sections: SidebarSection[] = [{ id: "main", items: sidebarItems }];
 
+  return (
+    <AdminDashboardTemplate
+      sidebarSections={sections}
+      sidebarFooter={
+        user ? (
+          <div className="flex flex-col gap-2">
+            <div className="flex items-center justify-between text-sm">
+              <a
+                href="/dashboard/profile"
+                className="text-muted-foreground truncate max-w-32 hover:text-foreground transition-colors duration-150"
+                title={user.email}
+              >
+                {user.name || user.email}
+              </a>
+              <button
+                type="button"
+                onClick={logout}
+                className="text-muted-foreground hover:text-foreground transition-colors duration-150"
+              >
+                Sign out
+              </button>
+            </div>
+            <DashboardStatusBar />
+          </div>
+        ) : undefined
+      }
+      breadcrumbs={breadcrumbs.length > 0 ? breadcrumbs : undefined}
+      headerActions={<DashboardHeaderActions />}
+    >
+      {children}
+    </AdminDashboardTemplate>
+  );
+}
+
+export default function DashboardLayout({ children }: { children: ReactNode }) {
   return (
     <ProtectedRoute>
       <WebSocketProvider>
-        <AdminDashboardTemplate
-          sidebarSections={sections}
-          sidebarFooter={
-            user ? (
-              <div className="flex flex-col gap-2">
-                <div className="flex items-center justify-between text-sm">
-                  <a
-                    href="/dashboard/profile"
-                    className="text-muted-foreground truncate max-w-32 hover:text-foreground transition-colors duration-150"
-                    title={user.email}
-                  >
-                    {user.name || user.email}
-                  </a>
-                  <button
-                    type="button"
-                    onClick={logout}
-                    className="text-muted-foreground hover:text-foreground transition-colors duration-150"
-                  >
-                    Sign out
-                  </button>
-                </div>
-                <DashboardStatusBar />
-              </div>
-            ) : undefined
-          }
-          breadcrumbs={breadcrumbs}
-          headerActions={<DashboardHeaderActions />}
-        >
-          {children}
-        </AdminDashboardTemplate>
+        <BreadcrumbProvider>
+          <DashboardShell>{children}</DashboardShell>
+        </BreadcrumbProvider>
       </WebSocketProvider>
     </ProtectedRoute>
   );

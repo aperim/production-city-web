@@ -80,7 +80,8 @@ describe("Security: no raw HTML injection", () => {
     "dashboard/invitations/page.tsx",
     "dashboard/approvals/page.tsx",
     "dashboard/audit-log/page.tsx",
-    "dashboard/admin-layout.tsx",
+    "dashboard/layout.tsx",
+    "dashboard/breadcrumb-context.tsx",
     "lib/auth-context.tsx",
     "lib/route-guard.tsx",
   ];

@@ -14,7 +14,7 @@ import {
   type InvitationTableInvitation,
   type StatusType,
 } from "@productioncity/holding-ui";
-import { AdminLayout } from "../admin-layout";
+import { useBreadcrumbs } from "../use-breadcrumbs";
 import { PermissionGate } from "../../lib/route-guard";
 import {
   listInvitations,
@@ -30,6 +30,11 @@ import {
 type TabView = "invitations" | "suppressions";
 
 export default function InvitationsPage() {
+  useBreadcrumbs([
+    { label: "Dashboard", href: "/dashboard" },
+    { label: "Invitations" },
+  ]);
+
   const [invitations, setInvitations] = useState<InvitationTableInvitation[]>([]);
   const [suppressions, setSuppressions] = useState<EmailSuppression[]>([]);
   const [loading, setLoading] = useState(true);
@@ -111,12 +116,7 @@ export default function InvitationsPage() {
   );
 
   return (
-    <AdminLayout
-      breadcrumbs={[
-        { label: "Dashboard", href: "/dashboard" },
-        { label: "Invitations" },
-      ]}
-    >
+
       <PermissionGate permission="invitation:read">
         <div className="flex flex-col gap-4">
           {/* Tab bar */}
@@ -211,6 +211,5 @@ export default function InvitationsPage() {
           </Modal>
         </div>
       </PermissionGate>
-    </AdminLayout>
   );
 }

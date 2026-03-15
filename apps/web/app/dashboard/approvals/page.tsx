@@ -7,7 +7,7 @@
 
 import { useCallback, useEffect, useState } from "react";
 import { ApprovalCard, Modal } from "@productioncity/holding-ui";
-import { AdminLayout } from "../admin-layout";
+import { useBreadcrumbs } from "../use-breadcrumbs";
 import { PermissionGate } from "../../lib/route-guard";
 import {
   listPendingApprovals,
@@ -17,6 +17,11 @@ import {
 } from "../../lib/api-client";
 
 export default function ApprovalsPage() {
+  useBreadcrumbs([
+    { label: "Dashboard", href: "/dashboard" },
+    { label: "Pending Approvals" },
+  ]);
+
   const [approvals, setApprovals] = useState<PendingApproval[]>([]);
   const [loading, setLoading] = useState(true);
   const [confirmAction, setConfirmAction] = useState<{
@@ -54,12 +59,7 @@ export default function ApprovalsPage() {
   }, [confirmAction, fetchApprovals]);
 
   return (
-    <AdminLayout
-      breadcrumbs={[
-        { label: "Dashboard", href: "/dashboard" },
-        { label: "Pending Approvals" },
-      ]}
-    >
+
       <PermissionGate permission="user:update">
         <div className="flex flex-col gap-4">
           {loading ? (
@@ -124,6 +124,5 @@ export default function ApprovalsPage() {
           </Modal>
         </div>
       </PermissionGate>
-    </AdminLayout>
   );
 }

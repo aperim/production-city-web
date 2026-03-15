@@ -12,7 +12,6 @@ import {
   ThemeToggle,
   type SessionData,
 } from "@productioncity/holding-ui";
-import { AdminLayout } from "../admin-layout";
 import { useAuth } from "../../lib/auth-context";
 import {
   updateProfile,
@@ -20,10 +19,16 @@ import {
   revokeSession,
 } from "../../lib/api-client";
 import { useTranslation } from "../../i18n/context";
+import { useBreadcrumbs } from "../use-breadcrumbs";
 
 export default function ProfilePage() {
   const { user, roles, refreshSession } = useAuth();
   const { t } = useTranslation();
+
+  useBreadcrumbs([
+    { label: t("admin.dashboard.title"), href: "/dashboard" },
+    { label: t("admin.profile.title") },
+  ]);
 
   const [sessions, setSessions] = useState<SessionData[]>([]);
   const [sessionsLoading, setSessionsLoading] = useState(true);
@@ -66,15 +71,9 @@ export default function ProfilePage() {
     [],
   );
 
-  const breadcrumbs = [
-    { label: t("admin.dashboard.title"), href: "/dashboard" },
-    { label: t("admin.profile.title") },
-  ];
-
   if (!user) return null;
 
   return (
-    <AdminLayout breadcrumbs={breadcrumbs}>
       <div className="flex flex-col gap-8 max-w-xl">
         {/* Profile form */}
         <ProfileForm
@@ -153,6 +152,5 @@ export default function ProfilePage() {
           />
         )}
       </div>
-    </AdminLayout>
   );
 }

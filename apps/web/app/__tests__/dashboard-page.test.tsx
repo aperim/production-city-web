@@ -72,12 +72,11 @@ describe("DashboardPage", () => {
     expect(html).toContain("Recent Activity");
   });
 
-  it("renders sidebar navigation links", () => {
+  it("does not wrap in AdminLayout (layout.tsx provides the shell)", () => {
     mockAuthenticatedAdmin();
     const html = renderToString(createElement(DashboardPage));
-    expect(html).toContain("Dashboard");
-    expect(html).toContain("Users");
-    expect(html).toContain("Invitations");
-    expect(html).toContain("Audit Log");
+    // Page renders content directly — no sidebar nav rendered by the page itself
+    expect(html).toContain("Total Users");
+    // The sidebar is now in layout.tsx, not in the page
   });
 });
