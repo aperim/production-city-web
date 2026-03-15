@@ -155,6 +155,30 @@
         "updateStatus": "Обновить статус"
       },
       "empty": "Не найдено выражений заинтересованности"
+    },
+    "profile": {
+      "title": "Профиль",
+      "nameLabel": "Отображаемое имя",
+      "emailLabel": "Электронная почта",
+      "rolesLabel": "Роли",
+      "themeLabel": "Внешний вид",
+      "themeLight": "Светлая",
+      "themeDark": "Тёмная",
+      "saveButton": "Сохранить",
+      "saving": "Сохранение...",
+      "saved": "Сохранено",
+      "error": "Не удалось обновить профиль",
+      "sessions": {
+        "title": "Активные сессии",
+        "currentSession": "Текущая сессия",
+        "revokeButton": "Отозвать",
+        "confirmRevoke": "Подтвердить отзыв?",
+        "cancelRevoke": "Отмена",
+        "noOtherSessions": "Нет других активных сессий",
+        "sessionRevoked": "Сессия отозвана",
+        "lastActive": "Последняя активность",
+        "createdAt": "Создана"
+      }
     }
   },
   "common": {

@@ -155,6 +155,30 @@
         "updateStatus": "تحديث الحالة"
       },
       "empty": "لم يتم العثور على تعبيرات اهتمام"
+    },
+    "profile": {
+      "title": "الملف الشخصي",
+      "nameLabel": "الاسم المعروض",
+      "emailLabel": "البريد الإلكتروني",
+      "rolesLabel": "الأدوار",
+      "themeLabel": "المظهر",
+      "themeLight": "فاتح",
+      "themeDark": "داكن",
+      "saveButton": "حفظ",
+      "saving": "جاري الحفظ...",
+      "saved": "تم الحفظ",
+      "error": "فشل تحديث الملف الشخصي",
+      "sessions": {
+        "title": "الجلسات النشطة",
+        "currentSession": "الجلسة الحالية",
+        "revokeButton": "إلغاء",
+        "confirmRevoke": "تأكيد الإلغاء؟",
+        "cancelRevoke": "إلغاء",
+        "noOtherSessions": "لا توجد جلسات نشطة أخرى",
+        "sessionRevoked": "تم إلغاء الجلسة",
+        "lastActive": "آخر نشاط",
+        "createdAt": "تاريخ الإنشاء"
+      }
     }
   },
   "common": {

@@ -188,6 +188,25 @@ export function updateProfile(data: { name: string }) {
   return request<{ message: string }>('PATCH', '/v1/auth/profile', data);
 }
 
+/** List user's active sessions (GET /v1/auth/sessions) */
+export interface SessionItem {
+  id: string;
+  browser: string;
+  os: string;
+  createdAt: string;
+  lastActiveAt: string;
+  isCurrent: boolean;
+}
+
+export function listSessions() {
+  return request<{ sessions: SessionItem[] }>('GET', '/v1/auth/sessions');
+}
+
+/** Revoke a session (DELETE /v1/auth/sessions/:sessionId) */
+export function revokeSession(sessionId: string) {
+  return request<{ message: string }>('DELETE', `/v1/auth/sessions/${encodeURIComponent(sessionId)}`);
+}
+
 /** Get admin dashboard stats (GET /v1/admin/stats) */
 export function getAdminStats() {
   return request<AdminStats>('GET', '/v1/admin/stats');

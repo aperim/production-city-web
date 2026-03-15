@@ -155,6 +155,30 @@
         "updateStatus": "Mettre à jour le statut"
       },
       "empty": "Aucune expression d'intérêt trouvée"
+    },
+    "profile": {
+      "title": "Profil",
+      "nameLabel": "Nom affiché",
+      "emailLabel": "E-mail",
+      "rolesLabel": "Rôles",
+      "themeLabel": "Apparence",
+      "themeLight": "Clair",
+      "themeDark": "Sombre",
+      "saveButton": "Enregistrer",
+      "saving": "Enregistrement...",
+      "saved": "Enregistré",
+      "error": "Échec de la mise à jour du profil",
+      "sessions": {
+        "title": "Sessions actives",
+        "currentSession": "Session actuelle",
+        "revokeButton": "Révoquer",
+        "confirmRevoke": "Confirmer la révocation ?",
+        "cancelRevoke": "Annuler",
+        "noOtherSessions": "Aucune autre session active",
+        "sessionRevoked": "Session révoquée",
+        "lastActive": "Dernière activité",
+        "createdAt": "Créée"
+      }
     }
   },
   "common": {

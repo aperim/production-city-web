@@ -257,9 +257,13 @@ export function AdminLayout({
             user ? (
               <div className="flex flex-col gap-2">
                 <div className="flex items-center justify-between text-sm">
-                  <span className="text-muted-foreground truncate max-w-32" title={user.email}>
+                  <a
+                    href="/dashboard/profile"
+                    className="text-muted-foreground truncate max-w-32 hover:text-foreground transition-colors duration-150"
+                    title={user.email}
+                  >
                     {user.name || user.email}
-                  </span>
+                  </a>
                   <button
                     type="button"
                     onClick={logout}

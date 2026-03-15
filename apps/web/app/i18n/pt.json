@@ -155,6 +155,30 @@
         "updateStatus": "Atualizar status"
       },
       "empty": "Nenhuma expressão de interesse encontrada"
+    },
+    "profile": {
+      "title": "Perfil",
+      "nameLabel": "Nome de exibição",
+      "emailLabel": "E-mail",
+      "rolesLabel": "Funções",
+      "themeLabel": "Aparência",
+      "themeLight": "Claro",
+      "themeDark": "Escuro",
+      "saveButton": "Salvar",
+      "saving": "Salvando...",
+      "saved": "Salvo",
+      "error": "Falha ao atualizar perfil",
+      "sessions": {
+        "title": "Sessões ativas",
+        "currentSession": "Sessão atual",
+        "revokeButton": "Revogar",
+        "confirmRevoke": "Confirmar revogação?",
+        "cancelRevoke": "Cancelar",
+        "noOtherSessions": "Nenhuma outra sessão ativa",
+        "sessionRevoked": "Sessão revogada",
+        "lastActive": "Última atividade",
+        "createdAt": "Criada"
+      }
     }
   },
   "common": {

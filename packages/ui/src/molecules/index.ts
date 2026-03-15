@@ -90,6 +90,12 @@ export type { EOIFormProps, EOIFormLabels, EOIFormData, EOICategoryOption } from
 export { NotificationPreferences } from "./NotificationPreferences/NotificationPreferences";
 export type { NotificationPreferencesProps, ChannelPreference } from "./NotificationPreferences/NotificationPreferences";
 
+// Issue #267: Profile & Session Management
+export { ProfileForm } from "./ProfileForm/ProfileForm";
+export type { ProfileFormProps } from "./ProfileForm/ProfileForm";
+export { SessionList } from "./SessionList/SessionList";
+export type { SessionListProps, SessionData } from "./SessionList/SessionList";
+
 // Issue #243: Shared Acknowledgement of Country (Finding #22)
 export { AcknowledgementOfCountry } from "./AcknowledgementOfCountry/AcknowledgementOfCountry";
 export type { AcknowledgementOfCountryProps } from "./AcknowledgementOfCountry/AcknowledgementOfCountry";

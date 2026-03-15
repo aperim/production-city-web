@@ -38,6 +38,8 @@ const DETAIL_ALLOWLIST: Record<string, string[]> = {
   "auth.logout": [],
   "auth.session.expired": ["sessionId"],
   "auth.session.revoked": ["sessionId", "reason"],
+  "profile.update": ["field", "oldValue", "newValue"],
+  "session.revoke": ["sessionId"],
   "user.created": ["email", "source"],
   "user.status_changed": ["previousStatus", "newStatus", "revokedSessionCount"],
   "user.role_changed": ["roleName", "changeType"],

@@ -47,6 +47,10 @@ export type { ConnectionDotProps } from "./ConnectionDot/ConnectionDot";
 export { NotificationBadge } from "./NotificationBadge/NotificationBadge";
 export type { NotificationBadgeProps } from "./NotificationBadge/NotificationBadge";
 
+// Issue #267: Profile Page Atoms
+export { ThemeToggle } from "./ThemeToggle/ThemeToggle";
+export type { ThemeToggleProps } from "./ThemeToggle/ThemeToggle";
+
 // Issue #142: Landing Page Atoms
 export { SectionDivider, sectionDividerVariants } from "./SectionDivider/SectionDivider";
 export type { SectionDividerProps } from "./SectionDivider/SectionDivider";

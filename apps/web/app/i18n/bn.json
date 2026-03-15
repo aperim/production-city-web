@@ -155,6 +155,30 @@
         "updateStatus": "অবস্থা আপডেট করুন"
       },
       "empty": "কোনো আগ্রহের প্রকাশ পাওয়া যায়নি"
+    },
+    "profile": {
+      "title": "প্রোফাইল",
+      "nameLabel": "প্রদর্শন নাম",
+      "emailLabel": "ইমেইল",
+      "rolesLabel": "ভূমিকা",
+      "themeLabel": "চেহারা",
+      "themeLight": "হালকা",
+      "themeDark": "গাঢ়",
+      "saveButton": "সংরক্ষণ",
+      "saving": "সংরক্ষণ হচ্ছে...",
+      "saved": "সংরক্ষিত",
+      "error": "প্রোফাইল আপডেট ব্যর্থ",
+      "sessions": {
+        "title": "সক্রিয় সেশন",
+        "currentSession": "বর্তমান সেশন",
+        "revokeButton": "প্রত্যাহার",
+        "confirmRevoke": "প্রত্যাহার নিশ্চিত?",
+        "cancelRevoke": "বাতিল",
+        "noOtherSessions": "অন্য কোনো সক্রিয় সেশন নেই",
+        "sessionRevoked": "সেশন প্রত্যাহৃত",
+        "lastActive": "শেষ সক্রিয়",
+        "createdAt": "তৈরি"
+      }
     }
   },
   "common": {

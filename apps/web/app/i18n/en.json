@@ -155,6 +155,30 @@
         "updateStatus": "Update status"
       },
       "empty": "No expressions of interest found"
+    },
+    "profile": {
+      "title": "Profile",
+      "nameLabel": "Display name",
+      "emailLabel": "Email",
+      "rolesLabel": "Roles",
+      "themeLabel": "Appearance",
+      "themeLight": "Light",
+      "themeDark": "Dark",
+      "saveButton": "Save",
+      "saving": "Saving...",
+      "saved": "Saved",
+      "error": "Failed to update profile",
+      "sessions": {
+        "title": "Active sessions",
+        "currentSession": "Current session",
+        "revokeButton": "Revoke",
+        "confirmRevoke": "Confirm revoke?",
+        "cancelRevoke": "Cancel",
+        "noOtherSessions": "No other active sessions",
+        "sessionRevoked": "Session revoked",
+        "lastActive": "Last active",
+        "createdAt": "Created"
+      }
     }
   },
   "common": {

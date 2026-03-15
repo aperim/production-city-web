@@ -413,8 +413,11 @@ authApp.openapi(logoutRoute, async (c) => {
   }
 });
 
-// Session info requires auth
+// Auth-protected endpoints
 authApp.use("/v1/auth/session", authMiddleware());
+authApp.use("/v1/auth/profile", authMiddleware());
+authApp.use("/v1/auth/sessions", authMiddleware());
+authApp.use("/v1/auth/sessions/*", authMiddleware());
 
 authApp.openapi(sessionRoute, async (c) => {
   const auth = c.get("auth") as AuthContext;
@@ -462,6 +465,284 @@ authApp.openapi(sessionRoute, async (c) => {
       },
       200,
     );
+  } finally {
+    await prisma.$disconnect().catch(() => {});
+  }
+});
+
+/** --- Profile Update --- */
+
+const UpdateProfileBodySchema = z.object({
+  name: z.string().min(1, "Name is required").max(100, "Name must be 100 characters or fewer"),
+});
+
+const ProfileUpdateSuccessSchema = z.object({
+  message: z.string(),
+});
+
+const updateProfileRoute = createRoute({
+  method: "patch",
+  path: "/v1/auth/profile",
+  summary: "Update current user profile",
+  description: "Update the authenticated user's profile (name only).",
+  request: {
+    body: { content: { "application/json": { schema: UpdateProfileBodySchema } } },
+  },
+  responses: {
+    200: {
+      content: { "application/json": { schema: ProfileUpdateSuccessSchema } },
+      description: "Profile updated successfully",
+    },
+    400: {
+      content: { "application/json": { schema: TokenErrorSchema } },
+      description: "Invalid input",
+    },
+    401: {
+      content: { "application/json": { schema: TokenErrorSchema } },
+      description: "Not authenticated",
+    },
+  },
+});
+
+authApp.openapi(updateProfileRoute, async (c) => {
+  const auth = c.get("auth") as AuthContext;
+  const { name: rawName } = c.req.valid("json");
+  const name = rawName.trim();
+
+  if (!name) {
+    return c.json({ error: "validation_error", message: "Name cannot be empty" }, 400);
+  }
+
+  if (name.length > 100) {
+    return c.json({ error: "validation_error", message: "Name must be 100 characters or fewer" }, 400);
+  }
+
+  const prisma = await createPrismaClient(c.env.DB);
+
+  try {
+    const oldUser = await prisma.user.findUnique({
+      where: { id: auth.user.id },
+      select: { name: true },
+    });
+
+    await prisma.user.update({
+      where: { id: auth.user.id },
+      data: { name, updatedAt: new Date() },
+    });
+
+    await createAuditLog(prisma, {
+      action: "profile.update",
+      resource: "user",
+      actorId: auth.user.id,
+      subjectId: auth.user.id,
+      details: { field: "name", oldValue: oldUser?.name ?? "", newValue: name },
+      ipAddress: c.req.header("CF-Connecting-IP"),
+      userAgent: c.req.header("User-Agent"),
+    });
+
+    return c.json({ message: "Profile updated" }, 200);
+  } finally {
+    await prisma.$disconnect().catch(() => {});
+  }
+});
+
+/** --- Session Management --- */
+
+/**
+ * Parse user agent string to human-readable browser/OS.
+ * Lightweight — no external dependencies.
+ */
+function parseUserAgent(ua: string | null): { browser: string; os: string } {
+  if (!ua) return { browser: "Unknown", os: "Unknown" };
+
+  let browser = "Unknown";
+  let os = "Unknown";
+
+  // Browser detection
+  if (ua.includes("Firefox/")) {
+    const m = ua.match(/Firefox\/(\d+)/);
+    browser = m ? `Firefox ${m[1]}` : "Firefox";
+  } else if (ua.includes("Edg/")) {
+    const m = ua.match(/Edg\/(\d+)/);
+    browser = m ? `Edge ${m[1]}` : "Edge";
+  } else if (ua.includes("Chrome/")) {
+    const m = ua.match(/Chrome\/(\d+)/);
+    browser = m ? `Chrome ${m[1]}` : "Chrome";
+  } else if (ua.includes("Safari/") && !ua.includes("Chrome")) {
+    const m = ua.match(/Version\/(\d+)/);
+    browser = m ? `Safari ${m[1]}` : "Safari";
+  }
+
+  // OS detection
+  if (ua.includes("Windows NT")) {
+    const m = ua.match(/Windows NT (\d+\.\d+)/);
+    if (m) {
+      const ver = m[1];
+      if (ver === "10.0") os = "Windows 10+";
+      else os = `Windows NT ${ver}`;
+    } else {
+      os = "Windows";
+    }
+  } else if (ua.includes("Mac OS X")) {
+    const m = ua.match(/Mac OS X (\d+[._]\d+)/);
+    os = m && m[1] ? `macOS ${m[1].replace(/_/g, ".")}` : "macOS";
+  } else if (ua.includes("Linux")) {
+    os = "Linux";
+  } else if (ua.includes("Android")) {
+    const m = ua.match(/Android (\d+)/);
+    os = m ? `Android ${m[1]}` : "Android";
+  } else if (ua.includes("iPhone") || ua.includes("iPad")) {
+    const m = ua.match(/OS (\d+)/);
+    os = m ? `iOS ${m[1]}` : "iOS";
+  }
+
+  return { browser, os };
+}
+
+const SessionItemSchema = z.object({
+  id: z.string(),
+  browser: z.string(),
+  os: z.string(),
+  createdAt: z.string(),
+  lastActiveAt: z.string(),
+  isCurrent: z.boolean(),
+});
+
+const SessionListResponseSchema = z.object({
+  sessions: z.array(SessionItemSchema),
+});
+
+const listSessionsRoute = createRoute({
+  method: "get",
+  path: "/v1/auth/sessions",
+  summary: "List user's active sessions",
+  description: "Returns all non-revoked, non-expired sessions for the authenticated user. No IP addresses included.",
+  responses: {
+    200: {
+      content: { "application/json": { schema: SessionListResponseSchema } },
+      description: "List of active sessions",
+    },
+    401: {
+      content: { "application/json": { schema: TokenErrorSchema } },
+      description: "Not authenticated",
+    },
+  },
+});
+
+authApp.openapi(listSessionsRoute, async (c) => {
+  const auth = c.get("auth") as AuthContext;
+  const prisma = await createPrismaClient(c.env.DB);
+
+  try {
+    const now = new Date();
+    const sessions = await prisma.session.findMany({
+      where: {
+        userId: auth.user.id,
+        revokedAt: null,
+        expiresAt: { gt: now },
+      },
+      select: {
+        id: true,
+        userAgent: true,
+        createdAt: true,
+        lastActiveAt: true,
+      },
+      orderBy: { lastActiveAt: "desc" },
+    });
+
+    const result = sessions.map((s) => {
+      const { browser, os } = parseUserAgent(s.userAgent);
+      return {
+        id: s.id,
+        browser,
+        os,
+        createdAt: s.createdAt.toISOString(),
+        lastActiveAt: s.lastActiveAt.toISOString(),
+        isCurrent: s.id === auth.sessionId,
+      };
+    });
+
+    return c.json({ sessions: result }, 200);
+  } finally {
+    await prisma.$disconnect().catch(() => {});
+  }
+});
+
+const RevokeSessionSuccessSchema = z.object({
+  message: z.string(),
+});
+
+const RevokeSessionParamsSchema = z.object({
+  sessionId: z.string().min(1),
+});
+
+const revokeSessionRoute = createRoute({
+  method: "delete",
+  path: "/v1/auth/sessions/{sessionId}",
+  summary: "Revoke a session",
+  description: "Revoke one of the authenticated user's sessions. Cannot revoke the current session.",
+  request: { params: RevokeSessionParamsSchema },
+  responses: {
+    200: {
+      content: { "application/json": { schema: RevokeSessionSuccessSchema } },
+      description: "Session revoked",
+    },
+    400: {
+      content: { "application/json": { schema: TokenErrorSchema } },
+      description: "Cannot revoke current session",
+    },
+    404: {
+      content: { "application/json": { schema: TokenErrorSchema } },
+      description: "Session not found",
+    },
+  },
+});
+
+authApp.openapi(revokeSessionRoute, async (c) => {
+  const auth = c.get("auth") as AuthContext;
+  const { sessionId } = c.req.valid("param");
+  const prisma = await createPrismaClient(c.env.DB);
+
+  try {
+    // Cannot revoke current session
+    if (sessionId === auth.sessionId) {
+      return c.json(
+        { error: "invalid_request", message: "Cannot revoke current session" },
+        400,
+      );
+    }
+
+    // Find the session — must belong to this user and not already revoked
+    const session = await prisma.session.findFirst({
+      where: {
+        id: sessionId,
+        userId: auth.user.id,
+        revokedAt: null,
+      },
+      select: { id: true },
+    });
+
+    // Unified 404 for not-found, foreign, or already-revoked (no info leakage)
+    if (!session) {
+      return c.json(
+        { error: "not_found", message: "Session not found" },
+        404,
+      );
+    }
+
+    await revokeSession(prisma, session.id);
+
+    await createAuditLog(prisma, {
+      action: "session.revoke",
+      resource: "session",
+      actorId: auth.user.id,
+      subjectId: auth.user.id,
+      details: { sessionId },
+      ipAddress: c.req.header("CF-Connecting-IP"),
+      userAgent: c.req.header("User-Agent"),
+    });
+
+    return c.json({ message: "Session revoked" }, 200);
   } finally {
     await prisma.$disconnect().catch(() => {});
   }
