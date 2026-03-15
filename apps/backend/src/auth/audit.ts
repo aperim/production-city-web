@@ -55,10 +55,16 @@ const DETAIL_ALLOWLIST: Record<string, string[]> = {
   "media.pair.created": ["contentContext"],
   "media.pair.deleted": ["contentContext"],
   // Category & tag audit actions
-  create: ["categoryId", "name", "tagId"],
-  update: ["categoryId", "tagId", "changes"],
-  delete: ["categoryId", "tagId", "name"],
+  create: ["categoryId", "name", "tagId", "announcementId", "title"],
+  update: ["categoryId", "tagId", "changes", "announcementId"],
+  delete: ["categoryId", "tagId", "name", "announcementId"],
   reorder: ["itemCount"],
+  // Announcement lifecycle audit actions
+  "announcement:publish": ["announcementId", "title", "visibility", "deliveryCount"],
+  "announcement:unpublish": ["announcementId", "title", "deliveryCount"],
+  "announcement:archive": ["announcementId", "title"],
+  "announcement:retry_delivery": ["announcementId", "deliveryId"],
+  "announcement:retry_failed": ["announcementId", "failedCount"],
   // WebSocket audit actions
   "ws_connect": ["durableObjectId", "userAgent"],
   "ws_disconnect": ["durableObjectId", "reason", "durationMs"],

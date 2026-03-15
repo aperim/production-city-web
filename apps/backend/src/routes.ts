@@ -17,6 +17,7 @@ import { eoiAdminApp } from "./admin/eoi.js";
 import { notificationsApp } from "./admin/notifications.js";
 import { categoriesApp } from "./admin/categories.js";
 import { tagsApp } from "./admin/tags.js";
+import { announcementsApp } from "./admin/announcements.js";
 import { wsApp } from "./routes/ws.js";
 
 /**
@@ -44,6 +45,9 @@ export function mountRoutes(app: OpenAPIHono<{ Bindings: Record<string, unknown>
   // Categories & Tags (public read + admin CRUD)
   app.route("/", categoriesApp);
   app.route("/", tagsApp);
+
+  // Announcements (public read + admin CRUD + publishing)
+  app.route("/", announcementsApp);
 
   // EOI admin routes (auth + admin role required)
   app.route("/", eoiAdminApp);

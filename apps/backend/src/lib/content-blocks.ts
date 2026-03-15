@@ -12,7 +12,7 @@ const JS_URI = /javascript:/i;
 const EVENT_HANDLER = /\bon\w+\s*=/i;
 
 /** Validates text is free of XSS vectors */
-function isSafeText(text: string): boolean {
+export function isSafeText(text: string): boolean {
   return (
     !SCRIPT_TAG.test(text) &&
     !IFRAME_TAG.test(text) &&

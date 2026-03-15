@@ -18,6 +18,7 @@ export interface AuthContext {
   user: AuthUser;
   sessionId: string;
   permissions: string[];
+  roleIds?: string[];
 }
 
 /**
@@ -54,6 +55,7 @@ export function authMiddleware(): MiddlewareHandler {
             select: {
               role: {
                 select: {
+                  id: true,
                   name: true,
                   rolePermissions: {
                     select: {
@@ -75,7 +77,9 @@ export function authMiddleware(): MiddlewareHandler {
 
       // Flatten permissions: "resource:action"
       const permissions = new Set<string>();
+      const roleIds: string[] = [];
       for (const ur of user.userRoles) {
+        roleIds.push(ur.role.id);
         for (const rp of ur.role.rolePermissions) {
           permissions.add(`${rp.permission.resource}:${rp.permission.action}`);
         }
@@ -90,6 +94,7 @@ export function authMiddleware(): MiddlewareHandler {
         },
         sessionId: session.sessionId,
         permissions: Array.from(permissions),
+        roleIds,
       };
 
       c.set("auth", authContext);
@@ -133,5 +138,86 @@ export function requireAnyPermission(permissions: string[]): MiddlewareHandler {
       return c.json({ error: "forbidden", message: t("permissions.forbidden") }, 403);
     }
     return next();
+  };
+}
+
+/**
+ * Optional auth middleware: tries to authenticate but does not fail if no session.
+ * Sets c.set("auth") with AuthContext on success, or leaves it unset.
+ * Use for public endpoints that show extra content to authenticated users.
+ */
+export function optionalAuthMiddleware(): MiddlewareHandler {
+  return async (c: Context, next) => {
+    const cookieHeader = c.req.header("Cookie");
+    const token = extractSessionToken(cookieHeader);
+
+    if (!token) {
+      return next();
+    }
+
+    const prisma = await createPrismaClient(c.env.DB);
+    try {
+      const session = await validateSession(prisma, token);
+      if (!session) {
+        return next();
+      }
+
+      const user = await prisma.user.findUnique({
+        where: { id: session.userId },
+        select: {
+          id: true,
+          email: true,
+          name: true,
+          status: true,
+          userRoles: {
+            select: {
+              role: {
+                select: {
+                  id: true,
+                  name: true,
+                  rolePermissions: {
+                    select: {
+                      permission: {
+                        select: { resource: true, action: true },
+                      },
+                    },
+                  },
+                },
+              },
+            },
+          },
+        },
+      });
+
+      if (!user || user.status !== "active") {
+        return next();
+      }
+
+      const permissions = new Set<string>();
+      const roleIds: string[] = [];
+      for (const ur of user.userRoles) {
+        roleIds.push(ur.role.id);
+        for (const rp of ur.role.rolePermissions) {
+          permissions.add(`${rp.permission.resource}:${rp.permission.action}`);
+        }
+      }
+
+      const authContext: AuthContext = {
+        user: {
+          id: user.id,
+          email: user.email,
+          name: user.name,
+          status: user.status,
+        },
+        sessionId: session.sessionId,
+        permissions: Array.from(permissions),
+        roleIds,
+      };
+
+      c.set("auth", authContext);
+      return next();
+    } finally {
+      await prisma.$disconnect().catch(() => {});
+    }
   };
 }

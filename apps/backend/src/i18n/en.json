@@ -156,6 +156,23 @@
     "updated": "Tag updated.",
     "deleted": "Tag deleted."
   },
+  "announcements": {
+    "notFound": "Announcement not found.",
+    "alreadyPublished": "Announcement is already published.",
+    "notPublished": "Announcement is not published.",
+    "missingCategories": "At least one category is required.",
+    "privateNeedsRoles": "Private announcements require at least one role.",
+    "invalidContentBlocks": "Content blocks contain invalid data.",
+    "mediaNotFound": "Referenced media asset not found.",
+    "cannotUpdateArchived": "Archived announcements cannot be updated.",
+    "concurrentPublish": "This announcement was already published by another administrator.",
+    "editAfterPublish": "This announcement has been sent to {count} subscribers. They will not see your changes in emails/SMS.",
+    "privateDelivery": "This announcement will be sent to {delivered} of {total} subscribers. {excluded} subscribers do not have the required role.",
+    "published": "Announcement published.",
+    "unpublished": "Announcement reverted to draft.",
+    "archived": "Announcement archived.",
+    "slugFrozenWarning": "Title updated but URL slug was not changed because this announcement has been published."
+  },
   "errors": {
     "rateLimited": "Too many requests. Try again later.",
     "notFound": "Resource not found.",

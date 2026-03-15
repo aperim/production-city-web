@@ -486,6 +486,8 @@ model Announcement {
   /// draft | published | archived
   status        String    @default("draft")
   publishedAt   DateTime?
+  /// Set when content is edited after publish (for "Updated on" display)
+  lastEditedAt  DateTime?
   authorId      String
   createdAt     DateTime  @default(now())
   updatedAt     DateTime  @updatedAt

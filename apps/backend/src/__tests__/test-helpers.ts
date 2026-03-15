@@ -76,7 +76,7 @@ const SCHEMA_STATEMENTS = [
   `CREATE INDEX IF NOT EXISTS "Notification_userId_createdAt_idx" ON "Notification"("userId", "createdAt")`,
   `CREATE INDEX IF NOT EXISTS "Notification_type_idx" ON "Notification"("type")`,
   // Migration 0005: Announcements system
-  `CREATE TABLE IF NOT EXISTS "Announcement" ("id" TEXT NOT NULL PRIMARY KEY, "title" TEXT NOT NULL, "slug" TEXT NOT NULL, "summary" TEXT NOT NULL, "contentBlocks" TEXT NOT NULL, "visibility" TEXT NOT NULL DEFAULT 'public', "status" TEXT NOT NULL DEFAULT 'draft', "publishedAt" DATETIME, "authorId" TEXT NOT NULL, "createdAt" DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP, "updatedAt" DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP, CONSTRAINT "Announcement_authorId_fkey" FOREIGN KEY ("authorId") REFERENCES "User" ("id") ON DELETE RESTRICT ON UPDATE CASCADE)`,
+  `CREATE TABLE IF NOT EXISTS "Announcement" ("id" TEXT NOT NULL PRIMARY KEY, "title" TEXT NOT NULL, "slug" TEXT NOT NULL, "summary" TEXT NOT NULL, "contentBlocks" TEXT NOT NULL, "visibility" TEXT NOT NULL DEFAULT 'public', "status" TEXT NOT NULL DEFAULT 'draft', "publishedAt" DATETIME, "lastEditedAt" DATETIME, "authorId" TEXT NOT NULL, "createdAt" DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP, "updatedAt" DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP, CONSTRAINT "Announcement_authorId_fkey" FOREIGN KEY ("authorId") REFERENCES "User" ("id") ON DELETE RESTRICT ON UPDATE CASCADE)`,
   `CREATE UNIQUE INDEX IF NOT EXISTS "Announcement_slug_key" ON "Announcement"("slug")`,
   `CREATE INDEX IF NOT EXISTS "Announcement_status_idx" ON "Announcement"("status")`,
   `CREATE INDEX IF NOT EXISTS "Announcement_visibility_idx" ON "Announcement"("visibility")`,
