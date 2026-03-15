@@ -110,9 +110,10 @@ export default {
 
     const canonicalOrigin = getCanonicalOrigin(url);
 
-    // 3. Strip pre-existing X-Locale header FIRST (Finding #5 — spoofing prevention).
+    // 3. Strip pre-existing internal headers FIRST (Finding #5 — spoofing prevention).
     const headers = new Headers(request.headers);
     headers.delete("X-Locale");
+    headers.delete("X-Path");
 
     // 4. Parse locale prefix.
     const parsed = parseLocalePrefix(url.pathname);
@@ -243,8 +244,9 @@ export default {
       }
     }
 
-    // 5. Set X-Locale header on forwarded request.
+    // 5. Set X-Locale and X-Path headers on forwarded request.
     headers.set("X-Locale", locale);
+    headers.set("X-Path", forwardPath);
 
     // Build the forwarded request with the stripped path (no locale prefix).
     const forwardUrl = new URL(forwardPath + url.search, url.origin);

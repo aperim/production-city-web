@@ -263,6 +263,48 @@ disabling CI checks, merging with failures.
 
 ---
 
+## i18n Routing Architecture
+
+Production City supports 10 locales: en, zh, hi, es, ar, fr, bn, pt, ru, ja.
+
+### Locale Resolution Order
+
+1. **URL prefix** `/{locale}/path` — authoritative, always used if present
+2. **localStorage** `pc-locale` — returning user preference (client-side)
+3. **Accept-Language header** — browser/OS language (server-side suggestion only)
+4. **Fallback** — `"en"` (default)
+
+English lives at `/` with no prefix. All other locales use `/{locale}/` prefix.
+
+### Worker-Rewrite Architecture
+
+The Cloudflare Worker (`apps/web/worker/index.ts`) handles locale routing:
+
+1. Parse `/{locale}/` prefix from URL
+2. Strip prefix, set `X-Locale` header, forward to vinext
+3. Set `Content-Language` response header
+4. Invalid locale → 302 redirect to English path
+5. First visit: set `pc-locale-suggestion` cookie from Accept-Language
+
+The vinext app reads `X-Locale` to render `<html lang>` and `dir` server-side.
+
+### Key Files
+
+- `packages/ui/src/lib/i18n-constants.ts` — `SUPPORTED_LOCALES`, `LOCALE_META` (shared)
+- `packages/ui/src/lib/i18n-format.ts` — `Intl.*` formatting utilities
+- `apps/web/worker/locale-middleware.ts` — locale routing, cookie validation
+- `apps/web/app/components/LocaleHead.ts` — hreflang, canonical URL generation
+- `apps/web/app/i18n/pluralization.ts` — ICU plural syntax support
+- `apps/web/scripts/generate-sitemap.ts` — build-time XML sitemap with locale variants
+
+### Pluralization Syntax
+
+Uses ICU message format: `{count, plural, =0 {none} one {# item} other {# items}}`
+
+Plural forms per locale: Arabic (6), Russian (3), French/Spanish/Portuguese (2), English (2).
+
+---
+
 ## CI/CD — GitHub Actions Only
 
 No Cloudflare Git integration. All deploys go through GitHub Actions on merge to `main`.

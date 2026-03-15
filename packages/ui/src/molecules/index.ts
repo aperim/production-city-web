@@ -107,6 +107,10 @@ export type { SkeletonCardProps } from "./SkeletonCard/SkeletonCard";
 export { SkeletonTableRow } from "./SkeletonTableRow/SkeletonTableRow";
 export type { SkeletonTableRowProps } from "./SkeletonTableRow/SkeletonTableRow";
 
+// Issue #280: i18n Locale Suggestion
+export { LocaleSuggestion } from "./LocaleSuggestion/LocaleSuggestion";
+export type { LocaleSuggestionProps } from "./LocaleSuggestion/LocaleSuggestion";
+
 // Issue #290: Announcement System Molecules
 export { AnnouncementCard } from "./AnnouncementCard/AnnouncementCard";
 export type { AnnouncementCardProps } from "./AnnouncementCard/AnnouncementCard";

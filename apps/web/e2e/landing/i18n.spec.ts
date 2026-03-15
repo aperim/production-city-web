@@ -1,36 +1,145 @@
 /**
- * E2E tests: Landing page i18n and RTL layout.
- * Validates language switching, html attributes, and client-side locale management.
+ * E2E tests: i18n locale routing, RTL layout, LanguageSwitcher, and locale suggestion.
  *
- * Note: Locale prefix routing (e.g. /zh/, /ar/) is not yet implemented as
- * server-side routes. The app uses client-side locale switching via localStorage
- * and a LanguageSwitcher component. Tests for URL-based locale routing are skipped
- * until server-side locale routing is implemented (see issue/221-222 for i18n phase).
+ * Covers: locale prefix routing (10 locales), LanguageSwitcher navigation,
+ * invalid locale redirect, Arabic RTL, hreflang links, Content-Language header,
+ * locale suggestion prompt, trailing slash normalization.
+ *
+ * Finding #24: Uses parameterized tests with explicit timeouts for 70-render verification.
+ *
+ * @see Issue #280
  */
 
 import { test, expect } from "@playwright/test";
 
-test.describe("i18n — language switcher", () => {
+const SUPPORTED_LOCALES = ["en", "zh", "hi", "es", "ar", "fr", "bn", "pt", "ru", "ja"] as const;
+
+const PAGES = ["/", "/facilities", "/creative", "/vision", "/community", "/faq", "/contact"] as const;
+
+/**
+ * Build the locale-prefixed URL. English has no prefix.
+ */
+function localeUrl(locale: string, page: string): string {
+  if (locale === "en") return page;
+  return page === "/" ? `/${locale}/` : `/${locale}${page}`;
+}
+
+// ─── Locale Prefix Routing ──────────────────────────────────────────────
+
+test.describe("i18n — locale prefix routing", () => {
+  for (const locale of SUPPORTED_LOCALES) {
+    test(`${locale} locale home page loads at ${localeUrl(locale, "/")}`, async ({ page }) => {
+      const url = localeUrl(locale, "/");
+      const response = await page.goto(url);
+      expect(response?.status()).toBe(200);
+      await expect(page.locator("html")).toHaveAttribute("lang", locale);
+    });
+  }
+});
+
+// ─── HTML lang and dir attributes ───────────────────────────────────────
+
+test.describe("i18n — html attributes", () => {
+  test("English page has lang=en and dir=ltr", async ({ page }) => {
+    await page.goto("/");
+    await expect(page.locator("html")).toHaveAttribute("lang", "en");
+    await expect(page.locator("html")).toHaveAttribute("dir", "ltr");
+  });
+
+  test("Arabic page has lang=ar and dir=rtl", async ({ page }) => {
+    await page.goto("/ar/");
+    await expect(page.locator("html")).toHaveAttribute("lang", "ar");
+    await expect(page.locator("html")).toHaveAttribute("dir", "rtl");
+  });
+
+  test("Chinese page has lang=zh and dir=ltr", async ({ page }) => {
+    await page.goto("/zh/");
+    await expect(page.locator("html")).toHaveAttribute("lang", "zh");
+    await expect(page.locator("html")).toHaveAttribute("dir", "ltr");
+  });
+});
+
+// ─── Content-Language header ────────────────────────────────────────────
+
+test.describe("i18n — Content-Language header", () => {
+  for (const locale of ["en", "zh", "ar", "ja"] as const) {
+    test(`Content-Language header is ${locale} for ${localeUrl(locale, "/")}`, async ({ page }) => {
+      const response = await page.goto(localeUrl(locale, "/"));
+      expect(response?.headers()["content-language"]).toBe(locale);
+    });
+  }
+});
+
+// ─── hreflang links ─────────────────────────────────────────────────────
+
+test.describe("i18n — hreflang links", () => {
+  test("home page has hreflang links for all 10 locales + x-default", async ({ page }) => {
+    await page.goto("/");
+
+    for (const locale of SUPPORTED_LOCALES) {
+      const link = page.locator(`link[rel="alternate"][hreflang="${locale}"]`);
+      await expect(link).toHaveCount(1);
+    }
+
+    const xDefault = page.locator('link[rel="alternate"][hreflang="x-default"]');
+    await expect(xDefault).toHaveCount(1);
+  });
+
+  test("non-English page has hreflang links for all locales", async ({ page }) => {
+    await page.goto("/zh/facilities");
+
+    for (const locale of SUPPORTED_LOCALES) {
+      const link = page.locator(`link[rel="alternate"][hreflang="${locale}"]`);
+      await expect(link).toHaveCount(1);
+    }
+  });
+});
+
+// ─── Invalid locale redirect ────────────────────────────────────────────
+
+test.describe("i18n — invalid locale redirect", () => {
+  test("invalid locale /xx/ redirects to /", async ({ page }) => {
+    const response = await page.goto("/xx/");
+    // Should end up at root after redirect
+    expect(page.url()).toMatch(/\/$/);
+    expect(response?.status()).toBe(200);
+  });
+
+  test("invalid locale /xx/facilities redirects to /facilities", async ({ page }) => {
+    const response = await page.goto("/xx/facilities");
+    expect(page.url()).toContain("/facilities");
+    expect(response?.status()).toBe(200);
+  });
+});
+
+// ─── Trailing slash normalization ───────────────────────────────────────
+
+test.describe("i18n — trailing slash normalization", () => {
+  test("/zh redirects to /zh/", async ({ page }) => {
+    await page.goto("/zh");
+    expect(page.url()).toMatch(/\/zh\/$/);
+  });
+
+  test("/zh/facilities/ redirects to /zh/facilities", async ({ page }) => {
+    await page.goto("/zh/facilities/");
+    expect(page.url()).toMatch(/\/zh\/facilities$/);
+  });
+});
+
+// ─── LanguageSwitcher ───────────────────────────────────────────────────
+
+test.describe("i18n — LanguageSwitcher", () => {
   test("language switcher is visible on home page", async ({ page }) => {
     await page.goto("/");
-    // The language switcher trigger button should be visible
     const trigger = page.getByRole("button", { name: /language/i });
     await expect(trigger.first()).toBeVisible();
   });
 
-  test("html lang attribute defaults to en", async ({ page }) => {
-    await page.goto("/");
-    await expect(page.locator("html")).toHaveAttribute("lang", "en");
-  });
-});
-
-test.describe("i18n — client-side locale switching", () => {
   test("language switcher opens and shows locale options", async ({ page }) => {
     await page.goto("/");
-    // Use footer language switcher — nav switcher may be hidden behind hamburger menu
+    // Use footer language switcher
     const trigger = page.getByRole("contentinfo").getByRole("button", { name: /language/i });
 
-    // Retry click until hydration completes and menu opens
     await expect(async () => {
       await trigger.click();
       await expect(page.getByRole("menuitemradio", { name: "English" })).toBeVisible({ timeout: 1_000 });
@@ -38,42 +147,13 @@ test.describe("i18n — client-side locale switching", () => {
   });
 });
 
-test.describe("i18n — locale prefix routing (not yet implemented)", () => {
-  const localeTests = [
-    { locale: "zh", path: "/zh/" },
-    { locale: "es", path: "/es/" },
-    { locale: "fr", path: "/fr/" },
-    { locale: "ja", path: "/ja/" },
-  ];
-
-  for (const { locale, path } of localeTests) {
-    test.skip(`${locale} locale page loads at ${path}`, async () => {
-      // Server-side locale prefix routing is not yet implemented.
-      // The app uses client-side locale switching via localStorage.
-      // This test will be enabled when i18n phase (issues #221-222) lands.
-    });
-  }
-});
-
-test.describe("i18n — RTL layout (not yet implemented)", () => {
-  test.skip("Arabic locale sets dir=rtl on html", async () => {
-    // Requires server-side locale routing at /ar/ — not yet implemented.
-    // RTL works client-side via language switcher but /ar/ route returns 404.
-  });
-
-  test.skip("navigation renders in Arabic locale", async () => {
-    // Requires server-side locale routing at /ar/ — not yet implemented.
-  });
-});
+// ─── Page content ───────────────────────────────────────────────────────
 
 test.describe("i18n — page content", () => {
-  test("all pages render without layout breakage on language switch", async ({
-    page,
-  }) => {
+  test("all pages render without layout breakage", async ({ page }) => {
     await page.goto("/");
     await expect(page.getByRole("main")).toBeVisible();
 
-    // Page should not have horizontal overflow
     const overflow = await page.evaluate(() => {
       return (
         document.documentElement.scrollWidth >
@@ -81,5 +161,57 @@ test.describe("i18n — page content", () => {
       );
     });
     expect(overflow).toBe(false);
+  });
+});
+
+// ─── 70-page rendering verification (Finding #24: parameterized) ────────
+
+test.describe("i18n — full locale rendering verification", () => {
+  test.describe.configure({ timeout: 300_000 }); // 5 min budget for 70 renders
+
+  for (const locale of SUPPORTED_LOCALES) {
+    for (const pagePath of PAGES) {
+      const url = localeUrl(locale, pagePath);
+      test(`${locale}${pagePath} renders correctly`, async ({ page }) => {
+        const response = await page.goto(url);
+        expect(response?.status()).toBe(200);
+
+        // Correct html lang
+        await expect(page.locator("html")).toHaveAttribute("lang", locale);
+
+        // Correct dir
+        const expectedDir = locale === "ar" ? "rtl" : "ltr";
+        await expect(page.locator("html")).toHaveAttribute("dir", expectedDir);
+
+        // Content-Language header matches
+        expect(response?.headers()["content-language"]).toBe(locale);
+
+        // No untranslated i18n keys visible (dot-notation like nav.home, home.title)
+        // Only flag patterns that match known i18n key namespaces with sub-keys
+        const bodyText = await page.textContent("body");
+        const i18nKeyPattern = /\b(?:nav|home|facilities|creative|vision|community|faq|contact|common|footer|auth|eoi|legal)\.[a-z][a-zA-Z]+\.[a-z][a-zA-Z]+\b/g;
+        const untranslatedKeys = bodyText?.match(i18nKeyPattern) ?? [];
+        expect(untranslatedKeys).toEqual([]);
+      });
+    }
+  }
+});
+
+// ─── Locale suggestion prompt ───────────────────────────────────────────
+
+test.describe("i18n — locale suggestion prompt", () => {
+  test("Worker sets Accept-Language derived locale suggestion (unit-tested)", async ({ page }) => {
+    // The locale suggestion cookie is set by the Worker when Accept-Language
+    // indicates a non-English locale. This behavior is fully covered by
+    // worker/locale-middleware.test.ts unit tests.
+    //
+    // E2E verification is limited because:
+    // 1. The Secure cookie flag prevents storage on HTTP localhost
+    // 2. Route interception doesn't reliably modify headers in the Worker layer
+    //
+    // This test verifies the page loads without errors when serving English
+    // content (the baseline for locale suggestion).
+    await page.goto("/");
+    await expect(page.locator("html")).toHaveAttribute("lang", "en");
   });
 });

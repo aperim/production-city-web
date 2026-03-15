@@ -12,7 +12,7 @@
   },
   "scripts": {
     "dev": "vinext dev --port 4321 --host",
-    "build": "vinext build",
+    "build": "vinext build && node --experimental-transform-types --experimental-detect-module scripts/generate-sitemap.ts",
     "test": "vitest run",
     "test:e2e": "playwright test",
     "test:e2e:smoke": "playwright test --project=smoke",

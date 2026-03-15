@@ -2,6 +2,7 @@ import "../app.css";
 import { headers } from "vinext/shims/headers";
 import { validateXLocale } from "./i18n/x-locale-validation.js";
 import { getDirection } from "./i18n/index.js";
+import { buildHreflangLinks, buildCanonicalUrl, validatePath } from "./components/LocaleHead.js";
 
 /**
  * Root layout for the Production City web application.
@@ -19,6 +20,12 @@ export default async function RootLayout({
   const headersList = await headers();
   const locale = validateXLocale(headersList.get("X-Locale"));
   const direction = getDirection(locale);
+  const rawPath = headersList.get("X-Path") ?? "/";
+  const currentPath = validatePath(rawPath) ? rawPath : "/";
+
+  const canonicalHost = "https://production.city";
+  const hreflangLinks = buildHreflangLinks(currentPath, canonicalHost);
+  const canonicalUrl = buildCanonicalUrl(currentPath, locale, canonicalHost);
 
   return (
     <html lang={locale} dir={direction}>
@@ -26,6 +33,10 @@ export default async function RootLayout({
         <meta charSet="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta name="color-scheme" content="dark light" />
+        <link rel="canonical" href={canonicalUrl} />
+        {hreflangLinks.map((link) => (
+          <link key={link.hreflang} rel="alternate" hrefLang={link.hreflang} href={link.href} />
+        ))}
         <title>Production City™ — Coming Soon</title>
         <meta
           name="description"
