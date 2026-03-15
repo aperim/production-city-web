@@ -3,7 +3,7 @@
  * Provides nav links, footer config, and EOI handler for all landing pages.
  */
 
-import { useCallback } from "react";
+import { useCallback, useState, useEffect } from "react";
 import type { LandingNavigationProps } from "@productioncity/holding-ui";
 import type { LandingFooterProps } from "@productioncity/holding-ui";
 import type { EOIFormData, EOIFormLabels, EOICategoryOption } from "@productioncity/holding-ui";
@@ -17,8 +17,12 @@ export function useLandingNav(): LandingNavigationProps {
 
   const prefix = locale === "en" ? "" : `/${locale}`;
 
-  // Detect active path for nav highlighting
-  const activePath = typeof window !== "undefined" ? window.location.pathname : "/";
+  // Read pathname after hydration so active state is correct on all pages.
+  // SSR defaults to "/" — useEffect updates to real pathname on client.
+  const [activePath, setActivePath] = useState("/");
+  useEffect(() => {
+    setActivePath(window.location.pathname);
+  }, []);
 
   return {
     brand: "Production City",
