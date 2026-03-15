@@ -7,19 +7,27 @@
  * - Referrer-Policy: no-referrer meta tag (prevent token leaking via referrer)
  * - No third-party resources loaded on this page
  * - Cookie-only auth (no JS token access)
+ * - verifyToken runs exactly once (not re-triggered by locale changes)
  */
 
-import { useEffect, useState } from "react";
-import { AuthTemplate } from "@productioncity/holding-ui";
+import { useEffect, useRef, useState } from "react";
+import { AuthTemplate, Skeleton } from "@productioncity/holding-ui";
 import { verifyToken } from "../../lib/api-client";
+import { useTranslation } from "../../i18n/context";
 
 type VerifyState = "loading" | "success" | "error";
 
 export default function VerifyPage() {
+  const { t } = useTranslation();
   const [state, setState] = useState<VerifyState>("loading");
   const [errorMessage, setErrorMessage] = useState("");
+  const hasVerified = useRef(false);
 
   useEffect(() => {
+    // Guard: run exactly once, regardless of t identity changes from locale loading
+    if (hasVerified.current) return;
+    hasVerified.current = true;
+
     const params = new URLSearchParams(window.location.search);
     const token = params.get("token");
 
@@ -52,14 +60,15 @@ export default function VerifyPage() {
 
       <AuthTemplate>
         {state === "loading" && (
-          <div className="text-center">
-            <p className="text-sm text-muted-foreground">Verifying...</p>
+          <div className="text-center" role="status">
+            <Skeleton variant="text" width="60%" className="mx-auto" />
+            <span className="sr-only">{t("auth.verify.verifying")}</span>
           </div>
         )}
 
         {state === "success" && (
-          <div className="text-center">
-            <p className="text-sm text-foreground">Verified. Redirecting...</p>
+          <div className="text-center" role="status">
+            <p className="text-sm text-foreground">{t("auth.verify.verified")}</p>
           </div>
         )}
 
@@ -70,7 +79,7 @@ export default function VerifyPage() {
               href="/login"
               className="text-sm text-muted-foreground hover:text-foreground underline-offset-4 hover:underline transition-colors duration-150"
             >
-              Back to login
+              {t("auth.verify.backToLogin")}
             </a>
           </div>
         )}

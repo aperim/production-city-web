@@ -52,3 +52,7 @@ export { SectionDivider, sectionDividerVariants } from "./SectionDivider/Section
 export type { SectionDividerProps } from "./SectionDivider/SectionDivider";
 export { StatValue, statValueVariants } from "./StatValue/StatValue";
 export type { StatValueProps } from "./StatValue/StatValue";
+
+// Issue #266: Loading Skeleton & Spinner Components
+export { Spinner, spinnerVariants } from "./Spinner/Spinner";
+export type { SpinnerProps } from "./Spinner/Spinner";

@@ -38,6 +38,16 @@ export interface LoginFormProps {
    */
   submitLabel?: string;
   /**
+   * Submitting button label.
+   * @default "Sending..."
+   */
+  submittingLabel?: string;
+  /**
+   * Form aria-label for accessibility.
+   * @default "Login"
+   */
+  ariaLabel?: string;
+  /**
    * Additional class names.
    */
   className?: string;
@@ -57,6 +67,8 @@ export function LoginForm({
   rateLimitMessage = 'Too many attempts. Please try again later.',
   emailLabel = 'Email address',
   submitLabel = 'Send magic link',
+  submittingLabel = 'Sending...',
+  ariaLabel = 'Login',
   className,
 }: LoginFormProps) {
   const instanceId = useId();
@@ -86,7 +98,7 @@ export function LoginForm({
     <form
       onSubmit={handleSubmit}
       noValidate
-      aria-label="Login"
+      aria-label={ariaLabel}
       className={cn('flex flex-col gap-4', className)}
     >
       <div className="flex flex-col gap-1.5">
@@ -135,7 +147,7 @@ export function LoginForm({
         aria-busy={isSubmitting}
         className="rounded-sm bg-primary text-primary-foreground px-4 py-2 text-sm font-medium hover:bg-primary/90 disabled:opacity-50 disabled:cursor-not-allowed focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring transition-colors duration-150 min-h-[44px]"
       >
-        {isSubmitting ? 'Sending...' : submitLabel}
+        {isSubmitting ? submittingLabel : submitLabel}
       </button>
     </form>
   );

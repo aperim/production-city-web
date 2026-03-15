@@ -13,7 +13,16 @@
       "verifying": "Verifying...",
       "orSeparator": "or",
       "resendLink": "Resend magic link",
-      "backToLogin": "Back to sign in"
+      "backToLogin": "Back to sign in",
+      "wrongEmail": "Wrong email? Go back",
+      "timedOut": "Verification is taking longer than expected. Please check your email for a sign-in link, or enter the code from the email above.",
+      "genericError": "Something went wrong. Please try again.",
+      "rateLimitDefault": "Too many attempts. Please try again later.",
+      "codeHeading": "Check your email",
+      "codeDescription": "Enter the verification code we sent to your email.",
+      "resendCode": "Resend code",
+      "lockedMessage": "Too many failed attempts. Please request a new code.",
+      "invalidCode": "Invalid code"
     },
     "logout": {
       "button": "Sign out",
@@ -21,6 +30,21 @@
     },
     "session": {
       "expired": "Your session has expired. Please sign in again."
+    },
+    "verify": {
+      "verifying": "Verifying...",
+      "verified": "Verified. Redirecting...",
+      "noToken": "No verification token provided.",
+      "failed": "Verification failed. Please try again.",
+      "backToLogin": "Back to login"
+    },
+    "onboarding": {
+      "welcome": "Welcome",
+      "whatToCall": "What should we call you?",
+      "nameLabel": "Name",
+      "continueButton": "Continue",
+      "saving": "Saving...",
+      "genericError": "Something went wrong"
     }
   },
   "admin": {

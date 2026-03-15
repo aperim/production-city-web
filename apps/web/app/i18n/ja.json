@@ -13,7 +13,16 @@
       "verifying": "確認中...",
       "orSeparator": "または",
       "resendLink": "マジックリンクを再送信",
-      "backToLogin": "サインインに戻る"
+      "backToLogin": "サインインに戻る",
+      "wrongEmail": "メールアドレスが違いますか？戻る",
+      "timedOut": "確認に予想以上の時間がかかっています。サインインリンクについてメールをご確認いただくか、上のメールからコードを入力してください。",
+      "genericError": "エラーが発生しました。もう一度お試しください。",
+      "rateLimitDefault": "試行回数が多すぎます。しばらくしてからお試しください。",
+      "codeHeading": "メールをご確認ください",
+      "codeDescription": "メールに送信した確認コードを入力してください。",
+      "resendCode": "コードを再送信",
+      "lockedMessage": "失敗回数が多すぎます。新しいコードをリクエストしてください。",
+      "invalidCode": "無効なコード"
     },
     "logout": {
       "button": "サインアウト",
@@ -21,6 +30,21 @@
     },
     "session": {
       "expired": "セッションが期限切れです。再度サインインしてください。"
+    },
+    "verify": {
+      "verifying": "確認中...",
+      "verified": "確認済み。リダイレクト中...",
+      "noToken": "確認トークンが提供されていません。",
+      "failed": "確認に失敗しました。もう一度お試しください。",
+      "backToLogin": "ログインに戻る"
+    },
+    "onboarding": {
+      "welcome": "ようこそ",
+      "whatToCall": "お名前を教えてください",
+      "nameLabel": "名前",
+      "continueButton": "続ける",
+      "saving": "保存中...",
+      "genericError": "エラーが発生しました"
     }
   },
   "admin": {

@@ -11,16 +11,19 @@ import {
   AuthTemplate,
   LoginForm,
   MagicCodeForm,
+  Skeleton,
   type DeliveryStatus,
 } from "@productioncity/holding-ui";
 import { requestMagicLink, verifyCode } from "../lib/api-client";
 import { useDeliveryStatus } from "../lib/websocket/useDeliveryStatus";
 import { useAuth } from "../lib/auth-context";
+import { useTranslation } from "../i18n/context";
 
 type LoginView = "email" | "code";
 
 export default function LoginPage() {
   const { isAuthenticated, isLoading } = useAuth();
+  const { t } = useTranslation();
   const [view, setView] = useState<LoginView>("email");
   const [email, setEmail] = useState("");
   const [requestId, setRequestId] = useState<string | null>(null);
@@ -67,11 +70,11 @@ export default function LoginPage() {
           setRateLimitMessage(result.error.message);
         } else {
           // Generic error — never reveal whether email is registered (anti-enumeration)
-        setError("Something went wrong. Please try again.");
+        setError(t("auth.login.genericError"));
         }
       }
     },
-    [],
+    [t],
   );
 
   const handleCodeSubmit = useCallback(
@@ -88,10 +91,10 @@ export default function LoginPage() {
         if (result.error.remainingAttempts !== undefined && result.error.remainingAttempts <= 0) {
           setLocked(true);
         }
-        setCodeError(result.error.message || "Invalid code");
+        setCodeError(result.error.message || t("auth.login.invalidCode"));
       }
     },
-    [email],
+    [email, t],
   );
 
   const handleResend = useCallback(() => {
@@ -123,7 +126,12 @@ export default function LoginPage() {
   if (isLoading) {
     return (
       <AuthTemplate>
-        <p className="text-sm text-muted-foreground text-center">Loading...</p>
+        <div className="flex flex-col gap-4" role="status">
+          <Skeleton variant="text" width="40%" />
+          <Skeleton variant="rectangular" height={36} />
+          <Skeleton variant="rectangular" height={44} />
+          <span className="sr-only">{t("common.loading")}</span>
+        </div>
       </AuthTemplate>
     );
   }
@@ -136,7 +144,11 @@ export default function LoginPage() {
           deliveryStatus={deliveryStatus}
           error={error}
           rateLimited={rateLimited}
-          rateLimitMessage={rateLimitMessage}
+          rateLimitMessage={rateLimitMessage || t("auth.login.rateLimitDefault")}
+          emailLabel={t("auth.login.emailLabel")}
+          submitLabel={t("auth.login.submitButton")}
+          submittingLabel={t("auth.login.submitting")}
+          ariaLabel={t("auth.login.title")}
         />
       ) : (
         <div className="flex flex-col gap-4">
@@ -146,11 +158,15 @@ export default function LoginPage() {
             deliveryStatus={deliveryStatus}
             error={codeError}
             locked={locked}
+            heading={t("auth.login.codeHeading")}
+            description={t("auth.login.codeDescription")}
+            resendLabel={t("auth.login.resendCode")}
+            lockedMessage={t("auth.login.lockedMessage")}
+            verifyingLabel={t("auth.login.verifying")}
           />
           {timedOut && (
             <p className="text-xs text-muted-foreground">
-              Verification is taking longer than expected. Please check your email
-              for a sign-in link, or enter the code from the email above.
+              {t("auth.login.timedOut")}
             </p>
           )}
           <button
@@ -158,7 +174,7 @@ export default function LoginPage() {
             onClick={handleGoBack}
             className="self-start text-sm text-muted-foreground hover:text-foreground underline-offset-4 hover:underline transition-colors duration-150"
           >
-            Wrong email? Go back
+            {t("auth.login.wrongEmail")}
           </button>
         </div>
       )}

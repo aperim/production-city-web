@@ -6,12 +6,14 @@
  */
 
 import { useCallback, useId, useState, type FormEvent } from "react";
-import { AuthTemplate } from "@productioncity/holding-ui";
+import { AuthTemplate, Skeleton } from "@productioncity/holding-ui";
 import { updateProfile } from "../lib/api-client";
 import { useAuth } from "../lib/auth-context";
+import { useTranslation } from "../i18n/context";
 
 export default function OnboardingPage() {
   const { isAuthenticated, isLoading } = useAuth();
+  const { t } = useTranslation();
   const instanceId = useId();
   const [name, setName] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -41,21 +43,27 @@ export default function OnboardingPage() {
             window.location.href = "/dashboard";
           }
         } else {
-          setError(result.error.message || "Something went wrong");
+          setError(result.error.message || t("auth.onboarding.genericError"));
         }
       } catch {
-        setError("Something went wrong");
+        setError(t("auth.onboarding.genericError"));
       } finally {
         setIsSubmitting(false);
       }
     },
-    [name, isSubmitting],
+    [name, isSubmitting, t],
   );
 
   if (isLoading) {
     return (
       <AuthTemplate>
-        <p className="text-sm text-muted-foreground text-center">Loading...</p>
+        <div className="flex flex-col gap-4" role="status">
+          <Skeleton variant="text" width="30%" />
+          <Skeleton variant="text" width="60%" />
+          <Skeleton variant="rectangular" height={36} />
+          <Skeleton variant="rectangular" height={44} />
+          <span className="sr-only">{t("common.loading")}</span>
+        </div>
       </AuthTemplate>
     );
   }
@@ -65,13 +73,13 @@ export default function OnboardingPage() {
       <form
         onSubmit={handleSubmit}
         noValidate
-        aria-label="Onboarding"
+        aria-label={t("auth.onboarding.welcome")}
         className="flex flex-col gap-4"
       >
         <div className="flex flex-col gap-1">
-          <p className="text-sm font-medium text-foreground">Welcome</p>
+          <p className="text-sm font-medium text-foreground">{t("auth.onboarding.welcome")}</p>
           <p className="text-sm text-muted-foreground">
-            What should we call you?
+            {t("auth.onboarding.whatToCall")}
           </p>
         </div>
 
@@ -80,7 +88,7 @@ export default function OnboardingPage() {
             htmlFor={`${instanceId}-name`}
             className="text-sm font-medium text-foreground leading-none"
           >
-            Name
+            {t("auth.onboarding.nameLabel")}
           </label>
           <input
             id={`${instanceId}-name`}
@@ -106,7 +114,7 @@ export default function OnboardingPage() {
           aria-busy={isSubmitting}
           className="rounded-sm bg-primary text-primary-foreground px-4 py-2 text-sm font-medium hover:bg-primary/90 disabled:opacity-50 disabled:cursor-not-allowed focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring transition-colors duration-150 min-h-[44px]"
         >
-          {isSubmitting ? "Saving..." : "Continue"}
+          {isSubmitting ? t("auth.onboarding.saving") : t("auth.onboarding.continueButton")}
         </button>
       </form>
     </AuthTemplate>

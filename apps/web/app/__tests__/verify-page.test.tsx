@@ -2,8 +2,26 @@ import { describe, it, expect, vi, beforeEach } from "vitest";
 import { createElement } from "react";
 import { renderToString } from "react-dom/server";
 
-vi.mock("../../lib/api-client", () => ({
+vi.mock("../lib/api-client", () => ({
   verifyToken: vi.fn(),
+}));
+
+vi.mock("../i18n/context", () => ({
+  useTranslation: () => ({
+    locale: "en",
+    direction: "ltr",
+    setLocale: vi.fn(),
+    t: (key: string) => {
+      const keys: Record<string, string> = {
+        "auth.verify.verifying": "Verifying...",
+        "auth.verify.verified": "Verified. Redirecting...",
+        "auth.verify.noToken": "No verification token provided.",
+        "auth.verify.failed": "Verification failed. Please try again.",
+        "auth.verify.backToLogin": "Back to login",
+      };
+      return keys[key] ?? key;
+    },
+  }),
 }));
 
 import VerifyPage from "../auth/verify/page";
@@ -13,8 +31,11 @@ describe("VerifyPage", () => {
     vi.clearAllMocks();
   });
 
-  it("renders loading state initially", () => {
+  it("renders skeleton loading state initially with accessible status", () => {
     const html = renderToString(createElement(VerifyPage));
+    // Skeleton placeholder with role="status" and SR-only text
+    expect(html).toContain('aria-hidden="true"');
+    expect(html).toContain('role="status"');
     expect(html).toContain("Verifying...");
   });
 

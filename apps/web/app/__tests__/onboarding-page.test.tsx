@@ -10,6 +10,26 @@ vi.mock("../lib/api-client", () => ({
   updateProfile: vi.fn(),
 }));
 
+vi.mock("../i18n/context", () => ({
+  useTranslation: () => ({
+    locale: "en",
+    direction: "ltr",
+    setLocale: vi.fn(),
+    t: (key: string) => {
+      const keys: Record<string, string> = {
+        "auth.onboarding.welcome": "Welcome",
+        "auth.onboarding.whatToCall": "What should we call you?",
+        "auth.onboarding.nameLabel": "Name",
+        "auth.onboarding.continueButton": "Continue",
+        "auth.onboarding.saving": "Saving...",
+        "auth.onboarding.genericError": "Something went wrong",
+        "common.loading": "Loading...",
+      };
+      return keys[key] ?? key;
+    },
+  }),
+}));
+
 import { useAuth } from "../lib/auth-context";
 import OnboardingPage from "../onboarding/page";
 
@@ -20,7 +40,7 @@ describe("OnboardingPage", () => {
     vi.clearAllMocks();
   });
 
-  it("renders name input when authenticated", () => {
+  it("renders translated form when authenticated", () => {
     mockUseAuth.mockReturnValue({
       user: { id: "1", email: "a@b.com", name: null, status: "active" },
       roles: [],
@@ -36,9 +56,10 @@ describe("OnboardingPage", () => {
     expect(html).toContain("Welcome");
     expect(html).toContain("Name");
     expect(html).toContain("Continue");
+    expect(html).toContain("What should we call you?");
   });
 
-  it("shows loading when session is loading", () => {
+  it("shows skeleton loading with accessible status when session is loading", () => {
     mockUseAuth.mockReturnValue({
       user: null,
       roles: [],
@@ -51,6 +72,9 @@ describe("OnboardingPage", () => {
     });
 
     const html = renderToString(createElement(OnboardingPage));
+    // Should render skeleton elements with role="status" and SR-only text
+    expect(html).toContain('aria-hidden="true"');
+    expect(html).toContain('role="status"');
     expect(html).toContain("Loading...");
   });
 

@@ -13,7 +13,16 @@
       "verifying": "Vérification...",
       "orSeparator": "ou",
       "resendLink": "Renvoyer le lien magique",
-      "backToLogin": "Retour à la connexion"
+      "backToLogin": "Retour à la connexion",
+      "wrongEmail": "Mauvais email ? Retour",
+      "timedOut": "La vérification prend plus de temps que prévu. Veuillez vérifier votre email pour un lien de connexion, ou entrez le code de l'email ci-dessus.",
+      "genericError": "Une erreur est survenue. Veuillez réessayer.",
+      "rateLimitDefault": "Trop de tentatives. Veuillez réessayer plus tard.",
+      "codeHeading": "Vérifiez votre email",
+      "codeDescription": "Entrez le code de vérification que nous avons envoyé à votre email.",
+      "resendCode": "Renvoyer le code",
+      "lockedMessage": "Trop de tentatives échouées. Veuillez demander un nouveau code.",
+      "invalidCode": "Code invalide"
     },
     "logout": {
       "button": "Se déconnecter",
@@ -21,6 +30,21 @@
     },
     "session": {
       "expired": "Votre session a expiré. Veuillez vous reconnecter."
+    },
+    "verify": {
+      "verifying": "Vérification...",
+      "verified": "Vérifié. Redirection...",
+      "noToken": "Aucun jeton de vérification fourni.",
+      "failed": "La vérification a échoué. Veuillez réessayer.",
+      "backToLogin": "Retour à la connexion"
+    },
+    "onboarding": {
+      "welcome": "Bienvenue",
+      "whatToCall": "Comment devrions-nous vous appeler ?",
+      "nameLabel": "Nom",
+      "continueButton": "Continuer",
+      "saving": "Enregistrement...",
+      "genericError": "Une erreur est survenue"
     }
   },
   "admin": {

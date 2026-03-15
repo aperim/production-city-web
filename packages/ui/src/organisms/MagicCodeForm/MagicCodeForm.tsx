@@ -53,6 +53,11 @@ export interface MagicCodeFormProps {
    */
   resendLabel?: string;
   /**
+   * Verifying status label.
+   * @default "Verifying..."
+   */
+  verifyingLabel?: string;
+  /**
    * Additional class names.
    */
   className?: string;
@@ -75,6 +80,7 @@ export function MagicCodeForm({
   heading = 'Check your email',
   description = 'Enter the verification code we sent to your email.',
   resendLabel = 'Resend code',
+  verifyingLabel = 'Verifying...',
   className,
 }: MagicCodeFormProps) {
   const [isVerifying, setIsVerifying] = useState(false);
@@ -118,7 +124,7 @@ export function MagicCodeForm({
 
       {isVerifying && (
         <p className="text-sm text-muted-foreground" aria-live="polite">
-          Verifying...
+          {verifyingLabel}
         </p>
       )}
 

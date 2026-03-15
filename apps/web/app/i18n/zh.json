@@ -13,7 +13,16 @@
       "verifying": "验证中...",
       "orSeparator": "或",
       "resendLink": "重新发送魔术链接",
-      "backToLogin": "返回登录"
+      "backToLogin": "返回登录",
+      "wrongEmail": "邮箱不对？返回",
+      "timedOut": "验证时间超出预期。请检查您的邮箱中的登录链接，或在上方输入邮件中的验证码。",
+      "genericError": "出了点问题。请重试。",
+      "rateLimitDefault": "尝试次数过多。请稍后再试。",
+      "codeHeading": "检查您的邮箱",
+      "codeDescription": "输入我们发送到您邮箱的验证码。",
+      "resendCode": "重新发送验证码",
+      "lockedMessage": "失败次数过多。请请求新的验证码。",
+      "invalidCode": "验证码无效"
     },
     "logout": {
       "button": "退出登录",
@@ -21,6 +30,21 @@
     },
     "session": {
       "expired": "您的会话已过期，请重新登录。"
+    },
+    "verify": {
+      "verifying": "验证中...",
+      "verified": "已验证。正在跳转...",
+      "noToken": "未提供验证令牌。",
+      "failed": "验证失败。请重试。",
+      "backToLogin": "返回登录"
+    },
+    "onboarding": {
+      "welcome": "欢迎",
+      "whatToCall": "我们该怎么称呼您？",
+      "nameLabel": "姓名",
+      "continueButton": "继续",
+      "saving": "保存中...",
+      "genericError": "出了点问题"
     }
   },
   "admin": {

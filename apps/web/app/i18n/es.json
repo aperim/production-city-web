@@ -13,7 +13,16 @@
       "verifying": "Verificando...",
       "orSeparator": "o",
       "resendLink": "Reenviar enlace mágico",
-      "backToLogin": "Volver a iniciar sesión"
+      "backToLogin": "Volver a iniciar sesión",
+      "wrongEmail": "¿Email incorrecto? Volver",
+      "timedOut": "La verificación está tardando más de lo esperado. Por favor, revisa tu correo para un enlace de inicio de sesión, o ingresa el código del correo arriba.",
+      "genericError": "Algo salió mal. Por favor, inténtalo de nuevo.",
+      "rateLimitDefault": "Demasiados intentos. Por favor, inténtalo más tarde.",
+      "codeHeading": "Revisa tu correo",
+      "codeDescription": "Ingresa el código de verificación que enviamos a tu correo.",
+      "resendCode": "Reenviar código",
+      "lockedMessage": "Demasiados intentos fallidos. Por favor, solicita un nuevo código.",
+      "invalidCode": "Código inválido"
     },
     "logout": {
       "button": "Cerrar sesión",
@@ -21,6 +30,21 @@
     },
     "session": {
       "expired": "Su sesión ha expirado. Inicie sesión de nuevo."
+    },
+    "verify": {
+      "verifying": "Verificando...",
+      "verified": "Verificado. Redirigiendo...",
+      "noToken": "No se proporcionó un token de verificación.",
+      "failed": "La verificación falló. Por favor, inténtalo de nuevo.",
+      "backToLogin": "Volver al inicio de sesión"
+    },
+    "onboarding": {
+      "welcome": "Bienvenido",
+      "whatToCall": "¿Cómo deberíamos llamarte?",
+      "nameLabel": "Nombre",
+      "continueButton": "Continuar",
+      "saving": "Guardando...",
+      "genericError": "Algo salió mal"
     }
   },
   "admin": {
