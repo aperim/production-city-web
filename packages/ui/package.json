@@ -29,6 +29,14 @@
       "import": "./src/index.ts",
       "types": "./src/index.ts"
     },
+    "./i18n-constants": {
+      "import": "./src/lib/i18n-constants.ts",
+      "types": "./src/lib/i18n-constants.ts"
+    },
+    "./i18n-format": {
+      "import": "./src/lib/i18n-format.ts",
+      "types": "./src/lib/i18n-format.ts"
+    },
     "./globals.css": "./src/globals.css"
   },
   "main": "./src/index.ts",

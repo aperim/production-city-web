@@ -22,50 +22,30 @@ type FlattenKeys<T, Prefix extends string = ""> = T extends Record<string, unkno
 
 export type TranslationKey = FlattenKeys<TranslationTree>;
 
-/** All supported locale codes. */
-export const SUPPORTED_LOCALES = [
-  "en", "zh", "hi", "es", "ar", "fr", "bn", "pt", "ru", "ja",
-] as const;
+// Import from shared package for local use (direct path to avoid Vite alias interception)
+import {
+  SUPPORTED_LOCALES as _SUPPORTED_LOCALES,
+  LOCALE_META as _LOCALE_META,
+  isSupportedLocale as _isSupportedLocale,
+  getDirection as _getDirection,
+  getOgLocale as _getOgLocale,
+  type SupportedLocale as _SupportedLocale,
+  type LocaleMeta as _LocaleMeta,
+} from "../../../../packages/ui/src/lib/i18n-constants.js";
 
-export type SupportedLocale = (typeof SUPPORTED_LOCALES)[number];
-
-/** Locale metadata for language switcher. */
-export const LOCALE_META: ReadonlyArray<{
-  code: SupportedLocale;
-  name: string;
-  nativeName: string;
-  direction: "ltr" | "rtl";
-}> = [
-  { code: "en", name: "English", nativeName: "English", direction: "ltr" },
-  { code: "zh", name: "Chinese", nativeName: "中文", direction: "ltr" },
-  { code: "hi", name: "Hindi", nativeName: "हिन्दी", direction: "ltr" },
-  { code: "es", name: "Spanish", nativeName: "Español", direction: "ltr" },
-  { code: "ar", name: "Arabic", nativeName: "العربية", direction: "rtl" },
-  { code: "fr", name: "French", nativeName: "Français", direction: "ltr" },
-  { code: "bn", name: "Bengali", nativeName: "বাংলা", direction: "ltr" },
-  { code: "pt", name: "Portuguese", nativeName: "Português", direction: "ltr" },
-  { code: "ru", name: "Russian", nativeName: "Русский", direction: "ltr" },
-  { code: "ja", name: "Japanese", nativeName: "日本語", direction: "ltr" },
-];
+// Re-export locale constants from shared package (single source of truth)
+export const SUPPORTED_LOCALES = _SUPPORTED_LOCALES;
+export const LOCALE_META = _LOCALE_META;
+export type SupportedLocale = _SupportedLocale;
+export type LocaleMeta = _LocaleMeta;
+export const isSupportedLocale = _isSupportedLocale;
+export const getDirection = _getDirection;
+export const getOgLocale = _getOgLocale;
 
 /** Translation bundles cache. English is always loaded synchronously. */
 const translations: Record<string, TranslationTree> = {
   en,
 };
-
-/**
- * Checks if a locale code is supported.
- */
-export function isSupportedLocale(locale: string): locale is SupportedLocale {
-  return (SUPPORTED_LOCALES as readonly string[]).includes(locale);
-}
-
-/**
- * Get the text direction for a locale.
- */
-export function getDirection(locale: SupportedLocale): "ltr" | "rtl" {
-  return locale === "ar" ? "rtl" : "ltr";
-}
 
 /**
  * Lazy-loads a translation bundle for the given locale.

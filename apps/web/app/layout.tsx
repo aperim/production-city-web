@@ -1,17 +1,27 @@
 import "../app.css";
+import { headers } from "vinext/shims/headers";
+import { validateXLocale } from "./i18n/x-locale-validation.js";
+import { getDirection } from "./i18n/index.js";
 
 /**
  * Root layout for the Production City web application.
  *
+ * Server-resolved locale: reads X-Locale header set by Worker locale middleware
+ * and renders <html lang> and dir server-side (Issue #277).
+ *
  * Security headers are applied at the worker level (worker/index.ts).
  */
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
+  const headersList = await headers();
+  const locale = validateXLocale(headersList.get("X-Locale"));
+  const direction = getDirection(locale);
+
   return (
-    <html lang="en">
+    <html lang={locale} dir={direction}>
       <head>
         <meta charSet="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />

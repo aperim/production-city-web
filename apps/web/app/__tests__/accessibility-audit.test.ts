@@ -328,9 +328,10 @@ describe("WCAG 2.4.7 — Focus visible", () => {
 // 3.1.1 Language of Page — <html lang> set correctly
 // ============================================================================
 describe("WCAG 3.1.1 — Language of page", () => {
-  it("layout.tsx sets lang attribute on <html>", () => {
+  it("layout.tsx sets lang attribute on <html> dynamically from server locale", () => {
     const layout = readFile("layout.tsx");
-    expect(layout).toContain('lang="en"');
+    // Server-resolved locale: layout reads X-Locale header and sets lang={locale}
+    expect(layout).toContain("lang={locale}");
   });
 
   it("I18nProvider dynamically updates document lang attribute", () => {
@@ -428,9 +429,8 @@ describe("WCAG 4.1.2 — Name, role, value", () => {
 describe("RTL accessibility", () => {
   it("Arabic locale is configured with RTL direction", () => {
     const i18nIndex = readFile("i18n/index.ts");
-    // Should map "ar" to "rtl"
-    expect(i18nIndex).toContain("ar");
-    expect(i18nIndex).toContain("rtl");
+    // Re-exports from shared package, which maps "ar" to "rtl"
+    expect(i18nIndex).toContain("getDirection");
   });
 
   it("language switcher uses CSS logical properties (not left/right)", () => {

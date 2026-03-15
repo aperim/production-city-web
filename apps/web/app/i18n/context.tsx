@@ -3,6 +3,10 @@
 /**
  * React context and hook for i18n locale management.
  * Provides the current locale, direction, and translation function to the component tree.
+ *
+ * Updated for server-resolved locale (Issue #277 Finding #6):
+ * When `serverLocale` is set, resolveLocale() is NOT called during initial render —
+ * the server locale is authoritative for hydration.
  */
 
 import { createContext, useCallback, useContext, useEffect, useState } from "react";
@@ -30,16 +34,23 @@ interface I18nProviderProps {
   children: ReactNode;
   /** Initial locale from URL or server-side detection. */
   initialLocale?: SupportedLocale;
+  /**
+   * Server-resolved locale from Worker X-Locale header.
+   * When set, resolveLocale() is NOT called during initial render (Finding #6).
+   */
+  serverLocale?: SupportedLocale;
 }
 
 /**
  * Provides i18n context to the component tree.
  * Handles lazy loading of translation bundles and locale persistence.
  */
-export function I18nProvider({ children, initialLocale }: I18nProviderProps) {
-  const [locale, setLocaleState] = useState<SupportedLocale>(
-    () => initialLocale ?? resolveLocale(),
-  );
+export function I18nProvider({ children, initialLocale, serverLocale }: I18nProviderProps) {
+  const [locale, setLocaleState] = useState<SupportedLocale>(() => {
+    // Server locale is authoritative — skip resolveLocale() to avoid hydration mismatch (Finding #6)
+    if (serverLocale) return serverLocale;
+    return initialLocale ?? resolveLocale();
+  });
   const [ready, setReady] = useState(locale === "en");
 
   useEffect(() => {
@@ -50,10 +61,14 @@ export function I18nProvider({ children, initialLocale }: I18nProviderProps) {
     return () => { cancelled = true; };
   }, [locale]);
 
+  // Only set document lang/dir when server locale was NOT provided
+  // (server already rendered correct values via layout.tsx)
   useEffect(() => {
-    document.documentElement.lang = locale;
-    document.documentElement.dir = getDirection(locale);
-  }, [locale]);
+    if (!serverLocale) {
+      document.documentElement.lang = locale;
+      document.documentElement.dir = getDirection(locale);
+    }
+  }, [locale, serverLocale]);
 
   const setLocale = useCallback((newLocale: SupportedLocale) => {
     setReady(newLocale === "en");
