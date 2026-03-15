@@ -21,7 +21,7 @@ DO storage is ephemeral/transient — connection state only, never business data
 
 Used by the admin dashboard for real-time notifications.
 
-- Authentication: `__Host-session` cookie (HttpOnly, Secure, SameSite=Lax)
+- Authentication: `__Secure-session` cookie (HttpOnly, Secure, SameSite=Lax)
 - Origin validation against allowed origins
 - Session revalidation every 5 minutes
 - Auto-subscribes to `user:{userId}` channel
@@ -101,7 +101,7 @@ Channels follow the pattern `(user|admin|delivery):<identifier>`:
 
 ### Cookie-Based Auth (`/v1/ws`)
 
-The `__Host-session` cookie is validated on upgrade. The session is revalidated every 5 minutes while the connection is active. If the session expires or the user is deactivated, the connection is closed with code 4001.
+The `__Secure-session` cookie is validated on upgrade. The session is revalidated every 5 minutes while the connection is active. If the session expires or the user is deactivated, the connection is closed with code 4001.
 
 ### Delivery Token Auth (`/v1/ws/delivery`)
 
@@ -209,7 +209,7 @@ When a new version is deployed, Cloudflare terminates the Durable Object:
 
 ### Common Issues
 
-- **HTTPS required for cookies**: `__Host-session` cookies require HTTPS. Use `wrangler dev --local-protocol=https` for local development.
+- **HTTPS required for cookies**: `__Secure-session` cookies require HTTPS. Use `wrangler dev --local-protocol=https` for local development.
 - **Origin mismatch**: WebSocket upgrade validates the Origin header. Ensure the client origin matches the allowed origins list.
 - **Token consumed**: Delivery tokens are single-use. A second connection attempt with the same token will fail with 401.
 
@@ -249,7 +249,7 @@ The `EventLog` class records recent events for replay and debugging:
 ## Local Development
 
 ```bash
-# Start the backend worker with HTTPS (required for __Host-session cookies)
+# Start the backend worker with HTTPS (required for __Secure-session cookies)
 cd apps/backend
 pnpm dev  # uses wrangler dev
 

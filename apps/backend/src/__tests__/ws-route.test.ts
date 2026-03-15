@@ -64,7 +64,7 @@ describe("GET /v1/ws — Authenticated WebSocket upgrade", () => {
       headers: {
         Upgrade: "websocket",
         Origin: env.ALLOWED_ORIGIN,
-        Cookie: "__Host-session=invalid-token",
+        Cookie: "__Secure-session=invalid-token",
       },
     });
     const res = await app.fetch(req, env);
@@ -94,7 +94,7 @@ describe("GET /v1/ws — Authenticated WebSocket upgrade", () => {
         headers: {
           Upgrade: "websocket",
           Origin: env.ALLOWED_ORIGIN,
-          Cookie: `__Host-session=${token}`,
+          Cookie: `__Secure-session=${token}`,
         },
       });
       const res = await app.fetch(req, env);

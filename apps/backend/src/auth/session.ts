@@ -12,8 +12,11 @@ const SESSION_IDLE_LIMIT_MS = 30 * 24 * 60 * 60 * 1000;
 /** Sliding window: update lastActiveAt at most once per 5 minutes */
 const SLIDING_THROTTLE_MS = 5 * 60 * 1000;
 
-/** Cookie name per spec: __Host- prefix requires Secure, no Domain, Path=/ */
-export const SESSION_COOKIE_NAME = "__Host-session";
+/**
+ * Cookie name: __Secure- prefix requires Secure but allows Domain,
+ * enabling the cookie to be shared between production.city and api.production.city.
+ */
+export const SESSION_COOKIE_NAME = "__Secure-session";
 /** Max-Age in seconds (90 days) */
 export const SESSION_MAX_AGE_SECONDS = 90 * 24 * 60 * 60;
 
@@ -144,17 +147,18 @@ export async function revokeAllUserSessions(
 
 /**
  * Builds the session cookie string with security attributes.
- * __Host- prefix: HttpOnly, Secure, SameSite=Lax, Path=/, no Domain.
+ * __Secure- prefix: HttpOnly, Secure, SameSite=Lax, Domain=production.city, Path=/.
+ * Domain is set so the cookie is shared between production.city and api.production.city.
  */
 export function buildSessionCookie(token: string, maxAge: number = SESSION_MAX_AGE_SECONDS): string {
-  return `${SESSION_COOKIE_NAME}=${token}; HttpOnly; Secure; SameSite=Lax; Path=/; Max-Age=${maxAge}`;
+  return `${SESSION_COOKIE_NAME}=${token}; HttpOnly; Secure; SameSite=Lax; Domain=production.city; Path=/; Max-Age=${maxAge}`;
 }
 
 /**
  * Builds a cookie string that clears the session cookie.
  */
 export function buildClearSessionCookie(): string {
-  return `${SESSION_COOKIE_NAME}=; HttpOnly; Secure; SameSite=Lax; Path=/; Max-Age=0`;
+  return `${SESSION_COOKIE_NAME}=; HttpOnly; Secure; SameSite=Lax; Domain=production.city; Path=/; Max-Age=0`;
 }
 
 /**

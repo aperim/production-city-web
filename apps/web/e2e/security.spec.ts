@@ -10,7 +10,7 @@ const ADMIN_EMAIL = "admin@test.production.city";
 const MEMBER_EMAIL = "member@test.production.city";
 
 test.describe("Security — Session Cookie Attributes", () => {
-  test("session cookie has expected __Host- security attributes", async ({ page }) => {
+  test("session cookie has expected __Secure- security attributes", async ({ page }) => {
     const { token } = await createMagicLink(ADMIN_EMAIL);
 
     // Intercept the verify response to check Set-Cookie header
@@ -23,16 +23,16 @@ test.describe("Security — Session Cookie Attributes", () => {
     const response = await responsePromise;
     const setCookieHeader = response.headers()["set-cookie"] ?? "";
 
-    // __Host- prefix requires: HttpOnly, Secure, SameSite=Lax, Path=/, NO Domain
-    expect(setCookieHeader).toContain("__Host-session");
+    // __Secure- prefix requires: HttpOnly, Secure, SameSite=Lax, Path=/, Domain=production.city
+    expect(setCookieHeader).toContain("__Secure-session");
     expect(setCookieHeader).toContain("HttpOnly");
     expect(setCookieHeader).toContain("Secure");
     expect(setCookieHeader).toContain("SameSite=Lax");
     expect(setCookieHeader).toContain("Path=/");
     expect(setCookieHeader).toContain("Max-Age=");
 
-    // __Host- prefix must NOT have Domain attribute
-    expect(setCookieHeader).not.toMatch(/Domain=/i);
+    // __Secure- cookie must have Domain=production.city for cross-subdomain sharing
+    expect(setCookieHeader).toMatch(/Domain=production\.city/i);
   });
 });
 

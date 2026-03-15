@@ -230,6 +230,7 @@ describe("Cookie helpers", () => {
     expect(cookie).toContain("Secure");
     expect(cookie).toContain("SameSite=Lax");
     expect(cookie).toContain("Path=/");
+    expect(cookie).toContain("Domain=production.city");
     expect(cookie).toContain("Max-Age=");
   });
 
@@ -252,7 +253,7 @@ describe("Cookie helpers", () => {
     expect(extractSessionToken("other=value")).toBeNull();
   });
 
-  it("cookie name uses __Host- prefix", () => {
-    expect(SESSION_COOKIE_NAME).toBe("__Host-session");
+  it("cookie name uses __Secure- prefix", () => {
+    expect(SESSION_COOKIE_NAME).toBe("__Secure-session");
   });
 });
