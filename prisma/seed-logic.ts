@@ -98,6 +98,27 @@ const PERMISSIONS: ReadonlyArray<{
   { resource: "guest", action: "create", description: "Register guests" },
   { resource: "guest", action: "update", description: "Edit guest info" },
   { resource: "guest", action: "delete", description: "Remove guests" },
+  // Announcements permissions
+  { resource: "announcement", action: "read", description: "Public read access to announcements" },
+  { resource: "announcement", action: "read_admin", description: "Admin dashboard access to announcements" },
+  { resource: "announcement", action: "create", description: "Create announcements" },
+  { resource: "announcement", action: "update", description: "Update announcements" },
+  { resource: "announcement", action: "delete", description: "Delete announcements" },
+  { resource: "announcement", action: "publish", description: "Publish announcements" },
+  // Categories permissions
+  { resource: "category", action: "read", description: "View announcement categories" },
+  { resource: "category", action: "create", description: "Create announcement categories" },
+  { resource: "category", action: "update", description: "Update announcement categories" },
+  { resource: "category", action: "delete", description: "Delete announcement categories" },
+  // Tags permissions
+  { resource: "tag", action: "read", description: "View announcement tags" },
+  { resource: "tag", action: "create", description: "Create announcement tags" },
+  { resource: "tag", action: "update", description: "Update announcement tags" },
+  { resource: "tag", action: "delete", description: "Delete announcement tags" },
+  // Subscription permissions
+  { resource: "subscription", action: "read", description: "View subscriptions" },
+  { resource: "subscription", action: "manage", description: "Manage subscriptions" },
+  { resource: "subscription", action: "read_pii", description: "View subscriber phone numbers (PII)" },
 ];
 
 /** Role-permission mappings. super_admin gets ALL, others get specific subsets. */
@@ -114,9 +135,35 @@ const ROLE_PERMISSIONS: Record<string, ReadonlyArray<string>> = {
     "invitation:create",
     "invitation:revoke",
     "audit:read",
+    "announcement:read",
+    "announcement:read_admin",
+    "announcement:create",
+    "announcement:update",
+    "announcement:delete",
+    "announcement:publish",
+    "category:read",
+    "category:create",
+    "category:update",
+    "category:delete",
+    "tag:read",
+    "tag:create",
+    "tag:update",
+    "tag:delete",
+    "subscription:read",
+    "subscription:manage",
   ],
-  member: ["user:read"],
-  viewer: ["user:read"],
+  member: [
+    "user:read",
+    "announcement:read",
+    "category:read",
+    "tag:read",
+  ],
+  viewer: [
+    "user:read",
+    "announcement:read",
+    "category:read",
+    "tag:read",
+  ],
 };
 
 // ============================================================================
@@ -212,7 +259,24 @@ export async function seedDatabase(
     }
   }
 
-  // 4. EOI seed data — only in development or test environments
+  // 4. Upsert announcement categories (all environments)
+  const CATEGORIES = [
+    { name: "General Updates", slug: "general-updates", description: "General platform news and updates", sortOrder: 0 },
+    { name: "Development", slug: "development", description: "Development progress and technical updates", sortOrder: 1 },
+    { name: "Events", slug: "events", description: "Upcoming events and activities", sortOrder: 2 },
+    { name: "Community", slug: "community", description: "Community news and highlights", sortOrder: 3 },
+  ];
+
+  for (const cat of CATEGORIES) {
+    await prisma.announcementCategory.upsert({
+      where: { slug: cat.slug },
+      update: { name: cat.name, description: cat.description, sortOrder: cat.sortOrder },
+      create: cat,
+    });
+  }
+  console.log("[SEED] Announcement categories created/verified");
+
+  // 5. EOI seed data — only in development or test environments
   const eoiAllowedEnvs = ["development", "test"];
   if (nodeEnv && eoiAllowedEnvs.includes(nodeEnv)) {
     const eoiSeeds = [
@@ -304,7 +368,25 @@ export async function seedDatabase(
     console.log("[SEED] EOI seed data created/verified");
   }
 
-  // 5. Dev admin user — only in development or test environments
+  // 5a. Twilio sender routes (dev/test only)
+  if (nodeEnv && eoiAllowedEnvs.includes(nodeEnv)) {
+    const TWILIO_ROUTES = [
+      { phoneNumber: "+12125550001", prefixes: JSON.stringify(["+1"]), isDefault: 1 },
+      { phoneNumber: "+61400000000", prefixes: JSON.stringify(["+61", "+62"]), isDefault: 0 },
+      { phoneNumber: "+8613800000000", prefixes: JSON.stringify(["+86"]), isDefault: 0 },
+    ];
+
+    for (const route of TWILIO_ROUTES) {
+      await prisma.twilioSenderRoute.upsert({
+        where: { phoneNumber: route.phoneNumber },
+        update: { prefixes: route.prefixes, isDefault: route.isDefault },
+        create: route,
+      });
+    }
+    console.log("[SEED] Twilio sender routes created/verified");
+  }
+
+  // 6. Dev admin user — only in development or test environments
   const allowedEnvs = eoiAllowedEnvs;
   if (nodeEnv && allowedEnvs.includes(nodeEnv)) {
     console.warn(

@@ -15,6 +15,8 @@ import { mediaApp } from "./media/handlers.js";
 import { eoiApp } from "./eoi/handlers.js";
 import { eoiAdminApp } from "./admin/eoi.js";
 import { notificationsApp } from "./admin/notifications.js";
+import { categoriesApp } from "./admin/categories.js";
+import { tagsApp } from "./admin/tags.js";
 import { wsApp } from "./routes/ws.js";
 
 /**
@@ -38,6 +40,10 @@ export function mountRoutes(app: OpenAPIHono<{ Bindings: Record<string, unknown>
 
   // Public media routes (no auth required)
   app.route("/", mediaApp);
+
+  // Categories & Tags (public read + admin CRUD)
+  app.route("/", categoriesApp);
+  app.route("/", tagsApp);
 
   // EOI admin routes (auth + admin role required)
   app.route("/", eoiAdminApp);

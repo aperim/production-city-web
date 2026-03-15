@@ -54,6 +54,11 @@ const DETAIL_ALLOWLIST: Record<string, string[]> = {
   "media.asset.restored": ["assetId"],
   "media.pair.created": ["contentContext"],
   "media.pair.deleted": ["contentContext"],
+  // Category & tag audit actions
+  create: ["categoryId", "name", "tagId"],
+  update: ["categoryId", "tagId", "changes"],
+  delete: ["categoryId", "tagId", "name"],
+  reorder: ["itemCount"],
   // WebSocket audit actions
   "ws_connect": ["durableObjectId", "userAgent"],
   "ws_disconnect": ["durableObjectId", "reason", "durationMs"],

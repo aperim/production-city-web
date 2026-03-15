@@ -158,5 +158,23 @@
       "connectionLimitReached": "সর্বোচ্চ সংযোগ সীমায় পৌঁছেছে।",
       "serverShutdown": "সার্ভার পুনরায় চালু হচ্ছে। অনুগ্রহ করে পুনরায় সংযোগ করুন।"
     }
+  },
+  "categories": {
+    "notFound": "Category not found.",
+    "nameTaken": "A category with this name already exists.",
+    "hasAnnouncements": "Cannot delete category with linked announcements.",
+    "hasSubscriptions": "Cannot delete category with active subscriptions.",
+    "invalidSortOrder": "Invalid sort order values.",
+    "created": "Category created.",
+    "updated": "Category updated.",
+    "deactivated": "Category deactivated.",
+    "reordered": "Categories reordered."
+  },
+  "tags": {
+    "notFound": "Tag not found.",
+    "nameTaken": "A tag with this name already exists.",
+    "created": "Tag created.",
+    "updated": "Tag updated.",
+    "deleted": "Tag deleted."
   }
 }

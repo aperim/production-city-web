@@ -26,6 +26,8 @@ model User {
   id            String    @id @default(cuid())
   email         String    @unique
   name          String?
+  /// E.164 format phone number, validated and normalized via libphonenumber
+  phone         String?   @unique
   /// pending_approval | active | deactivated
   status        String    @default("pending_approval")
   emailVerified Boolean   @default(false)
@@ -47,6 +49,11 @@ model User {
   notificationPreferences NotificationPreference[]
   notifications           Notification[]             @relation("UserNotifications")
   notificationsActed      Notification[]             @relation("NotificationActor")
+  announcements           Announcement[]
+  categorySubscriptions   CategorySubscription[]  @relation("Subscriber")
+  subscriptionsCreated    CategorySubscription[]  @relation("SubscribedBy")
+  announcementDeliveries  AnnouncementDelivery[]
+  smsSuppressionRemovals  SmsSuppression[]
 
   // @@index([email]) — omitted: @unique already creates an index
   @@index([status])
@@ -61,9 +68,10 @@ model Role {
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
 
-  rolePermissions RolePermission[]
-  userRoles       UserRole[]
-  invitationRoles InvitationRole[]
+  rolePermissions            RolePermission[]
+  userRoles                  UserRole[]
+  invitationRoles            InvitationRole[]
+  announcementRoleVisibility AnnouncementRoleVisibility[]
 }
 
 /// Fine-grained permissions as resource:action pairs (e.g. user:read, facility:manage).
@@ -456,4 +464,228 @@ model Notification {
   @@index([userId, readAt])
   @@index([userId, createdAt])
   @@index([type])
+}
+
+// ============================================================================
+// Announcements System
+// ============================================================================
+
+/// Announcements with structured content blocks.
+/// Status machine: draft → published → archived
+model Announcement {
+  id            String    @id @default(cuid())
+  title         String
+  /// URL-safe slug, auto-generated from title. Must NOT be regenerated once published.
+  slug          String    @unique
+  /// Plain text excerpt, max 500 chars
+  summary       String
+  /// JSON array of content block objects (validated via Zod on write)
+  contentBlocks String
+  /// public | private
+  visibility    String    @default("public")
+  /// draft | published | archived
+  status        String    @default("draft")
+  publishedAt   DateTime?
+  authorId      String
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+
+  author                 User                        @relation(fields: [authorId], references: [id])
+  categoryLinks          AnnouncementCategoryLink[]
+  tagLinks               AnnouncementTagLink[]
+  roleVisibility         AnnouncementRoleVisibility[]
+  deliveries             AnnouncementDelivery[]
+
+  @@index([status])
+  @@index([visibility])
+  @@index([publishedAt])
+  @@index([authorId])
+}
+
+/// Announcement categories — primary organizational unit for subscriptions.
+/// Soft-deleted via isActive=false.
+model AnnouncementCategory {
+  id          String   @id @default(cuid())
+  name        String   @unique
+  slug        String   @unique
+  description String?
+  sortOrder   Int      @default(0)
+  /// Boolean (0/1 in SQLite). Inactive categories hidden from new subscriptions.
+  isActive    Int      @default(1)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  announcementLinks     AnnouncementCategoryLink[]
+  categorySubscriptions CategorySubscription[]
+}
+
+/// Announcement tags — lightweight, flexible labeling.
+model AnnouncementTag {
+  id        String   @id @default(cuid())
+  name      String   @unique
+  slug      String   @unique
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  announcementLinks AnnouncementTagLink[]
+}
+
+/// Many-to-many: Announcement ↔ Category
+model AnnouncementCategoryLink {
+  announcementId String
+  categoryId     String
+
+  announcement Announcement         @relation(fields: [announcementId], references: [id], onDelete: Cascade)
+  category     AnnouncementCategory @relation(fields: [categoryId], references: [id], onDelete: Cascade)
+
+  @@id([announcementId, categoryId])
+}
+
+/// Many-to-many: Announcement ↔ Tag
+model AnnouncementTagLink {
+  announcementId String
+  tagId          String
+
+  announcement Announcement    @relation(fields: [announcementId], references: [id], onDelete: Cascade)
+  tag          AnnouncementTag @relation(fields: [tagId], references: [id], onDelete: Cascade)
+
+  @@id([announcementId, tagId])
+}
+
+/// Many-to-many: Announcement ↔ Role (for private visibility control)
+/// When visibility='private', only users with listed roles can view.
+model AnnouncementRoleVisibility {
+  announcementId String
+  roleId         String
+  createdAt      DateTime @default(now())
+
+  announcement Announcement @relation(fields: [announcementId], references: [id], onDelete: Cascade)
+  role         Role         @relation(fields: [roleId], references: [id], onDelete: Cascade)
+
+  @@id([announcementId, roleId])
+}
+
+/// User subscription to a category via a specific channel (email/sms).
+/// Double opt-in required; status tracks confirmation lifecycle.
+model CategorySubscription {
+  id                    String    @id @default(cuid())
+  userId                String
+  categoryId            String
+  /// email | sms
+  channel               String
+  /// pending | confirmed | declined | expired
+  status                String    @default("pending")
+  /// HMAC hash of confirmation token
+  confirmationTokenHash String?
+  confirmedAt           DateTime?
+  declinedAt            DateTime?
+  /// 7 days (email) or 14 days (SMS) from creation for pending
+  expiresAt             DateTime
+  subscribedById        String
+  createdAt             DateTime  @default(now())
+  updatedAt             DateTime  @updatedAt
+
+  user         User                 @relation("Subscriber", fields: [userId], references: [id], onDelete: Cascade)
+  category     AnnouncementCategory @relation(fields: [categoryId], references: [id], onDelete: Restrict)
+  subscribedBy User                 @relation("SubscribedBy", fields: [subscribedById], references: [id])
+  deliveries   AnnouncementDelivery[]
+
+  @@unique([userId, categoryId, channel])
+  @@index([userId])
+  @@index([categoryId])
+  @@index([status])
+  @@index([expiresAt])
+  @@index([confirmationTokenHash])
+}
+
+/// Tracks delivery of an announcement to a subscriber via a channel.
+/// Unique on (announcementId, userId, channel) for publish idempotency.
+model AnnouncementDelivery {
+  id                String    @id @default(cuid())
+  announcementId    String
+  subscriptionId    String
+  /// Denormalized for query performance
+  userId            String
+  /// email | sms
+  channel           String
+  /// queued | sending | sent | delivered | failed | suppressed
+  status            String    @default("queued")
+  /// Postmark MessageID or Twilio SID
+  externalMessageId String?
+  errorMessage      String?
+  /// hard | soft (email only)
+  bounceType        String?
+  /// Twilio error code if failed
+  twilioErrorCode   String?
+  openedAt          DateTime?
+  clickedAt         DateTime?
+  sentAt            DateTime?
+  deliveredAt       DateTime?
+  /// Timestamp of most recent disposition event
+  lastEventAt       DateTime?
+  createdAt         DateTime  @default(now())
+  updatedAt         DateTime  @updatedAt
+
+  announcement Announcement         @relation(fields: [announcementId], references: [id])
+  subscription CategorySubscription @relation(fields: [subscriptionId], references: [id])
+  user         User                 @relation(fields: [userId], references: [id])
+  events       DeliveryEvent[]
+
+  @@unique([announcementId, userId, channel])
+  @@index([announcementId])
+  @@index([userId])
+  @@index([status])
+  @@index([subscriptionId])
+  @@index([externalMessageId, channel])
+  @@index([announcementId, status])
+}
+
+/// Full audit trail for delivery status changes (webhook events).
+model DeliveryEvent {
+  id              String   @id @default(cuid())
+  deliveryId      String
+  /// e.g. 'queued', 'sent', 'delivered', 'bounced', 'opened', 'clicked', 'failed', 'spam_complaint'
+  eventType       String
+  /// system | postmark | twilio
+  source          String
+  /// Provider-specific event ID for dedup
+  providerEventId String?
+  /// JSON — provider-specific event details
+  metadata        String?
+  createdAt       DateTime @default(now())
+
+  delivery AnnouncementDelivery @relation(fields: [deliveryId], references: [id], onDelete: Cascade)
+
+  @@unique([deliveryId, providerEventId])
+  @@index([deliveryId])
+}
+
+/// SMS suppression list for opt-outs (TCPA compliance).
+/// Mirrors EmailSuppression but for phone numbers.
+model SmsSuppression {
+  id              String    @id @default(cuid())
+  /// E.164 format
+  phoneNumber     String    @unique
+  /// stop_keyword | twilio_unsubscribed | invalid_number | admin_removed
+  reason          String
+  /// Twilio event reference
+  providerEventId String?
+  removedAt       DateTime?
+  removedBy       String?
+  removedByUser   User?     @relation(fields: [removedBy], references: [id])
+  createdAt       DateTime  @default(now())
+}
+
+/// Twilio sender number routing by recipient prefix.
+/// Match longest prefix of recipient to select sender.
+model TwilioSenderRoute {
+  id          String   @id @default(cuid())
+  /// Twilio sender number (E.164)
+  phoneNumber String   @unique
+  /// JSON array of E.164 prefixes, e.g. ["+61", "+62"]
+  prefixes    String
+  /// Boolean — fallback sender. At most one row with isDefault=1.
+  isDefault   Int      @default(0)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
 }

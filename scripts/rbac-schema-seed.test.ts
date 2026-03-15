@@ -549,7 +549,7 @@ describe("Seed script", () => {
     expect(permKeys).not.toContain("system:admin");
   });
 
-  it("member has only user:read", async () => {
+  it("member has user:read and read-only announcement/category/tag permissions", async () => {
     const member = await prisma.role.findUniqueOrThrow({
       where: { name: "member" },
       include: {
@@ -559,10 +559,14 @@ describe("Seed script", () => {
     const permKeys = member.rolePermissions.map(
       (rp) => `${rp.permission.resource}:${rp.permission.action}`,
     );
-    expect(permKeys).toEqual(["user:read"]);
+    expect(permKeys).toContain("user:read");
+    expect(permKeys).toContain("announcement:read");
+    expect(permKeys).toContain("category:read");
+    expect(permKeys).toContain("tag:read");
+    expect(permKeys).toHaveLength(4);
   });
 
-  it("viewer has only user:read", async () => {
+  it("viewer has user:read and read-only announcement/category/tag permissions", async () => {
     const viewer = await prisma.role.findUniqueOrThrow({
       where: { name: "viewer" },
       include: {
@@ -572,7 +576,11 @@ describe("Seed script", () => {
     const permKeys = viewer.rolePermissions.map(
       (rp) => `${rp.permission.resource}:${rp.permission.action}`,
     );
-    expect(permKeys).toEqual(["user:read"]);
+    expect(permKeys).toContain("user:read");
+    expect(permKeys).toContain("announcement:read");
+    expect(permKeys).toContain("category:read");
+    expect(permKeys).toContain("tag:read");
+    expect(permKeys).toHaveLength(4);
   });
 
   it("creates dev admin user in development", async () => {
