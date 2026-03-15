@@ -1,6 +1,11 @@
 /**
  * CSRF protection middleware for cookie-authenticated endpoints.
  * Validates Origin and Referer headers on mutating requests (POST, PATCH, DELETE, PUT).
+ *
+ * The allowed origin is read from the `ALLOWED_ORIGIN` environment binding — the same
+ * value the CORS middleware uses — so that cross-subdomain requests from the configured
+ * frontend (e.g. `https://production.city` → `https://api.production.city`) are accepted
+ * while all other origins are rejected.
  */
 
 import type { Context, MiddlewareHandler } from "hono";
@@ -21,7 +26,14 @@ function getOrigin(url: string | null | undefined): string | null {
 
 /**
  * CSRF middleware: rejects mutating requests (POST, PATCH, DELETE, PUT) without
- * a valid Origin or Referer header matching the request's own origin.
+ * a valid Origin or Referer header matching the configured allowed origin.
+ *
+ * Allowed origins (checked in order):
+ * 1. The `ALLOWED_ORIGIN` env binding (frontend origin, e.g. `https://production.city`)
+ * 2. The API's own origin (same-origin requests, e.g. from Swagger UI)
+ *
+ * This two-entry allowlist supports the cross-subdomain architecture
+ * (`production.city` → `api.production.city`) without weakening CSRF protection.
  */
 export function csrfMiddleware(): MiddlewareHandler {
   return async (c: Context, next) => {
@@ -32,8 +44,15 @@ export function csrfMiddleware(): MiddlewareHandler {
       return next();
     }
 
-    const requestOrigin = getOrigin(c.req.url);
-    if (!requestOrigin) {
+    // Build the allowlist: configured frontend origin + API's own origin
+    const allowedOrigin: string | undefined = (c.env as Record<string, unknown>)?.ALLOWED_ORIGIN as string | undefined;
+    const apiOrigin = getOrigin(c.req.url);
+
+    const allowedOrigins = new Set<string>();
+    if (allowedOrigin) allowedOrigins.add(allowedOrigin);
+    if (apiOrigin) allowedOrigins.add(apiOrigin);
+
+    if (allowedOrigins.size === 0) {
       return c.json({ error: "csrf_failed", message: t("auth.csrf.invalidOrigin") }, 403);
     }
 
@@ -49,7 +68,7 @@ export function csrfMiddleware(): MiddlewareHandler {
       return c.json({ error: "csrf_failed", message: t("auth.csrf.missingHeader") }, 403);
     }
 
-    if (clientOrigin !== requestOrigin) {
+    if (!allowedOrigins.has(clientOrigin)) {
       return c.json({ error: "csrf_failed", message: t("auth.csrf.originMismatch") }, 403);
     }
 

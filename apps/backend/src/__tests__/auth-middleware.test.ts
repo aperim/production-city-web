@@ -309,6 +309,61 @@ describe("CSRF middleware", () => {
     }
   });
 
+  it("allows POST with ALLOWED_ORIGIN (cross-subdomain)", async () => {
+    const prisma = await createPrismaClient(env.DB);
+    try {
+      const { session } = await createAuthenticatedUser(
+        prisma,
+        "csrf-cross-origin@test.com",
+        "admin",
+        [["user", "read"]],
+      );
+
+      // Simulate the production scenario: frontend at ALLOWED_ORIGIN
+      // (e.g. https://production.city) posts to the API (e.g. https://api.production.city).
+      // In test env, ALLOWED_ORIGIN is http://localhost:4321 while the API URL is http://localhost.
+      const req = new Request("http://localhost/v1/auth/logout", {
+        method: "POST",
+        headers: {
+          Cookie: `${SESSION_COOKIE_NAME}=${session.token}`,
+          Origin: env.ALLOWED_ORIGIN,
+          "Content-Type": "application/json",
+        },
+      });
+      const res = await app.fetch(req, env);
+      // Should pass CSRF because ALLOWED_ORIGIN is in the allowlist
+      expect(res.status).toBe(200);
+    } finally {
+      await prisma.$disconnect();
+    }
+  });
+
+  it("allows POST with Referer from ALLOWED_ORIGIN (cross-subdomain)", async () => {
+    const prisma = await createPrismaClient(env.DB);
+    try {
+      const { session } = await createAuthenticatedUser(
+        prisma,
+        "csrf-cross-referer@test.com",
+        "admin",
+        [["user", "read"]],
+      );
+
+      // Same cross-subdomain scenario but using Referer header instead of Origin
+      const req = new Request("http://localhost/v1/auth/logout", {
+        method: "POST",
+        headers: {
+          Cookie: `${SESSION_COOKIE_NAME}=${session.token}`,
+          Referer: `${env.ALLOWED_ORIGIN}/auth/verify?token=abc`,
+          "Content-Type": "application/json",
+        },
+      });
+      const res = await app.fetch(req, env);
+      expect(res.status).toBe(200);
+    } finally {
+      await prisma.$disconnect();
+    }
+  });
+
   it("allows GET requests without Origin", async () => {
     const prisma = await createPrismaClient(env.DB);
     try {
