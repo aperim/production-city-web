@@ -16,12 +16,22 @@ import {
 } from "@productioncity/holding-ui";
 import { requestMagicLink, verifyCode } from "../lib/api-client";
 import { useDeliveryStatus } from "../lib/websocket/useDeliveryStatus";
-import { useAuth } from "../lib/auth-context";
-import { useTranslation } from "../i18n/context";
+import { AuthProvider, useAuth } from "../lib/auth-context";
+import { I18nProvider, useTranslation } from "../i18n/context";
 
 type LoginView = "email" | "code";
 
 export default function LoginPage() {
+  return (
+    <I18nProvider>
+      <AuthProvider>
+        <LoginPageInner />
+      </AuthProvider>
+    </I18nProvider>
+  );
+}
+
+function LoginPageInner() {
   const { isAuthenticated, isLoading } = useAuth();
   const { t } = useTranslation();
   const [view, setView] = useState<LoginView>("email");

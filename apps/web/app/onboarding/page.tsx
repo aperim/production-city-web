@@ -8,10 +8,20 @@
 import { useCallback, useId, useState, type FormEvent } from "react";
 import { AuthTemplate, Skeleton } from "@productioncity/holding-ui";
 import { updateProfile } from "../lib/api-client";
-import { useAuth } from "../lib/auth-context";
-import { useTranslation } from "../i18n/context";
+import { AuthProvider, useAuth } from "../lib/auth-context";
+import { I18nProvider, useTranslation } from "../i18n/context";
 
 export default function OnboardingPage() {
+  return (
+    <I18nProvider>
+      <AuthProvider>
+        <OnboardingPageInner />
+      </AuthProvider>
+    </I18nProvider>
+  );
+}
+
+function OnboardingPageInner() {
   const { isAuthenticated, isLoading } = useAuth();
   const { t } = useTranslation();
   const instanceId = useId();

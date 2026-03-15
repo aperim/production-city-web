@@ -23,6 +23,7 @@ vi.mock("../lib/websocket/useDeliveryStatus", () => ({
 }));
 
 vi.mock("../i18n/context", () => ({
+  I18nProvider: ({ children }: { children: React.ReactNode }) => children,
   useTranslation: () => ({
     locale: "en",
     direction: "ltr",

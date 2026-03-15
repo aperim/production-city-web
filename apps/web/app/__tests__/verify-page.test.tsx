@@ -7,6 +7,7 @@ vi.mock("../lib/api-client", () => ({
 }));
 
 vi.mock("../i18n/context", () => ({
+  I18nProvider: ({ children }: { children: React.ReactNode }) => children,
   useTranslation: () => ({
     locale: "en",
     direction: "ltr",

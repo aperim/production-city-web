@@ -13,11 +13,19 @@
 import { useEffect, useRef, useState } from "react";
 import { AuthTemplate, Skeleton } from "@productioncity/holding-ui";
 import { verifyToken } from "../../lib/api-client";
-import { useTranslation } from "../../i18n/context";
+import { I18nProvider, useTranslation } from "../../i18n/context";
 
 type VerifyState = "loading" | "success" | "error";
 
 export default function VerifyPage() {
+  return (
+    <I18nProvider>
+      <VerifyPageInner />
+    </I18nProvider>
+  );
+}
+
+function VerifyPageInner() {
   const { t } = useTranslation();
   const [state, setState] = useState<VerifyState>("loading");
   const [errorMessage, setErrorMessage] = useState("");
