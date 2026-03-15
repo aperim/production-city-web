@@ -24,7 +24,7 @@ function buildCsp(hostname: string): string {
   const connectSrc = isDev
     ? "connect-src 'self' ws://localhost:* wss://localhost:*"
     : "connect-src 'self' wss://api.production.city";
-  return `default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self' https://fonts.gstatic.com; ${connectSrc}`;
+  return `default-src 'self'; script-src 'self' 'unsafe-inline' https://static.cloudflareinsights.com; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self' https://fonts.gstatic.com; ${connectSrc}`;
 }
 
 /**
@@ -139,9 +139,29 @@ describe("CSP headers — WebSocket directives (#194)", () => {
   it("CSP retains all default directives", () => {
     const csp = buildCsp("production.city");
     expect(csp).toContain("default-src 'self'");
-    expect(csp).toContain("script-src 'self' 'unsafe-inline'");
+    expect(csp).toContain("script-src 'self' 'unsafe-inline' https://static.cloudflareinsights.com");
     expect(csp).toContain("style-src 'self' 'unsafe-inline'");
     expect(csp).toContain("img-src 'self' data:");
     expect(csp).toContain("font-src 'self' https://fonts.gstatic.com");
+  });
+});
+
+describe("CSP headers — Cloudflare Web Analytics (#319)", () => {
+  it("production CSP allows Cloudflare Analytics beacon script", () => {
+    const csp = buildCsp("production.city");
+    expect(csp).toContain("https://static.cloudflareinsights.com");
+  });
+
+  it("dev CSP also allows Cloudflare Analytics beacon script", () => {
+    const csp = buildCsp("localhost");
+    expect(csp).toContain("https://static.cloudflareinsights.com");
+  });
+
+  it("script-src includes cloudflareinsights.com origin", () => {
+    const csp = buildCsp("production.city");
+    // Ensure it's in script-src, not another directive
+    const scriptSrc = csp.split(";").find((d: string) => d.trim().startsWith("script-src"));
+    expect(scriptSrc).toBeDefined();
+    expect(scriptSrc).toContain("https://static.cloudflareinsights.com");
   });
 });

@@ -30,11 +30,12 @@ app.use("*", async (c, next) => {
 app.use(
   "*",
   cors({
-    origin: (_origin, c) => {
+    origin: (origin, c) => {
       const allowed = c.env.ALLOWED_ORIGIN;
-      if (!allowed) return "";
+      if (!allowed || origin !== allowed) return "";
       return allowed;
     },
+    credentials: true,
   }),
 );
 

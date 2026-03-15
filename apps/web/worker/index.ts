@@ -50,7 +50,7 @@ function buildCsp(hostname: string): string {
   const connectSrc = isDev
     ? "connect-src 'self' ws://localhost:* wss://localhost:*"
     : "connect-src 'self' https://api.production.city wss://api.production.city";
-  return `default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self' https://fonts.gstatic.com; ${connectSrc}`;
+  return `default-src 'self'; script-src 'self' 'unsafe-inline' https://static.cloudflareinsights.com; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self' https://fonts.gstatic.com; ${connectSrc}`;
 }
 
 /** Security headers applied to every response (CSP set dynamically). */
