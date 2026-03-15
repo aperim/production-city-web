@@ -33,6 +33,18 @@ vi.mock("../i18n/context", () => ({
       const keys: Record<string, string> = {
         "common.skipToContent": "Skip to main content",
         "common.loading": "Loading...",
+        "dashboard.skip_to_content": "Skip to main content",
+        "nav.dashboard": "Dashboard",
+        "nav.users": "Users",
+        "nav.invitations": "Invitations",
+        "nav.approvals": "Approvals",
+        "nav.updates": "Updates",
+        "nav.auditLog": "Audit Log",
+        "admin.categories.title": "Categories",
+        "admin.tags.title": "Tags",
+        "admin.subscriptions.title": "Subscriptions",
+        "admin.eoi.title": "Expressions of Interest",
+        "auth.logout.button": "Sign out",
         "admin.dashboard.title": "Dashboard",
         "admin.profile.title": "Profile",
         "admin.profile.nameLabel": "Display name",
@@ -247,7 +259,7 @@ describe("Dashboard layout sidebar permission visibility", () => {
     expect(html).toContain("Dashboard");
     expect(html).toContain("Users");
     expect(html).toContain("Invitations");
-    expect(html).toContain("Pending Approvals");
+    expect(html).toContain("Approvals");
     expect(html).toContain("Expressions of Interest");
     expect(html).toContain("Audit Log");
   });

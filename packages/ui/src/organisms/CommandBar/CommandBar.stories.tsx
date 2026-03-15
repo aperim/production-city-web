@@ -154,3 +154,25 @@ export const MobileLayout: StoryObj = {
     viewport: { defaultViewport: "mobile1" },
   },
 };
+
+export const LongResultList: StoryObj = {
+  render: () => {
+    const manyFeatures: CommandBarFeature[] = Array.from(
+      { length: 100 },
+      (_, i) => ({
+        id: `feature.test.item${i}`,
+        label: `Feature ${i + 1}`,
+        description: `Description for feature ${i + 1}`,
+        path: `/dashboard/test/item-${i}`,
+        section: `Section ${Math.floor(i / 10)}`,
+        subsection: `Subsection ${i % 5}`,
+        keywords: [],
+        status: (["planned", "coming_soon", "active", "deprecated"] as const)[
+          i % 4
+        ]!,
+      }),
+    );
+    return <CommandBarDemo features={manyFeatures} />;
+  },
+  name: "Long Result List (100 items)",
+};
