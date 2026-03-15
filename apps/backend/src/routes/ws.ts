@@ -52,7 +52,7 @@ export const wsApp = new Hono<{ Bindings: Bindings }>();
 
 /**
  * GET /v1/ws — Authenticated WebSocket upgrade.
- * Validates __Host-session cookie, loads user with permissions,
+ * Validates __Secure-session cookie, loads user with permissions,
  * then forwards to the Durable Object with HMAC-signed auth context.
  */
 wsApp.get("/v1/ws", async (c) => {
@@ -100,7 +100,7 @@ wsApp.get("/v1/ws", async (c) => {
     return c.json({ error: "rate_limited", message: "Too many upgrade requests" }, 429);
   }
 
-  // Authenticate via __Host-session cookie
+  // Authenticate via __Secure-session cookie
   const cookieHeader = c.req.header("Cookie");
   const token = extractSessionToken(cookieHeader);
 
