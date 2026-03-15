@@ -12,7 +12,8 @@
   },
   "scripts": {
     "dev": "vinext dev --port 4321 --host",
-    "build": "vinext build && node --experimental-transform-types --experimental-detect-module scripts/generate-sitemap.ts",
+    "generate:dashboard": "node --experimental-transform-types --experimental-detect-module scripts/generate-dashboard-routes.ts",
+    "build": "pnpm run generate:dashboard && vinext build && node --experimental-transform-types --experimental-detect-module scripts/generate-sitemap.ts",
     "test": "vitest run",
     "test:e2e": "playwright test",
     "test:e2e:smoke": "playwright test --project=smoke",
