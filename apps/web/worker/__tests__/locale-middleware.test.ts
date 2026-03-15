@@ -52,9 +52,9 @@ describe("Worker Locale Middleware (Issue #277)", () => {
       expect(result).toEqual({ locale: "en", remainingPath: "/facilities" });
     });
 
-    it("identifies invalid locale prefix /xx/", () => {
+    it("returns null for unsupported 2-letter prefix /xx/", () => {
       const result = parseLocalePrefix("/xx/page");
-      expect(result).toEqual({ locale: "xx", remainingPath: "/page" });
+      expect(result).toBeNull();
     });
 
     it("does not match paths that start with a longer segment", () => {
@@ -65,6 +65,27 @@ describe("Worker Locale Middleware (Issue #277)", () => {
     it("handles lowercase locale codes only", () => {
       const result = parseLocalePrefix("/ZH/facilities");
       expect(result).toEqual({ locale: "zh", remainingPath: "/facilities" });
+    });
+
+    it("returns null for /faq — 3-letter page route is NOT a locale (Issue #304)", () => {
+      const result = parseLocalePrefix("/faq");
+      expect(result).toBeNull();
+    });
+
+    it("returns null for /faq/ — 3-letter page route with trailing slash is NOT a locale", () => {
+      const result = parseLocalePrefix("/faq/");
+      expect(result).toBeNull();
+    });
+
+    it("returns null for other short page routes like /app, /api, /dev", () => {
+      expect(parseLocalePrefix("/app")).toBeNull();
+      expect(parseLocalePrefix("/dev")).toBeNull();
+      expect(parseLocalePrefix("/map")).toBeNull();
+    });
+
+    it("returns null for unsupported 3-letter codes with sub-paths", () => {
+      const result = parseLocalePrefix("/faq/topic");
+      expect(result).toBeNull();
     });
   });
 

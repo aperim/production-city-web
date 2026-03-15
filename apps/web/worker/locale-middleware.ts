@@ -73,19 +73,16 @@ export function parseLocalePrefix(pathname: string): ParsedLocale | null {
   const segment = match[1]!.toLowerCase();
   const rest = match[2] ?? "";
 
-  // Only treat 2-letter codes as potential locale prefixes
-  if (segment.length > 3) return null;
+  // Only treat the segment as a locale prefix if it is a known supported locale.
+  // Previously, any 2-3 letter segment was returned as a locale, causing page routes
+  // like /faq to be misclassified as unsupported locale prefixes and redirected to /.
+  // @see Issue #304
+  if (!isSupportedLocale(segment)) return null;
 
-  // Check if this is a known locale or a potential invalid one
-  // (2-letter codes that could be locale prefixes)
-  if (segment.length === 2 || segment.length === 3) {
-    return {
-      locale: segment,
-      remainingPath: rest || "/",
-    };
-  }
-
-  return null;
+  return {
+    locale: segment,
+    remainingPath: rest || "/",
+  };
 }
 
 /**

@@ -95,19 +95,21 @@ test.describe("i18n — hreflang links", () => {
   });
 });
 
-// ─── Invalid locale redirect ────────────────────────────────────────────
+// ─── Unsupported short prefixes are treated as normal page routes (Issue #304) ──
 
-test.describe("i18n — invalid locale redirect", () => {
-  test("invalid locale /xx/ redirects to /", async ({ page }) => {
+test.describe("i18n — unsupported short prefixes are normal routes", () => {
+  test("/xx/ is treated as a normal page (not a locale redirect)", async ({ page }) => {
     const response = await page.goto("/xx/");
-    // Should end up at root after redirect
-    expect(page.url()).toMatch(/\/$/);
-    expect(response?.status()).toBe(200);
+    // With the fix, /xx/ is no longer parsed as a locale prefix.
+    // Trailing slash gets stripped to /xx, which is a normal page route.
+    expect(page.url()).toMatch(/\/xx$/);
+    // Page may 404 since /xx isn't a real page, but it should NOT redirect to /
+    expect(response?.status()).toBeGreaterThanOrEqual(200);
   });
 
-  test("invalid locale /xx/facilities redirects to /facilities", async ({ page }) => {
-    const response = await page.goto("/xx/facilities");
-    expect(page.url()).toContain("/facilities");
+  test("/faq is treated as a normal page (not a locale redirect)", async ({ page }) => {
+    const response = await page.goto("/faq");
+    expect(page.url()).toContain("/faq");
     expect(response?.status()).toBe(200);
   });
 });
