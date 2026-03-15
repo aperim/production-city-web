@@ -96,7 +96,7 @@ describe("LoginPage", () => {
 
   it("does not render form when authenticated (redirects)", () => {
     mockUseAuth.mockReturnValue({
-      user: { id: "1", email: "a@b.com", name: "Test", status: "active" },
+      user: { id: "1", email: "a@b.com", name: "Test", status: "active", hasPhone: false },
       roles: [],
       permissions: [],
       isAuthenticated: true,

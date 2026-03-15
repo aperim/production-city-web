@@ -62,6 +62,7 @@ const SessionInfoSchema = z.object({
     email: z.string(),
     name: z.string().nullable(),
     status: z.string(),
+    hasPhone: z.boolean(),
   }),
   roles: z.array(z.string()),
   permissions: z.array(z.string()),
@@ -428,6 +429,7 @@ authApp.openapi(sessionRoute, async (c) => {
     const userWithRoles = await prisma.user.findUnique({
       where: { id: auth.user.id },
       select: {
+        phone: true,
         userRoles: {
           select: {
             role: { select: { name: true } },
@@ -458,6 +460,7 @@ authApp.openapi(sessionRoute, async (c) => {
           email: auth.user.email,
           name: auth.user.name,
           status: auth.user.status,
+          hasPhone: userWithRoles?.phone != null && userWithRoles.phone.length > 0,
         },
         roles,
         permissions: auth.permissions,

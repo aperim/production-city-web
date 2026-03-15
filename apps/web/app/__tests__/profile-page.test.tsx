@@ -96,7 +96,7 @@ const mockUseAuth = vi.mocked(useAuth);
 
 function mockAuthenticatedUser() {
   mockUseAuth.mockReturnValue({
-    user: { id: "u1", email: "test@example.com", name: "Test User", status: "active" },
+    user: { id: "u1", email: "test@example.com", name: "Test User", status: "active", hasPhone: false },
     roles: ["admin", "editor"],
     permissions: ["user:read", "audit:read"],
     isAuthenticated: true,

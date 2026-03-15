@@ -20,6 +20,7 @@ export interface AuthUser {
   email: string;
   name: string | null;
   status: string;
+  hasPhone: boolean;
 }
 
 export interface AuthContextValue {

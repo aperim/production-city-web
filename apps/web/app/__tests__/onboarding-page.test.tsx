@@ -42,7 +42,7 @@ describe("OnboardingPage", () => {
 
   it("renders translated form when authenticated", () => {
     mockUseAuth.mockReturnValue({
-      user: { id: "1", email: "a@b.com", name: null, status: "active" },
+      user: { id: "1", email: "a@b.com", name: null, status: "active", hasPhone: false },
       roles: [],
       permissions: [],
       isAuthenticated: true,

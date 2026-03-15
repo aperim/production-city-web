@@ -89,6 +89,61 @@ describe("Auth middleware", () => {
     }
   });
 
+  it("returns hasPhone:false when user has no phone", async () => {
+    const prisma = await createPrismaClient(env.DB);
+    try {
+      const { session } = await createAuthenticatedUser(
+        prisma,
+        `hasphone-false-${Date.now()}@test.com`,
+        "admin",
+        [["user", "read"]],
+      );
+
+      const req = new Request("http://localhost/v1/auth/session", {
+        headers: { Cookie: `${SESSION_COOKIE_NAME}=${session.token}` },
+      });
+      const res = await app.fetch(req, env);
+      expect(res.status).toBe(200);
+
+      const body = await res.json() as Record<string, unknown>;
+      const userObj = body.user as Record<string, unknown>;
+      expect(userObj.hasPhone).toBe(false);
+    } finally {
+      await prisma.$disconnect();
+    }
+  });
+
+  it("returns hasPhone:true when user has a phone number", async () => {
+    const prisma = await createPrismaClient(env.DB);
+    try {
+      const email = `hasphone-true-${Date.now()}@test.com`;
+      const { user, session } = await createAuthenticatedUser(
+        prisma,
+        email,
+        "admin",
+        [["user", "read"]],
+      );
+
+      // Set phone number on user
+      await prisma.user.update({
+        where: { id: user.id },
+        data: { phone: "+61412345678" },
+      });
+
+      const req = new Request("http://localhost/v1/auth/session", {
+        headers: { Cookie: `${SESSION_COOKIE_NAME}=${session.token}` },
+      });
+      const res = await app.fetch(req, env);
+      expect(res.status).toBe(200);
+
+      const body = await res.json() as Record<string, unknown>;
+      const userObj = body.user as Record<string, unknown>;
+      expect(userObj.hasPhone).toBe(true);
+    } finally {
+      await prisma.$disconnect();
+    }
+  });
+
   it("returns 401 for deactivated user", async () => {
     const prisma = await createPrismaClient(env.DB);
     try {

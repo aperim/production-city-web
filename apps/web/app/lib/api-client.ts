@@ -30,6 +30,7 @@ export interface SessionInfo {
     email: string;
     name: string | null;
     status: string;
+    hasPhone: boolean;
   };
   roles: string[];
   permissions: string[];

@@ -41,7 +41,7 @@ describe("ProtectedRoute", () => {
 
   it("renders children when authenticated", () => {
     mockUseAuth.mockReturnValue({
-      user: { id: "1", email: "a@b.com", name: "Test", status: "active" },
+      user: { id: "1", email: "a@b.com", name: "Test", status: "active", hasPhone: false },
       roles: [],
       permissions: [],
       isAuthenticated: true,
@@ -85,7 +85,7 @@ describe("ProtectedRoute", () => {
 describe("PermissionGate", () => {
   it("shows content when user has permission", () => {
     mockUseAuth.mockReturnValue({
-      user: { id: "1", email: "a@b.com", name: "Test", status: "active" },
+      user: { id: "1", email: "a@b.com", name: "Test", status: "active", hasPhone: false },
       roles: ["admin"],
       permissions: ["user:read"],
       isAuthenticated: true,
@@ -106,7 +106,7 @@ describe("PermissionGate", () => {
 
   it("shows access denied when user lacks permission", () => {
     mockUseAuth.mockReturnValue({
-      user: { id: "1", email: "a@b.com", name: "Test", status: "active" },
+      user: { id: "1", email: "a@b.com", name: "Test", status: "active", hasPhone: false },
       roles: ["member"],
       permissions: [],
       isAuthenticated: true,
@@ -128,7 +128,7 @@ describe("PermissionGate", () => {
 
   it("shows custom fallback when provided", () => {
     mockUseAuth.mockReturnValue({
-      user: { id: "1", email: "a@b.com", name: "Test", status: "active" },
+      user: { id: "1", email: "a@b.com", name: "Test", status: "active", hasPhone: false },
       roles: [],
       permissions: [],
       isAuthenticated: true,

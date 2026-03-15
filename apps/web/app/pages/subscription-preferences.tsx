@@ -18,7 +18,7 @@ import {
 import { I18nProvider, useTranslation } from "../i18n/context";
 import { useLandingNav, useLandingFooter } from "../lib/use-landing-layout";
 import { LandingPageTemplate } from "@productioncity/holding-ui";
-
+import { useAuth } from "../lib/auth-context";
 import { ProtectedRoute } from "../lib/route-guard";
 import {
   listCategories,
@@ -43,7 +43,7 @@ function SubscriptionPreferencesContent() {
   const { t } = useTranslation();
   const nav = useLandingNav();
   const footer = useLandingFooter();
-
+  const { user } = useAuth();
 
   const [categories, setCategories] = useState<Category[]>([]);
   const [subscriptions, setSubscriptions] = useState<Subscription[]>([]);
@@ -140,8 +140,7 @@ function SubscriptionPreferencesContent() {
     setLoading(false);
   }, [categories, subscriptions]);
 
-  // User has phone? (simplified — check if user model has phone)
-  const hasPhone = false; // TODO: extend user model to expose phone presence
+  const hasPhone = user?.hasPhone ?? false;
 
   return (
     <LandingPageTemplate nav={nav} footer={footer}>
