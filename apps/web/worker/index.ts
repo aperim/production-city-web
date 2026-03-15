@@ -21,6 +21,8 @@ import {
   validateCookieLocale,
   sanitizeInvalidLocale,
 } from "./locale-middleware.js";
+import { isApiPath, proxyApiRequest } from "./api-proxy.js";
+import type { ApiProxyEnv } from "./api-proxy.js";
 
 /** Canonical production hostname. */
 const CANONICAL_HOST = "production.city";
@@ -101,7 +103,16 @@ export default {
       return Response.redirect(url.toString(), 308);
     }
 
-    // 2. Bypass locale middleware for API, auth, static, machine endpoints (Finding #8).
+    // 2. Proxy API requests to the backend worker (Issue #309).
+    //    __Host- session cookies are same-origin only, so cross-origin fetch
+    //    from production.city → api.production.city would lose cookies.
+    //    The service binding keeps everything same-origin from the browser.
+    if (isApiPath(url.pathname)) {
+      const response = await proxyApiRequest(request, env as ApiProxyEnv);
+      return applySecurityHeaders(response, url.hostname);
+    }
+
+    // 3. Bypass locale middleware for auth, static, machine endpoints (Finding #8).
     if (shouldBypassLocaleMiddleware(url.pathname)) {
       // eslint-disable-next-line @typescript-eslint/no-explicit-any -- vinext handler types are opaque
       const response = await (handler as any).fetch(request, env, ctx);
@@ -110,12 +121,12 @@ export default {
 
     const canonicalOrigin = getCanonicalOrigin(url);
 
-    // 3. Strip pre-existing internal headers FIRST (Finding #5 — spoofing prevention).
+    // 4. Strip pre-existing internal headers FIRST (Finding #5 — spoofing prevention).
     const headers = new Headers(request.headers);
     headers.delete("X-Locale");
     headers.delete("X-Path");
 
-    // 4. Parse locale prefix.
+    // 5. Parse locale prefix.
     const parsed = parseLocalePrefix(url.pathname);
     let locale = "en";
     let forwardPath = url.pathname;
@@ -244,7 +255,7 @@ export default {
       }
     }
 
-    // 5. Set X-Locale and X-Path headers on forwarded request.
+    // 6. Set X-Locale and X-Path headers on forwarded request.
     headers.set("X-Locale", locale);
     headers.set("X-Path", forwardPath);
 
@@ -257,21 +268,21 @@ export default {
       redirect: request.redirect,
     });
 
-    // 6. Forward to vinext handler.
+    // 7. Forward to vinext handler.
     // eslint-disable-next-line @typescript-eslint/no-explicit-any -- vinext handler types are opaque
     const response = await (handler as any).fetch(forwardRequest, env, ctx);
     const newResponse = applySecurityHeaders(response, url.hostname);
 
-    // 7. Set Content-Language response header.
+    // 8. Set Content-Language response header.
     newResponse.headers.set("Content-Language", locale);
 
-    // 8. Set Vary header on HTML responses (Finding #1).
+    // 9. Set Vary header on HTML responses (Finding #1).
     const contentType = newResponse.headers.get("Content-Type") ?? "";
     if (contentType.includes("text/html")) {
       newResponse.headers.set("Vary", "Accept-Language, Cookie");
     }
 
-    // 9. First-visit detection: set pc-locale-suggestion cookie (Finding #7, #9).
+    // 10. First-visit detection: set pc-locale-suggestion cookie (Finding #7, #9).
     if (locale === "en" && url.pathname === "/") {
       const suggestion = parseAcceptLanguage(request.headers.get("Accept-Language"));
       if (suggestion) {
