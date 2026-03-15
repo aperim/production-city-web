@@ -28,12 +28,26 @@ export interface SessionListProps {
     sessionRevoked?: string;
     lastActive?: string;
     createdAt?: string;
+    justNow?: string;
+    minutesAgo?: string;
+    hoursAgo?: string;
+    daysAgo?: string;
+    onDevice?: string;
+    revoking?: string;
+    revokeError?: string;
   };
   /** Additional class names */
   className?: string;
 }
 
-function formatRelativeTime(dateStr: string): string {
+interface TimeLabels {
+  justNow: string;
+  minutesAgo: string;
+  hoursAgo: string;
+  daysAgo: string;
+}
+
+function formatRelativeTime(dateStr: string, timeLabels: TimeLabels): string {
   const date = new Date(dateStr);
   const now = new Date();
   const diffMs = now.getTime() - date.getTime();
@@ -41,10 +55,10 @@ function formatRelativeTime(dateStr: string): string {
   const diffHr = Math.floor(diffMin / 60);
   const diffDay = Math.floor(diffHr / 24);
 
-  if (diffMin < 1) return "Just now";
-  if (diffMin < 60) return `${diffMin}m ago`;
-  if (diffHr < 24) return `${diffHr}h ago`;
-  return `${diffDay}d ago`;
+  if (diffMin < 1) return timeLabels.justNow;
+  if (diffMin < 60) return `${diffMin} ${timeLabels.minutesAgo}`;
+  if (diffHr < 24) return `${diffHr} ${timeLabels.hoursAgo}`;
+  return `${diffDay} ${timeLabels.daysAgo}`;
 }
 
 /**
@@ -60,6 +74,7 @@ export function SessionList({
   const [confirmingId, setConfirmingId] = useState<string | null>(null);
   const [revokingId, setRevokingId] = useState<string | null>(null);
   const [revokedIds, setRevokedIds] = useState<Set<string>>(new Set());
+  const [revokeErrorId, setRevokeErrorId] = useState<string | null>(null);
 
   const title = labels?.title ?? "Active sessions";
   const currentSessionLabel = labels?.currentSession ?? "Current session";
@@ -68,16 +83,28 @@ export function SessionList({
   const cancelRevoke = labels?.cancelRevoke ?? "Cancel";
   const noOtherSessions = labels?.noOtherSessions ?? "No other active sessions";
   const lastActiveLabel = labels?.lastActive ?? "Last active";
+  const onDeviceLabel = labels?.onDevice ?? "on";
+  const revokingLabel = labels?.revoking ?? "Revoking…";
+  const revokeErrorLabel = labels?.revokeError ?? "Failed to revoke session";
+
+  const timeLabels: TimeLabels = {
+    justNow: labels?.justNow ?? "Just now",
+    minutesAgo: labels?.minutesAgo ?? "min ago",
+    hoursAgo: labels?.hoursAgo ?? "hr ago",
+    daysAgo: labels?.daysAgo ?? "d ago",
+  };
 
   const handleRevoke = useCallback(
     async (sessionId: string) => {
       setRevokingId(sessionId);
+      setRevokeErrorId(null);
       try {
         await onRevoke(sessionId);
         setRevokedIds((prev) => new Set(prev).add(sessionId));
         setConfirmingId(null);
       } catch {
-        // Error handling is done by the caller
+        setRevokeErrorId(sessionId);
+        setConfirmingId(null);
       } finally {
         setRevokingId(null);
       }
@@ -105,7 +132,7 @@ export function SessionList({
             <div className="flex flex-col gap-0.5">
               <div className="flex items-center gap-2">
                 <span className="text-sm text-foreground">
-                  {session.browser} on {session.os}
+                  {session.browser} {onDeviceLabel} {session.os}
                 </span>
                 {session.isCurrent && (
                   <span className="text-xs text-muted-foreground">
@@ -117,7 +144,7 @@ export function SessionList({
                 className="text-xs text-muted-foreground"
                 title={new Date(session.lastActiveAt).toLocaleString()}
               >
-                {lastActiveLabel}: {formatRelativeTime(session.lastActiveAt)}
+                {lastActiveLabel}: {formatRelativeTime(session.lastActiveAt, timeLabels)}
               </span>
             </div>
 
@@ -132,7 +159,7 @@ export function SessionList({
                       className="rounded-sm border border-destructive px-2 py-1 text-xs text-destructive hover:bg-destructive hover:text-destructive-foreground transition-colors duration-150 disabled:opacity-50"
                       data-testid={`confirm-revoke-${session.id}`}
                     >
-                      {revokingId === session.id ? "..." : confirmRevoke}
+                      {revokingId === session.id ? revokingLabel : confirmRevoke}
                     </button>
                     <button
                       type="button"
@@ -157,6 +184,12 @@ export function SessionList({
           </div>
         ))}
       </div>
+
+      {revokeErrorId && (
+        <p className="text-xs text-destructive" role="alert">
+          {revokeErrorLabel}
+        </p>
+      )}
 
       {otherSessions.length === 0 && (
         <p className="text-xs text-muted-foreground">{noOtherSessions}</p>

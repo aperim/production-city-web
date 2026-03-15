@@ -52,6 +52,19 @@ describe("SessionList", () => {
     });
   });
 
+  it("shows error message when revoke fails", async () => {
+    const onRevoke = vi.fn().mockRejectedValue(new Error("Network error"));
+    render(<SessionList sessions={mockSessions} onRevoke={onRevoke} />);
+
+    fireEvent.click(screen.getByTestId("revoke-other"));
+    fireEvent.click(screen.getByTestId("confirm-revoke-other"));
+
+    await waitFor(() => {
+      expect(screen.getByRole("alert")).toBeDefined();
+      expect(screen.getByText("Failed to revoke session")).toBeDefined();
+    });
+  });
+
   it("shows no other sessions message when only current", () => {
     render(
       <SessionList

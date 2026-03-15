@@ -168,6 +168,8 @@
       "saving": "Saving...",
       "saved": "Saved",
       "error": "Failed to update profile",
+      "emptyNameError": "Name cannot be empty",
+      "genericError": "An error occurred",
       "sessions": {
         "title": "Active sessions",
         "currentSession": "Current session",
@@ -177,7 +179,14 @@
         "noOtherSessions": "No other active sessions",
         "sessionRevoked": "Session revoked",
         "lastActive": "Last active",
-        "createdAt": "Created"
+        "createdAt": "Created",
+        "justNow": "Just now",
+        "minutesAgo": "min ago",
+        "hoursAgo": "hr ago",
+        "daysAgo": "d ago",
+        "onDevice": "on",
+        "revoking": "Revoking…",
+        "revokeError": "Failed to revoke session"
       }
     }
   },

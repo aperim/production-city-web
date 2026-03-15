@@ -1,4 +1,4 @@
-import { useCallback, useState, type FormEvent } from "react";
+import { useCallback, useEffect, useState, type FormEvent } from "react";
 import { cn } from "../../lib/utils";
 
 /** Props for the ProfileForm molecule */
@@ -13,6 +13,8 @@ export interface ProfileFormProps {
     saveButton?: string;
     saving?: string;
     saved?: string;
+    emptyNameError?: string;
+    genericError?: string;
   };
   /** Additional class names */
   className?: string;
@@ -32,12 +34,20 @@ export function ProfileForm({
   const [status, setStatus] = useState<"idle" | "saving" | "saved" | "error">("idle");
   const [error, setError] = useState<string | null>(null);
 
+  const emptyNameError = labels?.emptyNameError ?? "Name cannot be empty";
+  const genericError = labels?.genericError ?? "An error occurred";
+
+  // Sync local state when defaultName changes (e.g., after refreshSession)
+  useEffect(() => {
+    setName(defaultName);
+  }, [defaultName]);
+
   const handleSubmit = useCallback(
     async (e: FormEvent) => {
       e.preventDefault();
       const trimmed = name.trim();
       if (!trimmed) {
-        setError("Name cannot be empty");
+        setError(emptyNameError);
         setStatus("error");
         return;
       }
@@ -51,11 +61,11 @@ export function ProfileForm({
         // Reset to idle after 2 seconds
         setTimeout(() => setStatus("idle"), 2000);
       } catch (err) {
-        setError(err instanceof Error ? err.message : "An error occurred");
+        setError(err instanceof Error ? err.message : genericError);
         setStatus("error");
       }
     },
-    [name, onSubmit],
+    [name, onSubmit, emptyNameError, genericError],
   );
 
   const nameLabel = labels?.nameLabel ?? "Display name";

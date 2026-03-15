@@ -177,8 +177,17 @@
         "noOtherSessions": "No hay otras sesiones activas",
         "sessionRevoked": "Sesión revocada",
         "lastActive": "Última actividad",
-        "createdAt": "Creada"
-      }
+        "createdAt": "Creada",
+        "justNow": "Ahora mismo",
+        "minutesAgo": "min atrás",
+        "hoursAgo": "h atrás",
+        "daysAgo": "d atrás",
+        "onDevice": "en",
+        "revoking": "Revocando…",
+        "revokeError": "Error al revocar la sesión"
+      },
+      "emptyNameError": "El nombre no puede estar vacío",
+      "genericError": "Se produjo un error"
     }
   },
   "common": {

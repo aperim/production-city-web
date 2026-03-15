@@ -177,8 +177,17 @@
         "noOtherSessions": "Aucune autre session active",
         "sessionRevoked": "Session révoquée",
         "lastActive": "Dernière activité",
-        "createdAt": "Créée"
-      }
+        "createdAt": "Créée",
+        "justNow": "À l'instant",
+        "minutesAgo": "min",
+        "hoursAgo": "h",
+        "daysAgo": "j",
+        "onDevice": "sur",
+        "revoking": "Révocation…",
+        "revokeError": "Échec de la révocation de la session"
+      },
+      "emptyNameError": "Le nom ne peut pas être vide",
+      "genericError": "Une erreur est survenue"
     }
   },
   "common": {

@@ -177,8 +177,17 @@
         "noOtherSessions": "कोई अन्य सक्रिय सत्र नहीं",
         "sessionRevoked": "सत्र रद्द किया गया",
         "lastActive": "अंतिम सक्रिय",
-        "createdAt": "बनाया गया"
-      }
+        "createdAt": "बनाया गया",
+        "justNow": "अभी",
+        "minutesAgo": "मिनट पहले",
+        "hoursAgo": "घंटे पहले",
+        "daysAgo": "दिन पहले",
+        "onDevice": "पर",
+        "revoking": "रद्द किया जा रहा है…",
+        "revokeError": "सत्र रद्द करने में विफल"
+      },
+      "emptyNameError": "नाम खाली नहीं हो सकता",
+      "genericError": "एक त्रुटि हुई"
     }
   },
   "common": {

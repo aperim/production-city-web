@@ -85,6 +85,8 @@ export default function ProfilePage() {
             saveButton: t("admin.profile.saveButton"),
             saving: t("admin.profile.saving"),
             saved: t("admin.profile.saved"),
+            emptyNameError: t("admin.profile.emptyNameError"),
+            genericError: t("admin.profile.genericError"),
           }}
         />
 
@@ -140,6 +142,13 @@ export default function ProfilePage() {
               sessionRevoked: t("admin.profile.sessions.sessionRevoked"),
               lastActive: t("admin.profile.sessions.lastActive"),
               createdAt: t("admin.profile.sessions.createdAt"),
+              justNow: t("admin.profile.sessions.justNow"),
+              minutesAgo: t("admin.profile.sessions.minutesAgo"),
+              hoursAgo: t("admin.profile.sessions.hoursAgo"),
+              daysAgo: t("admin.profile.sessions.daysAgo"),
+              onDevice: t("admin.profile.sessions.onDevice"),
+              revoking: t("admin.profile.sessions.revoking"),
+              revokeError: t("admin.profile.sessions.revokeError"),
             }}
           />
         )}

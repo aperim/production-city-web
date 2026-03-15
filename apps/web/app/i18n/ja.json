@@ -177,8 +177,17 @@
         "noOtherSessions": "他のアクティブセッションはありません",
         "sessionRevoked": "セッションが取り消されました",
         "lastActive": "最終アクティブ",
-        "createdAt": "作成日"
-      }
+        "createdAt": "作成日",
+        "justNow": "たった今",
+        "minutesAgo": "分前",
+        "hoursAgo": "時間前",
+        "daysAgo": "日前",
+        "onDevice": "の",
+        "revoking": "取り消し中…",
+        "revokeError": "セッションの取り消しに失敗しました"
+      },
+      "emptyNameError": "名前を空にすることはできません",
+      "genericError": "エラーが発生しました"
     }
   },
   "common": {

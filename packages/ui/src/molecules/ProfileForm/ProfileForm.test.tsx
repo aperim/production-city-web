@@ -54,6 +54,15 @@ describe("ProfileForm", () => {
     });
   });
 
+  it("syncs input when defaultName prop changes", () => {
+    const { rerender } = render(<ProfileForm defaultName="Jane" onSubmit={async () => {}} />);
+    const input = screen.getByLabelText("Display name") as HTMLInputElement;
+    expect(input.value).toBe("Jane");
+
+    rerender(<ProfileForm defaultName="Updated Name" onSubmit={async () => {}} />);
+    expect(input.value).toBe("Updated Name");
+  });
+
   it("disables button while saving", async () => {
     const onSubmit = () => new Promise<void>(() => {}); // never resolves
     render(<ProfileForm defaultName="Jane" onSubmit={onSubmit} />);

@@ -177,8 +177,17 @@
         "noOtherSessions": "没有其他活跃会话",
         "sessionRevoked": "会话已撤销",
         "lastActive": "最后活跃",
-        "createdAt": "创建时间"
-      }
+        "createdAt": "创建时间",
+        "justNow": "刚刚",
+        "minutesAgo": "分钟前",
+        "hoursAgo": "小时前",
+        "daysAgo": "天前",
+        "onDevice": "在",
+        "revoking": "正在撤销…",
+        "revokeError": "撤销会话失败"
+      },
+      "emptyNameError": "名称不能为空",
+      "genericError": "发生了错误"
     }
   },
   "common": {

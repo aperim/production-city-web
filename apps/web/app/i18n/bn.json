@@ -177,8 +177,17 @@
         "noOtherSessions": "অন্য কোনো সক্রিয় সেশন নেই",
         "sessionRevoked": "সেশন প্রত্যাহৃত",
         "lastActive": "শেষ সক্রিয়",
-        "createdAt": "তৈরি"
-      }
+        "createdAt": "তৈরি",
+        "justNow": "এইমাত্র",
+        "minutesAgo": "মিনিট আগে",
+        "hoursAgo": "ঘণ্টা আগে",
+        "daysAgo": "দিন আগে",
+        "onDevice": "এ",
+        "revoking": "প্রত্যাহার করা হচ্ছে…",
+        "revokeError": "সেশন প্রত্যাহার ব্যর্থ"
+      },
+      "emptyNameError": "নাম খালি রাখা যাবে না",
+      "genericError": "একটি ত্রুটি ঘটেছে"
     }
   },
   "common": {

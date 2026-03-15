@@ -177,8 +177,17 @@
         "noOtherSessions": "Нет других активных сессий",
         "sessionRevoked": "Сессия отозвана",
         "lastActive": "Последняя активность",
-        "createdAt": "Создана"
-      }
+        "createdAt": "Создана",
+        "justNow": "Только что",
+        "minutesAgo": "мин назад",
+        "hoursAgo": "ч назад",
+        "daysAgo": "д назад",
+        "onDevice": "на",
+        "revoking": "Отзыв…",
+        "revokeError": "Не удалось отозвать сессию"
+      },
+      "emptyNameError": "Имя не может быть пустым",
+      "genericError": "Произошла ошибка"
     }
   },
   "common": {

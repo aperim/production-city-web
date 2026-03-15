@@ -33,6 +33,15 @@ vi.mock("../i18n/context", () => ({
         "admin.profile.sessions.sessionRevoked": "Session revoked",
         "admin.profile.sessions.lastActive": "Last active",
         "admin.profile.sessions.createdAt": "Created",
+        "admin.profile.sessions.justNow": "Just now",
+        "admin.profile.sessions.minutesAgo": "min ago",
+        "admin.profile.sessions.hoursAgo": "hr ago",
+        "admin.profile.sessions.daysAgo": "d ago",
+        "admin.profile.sessions.onDevice": "on",
+        "admin.profile.sessions.revoking": "Revoking…",
+        "admin.profile.sessions.revokeError": "Failed to revoke session",
+        "admin.profile.emptyNameError": "Name cannot be empty",
+        "admin.profile.genericError": "An error occurred",
         "common.loading": "Loading...",
       };
       return keys[key] ?? key;

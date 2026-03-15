@@ -177,8 +177,17 @@
         "noOtherSessions": "لا توجد جلسات نشطة أخرى",
         "sessionRevoked": "تم إلغاء الجلسة",
         "lastActive": "آخر نشاط",
-        "createdAt": "تاريخ الإنشاء"
-      }
+        "createdAt": "تاريخ الإنشاء",
+        "justNow": "الآن",
+        "minutesAgo": "دقيقة مضت",
+        "hoursAgo": "ساعة مضت",
+        "daysAgo": "يوم مضى",
+        "onDevice": "على",
+        "revoking": "جارٍ الإلغاء…",
+        "revokeError": "فشل إلغاء الجلسة"
+      },
+      "emptyNameError": "لا يمكن أن يكون الاسم فارغًا",
+      "genericError": "حدث خطأ"
     }
   },
   "common": {
