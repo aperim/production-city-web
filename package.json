@@ -13,6 +13,7 @@
     "lint:media-src": "bash scripts/ci/check-no-external-media-src.sh",
     "typecheck": "pnpm -r run typecheck",
     "build-storybook": "pnpm --filter ./packages/design-tokens run build && pnpm --filter ./packages/ui run build-storybook",
+    "generate:dashboard": "pnpm --filter ./apps/web run generate:dashboard",
     "db:seed": "node --experimental-transform-types --experimental-detect-module prisma/seed.ts"
   },
   "prisma": {

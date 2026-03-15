@@ -42,6 +42,9 @@ jobs:
       - name: Generate Prisma Client
         run: pnpm exec prisma generate
 
+      - name: Generate dashboard registry
+        run: pnpm generate:dashboard
+
       - name: Lint
         run: pnpm lint
 
