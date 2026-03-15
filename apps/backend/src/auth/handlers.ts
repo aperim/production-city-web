@@ -1,5 +1,5 @@
 /**
- * Auth API handlers: magic link verification, code verification, logout, session info.
+ * Auth API handlers: magic link request, verification, code verification, logout, session info.
  */
 
 import { OpenAPIHono, createRoute, z } from "@hono/zod-openapi";
@@ -17,11 +17,13 @@ import {
 import { createAuditLog } from "./audit.js";
 import { authMiddleware } from "./middleware.js";
 import type { AuthContext } from "./middleware.js";
+import { handleMagicLinkRequest } from "../email/service.js";
 
 type Bindings = {
   DB: D1Database;
   HMAC_SECRET: string;
   ALLOWED_ORIGIN: string;
+  POSTMARK_API_TOKEN: string;
 };
 
 export const authApp = new OpenAPIHono<{ Bindings: Bindings; Variables: { auth: AuthContext } }>();
@@ -72,7 +74,46 @@ const SessionInfoSchema = z.object({
   }),
 });
 
+const MagicLinkRequestBodySchema = z.object({
+  email: z.string().email(),
+});
+
+const MagicLinkResponseSchema = z.object({
+  requestId: z.string(),
+  status: z.string(),
+  message: z.string(),
+  deliveryToken: z.string(),
+});
+
+const RateLimitedSchema = z.object({
+  error: z.string(),
+  retryAfter: z.number(),
+  message: z.string(),
+});
+
 /** --- Route Definitions --- */
+
+const magicLinkRoute = createRoute({
+  method: "post",
+  path: "/v1/auth/magic-link",
+  summary: "Request a magic link login email",
+  description:
+    "Sends a magic link email to the provided address. " +
+    "Response is identical regardless of whether the email is registered (anti-enumeration).",
+  request: {
+    body: { content: { "application/json": { schema: MagicLinkRequestBodySchema } } },
+  },
+  responses: {
+    200: {
+      content: { "application/json": { schema: MagicLinkResponseSchema } },
+      description: "Magic link request accepted",
+    },
+    429: {
+      content: { "application/json": { schema: RateLimitedSchema } },
+      description: "Rate limited — too many requests",
+    },
+  },
+});
 
 const verifyTokenRoute = createRoute({
   method: "get",
@@ -143,6 +184,31 @@ const sessionRoute = createRoute({
 });
 
 /** --- Handlers --- */
+
+authApp.openapi(magicLinkRoute, async (c) => {
+  const { email } = c.req.valid("json");
+  const prisma = await createPrismaClient(c.env.DB);
+
+  try {
+    const ipAddress = c.req.header("CF-Connecting-IP") ?? "unknown";
+    const userAgent = c.req.header("User-Agent");
+    const baseUrl = c.env.ALLOWED_ORIGIN || "http://localhost:4321";
+    const hmacSecret = c.env.HMAC_SECRET || "dev-hmac-secret-do-not-use-in-production";
+    const postmarkApiToken = c.env.POSTMARK_API_TOKEN || "";
+
+    const result = await handleMagicLinkRequest(
+      { prisma, postmarkApiToken, hmacSecret, baseUrl },
+      { email, ipAddress, userAgent },
+    );
+
+    if (result.status === 429) {
+      return c.json(result.body as { error: string; retryAfter: number; message: string }, 429);
+    }
+    return c.json(result.body as { requestId: string; status: string; message: string; deliveryToken: string }, 200);
+  } finally {
+    await prisma.$disconnect().catch(() => {});
+  }
+});
 
 authApp.openapi(verifyTokenRoute, async (c) => {
   const { token } = c.req.valid("query");
