@@ -114,8 +114,14 @@ export default function LoginPage() {
     }
   }, [email]);
 
-  // Focus management: move focus to first input when view changes
+  // Focus management: move focus to first input on view transitions only
+  // (not on initial mount, which would open mobile keyboards unexpectedly).
+  const initialMount = useRef(true);
   useEffect(() => {
+    if (initialMount.current) {
+      initialMount.current = false;
+      return;
+    }
     if (view === "code" && codeContainerRef.current) {
       const firstInput = codeContainerRef.current.querySelector<HTMLElement>("input");
       if (firstInput) {

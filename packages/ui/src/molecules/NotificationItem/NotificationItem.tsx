@@ -61,7 +61,7 @@ function NotificationItem({
           <time
             className="text-xs text-muted-foreground mt-0.5 block"
             dateTime={timestampIso}
-            title={timestampIso ? new Date(timestampIso).toLocaleString() : undefined}
+            title={timestampIso}
           >
             {timestamp}
           </time>
