@@ -11,6 +11,14 @@ export interface NavLinkItem {
   href: string;
 }
 
+/** Optional auth/sign-in link for the navigation. */
+export interface NavAuthLink {
+  /** Display label (i18n) — e.g. "Sign in" or "Dashboard". */
+  label: string;
+  /** Link target — e.g. "/login" or "/dashboard". */
+  href: string;
+}
+
 /** Props for the LandingNavigation organism */
 export interface LandingNavigationProps {
   /** Brand text (no gradient backgrounds per Uncodixify). */
@@ -27,6 +35,8 @@ export interface LandingNavigationProps {
   activePath?: string;
   /** Transparent background mode for hero overlay. Transitions to solid on scroll. */
   transparent?: boolean;
+  /** Optional auth link (sign in / dashboard). Rendered right-aligned on desktop, bottom of mobile menu. */
+  authLink?: NavAuthLink;
   /** Additional CSS classes. */
   className?: string;
 }
@@ -46,6 +56,7 @@ export function LandingNavigation({
   onLanguageChange,
   activePath,
   transparent = false,
+  authLink,
   className,
 }: LandingNavigationProps) {
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -166,6 +177,19 @@ export function LandingNavigation({
             currentLanguage={currentLanguage}
             onLanguageChange={onLanguageChange}
           />
+          {authLink && (
+            <a
+              href={sanitizeHref(authLink.href)}
+              className={cn(
+                "text-sm transition-colors duration-150",
+                isTransparentNow
+                  ? "text-white/80 hover:text-white"
+                  : "text-muted-foreground hover:text-foreground",
+              )}
+            >
+              {authLink.label}
+            </a>
+          )}
         </div>
 
         {/* Mobile hamburger */}
@@ -233,8 +257,17 @@ export function LandingNavigation({
             })}
           </div>
 
-          {/* Overlay footer with language switcher */}
+          {/* Overlay footer with auth link and language switcher */}
           <div className="border-t border-white/10 px-8 py-6">
+            {authLink && (
+              <a
+                href={sanitizeHref(authLink.href)}
+                onClick={closeMobile}
+                className="mb-4 block text-sm text-white/70 transition-colors duration-150 hover:text-white"
+              >
+                {authLink.label}
+              </a>
+            )}
             <LanguageSwitcher
               languages={languages}
               currentLanguage={currentLanguage}

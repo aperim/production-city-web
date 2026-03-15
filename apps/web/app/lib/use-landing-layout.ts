@@ -10,10 +10,12 @@ import type { EOIFormData, EOIFormLabels, EOICategoryOption } from "@productionc
 import { useTranslation } from "../i18n/context";
 import { LOCALE_META, type SupportedLocale } from "../i18n/index";
 import { submitEoi } from "./api-client";
+import { useOptionalAuth } from "./auth-context";
 
 /** Build navigation props from i18n context. */
 export function useLandingNav(): LandingNavigationProps {
   const { t, locale, setLocale } = useTranslation();
+  const auth = useOptionalAuth();
 
   const prefix = locale === "en" ? "" : `/${locale}`;
 
@@ -23,6 +25,11 @@ export function useLandingNav(): LandingNavigationProps {
   useEffect(() => {
     setActivePath(window.location.pathname);
   }, []);
+
+  // Show "Dashboard" when authenticated, "Sign in" otherwise
+  const authLink = auth?.isAuthenticated
+    ? { label: t("nav.dashboard"), href: "/dashboard" }
+    : { label: t("nav.signIn"), href: "/login" };
 
   return {
     brand: "Production City",
@@ -43,6 +50,7 @@ export function useLandingNav(): LandingNavigationProps {
     currentLanguage: locale,
     onLanguageChange: (code: string) => setLocale(code as SupportedLocale),
     activePath,
+    authLink,
   };
 }
 

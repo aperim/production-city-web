@@ -76,7 +76,7 @@ export type { ConnectionBannerProps, BannerState } from './ConnectionBanner/Conn
 
 // Issue #143: Landing Page Organisms
 export { LandingNavigation } from './LandingNavigation/LandingNavigation';
-export type { LandingNavigationProps, NavLinkItem } from './LandingNavigation/LandingNavigation';
+export type { LandingNavigationProps, NavLinkItem, NavAuthLink } from './LandingNavigation/LandingNavigation';
 export { LandingFooter } from './LandingFooter/LandingFooter';
 export type {
   LandingFooterProps,

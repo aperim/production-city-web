@@ -47,6 +47,14 @@ export function useAuth(): AuthContextValue {
   return ctx;
 }
 
+/**
+ * Read the auth context without throwing. Returns null when used outside AuthProvider.
+ * Useful for components that optionally adapt to auth state (e.g. landing nav).
+ */
+export function useOptionalAuth(): AuthContextValue | null {
+  return useContext(AuthContext);
+}
+
 export interface AuthProviderProps {
   children: ReactNode;
 }

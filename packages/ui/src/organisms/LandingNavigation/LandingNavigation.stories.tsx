@@ -49,6 +49,23 @@ export const WithActivePage: Story = {
   args: { activePath: "/facilities" },
 };
 
+export const WithSignIn: Story = {
+  args: { authLink: { label: "Sign in", href: "/login" } },
+};
+
+export const WithDashboard: Story = {
+  args: { authLink: { label: "Dashboard", href: "/dashboard" } },
+};
+
+export const TransparentWithSignIn: Story = {
+  args: { transparent: true, authLink: { label: "Sign in", href: "/login" } },
+  decorators: [(Story) => (
+    <div style={{ minHeight: "200vh", background: "linear-gradient(to bottom, #1a1a2e, #16213e)" }}>
+      <Story />
+    </div>
+  )],
+};
+
 export const RTL: Story = {
   args: { currentLanguage: "ar" },
   decorators: [(Story) => <div dir="rtl" lang="ar"><Story /></div>],
