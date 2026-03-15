@@ -100,6 +100,37 @@
         "details": "Подробности",
         "timestamp": "Дата и время"
       }
+    },
+    "eoi": {
+      "title": "Выражения заинтересованности",
+      "searchPlaceholder": "Поиск по имени или email",
+      "filterCategory": "Категория",
+      "filterStatus": "Статус",
+      "categories": {
+        "general": "Общее",
+        "producer": "Продюсер",
+        "creative": "Креатив",
+        "partner": "Партнёр",
+        "investor": "Инвестор",
+        "education": "Образование",
+        "employment": "Трудоустройство"
+      },
+      "statuses": {
+        "new": "Новый",
+        "contacted": "Связались",
+        "converted": "Конвертировано",
+        "archived": "Архивировано"
+      },
+      "statsTitle": "Обзор",
+      "detail": {
+        "title": "Детали EOI",
+        "message": "Сообщение",
+        "metadata": "Метаданные",
+        "source": "Отслеживание источника",
+        "consent": "Согласие",
+        "updateStatus": "Обновить статус"
+      },
+      "empty": "Не найдено выражений заинтересованности"
     }
   },
   "common": {
@@ -949,6 +980,11 @@
       },
       "enabled": "Включено",
       "disabled": "Отключено"
+    },
+    "types": {
+      "approval_needed": "Новый пользователь ожидает одобрения",
+      "invitation_accepted": "Приглашение принято",
+      "user_activated": "Аккаунт пользователя активирован"
     }
   },
   "delivery": {

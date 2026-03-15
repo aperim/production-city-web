@@ -100,6 +100,37 @@
         "details": "विवरण",
         "timestamp": "समय"
       }
+    },
+    "eoi": {
+      "title": "रुचि की अभिव्यक्ति",
+      "searchPlaceholder": "नाम या ईमेल से खोजें",
+      "filterCategory": "श्रेणी",
+      "filterStatus": "स्थिति",
+      "categories": {
+        "general": "सामान्य",
+        "producer": "निर्माता",
+        "creative": "रचनात्मक",
+        "partner": "साझेदार",
+        "investor": "निवेशक",
+        "education": "शिक्षा",
+        "employment": "रोज़गार"
+      },
+      "statuses": {
+        "new": "नया",
+        "contacted": "संपर्क किया",
+        "converted": "परिवर्तित",
+        "archived": "संग्रहित"
+      },
+      "statsTitle": "अवलोकन",
+      "detail": {
+        "title": "EOI विवरण",
+        "message": "संदेश",
+        "metadata": "मेटाडेटा",
+        "source": "स्रोत ट्रैकिंग",
+        "consent": "सहमति",
+        "updateStatus": "स्थिति अपडेट करें"
+      },
+      "empty": "कोई रुचि अभिव्यक्ति नहीं मिली"
     }
   },
   "common": {
@@ -949,6 +980,11 @@
       },
       "enabled": "सक्षम",
       "disabled": "अक्षम"
+    },
+    "types": {
+      "approval_needed": "नया उपयोगकर्ता अनुमोदन लंबित",
+      "invitation_accepted": "आमंत्रण स्वीकृत",
+      "user_activated": "उपयोगकर्ता खाता सक्रिय"
     }
   },
   "delivery": {

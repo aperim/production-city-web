@@ -100,6 +100,37 @@
         "details": "التفاصيل",
         "timestamp": "التوقيت"
       }
+    },
+    "eoi": {
+      "title": "تعبيرات الاهتمام",
+      "searchPlaceholder": "البحث بالاسم أو البريد الإلكتروني",
+      "filterCategory": "الفئة",
+      "filterStatus": "الحالة",
+      "categories": {
+        "general": "عام",
+        "producer": "منتج",
+        "creative": "إبداعي",
+        "partner": "شريك",
+        "investor": "مستثمر",
+        "education": "تعليم",
+        "employment": "توظيف"
+      },
+      "statuses": {
+        "new": "جديد",
+        "contacted": "تم الاتصال",
+        "converted": "محوّل",
+        "archived": "مؤرشف"
+      },
+      "statsTitle": "نظرة عامة",
+      "detail": {
+        "title": "تفاصيل EOI",
+        "message": "رسالة",
+        "metadata": "بيانات وصفية",
+        "source": "تتبع المصدر",
+        "consent": "موافقة",
+        "updateStatus": "تحديث الحالة"
+      },
+      "empty": "لم يتم العثور على تعبيرات اهتمام"
     }
   },
   "common": {
@@ -949,6 +980,11 @@
       },
       "enabled": "مفعل",
       "disabled": "معطل"
+    },
+    "types": {
+      "approval_needed": "مستخدم جديد بانتظار الموافقة",
+      "invitation_accepted": "تم قبول الدعوة",
+      "user_activated": "تم تفعيل حساب المستخدم"
     }
   },
   "delivery": {

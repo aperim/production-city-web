@@ -68,6 +68,12 @@ const SCHEMA_STATEMENTS = [
   `CREATE UNIQUE INDEX IF NOT EXISTS "NotificationPreference_userId_channel_key" ON "NotificationPreference"("userId", "channel")`,
   `CREATE INDEX IF NOT EXISTS "NotificationPreference_userId_idx" ON "NotificationPreference"("userId")`,
   `CREATE INDEX IF NOT EXISTS "NotificationPreference_channel_idx" ON "NotificationPreference"("channel")`,
+  // Migration 0005: Notification model
+  `CREATE TABLE IF NOT EXISTS "Notification" ("id" TEXT NOT NULL PRIMARY KEY, "userId" TEXT NOT NULL, "type" TEXT NOT NULL, "actorId" TEXT, "resourceType" TEXT NOT NULL, "resourceId" TEXT NOT NULL, "actionUrl" TEXT, "dedupeKey" TEXT, "metadata" TEXT, "readAt" DATETIME, "createdAt" DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP, CONSTRAINT "Notification_userId_fkey" FOREIGN KEY ("userId") REFERENCES "User" ("id") ON DELETE CASCADE ON UPDATE CASCADE, CONSTRAINT "Notification_actorId_fkey" FOREIGN KEY ("actorId") REFERENCES "User" ("id") ON DELETE SET NULL ON UPDATE CASCADE)`,
+  `CREATE UNIQUE INDEX IF NOT EXISTS "Notification_dedupeKey_key" ON "Notification"("dedupeKey")`,
+  `CREATE INDEX IF NOT EXISTS "Notification_userId_readAt_idx" ON "Notification"("userId", "readAt")`,
+  `CREATE INDEX IF NOT EXISTS "Notification_userId_createdAt_idx" ON "Notification"("userId", "createdAt")`,
+  `CREATE INDEX IF NOT EXISTS "Notification_type_idx" ON "Notification"("type")`,
 ];
 
 let _initialized = false;

@@ -357,6 +357,136 @@ export function fetchMediaPairs(contexts: string[], options?: { signal?: AbortSi
   });
 }
 
+// --- Notifications API ---
+
+export interface NotificationData {
+  id: string;
+  type: string;
+  actorId: string | null;
+  resourceType: string;
+  resourceId: string;
+  actionUrl: string | null;
+  metadata: unknown;
+  readAt: string | null;
+  createdAt: string;
+}
+
+export interface NotificationListResponse {
+  notifications: NotificationData[];
+  unreadCount: number;
+}
+
+export interface NotificationPreference {
+  channel: string;
+  enabled: boolean;
+}
+
+/** List user's notifications (GET /v1/notifications) */
+export function listNotifications(params?: { unreadOnly?: boolean }) {
+  const searchParams = new URLSearchParams();
+  if (params?.unreadOnly) searchParams.set('unreadOnly', 'true');
+  const qs = searchParams.toString();
+  return request<NotificationListResponse>('GET', `/v1/notifications${qs ? `?${qs}` : ''}`);
+}
+
+/** Mark notification as read (PATCH /v1/notifications/:id/read) */
+export function markNotificationRead(id: string) {
+  return request<{ message: string }>('PATCH', `/v1/notifications/${encodeURIComponent(id)}/read`);
+}
+
+/** Mark all notifications as read (POST /v1/notifications/mark-all-read) */
+export function markAllNotificationsRead() {
+  return request<{ message: string; count: number }>('POST', '/v1/notifications/mark-all-read');
+}
+
+/** Get notification preferences (GET /v1/notifications/preferences) */
+export function getNotificationPreferences() {
+  return request<{ preferences: NotificationPreference[] }>('GET', '/v1/notifications/preferences');
+}
+
+/** Update notification preference (PATCH /v1/notifications/preferences) */
+export function updateNotificationPreference(data: { channel: string; enabled: boolean }) {
+  return request<{ message: string }>('PATCH', '/v1/notifications/preferences', data);
+}
+
+// --- EOI Admin API ---
+
+export interface EoiAdminItem {
+  id: string;
+  category: string;
+  status: string;
+  locale: string;
+  name: string;
+  email: string;
+  message: string | null;
+  metadata: unknown;
+  sourcePage: string;
+  sourceCategory: string | null;
+  utmSource: string | null;
+  utmMedium: string | null;
+  utmCampaign: string | null;
+  consentVersion: string;
+  privacyAcceptedAt: string;
+  marketingOptIn: boolean;
+  confirmationSentAt: string | null;
+  createdAt: string;
+  updatedAt: string;
+  archivedAt: string | null;
+}
+
+export interface EoiAdminListResponse {
+  data: EoiAdminItem[];
+  pagination: {
+    page: number;
+    limit: number;
+    total: number;
+    totalPages: number;
+  };
+}
+
+export interface EoiStatsResponse {
+  byCategory: Record<string, number>;
+  byStatus: Record<string, number>;
+  byLocale: Record<string, number>;
+  total: number;
+}
+
+/** List EOI submissions (GET /v1/admin/eoi) */
+export function listEoi(params?: {
+  page?: number;
+  limit?: number;
+  category?: string;
+  status?: string;
+  search?: string;
+  sort?: string;
+  order?: string;
+}) {
+  const searchParams = new URLSearchParams();
+  if (params?.page) searchParams.set('page', String(params.page));
+  if (params?.limit) searchParams.set('limit', String(params.limit));
+  if (params?.category) searchParams.set('category', params.category);
+  if (params?.status) searchParams.set('status', params.status);
+  if (params?.search) searchParams.set('search', params.search);
+  if (params?.sort) searchParams.set('sort', params.sort);
+  if (params?.order) searchParams.set('order', params.order);
+  return request<EoiAdminListResponse>('GET', `/v1/admin/eoi?${searchParams.toString()}`);
+}
+
+/** Get single EOI detail (GET /v1/admin/eoi/:id) */
+export function getEoi(id: string) {
+  return request<EoiAdminItem>('GET', `/v1/admin/eoi/${encodeURIComponent(id)}`);
+}
+
+/** Update EOI status (PATCH /v1/admin/eoi/:id) */
+export function updateEoiStatus(id: string, status: string) {
+  return request<{ message: string }>('PATCH', `/v1/admin/eoi/${encodeURIComponent(id)}`, { status });
+}
+
+/** Get EOI stats (GET /v1/admin/eoi/stats) */
+export function getEoiStats() {
+  return request<EoiStatsResponse>('GET', '/v1/admin/eoi/stats');
+}
+
 /** EOI submission payload. */
 export interface EoiSubmitData {
   category: string;

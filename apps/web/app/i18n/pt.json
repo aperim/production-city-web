@@ -100,6 +100,37 @@
         "details": "Detalhes",
         "timestamp": "Data e hora"
       }
+    },
+    "eoi": {
+      "title": "Expressões de Interesse",
+      "searchPlaceholder": "Pesquisar por nome ou e-mail",
+      "filterCategory": "Categoria",
+      "filterStatus": "Status",
+      "categories": {
+        "general": "Geral",
+        "producer": "Produtor",
+        "creative": "Criativo",
+        "partner": "Parceiro",
+        "investor": "Investidor",
+        "education": "Educação",
+        "employment": "Emprego"
+      },
+      "statuses": {
+        "new": "Novo",
+        "contacted": "Contatado",
+        "converted": "Convertido",
+        "archived": "Arquivado"
+      },
+      "statsTitle": "Visão geral",
+      "detail": {
+        "title": "Detalhe do EOI",
+        "message": "Mensagem",
+        "metadata": "Metadados",
+        "source": "Rastreamento de origem",
+        "consent": "Consentimento",
+        "updateStatus": "Atualizar status"
+      },
+      "empty": "Nenhuma expressão de interesse encontrada"
     }
   },
   "common": {
@@ -949,6 +980,11 @@
       },
       "enabled": "Ativado",
       "disabled": "Desativado"
+    },
+    "types": {
+      "approval_needed": "Novo usuário aguardando aprovação",
+      "invitation_accepted": "Convite aceito",
+      "user_activated": "Conta de usuário ativada"
     }
   },
   "delivery": {

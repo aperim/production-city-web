@@ -6,18 +6,27 @@
  * Server enforces permissions too — this is cosmetic only.
  */
 
-import { type ReactNode } from "react";
+import { type ReactNode, useState, useCallback, useEffect } from "react";
 import {
   AdminDashboardTemplate,
   type BreadcrumbItem,
   ConnectionDot,
   NotificationBell,
+  NotificationPanel,
+  type NotificationEntry,
 } from "@productioncity/holding-ui";
 import type { SidebarSection } from "@productioncity/holding-ui";
 import { useAuth } from "../lib/auth-context";
 import { ProtectedRoute } from "../lib/route-guard";
 import { WebSocketProvider } from "../lib/websocket/WebSocketProvider";
 import { useWebSocket } from "../lib/websocket/useWebSocket";
+import { useChannel } from "../lib/websocket/useChannel";
+import {
+  listNotifications,
+  markNotificationRead,
+  markAllNotificationsRead,
+  type NotificationData,
+} from "../lib/api-client";
 
 export interface AdminLayoutProps {
   children: ReactNode;
@@ -53,18 +62,121 @@ function DashboardStatusBar() {
   );
 }
 
-/** Notification bell in the header */
+/** Map notification type + context into a localized message */
+function notificationMessage(n: NotificationData): string {
+  switch (n.type) {
+    case "approval_needed":
+      return "New user pending approval";
+    case "invitation_accepted":
+      return "Invitation accepted";
+    case "user_activated":
+      return "User account activated";
+    default:
+      return n.type;
+  }
+}
+
+/** Only allow relative URLs to prevent open redirects */
+function isSafeUrl(url: string): boolean {
+  return url.startsWith("/") && !url.startsWith("//");
+}
+
+/** Relative time string */
+function timeAgo(iso: string): string {
+  const diff = Date.now() - new Date(iso).getTime();
+  const mins = Math.floor(diff / 60000);
+  if (mins < 1) return "Just now";
+  if (mins < 60) return `${mins} min ago`;
+  const hrs = Math.floor(mins / 60);
+  if (hrs < 24) return `${hrs} hr ago`;
+  return `${Math.floor(hrs / 24)} days ago`;
+}
+
+/** Notification bell in the header — wired to real API and WebSocket */
 function DashboardHeaderActions() {
+  const [notifications, setNotifications] = useState<NotificationData[]>([]);
+  const [unreadCount, setUnreadCount] = useState(0);
+  const [loading, setLoading] = useState(true);
+  const { user } = useAuth();
+
+  const fetchNotifications = useCallback(async () => {
+    setLoading(true);
+    try {
+      const result = await listNotifications();
+      if (result.ok) {
+        setNotifications(result.data.notifications);
+        setUnreadCount(result.data.unreadCount);
+      }
+    } finally {
+      setLoading(false);
+    }
+  }, []);
+
+  useEffect(() => {
+    fetchNotifications();
+  }, [fetchNotifications]);
+
+  // Subscribe to WebSocket notifications for real-time updates
+  useChannel("admin:notifications", {
+    enabled: !!user,
+    onMessage: () => {
+      // Refetch when new notification arrives
+      fetchNotifications();
+    },
+  });
+
+  const handleMarkAllRead = useCallback(async () => {
+    const result = await markAllNotificationsRead();
+    if (result.ok) {
+      setNotifications((prev) =>
+        prev.map((n) => ({ ...n, readAt: n.readAt ?? new Date().toISOString() })),
+      );
+      setUnreadCount(0);
+    }
+  }, []);
+
+  const handleSelect = useCallback(async (id: string) => {
+    const notif = notifications.find((n) => n.id === id);
+    if (!notif) return;
+
+    // Mark as read
+    if (!notif.readAt) {
+      await markNotificationRead(id);
+      setNotifications((prev) =>
+        prev.map((n) => n.id === id ? { ...n, readAt: new Date().toISOString() } : n),
+      );
+      setUnreadCount((c) => Math.max(0, c - 1));
+    }
+
+    // Navigate to action URL if available
+    if (notif.actionUrl && isSafeUrl(notif.actionUrl) && typeof window !== "undefined") {
+      window.location.href = notif.actionUrl;
+    }
+  }, [notifications]);
+
+  const panelNotifications: NotificationEntry[] = notifications.slice(0, 10).map((n) => ({
+    id: n.id,
+    message: notificationMessage(n),
+    timestamp: timeAgo(n.createdAt),
+    read: !!n.readAt,
+    onAction: n.actionUrl && isSafeUrl(n.actionUrl) ? () => {
+      if (typeof window !== "undefined") window.location.href = n.actionUrl!;
+    } : undefined,
+    actionLabel: n.actionUrl && isSafeUrl(n.actionUrl) ? "View" : undefined,
+  }));
+
   return (
     <NotificationBell
+      count={unreadCount}
       data-testid="notification-bell"
       panel={
-        <div
+        <NotificationPanel
+          notifications={panelNotifications}
+          onMarkAllRead={handleMarkAllRead}
+          onSelect={handleSelect}
+          loading={loading}
           data-testid="notification-panel"
-          className="w-72 rounded-sm border border-border bg-card p-3 shadow-sm"
-        >
-          <p className="text-sm text-muted-foreground">No new notifications</p>
-        </div>
+        />
       }
     />
   );
@@ -115,6 +227,12 @@ export function AdminLayout({
   }
 
   if (hasPermission("audit:read")) {
+    sidebarItems.push({
+      id: "eoi",
+      label: "Expressions of Interest",
+      href: "/dashboard/eoi",
+      active: typeof window !== "undefined" && window.location.pathname.startsWith("/dashboard/eoi"),
+    });
     sidebarItems.push({
       id: "audit-log",
       label: "Audit Log",

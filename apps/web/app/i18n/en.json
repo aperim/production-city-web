@@ -100,6 +100,37 @@
         "details": "Details",
         "timestamp": "Timestamp"
       }
+    },
+    "eoi": {
+      "title": "Expressions of Interest",
+      "searchPlaceholder": "Search by name or email",
+      "filterCategory": "Category",
+      "filterStatus": "Status",
+      "categories": {
+        "general": "General",
+        "producer": "Producer",
+        "creative": "Creative",
+        "partner": "Partner",
+        "investor": "Investor",
+        "education": "Education",
+        "employment": "Employment"
+      },
+      "statuses": {
+        "new": "New",
+        "contacted": "Contacted",
+        "converted": "Converted",
+        "archived": "Archived"
+      },
+      "statsTitle": "Overview",
+      "detail": {
+        "title": "EOI Detail",
+        "message": "Message",
+        "metadata": "Metadata",
+        "source": "Source tracking",
+        "consent": "Consent",
+        "updateStatus": "Update status"
+      },
+      "empty": "No expressions of interest found"
     }
   },
   "common": {
@@ -949,6 +980,11 @@
       },
       "enabled": "Enabled",
       "disabled": "Disabled"
+    },
+    "types": {
+      "approval_needed": "New user pending approval",
+      "invitation_accepted": "Invitation accepted",
+      "user_activated": "User account activated"
     }
   },
   "delivery": {

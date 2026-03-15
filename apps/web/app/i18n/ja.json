@@ -100,6 +100,37 @@
         "details": "詳細",
         "timestamp": "日時"
       }
+    },
+    "eoi": {
+      "title": "関心表明",
+      "searchPlaceholder": "名前またはメールで検索",
+      "filterCategory": "カテゴリ",
+      "filterStatus": "ステータス",
+      "categories": {
+        "general": "一般",
+        "producer": "プロデューサー",
+        "creative": "クリエイティブ",
+        "partner": "パートナー",
+        "investor": "投資家",
+        "education": "教育",
+        "employment": "雇用"
+      },
+      "statuses": {
+        "new": "新規",
+        "contacted": "連絡済み",
+        "converted": "成約",
+        "archived": "アーカイブ"
+      },
+      "statsTitle": "概要",
+      "detail": {
+        "title": "EOI詳細",
+        "message": "メッセージ",
+        "metadata": "メタデータ",
+        "source": "ソース追跡",
+        "consent": "同意",
+        "updateStatus": "ステータスを更新"
+      },
+      "empty": "関心表明が見つかりません"
     }
   },
   "common": {
@@ -949,6 +980,11 @@
       },
       "enabled": "有効",
       "disabled": "無効"
+    },
+    "types": {
+      "approval_needed": "新規ユーザーの承認待ち",
+      "invitation_accepted": "招待が承諾されました",
+      "user_activated": "ユーザーアカウントが有効化されました"
     }
   },
   "delivery": {

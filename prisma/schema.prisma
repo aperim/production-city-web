@@ -45,6 +45,8 @@ model User {
   auditLogsActed         AuditLog[]          @relation("AuditActor")
   suppressionsRemoved    EmailSuppression[]
   notificationPreferences NotificationPreference[]
+  notifications           Notification[]             @relation("UserNotifications")
+  notificationsActed      Notification[]             @relation("NotificationActor")
 
   // @@index([email]) — omitted: @unique already creates an index
   @@index([status])
@@ -424,4 +426,34 @@ model NotificationPreference {
   @@unique([userId, channel])
   @@index([userId])
   @@index([channel])
+}
+
+/// In-app notification for admin events (approval, invitation, user activation).
+/// Stores typed event data — client renders localized text from type + context.
+model Notification {
+  id           String    @id @default(cuid())
+  userId       String
+  /// approval_needed | invitation_accepted | user_activated
+  type         String
+  /// Actor who triggered the event (nullable for system events)
+  actorId      String?
+  /// Resource type: "user" | "invitation" | etc.
+  resourceType String
+  /// Resource ID for deep linking
+  resourceId   String
+  /// URL to navigate to when clicked
+  actionUrl    String?
+  /// Deduplicate key — prevents duplicate notifications from retries/replays
+  dedupeKey    String?   @unique
+  /// JSON metadata (D1: TEXT, future PG: JSONB)
+  metadata     String?
+  readAt       DateTime?
+  createdAt    DateTime  @default(now())
+
+  user  User  @relation("UserNotifications", fields: [userId], references: [id], onDelete: Cascade)
+  actor User? @relation("NotificationActor", fields: [actorId], references: [id])
+
+  @@index([userId, readAt])
+  @@index([userId, createdAt])
+  @@index([type])
 }

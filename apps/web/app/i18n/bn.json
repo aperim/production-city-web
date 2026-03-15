@@ -100,6 +100,37 @@
         "details": "বিবরণ",
         "timestamp": "সময়"
       }
+    },
+    "eoi": {
+      "title": "আগ্রহের প্রকাশ",
+      "searchPlaceholder": "নাম বা ইমেইল দিয়ে খুঁজুন",
+      "filterCategory": "বিভাগ",
+      "filterStatus": "অবস্থা",
+      "categories": {
+        "general": "সাধারণ",
+        "producer": "প্রযোজক",
+        "creative": "সৃজনশীল",
+        "partner": "অংশীদার",
+        "investor": "বিনিয়োগকারী",
+        "education": "শিক্ষা",
+        "employment": "কর্মসংস্থান"
+      },
+      "statuses": {
+        "new": "নতুন",
+        "contacted": "যোগাযোগ করা হয়েছে",
+        "converted": "রূপান্তরিত",
+        "archived": "সংরক্ষিত"
+      },
+      "statsTitle": "সংক্ষিপ্ত বিবরণ",
+      "detail": {
+        "title": "EOI বিবরণ",
+        "message": "বার্তা",
+        "metadata": "মেটাডেটা",
+        "source": "উৎস ট্র্যাকিং",
+        "consent": "সম্মতি",
+        "updateStatus": "অবস্থা আপডেট করুন"
+      },
+      "empty": "কোনো আগ্রহের প্রকাশ পাওয়া যায়নি"
     }
   },
   "common": {
@@ -949,6 +980,11 @@
       },
       "enabled": "সক্রিয়",
       "disabled": "নিষ্ক্রিয়"
+    },
+    "types": {
+      "approval_needed": "নতুন ব্যবহারকারী অনুমোদনের অপেক্ষায়",
+      "invitation_accepted": "আমন্ত্রণ গৃহীত",
+      "user_activated": "ব্যবহারকারী অ্যাকাউন্ট সক্রিয়"
     }
   },
   "delivery": {

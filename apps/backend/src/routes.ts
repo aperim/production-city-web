@@ -14,6 +14,7 @@ import { mediaAdminApp } from "./admin/media.js";
 import { mediaApp } from "./media/handlers.js";
 import { eoiApp } from "./eoi/handlers.js";
 import { eoiAdminApp } from "./admin/eoi.js";
+import { notificationsApp } from "./admin/notifications.js";
 import { wsApp } from "./routes/ws.js";
 
 /**
@@ -40,6 +41,9 @@ export function mountRoutes(app: OpenAPIHono<{ Bindings: Record<string, unknown>
 
   // EOI admin routes (auth + admin role required)
   app.route("/", eoiAdminApp);
+
+  // Notification routes (auth required)
+  app.route("/", notificationsApp);
 
   // Public EOI and locales routes (no auth required)
   app.route("/", eoiApp);

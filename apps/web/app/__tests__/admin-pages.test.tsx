@@ -34,6 +34,23 @@ vi.mock("../lib/api-client", () => ({
     Promise.resolve({ ok: false, error: { error: "unauthorized", message: "Not authenticated" }, status: 401 }),
   ),
   logout: vi.fn(),
+  listNotifications: vi.fn().mockReturnValue(
+    Promise.resolve({ ok: true, data: { notifications: [], unreadCount: 0 }, status: 200 }),
+  ),
+  markNotificationRead: vi.fn().mockReturnValue(
+    Promise.resolve({ ok: true, data: { message: "ok" }, status: 200 }),
+  ),
+  markAllNotificationsRead: vi.fn().mockReturnValue(
+    Promise.resolve({ ok: true, data: { message: "ok", count: 0 }, status: 200 }),
+  ),
+  listEoi: vi.fn().mockReturnValue(
+    Promise.resolve({ ok: true, data: { data: [], pagination: { page: 1, limit: 20, total: 0, totalPages: 1 } }, status: 200 }),
+  ),
+  getEoi: vi.fn(),
+  updateEoiStatus: vi.fn(),
+  getEoiStats: vi.fn().mockReturnValue(
+    Promise.resolve({ ok: true, data: { byCategory: {}, byStatus: {}, byLocale: {}, total: 0 }, status: 200 }),
+  ),
 }));
 
 import { useAuth } from "../lib/auth-context";
@@ -143,6 +160,24 @@ describe("AuditLogPage", () => {
   });
 });
 
+describe("EoiPage", () => {
+  beforeEach(() => vi.clearAllMocks());
+
+  it("renders with permission", async () => {
+    mockAdmin();
+    const { default: EoiPage } = await import("../dashboard/eoi/page");
+    const html = renderToString(createElement(EoiPage));
+    expect(html).toContain("Expressions of Interest");
+  });
+
+  it("shows access denied without permission", async () => {
+    mockLimitedUser();
+    const { default: EoiPage } = await import("../dashboard/eoi/page");
+    const html = renderToString(createElement(EoiPage));
+    expect(html).toContain("Access Denied");
+  });
+});
+
 describe("Admin sidebar permission visibility", () => {
   it("shows all nav items for admin", async () => {
     mockAdmin();
@@ -154,6 +189,7 @@ describe("Admin sidebar permission visibility", () => {
     expect(html).toContain("Users");
     expect(html).toContain("Invitations");
     expect(html).toContain("Pending Approvals");
+    expect(html).toContain("Expressions of Interest");
     expect(html).toContain("Audit Log");
   });
 

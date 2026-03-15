@@ -51,6 +51,14 @@ export { ForwardLookingDisclaimer } from "../../../../packages/ui/src/organisms/
 export { MediaHero } from "../../../../packages/ui/src/organisms/MediaHero/MediaHero";
 export type { MediaHeroProps } from "../../../../packages/ui/src/organisms/MediaHero/MediaHero";
 export { NotificationBell } from "../../../../packages/ui/src/organisms/NotificationBell/NotificationBell";
+export { NotificationPanel } from "../../../../packages/ui/src/organisms/NotificationPanel/NotificationPanel";
+export type { NotificationPanelProps, NotificationEntry } from "../../../../packages/ui/src/organisms/NotificationPanel/NotificationPanel";
+export { EoiTable } from "../../../../packages/ui/src/organisms/EoiTable/EoiTable";
+export type { EoiTableProps, EoiTableItem, EoiPagination } from "../../../../packages/ui/src/organisms/EoiTable/EoiTable";
+export { EoiDetailPanel } from "../../../../packages/ui/src/organisms/EoiDetailPanel/EoiDetailPanel";
+export type { EoiDetailPanelProps, EoiDetail } from "../../../../packages/ui/src/organisms/EoiDetailPanel/EoiDetailPanel";
+export { EoiStats } from "../../../../packages/ui/src/organisms/EoiStats/EoiStats";
+export type { EoiStatsProps } from "../../../../packages/ui/src/organisms/EoiStats/EoiStats";
 export { CinematicHero } from "../../../../packages/ui/src/organisms/CinematicHero/CinematicHero";
 export type { CinematicHeroProps } from "../../../../packages/ui/src/organisms/CinematicHero/CinematicHero";
 export { ScrollRevealSection } from "../../../../packages/ui/src/organisms/ScrollRevealSection/ScrollRevealSection";

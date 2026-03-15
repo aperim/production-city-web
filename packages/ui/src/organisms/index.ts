@@ -111,4 +111,12 @@ export { StatementBlock } from './StatementBlock/StatementBlock';
 export type { StatementBlockProps } from './StatementBlock/StatementBlock';
 export { BrandAccentDivider } from './BrandAccentDivider/BrandAccentDivider';
 export type { BrandAccentDividerProps } from './BrandAccentDivider/BrandAccentDivider';
+// Issue #270: EOI Admin Components
+export { EoiTable } from './EoiTable/EoiTable';
+export type { EoiTableProps, EoiTableItem, EoiPagination } from './EoiTable/EoiTable';
+export { EoiDetailPanel } from './EoiDetailPanel/EoiDetailPanel';
+export type { EoiDetailPanelProps, EoiDetail } from './EoiDetailPanel/EoiDetailPanel';
+export { EoiStats } from './EoiStats/EoiStats';
+export type { EoiStatsProps } from './EoiStats/EoiStats';
+
 // AcknowledgementOfCountry lives in molecules (shared component with compact mode for footer)
