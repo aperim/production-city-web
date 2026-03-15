@@ -110,7 +110,30 @@ interface ValidateOptions {
 // ---------------------------------------------------------------------------
 
 export function parseRegistry(raw: string): Registry {
-  return JSON.parse(raw) as Registry;
+  const data = JSON.parse(raw);
+
+  // Structural validation — fail fast on malformed JSON shape
+  if (!data || typeof data !== "object") {
+    throw new Error("Registry JSON must be an object");
+  }
+  if (!data.registry_metadata || !Array.isArray(data.registry_metadata.sidebar_groups)) {
+    throw new Error("Registry JSON must have registry_metadata.sidebar_groups array");
+  }
+  if (!Array.isArray(data.sections)) {
+    throw new Error("Registry JSON must have sections array");
+  }
+  for (const section of data.sections) {
+    if (!section || typeof section !== "object" || !Array.isArray(section.subsections)) {
+      throw new Error(`Section '${section?.id ?? "unknown"}' must have subsections array`);
+    }
+    for (const sub of section.subsections) {
+      if (!sub || typeof sub !== "object" || !Array.isArray(sub.features)) {
+        throw new Error(`Subsection '${sub?.id ?? "unknown"}' must have features array`);
+      }
+    }
+  }
+
+  return data as Registry;
 }
 
 // ---------------------------------------------------------------------------
@@ -130,7 +153,13 @@ function getAllFeatures(registry: Registry): RegistryFeature[] {
 }
 
 function escapeString(s: string): string {
-  return s.replace(/\\/g, "\\\\").replace(/'/g, "\\'");
+  return s
+    .replace(/\\/g, "\\\\")
+    .replace(/'/g, "\\'")
+    .replace(/\n/g, "\\n")
+    .replace(/\r/g, "\\r")
+    .replace(/\u2028/g, "\\u2028")
+    .replace(/\u2029/g, "\\u2029");
 }
 
 function formatStringArray(arr: string[]): string {
@@ -538,24 +567,40 @@ function main() {
   const registryHash = computeRegistryHash(raw);
   console.log("Registry hash:", registryHash);
 
-  // Generate outputs
-  fs.mkdirSync(webGenDir, { recursive: true });
-  fs.mkdirSync(backendGenDir, { recursive: true });
+  // Generate outputs — remove existing dirs to prevent symlink attacks, then recreate
+  for (const dir of [webGenDir, backendGenDir]) {
+    fs.rmSync(dir, { recursive: true, force: true });
+    fs.mkdirSync(dir, { recursive: true });
+  }
+
+  function safeWrite(filePath: string, content: string): void {
+    // Ensure target is not a symlink
+    try {
+      const stat = fs.lstatSync(filePath);
+      if (stat.isSymbolicLink()) {
+        throw new Error(`Refusing to write to symlink: ${filePath}`);
+      }
+    } catch (e: unknown) {
+      // ENOENT is fine — file does not exist yet
+      if ((e as NodeJS.ErrnoException).code !== "ENOENT") throw e;
+    }
+    fs.writeFileSync(filePath, content);
+  }
 
   const routesContent = generateRoutes(registry, registryHash);
-  fs.writeFileSync(path.join(webGenDir, "routes.ts"), routesContent);
+  safeWrite(path.join(webGenDir, "routes.ts"), routesContent);
   console.log("Generated:", path.join(webGenDir, "routes.ts"));
 
   const sidebarContent = generateSidebarConfig(registry);
-  fs.writeFileSync(path.join(webGenDir, "sidebar-config.ts"), sidebarContent);
+  safeWrite(path.join(webGenDir, "sidebar-config.ts"), sidebarContent);
   console.log("Generated:", path.join(webGenDir, "sidebar-config.ts"));
 
   const indexContent = generateFeatureIndex(registry);
-  fs.writeFileSync(path.join(webGenDir, "feature-index.ts"), indexContent);
+  safeWrite(path.join(webGenDir, "feature-index.ts"), indexContent);
   console.log("Generated:", path.join(webGenDir, "feature-index.ts"));
 
   const manifestContent = generateBackendManifest(registry, registryHash);
-  fs.writeFileSync(path.join(backendGenDir, "route-manifest.ts"), manifestContent);
+  safeWrite(path.join(backendGenDir, "route-manifest.ts"), manifestContent);
   console.log("Generated:", path.join(backendGenDir, "route-manifest.ts"));
 
   console.log("Dashboard registry code generation complete.");
