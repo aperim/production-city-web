@@ -188,6 +188,52 @@
       },
       "emptyNameError": "لا يمكن أن يكون الاسم فارغًا",
       "genericError": "حدث خطأ"
+    },
+    "announcements": {
+      "title": "الإعلانات",
+      "new": "إعلان جديد",
+      "edit": "تعديل الإعلان",
+      "preview": "معاينة",
+      "publish": "نشر",
+      "unpublish": "إلغاء النشر",
+      "archive": "أرشفة",
+      "saveDraft": "حفظ المسودة",
+      "autosave": {
+        "saved": "تم الحفظ",
+        "saving": "جارٍ الحفظ...",
+        "unsaved": "تغييرات غير محفوظة"
+      },
+      "empty": "لا توجد إعلانات بعد. أنشئ أول تحديث.",
+      "confirmArchive": "هل أنت متأكد من أرشفة هذا الإعلان؟ لن يكون مرئيًا علنًا.",
+      "confirmUnpublish": "إلغاء النشر سيعيد الحالة إلى مسودة. تم إرسال {count} رسالة بالفعل.",
+      "warningEditPublished": "تم إرسال هذا الإعلان إلى {count} مشترك. لن يروا تعديلاتك.",
+      "confirmPublishPrivate": "سيتم إرسال هذا الإعلان إلى {delivered} من {total} مشترك. {excluded} لا يملكون الدور المطلوب.",
+      "retryFailed": "إعادة محاولة التسليمات الفاشلة",
+      "validation": {
+        "titleRequired": "العنوان مطلوب",
+        "summaryRequired": "الملخص مطلوب",
+        "contentRequired": "مطلوب كتلة محتوى واحدة على الأقل",
+        "categoryRequired": "مطلوبة فئة واحدة على الأقل",
+        "rolesRequired": "الإعلانات الخاصة تتطلب دورًا واحدًا على الأقل"
+      }
+    },
+    "categories": {
+      "title": "الفئات",
+      "add": "إضافة فئة",
+      "deactivate": "تعطيل الفئة",
+      "confirmDeactivate": "التعطيل سيخفي هذه الفئة. الاشتراكات الحالية محفوظة."
+    },
+    "tags": {
+      "title": "الوسوم",
+      "add": "إضافة وسم",
+      "confirmDelete": "حذف هذا الوسم سيزيله من جميع الإعلانات. متابعة؟"
+    },
+    "subscriptions": {
+      "title": "الاشتراكات",
+      "subscribeUser": "اشتراك مستخدم",
+      "confirmRemove": "إزالة هذا الاشتراك؟",
+      "resendConfirmation": "إعادة إرسال التأكيد",
+      "rateLimitWarning": "حدود المشرف: {remaining} اشتراك متبقي هذه الساعة"
     }
   },
   "common": {

@@ -188,6 +188,52 @@
       },
       "emptyNameError": "名称不能为空",
       "genericError": "发生了错误"
+    },
+    "announcements": {
+      "title": "公告",
+      "new": "新公告",
+      "edit": "编辑公告",
+      "preview": "预览",
+      "publish": "发布",
+      "unpublish": "取消发布",
+      "archive": "归档",
+      "saveDraft": "保存草稿",
+      "autosave": {
+        "saved": "已保存",
+        "saving": "保存中...",
+        "unsaved": "未保存的更改"
+      },
+      "empty": "暂无公告。创建您的第一条更新。",
+      "confirmArchive": "确定要归档此公告吗？它将不再公开可见。",
+      "confirmUnpublish": "取消发布将恢复为草稿。{count}条已发送的交付不会受到影响。",
+      "warningEditPublished": "此公告已发送给{count}位订阅者。他们将看不到您的更改。",
+      "confirmPublishPrivate": "此公告将发送给{total}位订阅者中的{delivered}位。{excluded}位没有所需角色。",
+      "retryFailed": "重试失败的交付",
+      "validation": {
+        "titleRequired": "标题为必填项",
+        "summaryRequired": "摘要为必填项",
+        "contentRequired": "至少需要一个内容块",
+        "categoryRequired": "至少需要一个分类",
+        "rolesRequired": "私有公告至少需要一个角色"
+      }
+    },
+    "categories": {
+      "title": "分类",
+      "add": "添加分类",
+      "deactivate": "停用分类",
+      "confirmDeactivate": "停用将从新订阅中隐藏此分类。现有订阅将保留。"
+    },
+    "tags": {
+      "title": "标签",
+      "add": "添加标签",
+      "confirmDelete": "删除此标签将从所有公告中移除。继续吗？"
+    },
+    "subscriptions": {
+      "title": "订阅",
+      "subscribeUser": "订阅用户",
+      "confirmRemove": "删除此订阅？",
+      "resendConfirmation": "重新发送确认",
+      "rateLimitWarning": "管理员限制：本小时还剩{remaining}个订阅"
     }
   },
   "common": {

@@ -231,6 +231,36 @@ function DashboardShell({ children }: { children: ReactNode }) {
     });
   }
 
+  if (hasPermission("announcement:read_admin")) {
+    sidebarItems.push({
+      id: "announcements",
+      label: "Announcements",
+      href: "/dashboard/announcements",
+      active: activePath.startsWith("/dashboard/announcements"),
+    });
+    sidebarItems.push({
+      id: "categories",
+      label: "Categories",
+      href: "/dashboard/categories",
+      active: activePath.startsWith("/dashboard/categories"),
+    });
+    sidebarItems.push({
+      id: "tags",
+      label: "Tags",
+      href: "/dashboard/tags",
+      active: activePath.startsWith("/dashboard/tags"),
+    });
+  }
+
+  if (hasPermission("subscription:manage")) {
+    sidebarItems.push({
+      id: "subscriptions",
+      label: "Subscriptions",
+      href: "/dashboard/subscriptions-admin",
+      active: activePath.startsWith("/dashboard/subscriptions-admin"),
+    });
+  }
+
   if (hasPermission("audit:read")) {
     sidebarItems.push({
       id: "eoi",

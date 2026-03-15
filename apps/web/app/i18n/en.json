@@ -188,6 +188,52 @@
         "revoking": "Revoking…",
         "revokeError": "Failed to revoke session"
       }
+    },
+    "announcements": {
+      "title": "Announcements",
+      "new": "New Announcement",
+      "edit": "Edit Announcement",
+      "preview": "Preview",
+      "publish": "Publish",
+      "unpublish": "Unpublish",
+      "archive": "Archive",
+      "saveDraft": "Save Draft",
+      "autosave": {
+        "saved": "Saved",
+        "saving": "Saving...",
+        "unsaved": "Unsaved changes"
+      },
+      "empty": "No announcements yet. Create your first update.",
+      "confirmArchive": "Are you sure you want to archive this announcement? It will no longer be visible publicly.",
+      "confirmUnpublish": "Unpublishing will revert to draft. {count} deliveries have already been sent — recipients will see the old content.",
+      "warningEditPublished": "This announcement has been sent to {count} subscribers. They will not see your changes in emails/SMS.",
+      "confirmPublishPrivate": "This announcement will be sent to {delivered} of {total} subscribers. {excluded} do not have the required role.",
+      "retryFailed": "Retry Failed Deliveries",
+      "validation": {
+        "titleRequired": "Title is required",
+        "summaryRequired": "Summary is required",
+        "contentRequired": "At least one content block is required",
+        "categoryRequired": "At least one category is required",
+        "rolesRequired": "Private announcements require at least one role"
+      }
+    },
+    "categories": {
+      "title": "Categories",
+      "add": "Add Category",
+      "deactivate": "Deactivate Category",
+      "confirmDeactivate": "Deactivating will hide this category from new subscriptions. Existing subscriptions are preserved."
+    },
+    "tags": {
+      "title": "Tags",
+      "add": "Add Tag",
+      "confirmDelete": "Deleting this tag will remove it from all announcements. Continue?"
+    },
+    "subscriptions": {
+      "title": "Subscriptions",
+      "subscribeUser": "Subscribe User",
+      "confirmRemove": "Remove this subscription?",
+      "resendConfirmation": "Resend Confirmation",
+      "rateLimitWarning": "Admin rate limits: {remaining} subscriptions remaining this hour"
     }
   },
   "common": {

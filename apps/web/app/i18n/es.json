@@ -188,6 +188,52 @@
       },
       "emptyNameError": "El nombre no puede estar vacío",
       "genericError": "Se produjo un error"
+    },
+    "announcements": {
+      "title": "Anuncios",
+      "new": "Nuevo anuncio",
+      "edit": "Editar anuncio",
+      "preview": "Vista previa",
+      "publish": "Publicar",
+      "unpublish": "Despublicar",
+      "archive": "Archivar",
+      "saveDraft": "Guardar borrador",
+      "autosave": {
+        "saved": "Guardado",
+        "saving": "Guardando...",
+        "unsaved": "Cambios sin guardar"
+      },
+      "empty": "Aún no hay anuncios. Crea tu primera actualización.",
+      "confirmArchive": "¿Seguro que quieres archivar este anuncio? Ya no será visible públicamente.",
+      "confirmUnpublish": "Despublicar revertirá a borrador. {count} entregas ya han sido enviadas.",
+      "warningEditPublished": "Este anuncio ha sido enviado a {count} suscriptores. No verán tus cambios.",
+      "confirmPublishPrivate": "Este anuncio se enviará a {delivered} de {total} suscriptores. {excluded} no tienen el rol requerido.",
+      "retryFailed": "Reintentar entregas fallidas",
+      "validation": {
+        "titleRequired": "El título es obligatorio",
+        "summaryRequired": "El resumen es obligatorio",
+        "contentRequired": "Se requiere al menos un bloque de contenido",
+        "categoryRequired": "Se requiere al menos una categoría",
+        "rolesRequired": "Los anuncios privados requieren al menos un rol"
+      }
+    },
+    "categories": {
+      "title": "Categorías",
+      "add": "Agregar categoría",
+      "deactivate": "Desactivar categoría",
+      "confirmDeactivate": "Desactivar ocultará esta categoría de nuevas suscripciones."
+    },
+    "tags": {
+      "title": "Etiquetas",
+      "add": "Agregar etiqueta",
+      "confirmDelete": "Eliminar esta etiqueta la quitará de todos los anuncios. ¿Continuar?"
+    },
+    "subscriptions": {
+      "title": "Suscripciones",
+      "subscribeUser": "Suscribir usuario",
+      "confirmRemove": "¿Eliminar esta suscripción?",
+      "resendConfirmation": "Reenviar confirmación",
+      "rateLimitWarning": "Límites de administrador: {remaining} suscripciones restantes esta hora"
     }
   },
   "common": {

@@ -188,6 +188,52 @@
       },
       "emptyNameError": "名前を空にすることはできません",
       "genericError": "エラーが発生しました"
+    },
+    "announcements": {
+      "title": "お知らせ",
+      "new": "新しいお知らせ",
+      "edit": "お知らせを編集",
+      "preview": "プレビュー",
+      "publish": "公開",
+      "unpublish": "公開取消",
+      "archive": "アーカイブ",
+      "saveDraft": "下書き保存",
+      "autosave": {
+        "saved": "保存済み",
+        "saving": "保存中...",
+        "unsaved": "未保存の変更"
+      },
+      "empty": "お知らせはまだありません。最初の更新を作成しましょう。",
+      "confirmArchive": "このお知らせをアーカイブしますか？公開されなくなります。",
+      "confirmUnpublish": "公開取消すると下書きに戻ります。{count}件の配信が既に送信されています。",
+      "warningEditPublished": "このお知らせは{count}人の購読者に送信済みです。変更は反映されません。",
+      "confirmPublishPrivate": "このお知らせは{total}人中{delivered}人の購読者に送信されます。{excluded}人は必要な権限がありません。",
+      "retryFailed": "失敗した配信を再試行",
+      "validation": {
+        "titleRequired": "タイトルは必須です",
+        "summaryRequired": "概要は必須です",
+        "contentRequired": "少なくとも1つのコンテンツブロックが必要です",
+        "categoryRequired": "少なくとも1つのカテゴリが必要です",
+        "rolesRequired": "プライベートお知らせには少なくとも1つの役割が必要です"
+      }
+    },
+    "categories": {
+      "title": "カテゴリ",
+      "add": "カテゴリを追加",
+      "deactivate": "カテゴリを無効化",
+      "confirmDeactivate": "無効化すると新規購読から非表示になります。既存の購読は保持されます。"
+    },
+    "tags": {
+      "title": "タグ",
+      "add": "タグを追加",
+      "confirmDelete": "このタグを削除するとすべてのお知らせから削除されます。続行しますか？"
+    },
+    "subscriptions": {
+      "title": "購読",
+      "subscribeUser": "ユーザーを購読",
+      "confirmRemove": "この購読を削除しますか？",
+      "resendConfirmation": "確認を再送信",
+      "rateLimitWarning": "管理者の制限: 今時間の残り{remaining}件の購読"
     }
   },
   "common": {

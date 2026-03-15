@@ -654,3 +654,235 @@ export async function submitEoi(data: EoiSubmitData): Promise<{ id: string; mess
 
   return res.json() as Promise<{ id: string; message: string }>;
 }
+
+// --- Announcement Admin API ---
+
+export interface AdminAnnouncementItem {
+  id: string;
+  title: string;
+  slug: string;
+  summary: string;
+  contentBlocks: unknown[];
+  status: string;
+  visibility: string;
+  categories: { id: string; name: string; slug: string }[];
+  tags: { id: string; name: string; slug: string }[];
+  roleVisibility: { id: string; name: string }[];
+  author: { id: string; name: string | null };
+  publishedAt: string | null;
+  lastEditedAt: string | null;
+  createdAt: string;
+  updatedAt: string;
+  deliveryStats?: {
+    queued: number;
+    sent: number;
+    delivered: number;
+    opened: number;
+    failed: number;
+    suppressed: number;
+  };
+}
+
+export interface AdminAnnouncementListResponse {
+  announcements: AdminAnnouncementItem[];
+  pagination: {
+    page: number;
+    pageSize: number;
+    total: number;
+    totalPages: number;
+  };
+}
+
+export function listAdminAnnouncements(params?: {
+  page?: number;
+  pageSize?: number;
+  status?: string;
+  visibility?: string;
+  category?: string;
+  search?: string;
+  sortBy?: string;
+  sortOrder?: string;
+}) {
+  const sp = new URLSearchParams();
+  if (params?.page) sp.set('page', String(params.page));
+  if (params?.pageSize) sp.set('pageSize', String(params.pageSize));
+  if (params?.status) sp.set('status', params.status);
+  if (params?.visibility) sp.set('visibility', params.visibility);
+  if (params?.category) sp.set('category', params.category);
+  if (params?.search) sp.set('search', params.search);
+  if (params?.sortBy) sp.set('sortBy', params.sortBy);
+  if (params?.sortOrder) sp.set('sortOrder', params.sortOrder);
+  return request<AdminAnnouncementListResponse>('GET', `/v1/admin/announcements?${sp.toString()}`);
+}
+
+export function getAdminAnnouncement(id: string) {
+  return request<AdminAnnouncementItem>('GET', `/v1/admin/announcements/${encodeURIComponent(id)}`);
+}
+
+export interface CreateAnnouncementData {
+  title: string;
+  summary: string;
+  contentBlocks: unknown[];
+  visibility: 'public' | 'private';
+  categoryIds: string[];
+  tagIds?: string[];
+  roleIds?: string[];
+}
+
+export function createAnnouncement(data: CreateAnnouncementData) {
+  return request<AdminAnnouncementItem>('POST', '/v1/admin/announcements', data);
+}
+
+export function updateAnnouncement(id: string, data: Partial<CreateAnnouncementData>) {
+  return request<AdminAnnouncementItem>('PATCH', `/v1/admin/announcements/${encodeURIComponent(id)}`, data);
+}
+
+export function publishAnnouncement(id: string) {
+  return request<{ message: string }>('POST', `/v1/admin/announcements/${encodeURIComponent(id)}/publish`);
+}
+
+export function unpublishAnnouncement(id: string) {
+  return request<{ message: string }>('POST', `/v1/admin/announcements/${encodeURIComponent(id)}/unpublish`);
+}
+
+export function archiveAnnouncement(id: string) {
+  return request<{ message: string }>('POST', `/v1/admin/announcements/${encodeURIComponent(id)}/archive`);
+}
+
+// --- Category Admin API ---
+
+export interface AdminCategory {
+  id: string;
+  name: string;
+  slug: string;
+  description: string | null;
+  isActive: boolean;
+  sortOrder: number;
+  _count?: { announcements: number; subscriptions: number };
+}
+
+export function listAdminCategories() {
+  return request<{ categories: AdminCategory[] }>('GET', '/v1/categories');
+}
+
+export function createCategory(data: { name: string; description?: string }) {
+  return request<AdminCategory>('POST', '/v1/admin/categories', data);
+}
+
+export function updateCategory(id: string, data: { name?: string; description?: string; isActive?: boolean }) {
+  return request<AdminCategory>('PATCH', `/v1/admin/categories/${encodeURIComponent(id)}`, data);
+}
+
+export function reorderCategories(order: string[]) {
+  return request<{ message: string }>('POST', '/v1/admin/categories/reorder', { order });
+}
+
+export function deleteCategory(id: string) {
+  return request<{ message: string }>('DELETE', `/v1/admin/categories/${encodeURIComponent(id)}`);
+}
+
+// --- Tag Admin API ---
+
+export interface AdminTag {
+  id: string;
+  name: string;
+  slug: string;
+  _count?: { announcements: number };
+}
+
+export function listAdminTags() {
+  return request<{ tags: AdminTag[] }>('GET', '/v1/tags');
+}
+
+export function createTag(data: { name: string }) {
+  return request<AdminTag>('POST', '/v1/admin/tags', data);
+}
+
+export function updateTag(id: string, data: { name: string }) {
+  return request<AdminTag>('PATCH', `/v1/admin/tags/${encodeURIComponent(id)}`, data);
+}
+
+export function deleteTag(id: string) {
+  return request<{ message: string }>('DELETE', `/v1/admin/tags/${encodeURIComponent(id)}`);
+}
+
+// --- Subscription Admin API ---
+
+export interface AdminSubscriptionItem {
+  id: string;
+  categoryId: string;
+  channel: string;
+  status: string;
+  userName: string;
+  email: string;
+  phone: string | null;
+  createdAt: string;
+  categoryName: string;
+}
+
+export interface AdminSubscriptionListResponse {
+  subscriptions: AdminSubscriptionItem[];
+  pagination: {
+    page: number;
+    pageSize: number;
+    total: number;
+    totalPages: number;
+  };
+}
+
+export interface SubscriptionStatsResponse {
+  stats: {
+    categoryId: string;
+    categoryName: string;
+    emailConfirmed: number;
+    smsConfirmed: number;
+    pending: number;
+    total: number;
+  }[];
+}
+
+export function listAdminSubscriptions(params?: {
+  page?: number;
+  pageSize?: number;
+  status?: string;
+  channel?: string;
+  category?: string;
+  search?: string;
+}) {
+  const sp = new URLSearchParams();
+  if (params?.page) sp.set('page', String(params.page));
+  if (params?.pageSize) sp.set('pageSize', String(params.pageSize));
+  if (params?.status) sp.set('status', params.status);
+  if (params?.channel) sp.set('channel', params.channel);
+  if (params?.category) sp.set('category', params.category);
+  if (params?.search) sp.set('search', params.search);
+  return request<AdminSubscriptionListResponse>('GET', `/v1/admin/subscriptions?${sp.toString()}`);
+}
+
+export function getSubscriptionStats() {
+  return request<SubscriptionStatsResponse>('GET', '/v1/admin/subscriptions/stats');
+}
+
+export function adminCreateSubscription(data: { userId: string; categoryId: string; channel: string }) {
+  return request<{ message: string }>('POST', '/v1/admin/subscriptions', data);
+}
+
+export function adminDeleteSubscription(id: string) {
+  return request<{ message: string }>('DELETE', `/v1/admin/subscriptions/${encodeURIComponent(id)}`);
+}
+
+export function adminResendConfirmation(id: string) {
+  return request<{ message: string }>('POST', `/v1/admin/subscriptions/${encodeURIComponent(id)}/resend`);
+}
+
+// --- Roles API (for visibility settings) ---
+
+export interface RoleItem {
+  id: string;
+  name: string;
+  description: string | null;
+}
+
+export function listRoles() {
+  return request<{ roles: RoleItem[] }>('GET', '/v1/admin/roles');
+}

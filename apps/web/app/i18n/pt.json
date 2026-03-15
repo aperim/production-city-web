@@ -188,6 +188,52 @@
       },
       "emptyNameError": "O nome não pode estar vazio",
       "genericError": "Ocorreu um erro"
+    },
+    "announcements": {
+      "title": "Comunicados",
+      "new": "Novo comunicado",
+      "edit": "Editar comunicado",
+      "preview": "Pré-visualização",
+      "publish": "Publicar",
+      "unpublish": "Despublicar",
+      "archive": "Arquivar",
+      "saveDraft": "Guardar rascunho",
+      "autosave": {
+        "saved": "Guardado",
+        "saving": "A guardar...",
+        "unsaved": "Alterações não guardadas"
+      },
+      "empty": "Ainda não há comunicados. Crie a sua primeira atualização.",
+      "confirmArchive": "Tem a certeza que quer arquivar este comunicado? Deixará de ser visível publicamente.",
+      "confirmUnpublish": "Despublicar reverterá para rascunho. {count} entregas já foram enviadas.",
+      "warningEditPublished": "Este comunicado foi enviado a {count} subscritores. Não verão as suas alterações.",
+      "confirmPublishPrivate": "Este comunicado será enviado a {delivered} de {total} subscritores. {excluded} não têm o papel necessário.",
+      "retryFailed": "Retentar entregas falhadas",
+      "validation": {
+        "titleRequired": "O título é obrigatório",
+        "summaryRequired": "O resumo é obrigatório",
+        "contentRequired": "É necessário pelo menos um bloco de conteúdo",
+        "categoryRequired": "É necessária pelo menos uma categoria",
+        "rolesRequired": "Comunicados privados requerem pelo menos um papel"
+      }
+    },
+    "categories": {
+      "title": "Categorias",
+      "add": "Adicionar categoria",
+      "deactivate": "Desativar categoria",
+      "confirmDeactivate": "A desativação ocultará esta categoria de novas subscrições."
+    },
+    "tags": {
+      "title": "Etiquetas",
+      "add": "Adicionar etiqueta",
+      "confirmDelete": "Eliminar esta etiqueta irá removê-la de todos os comunicados. Continuar?"
+    },
+    "subscriptions": {
+      "title": "Subscrições",
+      "subscribeUser": "Subscrever utilizador",
+      "confirmRemove": "Remover esta subscrição?",
+      "resendConfirmation": "Reenviar confirmação",
+      "rateLimitWarning": "Limites de administrador: {remaining} subscrições restantes nesta hora"
     }
   },
   "common": {

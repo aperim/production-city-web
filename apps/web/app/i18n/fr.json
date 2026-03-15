@@ -188,6 +188,52 @@
       },
       "emptyNameError": "Le nom ne peut pas être vide",
       "genericError": "Une erreur est survenue"
+    },
+    "announcements": {
+      "title": "Annonces",
+      "new": "Nouvelle annonce",
+      "edit": "Modifier l'annonce",
+      "preview": "Aperçu",
+      "publish": "Publier",
+      "unpublish": "Dépublier",
+      "archive": "Archiver",
+      "saveDraft": "Sauvegarder le brouillon",
+      "autosave": {
+        "saved": "Sauvegardé",
+        "saving": "Sauvegarde en cours...",
+        "unsaved": "Modifications non sauvegardées"
+      },
+      "empty": "Aucune annonce pour l'instant. Créez votre première mise à jour.",
+      "confirmArchive": "Êtes-vous sûr de vouloir archiver cette annonce ? Elle ne sera plus visible publiquement.",
+      "confirmUnpublish": "La dépublication reviendra au brouillon. {count} livraisons ont déjà été envoyées.",
+      "warningEditPublished": "Cette annonce a été envoyée à {count} abonnés. Ils ne verront pas vos modifications.",
+      "confirmPublishPrivate": "Cette annonce sera envoyée à {delivered} des {total} abonnés. {excluded} ne disposent pas du rôle requis.",
+      "retryFailed": "Réessayer les livraisons échouées",
+      "validation": {
+        "titleRequired": "Le titre est requis",
+        "summaryRequired": "Le résumé est requis",
+        "contentRequired": "Au moins un bloc de contenu est requis",
+        "categoryRequired": "Au moins une catégorie est requise",
+        "rolesRequired": "Les annonces privées nécessitent au moins un rôle"
+      }
+    },
+    "categories": {
+      "title": "Catégories",
+      "add": "Ajouter une catégorie",
+      "deactivate": "Désactiver la catégorie",
+      "confirmDeactivate": "La désactivation masquera cette catégorie des nouveaux abonnements."
+    },
+    "tags": {
+      "title": "Étiquettes",
+      "add": "Ajouter une étiquette",
+      "confirmDelete": "Supprimer cette étiquette la retirera de toutes les annonces. Continuer ?"
+    },
+    "subscriptions": {
+      "title": "Abonnements",
+      "subscribeUser": "S'abonner utilisateur",
+      "confirmRemove": "Supprimer cet abonnement ?",
+      "resendConfirmation": "Renvoyer la confirmation",
+      "rateLimitWarning": "Limites d'administration : {remaining} abonnements restants cette heure"
     }
   },
   "common": {
