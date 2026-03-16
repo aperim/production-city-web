@@ -293,6 +293,14 @@ export async function handleMagicLinkRequest(
   const shouldSend = !suppressed && (user !== null || pendingInvitation !== null);
   const purpose = "login";
 
+  if (!shouldSend) {
+    console.warn(JSON.stringify({
+      event: "email.magic_link.skipped",
+      reason: suppressed ? "email_suppressed" : "no_user_or_invitation",
+      email: email.replace(/^(.{1,2}).*(@.*)$/, "$1***$2"),
+    }));
+  }
+
   // Create MagicLink record regardless (for rate limiting tracking)
   const expiresAt = new Date(Date.now() + 15 * 60 * 1000); // 15 minutes
 

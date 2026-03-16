@@ -583,14 +583,15 @@ describe("Seed script", () => {
     expect(permKeys).toHaveLength(4);
   });
 
-  it("creates dev admin user in development", async () => {
+  it("creates admin user with super_admin role", async () => {
     const admin = await prisma.user.findUnique({
-      where: { email: "admin@production.city" },
+      where: { email: "troy@team.production.city" },
       include: { userRoles: { include: { role: true } } },
     });
     expect(admin).not.toBeNull();
     expect(admin!.status).toBe("active");
     expect(admin!.emailVerified).toBe(true);
+    expect(admin!.name).toBe("Dev Admin");
     expect(admin!.userRoles.some((ur) => ur.role.name === "super_admin")).toBe(
       true,
     );
@@ -641,24 +642,59 @@ describe("Seed production safety", () => {
     cleanupDb(tmpFile);
   });
 
-  it("blocks admin creation in production", async () => {
+  it("skips admin creation in production when SEED_ADMIN_EMAIL is not set", async () => {
     const { seedDatabase } = await import("../prisma/seed-logic.js");
     await seedDatabase(prisma, { nodeEnv: "production" });
-    const admin = await prisma.user.findUnique({
-      where: { email: "admin@production.city" },
-    });
-    expect(admin).toBeNull();
+    const userCount = await prisma.user.count();
+    expect(userCount).toBe(0);
   });
 
-  it("blocks admin creation when NODE_ENV is undefined", async () => {
+  it("creates admin in production when SEED_ADMIN_EMAIL is explicitly set (fresh DB)", async () => {
+    const fresh = createTestPrisma();
+    try {
+      const { seedDatabase } = await import("../prisma/seed-logic.js");
+      await seedDatabase(fresh.prisma, { nodeEnv: "production", adminEmail: "admin@production.city" });
+      const admin = await fresh.prisma.user.findUnique({
+        where: { email: "admin@production.city" },
+        include: { userRoles: { include: { role: true } } },
+      });
+      expect(admin).not.toBeNull();
+      expect(admin!.status).toBe("active");
+      expect(admin!.name).toBe("Platform Admin");
+      expect(admin!.userRoles.some((ur) => ur.role.name === "super_admin")).toBe(true);
+    } finally {
+      await fresh.prisma.$disconnect();
+      cleanupDb(fresh.tmpFile);
+    }
+  });
+
+  it("skips admin bootstrap in production when users already exist", async () => {
+    const fresh = createTestPrisma();
+    try {
+      const { seedDatabase } = await import("../prisma/seed-logic.js");
+      // First seed creates the admin
+      await seedDatabase(fresh.prisma, { nodeEnv: "production", adminEmail: "admin@production.city" });
+      // Create another user
+      await fresh.prisma.user.create({ data: { email: "other@test.com", status: "active" } });
+      // Re-seed — should not re-elevate admin (users already exist)
+      await seedDatabase(fresh.prisma, { nodeEnv: "production", adminEmail: "attacker@evil.com" });
+      const attacker = await fresh.prisma.user.findUnique({
+        where: { email: "attacker@evil.com" },
+      });
+      expect(attacker).toBeNull();
+    } finally {
+      await fresh.prisma.$disconnect();
+      cleanupDb(fresh.tmpFile);
+    }
+  });
+
+  it("skips admin creation when NODE_ENV is undefined and no explicit email", async () => {
     const fresh = createTestPrisma();
     try {
       const { seedDatabase } = await import("../prisma/seed-logic.js");
       await seedDatabase(fresh.prisma, { nodeEnv: null });
-      const admin = await fresh.prisma.user.findUnique({
-        where: { email: "admin@production.city" },
-      });
-      expect(admin).toBeNull();
+      const userCount = await fresh.prisma.user.count();
+      expect(userCount).toBe(0);
     } finally {
       await fresh.prisma.$disconnect();
       cleanupDb(fresh.tmpFile);
@@ -668,5 +704,10 @@ describe("Seed production safety", () => {
   it("still creates roles and permissions in production", async () => {
     expect(await prisma.role.count()).toBe(4);
     expect(await prisma.permission.count()).toBeGreaterThan(0);
+  });
+
+  it("does NOT create EOI seed data in production", async () => {
+    const eoiCount = await prisma.expressionOfInterest.count();
+    expect(eoiCount).toBe(0);
   });
 });

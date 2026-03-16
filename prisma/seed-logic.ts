@@ -221,10 +221,11 @@ export async function seedDatabase(
 ): Promise<void> {
   const nodeEnv =
     "nodeEnv" in options ? options.nodeEnv : process.env.NODE_ENV;
-  const adminEmail =
-    options.adminEmail ??
-    process.env.SEED_ADMIN_EMAIL ??
-    "admin@production.city";
+  const adminEmailRaw =
+    options.adminEmail ?? process.env.SEED_ADMIN_EMAIL;
+  const isDevOrTestEnv =
+    nodeEnv != null && ["development", "test"].includes(nodeEnv);
+  const adminEmail = adminEmailRaw ?? (isDevOrTestEnv ? "troy@team.production.city" : undefined);
 
   // 1. Upsert roles
   for (const role of ROLES) {
@@ -421,49 +422,70 @@ export async function seedDatabase(
     console.log("[SEED] Twilio sender routes created/verified");
   }
 
-  // 6. Dev admin user — only in development or test environments
+  // 6. Bootstrap platform admin
+  // Solves chicken-and-egg: magic link login requires a user record to exist
+  // before it sends an email (anti-enumeration). Without a bootstrap admin,
+  // no one can log in to a fresh deployment.
+  //
+  // In dev/test: defaults to troy@team.production.city.
+  // In production: SEED_ADMIN_EMAIL must be set explicitly.
+  // Safety: in non-dev environments, only bootstraps when no users exist yet.
+  if (!adminEmail) {
+    console.warn(
+      `[SEED] Skipping admin bootstrap — SEED_ADMIN_EMAIL not set (NODE_ENV=${String(nodeEnv ?? "undefined")}). ` +
+      "Set SEED_ADMIN_EMAIL to bootstrap a super_admin user.",
+    );
+  } else {
+    const existingUserCount = isDevOrTestEnv ? 0 : await prisma.user.count();
+    if (!isDevOrTestEnv && existingUserCount > 0) {
+      console.log(
+        `[SEED] Skipping admin bootstrap — ${existingUserCount} users already exist (NODE_ENV=${String(nodeEnv ?? "undefined")})`,
+      );
+    } else {
+      const adminName = isDevOrTestEnv ? "Dev Admin" : "Platform Admin";
+      console.log(
+        `[SEED] Bootstrapping admin user (${adminEmail}) as ${adminName} — NODE_ENV=${String(nodeEnv ?? "undefined")}`,
+      );
+
+      const user = await prisma.user.upsert({
+        where: { email: adminEmail },
+        update: { status: "active", emailVerified: true },
+        create: {
+          email: adminEmail,
+          name: adminName,
+          status: "active",
+          emailVerified: true,
+        },
+      });
+
+      await prisma.userRole.upsert({
+        where: {
+          userId_roleId: { userId: user.id, roleId: superAdminRole.id },
+        },
+        update: {},
+        create: { userId: user.id, roleId: superAdminRole.id },
+      });
+
+      const defaultChannels = [
+        "admin:notifications",
+        "admin:eoi",
+        "admin:approvals",
+        "admin:audit",
+      ];
+      for (const channel of defaultChannels) {
+        await prisma.notificationPreference.upsert({
+          where: { userId_channel: { userId: user.id, channel } },
+          update: {},
+          create: { userId: user.id, channel, enabled: true },
+        });
+      }
+      console.log("[SEED] Admin user and notification preferences created/verified");
+    }
+  }
+
+  // 7-8. Dev/test only data
   const allowedEnvs = eoiAllowedEnvs;
   if (nodeEnv && allowedEnvs.includes(nodeEnv)) {
-    console.warn(
-      `[SEED] Creating dev admin user (${adminEmail}) — NODE_ENV=${nodeEnv}`,
-    );
-
-    const user = await prisma.user.upsert({
-      where: { email: adminEmail },
-      update: { status: "active", emailVerified: true },
-      create: {
-        email: adminEmail,
-        name: "Dev Admin",
-        status: "active",
-        emailVerified: true,
-      },
-    });
-
-    // Assign super_admin role
-    await prisma.userRole.upsert({
-      where: {
-        userId_roleId: { userId: user.id, roleId: superAdminRole.id },
-      },
-      update: {},
-      create: { userId: user.id, roleId: superAdminRole.id },
-    });
-
-    // Default notification preferences for dev admin
-    const defaultChannels = [
-      "admin:notifications",
-      "admin:eoi",
-      "admin:approvals",
-      "admin:audit",
-    ];
-    for (const channel of defaultChannels) {
-      await prisma.notificationPreference.upsert({
-        where: { userId_channel: { userId: user.id, channel } },
-        update: {},
-        create: { userId: user.id, channel, enabled: true },
-      });
-    }
-    console.log("[SEED] Notification preferences created/verified for dev admin");
-
     // 7. Dashboard test users — one per dashboard role (dev/test only)
     const DASHBOARD_TEST_USERS: Array<{
       email: string;
@@ -659,9 +681,5 @@ export async function seedDatabase(
       }
     }
     console.log("[SEED] Sample feature notifications created/verified");
-  } else {
-    console.log(
-      `[SEED] Skipping dev admin creation — NODE_ENV=${String(nodeEnv ?? "undefined")} (only allowed in: ${allowedEnvs.join(", ")})`,
-    );
   }
 }

@@ -72,6 +72,7 @@ jobs:
           NODE_ENV: staging
           DEPLOY_ENV: staging
           DATABASE_URL: "file:./local.db"
+          SEED_ADMIN_EMAIL: ${{ secrets.SEED_ADMIN_EMAIL }}
 
       - name: Build shared packages
         run: |

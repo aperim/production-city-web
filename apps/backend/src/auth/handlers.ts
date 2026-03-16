@@ -196,6 +196,14 @@ authApp.openapi(magicLinkRoute, async (c) => {
     const hmacSecret = c.env.HMAC_SECRET || "dev-hmac-secret-do-not-use-in-production";
     const postmarkApiToken = c.env.POSTMARK_API_TOKEN || "";
 
+    if (!postmarkApiToken) {
+      console.error(JSON.stringify({
+        event: "config.missing",
+        key: "POSTMARK_API_TOKEN",
+        message: "Email sending will fail — POSTMARK_API_TOKEN is not configured",
+      }));
+    }
+
     const result = await handleMagicLinkRequest(
       { prisma, postmarkApiToken, hmacSecret, baseUrl },
       { email, ipAddress, userAgent },
