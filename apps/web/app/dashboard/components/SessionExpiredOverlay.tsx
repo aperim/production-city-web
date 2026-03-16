@@ -16,11 +16,19 @@ export interface SessionExpiredOverlayProps {
   returnUrl: string;
 }
 
+/** Only allow safe relative URLs — prevent open redirects */
+function sanitizeReturnUrl(url: string): string {
+  // Must start with / and must NOT start with // (protocol-relative)
+  if (url.startsWith("/") && !url.startsWith("//")) return url;
+  return "/dashboard";
+}
+
 export function SessionExpiredOverlay({
   message,
   returnUrl,
 }: SessionExpiredOverlayProps) {
-  const loginUrl = `/login?returnUrl=${encodeURIComponent(returnUrl)}`;
+  const safeReturnUrl = sanitizeReturnUrl(returnUrl);
+  const loginUrl = `/login?returnUrl=${encodeURIComponent(safeReturnUrl)}`;
 
   return (
     <div

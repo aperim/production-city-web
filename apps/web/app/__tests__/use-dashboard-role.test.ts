@@ -38,6 +38,14 @@ describe("resolveDashboardRole", () => {
     expect(resolveDashboardRole(["client", "partner"])).toBe("partner");
   });
 
+  it("maps super_admin to admin", () => {
+    expect(resolveDashboardRole(["super_admin"])).toBe("admin");
+  });
+
+  it("maps super_admin correctly when combined with other roles", () => {
+    expect(resolveDashboardRole(["staff", "super_admin"])).toBe("admin");
+  });
+
   it("handles all 10 roles individually", () => {
     const allRoles = [
       "admin", "executive", "government", "investor", "partner",

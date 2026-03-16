@@ -220,10 +220,8 @@ function DashboardHeaderActions() {
 
 /** Inner layout assembling the DashboardShell with SidebarNav and breadcrumbs */
 function DashboardInner({ children }: { children: ReactNode }) {
-  const sessionMonitor = useSessionMonitor();
-
   // Issue #354: Revalidate registry on tab focus (Phase 1)
-  useRegistryRevalidation({ enabled: !sessionMonitor.expired });
+  useRegistryRevalidation();
 
   const [isCollapsed, setIsCollapsed] = useState(false);
   const [currentPath, setCurrentPath] = useState("/dashboard");
@@ -272,13 +270,6 @@ function DashboardInner({ children }: { children: ReactNode }) {
 
   return (
     <RegistryProvider visibleFeatureIds={visibleFeatureIds} currentPhase={DEFAULT_PHASE}>
-      {/* Issue #353: session expired overlay */}
-      {sessionMonitor.expired && (
-        <SessionExpiredOverlay
-          message={sessionMonitor.message}
-          returnUrl={sessionMonitor.returnUrl}
-        />
-      )}
       {/* Issue #352: noindex meta tag for all dashboard pages */}
       <meta name="robots" content="noindex, nofollow" />
       <DashboardShellTemplate
@@ -312,15 +303,45 @@ function DashboardInner({ children }: { children: ReactNode }) {
  *
  * Unauthenticated users are redirected to /login by ProtectedRoute.
  */
+/**
+ * Session-aware protected route wrapper.
+ * Uses useSessionMonitor to detect 401s and show the session-expired overlay
+ * instead of hard-redirecting to /login (which would lose the current URL).
+ */
+function SessionAwareProtectedRoute({ children }: { children: ReactNode }) {
+  const sessionMonitor = useSessionMonitor();
+
+  return (
+    <ProtectedRoute
+      sessionExpiredFallback={
+        sessionMonitor.expired ? (
+          <SessionExpiredOverlay
+            message={sessionMonitor.message}
+            returnUrl={sessionMonitor.returnUrl}
+          />
+        ) : undefined
+      }
+    >
+      {children}
+    </ProtectedRoute>
+  );
+}
+
+/**
+ * Dashboard layout — provides auth, WebSocket, i18n, and the registry-driven shell.
+ *
+ * Unauthenticated users are redirected to /login by ProtectedRoute.
+ * Session expiry (401) shows an overlay instead of redirecting.
+ */
 export default function DashboardLayout({ children }: { children: ReactNode }) {
   return (
     <I18nProvider>
       <AuthProvider>
-        <ProtectedRoute>
+        <SessionAwareProtectedRoute>
           <WebSocketProvider>
             <DashboardInner>{children}</DashboardInner>
           </WebSocketProvider>
-        </ProtectedRoute>
+        </SessionAwareProtectedRoute>
       </AuthProvider>
     </I18nProvider>
   );

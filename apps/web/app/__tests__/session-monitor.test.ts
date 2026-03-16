@@ -46,6 +46,29 @@ describe("SessionExpiredOverlay", () => {
     expect(html).toContain('aria-modal="true"');
   });
 
+  it("sanitizes protocol-relative return URLs (open redirect prevention)", () => {
+    const html = renderToString(
+      createElement(SessionExpiredOverlay, {
+        message: "Test",
+        returnUrl: "//evil.com",
+      }),
+    );
+    // Should NOT contain //evil.com in the href
+    expect(html).not.toContain(encodeURIComponent("//evil.com"));
+    // Should fall back to /dashboard
+    expect(html).toContain(encodeURIComponent("/dashboard"));
+  });
+
+  it("allows safe relative return URLs", () => {
+    const html = renderToString(
+      createElement(SessionExpiredOverlay, {
+        message: "Test",
+        returnUrl: "/dashboard/admin/audit/logs?page=2",
+      }),
+    );
+    expect(html).toContain(encodeURIComponent("/dashboard/admin/audit/logs?page=2"));
+  });
+
   it("applies backdrop blur styling", () => {
     const html = renderToString(
       createElement(SessionExpiredOverlay, {
