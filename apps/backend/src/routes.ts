@@ -6,6 +6,7 @@ import type { OpenAPIHono } from "@hono/zod-openapi";
 import { authApp } from "./auth/handlers.js";
 import { csrfMiddleware } from "./auth/csrf.js";
 import { usersApp } from "./admin/users.js";
+import { statsApp } from "./admin/stats.js";
 import { invitationsApp } from "./admin/invitations.js";
 import { approvalsApp } from "./admin/approvals.js";
 import { rolesApp } from "./admin/roles.js";
@@ -39,6 +40,7 @@ export function mountRoutes(app: OpenAPIHono<{ Bindings: Record<string, unknown>
   app.route("/", authApp);
 
   // Admin routes
+  app.route("/", statsApp);
   app.route("/", usersApp);
   app.route("/", invitationsApp);
   app.route("/", approvalsApp);

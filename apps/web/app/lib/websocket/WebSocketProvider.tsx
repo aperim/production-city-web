@@ -127,7 +127,10 @@ export function WebSocketProvider({ children }: { children: ReactNode }) {
     setState("connecting");
 
     const protocol = window.location.protocol === "https:" ? "wss:" : "ws:";
-    const ws = new WebSocket(`${protocol}//${window.location.host}/v1/ws`);
+    const wsHost = window.location.hostname === "production.city"
+      ? "api.production.city"
+      : window.location.host;
+    const ws = new WebSocket(`${protocol}//${wsHost}/v1/ws`);
 
     ws.onopen = () => {
       if (!mountedRef.current) {
