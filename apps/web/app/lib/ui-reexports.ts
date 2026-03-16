@@ -78,6 +78,9 @@ export type { SubscriptionManagerProps } from "../../../../packages/ui/src/organ
 export { ContentBlockEditor } from "../../../../packages/ui/src/organisms/ContentBlockEditor/ContentBlockEditor";
 export { AdminAnnouncementTable } from "../../../../packages/ui/src/organisms/AdminAnnouncementTable/AdminAnnouncementTable";
 export { AdminSubscriptionTable } from "../../../../packages/ui/src/organisms/AdminSubscriptionTable/AdminSubscriptionTable";
+export { SidebarNav } from "../../../../packages/ui/src/organisms/SidebarNav/SidebarNav";
+export type { SidebarNavProps } from "../../../../packages/ui/src/organisms/SidebarNav/SidebarNav";
+export { CommandBar } from "../../../../packages/ui/src/organisms/CommandBar/CommandBar";
 export * from "../../../../packages/ui/src/templates";
 export * from "../../../../packages/ui/src/pages";
 export * from "../../../../packages/ui/src/foundations";
