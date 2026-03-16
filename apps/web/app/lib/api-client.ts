@@ -147,6 +147,10 @@ async function request<T>(
   const res = await fetch(url, init);
 
   if (res.ok) {
+    // Handle 204 No Content (e.g. DELETE responses)
+    if (res.status === 204) {
+      return { ok: true, data: undefined as T, status: res.status };
+    }
     const data = await res.json() as T;
     return { ok: true, data, status: res.status };
   }

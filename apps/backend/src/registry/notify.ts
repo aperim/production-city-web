@@ -81,24 +81,11 @@ featureNotifyApp.openapi(subscribeRoute, async (c) => {
 
   const prisma = await createPrismaClient(c.env.DB);
   try {
-    // Upsert — idempotent subscription
-    const existing = await prisma.featureNotification.findUnique({
+    // Atomic upsert — idempotent and race-safe
+    const notification = await prisma.featureNotification.upsert({
       where: { userId_featureId: { userId: auth.user.id, featureId } },
-    });
-
-    if (existing) {
-      return c.json(
-        {
-          id: existing.id,
-          featureId: existing.featureId,
-          createdAt: existing.createdAt.toISOString(),
-        },
-        201,
-      );
-    }
-
-    const notification = await prisma.featureNotification.create({
-      data: { userId: auth.user.id, featureId },
+      update: {},
+      create: { userId: auth.user.id, featureId },
     });
 
     return c.json(

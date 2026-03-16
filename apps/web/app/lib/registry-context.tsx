@@ -79,19 +79,22 @@ export function RegistryProvider({
   const retryCountRef = useRef(0);
   const lastFetchRef = useRef(0);
   const fetchingRef = useRef(false);
+  const retryTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const errorRef = useRef<Error | null>(null);
 
   const fetchRegistry = useCallback(async () => {
     // Prevent concurrent fetches
     if (fetchingRef.current) return;
 
     // Prevent refetch within cache window
-    if (Date.now() - lastFetchRef.current < CACHE_DURATION_MS && !error) {
+    if (Date.now() - lastFetchRef.current < CACHE_DURATION_MS && !errorRef.current) {
       return;
     }
 
     fetchingRef.current = true;
     setIsLoading(true);
     setError(null);
+    errorRef.current = null;
 
     try {
       const res = await fetch(`${API_BASE}/v1/registry/visible`, {
@@ -100,9 +103,10 @@ export function RegistryProvider({
       });
 
       if (res.status === 401) {
-        const redirect = encodeURIComponent(
-          window.location.pathname + window.location.search,
-        );
+        // Normalize redirect to local path only (prevent open redirect)
+        const rawPath = window.location.pathname + window.location.search;
+        const localPath = rawPath.replace(/^\/\/+/, "/");
+        const redirect = encodeURIComponent(localPath);
         window.location.href = `/sign-in?redirect=${redirect}`;
         return;
       }
@@ -141,22 +145,27 @@ export function RegistryProvider({
     } catch (err) {
       // Fail closed: clear cached visible features
       setVisibleFeatures(new Set());
-      setError(err instanceof Error ? err : new Error(String(err)));
+      const error = err instanceof Error ? err : new Error(String(err));
+      setError(error);
+      errorRef.current = error;
 
       // Exponential backoff retry (max 3 attempts)
       if (retryCountRef.current < 3) {
         const delay = Math.pow(2, retryCountRef.current) * 1000;
         retryCountRef.current++;
-        setTimeout(fetchRegistry, delay);
+        retryTimerRef.current = setTimeout(fetchRegistry, delay);
       }
     } finally {
       setIsLoading(false);
       fetchingRef.current = false;
     }
-  }, [buildRegistryVersion, manifestFeatureIds, error]);
+  }, [buildRegistryVersion, manifestFeatureIds]);
 
   useEffect(() => {
     fetchRegistry();
+    return () => {
+      if (retryTimerRef.current) clearTimeout(retryTimerRef.current);
+    };
   }, [fetchRegistry]);
 
   const retry = useCallback(() => {
