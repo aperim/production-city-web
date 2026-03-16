@@ -199,7 +199,7 @@ function DashboardShell({ children }: { children: ReactNode }) {
 
   sidebarItems.push({
     id: "dashboard",
-    label: "Dashboard",
+    label: t("nav.dashboard"),
     href: "/dashboard",
     active: activePath === "/dashboard",
   });
@@ -207,7 +207,7 @@ function DashboardShell({ children }: { children: ReactNode }) {
   if (hasPermission("user:read")) {
     sidebarItems.push({
       id: "users",
-      label: "Users",
+      label: t("nav.users"),
       href: "/dashboard/users",
       active: activePath.startsWith("/dashboard/users"),
     });
@@ -216,7 +216,7 @@ function DashboardShell({ children }: { children: ReactNode }) {
   if (hasPermission("invitation:read")) {
     sidebarItems.push({
       id: "invitations",
-      label: "Invitations",
+      label: t("nav.invitations"),
       href: "/dashboard/invitations",
       active: activePath.startsWith("/dashboard/invitations"),
     });
@@ -225,7 +225,7 @@ function DashboardShell({ children }: { children: ReactNode }) {
   if (hasPermission("user:update")) {
     sidebarItems.push({
       id: "approvals",
-      label: "Pending Approvals",
+      label: t("nav.approvals"),
       href: "/dashboard/approvals",
       active: activePath.startsWith("/dashboard/approvals"),
     });
@@ -234,19 +234,19 @@ function DashboardShell({ children }: { children: ReactNode }) {
   if (hasPermission("announcement:read_admin")) {
     sidebarItems.push({
       id: "announcements",
-      label: "Announcements",
+      label: t("nav.updates"),
       href: "/dashboard/announcements",
       active: activePath.startsWith("/dashboard/announcements"),
     });
     sidebarItems.push({
       id: "categories",
-      label: "Categories",
+      label: t("admin.categories.title"),
       href: "/dashboard/categories",
       active: activePath.startsWith("/dashboard/categories"),
     });
     sidebarItems.push({
       id: "tags",
-      label: "Tags",
+      label: t("admin.tags.title"),
       href: "/dashboard/tags",
       active: activePath.startsWith("/dashboard/tags"),
     });
@@ -255,7 +255,7 @@ function DashboardShell({ children }: { children: ReactNode }) {
   if (hasPermission("subscription:manage")) {
     sidebarItems.push({
       id: "subscriptions",
-      label: "Subscriptions",
+      label: t("admin.subscriptions.title"),
       href: "/dashboard/subscriptions-admin",
       active: activePath.startsWith("/dashboard/subscriptions-admin"),
     });
@@ -264,13 +264,13 @@ function DashboardShell({ children }: { children: ReactNode }) {
   if (hasPermission("audit:read")) {
     sidebarItems.push({
       id: "eoi",
-      label: "Expressions of Interest",
+      label: t("admin.eoi.title"),
       href: "/dashboard/eoi",
       active: activePath.startsWith("/dashboard/eoi"),
     });
     sidebarItems.push({
       id: "audit-log",
-      label: "Audit Log",
+      label: t("nav.auditLog"),
       href: "/dashboard/audit-log",
       active: activePath.startsWith("/dashboard/audit-log"),
     });
@@ -297,7 +297,7 @@ function DashboardShell({ children }: { children: ReactNode }) {
                 onClick={logout}
                 className="text-muted-foreground hover:text-foreground transition-colors duration-150"
               >
-                Sign out
+                {t("auth.logout.button")}
               </button>
             </div>
             <DashboardStatusBar />
@@ -305,7 +305,7 @@ function DashboardShell({ children }: { children: ReactNode }) {
         ) : undefined
       }
       breadcrumbs={breadcrumbs.length > 0 ? breadcrumbs : undefined}
-      skipNavLabel={t("common.skipToContent")}
+      skipNavLabel={t("dashboard.skip_to_content")}
       headerActions={<DashboardHeaderActions />}
     >
       {children}

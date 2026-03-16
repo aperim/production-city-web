@@ -1150,5 +1150,31 @@
       "confirm_unsubscribe": "আপনি কি নিশ্চিত যে আপনি {channel} এর মাধ্যমে {categoryName} থেকে আনসাবস্ক্রাইব করতে চান?",
       "digest_coming_soon": "সাপ্তাহিক সারসংক্ষেপ — শীঘ্রই আসছে"
     }
+  },
+  "dashboard": {
+    "sidebar": {
+      "workspace": "আপনার কর্মস্থান",
+      "company": "কোম্পানি",
+      "development": "ক্যাম্পাস উন্নয়ন",
+      "production": "প্রোডাকশন",
+      "people": "মানুষ",
+      "business": "ব্যবসা",
+      "operations": "অপারেশন",
+      "insights": "অন্তর্দৃষ্টি",
+      "system": "সিস্টেম"
+    },
+    "status": {
+      "active": "সক্রিয়",
+      "coming_soon": "শীঘ্রই আসছে",
+      "planned": "পরিকল্পিত",
+      "deprecated": "অবচিত"
+    },
+    "notify_me": "লঞ্চ হলে জানান",
+    "subscribed": "সাবস্ক্রাইব করা হয়েছে",
+    "skip_to_content": "মূল বিষয়বস্তুতে যান",
+    "search_placeholder": "ফিচার খুঁজুন...",
+    "breadcrumb_home": "ড্যাশবোর্ড",
+    "no_results": "কোনো ফিচার পাওয়া যায়নি",
+    "recent": "সাম্প্রতিক"
   }
 }

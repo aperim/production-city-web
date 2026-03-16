@@ -1150,5 +1150,31 @@
       "confirm_unsubscribe": "您确定要取消通过 {channel} 订阅 {categoryName} 吗？",
       "digest_coming_soon": "每周摘要 — 即将推出"
     }
+  },
+  "dashboard": {
+    "sidebar": {
+      "workspace": "您的工作区",
+      "company": "公司",
+      "development": "校区开发",
+      "production": "制作",
+      "people": "人员",
+      "business": "商务",
+      "operations": "运营",
+      "insights": "洞察",
+      "system": "系统"
+    },
+    "status": {
+      "active": "已启用",
+      "coming_soon": "即将推出",
+      "planned": "已规划",
+      "deprecated": "已弃用"
+    },
+    "notify_me": "上线时通知我",
+    "subscribed": "已订阅",
+    "skip_to_content": "跳至主要内容",
+    "search_placeholder": "搜索功能...",
+    "breadcrumb_home": "仪表板",
+    "no_results": "未找到功能",
+    "recent": "最近"
   }
 }

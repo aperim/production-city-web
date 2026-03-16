@@ -1150,5 +1150,31 @@
       "confirm_unsubscribe": "{channel}による{categoryName}の購読を解除してもよろしいですか？",
       "digest_coming_soon": "週間ダイジェスト — 近日公開"
     }
+  },
+  "dashboard": {
+    "sidebar": {
+      "workspace": "ワークスペース",
+      "company": "会社",
+      "development": "キャンパス開発",
+      "production": "プロダクション",
+      "people": "人材",
+      "business": "ビジネス",
+      "operations": "オペレーション",
+      "insights": "インサイト",
+      "system": "システム"
+    },
+    "status": {
+      "active": "アクティブ",
+      "coming_soon": "近日公開",
+      "planned": "計画中",
+      "deprecated": "非推奨"
+    },
+    "notify_me": "ローンチ時に通知する",
+    "subscribed": "登録済み",
+    "skip_to_content": "メインコンテンツへスキップ",
+    "search_placeholder": "機能を検索...",
+    "breadcrumb_home": "ダッシュボード",
+    "no_results": "機能が見つかりません",
+    "recent": "最近"
   }
 }

@@ -593,7 +593,7 @@ describe("WCAG 2.4.1 — SkipNavLink atom", () => {
 describe("WCAG — Dashboard layout accessibility", () => {
   it("dashboard layout uses i18n skipToContent label", () => {
     const layout = readFile("dashboard/layout.tsx");
-    expect(layout).toContain('t("common.skipToContent")');
+    expect(layout).toContain('t("dashboard.skip_to_content")');
     expect(layout).toContain("skipNavLabel=");
   });
 

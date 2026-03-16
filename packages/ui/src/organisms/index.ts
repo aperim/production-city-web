@@ -134,3 +134,7 @@ export { AdminAnnouncementTable } from './AdminAnnouncementTable/AdminAnnounceme
 export type { AdminAnnouncementTableProps } from './AdminAnnouncementTable/AdminAnnouncementTable';
 export { AdminSubscriptionTable, maskPhone } from './AdminSubscriptionTable/AdminSubscriptionTable';
 export type { AdminSubscriptionTableProps } from './AdminSubscriptionTable/AdminSubscriptionTable';
+
+// Issue #342: Dashboard CommandBar
+export { CommandBar } from './CommandBar/CommandBar';
+export type { CommandBarProps, CommandBarFeature } from './CommandBar/CommandBar';
