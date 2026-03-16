@@ -19,3 +19,7 @@ export type { DashboardShellProps } from "./DashboardShell/DashboardShell";
 // Issue #339: Coming Soon Page Template
 export { ComingSoonPage } from "./ComingSoonPage/ComingSoonPage";
 export type { ComingSoonPageProps, ComingSoonFeature, RelatedFeature, NotifyMeState } from "./ComingSoonPage/ComingSoonPage";
+
+// Issue #348: Role Dashboard Template
+export { RoleDashboard } from "./RoleDashboard/RoleDashboard";
+export type { RoleDashboardProps, DashboardRole, KpiCard, QuickAction, ActivityEntry } from "./RoleDashboard/RoleDashboard";
