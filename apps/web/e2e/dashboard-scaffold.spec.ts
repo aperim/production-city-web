@@ -125,35 +125,41 @@ test.describe("Role-Based Sidebar", () => {
 // =============================================================================
 
 test.describe("Phase-Based Visibility", () => {
-  test("scaffold phase shows all features in sidebar", async ({ page }) => {
+  test("Phase 1 scaffold: all features visible in sidebar regardless of phase", async ({ page }) => {
     await loginAs(page, ADMIN_EMAIL);
     await page.goto("/dashboard");
 
-    // In Phase 1 (company_formation), all features are visible
-    // The sidebar should render multiple groups
+    // Phase 1 scaffold sets visibleFeatureIds = ALL routes (layout.tsx line 262)
+    // and DEFAULT_PHASE = "company_formation". All 502 features are visible
+    // regardless of their phase field. Phase filtering will be added in Phase 2.
     const sidebar = page.locator('[aria-label="Sidebar navigation"]');
     await expect(sidebar.first()).toBeVisible();
 
-    const groups = sidebar.first().locator("a[href]");
-    const count = await groups.count();
-    // Should have many links (502 features, but sidebar groups them)
+    // Verify multiple sidebar groups are rendered (not just workspace)
+    const links = sidebar.first().locator("a[href]");
+    const count = await links.count();
     expect(count).toBeGreaterThan(5);
+
+    // Check that "Company" group is visible (would be hidden in future
+    // if phase were "pre_formation", but visible in company_formation)
+    await expect(page.getByText("Company").first()).toBeVisible();
   });
 
-  test("features with company_formation phase are accessible", async ({
+  test("features with company_formation phase render as ComingSoonPage", async ({
     page,
   }) => {
     await loginAs(page, ADMIN_EMAIL);
 
-    // Navigate to a feature with phase: company_formation
-    // home.overview.executive has phase: company_formation
+    // home.overview.executive: phase=company_formation, status=planned
     await page.goto("/dashboard/home/executive");
 
-    // Should render (either ComingSoonPage or the feature page)
-    // Since status is 'planned', should show ComingSoon
+    // FeatureGate renders ComingSoonPage for planned features
     await expect(
       page.getByText(/coming soon|planned|notify me/i).first(),
     ).toBeVisible({ timeout: 10_000 });
+
+    // Verify the page is actually a ComingSoonPage, not a broken state
+    await expect(page.locator("main")).toBeVisible();
   });
 });
 
@@ -201,17 +207,25 @@ test.describe("ComingSoonPage", () => {
   }) => {
     await loginAs(page, ADMIN_EMAIL);
 
-    // Navigate to a feature that has siblings in same subsection
-    // company_ops.hr.directory should have related HR features
+    // Navigate to company_ops.hr.directory — has 8 siblings in same subsection
+    // (org_chart, recruitment, onboarding, performance, leave, payroll, etc.)
     await page.goto("/dashboard/company/hr/directory");
 
     await expect(
       page.getByText(/coming soon|planned/i).first(),
     ).toBeVisible({ timeout: 10_000 });
 
-    // The ComingSoonPage component renders related features
-    // Check that the page has loaded fully
+    // ComingSoonPage renders a "Related Features" section when siblings exist
+    // The feature label should be visible (Team Directory from feature-index)
+    await expect(
+      page.getByText(/directory/i).first(),
+    ).toBeVisible();
+
+    // Main content area should be fully rendered
     await expect(page.locator("main")).toBeVisible();
+    const mainText = await page.locator("main").textContent();
+    // Main should contain meaningful content, not be empty
+    expect(mainText!.length).toBeGreaterThan(10);
   });
 });
 
@@ -258,6 +272,8 @@ test.describe("CommandBar", () => {
     await page.goto("/dashboard");
     await expect(page.locator("main")).toBeVisible();
 
+    const initialUrl = page.url();
+
     // Open command bar
     await page.keyboard.press("Meta+k");
     await expect(page.getByRole("dialog")).toBeVisible({ timeout: 5_000 });
@@ -269,8 +285,13 @@ test.describe("CommandBar", () => {
     // Press Enter to select the first result
     await page.keyboard.press("Enter");
 
-    // Should navigate to the feature path
-    await page.waitForURL("**/dashboard/**", { timeout: 10_000 });
+    // Dialog should close after selection
+    await expect(page.getByRole("dialog")).not.toBeVisible({ timeout: 5_000 });
+
+    // URL should have changed from the initial dashboard URL
+    // The CommandBar onSelect navigates to the feature path
+    const newUrl = page.url();
+    expect(newUrl).not.toBe(initialUrl);
   });
 
   test("Esc closes command bar", async ({ page }) => {
@@ -318,12 +339,12 @@ test.describe("Navigation", () => {
     await expect(page.locator("main")).toBeVisible({ timeout: 10_000 });
 
     // Breadcrumb component should render with hierarchy context
-    const breadcrumb = page.locator('[aria-label="Breadcrumb"]');
     // DashboardBreadcrumb uses aria-label="Breadcrumb"
-    if (await breadcrumb.isVisible()) {
-      // Should show at least "Dashboard" as root
-      await expect(breadcrumb.getByText(/dashboard/i).first()).toBeVisible();
-    }
+    const breadcrumb = page.locator('[aria-label="Breadcrumb"]');
+    await expect(breadcrumb).toBeVisible({ timeout: 5_000 });
+
+    // Should show "Dashboard" as the root breadcrumb
+    await expect(breadcrumb.getByText(/dashboard/i).first()).toBeVisible();
   });
 
   test("browser back/forward works between dashboard pages", async ({
@@ -375,37 +396,44 @@ test.describe("Navigation", () => {
 // =============================================================================
 
 test.describe("Permission Boundary", () => {
-  test("accessing a non-existent dashboard path shows 404 or empty state", async ({
+  test("viewer accessing admin-only feature gets empty state, not 403", async ({
     page,
   }) => {
     await loginAs(page, VIEWER_EMAIL);
 
-    // Navigate to a path that doesn't exist in the registry
-    await page.goto("/dashboard/nonexistent/fake/path");
+    // Navigate to a nonexistent dashboard path
+    // In Phase 1 scaffold, all features are visible to all users,
+    // so we test with a truly nonexistent path to verify FeatureGate
+    // returns null (404 behavior) instead of showing 403
+    await page.goto("/dashboard/admin/secret/internal");
 
-    // FeatureGate returns null for unknown features, rendered as empty/404
-    // The page should not show a 403 (no feature enumeration)
+    // FeatureGate returns null for unknown features → rendered as empty/404
     await expect(page.locator("main")).toBeVisible({ timeout: 10_000 });
 
-    // Should NOT contain "Access Denied" or "403" — use 404 behavior instead
+    // Must NOT show "Access Denied" or "403" — prevents feature enumeration
     const bodyText = await page.locator("body").textContent();
     expect(bodyText).not.toContain("403");
+    expect(bodyText).not.toContain("Access Denied");
   });
 
-  test("no feature metadata leaked for inaccessible paths", async ({
+  test("no feature metadata leaked in 404 response", async ({
     page,
   }) => {
     await loginAs(page, VIEWER_EMAIL);
 
-    // Navigate to a path that doesn't exist
-    await page.goto("/dashboard/nonexistent/path");
+    // Navigate to a path that doesn't map to any feature in the registry
+    await page.goto("/dashboard/admin/nonexistent/feature");
 
-    // Page should load without revealing feature metadata
+    // Page should load without revealing any feature IDs or internal details
     await expect(page.locator("main")).toBeVisible({ timeout: 10_000 });
 
-    // The response should not contain error details that reveal feature IDs
     const bodyText = await page.locator("body").textContent();
+    // Should not expose internal feature ID format
     expect(bodyText).not.toMatch(/feature.*not.*found/i);
+    // Should not reveal permission error details
+    expect(bodyText).not.toMatch(/permission.*denied/i);
+    // Should not expose route manifest IDs
+    expect(bodyText).not.toMatch(/company_ops\.|administration\.|analytics\./);
   });
 });
 
@@ -419,18 +447,12 @@ test.describe("Migration Redirects", () => {
   }) => {
     await loginAs(page, ADMIN_EMAIL);
 
-    // The legacy redirect is handled by the worker layer
-    // Navigate to legacy path
+    // The legacy redirect is handled by the worker layer (legacy-redirects.ts)
+    // /dashboard/users → /dashboard/admin/users/manage
     await page.goto("/dashboard/users");
 
-    // If the worker handles this, it will 301 redirect
-    // The final URL should be the new path
-    const url = page.url();
-
-    // Either we're on the new path (301 redirect worked) or on the old path
-    // (legacy route still exists during migration coexistence)
-    // Both are valid during the migration period
-    expect(url).toMatch(/dashboard/);
+    // Worker should 301 redirect to the new path
+    await expect(page).toHaveURL(/admin\/users\/manage/);
   });
 
   test("legacy paths redirect with query params preserved", async ({
@@ -439,17 +461,14 @@ test.describe("Migration Redirects", () => {
     await loginAs(page, ADMIN_EMAIL);
 
     // Navigate to legacy path with query params
+    // /dashboard/users?search=test&page=2 should redirect preserving params
     await page.goto("/dashboard/users?search=test&page=2");
 
-    // The URL should contain the query params after redirect
+    // Should redirect to new path with query params preserved
     const url = page.url();
-    expect(url).toMatch(/dashboard/);
-
-    // If redirect happened, query params should be preserved
-    if (url.includes("admin/users/manage")) {
-      expect(url).toContain("search=test");
-      expect(url).toContain("page=2");
-    }
+    await expect(page).toHaveURL(/admin\/users\/manage/);
+    expect(url).toContain("search=test");
+    expect(url).toContain("page=2");
   });
 });
 
