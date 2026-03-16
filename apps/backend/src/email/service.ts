@@ -25,7 +25,7 @@ const IP_RATE_LIMIT = 10;
 const RATE_LIMIT_WINDOW_MS = 10 * 60 * 1000;
 
 /** Sender address for transactional emails. */
-const FROM_ADDRESS = "Production City <noreply@mail.production.city>";
+const FROM_ADDRESS = "Production City <noreply@production.city>";
 
 /**
  * Generates a cryptographically random opaque requestId (32 bytes, base64url).
