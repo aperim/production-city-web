@@ -28,7 +28,7 @@ VALUES (
 
 -- Assign super_admin role to bootstrap admin
 -- Use subselects to handle case where role was created by seed (different id)
-INSERT OR IGNORE INTO "UserRole" ("id", "userId", "roleId", "createdAt")
+INSERT OR IGNORE INTO "UserRole" ("id", "userId", "roleId", "grantedAt")
 SELECT
   'bootstrap-admin-role-assignment',
   u.id,
