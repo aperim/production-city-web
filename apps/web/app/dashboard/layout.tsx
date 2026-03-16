@@ -35,6 +35,9 @@ import {
   type NotificationData,
 } from "../lib/api-client";
 import { RegistryProvider } from "./components/RegistryProvider";
+import { SessionExpiredOverlay } from "./components/SessionExpiredOverlay";
+import { useSessionMonitor } from "../lib/use-session-monitor";
+import { useRegistryRevalidation } from "./use-registry-revalidation";
 import { SIDEBAR_CONFIG } from "./_generated/sidebar-config";
 import { DASHBOARD_ROUTES } from "./_generated/routes";
 import { FEATURE_INDEX } from "./_generated/feature-index";
@@ -217,6 +220,11 @@ function DashboardHeaderActions() {
 
 /** Inner layout assembling the DashboardShell with SidebarNav and breadcrumbs */
 function DashboardInner({ children }: { children: ReactNode }) {
+  const sessionMonitor = useSessionMonitor();
+
+  // Issue #354: Revalidate registry on tab focus (Phase 1)
+  useRegistryRevalidation({ enabled: !sessionMonitor.expired });
+
   const [isCollapsed, setIsCollapsed] = useState(false);
   const [currentPath, setCurrentPath] = useState("/dashboard");
 
@@ -264,6 +272,13 @@ function DashboardInner({ children }: { children: ReactNode }) {
 
   return (
     <RegistryProvider visibleFeatureIds={visibleFeatureIds} currentPhase={DEFAULT_PHASE}>
+      {/* Issue #353: session expired overlay */}
+      {sessionMonitor.expired && (
+        <SessionExpiredOverlay
+          message={sessionMonitor.message}
+          returnUrl={sessionMonitor.returnUrl}
+        />
+      )}
       {/* Issue #352: noindex meta tag for all dashboard pages */}
       <meta name="robots" content="noindex, nofollow" />
       <DashboardShellTemplate

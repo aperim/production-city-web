@@ -21,6 +21,7 @@ import {
   validateCookieLocale,
   sanitizeInvalidLocale,
 } from "./locale-middleware.js";
+import { handleLegacyRedirect } from "./legacy-redirects.js";
 
 /** Canonical production hostname. */
 const CANONICAL_HOST = "production.city";
@@ -107,7 +108,11 @@ export default {
       return Response.redirect(url.toString(), 308);
     }
 
-    // 2. Bypass locale middleware for API, auth, static, machine endpoints (Finding #8).
+    // 2. Legacy dashboard route redirects (Issue #349).
+    const legacyRedirect = handleLegacyRedirect(url);
+    if (legacyRedirect) return legacyRedirect;
+
+    // 3. Bypass locale middleware for API, auth, static, machine endpoints (Finding #8).
     if (shouldBypassLocaleMiddleware(url.pathname)) {
       // eslint-disable-next-line @typescript-eslint/no-explicit-any -- vinext handler types are opaque
       const response = await (handler as any).fetch(request, env, ctx);

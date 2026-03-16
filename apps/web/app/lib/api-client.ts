@@ -162,6 +162,11 @@ async function request<T>(
     error = { error: 'unknown', message: res.statusText || 'Request failed' };
   }
 
+  // Dispatch session-expired event on 401 (Issue #353)
+  if (res.status === 401 && typeof window !== "undefined") {
+    window.dispatchEvent(new CustomEvent("pc:session-expired"));
+  }
+
   return { ok: false, error, status: res.status };
 }
 

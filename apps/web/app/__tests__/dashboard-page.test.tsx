@@ -6,6 +6,10 @@ vi.mock("../lib/auth-context", () => ({
   useAuth: vi.fn(),
 }));
 
+vi.mock("../dashboard/use-dashboard-role", () => ({
+  useDashboardRole: vi.fn().mockReturnValue("admin"),
+}));
+
 vi.mock("../lib/api-client", () => ({
   getAdminStats: vi.fn().mockReturnValue(
     Promise.resolve({
@@ -46,37 +50,46 @@ function mockAuthenticatedAdmin() {
   });
 }
 
+/** Strip React SSR comments from HTML for cleaner assertions */
+function stripComments(html: string): string {
+  return html.replace(/<!-- -->/g, "");
+}
+
 describe("DashboardPage", () => {
   beforeEach(() => {
     vi.clearAllMocks();
   });
 
-  it("renders stats cards", () => {
+  it("renders welcome message with user name", () => {
     mockAuthenticatedAdmin();
-    const html = renderToString(createElement(DashboardPage));
-    expect(html).toContain("Total Users");
-    expect(html).toContain("Pending Approvals");
-    expect(html).toContain("Active Invitations");
+    const html = stripComments(renderToString(createElement(DashboardPage)));
+    expect(html).toContain("Welcome back, Admin");
   });
 
-  it("renders quick actions", () => {
+  it("renders role label for admin", () => {
+    mockAuthenticatedAdmin();
+    const html = stripComments(renderToString(createElement(DashboardPage)));
+    expect(html).toContain("Administrator");
+  });
+
+  it("renders quick actions (permission-gated)", () => {
     mockAuthenticatedAdmin();
     const html = renderToString(createElement(DashboardPage));
     expect(html).toContain("Invite User");
     expect(html).toContain("View Pending Approvals");
   });
 
-  it("renders recent activity section", () => {
+  it("shows loading skeleton on initial render (data not yet fetched)", () => {
     mockAuthenticatedAdmin();
     const html = renderToString(createElement(DashboardPage));
-    expect(html).toContain("Recent Activity");
+    // Initial render: loading=true, no kpiCards yet → loading skeleton
+    expect(html).toContain("animate-pulse");
   });
 
   it("does not wrap in AdminLayout (layout.tsx provides the shell)", () => {
     mockAuthenticatedAdmin();
-    const html = renderToString(createElement(DashboardPage));
-    // Page renders content directly — no sidebar nav rendered by the page itself
-    expect(html).toContain("Total Users");
-    // The sidebar is now in layout.tsx, not in the page
+    const html = stripComments(renderToString(createElement(DashboardPage)));
+    // Page renders RoleDashboard directly — no sidebar nav in the page
+    expect(html).toContain("Welcome back");
   });
 });
