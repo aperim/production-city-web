@@ -54,6 +54,7 @@ model User {
   subscriptionsCreated    CategorySubscription[]  @relation("SubscribedBy")
   announcementDeliveries  AnnouncementDelivery[]
   smsSuppressionRemovals  SmsSuppression[]
+  featureNotifications    FeatureNotification[]
 
   // @@index([email]) — omitted: @unique already creates an index
   @@index([status])
@@ -690,4 +691,26 @@ model TwilioSenderRoute {
   isDefault   Int      @default(0)
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
+}
+
+// ============================================================================
+// Dashboard Feature Notifications
+// ============================================================================
+
+/// Stores "Notify me when this feature launches" subscriptions.
+/// Created when user clicks "Notify me" on a ComingSoonPage.
+/// notifiedAt set when notification email sent (feature goes active).
+model FeatureNotification {
+  id         String    @id @default(cuid())
+  userId     String
+  featureId  String
+  createdAt  DateTime  @default(now())
+  notifiedAt DateTime?
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, featureId])
+  @@index([featureId, notifiedAt])
+  @@index([userId, createdAt])
+  @@map("feature_notifications")
 }

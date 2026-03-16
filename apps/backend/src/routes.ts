@@ -24,6 +24,8 @@ import { adminSubscriptionsApp } from "./admin/subscriptions.js";
 import { twilioInboundApp } from "./routes/twilio-inbound.js";
 import { twilioStatusApp } from "./routes/twilio-status.js";
 import { unsubscribeApp } from "./routes/unsubscribe.js";
+import { registryVisibleApp } from "./registry/visible.js";
+import { featureNotifyApp } from "./registry/notify.js";
 
 /**
  * Mount all auth and admin routes onto the main app.
@@ -70,6 +72,10 @@ export function mountRoutes(app: OpenAPIHono<{ Bindings: Record<string, unknown>
   app.route("/", twilioStatusApp);
   // Unsubscribe from email/SMS links
   app.route("/", unsubscribeApp);
+
+  // Dashboard registry + feature notification routes (auth required)
+  app.route("/", registryVisibleApp);
+  app.route("/", featureNotifyApp);
 
   // Public EOI and locales routes (no auth required)
   app.route("/", eoiApp);

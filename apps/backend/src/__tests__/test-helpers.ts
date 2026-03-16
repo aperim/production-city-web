@@ -113,6 +113,11 @@ const SCHEMA_STATEMENTS = [
   `CREATE UNIQUE INDEX IF NOT EXISTS "SmsSuppression_phoneNumber_key" ON "SmsSuppression"("phoneNumber")`,
   `CREATE TABLE IF NOT EXISTS "TwilioSenderRoute" ("id" TEXT NOT NULL PRIMARY KEY, "phoneNumber" TEXT NOT NULL, "prefixes" TEXT NOT NULL, "isDefault" INTEGER NOT NULL DEFAULT 0, "createdAt" DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP, "updatedAt" DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP)`,
   `CREATE UNIQUE INDEX IF NOT EXISTS "TwilioSenderRoute_phoneNumber_key" ON "TwilioSenderRoute"("phoneNumber")`,
+  // Migration 0007: FeatureNotification model
+  `CREATE TABLE IF NOT EXISTS "feature_notifications" ("id" TEXT NOT NULL PRIMARY KEY, "userId" TEXT NOT NULL, "featureId" TEXT NOT NULL, "createdAt" DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP, "notifiedAt" DATETIME, CONSTRAINT "feature_notifications_userId_fkey" FOREIGN KEY ("userId") REFERENCES "User" ("id") ON DELETE CASCADE ON UPDATE CASCADE)`,
+  `CREATE UNIQUE INDEX IF NOT EXISTS "feature_notifications_userId_featureId_key" ON "feature_notifications"("userId", "featureId")`,
+  `CREATE INDEX IF NOT EXISTS "feature_notifications_featureId_notifiedAt_idx" ON "feature_notifications"("featureId", "notifiedAt")`,
+  `CREATE INDEX IF NOT EXISTS "feature_notifications_userId_createdAt_idx" ON "feature_notifications"("userId", "createdAt")`,
 ];
 
 let _initialized = false;
