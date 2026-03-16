@@ -122,3 +122,15 @@ export { ContentBlockPicker } from "./ContentBlockPicker/ContentBlockPicker";
 export type { ContentBlockPickerProps } from "./ContentBlockPicker/ContentBlockPicker";
 export { DeliveryStatusRow } from "./DeliveryStatusRow/DeliveryStatusRow";
 export type { DeliveryStatusRowProps } from "./DeliveryStatusRow/DeliveryStatusRow";
+
+// Issue #333: Dashboard Sidebar Molecules
+export { SidebarGroup } from "./SidebarGroup/SidebarGroup";
+export type { SidebarGroupProps } from "./SidebarGroup/SidebarGroup";
+
+// Issue #335: Dashboard Breadcrumb
+export { DashboardBreadcrumb, resolveBreadcrumbs } from "./DashboardBreadcrumb/DashboardBreadcrumb";
+export type { DashboardBreadcrumbProps, BreadcrumbSidebarGroup, BreadcrumbSection, BreadcrumbSubsection, BreadcrumbSegment } from "./DashboardBreadcrumb/DashboardBreadcrumb";
+
+// Issue #338: Coming Soon Card
+export { ComingSoonCard } from "./ComingSoonCard/ComingSoonCard";
+export type { ComingSoonCardProps } from "./ComingSoonCard/ComingSoonCard";

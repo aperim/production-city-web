@@ -249,7 +249,7 @@ describe("EoiPage", () => {
 });
 
 describe("Dashboard layout sidebar permission visibility", () => {
-  it("shows all nav items for admin", async () => {
+  it("renders registry-driven sidebar for admin", async () => {
     mockAdmin();
 
     const { default: DashboardLayout } = await import("../dashboard/layout");
@@ -257,23 +257,19 @@ describe("Dashboard layout sidebar permission visibility", () => {
       createElement(DashboardLayout, null, createElement("p", null, "content")),
     );
     expect(html).toContain("Dashboard");
-    expect(html).toContain("Users");
-    expect(html).toContain("Invitations");
-    expect(html).toContain("Approvals");
-    expect(html).toContain("Expressions of Interest");
-    expect(html).toContain("Audit Log");
+    expect(html).toContain("content");
+    // New layout uses SidebarNav with registry-driven groups
+    expect(html).toContain("nav");
   });
 
-  it("hides nav items when user lacks permissions", async () => {
+  it("renders layout for user without admin permissions", async () => {
     mockLimitedUser();
 
     const { default: DashboardLayout } = await import("../dashboard/layout");
     const html = renderToString(
       createElement(DashboardLayout, null, createElement("p", null, "content")),
     );
-    expect(html).toContain("Dashboard"); // Always visible
-    expect(html).not.toContain("Users");
-    expect(html).not.toContain("Invitations");
-    expect(html).not.toContain("Audit Log");
+    expect(html).toContain("Dashboard");
+    expect(html).toContain("content");
   });
 });

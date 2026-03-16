@@ -81,6 +81,14 @@ export type { SubscriptionStatusDotProps } from "./SubscriptionStatusDot/Subscri
 export { CategoryTag } from "./CategoryTag/CategoryTag";
 export type { CategoryTagProps } from "./CategoryTag/CategoryTag";
 
+// Issue #333: Dashboard Sidebar Atoms
+export { SidebarItem } from "./SidebarItem/SidebarItem";
+export type { SidebarItemProps, SidebarItemStatus } from "./SidebarItem/SidebarItem";
+
+// Issue #338: Feature Status Atoms
+export { FeatureStatusBadge } from "./FeatureStatusBadge/FeatureStatusBadge";
+export type { FeatureStatusBadgeProps, FeatureStatus } from "./FeatureStatusBadge/FeatureStatusBadge";
+
 // Issue #342: Dashboard CommandBar Trigger
 export { CommandBarTrigger } from "./CommandBarTrigger/CommandBarTrigger";
 export type { CommandBarTriggerProps } from "./CommandBarTrigger/CommandBarTrigger";

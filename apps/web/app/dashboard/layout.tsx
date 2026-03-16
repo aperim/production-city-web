@@ -1,21 +1,27 @@
 "use client";
 
 /**
- * Shared dashboard layout — wraps all /dashboard/* pages in
- * ProtectedRoute + WebSocketProvider + AdminDashboardTemplate.
+ * Dashboard layout — wraps all /dashboard/* pages.
  *
- * Individual pages no longer wrap in AdminLayout. They render content only
- * and declare breadcrumbs via useSetBreadcrumbs().
+ * Uses the new registry-driven DashboardShell with SidebarNav,
+ * DashboardBreadcrumb, and RegistryProvider. Existing hand-coded
+ * routes coexist during migration.
+ *
+ * @see Issue #332 (Shell & Navigation epic)
+ * @see Issue #336 (DashboardShell + DashboardLayout)
+ * @see Issue #352 (noindex — meta robots tag)
  */
 
 import { type ReactNode, useState, useEffect, useCallback } from "react";
 import {
-  AdminDashboardTemplate,
+  DashboardShell as DashboardShellTemplate,
+  SidebarNav,
+  DashboardBreadcrumb,
   ConnectionDot,
   NotificationBell,
   NotificationPanel,
   type NotificationEntry,
-  type SidebarSection,
+  type Phase,
 } from "@productioncity/holding-ui";
 import { AuthProvider, useAuth } from "../lib/auth-context";
 import { ProtectedRoute } from "../lib/route-guard";
@@ -28,8 +34,20 @@ import {
   markAllNotificationsRead,
   type NotificationData,
 } from "../lib/api-client";
-import { BreadcrumbProvider, useBreadcrumbState } from "./breadcrumb-context";
-import { I18nProvider, useTranslation } from "../i18n/context";
+import { RegistryProvider } from "./components/RegistryProvider";
+import { SIDEBAR_CONFIG } from "./_generated/sidebar-config";
+import { DASHBOARD_ROUTES } from "./_generated/routes";
+import { FEATURE_INDEX } from "./_generated/feature-index";
+import { I18nProvider } from "../i18n/context";
+
+/** Build a label map from the feature index for O(1) lookup */
+const FEATURE_LABEL_MAP = new Map<string, string>();
+for (const entry of FEATURE_INDEX) {
+  FEATURE_LABEL_MAP.set(entry.id, entry.label);
+}
+
+/** Default phase for scaffold (Phase 1) */
+const DEFAULT_PHASE: Phase = "company_formation";
 
 /** Maps WebSocket connection state to ConnectionDot variant */
 function mapConnectionState(state: string): "connected" | "reconnecting" | "disconnected" {
@@ -43,7 +61,7 @@ function mapConnectionState(state: string): "connected" | "reconnecting" | "disc
   }
 }
 
-/** Connection status indicator in sidebar footer */
+/** Connection status indicator */
 function DashboardStatusBar() {
   const { state } = useWebSocket();
   return (
@@ -59,7 +77,7 @@ function DashboardStatusBar() {
   );
 }
 
-/** Map notification type + context into a localized message */
+/** Map notification type to a message */
 function notificationMessage(n: NotificationData): string {
   switch (n.type) {
     case "approval_needed":
@@ -89,12 +107,12 @@ function timeAgo(iso: string): string {
   return `${Math.floor(hrs / 24)} days ago`;
 }
 
-/** Notification bell in the header */
+/** Header actions: user profile, status, notifications */
 function DashboardHeaderActions() {
   const [notifications, setNotifications] = useState<NotificationData[]>([]);
   const [unreadCount, setUnreadCount] = useState(0);
   const [loading, setLoading] = useState(true);
-  const { user } = useAuth();
+  const { user, logout } = useAuth();
 
   const fetchNotifications = useCallback(async () => {
     setLoading(true);
@@ -160,168 +178,132 @@ function DashboardHeaderActions() {
   }));
 
   return (
-    <NotificationBell
-      count={unreadCount}
-      data-testid="notification-bell"
-      panel={
-        <NotificationPanel
-          notifications={panelNotifications}
-          onMarkAllRead={handleMarkAllRead}
-          onSelect={handleSelect}
-          loading={loading}
-          data-testid="notification-panel"
-        />
-      }
-    />
+    <div className="flex items-center gap-3">
+      {user && (
+        <div className="flex items-center gap-3 text-sm">
+          <a
+            href="/dashboard/profile"
+            className="text-muted-foreground truncate max-w-32 hover:text-foreground transition-colors duration-150"
+            title={user.email}
+          >
+            {user.name || user.email}
+          </a>
+          <button
+            type="button"
+            onClick={logout}
+            className="text-xs text-muted-foreground hover:text-foreground transition-colors duration-150"
+          >
+            Sign out
+          </button>
+          <DashboardStatusBar />
+        </div>
+      )}
+      <NotificationBell
+        count={unreadCount}
+        data-testid="notification-bell"
+        panel={
+          <NotificationPanel
+            notifications={panelNotifications}
+            onMarkAllRead={handleMarkAllRead}
+            onSelect={handleSelect}
+            loading={loading}
+            data-testid="notification-panel"
+          />
+        }
+      />
+    </div>
   );
 }
 
-/** Inner layout that reads breadcrumbs from context */
-function DashboardShell({ children }: { children: ReactNode }) {
-  const { hasPermission, user, logout } = useAuth();
-  const breadcrumbs = useBreadcrumbState();
-  const { t } = useTranslation();
+/** Inner layout assembling the DashboardShell with SidebarNav and breadcrumbs */
+function DashboardInner({ children }: { children: ReactNode }) {
+  const [isCollapsed, setIsCollapsed] = useState(false);
+  const [currentPath, setCurrentPath] = useState("/dashboard");
 
-  // Active path for sidebar highlighting. Reads on mount and listens
-  // for popstate (back/forward). Sidebar links use <a href> (full-page
-  // navigation) so mount-read covers normal clicks; popstate covers
-  // browser history navigation.
-  const [activePath, setActivePath] = useState("/dashboard");
+  // Track current path for sidebar highlighting and breadcrumbs
   useEffect(() => {
     if (typeof window === "undefined") return;
-    setActivePath(window.location.pathname);
-    const onPopState = () => setActivePath(window.location.pathname);
+    setCurrentPath(window.location.pathname);
+    const onPopState = () => setCurrentPath(window.location.pathname);
     window.addEventListener("popstate", onPopState);
     return () => window.removeEventListener("popstate", onPopState);
   }, []);
 
-  const sidebarItems = [];
+  // Load collapsed state from localStorage
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    try {
+      const stored = localStorage.getItem("pc-sidebar-collapsed");
+      if (stored === "true") setIsCollapsed(true);
+    } catch {
+      // Ignore
+    }
+  }, []);
 
-  sidebarItems.push({
-    id: "dashboard",
-    label: t("nav.dashboard"),
-    href: "/dashboard",
-    active: activePath === "/dashboard",
-  });
+  const handleToggleCollapse = useCallback(() => {
+    setIsCollapsed((prev) => {
+      const next = !prev;
+      try {
+        localStorage.setItem("pc-sidebar-collapsed", String(next));
+      } catch {
+        // Ignore
+      }
+      return next;
+    });
+  }, []);
 
-  if (hasPermission("user:read")) {
-    sidebarItems.push({
-      id: "users",
-      label: t("nav.users"),
-      href: "/dashboard/users",
-      active: activePath.startsWith("/dashboard/users"),
-    });
-  }
+  // Phase 1: all features visible (scaffold shows everything as ComingSoon)
+  const visibleFeatureIds = DASHBOARD_ROUTES.map((r) => r.id);
 
-  if (hasPermission("invitation:read")) {
-    sidebarItems.push({
-      id: "invitations",
-      label: t("nav.invitations"),
-      href: "/dashboard/invitations",
-      active: activePath.startsWith("/dashboard/invitations"),
-    });
-  }
-
-  if (hasPermission("user:update")) {
-    sidebarItems.push({
-      id: "approvals",
-      label: t("nav.approvals"),
-      href: "/dashboard/approvals",
-      active: activePath.startsWith("/dashboard/approvals"),
-    });
-  }
-
-  if (hasPermission("announcement:read_admin")) {
-    sidebarItems.push({
-      id: "announcements",
-      label: t("nav.updates"),
-      href: "/dashboard/announcements",
-      active: activePath.startsWith("/dashboard/announcements"),
-    });
-    sidebarItems.push({
-      id: "categories",
-      label: t("admin.categories.title"),
-      href: "/dashboard/categories",
-      active: activePath.startsWith("/dashboard/categories"),
-    });
-    sidebarItems.push({
-      id: "tags",
-      label: t("admin.tags.title"),
-      href: "/dashboard/tags",
-      active: activePath.startsWith("/dashboard/tags"),
-    });
-  }
-
-  if (hasPermission("subscription:manage")) {
-    sidebarItems.push({
-      id: "subscriptions",
-      label: t("admin.subscriptions.title"),
-      href: "/dashboard/subscriptions-admin",
-      active: activePath.startsWith("/dashboard/subscriptions-admin"),
-    });
-  }
-
-  if (hasPermission("audit:read")) {
-    sidebarItems.push({
-      id: "eoi",
-      label: t("admin.eoi.title"),
-      href: "/dashboard/eoi",
-      active: activePath.startsWith("/dashboard/eoi"),
-    });
-    sidebarItems.push({
-      id: "audit-log",
-      label: t("nav.auditLog"),
-      href: "/dashboard/audit-log",
-      active: activePath.startsWith("/dashboard/audit-log"),
-    });
-  }
-
-  const sections: SidebarSection[] = [{ id: "main", items: sidebarItems }];
+  const routes = DASHBOARD_ROUTES.map((r) => ({
+    id: r.id,
+    label: FEATURE_LABEL_MAP.get(r.id) ?? r.id,
+    path: r.path,
+    status: r.status,
+  }));
 
   return (
-    <AdminDashboardTemplate
-      sidebarSections={sections}
-      sidebarFooter={
-        user ? (
-          <div className="flex flex-col gap-2">
-            <div className="flex items-center justify-between text-sm">
-              <a
-                href="/dashboard/profile"
-                className="text-muted-foreground truncate max-w-32 hover:text-foreground transition-colors duration-150"
-                title={user.email}
-              >
-                {user.name || user.email}
-              </a>
-              <button
-                type="button"
-                onClick={logout}
-                className="text-muted-foreground hover:text-foreground transition-colors duration-150"
-              >
-                {t("auth.logout.button")}
-              </button>
-            </div>
-            <DashboardStatusBar />
-          </div>
-        ) : undefined
-      }
-      breadcrumbs={breadcrumbs.length > 0 ? breadcrumbs : undefined}
-      skipNavLabel={t("dashboard.skip_to_content")}
-      headerActions={<DashboardHeaderActions />}
-    >
-      {children}
-    </AdminDashboardTemplate>
+    <RegistryProvider visibleFeatureIds={visibleFeatureIds} currentPhase={DEFAULT_PHASE}>
+      {/* Issue #352: noindex meta tag for all dashboard pages */}
+      <meta name="robots" content="noindex, nofollow" />
+      <DashboardShellTemplate
+        sidebar={
+          <SidebarNav
+            config={SIDEBAR_CONFIG}
+            visibleFeatureIds={visibleFeatureIds}
+            currentPhase={DEFAULT_PHASE}
+            currentPath={currentPath}
+            routes={routes}
+            isCollapsed={isCollapsed}
+            onToggleCollapse={handleToggleCollapse}
+          />
+        }
+        breadcrumb={
+          <DashboardBreadcrumb
+            currentPath={currentPath}
+            sidebarConfig={SIDEBAR_CONFIG}
+          />
+        }
+        header={<DashboardHeaderActions />}
+      >
+        {children}
+      </DashboardShellTemplate>
+    </RegistryProvider>
   );
 }
 
+/**
+ * Dashboard layout — provides auth, WebSocket, i18n, and the registry-driven shell.
+ *
+ * Unauthenticated users are redirected to /login by ProtectedRoute.
+ */
 export default function DashboardLayout({ children }: { children: ReactNode }) {
   return (
     <I18nProvider>
       <AuthProvider>
         <ProtectedRoute>
           <WebSocketProvider>
-            <BreadcrumbProvider>
-              <DashboardShell>{children}</DashboardShell>
-            </BreadcrumbProvider>
+            <DashboardInner>{children}</DashboardInner>
           </WebSocketProvider>
         </ProtectedRoute>
       </AuthProvider>

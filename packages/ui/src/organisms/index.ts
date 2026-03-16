@@ -27,7 +27,7 @@ export type { NavigationHeaderProps, NavItem } from './NavigationHeader/Navigati
 export { Sidebar } from './Sidebar/Sidebar';
 export type {
   SidebarProps,
-  SidebarItem,
+  SidebarItem as LegacySidebarItem,
   SidebarSection,
 } from './Sidebar/Sidebar';
 
@@ -134,6 +134,10 @@ export { AdminAnnouncementTable } from './AdminAnnouncementTable/AdminAnnounceme
 export type { AdminAnnouncementTableProps } from './AdminAnnouncementTable/AdminAnnouncementTable';
 export { AdminSubscriptionTable, maskPhone } from './AdminSubscriptionTable/AdminSubscriptionTable';
 export type { AdminSubscriptionTableProps } from './AdminSubscriptionTable/AdminSubscriptionTable';
+
+// Issue #334: Dashboard SidebarNav
+export { SidebarNav, PHASE_ORDER } from './SidebarNav/SidebarNav';
+export type { SidebarNavProps, NavGroup, NavSection, NavSubsection, NavRoute, Phase } from './SidebarNav/SidebarNav';
 
 // Issue #342: Dashboard CommandBar
 export { CommandBar } from './CommandBar/CommandBar';

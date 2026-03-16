@@ -78,12 +78,18 @@ function getCookie(request: Request, name: string): string | null {
 /**
  * Apply security headers to a response.
  */
-function applySecurityHeaders(response: Response, hostname: string): Response {
+function applySecurityHeaders(response: Response, hostname: string, pathname?: string): Response {
   const newResponse = new Response(response.body, response);
   for (const [key, value] of Object.entries(STATIC_SECURITY_HEADERS)) {
     newResponse.headers.set(key, value);
   }
   newResponse.headers.set("Content-Security-Policy", buildCsp(hostname));
+
+  // Issue #352: suppress search engine indexing for /dashboard/** routes
+  if (pathname && (pathname === "/dashboard" || pathname.startsWith("/dashboard/"))) {
+    newResponse.headers.set("X-Robots-Tag", "noindex, nofollow");
+  }
+
   return newResponse;
 }
 
@@ -105,7 +111,7 @@ export default {
     if (shouldBypassLocaleMiddleware(url.pathname)) {
       // eslint-disable-next-line @typescript-eslint/no-explicit-any -- vinext handler types are opaque
       const response = await (handler as any).fetch(request, env, ctx);
-      return applySecurityHeaders(response, url.hostname);
+      return applySecurityHeaders(response, url.hostname, url.pathname);
     }
 
     const canonicalOrigin = getCanonicalOrigin(url);
@@ -260,7 +266,7 @@ export default {
     // 6. Forward to vinext handler.
     // eslint-disable-next-line @typescript-eslint/no-explicit-any -- vinext handler types are opaque
     const response = await (handler as any).fetch(forwardRequest, env, ctx);
-    const newResponse = applySecurityHeaders(response, url.hostname);
+    const newResponse = applySecurityHeaders(response, url.hostname, forwardPath);
 
     // 7. Set Content-Language response header.
     newResponse.headers.set("Content-Language", locale);
