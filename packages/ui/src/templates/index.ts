@@ -23,3 +23,7 @@ export type { ComingSoonPageProps, ComingSoonFeature, RelatedFeature, NotifyMeSt
 // Issue #348: Role Dashboard Template
 export { RoleDashboard } from "./RoleDashboard/RoleDashboard";
 export type { RoleDashboardProps, DashboardRole, KpiCard, QuickAction, ActivityEntry } from "./RoleDashboard/RoleDashboard";
+
+// Issue #390: WorkspaceShell Template
+export { WorkspaceShell } from "./WorkspaceShell/WorkspaceShell";
+export type { WorkspaceShellProps } from "./WorkspaceShell/WorkspaceShell";

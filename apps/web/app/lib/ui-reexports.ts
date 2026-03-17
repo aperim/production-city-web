@@ -81,6 +81,12 @@ export { AdminSubscriptionTable } from "../../../../packages/ui/src/organisms/Ad
 export { SidebarNav } from "../../../../packages/ui/src/organisms/SidebarNav/SidebarNav";
 export type { SidebarNavProps } from "../../../../packages/ui/src/organisms/SidebarNav/SidebarNav";
 export { CommandBar } from "../../../../packages/ui/src/organisms/CommandBar/CommandBar";
+export { WorkspaceSidebar } from "../../../../packages/ui/src/organisms/WorkspaceSidebar/WorkspaceSidebar";
+export type { WorkspaceSidebarProps, WorkspaceSidebarItem } from "../../../../packages/ui/src/organisms/WorkspaceSidebar/WorkspaceSidebar";
+export { WorkspaceTabs } from "../../../../packages/ui/src/organisms/WorkspaceTabs/WorkspaceTabs";
+export type { WorkspaceTabsProps, WorkspaceTab } from "../../../../packages/ui/src/organisms/WorkspaceTabs/WorkspaceTabs";
+export { AIPanel } from "../../../../packages/ui/src/organisms/AIPanel/AIPanel";
+export type { AIPanelProps, AIPanelMessage } from "../../../../packages/ui/src/organisms/AIPanel/AIPanel";
 export * from "../../../../packages/ui/src/templates";
 export * from "../../../../packages/ui/src/pages";
 export * from "../../../../packages/ui/src/foundations";

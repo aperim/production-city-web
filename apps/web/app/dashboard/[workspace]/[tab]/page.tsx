@@ -9,15 +9,27 @@
  * @see Issue #385
  */
 
-import { useParams } from 'vinext/client';
+import { useMemo } from 'react';
 import { useRegistry } from '../../components/RegistryProvider';
 import { FeatureGate } from '../../components/FeatureGate';
 import { WORKSPACE_MAP, type WorkspaceId } from '../../_generated/workspace-config';
 
+/** Extract workspace and tab slugs from the URL path. */
+function useWorkspaceTabParams(): { workspace: string; tab: string } {
+  return useMemo(() => {
+    if (typeof window === 'undefined') return { workspace: '', tab: '' };
+    // URL: /dashboard/{workspace}/{tab}
+    const segments = window.location.pathname.split('/').filter(Boolean);
+    const dashIdx = segments.indexOf('dashboard');
+    return {
+      workspace: segments[dashIdx + 1] ?? '',
+      tab: segments[dashIdx + 2] ?? '',
+    };
+  }, []);
+}
+
 export default function WorkspaceTabPage() {
-  const params = useParams<{ workspace: string; tab: string }>();
-  const workspaceId = params.workspace;
-  const tabId = params.tab;
+  const { workspace: workspaceId, tab: tabId } = useWorkspaceTabParams();
   const { visibleFeatureIds, isWorkspaceVisible } = useRegistry();
 
   // Anti-enumeration: workspace must exist and be visible
@@ -40,7 +52,7 @@ export default function WorkspaceTabPage() {
   }
 
   // Render FeatureGate for the primary feature (first in the tab)
-  const primaryFeatureId = visibleTabFeatures[0];
+  const primaryFeatureId = visibleTabFeatures[0]!;
 
   return (
     <div data-workspace={workspaceId} data-tab={tabId}>

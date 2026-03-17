@@ -134,3 +134,11 @@ export type { DashboardBreadcrumbProps, BreadcrumbSidebarGroup, BreadcrumbSectio
 // Issue #338: Coming Soon Card
 export { ComingSoonCard } from "./ComingSoonCard/ComingSoonCard";
 export type { ComingSoonCardProps } from "./ComingSoonCard/ComingSoonCard";
+
+// Issue #387: WorkspaceSidebar Molecules
+export { RecentItem } from "./RecentItem/RecentItem";
+export type { RecentItemProps } from "./RecentItem/RecentItem";
+
+// Issue #389: ScopeBar Molecule
+export { ScopeBar } from "./ScopeBar/ScopeBar";
+export type { ScopeBarProps, ScopeOption } from "./ScopeBar/ScopeBar";

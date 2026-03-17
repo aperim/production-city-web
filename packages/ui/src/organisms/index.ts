@@ -142,3 +142,47 @@ export type { SidebarNavProps, NavGroup, NavSection, NavSubsection, NavRoute, Ph
 // Issue #342: Dashboard CommandBar
 export { CommandBar } from './CommandBar/CommandBar';
 export type { CommandBarProps, CommandBarFeature } from './CommandBar/CommandBar';
+
+// Issue #398: CanvasTable organism
+export { CanvasTable } from './CanvasTable/CanvasTable';
+export type { CanvasTableProps } from './CanvasTable/CanvasTable';
+
+// Issue #399: CanvasBoard organism
+export { CanvasBoard } from './CanvasBoard/CanvasBoard';
+export type { CanvasBoardProps, BoardLane, BoardCard } from './CanvasBoard/CanvasBoard';
+
+// Issue #400: CanvasCalendar organism
+export { CanvasCalendar } from './CanvasCalendar/CanvasCalendar';
+export type { CanvasCalendarProps, CalendarView, CalendarEvent } from './CanvasCalendar/CanvasCalendar';
+
+// Issue #401: CanvasTimeline organism
+export { CanvasTimeline } from './CanvasTimeline/CanvasTimeline';
+export type { CanvasTimelineProps, TimelineTask, TimelineZoom } from './CanvasTimeline/CanvasTimeline';
+
+// Issue #402: CanvasCatalog organism
+export { CanvasCatalog } from './CanvasCatalog/CanvasCatalog';
+export type { CanvasCatalogProps, CatalogItem } from './CanvasCatalog/CanvasCatalog';
+
+// Issue #403: CanvasDocuments organism
+export { CanvasDocuments } from './CanvasDocuments/CanvasDocuments';
+export type { CanvasDocumentsProps, DocumentItem, DocumentSortField } from './CanvasDocuments/CanvasDocuments';
+
+// Issue #404: CanvasCharts organism
+export { CanvasCharts } from './CanvasCharts/CanvasCharts';
+export type { CanvasChartsProps, ChartConfig, ChartDataPoint, ChartType } from './CanvasCharts/CanvasCharts';
+
+// Issue #405: DetailPanel organism
+export { DetailPanel } from './DetailPanel/DetailPanel';
+export type { DetailPanelProps } from './DetailPanel/DetailPanel';
+
+// Issue #387: WorkspaceSidebar
+export { WorkspaceSidebar } from './WorkspaceSidebar/WorkspaceSidebar';
+export type { WorkspaceSidebarProps, WorkspaceSidebarItem } from './WorkspaceSidebar/WorkspaceSidebar';
+
+// Issue #388: WorkspaceTabs
+export { WorkspaceTabs } from './WorkspaceTabs/WorkspaceTabs';
+export type { WorkspaceTabsProps, WorkspaceTab } from './WorkspaceTabs/WorkspaceTabs';
+
+// Issue #392: AIPanel
+export { AIPanel } from './AIPanel/AIPanel';
+export type { AIPanelProps, AIPanelMessage } from './AIPanel/AIPanel';

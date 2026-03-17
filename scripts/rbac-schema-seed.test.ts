@@ -146,14 +146,15 @@ describe("RBAC schema CRUD", () => {
   });
 
   it("creates a Permission with composite unique constraint", async () => {
+    // Use a resource/action pair not seeded by migration 0009
     const perm = await prisma.permission.create({
-      data: { resource: "user", action: "read", description: "Read users" },
+      data: { resource: "test_resource", action: "test_action", description: "Test permission" },
     });
     expect(perm.id).toBeTruthy();
 
     await expect(
       prisma.permission.create({
-        data: { resource: "user", action: "read" },
+        data: { resource: "test_resource", action: "test_action" },
       }),
     ).rejects.toThrow();
   });
@@ -644,15 +645,23 @@ describe("Seed production safety", () => {
 
   it("skips admin creation in production when SEED_ADMIN_EMAIL is not set", async () => {
     const { seedDatabase } = await import("../prisma/seed-logic.js");
+    // Migration 0008 bootstraps an admin user in every DB.
+    // Delete it so we can test that the seed logic itself does not create users.
+    await prisma.userRole.deleteMany();
+    await prisma.user.deleteMany();
+    const baselineCount = await prisma.user.count();
     await seedDatabase(prisma, { nodeEnv: "production" });
     const userCount = await prisma.user.count();
-    expect(userCount).toBe(0);
+    expect(userCount).toBe(baselineCount);
   });
 
   it("creates admin in production when SEED_ADMIN_EMAIL is explicitly set (fresh DB)", async () => {
     const fresh = createTestPrisma();
     try {
       const { seedDatabase } = await import("../prisma/seed-logic.js");
+      // Migration 0008 bootstraps an admin user. Remove it to test seed bootstrap on empty DB.
+      await fresh.prisma.userRole.deleteMany();
+      await fresh.prisma.user.deleteMany();
       await seedDatabase(fresh.prisma, { nodeEnv: "production", adminEmail: "admin@production.city" });
       const admin = await fresh.prisma.user.findUnique({
         where: { email: "admin@production.city" },
@@ -692,9 +701,13 @@ describe("Seed production safety", () => {
     const fresh = createTestPrisma();
     try {
       const { seedDatabase } = await import("../prisma/seed-logic.js");
+      // Migration 0008 bootstraps an admin user. Remove it to test seed behavior on empty DB.
+      await fresh.prisma.userRole.deleteMany();
+      await fresh.prisma.user.deleteMany();
+      const baselineCount = await fresh.prisma.user.count();
       await seedDatabase(fresh.prisma, { nodeEnv: null });
       const userCount = await fresh.prisma.user.count();
-      expect(userCount).toBe(0);
+      expect(userCount).toBe(baselineCount);
     } finally {
       await fresh.prisma.$disconnect();
       cleanupDb(fresh.tmpFile);

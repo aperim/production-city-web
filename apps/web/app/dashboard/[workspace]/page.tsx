@@ -10,14 +10,23 @@
  * @see Issue #385
  */
 
-import { useEffect } from 'react';
-import { useParams } from 'vinext/client';
+import { useEffect, useMemo } from 'react';
 import { useRegistry } from '../components/RegistryProvider';
 import { WORKSPACE_MAP, type WorkspaceId } from '../_generated/workspace-config';
 
+/** Extract the workspace slug from the URL path. */
+function useWorkspaceParam(): string {
+  return useMemo(() => {
+    if (typeof window === 'undefined') return '';
+    // URL: /dashboard/{workspace}
+    const segments = window.location.pathname.split('/').filter(Boolean);
+    const dashIdx = segments.indexOf('dashboard');
+    return segments[dashIdx + 1] ?? '';
+  }, []);
+}
+
 export default function WorkspacePage() {
-  const params = useParams<{ workspace: string }>();
-  const workspaceId = params.workspace;
+  const workspaceId = useWorkspaceParam();
   const { isWorkspaceVisible, getVisibleTabIds } = useRegistry();
 
   useEffect(() => {

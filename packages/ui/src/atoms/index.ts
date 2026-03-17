@@ -92,3 +92,15 @@ export type { FeatureStatusBadgeProps, FeatureStatus } from "./FeatureStatusBadg
 // Issue #342: Dashboard CommandBar Trigger
 export { CommandBarTrigger } from "./CommandBarTrigger/CommandBarTrigger";
 export type { CommandBarTriggerProps } from "./CommandBarTrigger/CommandBarTrigger";
+
+// Issue #387: WorkspaceSidebar Atoms
+export { WorkspaceIcon, WORKSPACE_ICONS } from "./WorkspaceIcon/WorkspaceIcon";
+export type { WorkspaceIconProps } from "./WorkspaceIcon/WorkspaceIcon";
+export { BadgeCount } from "./BadgeCount/BadgeCount";
+export type { BadgeCountProps } from "./BadgeCount/BadgeCount";
+
+// Issue #388: WorkspaceTabs Atoms
+export { FeatureStatusDot } from "./FeatureStatusDot/FeatureStatusDot";
+export type { FeatureStatusDotProps, FeatureDotStatus } from "./FeatureStatusDot/FeatureStatusDot";
+export { TabItem as WorkspaceTabItem } from "./TabItem/TabItem";
+export type { TabItemProps as WorkspaceTabItemProps } from "./TabItem/TabItem";
