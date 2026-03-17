@@ -984,3 +984,31 @@ export interface WorkspacesVisibleResponse {
 export function getWorkspacesVisible() {
   return request<WorkspacesVisibleResponse>('GET', '/v1/workspaces/visible');
 }
+
+// --- AI Chat ---
+
+export interface AIChatRequest {
+  message: string;
+  context?: {
+    workspace: string | null;
+    tab: string | null;
+    visibleWorkspaceIds?: string[];
+  };
+  sessionId?: string;
+}
+
+export interface AIChatCitation {
+  label: string;
+  url: string;
+}
+
+export interface AIChatResponse {
+  response: string;
+  citations: AIChatCitation[];
+  sessionId: string;
+}
+
+/** Send a message to the AI assistant (POST /v1/ai/chat) */
+export function sendAIChat(data: AIChatRequest) {
+  return request<AIChatResponse>('POST', '/v1/ai/chat', data);
+}
