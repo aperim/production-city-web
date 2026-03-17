@@ -142,3 +142,15 @@ export type { SidebarNavProps, NavGroup, NavSection, NavSubsection, NavRoute, Ph
 // Issue #342: Dashboard CommandBar
 export { CommandBar } from './CommandBar/CommandBar';
 export type { CommandBarProps, CommandBarFeature } from './CommandBar/CommandBar';
+
+// Issue #398: CanvasTable organism
+export { CanvasTable } from './CanvasTable/CanvasTable';
+export type { CanvasTableProps } from './CanvasTable/CanvasTable';
+
+// Issue #399: CanvasBoard organism
+export { CanvasBoard } from './CanvasBoard/CanvasBoard';
+export type { CanvasBoardProps, BoardLane, BoardCard } from './CanvasBoard/CanvasBoard';
+
+// Issue #400: CanvasCalendar organism
+export { CanvasCalendar } from './CanvasCalendar/CanvasCalendar';
+export type { CanvasCalendarProps, CalendarView, CalendarEvent } from './CanvasCalendar/CanvasCalendar';
