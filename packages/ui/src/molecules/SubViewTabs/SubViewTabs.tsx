@@ -1,68 +1,93 @@
-'use client';
+"use client";
 
-import { useId, type KeyboardEvent } from 'react';
-import { cn } from '../../lib/utils';
+import { useEffect, useId, useRef, type KeyboardEvent } from "react";
+import { cn } from "../../lib/utils";
 
-/** A single sub-view tab definition. */
+/** Single sub-view tab definition. */
 export interface SubViewTab {
-  /** Unique identifier for the sub-view. */
+  /** Unique tab identifier. */
   id: string;
   /** Display label. */
   label: string;
-  /** Optional badge (e.g. count). */
-  badge?: string;
+  /** Optional numeric badge. */
+  badge?: number;
+  /** Permission string — tab hidden if user lacks this permission. */
+  permission?: string;
 }
 
 /** Props for the SubViewTabs molecule. */
 export interface SubViewTabsProps {
-  /** Available tabs (permission-filtered by the parent). */
+  /** Available sub-view tabs. */
   tabs: SubViewTab[];
   /** Currently active tab ID. */
   activeTab: string;
-  /** Called when the user selects a different tab. */
+  /** Called when user selects a tab. */
   onTabChange: (tabId: string) => void;
-  /** Accessible label for the tablist. */
-  'aria-label'?: string;
-  /** Additional class names. */
+  /** Permission check function. Tabs with a permission are hidden when this returns false. */
+  hasPermission?: (permission: string) => boolean;
+  /** Custom className. */
   className?: string;
 }
 
 /**
- * SubViewTabs molecule — horizontal tab bar for switching between sub-views
- * within a canvas organism.
+ * Secondary tab bar for sub-views within a workspace canvas.
  *
- * Implements the ARIA tabs pattern with keyboard navigation (arrow keys, Home, End).
- * Hidden when there are fewer than 2 tabs.
+ * Visually distinct from WorkspaceTabs: uses pill/chip styling, smaller sizing.
+ * ARIA: role="tablist" with aria-label="Sub-view navigation".
+ * Keyboard: arrow navigation with Home/End support.
  *
- * Parent components are responsible for permission-filtering the tabs array
- * before passing it in.
+ * @see Issue #442
  */
 export function SubViewTabs({
   tabs,
   activeTab,
   onTabChange,
-  'aria-label': ariaLabel = 'Sub-views',
+  hasPermission,
   className,
 }: SubViewTabsProps) {
   const instanceId = useId();
+  const tabRefs = useRef<Map<string, HTMLButtonElement>>(new Map());
 
-  // Don't render if fewer than 2 tabs
-  if (tabs.length < 2) return null;
+  // Filter tabs by permission
+  const visibleTabs = tabs.filter((tab) => {
+    if (!tab.permission) return true;
+    if (!hasPermission) return true;
+    return hasPermission(tab.permission);
+  });
+
+  // If active tab is not in visible tabs, default to first visible
+  const activeIsVisible = visibleTabs.some((t) => t.id === activeTab);
+  const defaultTab = visibleTabs[0]?.id;
+
+  useEffect(() => {
+    if (!activeIsVisible && defaultTab) {
+      onTabChange(defaultTab);
+    }
+  }, [activeIsVisible, defaultTab, onTabChange]);
+
+  // Hide tablist when there's only one (or zero) visible tabs
+  if (visibleTabs.length <= 1) {
+    return null;
+  }
 
   function handleKeyDown(e: KeyboardEvent<HTMLButtonElement>, index: number) {
     let nextIndex: number | undefined;
 
-    if (e.key === 'ArrowRight') nextIndex = (index + 1) % tabs.length;
-    if (e.key === 'ArrowLeft') nextIndex = (index - 1 + tabs.length) % tabs.length;
-    if (e.key === 'Home') nextIndex = 0;
-    if (e.key === 'End') nextIndex = tabs.length - 1;
+    if (e.key === "ArrowRight") {
+      nextIndex = (index + 1) % visibleTabs.length;
+    } else if (e.key === "ArrowLeft") {
+      nextIndex = (index - 1 + visibleTabs.length) % visibleTabs.length;
+    } else if (e.key === "Home") {
+      nextIndex = 0;
+    } else if (e.key === "End") {
+      nextIndex = visibleTabs.length - 1;
+    }
 
     if (nextIndex !== undefined) {
       e.preventDefault();
-      const target = tabs[nextIndex];
+      const target = visibleTabs[nextIndex];
       if (target) {
-        onTabChange(target.id);
-        document.getElementById(`svtab-${instanceId}-${target.id}`)?.focus();
+        tabRefs.current.get(target.id)?.focus();
       }
     }
   }
@@ -70,19 +95,23 @@ export function SubViewTabs({
   return (
     <div
       role="tablist"
-      aria-label={ariaLabel}
-      aria-orientation="horizontal"
+      aria-label="Sub-view navigation"
       className={cn(
-        'flex border-b border-border gap-0 overflow-x-auto shrink-0',
+        "flex items-center gap-1 overflow-x-auto px-4 py-2",
+        "scrollbar-none",
         className,
       )}
     >
-      {tabs.map((tab, index) => {
+      {visibleTabs.map((tab, index) => {
         const isActive = tab.id === activeTab;
         return (
           <button
             key={tab.id}
-            id={`svtab-${instanceId}-${tab.id}`}
+            id={`subview-tab-${instanceId}-${tab.id}`}
+            ref={(el) => {
+              if (el) tabRefs.current.set(tab.id, el);
+              else tabRefs.current.delete(tab.id);
+            }}
             type="button"
             role="tab"
             aria-selected={isActive}
@@ -90,16 +119,17 @@ export function SubViewTabs({
             onClick={() => onTabChange(tab.id)}
             onKeyDown={(e) => handleKeyDown(e, index)}
             className={cn(
-              'inline-flex items-center gap-1.5 whitespace-nowrap text-sm font-medium px-4 py-2 border-b-2 -mb-px transition-colors duration-150',
-              'focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring',
+              "inline-flex items-center gap-1.5 px-3 py-1 text-xs font-medium rounded-sm",
+              "transition-colors duration-100",
+              "focus-visible:outline-2 focus-visible:outline-offset-1 focus-visible:outline-ring",
               isActive
-                ? 'border-primary text-foreground'
-                : 'border-transparent text-muted-foreground hover:text-foreground',
+                ? "bg-muted text-foreground"
+                : "text-muted-foreground hover:text-foreground hover:bg-muted/50",
             )}
           >
             {tab.label}
             {tab.badge != null && (
-              <span className="inline-flex items-center rounded-sm bg-muted px-1.5 py-0.5 text-xs">
+              <span className="inline-flex items-center rounded-sm bg-muted-foreground/20 px-1 py-0.5 text-[10px] leading-none">
                 {tab.badge}
               </span>
             )}

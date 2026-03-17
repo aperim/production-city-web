@@ -536,10 +536,11 @@ describe("constants", () => {
     expect(VALID_PRIORITIES).toContain("p3");
   });
 
-  it("exports 7 valid canvas types", () => {
-    expect(VALID_CANVAS_TYPES).toHaveLength(7);
+  it("exports 8 valid canvas types", () => {
+    expect(VALID_CANVAS_TYPES).toHaveLength(8);
     expect(VALID_CANVAS_TYPES).toContain("table");
     expect(VALID_CANVAS_TYPES).toContain("charts");
+    expect(VALID_CANVAS_TYPES).toContain("communications");
   });
 
   it("exports 11 valid workspace IDs", () => {

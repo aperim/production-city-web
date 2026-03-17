@@ -9,6 +9,7 @@ export type CanvasType =
   | 'catalog'
   | 'documents'
   | 'charts'
+  | 'communications'
   ;
 
 export type WorkspaceId =
@@ -238,7 +239,7 @@ export const WORKSPACE_CONFIG: WorkspaceConfig[] = [
       { id: 'security', label: 'Security', canvas: 'table', featureIds: ['administration.security.security_policies', 'administration.security.mfa_management', 'administration.security.session_management', 'administration.security.ip_allowlisting'] },
       { id: 'legal', label: 'Legal', canvas: 'table', featureIds: ['company_ops.legal.contracts', 'company_ops.legal.ip', 'company_ops.legal.compliance_calendar', 'company_ops.legal.litigation', 'company_ops.legal.counsel', 'company_ops.legal.privacy'] },
       { id: 'board', label: 'Board', canvas: 'table', featureIds: ['company_ops.board.meetings', 'company_ops.board.minutes', 'company_ops.board.directors', 'company_ops.board.governance', 'company_ops.board.company_secretary'] },
-      { id: 'communications', label: 'Communications', canvas: 'table', featureIds: ['communications.internal.staff_announcements', 'communications.internal.newsletter', 'communications.internal.intranet', 'communications.internal.policy_distribution', 'communications.external.website_cms', 'communications.external.social_media', 'communications.external.press_releases', 'communications.external.media_kit', 'communications.brand.brand_guidelines', 'communications.brand.asset_library', 'communications.brand.template_management', 'communications.notifications.notification_center', 'communications.notifications.alert_management', 'communications.notifications.escalation_rules', 'communications.notifications.communication_preferences'] },
+      { id: 'communications', label: 'Communications', canvas: 'communications', featureIds: ['communications.internal.staff_announcements', 'communications.internal.newsletter', 'communications.internal.intranet', 'communications.internal.policy_distribution', 'communications.external.website_cms', 'communications.external.social_media', 'communications.external.press_releases', 'communications.external.media_kit', 'communications.brand.brand_guidelines', 'communications.brand.asset_library', 'communications.brand.template_management', 'communications.notifications.notification_center', 'communications.notifications.alert_management', 'communications.notifications.escalation_rules', 'communications.notifications.communication_preferences'] },
     ],
     roles: ['admin'],
   },

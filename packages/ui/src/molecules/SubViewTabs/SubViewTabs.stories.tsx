@@ -1,68 +1,86 @@
-import { useState } from 'react';
-import type { Meta, StoryObj } from '@storybook/react-vite';
-import { SubViewTabs, type SubViewTab } from './SubViewTabs';
+import type { Meta, StoryObj } from "@storybook/react-vite";
+import { useState } from "react";
+import { SubViewTabs, type SubViewTab } from "./SubViewTabs";
 
 const meta: Meta<typeof SubViewTabs> = {
-  title: 'Molecules/SubViewTabs',
+  title: "Molecules/SubViewTabs",
   component: SubViewTabs,
-  tags: ['autodocs'],
-  parameters: {
-    layout: 'padded',
-  },
+  parameters: { layout: "padded" },
 };
 
 export default meta;
-
 type Story = StoryObj<typeof SubViewTabs>;
 
-const allTabs: SubViewTab[] = [
-  { id: 'users', label: 'Users' },
-  { id: 'invitations', label: 'Invitations' },
-  { id: 'approvals', label: 'Approvals' },
+const baseTabs: SubViewTab[] = [
+  { id: "announcements", label: "Announcements" },
+  { id: "categories", label: "Categories" },
+  { id: "tags", label: "Tags" },
+  { id: "subscriptions", label: "Subscriptions" },
 ];
 
-function InteractiveWrapper({ tabs }: { tabs: SubViewTab[] }) {
-  const [active, setActive] = useState(tabs[0]?.id ?? '');
-  return (
-    <div>
-      <SubViewTabs tabs={tabs} activeTab={active} onTabChange={setActive} />
-      <div className="p-4 text-sm text-muted-foreground">Active: {active}</div>
-    </div>
-  );
+function SubViewTabsControlled({ tabs, ...props }: { tabs: SubViewTab[]; hasPermission?: (p: string) => boolean }) {
+  const [active, setActive] = useState(tabs[0]?.id ?? "");
+  return <SubViewTabs tabs={tabs} activeTab={active} onTabChange={setActive} {...props} />;
 }
 
 export const Default: Story = {
-  render: () => <InteractiveWrapper tabs={allTabs} />,
-};
-
-export const TwoTabs: Story = {
-  render: () => (
-    <InteractiveWrapper
-      tabs={[
-        { id: 'users', label: 'Users' },
-        { id: 'invitations', label: 'Invitations' },
-      ]}
-    />
-  ),
+  render: () => <SubViewTabsControlled tabs={baseTabs} />,
 };
 
 export const WithBadges: Story = {
   render: () => (
-    <InteractiveWrapper
+    <SubViewTabsControlled
       tabs={[
-        { id: 'users', label: 'Users', badge: '24' },
-        { id: 'invitations', label: 'Invitations', badge: '3' },
-        { id: 'approvals', label: 'Approvals', badge: '7' },
+        { id: "announcements", label: "Announcements", badge: 12 },
+        { id: "categories", label: "Categories", badge: 5 },
+        { id: "tags", label: "Tags", badge: 23 },
+        { id: "subscriptions", label: "Subscriptions", badge: 140 },
       ]}
     />
   ),
 };
 
-export const SingleTab: Story = {
-  args: {
-    tabs: [{ id: 'users', label: 'Users' }],
-    activeTab: 'users',
-    onTabChange: () => {},
-  },
-  name: 'Single Tab (hidden)',
+export const ManyTabs: Story = {
+  render: () => (
+    <SubViewTabsControlled
+      tabs={Array.from({ length: 10 }, (_, i) => ({
+        id: `tab-${i}`,
+        label: `Sub-view ${i + 1}`,
+      }))}
+    />
+  ),
+};
+
+export const TwoTabs: Story = {
+  render: () => (
+    <SubViewTabsControlled tabs={[{ id: "first", label: "First" }, { id: "second", label: "Second" }]} />
+  ),
+};
+
+export const PermissionFiltered: Story = {
+  render: () => (
+    <SubViewTabsControlled
+      tabs={[
+        { id: "announcements", label: "Announcements", permission: "announcement:read_admin" },
+        { id: "categories", label: "Categories", permission: "category:manage" },
+        { id: "tags", label: "Tags" },
+        { id: "subscriptions", label: "Subscriptions", permission: "subscription:manage" },
+      ]}
+      hasPermission={(p) => p === "announcement:read_admin"}
+    />
+  ),
+};
+
+export const Responsive: Story = {
+  parameters: { viewport: { defaultViewport: "mobile1" } },
+  render: () => (
+    <SubViewTabsControlled
+      tabs={[
+        { id: "announcements", label: "Announcements", badge: 12 },
+        { id: "categories", label: "Categories", badge: 5 },
+        { id: "tags", label: "Tags" },
+        { id: "subscriptions", label: "Subscriptions" },
+      ]}
+    />
+  ),
 };

@@ -195,6 +195,16 @@ export type { InboxFeedProps, InboxFeedItem, InboxFilters } from './InboxFeed/In
 export { PlannedSection } from './PlannedSection/PlannedSection';
 export type { PlannedSectionProps, PlannedFeature } from './PlannedSection/PlannedSection';
 
+// Issue #442: CommunicationsCanvas
+export { CommunicationsCanvas } from './CommunicationsCanvas/CommunicationsCanvas';
+export type { CommunicationsCanvasProps, CommunicationsView } from './CommunicationsCanvas/CommunicationsCanvas';
+
+// Issue #443: AnnouncementEditorCanvas + AnnouncementPreviewCanvas
+export { AnnouncementEditorCanvas } from './AnnouncementEditorCanvas/AnnouncementEditorCanvas';
+export type { AnnouncementEditorCanvasProps } from './AnnouncementEditorCanvas/AnnouncementEditorCanvas';
+export { AnnouncementPreviewCanvas } from './AnnouncementPreviewCanvas/AnnouncementPreviewCanvas';
+export type { AnnouncementPreviewCanvasProps, PreviewAnnouncement, DeliveryStats } from './AnnouncementPreviewCanvas/AnnouncementPreviewCanvas';
+
 // Issue #445: UsersCanvas, SecurityCanvas, EoiCanvas
 export { UsersCanvas } from './UsersCanvas/UsersCanvas';
 export type { UsersCanvasProps, UsersCanvasPermissions, ApprovalItem } from './UsersCanvas/UsersCanvas';

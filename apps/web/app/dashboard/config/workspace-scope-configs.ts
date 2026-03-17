@@ -117,6 +117,15 @@ export const WORKSPACE_SCOPE_CONFIGS: Record<string, WorkspaceScopeConfig> = {
     ],
     searchPlaceholder: "Search admin...",
   },
+  "administration/communications": {
+    options: [
+      { id: "all", label: "All" },
+      { id: "draft", label: "Draft" },
+      { id: "published", label: "Published" },
+      { id: "archived", label: "Archived" },
+    ],
+    searchPlaceholder: "Search communications...",
+  },
 };
 
 /**

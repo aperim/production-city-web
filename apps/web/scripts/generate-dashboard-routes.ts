@@ -46,7 +46,7 @@ export const VALID_PRIORITIES = ["p0", "p1", "p2", "p3"] as const;
 export const VALID_STATUSES = ["planned", "coming_soon", "active", "deprecated"] as const;
 
 export const VALID_CANVAS_TYPES = [
-  "table", "board", "calendar", "timeline", "catalog", "documents", "charts",
+  "table", "board", "calendar", "timeline", "catalog", "documents", "charts", "communications",
 ] as const;
 
 export const VALID_WORKSPACE_IDS = [

@@ -110,6 +110,14 @@ export type { DetailPanelProps } from "../../../../packages/ui/src/organisms/Det
 // Issue #407: PlannedSection organism
 export { PlannedSection } from "../../../../packages/ui/src/organisms/PlannedSection/PlannedSection";
 export type { PlannedSectionProps, PlannedFeature } from "../../../../packages/ui/src/organisms/PlannedSection/PlannedSection";
+// Issue #442: CommunicationsCanvas organism
+export { CommunicationsCanvas } from "../../../../packages/ui/src/organisms/CommunicationsCanvas/CommunicationsCanvas";
+export type { CommunicationsCanvasProps, CommunicationsView } from "../../../../packages/ui/src/organisms/CommunicationsCanvas/CommunicationsCanvas";
+// Issue #443: AnnouncementEditorCanvas + AnnouncementPreviewCanvas organisms
+export { AnnouncementEditorCanvas } from "../../../../packages/ui/src/organisms/AnnouncementEditorCanvas/AnnouncementEditorCanvas";
+export type { AnnouncementEditorCanvasProps } from "../../../../packages/ui/src/organisms/AnnouncementEditorCanvas/AnnouncementEditorCanvas";
+export { AnnouncementPreviewCanvas } from "../../../../packages/ui/src/organisms/AnnouncementPreviewCanvas/AnnouncementPreviewCanvas";
+export type { AnnouncementPreviewCanvasProps, PreviewAnnouncement, DeliveryStats } from "../../../../packages/ui/src/organisms/AnnouncementPreviewCanvas/AnnouncementPreviewCanvas";
 // Issue #445: Canvas organisms
 export { UsersCanvas } from "../../../../packages/ui/src/organisms/UsersCanvas/UsersCanvas";
 export type { UsersCanvasProps, UsersCanvasPermissions, ApprovalItem } from "../../../../packages/ui/src/organisms/UsersCanvas/UsersCanvas";
