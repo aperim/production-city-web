@@ -305,16 +305,52 @@ Plural forms per locale: Arabic (6), Russian (3), French/Spanish/Portuguese (2),
 
 ---
 
-## Dashboard Architecture — Registry-Driven Feature Gating
+## Dashboard Architecture — Workspace-Based UX
 
-The dashboard uses a **registry-driven scaffold** with 502 features, 26 sections, and 10 user roles. Features are defined in `docs/superpowers/specs/2026-03-15-dashboard-feature-registry.json` and compiled to a route manifest at `apps/backend/src/_generated/route-manifest.ts`.
+The dashboard uses a **workspace-based architecture** with 11 workspaces, 502 features, and 10 user roles. Features are defined in `docs/superpowers/specs/2026-03-15-dashboard-feature-registry.json` and compiled to generated configs.
+
+### URL Structure
+
+```
+/dashboard                          → Home (RoleDashboard)
+/dashboard/inbox                    → Inbox feed
+/dashboard/{workspace}              → Redirects to first visible tab
+/dashboard/{workspace}/{tab}        → Workspace tab with canvas
+/dashboard/{section}/{sub}/{feat}   → Legacy FeatureGate → ComingSoonPage
+```
+
+### Workspaces
+
+11 workspaces: productions, facilities, finance, people, campus, events, education, analytics, investor-relations, partnerships, administration.
+
+Each workspace has **tabs** (e.g., `productions/overview`, `productions/shooting`). Each tab maps to a **canvas type** (table, board, calendar, timeline, catalog, documents, charts).
+
+### Generated Configs
+
+- `apps/web/app/dashboard/_generated/workspace-config.ts` — Workspace definitions, tabs, canvas types
+- `apps/web/app/dashboard/_generated/sidebar-config.ts` — Sidebar navigation groups/sections
+- `apps/web/app/dashboard/_generated/routes.ts` — Feature ID → path mapping
+- `apps/web/app/dashboard/_generated/feature-index.ts` — Feature labels/descriptions
+- `apps/web/app/dashboard/_generated/role-config.ts` — Role definitions
 
 ### Key Concepts
 
+- **Workspace visibility**: computed from intersection of user's visible feature IDs and workspace tab feature mappings
 - **Dashboard roles** are detected from `dashboard:{role}` permission markers (not DB role names)
 - **Permission resolution** supports wildcards (`hr:*`) and self-scope modifiers (`:self`, `:own`)
-- **Anti-enumeration**: unauthorized features return 404 (not 403); GET /notify returns `{subscribed: false}`
+- **Anti-enumeration**: unknown workspaces/tabs return null (rendered as 404, not 403)
 - **Fail-closed**: RegistryProvider clears visible features on error
+- **Phase 1 scaffold (current)**: all features visible to all users; real role-based workspace/tab gating is not yet implemented. The client-side visibility code exists but the server returns all feature IDs. Server-side RBAC gating is deferred to Phase 2.
+
+### Key Components
+
+- `apps/web/app/dashboard/components/RegistryProvider.tsx` — `RegistryProvider` + `useRegistry` hook (workspace visibility)
+- `apps/web/app/dashboard/components/FeatureGate.tsx` — Route-level guard for legacy section/subsection/feature paths
+- `apps/web/app/dashboard/components/AIPanelWired.tsx` — AI assistant panel
+- `apps/web/app/dashboard/[workspace]/page.tsx` — Workspace index (redirects to first tab)
+- `apps/web/app/dashboard/[workspace]/[tab]/page.tsx` — Tab page with canvas rendering
+- `apps/web/app/dashboard/config/workspace-scope-configs.ts` — Scope bar configurations per workspace
+- `apps/web/worker/legacy-redirects.ts` — 301 redirects from old paths to new paths
 
 ### API Endpoints
 
@@ -324,12 +360,10 @@ The dashboard uses a **registry-driven scaffold** with 502 features, 26 sections
 | `/v1/features/:featureId/notify` | POST | Subscribe to feature notification |
 | `/v1/features/:featureId/notify` | DELETE | Unsubscribe |
 | `/v1/features/:featureId/notify` | GET | Check subscription status |
-
-### Frontend Integration
-
-- `apps/web/app/lib/registry-context.tsx` — `RegistryProvider` + `useRegistry` hook
-- `apps/web/app/lib/api-client.ts` — `getRegistryVisible()`, `subscribeToFeature()`, etc.
-- Build-time manifest intersection prevents stale features from appearing
+| `/v1/inbox` | GET | Inbox feed items |
+| `/v1/inbox/:id` | PATCH | Mark inbox item read/dismissed |
+| `/v1/inbox/mark-all-read` | POST | Mark all inbox items read |
+| `/v1/search` | GET | Global search (CommandBar) |
 
 ### Seed Data (dev/test)
 
