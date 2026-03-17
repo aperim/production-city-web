@@ -190,3 +190,7 @@ export type { AIPanelProps, AIPanelMessage } from './AIPanel/AIPanel';
 // Issue #396: InboxFeed
 export { InboxFeed } from './InboxFeed/InboxFeed';
 export type { InboxFeedProps, InboxFeedItem, InboxFilters } from './InboxFeed/InboxFeed';
+
+// Issue #407: PlannedSection
+export { PlannedSection } from './PlannedSection/PlannedSection';
+export type { PlannedSectionProps, PlannedFeature } from './PlannedSection/PlannedSection';

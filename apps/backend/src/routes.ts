@@ -30,6 +30,7 @@ import { featureNotifyApp } from "./registry/notify.js";
 import { workspacesVisibleApp } from "./registry/workspaces.js";
 import { homeSummaryApp } from "./home/summary.js";
 import { inboxApp } from "./inbox/handlers.js";
+import { aiChatApp } from "./ai/chat.js";
 
 /**
  * Mount all auth and admin routes onto the main app.
@@ -86,6 +87,9 @@ export function mountRoutes(app: OpenAPIHono<{ Bindings: Record<string, unknown>
   // Home dashboard + inbox routes (auth required)
   app.route("/", homeSummaryApp);
   app.route("/", inboxApp);
+
+  // AI assistant chat (auth required)
+  app.route("/", aiChatApp);
 
   // Public EOI and locales routes (no auth required)
   app.route("/", eoiApp);

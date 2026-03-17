@@ -150,3 +150,15 @@ export type { WorkspaceCardProps, WorkspaceCardStat, WorkspaceCardTab, Workspace
 // Issue #396: AttentionItem Molecule
 export { AttentionItem } from "./AttentionItem/AttentionItem";
 export type { AttentionItemProps } from "./AttentionItem/AttentionItem";
+
+// Issue #406: ComingSoonBanner Molecule
+export { ComingSoonBanner } from "./ComingSoonBanner/ComingSoonBanner";
+export type { ComingSoonBannerProps, SubscribeState } from "./ComingSoonBanner/ComingSoonBanner";
+
+// Issue #408: PlannedFeatureCard Molecule
+export { PlannedFeatureCard } from "./PlannedFeatureCard/PlannedFeatureCard";
+export type { PlannedFeatureCardProps } from "./PlannedFeatureCard/PlannedFeatureCard";
+
+// Issue #409: WireframePreview Molecule
+export { WireframePreview, WIREFRAME_TYPES } from "./WireframePreview/WireframePreview";
+export type { WireframePreviewProps, WireframeType } from "./WireframePreview/WireframePreview";

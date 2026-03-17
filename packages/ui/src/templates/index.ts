@@ -35,3 +35,7 @@ export type { HomeDashboardProps, AttentionItemData, RecentData, WhatsNewData } 
 // Issue #396: InboxPage Template
 export { InboxPage } from "./InboxPage/InboxPage";
 export type { InboxPageProps } from "./InboxPage/InboxPage";
+
+// Issue #406: ComingSoonScaffold Template
+export { ComingSoonScaffold } from "./ComingSoonScaffold/ComingSoonScaffold";
+export type { ComingSoonScaffoldProps } from "./ComingSoonScaffold/ComingSoonScaffold";
