@@ -118,3 +118,40 @@ export const WORKSPACE_SCOPE_CONFIGS: Record<string, WorkspaceScopeConfig> = {
     searchPlaceholder: "Search admin...",
   },
 };
+
+/**
+ * Per-tab scope configs for tabs that use custom canvases.
+ * These override the workspace-level scope config.
+ *
+ * @see Issue #446
+ */
+export const TAB_SCOPE_CONFIGS: Record<string, WorkspaceScopeConfig> = {
+  "administration/users": {
+    options: [
+      { id: "all", label: "All statuses" },
+      { id: "active", label: "Active" },
+      { id: "pending", label: "Pending" },
+      { id: "deactivated", label: "Deactivated" },
+    ],
+    searchPlaceholder: "Search users...",
+  },
+  "administration/security": {
+    options: [
+      { id: "all", label: "All actions" },
+      { id: "login", label: "Login" },
+      { id: "role_change", label: "Role change" },
+      { id: "settings", label: "Settings" },
+    ],
+    searchPlaceholder: "Search audit log...",
+  },
+  "partnerships/eoi": {
+    options: [
+      { id: "all", label: "All" },
+      { id: "new", label: "New" },
+      { id: "contacted", label: "Contacted" },
+      { id: "converted", label: "Converted" },
+      { id: "archived", label: "Archived" },
+    ],
+    searchPlaceholder: "Search EOI...",
+  },
+};

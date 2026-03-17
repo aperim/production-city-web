@@ -26,12 +26,25 @@ import {
   CanvasCatalog,
   CanvasDocuments,
   CanvasCharts,
+  UsersCanvas,
+  SecurityCanvas,
+  EoiCanvas,
   ScopeBar,
   type BoardCard,
   type DataTableColumn,
 } from '@productioncity/holding-ui';
 import { getSampleData } from '../sample-data';
 import { WORKSPACE_SCOPE_CONFIGS } from '../../config/workspace-scope-configs';
+
+/**
+ * Custom canvas identifiers — workspace/tab combinations that render
+ * a dedicated canvas organism instead of a generic canvas type.
+ */
+const CUSTOM_CANVAS_MAP: Record<string, string> = {
+  'administration/users': 'users-canvas',
+  'administration/security': 'security-canvas',
+  'partnerships/eoi': 'eoi-canvas',
+};
 
 /** Extract workspace and tab slugs from the URL path. */
 function useWorkspaceTabParams(): { workspace: string; tab: string } {
@@ -138,8 +151,95 @@ function resolveCanvas(
   }
 }
 
+/** Read ?view= query param for sub-view routing. */
+function useViewParam(): string | null {
+  return useMemo(() => {
+    if (typeof window === 'undefined') return null;
+    return new URLSearchParams(window.location.search).get('view');
+  }, []);
+}
+
+/**
+ * Resolve a custom canvas for specific workspace/tab combinations.
+ * Returns null if the combination doesn't have a custom canvas.
+ */
+function resolveCustomCanvas(
+  workspaceId: string,
+  tabId: string,
+  viewParam: string | null,
+): ReactNode | null {
+  const key = `${workspaceId}/${tabId}`;
+  const canvasType = CUSTOM_CANVAS_MAP[key];
+
+  if (!canvasType) return null;
+
+  switch (canvasType) {
+    case 'users-canvas':
+      return (
+        <UsersCanvas
+          users={[]}
+          usersPagination={{ page: 1, totalPages: 0, pageSize: 25 }}
+          onUsersPageChange={() => {}}
+          onUsersSearch={() => {}}
+          onUsersFilter={() => {}}
+          onUsersSort={() => {}}
+          onUserClick={() => {}}
+          invitations={[]}
+          onInvitationResend={() => {}}
+          onInvitationRevoke={() => {}}
+          approvals={[]}
+          onApprove={() => {}}
+          onReject={() => {}}
+          permissions={{ userRead: true, invitationRead: true, userUpdate: true }}
+          initialView={
+            viewParam === 'invitations' || viewParam === 'approvals'
+              ? viewParam
+              : undefined
+          }
+          onViewChange={(view) => {
+            const url = new URL(window.location.href);
+            if (view === 'users') {
+              url.searchParams.delete('view');
+            } else {
+              url.searchParams.set('view', view);
+            }
+            window.history.pushState({}, '', url.toString());
+          }}
+        />
+      );
+
+    case 'security-canvas':
+      return (
+        <SecurityCanvas
+          entries={[]}
+          hasPermission={true}
+          hasMore={false}
+          onLoadMore={() => {}}
+          onFilterChange={() => {}}
+        />
+      );
+
+    case 'eoi-canvas':
+      return (
+        <EoiCanvas
+          items={[]}
+          pagination={{ page: 1, totalPages: 0, total: 0, limit: 25 }}
+          onPageChange={() => {}}
+          onSearch={() => {}}
+          onCategoryFilter={() => {}}
+          onStatusFilter={() => {}}
+          hasPermission={true}
+        />
+      );
+
+    default:
+      return null;
+  }
+}
+
 export default function WorkspaceTabPage() {
   const { workspace: workspaceId, tab: tabId } = useWorkspaceTabParams();
+  const viewParam = useViewParam();
   const { visibleFeatureIds, isWorkspaceVisible } = useRegistry();
   const [scopeValue, setScopeValue] = useState<string>('all');
 
@@ -165,13 +265,14 @@ export default function WorkspaceTabPage() {
   // Scope bar config for this workspace
   const scopeConfig = WORKSPACE_SCOPE_CONFIGS[workspaceId];
 
-  // Render the canvas or ComingSoonScaffold
-  const canvas = resolveCanvas(workspaceId, tab);
+  // Check for custom canvas first, then fall back to generic canvas
+  const customCanvas = resolveCustomCanvas(workspaceId, tabId, viewParam);
+  const canvas = customCanvas ?? resolveCanvas(workspaceId, tab);
 
   return (
     <div data-workspace={workspaceId} data-tab={tabId} className="flex flex-col h-full">
-      {/* Scope bar */}
-      {scopeConfig && (
+      {/* Scope bar — hidden for custom canvases (they have their own controls) */}
+      {scopeConfig && !customCanvas && (
         <ScopeBar
           options={scopeConfig.options}
           value={scopeValue}
