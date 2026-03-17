@@ -67,7 +67,11 @@ describe("GET /v1/admin/stats", () => {
       const res = await app.fetch(req, env);
       expect(res.status).toBe(200);
 
-      const body = await res.json();
+      const body = (await res.json()) as {
+        totalUsers: number;
+        pendingApprovals: number;
+        activeInvitations: number;
+      };
       expect(body.totalUsers).toBeGreaterThanOrEqual(2);
       expect(body.pendingApprovals).toBeGreaterThanOrEqual(1);
       expect(body.activeInvitations).toBeGreaterThanOrEqual(1);

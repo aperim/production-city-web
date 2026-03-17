@@ -180,11 +180,11 @@ describe("workspace routing — visibility (anti-enumeration)", () => {
 
   it("returns only visible tabs within a workspace", () => {
     // Only give visibility to overview tab features
-    const overviewTab = WORKSPACE_CONFIG.find((ws) => ws.id === "productions")!.tabs[0];
+    const overviewTab = WORKSPACE_CONFIG.find((ws) => ws.id === "productions")!.tabs[0]!;
     const visibleIds = new Set(overviewTab.featureIds);
     const visibleTabs = getVisibleTabs("productions", visibleIds);
     expect(visibleTabs.length).toBe(1);
-    expect(visibleTabs[0].id).toBe("overview");
+    expect(visibleTabs[0]!.id).toBe("overview");
   });
 
   it("admin (all features visible) sees all tabs", () => {
@@ -206,7 +206,7 @@ describe("workspace routing — URL structure", () => {
   it("/dashboard/{workspace} should redirect to first visible tab", () => {
     // For each workspace, the first tab is the default
     for (const ws of WORKSPACE_CONFIG) {
-      const firstTab = ws.tabs[0];
+      const firstTab = ws.tabs[0]!;
       expect(firstTab).toBeDefined();
       const expectedPath = `/dashboard/${ws.id}/${firstTab.id}`;
       expect(expectedPath).toMatch(/^\/dashboard\/[a-z][a-z0-9-]*\/[a-z][a-z0-9-]*$/);

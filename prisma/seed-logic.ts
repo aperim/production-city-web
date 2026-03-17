@@ -449,7 +449,7 @@ export async function seedDatabase(
 
       const user = await prisma.user.upsert({
         where: { email: adminEmail },
-        update: { status: "active", emailVerified: true },
+        update: { name: adminName, status: "active", emailVerified: true },
         create: {
           email: adminEmail,
           name: adminName,
