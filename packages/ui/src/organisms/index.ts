@@ -154,3 +154,23 @@ export type { CanvasBoardProps, BoardLane, BoardCard } from './CanvasBoard/Canva
 // Issue #400: CanvasCalendar organism
 export { CanvasCalendar } from './CanvasCalendar/CanvasCalendar';
 export type { CanvasCalendarProps, CalendarView, CalendarEvent } from './CanvasCalendar/CanvasCalendar';
+
+// Issue #401: CanvasTimeline organism
+export { CanvasTimeline } from './CanvasTimeline/CanvasTimeline';
+export type { CanvasTimelineProps, TimelineTask, TimelineZoom } from './CanvasTimeline/CanvasTimeline';
+
+// Issue #402: CanvasCatalog organism
+export { CanvasCatalog } from './CanvasCatalog/CanvasCatalog';
+export type { CanvasCatalogProps, CatalogItem } from './CanvasCatalog/CanvasCatalog';
+
+// Issue #403: CanvasDocuments organism
+export { CanvasDocuments } from './CanvasDocuments/CanvasDocuments';
+export type { CanvasDocumentsProps, DocumentItem, DocumentSortField } from './CanvasDocuments/CanvasDocuments';
+
+// Issue #404: CanvasCharts organism
+export { CanvasCharts } from './CanvasCharts/CanvasCharts';
+export type { CanvasChartsProps, ChartConfig, ChartDataPoint, ChartType } from './CanvasCharts/CanvasCharts';
+
+// Issue #405: DetailPanel organism
+export { DetailPanel } from './DetailPanel/DetailPanel';
+export type { DetailPanelProps } from './DetailPanel/DetailPanel';
