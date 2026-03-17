@@ -186,3 +186,7 @@ export type { WorkspaceTabsProps, WorkspaceTab } from './WorkspaceTabs/Workspace
 // Issue #392: AIPanel
 export { AIPanel } from './AIPanel/AIPanel';
 export type { AIPanelProps, AIPanelMessage } from './AIPanel/AIPanel';
+
+// Issue #407: PlannedSection
+export { PlannedSection } from './PlannedSection/PlannedSection';
+export type { PlannedSectionProps, PlannedFeature } from './PlannedSection/PlannedSection';

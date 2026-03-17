@@ -142,3 +142,15 @@ export type { RecentItemProps } from "./RecentItem/RecentItem";
 // Issue #389: ScopeBar Molecule
 export { ScopeBar } from "./ScopeBar/ScopeBar";
 export type { ScopeBarProps, ScopeOption } from "./ScopeBar/ScopeBar";
+
+// Issue #406: ComingSoonBanner Molecule
+export { ComingSoonBanner } from "./ComingSoonBanner/ComingSoonBanner";
+export type { ComingSoonBannerProps, SubscribeState } from "./ComingSoonBanner/ComingSoonBanner";
+
+// Issue #408: PlannedFeatureCard Molecule
+export { PlannedFeatureCard } from "./PlannedFeatureCard/PlannedFeatureCard";
+export type { PlannedFeatureCardProps } from "./PlannedFeatureCard/PlannedFeatureCard";
+
+// Issue #409: WireframePreview Molecule
+export { WireframePreview, WIREFRAME_TYPES } from "./WireframePreview/WireframePreview";
+export type { WireframePreviewProps, WireframeType } from "./WireframePreview/WireframePreview";

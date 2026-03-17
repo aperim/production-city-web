@@ -27,3 +27,7 @@ export type { RoleDashboardProps, DashboardRole, KpiCard, QuickAction, ActivityE
 // Issue #390: WorkspaceShell Template
 export { WorkspaceShell } from "./WorkspaceShell/WorkspaceShell";
 export type { WorkspaceShellProps } from "./WorkspaceShell/WorkspaceShell";
+
+// Issue #406: ComingSoonScaffold Template
+export { ComingSoonScaffold } from "./ComingSoonScaffold/ComingSoonScaffold";
+export type { ComingSoonScaffoldProps } from "./ComingSoonScaffold/ComingSoonScaffold";
