@@ -249,16 +249,16 @@ describe("EoiPage", () => {
 });
 
 describe("Dashboard layout sidebar permission visibility", () => {
-  it("renders registry-driven sidebar for admin", async () => {
+  it("renders workspace sidebar for admin", async () => {
     mockAdmin();
 
     const { default: DashboardLayout } = await import("../dashboard/layout");
     const html = renderToString(
       createElement(DashboardLayout, null, createElement("p", null, "content")),
     );
-    expect(html).toContain("Dashboard");
+    // Phase 2: WorkspaceSidebar renders workspace items
+    expect(html).toContain("Workspaces");
     expect(html).toContain("content");
-    // New layout uses SidebarNav with registry-driven groups
     expect(html).toContain("nav");
   });
 
@@ -269,7 +269,7 @@ describe("Dashboard layout sidebar permission visibility", () => {
     const html = renderToString(
       createElement(DashboardLayout, null, createElement("p", null, "content")),
     );
-    expect(html).toContain("Dashboard");
+    expect(html).toContain("Workspaces");
     expect(html).toContain("content");
   });
 });

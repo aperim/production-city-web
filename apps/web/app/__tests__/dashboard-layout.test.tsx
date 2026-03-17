@@ -117,16 +117,16 @@ describe("Dashboard layout.tsx", () => {
     expect(html).toContain("Loading");
   });
 
-  it("renders sidebar with registry-driven navigation", async () => {
+  it("renders WorkspaceSidebar with workspace navigation", async () => {
     mockAuthenticatedAdmin();
     const { default: DashboardLayout } = await import("../dashboard/layout");
     const html = renderToString(
       createElement(DashboardLayout, null, createElement("p", null, "content")),
     );
     expect(html).toContain("content");
-    // New layout uses SidebarNav with registry-driven groups
-    expect(html).toContain("Dashboard");
-    // Should contain sidebar navigation from registry
+    // Phase 2: WorkspaceSidebar renders workspace items
+    expect(html).toContain("Workspaces");
+    // Should contain sidebar navigation element
     expect(html).toContain("nav");
   });
 
@@ -136,7 +136,8 @@ describe("Dashboard layout.tsx", () => {
     const html = renderToString(
       createElement(DashboardLayout, null, createElement("p", null, "content")),
     );
-    expect(html).toContain("Dashboard");
+    // Phase 2: WorkspaceSidebar always renders the Workspaces label
+    expect(html).toContain("Workspaces");
     expect(html).toContain("content");
   });
 
@@ -156,7 +157,8 @@ describe("Dashboard layout.tsx", () => {
       createElement(DashboardLayout, null, createElement("p", null, "content")),
     );
     expect(html).toContain("content");
-    expect(html).toContain("Dashboard");
+    // Phase 2: WorkspaceSidebar shows Home link
+    expect(html).toContain("Home");
   });
 
   it("renders children directly within the layout", async () => {
@@ -168,13 +170,14 @@ describe("Dashboard layout.tsx", () => {
     expect(html).toContain("my page content");
   });
 
-  it("layout provides the shell with sidebar", async () => {
+  it("layout provides WorkspaceShell with sidebar", async () => {
     mockAuthenticatedAdmin();
     const { default: DashboardLayout } = await import("../dashboard/layout");
     const html = renderToString(
       createElement(DashboardLayout, null, createElement("p", null, "page content")),
     );
     expect(html).toContain("page content");
-    expect(html).toContain("Dashboard");
+    // Phase 2: WorkspaceShell provides skip-to-content and workspace sidebar
+    expect(html).toContain("workspace-content");
   });
 });

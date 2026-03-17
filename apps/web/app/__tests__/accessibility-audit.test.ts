@@ -591,10 +591,10 @@ describe("WCAG 2.4.1 — SkipNavLink atom", () => {
 });
 
 describe("WCAG — Dashboard layout accessibility", () => {
-  it("dashboard layout uses DashboardShell which provides skip-to-content link", () => {
+  it("dashboard layout uses WorkspaceShell which provides skip-to-content link", () => {
     const layout = readFile("dashboard/layout.tsx");
-    // New layout delegates skip nav to DashboardShellTemplate (which renders "Skip to main content")
-    expect(layout).toContain("DashboardShellTemplate");
+    // Phase 2: WorkspaceShell provides skip-to-content link via workspace-content id
+    expect(layout).toContain("WorkspaceShell");
   });
 
   it("connection status uses aria-live for screen readers", () => {

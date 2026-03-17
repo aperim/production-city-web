@@ -3,25 +3,26 @@
 /**
  * Dashboard layout — wraps all /dashboard/* pages.
  *
- * Uses the new registry-driven DashboardShell with SidebarNav,
- * DashboardBreadcrumb, and RegistryProvider. Existing hand-coded
- * routes coexist during migration.
+ * Phase 2: uses WorkspaceShell + WorkspaceSidebar (workspace-based navigation)
+ * replacing the old Phase 1 DashboardShell + SidebarNav.
  *
  * @see Issue #332 (Shell & Navigation epic)
  * @see Issue #336 (DashboardShell + DashboardLayout)
  * @see Issue #352 (noindex — meta robots tag)
+ * @see Issue #436 (Phase 2 workspace-based UI)
  */
 
-import { type ReactNode, useState, useEffect, useCallback } from "react";
+import { type ReactNode, useState, useEffect, useCallback, useMemo } from "react";
 import {
-  DashboardShell as DashboardShellTemplate,
-  SidebarNav,
-  DashboardBreadcrumb,
+  WorkspaceShell,
+  WorkspaceSidebar,
+  WorkspaceTabs,
   ConnectionDot,
   NotificationBell,
   NotificationPanel,
   type NotificationEntry,
   type Phase,
+  type WorkspaceSidebarItem,
 } from "@productioncity/holding-ui";
 import { AuthProvider, useAuth } from "../lib/auth-context";
 import { ProtectedRoute } from "../lib/route-guard";
@@ -34,23 +35,20 @@ import {
   markAllNotificationsRead,
   type NotificationData,
 } from "../lib/api-client";
-import { RegistryProvider } from "./components/RegistryProvider";
+import { RegistryProvider, useRegistry } from "./components/RegistryProvider";
 import { SessionExpiredOverlay } from "./components/SessionExpiredOverlay";
 import { useSessionMonitor } from "../lib/use-session-monitor";
 import { useRegistryRevalidation } from "./use-registry-revalidation";
-import { SIDEBAR_CONFIG } from "./_generated/sidebar-config";
 import { DASHBOARD_ROUTES } from "./_generated/routes";
-import { FEATURE_INDEX } from "./_generated/feature-index";
+import {
+  WORKSPACE_CONFIG,
+  WORKSPACE_MAP,
+  type WorkspaceId,
+} from "./_generated/workspace-config";
 import { I18nProvider } from "../i18n/context";
 import { AIPanelWired } from "./components/AIPanelWired";
 
-/** Build a label map from the feature index for O(1) lookup */
-const FEATURE_LABEL_MAP = new Map<string, string>();
-for (const entry of FEATURE_INDEX) {
-  FEATURE_LABEL_MAP.set(entry.id, entry.label);
-}
-
-/** Default phase for scaffold (Phase 1) */
+/** Default phase for scaffold */
 const DEFAULT_PHASE: Phase = "company_formation";
 
 /** Maps WebSocket connection state to ConnectionDot variant */
@@ -219,15 +217,47 @@ function DashboardHeaderActions() {
   );
 }
 
-/** Inner layout assembling the DashboardShell with SidebarNav and breadcrumbs */
+/**
+ * Extract workspace and tab slugs from the current URL path.
+ * Returns { workspace, tab } or empty strings if not on a workspace route.
+ */
+function useWorkspaceTabFromPath(currentPath: string): { workspace: string; tab: string } {
+  return useMemo(() => {
+    const segments = currentPath.split("/").filter(Boolean);
+    const dashIdx = segments.indexOf("dashboard");
+    return {
+      workspace: segments[dashIdx + 1] ?? "",
+      tab: segments[dashIdx + 2] ?? "",
+    };
+  }, [currentPath]);
+}
+
+/** Build workspace sidebar items from the config, filtered by registry visibility */
+function useWorkspaceSidebarItems(): WorkspaceSidebarItem[] {
+  const { visibleWorkspaceIds } = useRegistry();
+
+  return useMemo(() => {
+    const visibleSet = new Set(visibleWorkspaceIds);
+    return WORKSPACE_CONFIG
+      .filter((ws) => visibleSet.has(ws.id))
+      .map((ws) => ({
+        id: ws.id,
+        label: ws.label,
+        icon: ws.icon,
+        path: `/dashboard/${ws.id}`,
+      }));
+  }, [visibleWorkspaceIds]);
+}
+
+/** Inner layout assembling the WorkspaceShell with WorkspaceSidebar and tabs */
 function DashboardInner({ children }: { children: ReactNode }) {
-  // Issue #354: Revalidate registry on tab focus (Phase 1)
+  // Issue #354: Revalidate registry on tab focus
   useRegistryRevalidation();
 
   const [isCollapsed, setIsCollapsed] = useState(false);
   const [currentPath, setCurrentPath] = useState("/dashboard");
 
-  // Track current path for sidebar highlighting and breadcrumbs
+  // Track current path for sidebar highlighting and tabs
   useEffect(() => {
     if (typeof window === "undefined") return;
     setCurrentPath(window.location.pathname);
@@ -259,6 +289,12 @@ function DashboardInner({ children }: { children: ReactNode }) {
     });
   }, []);
 
+  const handleNavigate = useCallback((path: string) => {
+    if (typeof window !== "undefined") {
+      window.location.href = path;
+    }
+  }, []);
+
   // Phase 1 scaffold: all features visible so the full navigation structure
   // renders with ComingSoon placeholders. In Phase 2+, this will be replaced
   // by the server-resolved visible_feature_ids from GET /v1/registry/visible.
@@ -266,49 +302,105 @@ function DashboardInner({ children }: { children: ReactNode }) {
   // scaffold mode — the backend API is the authoritative permission gate.
   const visibleFeatureIds = DASHBOARD_ROUTES.map((r) => r.id);
 
-  const routes = DASHBOARD_ROUTES.map((r) => ({
-    id: r.id,
-    label: FEATURE_LABEL_MAP.get(r.id) ?? r.id,
-    path: r.path,
-    status: r.status,
-  }));
+  const { workspace: activeWorkspace, tab: activeTab } = useWorkspaceTabFromPath(currentPath);
 
   return (
     <RegistryProvider visibleFeatureIds={visibleFeatureIds} currentPhase={DEFAULT_PHASE}>
       {/* Issue #352: noindex meta tag for all dashboard pages */}
       <meta name="robots" content="noindex, nofollow" />
-      <DashboardShellTemplate
+      <WorkspaceShell
         sidebar={
-          <SidebarNav
-            config={SIDEBAR_CONFIG}
-            visibleFeatureIds={visibleFeatureIds}
-            currentPhase={DEFAULT_PHASE}
-            currentPath={currentPath}
-            routes={routes}
-            isCollapsed={isCollapsed}
+          <WorkspaceSidebarWired
+            activeWorkspace={activeWorkspace}
+            collapsed={isCollapsed}
             onToggleCollapse={handleToggleCollapse}
+            onNavigate={handleNavigate}
           />
         }
-        breadcrumb={
-          <DashboardBreadcrumb
-            currentPath={currentPath}
-            sidebarConfig={SIDEBAR_CONFIG}
-          />
+        tabs={
+          activeWorkspace ? (
+            <WorkspaceTabsWired
+              workspaceId={activeWorkspace}
+              activeTab={activeTab}
+              onNavigate={handleNavigate}
+            />
+          ) : undefined
         }
-        header={<DashboardHeaderActions />}
+        scopeBar={
+          <div className="flex items-center justify-end border-b border-border px-4 py-2">
+            <DashboardHeaderActions />
+          </div>
+        }
+        aiPanel={<AIPanelWired />}
+        sidebarCollapsed={isCollapsed}
       >
         {children}
-      </DashboardShellTemplate>
-      <AIPanelWired />
+      </WorkspaceShell>
     </RegistryProvider>
   );
 }
 
-/**
- * Dashboard layout — provides auth, WebSocket, i18n, and the registry-driven shell.
- *
- * Unauthenticated users are redirected to /login by ProtectedRoute.
- */
+/** Wired WorkspaceSidebar — reads registry to filter visible workspaces */
+function WorkspaceSidebarWired({
+  activeWorkspace,
+  collapsed,
+  onToggleCollapse,
+  onNavigate,
+}: {
+  activeWorkspace: string;
+  collapsed: boolean;
+  onToggleCollapse: () => void;
+  onNavigate: (path: string) => void;
+}) {
+  const workspaceItems = useWorkspaceSidebarItems();
+
+  return (
+    <WorkspaceSidebar
+      workspaces={workspaceItems}
+      activeWorkspace={activeWorkspace}
+      collapsed={collapsed}
+      onToggleCollapse={onToggleCollapse}
+      onNavigate={onNavigate}
+    />
+  );
+}
+
+/** Wired WorkspaceTabs — renders tabs for the active workspace */
+function WorkspaceTabsWired({
+  workspaceId,
+  activeTab,
+  onNavigate,
+}: {
+  workspaceId: string;
+  activeTab: string;
+  onNavigate: (path: string) => void;
+}) {
+  const { getVisibleTabIds } = useRegistry();
+  const ws = WORKSPACE_MAP.get(workspaceId as WorkspaceId);
+
+  const tabs = useMemo(() => {
+    if (!ws) return [];
+    const visibleTabIds = new Set(getVisibleTabIds(workspaceId));
+    return ws.tabs
+      .filter((t) => visibleTabIds.has(t.id))
+      .map((t) => ({
+        id: t.id,
+        label: t.label,
+        path: `/dashboard/${workspaceId}/${t.id}`,
+      }));
+  }, [ws, workspaceId, getVisibleTabIds]);
+
+  if (!ws || tabs.length === 0) return null;
+
+  return (
+    <WorkspaceTabs
+      tabs={tabs}
+      activeTab={activeTab}
+      onTabChange={(_tabId, path) => onNavigate(path)}
+    />
+  );
+}
+
 /**
  * Session-aware protected route wrapper.
  * Uses useSessionMonitor to detect 401s and show the session-expired overlay
@@ -334,7 +426,7 @@ function SessionAwareProtectedRoute({ children }: { children: ReactNode }) {
 }
 
 /**
- * Dashboard layout — provides auth, WebSocket, i18n, and the registry-driven shell.
+ * Dashboard layout — provides auth, WebSocket, i18n, and the workspace shell.
  *
  * Unauthenticated users are redirected to /login by ProtectedRoute.
  * Session expiry (401) shows an overlay instead of redirecting.

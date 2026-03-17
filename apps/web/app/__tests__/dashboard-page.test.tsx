@@ -2,94 +2,84 @@ import { describe, it, expect, vi, beforeEach } from "vitest";
 import { createElement } from "react";
 import { renderToString } from "react-dom/server";
 
-vi.mock("../lib/auth-context", () => ({
-  useAuth: vi.fn(),
-}));
-
-vi.mock("../dashboard/use-dashboard-role", () => ({
-  useDashboardRole: vi.fn().mockReturnValue("admin"),
-}));
-
-vi.mock("../lib/api-client", () => ({
-  getAdminStats: vi.fn().mockReturnValue(
-    Promise.resolve({
-      ok: true,
-      data: { totalUsers: 42, pendingApprovals: 3, activeInvitations: 5 },
-      status: 200,
+// Mock the RegistryProvider used by DashboardPage
+vi.mock("../dashboard/components/RegistryProvider", () => {
+  return {
+    RegistryProvider: ({ children }: { children: React.ReactNode }) => children,
+    useRegistry: () => ({
+      visibleFeatureIds: [],
+      currentPhase: "company_formation",
+      visibleWorkspaceIds: [
+        "productions", "facilities", "finance", "people", "campus",
+        "events", "education", "analytics", "investor-relations",
+        "partnerships", "administration",
+      ],
+      isWorkspaceVisible: () => true,
+      getVisibleTabIds: (workspaceId: string) => {
+        // Return a default tab for each workspace
+        const tabMap: Record<string, string[]> = {
+          productions: ["overview"],
+          facilities: ["calendar"],
+          finance: ["overview"],
+          people: ["directory"],
+          campus: ["master-plan"],
+          events: ["calendar"],
+          education: ["courses"],
+          analytics: ["operational"],
+          "investor-relations": ["portfolio"],
+          partnerships: ["overview"],
+          administration: ["users"],
+        };
+        return tabMap[workspaceId] ?? [];
+      },
     }),
-  ),
-  listAuditLog: vi.fn().mockReturnValue(
-    Promise.resolve({
-      ok: true,
-      data: { entries: [], cursor: null },
-      status: 200,
-    }),
-  ),
-  getSession: vi.fn().mockReturnValue(
-    Promise.resolve({ ok: false, error: { error: "unauthorized", message: "Not authenticated" }, status: 401 }),
-  ),
-  logout: vi.fn(),
-}));
+  };
+});
 
-import { useAuth } from "../lib/auth-context";
 import DashboardPage from "../dashboard/page";
 
-const mockUseAuth = vi.mocked(useAuth);
-
-function mockAuthenticatedAdmin() {
-  mockUseAuth.mockReturnValue({
-    user: { id: "1", email: "admin@test.com", name: "Admin", status: "active", hasPhone: false },
-    roles: ["admin"],
-    permissions: ["user:read", "invitation:read", "user:update", "audit:read"],
-    isAuthenticated: true,
-    isLoading: false,
-    logout: vi.fn(),
-    refreshSession: vi.fn(),
-    hasPermission: (p: string) =>
-      ["user:read", "invitation:read", "user:update", "audit:read"].includes(p),
-  });
-}
-
-/** Strip React SSR comments from HTML for cleaner assertions */
-function stripComments(html: string): string {
-  return html.replace(/<!-- -->/g, "");
-}
-
-describe("DashboardPage", () => {
+describe("DashboardPage (Phase 2 — HomeDashboard)", () => {
   beforeEach(() => {
     vi.clearAllMocks();
   });
 
-  it("renders welcome message with user name", () => {
-    mockAuthenticatedAdmin();
-    const html = stripComments(renderToString(createElement(DashboardPage)));
-    expect(html).toContain("Welcome back, Admin");
-  });
-
-  it("renders role label for admin", () => {
-    mockAuthenticatedAdmin();
-    const html = stripComments(renderToString(createElement(DashboardPage)));
-    expect(html).toContain("Administrator");
-  });
-
-  it("renders quick actions (permission-gated)", () => {
-    mockAuthenticatedAdmin();
+  it("renders workspace cards grid", () => {
     const html = renderToString(createElement(DashboardPage));
-    expect(html).toContain("Invite User");
-    expect(html).toContain("View Pending Approvals");
+    expect(html).toContain("Your Workspaces");
   });
 
-  it("shows loading skeleton on initial render (data not yet fetched)", () => {
-    mockAuthenticatedAdmin();
+  it("renders all 11 workspace cards for admin (all visible)", () => {
     const html = renderToString(createElement(DashboardPage));
-    // Initial render: loading=true, no kpiCards yet → loading skeleton
-    expect(html).toContain("animate-pulse");
+    // All 11 workspaces should appear as cards
+    expect(html).toContain("Productions");
+    expect(html).toContain("Facilities");
+    expect(html).toContain("Finance");
+    expect(html).toContain("People");
+    expect(html).toContain("Campus");
+    expect(html).toContain("Events");
+    expect(html).toContain("Education");
+    expect(html).toContain("Analytics");
+    expect(html).toContain("Investor Relations");
+    expect(html).toContain("Partnerships");
+    expect(html).toContain("Administration");
   });
 
-  it("does not wrap in AdminLayout (layout.tsx provides the shell)", () => {
-    mockAuthenticatedAdmin();
-    const html = stripComments(renderToString(createElement(DashboardPage)));
-    // Page renders RoleDashboard directly — no sidebar nav in the page
-    expect(html).toContain("Welcome back");
+  it("renders attention section with empty state", () => {
+    const html = renderToString(createElement(DashboardPage));
+    expect(html).toContain("Needs Your Attention");
+    expect(html).toContain("all caught up");
+  });
+
+  it("renders recents section with empty state", () => {
+    const html = renderToString(createElement(DashboardPage));
+    expect(html).toContain("Pick Up Where You Left Off");
+    expect(html).toContain("Start exploring");
+  });
+
+  it("does not render old RoleDashboard (Phase 1)", () => {
+    const html = renderToString(createElement(DashboardPage));
+    // Should NOT contain Phase 1 patterns
+    expect(html).not.toContain("Welcome back");
+    expect(html).not.toContain("Administrator");
   });
 });

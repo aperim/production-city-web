@@ -1,97 +1,72 @@
 "use client";
 
 /**
- * Dashboard home — role-aware landing page.
+ * Dashboard home — workspace-oriented landing page (Phase 2).
  *
- * Uses the RoleDashboard template with data adapted from existing APIs.
- * KPI cards and quick actions are permission-gated per the user's role.
+ * Renders HomeDashboard with workspace cards, attention items,
+ * recents, and what's new sections.
+ *
+ * @see Issue #394 (HomeDashboard template)
+ * @see Issue #436 (Phase 2 workspace-based UI)
  */
 
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useMemo } from "react";
 import {
-  RoleDashboard,
-  type KpiCard,
-  type QuickAction,
-  type ActivityEntry,
+  HomeDashboard,
+  type WorkspaceCardProps,
 } from "@productioncity/holding-ui";
-import { useAuth } from "../lib/auth-context";
-import { useDashboardRole } from "./use-dashboard-role";
-import {
-  getAdminStats,
-  listAuditLog,
-  type AdminStats,
-  type AuditLogEntryData,
-} from "../lib/api-client";
+import { useRegistry } from "./components/RegistryProvider";
+import { WORKSPACE_CONFIG } from "./_generated/workspace-config";
 
 export default function DashboardPage() {
-  const { user, hasPermission } = useAuth();
-  const role = useDashboardRole();
-  const canReadUsers = hasPermission("user:read");
-  const canReadAudit = hasPermission("audit:read");
+  const { visibleWorkspaceIds, getVisibleTabIds } = useRegistry();
 
-  const [stats, setStats] = useState<AdminStats | null>(null);
-  const [recentActivity, setRecentActivity] = useState<AuditLogEntryData[]>([]);
-  const [loading, setLoading] = useState(true);
-
-  const fetchData = useCallback(async () => {
-    setLoading(true);
-    try {
-      const [statsResult, activityResult] = await Promise.all([
-        canReadUsers ? getAdminStats() : Promise.resolve(null),
-        canReadAudit ? listAuditLog({}) : Promise.resolve(null),
-      ]);
-
-      if (statsResult && statsResult.ok) {
-        setStats(statsResult.data);
-      }
-      if (activityResult && activityResult.ok) {
-        setRecentActivity(activityResult.data.entries.slice(0, 10));
-      }
-    } finally {
-      setLoading(false);
+  const handleNavigate = useCallback((path: string) => {
+    if (typeof window !== "undefined") {
+      window.location.href = path;
     }
-  }, [canReadUsers, canReadAudit]);
+  }, []);
 
-  useEffect(() => {
-    fetchData();
-  }, [fetchData]);
+  /** Build workspace cards from visible workspaces */
+  const workspaceCards: WorkspaceCardProps[] = useMemo(() => {
+    const visibleSet = new Set(visibleWorkspaceIds);
+    return WORKSPACE_CONFIG
+      .filter((ws) => visibleSet.has(ws.id))
+      .map((ws) => {
+        const visibleTabIds = getVisibleTabIds(ws.id);
+        const activeTabs = ws.tabs.filter((t) => visibleTabIds.includes(t.id));
+        const upcomingTabs = ws.tabs.filter((t) => !visibleTabIds.includes(t.id));
 
-  // Build KPI cards from admin stats (permission-gated)
-  const kpiCards: KpiCard[] = [];
-  if (canReadUsers && stats) {
-    kpiCards.push(
-      { label: "Total Users", value: String(stats.totalUsers), trend: "neutral" },
-      { label: "Pending Approvals", value: String(stats.pendingApprovals), trend: "neutral" },
-      { label: "Active Invitations", value: String(stats.activeInvitations), trend: "neutral" },
-    );
-  }
-
-  // Build quick actions (permission-gated)
-  const quickActions: QuickAction[] = [];
-  if (hasPermission("invitation:read")) {
-    quickActions.push({ label: "Invite User", href: "/dashboard/invitations" });
-  }
-  if (hasPermission("user:update")) {
-    quickActions.push({ label: "View Pending Approvals", href: "/dashboard/approvals" });
-  }
-
-  // Build activity feed from audit log (permission-gated)
-  const activities: ActivityEntry[] = canReadAudit
-    ? recentActivity.map((entry) => ({
-        id: entry.id,
-        message: `${entry.actorName ?? "System"}: ${entry.action}${entry.subjectName ? ` → ${entry.subjectName}` : ""}`,
-        timestamp: new Date(entry.timestamp).toLocaleString(),
-      }))
-    : [];
+        return {
+          workspace: {
+            id: ws.id,
+            label: ws.label,
+            icon: ws.icon,
+            description: ws.description,
+          },
+          stats: [
+            { label: "tabs", value: String(activeTabs.length) },
+          ],
+          activeFeatureCount: activeTabs.reduce((sum, t) => sum + t.featureIds.length, 0),
+          upcomingFeatureCount: upcomingTabs.reduce((sum, t) => sum + t.featureIds.length, 0),
+          tabs: ws.tabs.map((t) => ({
+            id: t.id,
+            label: t.label,
+            status: visibleTabIds.includes(t.id) ? "active" as const : "coming_soon" as const,
+          })),
+          onNavigate: handleNavigate,
+        };
+      });
+  }, [visibleWorkspaceIds, getVisibleTabIds, handleNavigate]);
 
   return (
-    <RoleDashboard
-      userName={user?.name ?? user?.email ?? "User"}
-      role={role}
-      kpiCards={kpiCards}
-      quickActions={quickActions}
-      activities={activities}
-      loading={loading}
+    <HomeDashboard
+      attentionItems={[]}
+      recents={[]}
+      workspaceCards={workspaceCards}
+      whatsNew={[]}
+      onNavigate={handleNavigate}
+      onRecentClick={handleNavigate}
     />
   );
 }
