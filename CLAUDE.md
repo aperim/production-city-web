@@ -316,8 +316,10 @@ The dashboard uses a **workspace-based architecture** with 11 workspaces, 502 fe
 /dashboard/inbox                    → Inbox feed
 /dashboard/{workspace}              → Redirects to first visible tab
 /dashboard/{workspace}/{tab}        → Workspace tab with canvas
-/dashboard/{section}/{sub}/{feat}   → Legacy FeatureGate → ComingSoonPage
 ```
+
+Legacy flat routes (`/dashboard/users`, `/dashboard/announcements`, etc.) are 302-redirected
+to their workspace equivalents via `apps/web/worker/legacy-redirects.ts`.
 
 ### Workspaces
 
@@ -328,7 +330,6 @@ Each workspace has **tabs** (e.g., `productions/overview`, `productions/shooting
 ### Generated Configs
 
 - `apps/web/app/dashboard/_generated/workspace-config.ts` — Workspace definitions, tabs, canvas types
-- `apps/web/app/dashboard/_generated/sidebar-config.ts` — Sidebar navigation groups/sections
 - `apps/web/app/dashboard/_generated/routes.ts` — Feature ID → path mapping
 - `apps/web/app/dashboard/_generated/feature-index.ts` — Feature labels/descriptions
 - `apps/web/app/dashboard/_generated/role-config.ts` — Role definitions
@@ -345,12 +346,11 @@ Each workspace has **tabs** (e.g., `productions/overview`, `productions/shooting
 ### Key Components
 
 - `apps/web/app/dashboard/components/RegistryProvider.tsx` — `RegistryProvider` + `useRegistry` hook (workspace visibility)
-- `apps/web/app/dashboard/components/FeatureGate.tsx` — Route-level guard for legacy section/subsection/feature paths
 - `apps/web/app/dashboard/components/AIPanelWired.tsx` — AI assistant panel
 - `apps/web/app/dashboard/[workspace]/page.tsx` — Workspace index (redirects to first tab)
 - `apps/web/app/dashboard/[workspace]/[tab]/page.tsx` — Tab page with canvas rendering
 - `apps/web/app/dashboard/config/workspace-scope-configs.ts` — Scope bar configurations per workspace
-- `apps/web/worker/legacy-redirects.ts` — 301 redirects from old paths to new paths
+- `apps/web/worker/legacy-redirects.ts` — 302 redirects from old flat paths to workspace paths
 
 ### API Endpoints
 

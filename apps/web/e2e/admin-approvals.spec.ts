@@ -3,7 +3,7 @@
  */
 
 import { test, expect } from "./helpers/setup";
-import { loginAs, adminApiCall, createMagicLink } from "./helpers/test-api";
+import { loginAs, adminApiCall } from "./helpers/test-api";
 
 const ADMIN_EMAIL = "admin@test.production.city";
 
@@ -15,7 +15,7 @@ test.describe("Admin Approvals — Pending User List", () => {
     const result = await adminApiCall(page, "GET", "/v1/admin/approvals");
     expect(result.status).toBe(200);
 
-    await page.goto("/dashboard/approvals");
+    await page.goto("/dashboard/administration/users?view=approvals");
     await expect(page.getByText(/pending|approvals/i).first()).toBeVisible();
   });
 });

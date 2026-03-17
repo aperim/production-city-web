@@ -3,7 +3,6 @@
  *
  * Reads the feature registry JSON and outputs:
  * - apps/web/app/dashboard/_generated/routes.ts (flat route array + FeatureId type)
- * - apps/web/app/dashboard/_generated/sidebar-config.ts (hierarchical sidebar)
  * - apps/web/app/dashboard/_generated/feature-index.ts (CommandBar search index)
  * - apps/backend/src/_generated/route-manifest.ts (backend route manifest)
  *
@@ -912,10 +911,6 @@ function main() {
   const routesContent = generateRoutes(registry, registryHash);
   safeWrite(path.join(webGenDir, "routes.ts"), routesContent);
   console.log("Generated:", path.join(webGenDir, "routes.ts"));
-
-  const sidebarContent = generateSidebarConfig(registry);
-  safeWrite(path.join(webGenDir, "sidebar-config.ts"), sidebarContent);
-  console.log("Generated:", path.join(webGenDir, "sidebar-config.ts"));
 
   const indexContent = generateFeatureIndex(registry);
   safeWrite(path.join(webGenDir, "feature-index.ts"), indexContent);

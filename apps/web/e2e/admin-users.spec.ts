@@ -11,7 +11,7 @@ const MEMBER_EMAIL = "member@test.production.city";
 test.describe("Admin Users — List with Pagination", () => {
   test("admin can view user list", async ({ page }) => {
     await loginAs(page, ADMIN_EMAIL);
-    await page.goto("/dashboard/users");
+    await page.goto("/dashboard/administration/users");
 
     // Should see user list heading
     await expect(page.getByText(/users/i).first()).toBeVisible();
@@ -25,7 +25,7 @@ test.describe("Admin Users — List with Pagination", () => {
 test.describe("Admin Users — Search", () => {
   test("admin can search for a specific user", async ({ page }) => {
     await loginAs(page, ADMIN_EMAIL);
-    await page.goto("/dashboard/users");
+    await page.goto("/dashboard/administration/users");
 
     // Find search input
     const searchInput = page.getByPlaceholder(/search/i);
@@ -41,7 +41,7 @@ test.describe("Admin Users — Search", () => {
 test.describe("Admin Users — User Detail", () => {
   test("admin can view user detail panel", async ({ page }) => {
     await loginAs(page, ADMIN_EMAIL);
-    await page.goto("/dashboard/users");
+    await page.goto("/dashboard/administration/users");
 
     // Click on a user row/link
     const memberRow = page.getByText(MEMBER_EMAIL);
@@ -119,7 +119,7 @@ test.describe("Admin Users — Non-Admin Access Denied", () => {
     await loginAs(page, MEMBER_EMAIL);
 
     // Try to access users page
-    await page.goto("/dashboard/users");
+    await page.goto("/dashboard/administration/users");
 
     // Should see access denied or forbidden message
     // The route guard should prevent access

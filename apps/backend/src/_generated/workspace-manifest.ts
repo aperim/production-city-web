@@ -1182,7 +1182,7 @@ export const WORKSPACE_CONFIG = [
       {
         "id": "communications",
         "label": "Communications",
-        "canvas": "table",
+        "canvas": "communications",
         "featureIds": [
           "communications.internal.staff_announcements",
           "communications.internal.newsletter",

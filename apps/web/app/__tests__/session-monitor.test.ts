@@ -15,7 +15,7 @@ describe("SessionExpiredOverlay", () => {
     const html = renderToString(
       createElement(SessionExpiredOverlay, {
         message: "Your session has expired.",
-        returnUrl: "/dashboard/users",
+        returnUrl: "/dashboard/administration/users",
       }),
     );
     expect(html).toContain("Session Expired");

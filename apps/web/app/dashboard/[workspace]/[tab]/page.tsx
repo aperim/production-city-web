@@ -7,7 +7,7 @@
  * URL: /dashboard/{workspace}/{tab}
  * Anti-enumeration: returns null (404) for unauthorized workspaces/tabs.
  *
- * @see Issue #385 (original FeatureGate)
+ * @see Issue #385, #447 (workspace visibility replaces FeatureGate)
  * @see Issue #415 (canvas slot rendering + sample data)
  */
 

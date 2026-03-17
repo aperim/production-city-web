@@ -1,7 +1,7 @@
 // AUTO-GENERATED — do not edit. Run `pnpm generate:dashboard` to regenerate.
 // @generated
 
-export const REGISTRY_HASH = '994374496ba516d00dc2fa72f802be982ac3c7842449b5bff946165c0c9d2a83';
+export const REGISTRY_HASH = '8fe110fe4e1935661571a634f29c84e991173267ae9fccf0056280620cba40ce';
 
 export interface RouteManifestEntry {
   id: string;
