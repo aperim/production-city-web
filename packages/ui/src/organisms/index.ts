@@ -174,3 +174,15 @@ export type { CanvasChartsProps, ChartConfig, ChartDataPoint, ChartType } from '
 // Issue #405: DetailPanel organism
 export { DetailPanel } from './DetailPanel/DetailPanel';
 export type { DetailPanelProps } from './DetailPanel/DetailPanel';
+
+// Issue #387: WorkspaceSidebar
+export { WorkspaceSidebar } from './WorkspaceSidebar/WorkspaceSidebar';
+export type { WorkspaceSidebarProps, WorkspaceSidebarItem } from './WorkspaceSidebar/WorkspaceSidebar';
+
+// Issue #388: WorkspaceTabs
+export { WorkspaceTabs } from './WorkspaceTabs/WorkspaceTabs';
+export type { WorkspaceTabsProps, WorkspaceTab } from './WorkspaceTabs/WorkspaceTabs';
+
+// Issue #392: AIPanel
+export { AIPanel } from './AIPanel/AIPanel';
+export type { AIPanelProps, AIPanelMessage } from './AIPanel/AIPanel';
