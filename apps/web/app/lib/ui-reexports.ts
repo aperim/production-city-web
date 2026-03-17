@@ -89,6 +89,27 @@ export { AIPanel } from "../../../../packages/ui/src/organisms/AIPanel/AIPanel";
 export type { AIPanelProps, AIPanelMessage } from "../../../../packages/ui/src/organisms/AIPanel/AIPanel";
 export { InboxFeed } from "../../../../packages/ui/src/organisms/InboxFeed/InboxFeed";
 export type { InboxFeedProps, InboxFeedItem, InboxFilters } from "../../../../packages/ui/src/organisms/InboxFeed/InboxFeed";
+// Issue #398–#404: Canvas organisms (dashboard UX redesign)
+export { CanvasTable } from "../../../../packages/ui/src/organisms/CanvasTable/CanvasTable";
+export type { CanvasTableProps } from "../../../../packages/ui/src/organisms/CanvasTable/CanvasTable";
+export { CanvasBoard } from "../../../../packages/ui/src/organisms/CanvasBoard/CanvasBoard";
+export type { CanvasBoardProps, BoardLane, BoardCard } from "../../../../packages/ui/src/organisms/CanvasBoard/CanvasBoard";
+export { CanvasCalendar } from "../../../../packages/ui/src/organisms/CanvasCalendar/CanvasCalendar";
+export type { CanvasCalendarProps, CalendarView, CalendarEvent } from "../../../../packages/ui/src/organisms/CanvasCalendar/CanvasCalendar";
+export { CanvasTimeline } from "../../../../packages/ui/src/organisms/CanvasTimeline/CanvasTimeline";
+export type { CanvasTimelineProps, TimelineTask, TimelineZoom } from "../../../../packages/ui/src/organisms/CanvasTimeline/CanvasTimeline";
+export { CanvasCatalog } from "../../../../packages/ui/src/organisms/CanvasCatalog/CanvasCatalog";
+export type { CanvasCatalogProps, CatalogItem } from "../../../../packages/ui/src/organisms/CanvasCatalog/CanvasCatalog";
+export { CanvasDocuments } from "../../../../packages/ui/src/organisms/CanvasDocuments/CanvasDocuments";
+export type { CanvasDocumentsProps, DocumentItem, DocumentSortField } from "../../../../packages/ui/src/organisms/CanvasDocuments/CanvasDocuments";
+export { CanvasCharts } from "../../../../packages/ui/src/organisms/CanvasCharts/CanvasCharts";
+export type { CanvasChartsProps, ChartConfig, ChartDataPoint, ChartType } from "../../../../packages/ui/src/organisms/CanvasCharts/CanvasCharts";
+// Issue #405: DetailPanel organism
+export { DetailPanel } from "../../../../packages/ui/src/organisms/DetailPanel/DetailPanel";
+export type { DetailPanelProps } from "../../../../packages/ui/src/organisms/DetailPanel/DetailPanel";
+// Issue #407: PlannedSection organism
+export { PlannedSection } from "../../../../packages/ui/src/organisms/PlannedSection/PlannedSection";
+export type { PlannedSectionProps, PlannedFeature } from "../../../../packages/ui/src/organisms/PlannedSection/PlannedSection";
 export * from "../../../../packages/ui/src/templates";
 export * from "../../../../packages/ui/src/pages";
 export * from "../../../../packages/ui/src/foundations";
