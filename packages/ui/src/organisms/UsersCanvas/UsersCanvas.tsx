@@ -21,6 +21,8 @@ export interface UsersCanvasPermissions {
 
 /** Approval item shape. */
 export interface ApprovalItem {
+  /** Stable identifier for the approval request. */
+  id: string;
   name: string;
   email: string;
   role: string;
@@ -51,10 +53,10 @@ export interface UsersCanvasProps {
   onInvitationRevoke?: (id: string) => void;
   /** Approval items for the Approvals sub-view. */
   approvals: ApprovalItem[];
-  /** Approve handler. */
-  onApprove: (index: number) => void;
-  /** Reject handler. */
-  onReject: (index: number) => void;
+  /** Approve handler — receives the approval item's stable ID. */
+  onApprove: (id: string) => void;
+  /** Reject handler — receives the approval item's stable ID. */
+  onReject: (id: string) => void;
   /** Permission flags controlling sub-view visibility. */
   permissions: UsersCanvasPermissions;
   /** Loading state. */
@@ -186,15 +188,15 @@ export function UsersCanvas({
             </div>
           ) : (
             <div className="flex flex-col gap-3">
-              {approvals.map((item, index) => (
+              {approvals.map((item) => (
                 <ApprovalCard
-                  key={item.email}
+                  key={item.id}
                   name={item.name}
                   email={item.email}
                   role={item.role}
                   avatarInitial={item.avatarInitial}
-                  onApprove={() => onApprove(index)}
-                  onReject={() => onReject(index)}
+                  onApprove={() => onApprove(item.id)}
+                  onReject={() => onReject(item.id)}
                 />
               ))}
             </div>

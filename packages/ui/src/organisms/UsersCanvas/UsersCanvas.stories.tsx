@@ -17,8 +17,8 @@ const mockInvitations: InvitationTableInvitation[] = [
 ];
 
 const mockApprovals = [
-  { name: 'Grace Lee', email: 'grace@example.com', role: 'editor' },
-  { name: 'Henry Park', email: 'henry@example.com', role: 'viewer' },
+  { id: 'appr-1', name: 'Grace Lee', email: 'grace@example.com', role: 'editor' },
+  { id: 'appr-2', name: 'Henry Park', email: 'henry@example.com', role: 'viewer' },
 ];
 
 const baseProps: UsersCanvasProps = {

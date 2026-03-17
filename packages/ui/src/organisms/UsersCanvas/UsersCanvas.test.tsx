@@ -14,7 +14,7 @@ const mockInvitations: InvitationTableInvitation[] = [
 ];
 
 const mockApprovals = [
-  { name: 'Dave', email: 'dave@test.com', role: 'viewer' },
+  { id: 'appr-1', name: 'Dave', email: 'dave@test.com', role: 'viewer' },
 ];
 
 describe('UsersCanvas', () => {

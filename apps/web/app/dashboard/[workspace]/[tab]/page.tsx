@@ -11,7 +11,7 @@
  * @see Issue #415 (canvas slot rendering + sample data)
  */
 
-import { useMemo, useState, type ReactNode } from 'react';
+import { useEffect, useMemo, useState, type ReactNode } from 'react';
 import { useRegistry } from '../../components/RegistryProvider';
 import {
   WORKSPACE_MAP,
@@ -151,12 +151,22 @@ function resolveCanvas(
   }
 }
 
-/** Read ?view= query param for sub-view routing. */
+/** Read ?view= query param for sub-view routing. Reacts to popstate. */
 function useViewParam(): string | null {
-  return useMemo(() => {
+  const [view, setView] = useState<string | null>(() => {
     if (typeof window === 'undefined') return null;
     return new URLSearchParams(window.location.search).get('view');
+  });
+
+  useEffect(() => {
+    function onPopState() {
+      setView(new URLSearchParams(window.location.search).get('view'));
+    }
+    window.addEventListener('popstate', onPopState);
+    return () => window.removeEventListener('popstate', onPopState);
   }, []);
+
+  return view;
 }
 
 /**
@@ -173,6 +183,11 @@ function resolveCustomCanvas(
 
   if (!canvasType) return null;
 
+  // Phase 1 scaffold: all permissions are hardcoded to true.
+  // The page-level guard (workspace/tab visibility check above) already
+  // prevents unauthorized access. Per-sub-view permission gating will be
+  // wired to real RBAC in Phase 2 when server-side permission resolution
+  // is implemented. See CLAUDE.md "Phase 1 scaffold (current)".
   switch (canvasType) {
     case 'users-canvas':
       return (
