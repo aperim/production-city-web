@@ -31,6 +31,7 @@ import { workspacesVisibleApp } from "./registry/workspaces.js";
 import { homeSummaryApp } from "./home/summary.js";
 import { inboxApp } from "./inbox/handlers.js";
 import { aiChatApp } from "./ai/chat.js";
+import { searchApp } from "./search/handlers.js";
 
 /**
  * Mount all auth and admin routes onto the main app.
@@ -90,6 +91,9 @@ export function mountRoutes(app: OpenAPIHono<{ Bindings: Record<string, unknown>
 
   // AI assistant chat (auth required)
   app.route("/", aiChatApp);
+
+  // Search endpoint (auth required)
+  app.route("/", searchApp);
 
   // Public EOI and locales routes (no auth required)
   app.route("/", eoiApp);

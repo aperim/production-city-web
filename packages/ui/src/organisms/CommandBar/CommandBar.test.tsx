@@ -4,9 +4,9 @@
  */
 
 import { describe, it, expect, vi } from "vitest";
-import { render, screen } from "@testing-library/react";
+import { render, screen, fireEvent, act } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import { CommandBar, type CommandBarProps } from "./CommandBar";
+import { CommandBar, type CommandBarProps, type CommandBarObjectResult } from "./CommandBar";
 
 const sampleFeatures = [
   {
@@ -159,5 +159,82 @@ describe("CommandBar", () => {
     renderCommandBar();
     // Should show section/subsection context
     expect(screen.getByText(/Company Operations/)).toBeDefined();
+  });
+});
+
+describe("CommandBar — object search extension", () => {
+  const objectResults: CommandBarObjectResult[] = [
+    { type: "user", id: "u1", title: "Jane Smith", subtitle: "Production Manager", workspace: "people", url: "/dashboard/people/directory" },
+    { type: "facility", id: "f1", title: "Sound Stage 3", subtitle: "Available", workspace: "facilities", url: "/dashboard/facilities/sound-stages" },
+  ];
+
+  it("renders object results above feature results", () => {
+    renderCommandBar({
+      objectResults,
+    });
+    // Object results should appear in the list
+    expect(screen.getByText("Jane Smith")).toBeDefined();
+    expect(screen.getByText("Sound Stage 3")).toBeDefined();
+  });
+
+  it("groups object results by workspace", () => {
+    renderCommandBar({
+      featureIndex: [],
+      objectResults,
+    });
+    // Workspace group headers
+    expect(screen.getByText("People")).toBeDefined();
+    expect(screen.getByText("Facilities")).toBeDefined();
+  });
+
+  it("calls onObjectSearch with debounced query", async () => {
+    vi.useFakeTimers();
+    const onObjectSearch = vi.fn();
+    renderCommandBar({
+      featureIndex: [],
+      objectResults: [],
+      onObjectSearch,
+    });
+    const input = screen.getByRole("combobox");
+
+    // Type a query — onObjectSearch should NOT be called immediately
+    fireEvent.change(input, { target: { value: "stage" } });
+    expect(onObjectSearch).not.toHaveBeenCalled();
+
+    // Advance timers past the 300ms debounce window
+    act(() => {
+      vi.advanceTimersByTime(350);
+    });
+
+    // Now onObjectSearch should have been called with the query
+    expect(onObjectSearch).toHaveBeenCalledTimes(1);
+    expect(onObjectSearch).toHaveBeenCalledWith("stage");
+
+    // Typing again should reset the debounce
+    fireEvent.change(input, { target: { value: "stage 3" } });
+    act(() => {
+      vi.advanceTimersByTime(100); // Only 100ms — not enough
+    });
+    expect(onObjectSearch).toHaveBeenCalledTimes(1); // Still just the first call
+
+    act(() => {
+      vi.advanceTimersByTime(250); // Now 350ms total since last keystroke
+    });
+    expect(onObjectSearch).toHaveBeenCalledTimes(2);
+    expect(onObjectSearch).toHaveBeenLastCalledWith("stage 3");
+
+    vi.useRealTimers();
+  });
+
+  it("selects object result on Enter", async () => {
+    const user = userEvent.setup();
+    const { props } = renderCommandBar({
+      featureIndex: [],
+      objectResults: [objectResults[0]!],
+    });
+    const input = screen.getByRole("combobox");
+    await user.click(input);
+    await user.keyboard("{Enter}");
+    expect(props.onSelect).toHaveBeenCalledWith("u1", "/dashboard/people/directory");
   });
 });

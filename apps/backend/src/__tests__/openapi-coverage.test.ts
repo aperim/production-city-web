@@ -32,6 +32,8 @@ describe("OpenAPI coverage", () => {
       "/v1/openapi.json", "/v1/docs", "/v1/ws", "/v1/ws/delivery",
       // Home & Inbox endpoints (plain Hono, not OpenAPI) — Issue #395, #397
       "/v1/home/summary", "/v1/inbox", "/v1/inbox/:id", "/v1/inbox/mark-all-read",
+      // Search endpoint (plain Hono, not OpenAPI) — Issue #413
+      "/v1/search",
     ]);
 
     // Normalize Hono :param to OpenAPI {param} for matching

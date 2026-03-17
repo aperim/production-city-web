@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import type { Meta, StoryObj } from "@storybook/react-vite";
-import { CommandBar, type CommandBarFeature } from "./CommandBar";
+import { CommandBar, type CommandBarFeature, type CommandBarObjectResult } from "./CommandBar";
 
 const meta = {
   title: "Organisms/CommandBar",
@@ -175,4 +175,72 @@ export const LongResultList: StoryObj = {
     return <CommandBarDemo features={manyFeatures} />;
   },
   name: "Long Result List (100 items)",
+};
+
+const sampleObjectResults: CommandBarObjectResult[] = [
+  { type: "user", id: "u1", title: "Jane Smith", subtitle: "Production Manager", workspace: "people", url: "/dashboard/people/directory" },
+  { type: "user", id: "u2", title: "Bob Johnson", subtitle: "Sound Engineer", workspace: "people", url: "/dashboard/people/directory" },
+  { type: "facility", id: "f1", title: "Sound Stage 3", subtitle: "Available", workspace: "facilities", url: "/dashboard/facilities/sound-stages" },
+  { type: "facility", id: "f2", title: "LED Volume 1", subtitle: "Booked", workspace: "facilities", url: "/dashboard/facilities/led-volumes" },
+];
+
+function ObjectSearchDemo({
+  features = sampleFeatures,
+  objectResults = sampleObjectResults,
+}: {
+  features?: CommandBarFeature[];
+  objectResults?: CommandBarObjectResult[];
+}) {
+  const [open, setOpen] = useState(false);
+
+  useEffect(() => {
+    function handleKeyDown(e: globalThis.KeyboardEvent) {
+      if ((e.metaKey || e.ctrlKey) && e.key === "k") {
+        e.preventDefault();
+        setOpen((prev) => !prev);
+      }
+    }
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, []);
+
+  return (
+    <div>
+      <button
+        className="rounded-sm border border-border bg-background px-3 py-1.5 text-sm font-medium hover:bg-accent"
+        onClick={() => setOpen(true)}
+      >
+        Open CommandBar (or Cmd+K)
+      </button>
+      <CommandBar
+        featureIndex={features}
+        recentFeatureIds={[]}
+        objectResults={objectResults}
+        onObjectSearch={(q) => console.log("Object search:", q)}
+        onSelect={(id, path) => alert(`Selected: ${id} → ${path}`)}
+        onClose={() => setOpen(false)}
+        open={open}
+      />
+    </div>
+  );
+}
+
+export const WithObjectResults: StoryObj = {
+  render: () => <ObjectSearchDemo />,
+  name: "With Object Search Results",
+};
+
+export const MixedResults: StoryObj = {
+  render: () => <ObjectSearchDemo features={sampleFeatures} objectResults={sampleObjectResults} />,
+  name: "Mixed Results (Objects + Features)",
+};
+
+export const ObjectResultsOnly: StoryObj = {
+  render: () => <ObjectSearchDemo features={[]} objectResults={sampleObjectResults} />,
+  name: "Object Results Only",
+};
+
+export const NoResults: StoryObj = {
+  render: () => <ObjectSearchDemo features={[]} objectResults={[]} />,
+  name: "No Results (Empty)",
 };

@@ -22,6 +22,16 @@ export interface CommandBarFeature {
   status: "planned" | "coming_soon" | "active" | "deprecated";
 }
 
+/** Object search result from GET /v1/search */
+export interface CommandBarObjectResult {
+  type: "user" | "facility" | "production";
+  id: string;
+  title: string;
+  subtitle?: string;
+  workspace: string;
+  url: string;
+}
+
 export interface CommandBarProps {
   /** Feature search index from generated feature-index.ts. */
   featureIndex: CommandBarFeature[];
@@ -33,6 +43,10 @@ export interface CommandBarProps {
   onClose: () => void;
   /** Whether the command bar is open. */
   open: boolean;
+  /** Object search results from backend. */
+  objectResults?: CommandBarObjectResult[];
+  /** Called with debounced query for object search. */
+  onObjectSearch?: (query: string) => void;
   /** Placeholder text for the search input. */
   placeholder?: string;
   /** Text shown when no results match. */
@@ -48,6 +62,21 @@ const DEFAULT_STATUS_LABELS: Record<string, string> = {
   coming_soon: "Coming Soon",
   active: "Active",
   deprecated: "Deprecated",
+};
+
+/** Workspace ID to display label. */
+const WORKSPACE_LABELS: Record<string, string> = {
+  productions: "Productions",
+  facilities: "Facilities",
+  finance: "Finance",
+  people: "People",
+  campus: "Campus",
+  events: "Events",
+  education: "Education",
+  analytics: "Analytics",
+  "investor-relations": "Investor Relations",
+  partnerships: "Partnerships",
+  administration: "Administration",
 };
 
 function fuzzyMatch(query: string, text: string): boolean {
@@ -79,12 +108,17 @@ const STATUS_BADGE_STYLES: Record<string, string> = {
   deprecated: "bg-red-500/15 text-red-400 border-red-500/20",
 };
 
+/** Unified item type for keyboard navigation across objects and features. */
+type FlatItem =
+  | { kind: "object"; data: CommandBarObjectResult }
+  | { kind: "feature"; data: CommandBarFeature };
+
 /**
- * CommandBar organism — dashboard command palette for searching all features.
+ * CommandBar organism — dashboard command palette for searching all features
+ * and workspace objects.
  *
- * Built on the same patterns as CommandPalette molecule but specialized
- * for the dashboard feature registry with status badges, recent features,
- * and section breadcrumbs.
+ * Object search results are displayed above feature results, grouped by workspace.
+ * The onObjectSearch callback is debounced at 300ms.
  */
 export function CommandBar({
   featureIndex,
@@ -92,6 +126,8 @@ export function CommandBar({
   onSelect,
   onClose,
   open,
+  objectResults = [],
+  onObjectSearch,
   placeholder = "Search features...",
   emptyMessage = "No features found",
   recentLabel = "Recent",
@@ -104,7 +140,19 @@ export function CommandBar({
   const listRef = useRef<HTMLUListElement>(null);
   const panelRef = useRef<HTMLDivElement>(null);
   const openerRef = useRef<HTMLElement | null>(null);
+  const debounceRef = useRef<ReturnType<typeof setTimeout>>(undefined);
   const listboxId = `cmdbar-listbox-${instanceId}`;
+
+  // Debounced object search
+  useEffect(() => {
+    if (!onObjectSearch || !query || query.length < 2) return;
+    debounceRef.current = setTimeout(() => {
+      onObjectSearch(query);
+    }, 300);
+    return () => {
+      if (debounceRef.current) clearTimeout(debounceRef.current);
+    };
+  }, [query, onObjectSearch]);
 
   // Build recent features list
   const recentFeatures = useMemo(() => {
@@ -121,13 +169,46 @@ export function CommandBar({
     return featureIndex.filter((f) => matchesFeature(query, f));
   }, [featureIndex, query]);
 
-  // Combined list for keyboard navigation: recent + filtered (no duplicates)
-  const flatItems = useMemo(() => {
-    if (recentFeatures.length === 0) return filtered;
+  // Group object results by workspace
+  const groupedObjects = useMemo(() => {
+    const groups = new Map<string, CommandBarObjectResult[]>();
+    for (const obj of objectResults) {
+      const list = groups.get(obj.workspace) ?? [];
+      list.push(obj);
+      groups.set(obj.workspace, list);
+    }
+    return groups;
+  }, [objectResults]);
+
+  // Combined flat list for keyboard navigation: objects -> recent -> features
+  const flatItems: FlatItem[] = useMemo(() => {
+    const items: FlatItem[] = [];
+
+    // Object results first
+    for (const [, objs] of groupedObjects) {
+      for (const obj of objs) {
+        items.push({ kind: "object", data: obj });
+      }
+    }
+
+    // Recent features (if no query)
+    if (recentFeatures.length > 0) {
+      for (const feat of recentFeatures) {
+        items.push({ kind: "feature", data: feat });
+      }
+    }
+
+    // Filtered features (excluding recents)
     const recentIds = new Set(recentFeatures.map((f) => f.id));
-    const nonRecent = filtered.filter((f) => !recentIds.has(f.id));
-    return [...recentFeatures, ...nonRecent];
-  }, [recentFeatures, filtered]);
+    const mainFeatures = recentFeatures.length > 0
+      ? filtered.filter((f) => !recentIds.has(f.id))
+      : filtered;
+    for (const feat of mainFeatures) {
+      items.push({ kind: "feature", data: feat });
+    }
+
+    return items.slice(0, 50);
+  }, [groupedObjects, recentFeatures, filtered]);
 
   useEffect(() => {
     if (open) {
@@ -171,6 +252,21 @@ export function CommandBar({
     document.addEventListener("mousedown", handleBackdrop);
     return () => document.removeEventListener("mousedown", handleBackdrop);
   }, [open, close]);
+
+  /** Validate URL is a safe relative path (no open redirects). */
+  function isSafeUrl(url: string): boolean {
+    return url.startsWith("/") && !url.startsWith("//");
+  }
+
+  function selectItem(item: FlatItem) {
+    if (item.kind === "object") {
+      const url = isSafeUrl(item.data.url) ? item.data.url : "/dashboard";
+      onSelect(item.data.id, url);
+    } else {
+      onSelect(item.data.id, item.data.path);
+    }
+    close();
+  }
 
   function handleKeyDown(e: KeyboardEvent<HTMLDivElement>) {
     if (e.key === "Escape") {
@@ -217,14 +313,13 @@ export function CommandBar({
       e.preventDefault();
       const active = flatItems[activeIndex];
       if (active) {
-        onSelect(active.id, active.path);
-        close();
+        selectItem(active);
       }
     }
   }
 
   const activeItemId = flatItems[activeIndex]
-    ? `cmdbar-item-${instanceId}-${flatItems[activeIndex].id}`
+    ? `cmdbar-item-${instanceId}-${flatItems[activeIndex].kind === "object" ? `obj-${flatItems[activeIndex].data.id}` : (flatItems[activeIndex].data as CommandBarFeature).id}`
     : undefined;
 
   if (!open) return null;
@@ -236,6 +331,8 @@ export function CommandBar({
   const mainResults = hasRecent
     ? filtered.filter((f) => !recentIds.has(f.id)).slice(0, MAX_RENDERED)
     : filtered.slice(0, MAX_RENDERED);
+
+  const totalItemCount = objectResults.length + flatItems.length;
 
   return (
     <div className="fixed inset-0 z-50 flex items-start justify-center pt-24 px-4">
@@ -303,7 +400,7 @@ export function CommandBar({
           ref={listRef}
           id={listboxId}
           role="listbox"
-          aria-label="Features"
+          aria-label="Search results"
           className="max-h-80 overflow-y-auto py-1"
         >
           {flatItems.length === 0 ? (
@@ -315,6 +412,57 @@ export function CommandBar({
             </li>
           ) : (
             <>
+              {/* Object results grouped by workspace */}
+              {objectResults.length > 0 && (
+                <>
+                  {Array.from(groupedObjects.entries()).map(([workspace, objs]) => (
+                    <li key={`ws-${workspace}`}>
+                      <p className="px-3 py-1 text-xs font-medium text-muted-foreground">
+                        {WORKSPACE_LABELS[workspace] ?? workspace}
+                      </p>
+                      <ul role="group" aria-label={WORKSPACE_LABELS[workspace] ?? workspace}>
+                        {objs.map((obj) => {
+                          const itemIndex = flatItems.findIndex(
+                            (fi) => fi.kind === "object" && fi.data.id === obj.id,
+                          );
+                          const isActive = itemIndex === activeIndex;
+                          const itemId = `cmdbar-item-${instanceId}-obj-${obj.id}`;
+                          return (
+                            <li
+                              key={obj.id}
+                              id={itemId}
+                              role="option"
+                              aria-selected={isActive}
+                              onClick={() => {
+                                onSelect(obj.id, obj.url);
+                                close();
+                              }}
+                              onMouseEnter={() => setActiveIndex(itemIndex)}
+                              className={cn(
+                                "flex cursor-default items-center gap-2.5 px-3 py-2 text-sm",
+                                isActive && "bg-accent text-accent-foreground",
+                              )}
+                            >
+                              <div className="flex-1 min-w-0">
+                                <span className="truncate">{obj.title}</span>
+                                {obj.subtitle && (
+                                  <p className="truncate text-xs text-muted-foreground">
+                                    {obj.subtitle}
+                                  </p>
+                                )}
+                              </div>
+                              <span className="shrink-0 text-xs text-muted-foreground">
+                                {obj.type}
+                              </span>
+                            </li>
+                          );
+                        })}
+                      </ul>
+                    </li>
+                  ))}
+                </>
+              )}
+
               {/* Recent section */}
               {hasRecent && recentFeatures.length > 0 && (
                 <li>
@@ -340,7 +488,7 @@ export function CommandBar({
         <div className="sr-only" aria-live="polite" aria-atomic="true">
           {flatItems.length === 0
             ? emptyMessage
-            : `${flatItems.length} features found`}
+            : `${totalItemCount} results found`}
         </div>
       </div>
     </div>
@@ -350,14 +498,16 @@ export function CommandBar({
 function renderFeatureItem(
   feature: CommandBarFeature,
   instanceId: string,
-  flatItems: CommandBarFeature[],
+  flatItems: FlatItem[],
   activeIndex: number,
   setActiveIndex: (i: number) => void,
   onSelect: (id: string, path: string) => void,
   close: () => void,
   statusLabels: Record<string, string>,
 ) {
-  const itemIndex = flatItems.indexOf(feature);
+  const itemIndex = flatItems.findIndex(
+    (fi) => fi.kind === "feature" && fi.data.id === feature.id,
+  );
   const isActive = itemIndex === activeIndex;
   const itemId = `cmdbar-item-${instanceId}-${feature.id}`;
   const statusLabel = statusLabels[feature.status] ?? feature.status;

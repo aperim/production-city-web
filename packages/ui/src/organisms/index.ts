@@ -141,7 +141,7 @@ export type { SidebarNavProps, NavGroup, NavSection, NavSubsection, NavRoute, Ph
 
 // Issue #342: Dashboard CommandBar
 export { CommandBar } from './CommandBar/CommandBar';
-export type { CommandBarProps, CommandBarFeature } from './CommandBar/CommandBar';
+export type { CommandBarProps, CommandBarFeature, CommandBarObjectResult } from './CommandBar/CommandBar';
 
 // Issue #398: CanvasTable organism
 export { CanvasTable } from './CanvasTable/CanvasTable';
