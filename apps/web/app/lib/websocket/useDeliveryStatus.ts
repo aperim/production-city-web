@@ -65,7 +65,10 @@ export function useDeliveryStatus(
     if (typeof WebSocket === "undefined") return;
 
     const protocol = window.location.protocol === "https:" ? "wss:" : "ws:";
-    const url = `${protocol}//${window.location.host}/v1/ws/delivery?token=${encodeURIComponent(deliveryToken)}`;
+    const wsHost = window.location.hostname === "production.city"
+      ? "api.production.city"
+      : window.location.host;
+    const url = `${protocol}//${wsHost}/v1/ws/delivery?token=${encodeURIComponent(deliveryToken)}`;
 
     const ws = new WebSocket(url);
 
