@@ -19,16 +19,10 @@ import {
   revokeSession,
 } from "../../lib/api-client";
 import { useTranslation } from "../../i18n/context";
-import { useBreadcrumbs } from "../use-breadcrumbs";
 
 export default function ProfilePage() {
   const { user, roles, refreshSession } = useAuth();
   const { t } = useTranslation();
-
-  useBreadcrumbs([
-    { label: t("admin.dashboard.title"), href: "/dashboard" },
-    { label: t("admin.profile.title") },
-  ]);
 
   const [sessions, setSessions] = useState<SessionData[]>([]);
   const [sessionsLoading, setSessionsLoading] = useState(true);

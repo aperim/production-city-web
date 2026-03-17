@@ -82,7 +82,7 @@ test.describe("Mobile — User Detail", () => {
 
   test("user management page renders on mobile", async ({ page }) => {
     await loginAs(page, ADMIN_EMAIL);
-    await page.goto("/dashboard/users");
+    await page.goto("/dashboard/administration/users");
 
     // Users heading should be visible
     await expect(page.getByText(/users/i).first()).toBeVisible();

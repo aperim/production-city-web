@@ -15,7 +15,7 @@ test.describe("Admin Approvals — Pending User List", () => {
     const result = await adminApiCall(page, "GET", "/v1/admin/approvals");
     expect(result.status).toBe(200);
 
-    await page.goto("/dashboard/approvals");
+    await page.goto("/dashboard/administration/users?view=approvals");
     await expect(page.getByText(/pending|approvals/i).first()).toBeVisible();
   });
 });

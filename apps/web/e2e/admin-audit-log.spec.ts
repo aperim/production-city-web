@@ -19,7 +19,7 @@ test.describe("Admin Audit Log — Actions Appear", () => {
     expect(data.entries.length).toBeGreaterThan(0);
 
     // Navigate to audit log page
-    await page.goto("/dashboard/audit-log");
+    await page.goto("/dashboard/administration/security");
     await expect(page.getByText(/audit/i).first()).toBeVisible();
   });
 });

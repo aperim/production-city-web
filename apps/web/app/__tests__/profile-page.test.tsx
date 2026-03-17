@@ -90,7 +90,6 @@ vi.mock("../lib/websocket/useWebSocket", () => ({
 
 import { useAuth } from "../lib/auth-context";
 import ProfilePage from "../dashboard/profile/page";
-import { BreadcrumbProvider } from "../dashboard/breadcrumb-context";
 
 const mockUseAuth = vi.mocked(useAuth);
 
@@ -114,40 +113,30 @@ describe("Profile Page", () => {
 
   it("renders user email (read-only)", () => {
     mockAuthenticatedUser();
-    const html = renderToString(createElement(BreadcrumbProvider, null, createElement(ProfilePage)));
+    const html = renderToString(createElement(ProfilePage));
     expect(html).toContain("test@example.com");
     expect(html).toContain("Email");
   });
 
   it("renders profile form with name label", () => {
     mockAuthenticatedUser();
-    const html = renderToString(createElement(BreadcrumbProvider, null, createElement(ProfilePage)));
+    const html = renderToString(createElement(ProfilePage));
     expect(html).toContain("Display name");
     expect(html).toContain("Save");
   });
 
   it("shows role badges from auth context", () => {
     mockAuthenticatedUser();
-    const html = renderToString(createElement(BreadcrumbProvider, null, createElement(ProfilePage)));
+    const html = renderToString(createElement(ProfilePage));
     expect(html).toContain("admin");
     expect(html).toContain("editor");
   });
 
   it("renders theme toggle", () => {
     mockAuthenticatedUser();
-    const html = renderToString(createElement(BreadcrumbProvider, null, createElement(ProfilePage)));
+    const html = renderToString(createElement(ProfilePage));
     expect(html).toContain("Light");
     expect(html).toContain("Dark");
     expect(html).toContain("Appearance");
-  });
-
-  it("sets breadcrumbs via context (layout renders them)", () => {
-    mockAuthenticatedUser();
-    // Wrap in BreadcrumbProvider to avoid context error
-    const html = renderToString(
-      createElement(BreadcrumbProvider, null, createElement(ProfilePage)),
-    );
-    // Page renders its content; breadcrumbs are set in context for the layout
-    expect(html).toContain("Display name");
   });
 });

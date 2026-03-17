@@ -76,12 +76,7 @@ describe("Security: no raw HTML injection", () => {
     "auth/verify/page.tsx",
     "onboarding/page.tsx",
     "dashboard/page.tsx",
-    "dashboard/users/page.tsx",
-    "dashboard/invitations/page.tsx",
-    "dashboard/approvals/page.tsx",
-    "dashboard/audit-log/page.tsx",
     "dashboard/layout.tsx",
-    "dashboard/breadcrumb-context.tsx",
     "lib/auth-context.tsx",
     "lib/route-guard.tsx",
   ];

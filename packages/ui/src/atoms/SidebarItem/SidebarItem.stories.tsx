@@ -66,7 +66,7 @@ export const WithBadge: Story = {
   args: {
     id: 'approvals',
     label: 'Pending Approvals',
-    path: '/dashboard/approvals',
+    path: '/dashboard/administration/users',
     icon: <HomeIcon />,
     badge: '3',
   },

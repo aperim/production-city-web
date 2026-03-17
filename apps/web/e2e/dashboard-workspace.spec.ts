@@ -367,13 +367,13 @@ test.describe("Inbox Page", () => {
 // =============================================================================
 
 test.describe("Coming Soon Scaffold", () => {
-  test("planned features render ComingSoonPage via FeatureGate", async ({
+  test("planned features render ComingSoonPage via workspace visibility", async ({
     page,
   }) => {
     await loginAs(page, ADMIN_EMAIL);
 
-    // Navigate to old section/subsection path (still rendered via FeatureGate)
-    await page.goto("/dashboard/company/hr/directory");
+    // Navigate to workspace tab path with planned feature
+    await page.goto("/dashboard/people/directory");
 
     await expect(
       page.getByText(/coming soon|planned|notify me/i).first(),
@@ -583,12 +583,12 @@ test.describe("Role-Based Visibility", () => {
 // =============================================================================
 
 test.describe("Migration Redirects", () => {
-  test("/dashboard/users redirects to new admin path", async ({
+  test("/dashboard/users redirects to new workspace path", async ({
     page,
   }) => {
     await loginAs(page, ADMIN_EMAIL);
 
-    // Intercept the redirect to verify it's a 301
+    // Intercept the redirect to verify it's a 302
     const responses: { url: string; status: number }[] = [];
     page.on("response", (response) => {
       if (response.url().includes("/dashboard/users")) {
@@ -598,11 +598,11 @@ test.describe("Migration Redirects", () => {
 
     await page.goto("/dashboard/users");
 
-    // Worker should redirect to the new path
-    await expect(page).toHaveURL(/admin\/users\/manage/);
+    // Worker should redirect to the new workspace path
+    await expect(page).toHaveURL(/administration\/users/);
 
-    // Verify 301 status was returned by the worker
-    const redirectResponse = responses.find((r) => r.status === 301);
+    // Verify 302 status was returned by the worker
+    const redirectResponse = responses.find((r) => r.status === 302);
     expect(redirectResponse).toBeTruthy();
   });
 
@@ -612,10 +612,46 @@ test.describe("Migration Redirects", () => {
     await loginAs(page, ADMIN_EMAIL);
     await page.goto("/dashboard/users?search=test&page=2");
 
-    await expect(page).toHaveURL(/admin\/users\/manage/);
+    await expect(page).toHaveURL(/administration\/users/);
     const url = page.url();
     expect(url).toContain("search=test");
     expect(url).toContain("page=2");
+  });
+
+  test("/dashboard/announcements redirects to workspace path", async ({
+    page,
+  }) => {
+    await loginAs(page, ADMIN_EMAIL);
+
+    const responses: { url: string; status: number }[] = [];
+    page.on("response", (response) => {
+      if (response.url().includes("/dashboard/announcements")) {
+        responses.push({ url: response.url(), status: response.status() });
+      }
+    });
+
+    await page.goto("/dashboard/announcements");
+
+    await expect(page).toHaveURL(/administration\/communications/);
+
+    const redirectResponse = responses.find((r) => r.status === 302);
+    expect(redirectResponse).toBeTruthy();
+  });
+
+  test("/dashboard/audit-log redirects to administration/security", async ({
+    page,
+  }) => {
+    await loginAs(page, ADMIN_EMAIL);
+    await page.goto("/dashboard/audit-log");
+    await expect(page).toHaveURL(/administration\/security/);
+  });
+
+  test("/dashboard/eoi redirects to partnerships/eoi", async ({
+    page,
+  }) => {
+    await loginAs(page, ADMIN_EMAIL);
+    await page.goto("/dashboard/eoi");
+    await expect(page).toHaveURL(/partnerships\/eoi/);
   });
 });
 

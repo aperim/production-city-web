@@ -10,7 +10,7 @@ const ADMIN_EMAIL = "admin@test.production.city";
 test.describe("Admin Invitations — Create", () => {
   test("admin can create an invitation that appears in the list", async ({ page }) => {
     await loginAs(page, ADMIN_EMAIL);
-    await page.goto("/dashboard/invitations");
+    await page.goto("/dashboard/administration/users?view=invitations");
 
     // Should see invitations page
     await expect(page.getByText(/invitations/i).first()).toBeVisible();
@@ -35,7 +35,7 @@ test.describe("Admin Invitations — Create", () => {
     expect(result.status).toBe(201);
 
     // Reload invitations page
-    await page.goto("/dashboard/invitations");
+    await page.goto("/dashboard/administration/users?view=invitations");
 
     // Should see the new invitation in the list
     await expect(page.getByText(invEmail)).toBeVisible({ timeout: 10_000 });
