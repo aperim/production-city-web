@@ -258,7 +258,11 @@ function DashboardInner({ children }: { children: ReactNode }) {
     });
   }, []);
 
-  // Phase 1: all features visible (scaffold shows everything as ComingSoon)
+  // Phase 1 scaffold: all features visible so the full navigation structure
+  // renders with ComingSoon placeholders. In Phase 2+, this will be replaced
+  // by the server-resolved visible_feature_ids from GET /v1/registry/visible.
+  // SECURITY NOTE: client-side workspace/tab anti-enumeration is a no-op in
+  // scaffold mode — the backend API is the authoritative permission gate.
   const visibleFeatureIds = DASHBOARD_ROUTES.map((r) => r.id);
 
   const routes = DASHBOARD_ROUTES.map((r) => ({

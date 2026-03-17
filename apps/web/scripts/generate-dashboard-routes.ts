@@ -45,6 +45,16 @@ export const VALID_PRIORITIES = ["p0", "p1", "p2", "p3"] as const;
 
 export const VALID_STATUSES = ["planned", "coming_soon", "active", "deprecated"] as const;
 
+export const VALID_CANVAS_TYPES = [
+  "table", "board", "calendar", "timeline", "catalog", "documents", "charts",
+] as const;
+
+export const VALID_WORKSPACE_IDS = [
+  "productions", "facilities", "finance", "people", "campus",
+  "events", "education", "analytics", "investor-relations",
+  "partnerships", "administration",
+] as const;
+
 // ---------------------------------------------------------------------------
 // Types
 // ---------------------------------------------------------------------------
@@ -63,6 +73,38 @@ export interface RegistryFeature {
   bible_ref: string | null;
   dependencies: string[];
   keywords?: string[];
+  activatedAt?: string | null;
+}
+
+export interface RegistryWorkspaceTab {
+  id: string;
+  label: string;
+  canvas: string;
+  featureIds: string[];
+  wireframeType?: string;
+}
+
+export interface RegistryWorkspace {
+  id: string;
+  label: string;
+  icon: string;
+  description: string;
+  defaultCanvas: string;
+  aiEnabled?: boolean;
+  tabs: RegistryWorkspaceTab[];
+  roles: string[];
+}
+
+export interface RegistryQuickAction {
+  label: string;
+  workspace: string;
+  tab: string;
+  icon: string;
+}
+
+export interface RegistryRoleConfig {
+  workspaceOrder: string[];
+  quickActions: RegistryQuickAction[];
 }
 
 export interface RegistrySubsection {
@@ -93,6 +135,8 @@ export interface RegistryMetadata {
 export interface Registry {
   registry_metadata: RegistryMetadata;
   sections: RegistrySection[];
+  workspaces?: RegistryWorkspace[];
+  roleConfig?: Record<string, RegistryRoleConfig>;
 }
 
 export interface ValidationError {
@@ -103,6 +147,7 @@ export interface ValidationError {
 
 interface ValidateOptions {
   expectedFeatureCount?: number;
+  validateWorkspaces?: boolean;
 }
 
 // ---------------------------------------------------------------------------
@@ -332,6 +377,112 @@ export function validateRegistry(
     }
   }
 
+  // Workspace validation rules (only when workspaces are present in the registry)
+  if (options?.validateWorkspaces && registry.workspaces) {
+    const workspaces = registry.workspaces;
+    const workspaceIdSet = new Set(workspaces.map((ws) => ws.id));
+
+    // Build set of all features mapped to workspace tabs
+    const mappedFeatureIds = new Set<string>();
+    for (const ws of workspaces) {
+      // Rule 12: Workspace ID format — must be lowercase, hyphens, no special chars
+      if (!/^[a-z][a-z0-9-]*$/.test(ws.id)) {
+        errors.push({
+          rule: "workspace-id-format",
+          message: `Workspace ID '${ws.id}' must be lowercase alphanumeric with hyphens`,
+        });
+      }
+
+      const tabIds = new Set<string>();
+      for (const tab of ws.tabs) {
+        // Rule 13: Unique tab IDs within workspace
+        if (tabIds.has(tab.id)) {
+          errors.push({
+            rule: "workspace-unique-tab-ids",
+            message: `Duplicate tab ID '${tab.id}' in workspace '${ws.id}'`,
+          });
+        }
+        tabIds.add(tab.id);
+
+        for (const fid of tab.featureIds) {
+          // Rule 11: Valid feature references
+          if (!allFeatureIdSet.has(fid)) {
+            errors.push({
+              rule: "workspace-invalid-feature-ref",
+              featureId: fid,
+              message: `Workspace '${ws.id}' tab '${tab.id}' references non-existent feature: ${fid}`,
+            });
+          }
+          mappedFeatureIds.add(fid);
+        }
+      }
+    }
+
+    // Rule 10: No orphan features (features not in any workspace tab)
+    // Exclude home.* features — they belong to HomeDashboard, not a workspace
+    for (const fid of allFeatureIdSet) {
+      if (!mappedFeatureIds.has(fid) && !fid.startsWith("home.")) {
+        errors.push({
+          rule: "workspace-orphan-features",
+          featureId: fid,
+          message: `Feature '${fid}' is not mapped to any workspace tab`,
+        });
+      }
+    }
+
+    // roleConfig validation
+    if (registry.roleConfig) {
+      for (const [role, config] of Object.entries(registry.roleConfig)) {
+        // Rule 14: Every role must have at least one workspace
+        if (config.workspaceOrder.length === 0) {
+          errors.push({
+            rule: "role-empty-workspace-order",
+            message: `Role '${role}' has empty workspaceOrder`,
+          });
+        }
+
+        // Rule 15: Workspace references must be valid
+        for (const wsId of config.workspaceOrder) {
+          if (!workspaceIdSet.has(wsId)) {
+            errors.push({
+              rule: "role-invalid-workspace-ref",
+              message: `Role '${role}' references non-existent workspace '${wsId}'`,
+            });
+          }
+        }
+
+        // Validate quickAction workspace/tab references
+        for (const qa of config.quickActions) {
+          if (!workspaceIdSet.has(qa.workspace)) {
+            errors.push({
+              rule: "role-invalid-workspace-ref",
+              message: `Role '${role}' quickAction '${qa.label}' references non-existent workspace '${qa.workspace}'`,
+            });
+          } else {
+            const ws = workspaces.find((w) => w.id === qa.workspace);
+            if (ws && !ws.tabs.some((t) => t.id === qa.tab)) {
+              errors.push({
+                rule: "role-invalid-workspace-ref",
+                message: `Role '${role}' quickAction '${qa.label}' references non-existent tab '${qa.tab}' in workspace '${qa.workspace}'`,
+              });
+            }
+          }
+        }
+      }
+    }
+
+    // Warning: active features without activatedAt
+    for (const feature of features) {
+      if (feature.status === "active" && (feature.activatedAt === null || feature.activatedAt === undefined)) {
+        errors.push({
+          rule: "active-without-activated-at",
+          featureId: feature.id,
+          message: `Feature '${feature.id}' is active but has no activatedAt date (backward compat warning)`,
+        });
+      }
+    }
+  }
+
   return errors;
 }
 
@@ -544,6 +695,167 @@ export function generateBackendManifest(registry: Registry, registryHash: string
 }
 
 // ---------------------------------------------------------------------------
+// Code generation: workspace-config.ts (#384)
+// ---------------------------------------------------------------------------
+
+export function generateWorkspaceConfig(workspaces: RegistryWorkspace[]): string {
+  const lines: string[] = [];
+
+  lines.push("// AUTO-GENERATED — do not edit. Run `pnpm generate:dashboard` to regenerate.");
+  lines.push("// @generated");
+  lines.push("");
+
+  // CanvasType union
+  lines.push("export type CanvasType =");
+  for (const ct of VALID_CANVAS_TYPES) {
+    lines.push(`  | '${ct}'`);
+  }
+  lines.push("  ;");
+  lines.push("");
+
+  // WorkspaceId union
+  lines.push("export type WorkspaceId =");
+  for (const ws of workspaces) {
+    lines.push(`  | '${escapeString(ws.id)}'`);
+  }
+  lines.push("  ;");
+  lines.push("");
+
+  // WorkspaceTab interface
+  lines.push("export interface WorkspaceTab {");
+  lines.push("  id: string;");
+  lines.push("  label: string;");
+  lines.push("  canvas: CanvasType;");
+  lines.push("  featureIds: string[];");
+  lines.push("  wireframeType?: string;");
+  lines.push("}");
+  lines.push("");
+
+  // WorkspaceConfig interface
+  lines.push("export interface WorkspaceConfig {");
+  lines.push("  id: WorkspaceId;");
+  lines.push("  label: string;");
+  lines.push("  icon: string;");
+  lines.push("  description: string;");
+  lines.push("  defaultCanvas: CanvasType;");
+  lines.push("  aiEnabled: boolean;");
+  lines.push("  tabs: WorkspaceTab[];");
+  lines.push("  roles: string[];");
+  lines.push("}");
+  lines.push("");
+
+  // WORKSPACE_CONFIG array
+  lines.push("export const WORKSPACE_CONFIG: WorkspaceConfig[] = [");
+  for (const ws of workspaces) {
+    lines.push("  {");
+    lines.push(`    id: '${escapeString(ws.id)}',`);
+    lines.push(`    label: '${escapeString(ws.label)}',`);
+    lines.push(`    icon: '${escapeString(ws.icon)}',`);
+    lines.push(`    description: '${escapeString(ws.description)}',`);
+    lines.push(`    defaultCanvas: '${escapeString(ws.defaultCanvas)}',`);
+    lines.push(`    aiEnabled: ${ws.aiEnabled !== false},`);
+    lines.push("    tabs: [");
+    for (const tab of ws.tabs) {
+      const wireframe = tab.wireframeType ? `, wireframeType: '${escapeString(tab.wireframeType)}'` : "";
+      lines.push(`      { id: '${escapeString(tab.id)}', label: '${escapeString(tab.label)}', canvas: '${escapeString(tab.canvas)}', featureIds: ${formatStringArray(tab.featureIds)}${wireframe} },`);
+    }
+    lines.push("    ],");
+    lines.push(`    roles: ${formatStringArray(ws.roles)},`);
+    lines.push("  },");
+  }
+  lines.push("];");
+  lines.push("");
+
+  // Lookup maps for O(1) access
+  lines.push("/** O(1) workspace lookup by ID */");
+  lines.push("export const WORKSPACE_MAP = new Map<WorkspaceId, WorkspaceConfig>(");
+  lines.push("  WORKSPACE_CONFIG.map((ws) => [ws.id, ws]),");
+  lines.push(");");
+
+  return lines.join("\n");
+}
+
+// ---------------------------------------------------------------------------
+// Code generation: role-config.ts (#384)
+// ---------------------------------------------------------------------------
+
+export function generateRoleConfig(roleConfig: Record<string, RegistryRoleConfig>): string {
+  const lines: string[] = [];
+
+  lines.push("// AUTO-GENERATED — do not edit. Run `pnpm generate:dashboard` to regenerate.");
+  lines.push("// @generated");
+  lines.push("");
+
+  // Import WorkspaceId from workspace-config
+  lines.push("import type { WorkspaceId } from './workspace-config';");
+  lines.push("");
+
+  // DashboardRole union type
+  lines.push("export type DashboardRole =");
+  for (const role of Object.keys(roleConfig)) {
+    lines.push(`  | '${escapeString(role)}'`);
+  }
+  lines.push("  ;");
+  lines.push("");
+
+  // QuickAction interface
+  lines.push("export interface QuickAction {");
+  lines.push("  label: string;");
+  lines.push("  workspace: WorkspaceId;");
+  lines.push("  tab: string;");
+  lines.push("  icon: string;");
+  lines.push("}");
+  lines.push("");
+
+  // RoleConfig interface
+  lines.push("export interface RoleConfigEntry {");
+  lines.push("  workspaceOrder: WorkspaceId[];");
+  lines.push("  quickActions: QuickAction[];");
+  lines.push("}");
+  lines.push("");
+
+  // ROLE_CONFIG object
+  lines.push("export const ROLE_CONFIG: Record<DashboardRole, RoleConfigEntry> = {");
+  for (const [role, config] of Object.entries(roleConfig)) {
+    lines.push(`  '${escapeString(role)}': {`);
+    lines.push(`    workspaceOrder: ${formatStringArray(config.workspaceOrder)},`);
+    lines.push("    quickActions: [");
+    for (const qa of config.quickActions) {
+      lines.push(`      { label: '${escapeString(qa.label)}', workspace: '${escapeString(qa.workspace)}', tab: '${escapeString(qa.tab)}', icon: '${escapeString(qa.icon)}' },`);
+    }
+    lines.push("    ],");
+    lines.push("  },");
+  }
+  lines.push("};");
+
+  return lines.join("\n");
+}
+
+// ---------------------------------------------------------------------------
+// Code generation: backend workspace-manifest.ts (#386)
+// ---------------------------------------------------------------------------
+
+export function generateBackendWorkspaceManifest(
+  workspaces: RegistryWorkspace[],
+  roleConfig: Record<string, RegistryRoleConfig>,
+): string {
+  const lines: string[] = [];
+
+  lines.push("// AUTO-GENERATED — do not edit. Run `pnpm generate:dashboard` to regenerate.");
+  lines.push("// @generated");
+  lines.push("");
+
+  // Workspace config
+  lines.push("export const WORKSPACE_CONFIG = " + JSON.stringify(workspaces, null, 2) + " as const;");
+  lines.push("");
+
+  // Role config
+  lines.push("export const ROLE_CONFIG = " + JSON.stringify(roleConfig, null, 2) + " as const;");
+
+  return lines.join("\n");
+}
+
+// ---------------------------------------------------------------------------
 // CLI entry point
 // ---------------------------------------------------------------------------
 
@@ -612,6 +924,50 @@ function main() {
   const manifestContent = generateBackendManifest(registry, registryHash);
   safeWrite(path.join(backendGenDir, "route-manifest.ts"), manifestContent);
   console.log("Generated:", path.join(backendGenDir, "route-manifest.ts"));
+
+  // Generate workspace config (if workspaces are defined in registry)
+  if (registry.workspaces) {
+    // Validate workspace-specific rules
+    const wsErrors = validateRegistry(registry, {
+      expectedFeatureCount: 502,
+      validateWorkspaces: true,
+    });
+    // Filter to only workspace-specific errors (not warnings about activatedAt)
+    const wsBlockingErrors = wsErrors.filter((e) => e.rule !== "active-without-activated-at");
+    if (wsBlockingErrors.length > 0) {
+      console.error("Workspace validation failed:");
+      for (const err of wsBlockingErrors) {
+        console.error(`  [${err.rule}]${err.featureId ? ` ${err.featureId}:` : ""} ${err.message}`);
+      }
+      process.exit(1);
+    }
+
+    // Warn about active features without activatedAt
+    const wsWarnings = wsErrors.filter((e) => e.rule === "active-without-activated-at");
+    if (wsWarnings.length > 0) {
+      console.warn(`Warning: ${wsWarnings.length} active features have no activatedAt date`);
+    }
+
+    const wsConfigContent = generateWorkspaceConfig(registry.workspaces);
+    safeWrite(path.join(webGenDir, "workspace-config.ts"), wsConfigContent);
+    console.log("Generated:", path.join(webGenDir, "workspace-config.ts"));
+
+    if (registry.roleConfig) {
+      const roleConfigContent = generateRoleConfig(registry.roleConfig);
+      safeWrite(path.join(webGenDir, "role-config.ts"), roleConfigContent);
+      console.log("Generated:", path.join(webGenDir, "role-config.ts"));
+    }
+
+    // Also generate backend workspace manifest
+    const backendWsContent = generateBackendWorkspaceManifest(
+      registry.workspaces,
+      registry.roleConfig ?? {},
+    );
+    safeWrite(path.join(backendGenDir, "workspace-manifest.ts"), backendWsContent);
+    console.log("Generated:", path.join(backendGenDir, "workspace-manifest.ts"));
+
+    console.log(`Workspace validation passed (15 rules).`);
+  }
 
   console.log("Dashboard registry code generation complete.");
 }

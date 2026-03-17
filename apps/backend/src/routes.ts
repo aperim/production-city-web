@@ -27,6 +27,7 @@ import { twilioStatusApp } from "./routes/twilio-status.js";
 import { unsubscribeApp } from "./routes/unsubscribe.js";
 import { registryVisibleApp } from "./registry/visible.js";
 import { featureNotifyApp } from "./registry/notify.js";
+import { workspacesVisibleApp } from "./registry/workspaces.js";
 
 /**
  * Mount all auth and admin routes onto the main app.
@@ -78,6 +79,7 @@ export function mountRoutes(app: OpenAPIHono<{ Bindings: Record<string, unknown>
   // Dashboard registry + feature notification routes (auth required)
   app.route("/", registryVisibleApp);
   app.route("/", featureNotifyApp);
+  app.route("/", workspacesVisibleApp);
 
   // Public EOI and locales routes (no auth required)
   app.route("/", eoiApp);
