@@ -14,6 +14,8 @@ import { describe, it, expect, beforeAll } from "vitest";
 import {
   type Registry,
   type RegistryFeature,
+  type RegistryWorkspace,
+  type RegistryRoleConfig,
   parseRegistry,
   validateRegistry,
   generateRoutes,
@@ -21,10 +23,15 @@ import {
   generateFeatureIndex,
   generateBackendManifest,
   generateFeatureIdType,
+  generateWorkspaceConfig,
+  generateRoleConfig,
+  generateBackendWorkspaceManifest,
   computeRegistryHash,
   VALID_ROLES,
   VALID_PHASES,
   VALID_PRIORITIES,
+  VALID_CANVAS_TYPES,
+  VALID_WORKSPACE_IDS,
 } from "../generate-dashboard-routes.js";
 import * as fs from "node:fs";
 import * as path from "node:path";
@@ -527,5 +534,301 @@ describe("constants", () => {
     expect(VALID_PRIORITIES).toHaveLength(4);
     expect(VALID_PRIORITIES).toContain("p0");
     expect(VALID_PRIORITIES).toContain("p3");
+  });
+
+  it("exports 7 valid canvas types", () => {
+    expect(VALID_CANVAS_TYPES).toHaveLength(7);
+    expect(VALID_CANVAS_TYPES).toContain("table");
+    expect(VALID_CANVAS_TYPES).toContain("charts");
+  });
+
+  it("exports 11 valid workspace IDs", () => {
+    expect(VALID_WORKSPACE_IDS).toHaveLength(11);
+    expect(VALID_WORKSPACE_IDS).toContain("productions");
+    expect(VALID_WORKSPACE_IDS).toContain("administration");
+  });
+});
+
+// ===========================================================================
+// Workspace helpers
+// ===========================================================================
+
+function makeWorkspace(overrides?: Partial<RegistryWorkspace>): RegistryWorkspace {
+  return {
+    id: "test-workspace",
+    label: "Test Workspace",
+    icon: "home",
+    description: "A test workspace",
+    defaultCanvas: "table",
+    aiEnabled: true,
+    tabs: [
+      {
+        id: "overview",
+        label: "Overview",
+        canvas: "table",
+        featureIds: ["home.overview.test"],
+      },
+    ],
+    roles: ["admin"],
+    ...overrides,
+  };
+}
+
+function makeRoleConfig(overrides?: Record<string, Partial<RegistryRoleConfig>>): Record<string, RegistryRoleConfig> {
+  return {
+    admin: {
+      workspaceOrder: ["test-workspace"],
+      quickActions: [
+        { label: "Test Action", workspace: "test-workspace", tab: "overview", icon: "home" },
+      ],
+      ...overrides?.admin,
+    },
+  };
+}
+
+function makeRegistryWithWorkspaces(overrides?: {
+  features?: Partial<RegistryFeature>[];
+  workspaces?: RegistryWorkspace[];
+  roleConfig?: Record<string, RegistryRoleConfig>;
+}): Registry & { workspaces: RegistryWorkspace[]; roleConfig: Record<string, RegistryRoleConfig> } {
+  const base = makeRegistry(overrides);
+  return {
+    ...base,
+    workspaces: overrides?.workspaces ?? [makeWorkspace()],
+    roleConfig: overrides?.roleConfig ?? makeRoleConfig(),
+  };
+}
+
+// ===========================================================================
+// #384 — Workspace config code generation
+// ===========================================================================
+
+describe("generateWorkspaceConfig", () => {
+  it("generates TypeScript with WORKSPACE_CONFIG export", () => {
+    const reg = makeRegistryWithWorkspaces();
+    const output = generateWorkspaceConfig(reg.workspaces);
+    expect(output).toContain("export const WORKSPACE_CONFIG");
+    expect(output).toContain("WorkspaceConfig[]");
+  });
+
+  it("generates WorkspaceId union type", () => {
+    const reg = makeRegistryWithWorkspaces({
+      workspaces: [
+        makeWorkspace({ id: "productions" }),
+        makeWorkspace({ id: "facilities" }),
+      ],
+    });
+    const output = generateWorkspaceConfig(reg.workspaces);
+    expect(output).toContain("export type WorkspaceId =");
+    expect(output).toContain("| 'productions'");
+    expect(output).toContain("| 'facilities'");
+  });
+
+  it("generates CanvasType union type", () => {
+    const reg = makeRegistryWithWorkspaces();
+    const output = generateWorkspaceConfig(reg.workspaces);
+    expect(output).toContain("export type CanvasType =");
+    expect(output).toContain("| 'table'");
+    expect(output).toContain("| 'board'");
+    expect(output).toContain("| 'calendar'");
+  });
+
+  it("includes tab definitions with featureIds", () => {
+    const reg = makeRegistryWithWorkspaces();
+    const output = generateWorkspaceConfig(reg.workspaces);
+    expect(output).toContain("id: 'overview'");
+    expect(output).toContain("featureIds: ['home.overview.test']");
+  });
+
+  it("includes aiEnabled field", () => {
+    const reg = makeRegistryWithWorkspaces({
+      workspaces: [makeWorkspace({ aiEnabled: false })],
+    });
+    const output = generateWorkspaceConfig(reg.workspaces);
+    expect(output).toContain("aiEnabled: false");
+  });
+
+  it("includes wireframeType when present", () => {
+    const ws = makeWorkspace();
+    ws.tabs[0].wireframeType = "calendar";
+    const output = generateWorkspaceConfig([ws]);
+    expect(output).toContain("wireframeType: 'calendar'");
+  });
+
+  it("generates all 11 workspaces for production registry", () => {
+    const raw = fs.readFileSync(REGISTRY_PATH, "utf-8");
+    const registry = JSON.parse(raw);
+    if (registry.workspaces) {
+      const output = generateWorkspaceConfig(registry.workspaces);
+      const idMatches = [...output.matchAll(/id: '([^']+)',\n\s+label:/g)];
+      expect(idMatches.length).toBe(11);
+    }
+  });
+});
+
+describe("generateRoleConfig", () => {
+  it("generates TypeScript with ROLE_CONFIG export", () => {
+    const output = generateRoleConfig(makeRoleConfig());
+    expect(output).toContain("export const ROLE_CONFIG");
+  });
+
+  it("generates DashboardRole union type", () => {
+    const output = generateRoleConfig(makeRoleConfig());
+    expect(output).toContain("export type DashboardRole =");
+    expect(output).toContain("| 'admin'");
+  });
+
+  it("includes workspaceOrder array", () => {
+    const output = generateRoleConfig(makeRoleConfig());
+    expect(output).toContain("workspaceOrder: ['test-workspace']");
+  });
+
+  it("includes quickActions with all fields", () => {
+    const output = generateRoleConfig(makeRoleConfig());
+    expect(output).toContain("label: 'Test Action'");
+    expect(output).toContain("workspace: 'test-workspace'");
+    expect(output).toContain("tab: 'overview'");
+    expect(output).toContain("icon: 'home'");
+  });
+
+  it("generates all 10 roles for production registry", () => {
+    const raw = fs.readFileSync(REGISTRY_PATH, "utf-8");
+    const registry = JSON.parse(raw);
+    if (registry.roleConfig) {
+      const output = generateRoleConfig(registry.roleConfig);
+      for (const role of VALID_ROLES) {
+        expect(output).toContain(`'${role}':`);
+      }
+    }
+  });
+});
+
+describe("generateBackendWorkspaceManifest", () => {
+  it("generates TypeScript with WORKSPACE_CONFIG and ROLE_CONFIG exports", () => {
+    const output = generateBackendWorkspaceManifest(
+      [makeWorkspace()],
+      makeRoleConfig(),
+    );
+    expect(output).toContain("export const WORKSPACE_CONFIG");
+    expect(output).toContain("export const ROLE_CONFIG");
+  });
+});
+
+// ===========================================================================
+// #384 — Workspace validation rules (Rules 10-15)
+// ===========================================================================
+
+describe("validateRegistry — workspace rules", () => {
+  // Rule 10: Every non-home feature must be in exactly one workspace tab
+  it("detects features not mapped to any workspace tab (orphan)", () => {
+    const reg = makeRegistryWithWorkspaces({
+      features: [
+        { id: "feat.a", path: "/dashboard/a" },
+        { id: "feat.b", path: "/dashboard/b" },
+      ],
+      workspaces: [
+        makeWorkspace({
+          tabs: [{ id: "t1", label: "T1", canvas: "table", featureIds: ["feat.a"] }],
+        }),
+      ],
+    });
+    const errors = validateRegistry(reg, { validateWorkspaces: true });
+    expect(errors.some((e) => e.rule === "workspace-orphan-features")).toBe(true);
+    expect(errors.some((e) => e.message.includes("feat.b"))).toBe(true);
+  });
+
+  // Rule 11: All featureIds in workspace tabs must reference valid features
+  it("detects invalid feature references in workspace tabs", () => {
+    const reg = makeRegistryWithWorkspaces({
+      workspaces: [
+        makeWorkspace({
+          tabs: [{ id: "t1", label: "T1", canvas: "table", featureIds: ["nonexistent.feature"] }],
+        }),
+      ],
+    });
+    const errors = validateRegistry(reg, { validateWorkspaces: true });
+    expect(errors.some((e) => e.rule === "workspace-invalid-feature-ref")).toBe(true);
+  });
+
+  // Rule 12: Workspace IDs must be valid URL path segments
+  it("detects invalid workspace IDs", () => {
+    const reg = makeRegistryWithWorkspaces({
+      workspaces: [makeWorkspace({ id: "Invalid Workspace!" })],
+    });
+    const errors = validateRegistry(reg, { validateWorkspaces: true });
+    expect(errors.some((e) => e.rule === "workspace-id-format")).toBe(true);
+  });
+
+  it("accepts valid workspace IDs with hyphens", () => {
+    const reg = makeRegistryWithWorkspaces({
+      workspaces: [makeWorkspace({ id: "investor-relations" })],
+    });
+    const errors = validateRegistry(reg, { validateWorkspaces: true });
+    expect(errors.filter((e) => e.rule === "workspace-id-format")).toHaveLength(0);
+  });
+
+  // Rule 13: Tab IDs must be unique within their workspace
+  it("detects duplicate tab IDs within a workspace", () => {
+    const reg = makeRegistryWithWorkspaces({
+      workspaces: [
+        makeWorkspace({
+          tabs: [
+            { id: "overview", label: "Overview", canvas: "table", featureIds: ["home.overview.test"] },
+            { id: "overview", label: "Overview 2", canvas: "board", featureIds: ["home.overview.test"] },
+          ],
+        }),
+      ],
+    });
+    const errors = validateRegistry(reg, { validateWorkspaces: true });
+    expect(errors.some((e) => e.rule === "workspace-unique-tab-ids")).toBe(true);
+  });
+
+  // Rule 14: Every role in roleConfig must have at least one workspace
+  it("detects roles with empty workspaceOrder", () => {
+    const reg = makeRegistryWithWorkspaces({
+      roleConfig: {
+        admin: { workspaceOrder: [], quickActions: [] },
+      },
+    });
+    const errors = validateRegistry(reg, { validateWorkspaces: true });
+    expect(errors.some((e) => e.rule === "role-empty-workspace-order")).toBe(true);
+  });
+
+  // Rule 15: roleConfig workspace references must be valid
+  it("detects roleConfig referencing non-existent workspace", () => {
+    const reg = makeRegistryWithWorkspaces({
+      roleConfig: {
+        admin: {
+          workspaceOrder: ["nonexistent-workspace"],
+          quickActions: [],
+        },
+      },
+    });
+    const errors = validateRegistry(reg, { validateWorkspaces: true });
+    expect(errors.some((e) => e.rule === "role-invalid-workspace-ref")).toBe(true);
+  });
+
+  // Warning: active features without activatedAt
+  it("warns when active feature has null activatedAt", () => {
+    const reg = makeRegistryWithWorkspaces({
+      features: [
+        { id: "feat.a", path: "/dashboard/a", status: "active", activatedAt: null as unknown as undefined },
+      ],
+    });
+    const errors = validateRegistry(reg, { validateWorkspaces: true });
+    expect(errors.some((e) => e.rule === "active-without-activated-at")).toBe(true);
+  });
+
+  // Full production registry workspace validation
+  it("full production registry passes workspace validation", () => {
+    const raw = fs.readFileSync(REGISTRY_PATH, "utf-8");
+    const registry = parseRegistry(raw);
+    const errors = validateRegistry(registry, { expectedFeatureCount: 502, validateWorkspaces: true });
+    // Filter out activatedAt warnings (expected since all features are planned)
+    const blockingErrors = errors.filter((e) => e.rule !== "active-without-activated-at");
+    if (blockingErrors.length > 0) {
+      console.error("Workspace validation errors:", blockingErrors);
+    }
+    expect(blockingErrors).toHaveLength(0);
   });
 });

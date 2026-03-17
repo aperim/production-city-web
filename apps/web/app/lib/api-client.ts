@@ -944,3 +944,43 @@ export function unsubscribeFromFeature(featureId: string) {
 export function getFeatureNotificationStatus(featureId: string) {
   return request<FeatureNotificationStatus>('GET', `/v1/features/${encodeURIComponent(featureId)}/notify`);
 }
+
+// --- Workspaces API (#386) ---
+
+export interface WorkspaceTabResponse {
+  id: string;
+  label: string;
+  canvas: string;
+  status: 'active' | 'coming_soon' | 'planned';
+  featureCount: number;
+  activeFeatureCount: number;
+}
+
+export interface WorkspaceUpcomingFeature {
+  id: string;
+  label: string;
+  status: string;
+}
+
+export interface WorkspaceResponse {
+  id: string;
+  label: string;
+  icon: string;
+  description: string;
+  defaultCanvas: string;
+  tabs: WorkspaceTabResponse[];
+  totalFeatures: number;
+  activeFeatures: number;
+  upcomingFeatures: WorkspaceUpcomingFeature[];
+}
+
+export interface WorkspacesVisibleResponse {
+  registry_version: string;
+  phase: string;
+  workspaces: WorkspaceResponse[];
+}
+
+/** Get visible workspaces for authenticated user (GET /v1/workspaces/visible) */
+export function getWorkspacesVisible() {
+  return request<WorkspacesVisibleResponse>('GET', '/v1/workspaces/visible');
+}
