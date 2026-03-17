@@ -28,7 +28,11 @@ describe("OpenAPI coverage", () => {
     // registered via app.use() which show up as method "ALL" on "/*".
     // Issue #98: meta paths moved to /v1/ prefix.
     // WebSocket upgrade routes return 101 (not JSON), so they are not OpenAPI routes
-    const metaPaths = new Set(["/v1/openapi.json", "/v1/docs", "/v1/ws", "/v1/ws/delivery"]);
+    const metaPaths = new Set([
+      "/v1/openapi.json", "/v1/docs", "/v1/ws", "/v1/ws/delivery",
+      // Home & Inbox endpoints (plain Hono, not OpenAPI) — Issue #395, #397
+      "/v1/home/summary", "/v1/inbox", "/v1/inbox/:id", "/v1/inbox/mark-all-read",
+    ]);
 
     // Normalize Hono :param to OpenAPI {param} for matching
     function normalizePath(path: string): string {

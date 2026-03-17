@@ -104,3 +104,7 @@ export { FeatureStatusDot } from "./FeatureStatusDot/FeatureStatusDot";
 export type { FeatureStatusDotProps, FeatureDotStatus } from "./FeatureStatusDot/FeatureStatusDot";
 export { TabItem as WorkspaceTabItem } from "./TabItem/TabItem";
 export type { TabItemProps as WorkspaceTabItemProps } from "./TabItem/TabItem";
+
+// Issue #396: Inbox Atoms
+export { AttentionDot } from "./AttentionDot/AttentionDot";
+export type { AttentionDotProps, AttentionPriority } from "./AttentionDot/AttentionDot";

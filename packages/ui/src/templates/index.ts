@@ -27,3 +27,11 @@ export type { RoleDashboardProps, DashboardRole, KpiCard, QuickAction, ActivityE
 // Issue #390: WorkspaceShell Template
 export { WorkspaceShell } from "./WorkspaceShell/WorkspaceShell";
 export type { WorkspaceShellProps } from "./WorkspaceShell/WorkspaceShell";
+
+// Issue #394: HomeDashboard Template
+export { HomeDashboard } from "./HomeDashboard/HomeDashboard";
+export type { HomeDashboardProps, AttentionItemData, RecentData, WhatsNewData } from "./HomeDashboard/HomeDashboard";
+
+// Issue #396: InboxPage Template
+export { InboxPage } from "./InboxPage/InboxPage";
+export type { InboxPageProps } from "./InboxPage/InboxPage";

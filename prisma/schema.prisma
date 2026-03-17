@@ -459,12 +459,25 @@ model Notification {
   readAt       DateTime?
   createdAt    DateTime  @default(now())
 
+  /// Workspace ID for filtering (nullable for system notifications)
+  workspace   String?
+  /// urgent | action | info
+  priority    String    @default("info")
+  /// Soft delete — dismissed items hidden by default
+  dismissed   Boolean   @default(false)
+  /// Whether this notification requires user action
+  actionable  Boolean   @default(false)
+  /// Human-readable summary (derived from metadata in existing code)
+  summary     String?
+
   user  User  @relation("UserNotifications", fields: [userId], references: [id], onDelete: Cascade)
   actor User? @relation("NotificationActor", fields: [actorId], references: [id])
 
   @@index([userId, readAt])
   @@index([userId, createdAt])
   @@index([type])
+  @@index([userId, dismissed])
+  @@index([userId, type])
 }
 
 // ============================================================================

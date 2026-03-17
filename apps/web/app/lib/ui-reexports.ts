@@ -87,6 +87,8 @@ export { WorkspaceTabs } from "../../../../packages/ui/src/organisms/WorkspaceTa
 export type { WorkspaceTabsProps, WorkspaceTab } from "../../../../packages/ui/src/organisms/WorkspaceTabs/WorkspaceTabs";
 export { AIPanel } from "../../../../packages/ui/src/organisms/AIPanel/AIPanel";
 export type { AIPanelProps, AIPanelMessage } from "../../../../packages/ui/src/organisms/AIPanel/AIPanel";
+export { InboxFeed } from "../../../../packages/ui/src/organisms/InboxFeed/InboxFeed";
+export type { InboxFeedProps, InboxFeedItem, InboxFilters } from "../../../../packages/ui/src/organisms/InboxFeed/InboxFeed";
 export * from "../../../../packages/ui/src/templates";
 export * from "../../../../packages/ui/src/pages";
 export * from "../../../../packages/ui/src/foundations";

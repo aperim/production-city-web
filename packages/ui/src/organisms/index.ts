@@ -186,3 +186,7 @@ export type { WorkspaceTabsProps, WorkspaceTab } from './WorkspaceTabs/Workspace
 // Issue #392: AIPanel
 export { AIPanel } from './AIPanel/AIPanel';
 export type { AIPanelProps, AIPanelMessage } from './AIPanel/AIPanel';
+
+// Issue #396: InboxFeed
+export { InboxFeed } from './InboxFeed/InboxFeed';
+export type { InboxFeedProps, InboxFeedItem, InboxFilters } from './InboxFeed/InboxFeed';
