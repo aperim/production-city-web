@@ -194,7 +194,7 @@ describe("listUsers", () => {
 describe("listAuditLog", () => {
   it("includes filter params", async () => {
     mockFetch.mockReturnValue(
-      jsonResponse({ entries: [], cursor: null }),
+      jsonResponse({ entries: [], nextCursor: null, hasMore: false }),
     );
 
     await listAuditLog({ action: "auth.login", from: "2026-01-01" });
@@ -206,5 +206,58 @@ describe("listAuditLog", () => {
       expect.stringContaining("from=2026-01-01"),
       expect.anything(),
     );
+  });
+
+  it("maps backend createdAt to frontend timestamp field", async () => {
+    const isoDate = "2026-03-15T10:30:00.000Z";
+    mockFetch.mockReturnValue(
+      jsonResponse({
+        entries: [
+          {
+            id: "log-1",
+            actorId: "user-1",
+            subjectId: "user-2",
+            action: "auth.login",
+            resource: "session",
+            details: "{}",
+            ipAddress: "192.168.1.0/24",
+            createdAt: isoDate,
+          },
+        ],
+        nextCursor: null,
+        hasMore: false,
+      }),
+    );
+
+    const result = await listAuditLog({});
+    expect(result.ok).toBe(true);
+    if (result.ok) {
+      expect(result.data.entries).toHaveLength(1);
+      const entry = result.data.entries[0]!;
+      // createdAt should be mapped to timestamp
+      expect(entry.timestamp).toBe(isoDate);
+      // actorId/subjectId mapped to actorName/subjectName
+      expect(entry.actorName).toBe("user-1");
+      expect(entry.subjectName).toBe("user-2");
+      expect(entry.action).toBe("auth.login");
+      expect(entry.ipAddress).toBe("192.168.1.0/24");
+    }
+  });
+
+  it("maps nextCursor to cursor in response", async () => {
+    const cursor = "2026-03-15T10:30:00.000Z|log-1";
+    mockFetch.mockReturnValue(
+      jsonResponse({
+        entries: [],
+        nextCursor: cursor,
+        hasMore: true,
+      }),
+    );
+
+    const result = await listAuditLog({});
+    expect(result.ok).toBe(true);
+    if (result.ok) {
+      expect(result.data.cursor).toBe(cursor);
+    }
   });
 });

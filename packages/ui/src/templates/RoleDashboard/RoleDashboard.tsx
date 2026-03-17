@@ -84,6 +84,20 @@ const ROLE_WELCOME: Record<DashboardRole, string> = {
   first_nations: 'Cultural programs and community initiatives',
 };
 
+/** Format ISO timestamp as relative time (e.g., "2h ago", "3d ago") */
+function formatRelativeTime(iso: string): string {
+  const ms = Date.now() - new Date(iso).getTime();
+  if (Number.isNaN(ms)) return iso;
+  const minutes = Math.floor(ms / 60000);
+  if (minutes < 1) return 'just now';
+  if (minutes < 60) return `${minutes}m ago`;
+  const hours = Math.floor(minutes / 60);
+  if (hours < 24) return `${hours}h ago`;
+  const days = Math.floor(hours / 24);
+  if (days < 7) return `${days}d ago`;
+  return `${Math.floor(days / 7)}w ago`;
+}
+
 /**
  * RoleDashboard template — role-specific landing page.
  *
@@ -185,7 +199,7 @@ export function RoleDashboard({
               <div key={entry.id} className="px-3 py-2 flex items-baseline justify-between gap-4">
                 <p className="text-sm text-foreground truncate">{entry.message}</p>
                 <time className="text-xs text-muted-foreground whitespace-nowrap" dateTime={entry.timestamp}>
-                  {entry.timestamp}
+                  {formatRelativeTime(entry.timestamp)}
                 </time>
               </div>
             ))}

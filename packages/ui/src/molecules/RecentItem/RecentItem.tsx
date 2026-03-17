@@ -16,6 +16,7 @@ export interface RecentItemProps {
 /** Format relative time (e.g., "2h ago", "3d ago") */
 function formatRelativeTime(iso: string): string {
   const diff = Date.now() - new Date(iso).getTime();
+  if (Number.isNaN(diff)) return iso;
   const minutes = Math.floor(diff / 60000);
   if (minutes < 1) return 'just now';
   if (minutes < 60) return `${minutes}m ago`;

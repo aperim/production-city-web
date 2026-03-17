@@ -14,8 +14,8 @@ const quickActions: QuickAction[] = [
 ];
 
 const activities: ActivityEntry[] = [
-  { id: '1', message: 'User admin@test.com signed in', timestamp: '2 min ago' },
-  { id: '2', message: 'New invitation sent to user@test.com', timestamp: '15 min ago' },
+  { id: '1', message: 'User admin@test.com signed in', timestamp: new Date(Date.now() - 2 * 60000).toISOString() },
+  { id: '2', message: 'New invitation sent to user@test.com', timestamp: new Date(Date.now() - 15 * 60000).toISOString() },
 ];
 
 describe('RoleDashboard', () => {
@@ -107,9 +107,35 @@ describe('RoleDashboard', () => {
     expect(link.className).toContain('focus-visible:outline');
   });
 
-  it('activity timestamps use time element', () => {
+  it('activity timestamps use time element with relative formatting', () => {
     render(<RoleDashboard userName="Alice" role="admin" activities={activities} />);
-    const timeElements = screen.getAllByText('2 min ago');
+    const timeElements = screen.getAllByText('2m ago');
     expect(timeElements[0]!.tagName.toLowerCase()).toBe('time');
+    // The second activity (15 min ago) should also render as relative time
+    expect(screen.getByText('15m ago')).toBeInTheDocument();
+  });
+
+  it('handles invalid timestamps gracefully (no "Invalid Date")', () => {
+    const badActivities: ActivityEntry[] = [
+      { id: '1', message: 'Bad timestamp entry', timestamp: 'not-a-date' },
+    ];
+    render(<RoleDashboard userName="Alice" role="admin" activities={badActivities} />);
+    // Should fall back to raw string rather than showing "Invalid Date"
+    expect(screen.queryByText('Invalid Date')).not.toBeInTheDocument();
+    expect(screen.getByText('not-a-date')).toBeInTheDocument();
+  });
+
+  it('formats ISO timestamps as relative time', () => {
+    const isoActivities: ActivityEntry[] = [
+      { id: '1', message: 'Just happened', timestamp: new Date(Date.now() - 30000).toISOString() },
+      { id: '2', message: 'Hours ago', timestamp: new Date(Date.now() - 3 * 3600000).toISOString() },
+      { id: '3', message: 'Days ago', timestamp: new Date(Date.now() - 2 * 86400000).toISOString() },
+      { id: '4', message: 'Weeks ago', timestamp: new Date(Date.now() - 10 * 86400000).toISOString() },
+    ];
+    render(<RoleDashboard userName="Alice" role="admin" activities={isoActivities} />);
+    expect(screen.getByText('just now')).toBeInTheDocument();
+    expect(screen.getByText('3h ago')).toBeInTheDocument();
+    expect(screen.getByText('2d ago')).toBeInTheDocument();
+    expect(screen.getByText('1w ago')).toBeInTheDocument();
   });
 });
