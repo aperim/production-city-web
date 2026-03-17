@@ -10,6 +10,7 @@ import {
   InboxPage as InboxPageTemplate,
   type InboxFeedItem,
   type InboxFilters,
+  sanitizeHref,
 } from "@productioncity/holding-ui";
 
 const API_BASE =
@@ -109,7 +110,8 @@ export default function InboxPageRoute() {
       onLoadMore={() => cursor && fetchInbox(cursor)}
       onMarkAllRead={handleMarkAllRead}
       onNavigate={(path) => {
-        window.location.href = path;
+        const safe = sanitizeHref(path);
+        if (safe !== "#") window.location.href = safe;
       }}
       activeFilters={filters}
       onFilterChange={setFilters}

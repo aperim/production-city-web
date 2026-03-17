@@ -8,9 +8,22 @@
  */
 
 import { Hono } from "hono";
+import { z } from "zod";
 import { authMiddleware } from "../auth/middleware.js";
 import type { AuthContext } from "../auth/middleware.js";
 import { createPrismaClient } from "../lib/prisma.js";
+
+/** Zod schema for PATCH /v1/inbox/:id body */
+const PatchBodySchema = z.object({
+  read: z.boolean().optional(),
+  dismissed: z.boolean().optional(),
+}).strict();
+
+/** Zod schema for POST /v1/inbox/mark-all-read body */
+const MarkAllReadBodySchema = z.object({
+  type: z.string().max(50).optional(),
+  workspace: z.string().max(100).optional(),
+}).strict();
 
 type Bindings = {
   DB: D1Database;
@@ -64,9 +77,17 @@ inboxApp.get("/v1/inbox", async (c) => {
 
     if (dateFrom || dateTo) {
       const createdAtFilter: Record<string, Date> = {};
-      if (dateFrom) createdAtFilter.gte = new Date(dateFrom);
-      if (dateTo) createdAtFilter.lte = new Date(dateTo);
-      where.createdAt = createdAtFilter;
+      if (dateFrom) {
+        const d = new Date(dateFrom);
+        if (!isNaN(d.getTime())) createdAtFilter.gte = d;
+      }
+      if (dateTo) {
+        const d = new Date(dateTo);
+        if (!isNaN(d.getTime())) createdAtFilter.lte = d;
+      }
+      if (Object.keys(createdAtFilter).length > 0) {
+        where.createdAt = createdAtFilter;
+      }
     }
 
     if (cursor) {
@@ -122,7 +143,12 @@ inboxApp.get("/v1/inbox", async (c) => {
 inboxApp.patch("/v1/inbox/:id", async (c) => {
   const auth = c.get("auth") as AuthContext;
   const itemId = c.req.param("id");
-  const body = await c.req.json();
+  const rawBody = await c.req.json().catch(() => null);
+  const parsed = PatchBodySchema.safeParse(rawBody);
+  if (!parsed.success) {
+    return c.json({ error: "bad_request", message: "Invalid request body" }, 400);
+  }
+  const body = parsed.data;
 
   const prisma = await createPrismaClient(c.env.DB);
   try {
@@ -164,7 +190,9 @@ inboxApp.patch("/v1/inbox/:id", async (c) => {
 // --- POST /v1/inbox/mark-all-read ---
 inboxApp.post("/v1/inbox/mark-all-read", async (c) => {
   const auth = c.get("auth") as AuthContext;
-  const body = await c.req.json().catch(() => ({}));
+  const rawBody = await c.req.json().catch(() => ({}));
+  const parsed = MarkAllReadBodySchema.safeParse(rawBody);
+  const body = parsed.success ? parsed.data : {};
 
   const prisma = await createPrismaClient(c.env.DB);
   try {
