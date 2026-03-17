@@ -162,3 +162,7 @@ export type { PlannedFeatureCardProps } from "./PlannedFeatureCard/PlannedFeatur
 // Issue #409: WireframePreview Molecule
 export { WireframePreview, WIREFRAME_TYPES } from "./WireframePreview/WireframePreview";
 export type { WireframePreviewProps, WireframeType } from "./WireframePreview/WireframePreview";
+
+// Issue #445: SubViewTabs
+export { SubViewTabs } from "./SubViewTabs/SubViewTabs";
+export type { SubViewTabsProps, SubViewTab } from "./SubViewTabs/SubViewTabs";
