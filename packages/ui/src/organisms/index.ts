@@ -194,3 +194,11 @@ export type { InboxFeedProps, InboxFeedItem, InboxFilters } from './InboxFeed/In
 // Issue #407: PlannedSection
 export { PlannedSection } from './PlannedSection/PlannedSection';
 export type { PlannedSectionProps, PlannedFeature } from './PlannedSection/PlannedSection';
+
+// Issue #445: UsersCanvas, SecurityCanvas, EoiCanvas
+export { UsersCanvas } from './UsersCanvas/UsersCanvas';
+export type { UsersCanvasProps, UsersCanvasPermissions, ApprovalItem } from './UsersCanvas/UsersCanvas';
+export { SecurityCanvas } from './SecurityCanvas/SecurityCanvas';
+export type { SecurityCanvasProps, AuditLogEntryData, AuditLogFilters } from './SecurityCanvas/SecurityCanvas';
+export { EoiCanvas } from './EoiCanvas/EoiCanvas';
+export type { EoiCanvasProps } from './EoiCanvas/EoiCanvas';

@@ -110,6 +110,16 @@ export type { DetailPanelProps } from "../../../../packages/ui/src/organisms/Det
 // Issue #407: PlannedSection organism
 export { PlannedSection } from "../../../../packages/ui/src/organisms/PlannedSection/PlannedSection";
 export type { PlannedSectionProps, PlannedFeature } from "../../../../packages/ui/src/organisms/PlannedSection/PlannedSection";
+// Issue #445: Canvas organisms
+export { UsersCanvas } from "../../../../packages/ui/src/organisms/UsersCanvas/UsersCanvas";
+export type { UsersCanvasProps, UsersCanvasPermissions, ApprovalItem } from "../../../../packages/ui/src/organisms/UsersCanvas/UsersCanvas";
+export { SecurityCanvas } from "../../../../packages/ui/src/organisms/SecurityCanvas/SecurityCanvas";
+export type { SecurityCanvasProps, AuditLogEntryData, AuditLogFilters } from "../../../../packages/ui/src/organisms/SecurityCanvas/SecurityCanvas";
+export { EoiCanvas } from "../../../../packages/ui/src/organisms/EoiCanvas/EoiCanvas";
+export type { EoiCanvasProps } from "../../../../packages/ui/src/organisms/EoiCanvas/EoiCanvas";
+// Issue #445: SubViewTabs
+export { SubViewTabs } from "../../../../packages/ui/src/molecules/SubViewTabs/SubViewTabs";
+export type { SubViewTabsProps, SubViewTab } from "../../../../packages/ui/src/molecules/SubViewTabs/SubViewTabs";
 export * from "../../../../packages/ui/src/templates";
 export * from "../../../../packages/ui/src/pages";
 export * from "../../../../packages/ui/src/foundations";
