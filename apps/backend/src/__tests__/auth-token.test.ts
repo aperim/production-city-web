@@ -320,6 +320,87 @@ describe("Magic code verification", () => {
   });
 });
 
+describe("Magic code HMAC alignment (#439)", () => {
+  const HMAC_SECRET = "test-hmac-secret";
+
+  it("code generated with requestIdHash does NOT verify (reproduces bug)", async () => {
+    const prisma = await createPrismaClient(env.DB);
+    try {
+      const email = "hmac-bug@test.com";
+      const code = "654321";
+      const token = generateSessionToken();
+      const tokenHash = await sha256Hex(token);
+
+      // Simulate the OLD buggy email/service.ts: HMAC uses requestIdHash
+      const requestId = generateSessionToken(); // different random value
+      const requestIdHash = await sha256Hex(requestId);
+      const buggyCodeHash = await hmacSha256Hex(
+        HMAC_SECRET,
+        `${email}login${requestIdHash}${code}`,
+      );
+
+      const user = await prisma.user.create({
+        data: { email, status: "active" },
+      });
+
+      await prisma.magicLink.create({
+        data: {
+          userId: user.id,
+          email,
+          tokenHash,
+          codeHash: buggyCodeHash, // stored with requestIdHash
+          purpose: "login",
+          expiresAt: new Date(Date.now() + 15 * 60 * 1000),
+        },
+      });
+
+      // Verification uses tokenHash — HMAC inputs mismatch → always fails
+      const { result, reason } = await verifyMagicCode(prisma, email, code, HMAC_SECRET);
+      expect(result).toBeNull();
+      expect(reason).toBe("code_invalid");
+    } finally {
+      await prisma.$disconnect();
+    }
+  });
+
+  it("code generated with tokenHash verifies correctly (the fix)", async () => {
+    const prisma = await createPrismaClient(env.DB);
+    try {
+      const email = "hmac-fix@test.com";
+      const code = "654321";
+      const token = generateSessionToken();
+      const tokenHash = await sha256Hex(token);
+
+      // Fixed: HMAC uses tokenHash (same value verification will use)
+      const correctCodeHash = await hmacSha256Hex(
+        HMAC_SECRET,
+        `${email}login${tokenHash}${code}`,
+      );
+
+      const user = await prisma.user.create({
+        data: { email, status: "active" },
+      });
+
+      await prisma.magicLink.create({
+        data: {
+          userId: user.id,
+          email,
+          tokenHash,
+          codeHash: correctCodeHash,
+          purpose: "login",
+          expiresAt: new Date(Date.now() + 15 * 60 * 1000),
+        },
+      });
+
+      const { result } = await verifyMagicCode(prisma, email, code, HMAC_SECRET);
+      expect(result).not.toBeNull();
+      expect(result!.ok).toBe(true);
+    } finally {
+      await prisma.$disconnect();
+    }
+  });
+});
+
 describe("TOKEN_INVALID_ERROR", () => {
   it("has generic error message", () => {
     const err = TOKEN_INVALID_ERROR();

@@ -270,7 +270,7 @@ export async function handleMagicLinkRequest(
   const requestId = generateRequestId();
 
   const tokenHash = await sha256Hex(token);
-  const requestIdHash = await sha256Hex(requestId);
+  const _requestIdHash = await sha256Hex(requestId);
 
   // Look up the user
   const user = await prisma.user.findUnique({
@@ -306,7 +306,7 @@ export async function handleMagicLinkRequest(
 
   const codeHash = await hmacSha256Hex(
     hmacSecret,
-    `${email}${purpose}${requestIdHash}${code}`,
+    `${email}${purpose}${tokenHash}${code}`,
   );
 
   const deliveryToken = crypto.randomUUID();
