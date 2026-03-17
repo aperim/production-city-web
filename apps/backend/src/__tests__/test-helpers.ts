@@ -70,11 +70,13 @@ const SCHEMA_STATEMENTS = [
   `CREATE INDEX IF NOT EXISTS "NotificationPreference_userId_idx" ON "NotificationPreference"("userId")`,
   `CREATE INDEX IF NOT EXISTS "NotificationPreference_channel_idx" ON "NotificationPreference"("channel")`,
   // Migration 0005: Notification model
-  `CREATE TABLE IF NOT EXISTS "Notification" ("id" TEXT NOT NULL PRIMARY KEY, "userId" TEXT NOT NULL, "type" TEXT NOT NULL, "actorId" TEXT, "resourceType" TEXT NOT NULL, "resourceId" TEXT NOT NULL, "actionUrl" TEXT, "dedupeKey" TEXT, "metadata" TEXT, "readAt" DATETIME, "createdAt" DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP, CONSTRAINT "Notification_userId_fkey" FOREIGN KEY ("userId") REFERENCES "User" ("id") ON DELETE CASCADE ON UPDATE CASCADE, CONSTRAINT "Notification_actorId_fkey" FOREIGN KEY ("actorId") REFERENCES "User" ("id") ON DELETE SET NULL ON UPDATE CASCADE)`,
+  `CREATE TABLE IF NOT EXISTS "Notification" ("id" TEXT NOT NULL PRIMARY KEY, "userId" TEXT NOT NULL, "type" TEXT NOT NULL, "actorId" TEXT, "resourceType" TEXT NOT NULL, "resourceId" TEXT NOT NULL, "actionUrl" TEXT, "dedupeKey" TEXT, "metadata" TEXT, "readAt" DATETIME, "createdAt" DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP, "workspace" TEXT, "priority" TEXT NOT NULL DEFAULT 'info', "dismissed" INTEGER NOT NULL DEFAULT 0, "actionable" INTEGER NOT NULL DEFAULT 0, "summary" TEXT, CONSTRAINT "Notification_userId_fkey" FOREIGN KEY ("userId") REFERENCES "User" ("id") ON DELETE CASCADE ON UPDATE CASCADE, CONSTRAINT "Notification_actorId_fkey" FOREIGN KEY ("actorId") REFERENCES "User" ("id") ON DELETE SET NULL ON UPDATE CASCADE)`,
   `CREATE UNIQUE INDEX IF NOT EXISTS "Notification_dedupeKey_key" ON "Notification"("dedupeKey")`,
   `CREATE INDEX IF NOT EXISTS "Notification_userId_readAt_idx" ON "Notification"("userId", "readAt")`,
   `CREATE INDEX IF NOT EXISTS "Notification_userId_createdAt_idx" ON "Notification"("userId", "createdAt")`,
   `CREATE INDEX IF NOT EXISTS "Notification_type_idx" ON "Notification"("type")`,
+  `CREATE INDEX IF NOT EXISTS "Notification_userId_dismissed_idx" ON "Notification"("userId", "dismissed")`,
+  `CREATE INDEX IF NOT EXISTS "Notification_userId_type_idx" ON "Notification"("userId", "type")`,
   // Migration 0005: Announcements system
   `CREATE TABLE IF NOT EXISTS "Announcement" ("id" TEXT NOT NULL PRIMARY KEY, "title" TEXT NOT NULL, "slug" TEXT NOT NULL, "summary" TEXT NOT NULL, "contentBlocks" TEXT NOT NULL, "visibility" TEXT NOT NULL DEFAULT 'public', "status" TEXT NOT NULL DEFAULT 'draft', "publishedAt" DATETIME, "lastEditedAt" DATETIME, "authorId" TEXT NOT NULL, "createdAt" DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP, "updatedAt" DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP, CONSTRAINT "Announcement_authorId_fkey" FOREIGN KEY ("authorId") REFERENCES "User" ("id") ON DELETE RESTRICT ON UPDATE CASCADE)`,
   `CREATE UNIQUE INDEX IF NOT EXISTS "Announcement_slug_key" ON "Announcement"("slug")`,

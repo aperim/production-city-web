@@ -143,6 +143,14 @@ export type { RecentItemProps } from "./RecentItem/RecentItem";
 export { ScopeBar } from "./ScopeBar/ScopeBar";
 export type { ScopeBarProps, ScopeOption } from "./ScopeBar/ScopeBar";
 
+// Issue #393: WorkspaceCard Molecule
+export { WorkspaceCard } from "./WorkspaceCard/WorkspaceCard";
+export type { WorkspaceCardProps, WorkspaceCardStat, WorkspaceCardTab, WorkspaceCardAction } from "./WorkspaceCard/WorkspaceCard";
+
+// Issue #396: AttentionItem Molecule
+export { AttentionItem } from "./AttentionItem/AttentionItem";
+export type { AttentionItemProps } from "./AttentionItem/AttentionItem";
+
 // Issue #406: ComingSoonBanner Molecule
 export { ComingSoonBanner } from "./ComingSoonBanner/ComingSoonBanner";
 export type { ComingSoonBannerProps, SubscribeState } from "./ComingSoonBanner/ComingSoonBanner";
