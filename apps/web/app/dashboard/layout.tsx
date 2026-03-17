@@ -42,6 +42,7 @@ import { SIDEBAR_CONFIG } from "./_generated/sidebar-config";
 import { DASHBOARD_ROUTES } from "./_generated/routes";
 import { FEATURE_INDEX } from "./_generated/feature-index";
 import { I18nProvider } from "../i18n/context";
+import { AIPanelWired } from "./components/AIPanelWired";
 
 /** Build a label map from the feature index for O(1) lookup */
 const FEATURE_LABEL_MAP = new Map<string, string>();
@@ -298,6 +299,7 @@ function DashboardInner({ children }: { children: ReactNode }) {
       >
         {children}
       </DashboardShellTemplate>
+      <AIPanelWired />
     </RegistryProvider>
   );
 }
