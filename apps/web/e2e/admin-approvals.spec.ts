@@ -3,7 +3,7 @@
  */
 
 import { test, expect } from "./helpers/setup";
-import { loginAs, adminApiCall, createMagicLink } from "./helpers/test-api";
+import { loginAs, adminApiCall } from "./helpers/test-api";
 
 const ADMIN_EMAIL = "admin@test.production.city";
 
