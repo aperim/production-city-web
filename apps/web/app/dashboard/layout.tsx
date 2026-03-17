@@ -101,6 +101,7 @@ function isSafeUrl(url: string): boolean {
 /** Relative time string */
 function timeAgo(iso: string): string {
   const diff = Date.now() - new Date(iso).getTime();
+  if (Number.isNaN(diff)) return iso;
   const mins = Math.floor(diff / 60000);
   if (mins < 1) return "Just now";
   if (mins < 60) return `${mins} min ago`;

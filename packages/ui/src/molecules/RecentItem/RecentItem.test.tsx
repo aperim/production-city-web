@@ -33,4 +33,11 @@ describe("RecentItem", () => {
     expect(button).not.toBeNull();
     expect(button?.className).toContain("min-h-");
   });
+
+  it("handles invalid timestamp without showing 'Invalid Date'", () => {
+    render(<RecentItem {...defaultProps} timestamp="not-a-date" />);
+    expect(screen.queryByText("Invalid Date")).toBeNull();
+    // Falls back to raw string
+    expect(screen.getByText("not-a-date")).toBeDefined();
+  });
 });

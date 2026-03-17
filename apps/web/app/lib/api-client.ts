@@ -246,8 +246,24 @@ export function getUser(id: string) {
 }
 
 /** Get user audit log (GET /v1/admin/users/:id/audit-log) */
-export function getUserAuditLog(userId: string) {
-  return request<AuditLogResponse>('GET', `/v1/admin/users/${encodeURIComponent(userId)}/audit-log`);
+export async function getUserAuditLog(userId: string) {
+  const result = await request<RawAuditLogResponse>('GET', `/v1/admin/users/${encodeURIComponent(userId)}/audit-log`);
+  if (!result.ok) return result;
+  return {
+    ...result,
+    data: {
+      entries: result.data.entries.map((e): AuditLogEntryData => ({
+        id: e.id,
+        action: e.action,
+        actorName: e.actorId ?? undefined,
+        subjectName: e.subjectId ?? undefined,
+        details: e.details ?? undefined,
+        timestamp: e.createdAt,
+        ipAddress: e.ipAddress ?? undefined,
+      })),
+      cursor: result.data.nextCursor ?? undefined,
+    },
+  };
 }
 
 /** Update user role (POST /v1/admin/users/:id/roles) */
@@ -302,15 +318,50 @@ export function rejectUser(id: string) {
   return request<{ message: string }>('POST', `/v1/admin/approvals/${encodeURIComponent(id)}/reject`);
 }
 
+/** Raw audit log entry shape returned by the backend (uses createdAt, not timestamp) */
+interface RawAuditLogEntry {
+  id: string;
+  actorId?: string | null;
+  subjectId?: string | null;
+  action: string;
+  resource?: string;
+  details?: string | null;
+  ipAddress?: string | null;
+  createdAt: string;
+}
+
+/** Raw backend response for audit log listing */
+interface RawAuditLogResponse {
+  entries: RawAuditLogEntry[];
+  nextCursor?: string | null;
+  hasMore?: boolean;
+}
+
 /** List audit log (GET /v1/admin/audit-log) */
-export function listAuditLog(params: { action?: string; actor?: string; cursor?: string; from?: string; to?: string }) {
+export async function listAuditLog(params: { action?: string; actor?: string; cursor?: string; from?: string; to?: string }) {
   const searchParams = new URLSearchParams();
   if (params.action) searchParams.set('action', params.action);
   if (params.actor) searchParams.set('actor', params.actor);
   if (params.cursor) searchParams.set('cursor', params.cursor);
   if (params.from) searchParams.set('from', params.from);
   if (params.to) searchParams.set('to', params.to);
-  return request<AuditLogResponse>('GET', `/v1/admin/audit-log?${searchParams.toString()}`);
+  const result = await request<RawAuditLogResponse>('GET', `/v1/admin/audit-log?${searchParams.toString()}`);
+  if (!result.ok) return result;
+  return {
+    ...result,
+    data: {
+      entries: result.data.entries.map((e): AuditLogEntryData => ({
+        id: e.id,
+        action: e.action,
+        actorName: e.actorId ?? undefined,
+        subjectName: e.subjectId ?? undefined,
+        details: e.details ?? undefined,
+        timestamp: e.createdAt,
+        ipAddress: e.ipAddress ?? undefined,
+      })),
+      cursor: result.data.nextCursor ?? undefined,
+    },
+  };
 }
 
 /** List email suppressions (GET /v1/admin/suppressions) */
