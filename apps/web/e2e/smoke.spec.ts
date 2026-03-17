@@ -18,10 +18,11 @@ test("security headers are present on response @smoke", async ({ page }) => {
   expect(headers["x-frame-options"]).toBe("DENY");
 });
 
-test("robots.txt disallows all indexing @smoke", async ({ page }) => {
+test("robots.txt allows indexing with sitemap @smoke", async ({ page }) => {
   const response = await page.goto("/robots.txt");
   expect(response).not.toBeNull();
   expect(response!.status()).toBe(200);
   const body = await response!.text();
-  expect(body).toContain("Disallow: /");
+  expect(body).toContain("Allow: /");
+  expect(body).toContain("Sitemap:");
 });
