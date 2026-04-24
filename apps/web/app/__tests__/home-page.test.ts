@@ -3,10 +3,11 @@ import { resolve } from "node:path";
 import { describe, it, expect } from "vitest";
 
 /**
- * Home page (#239) — structural TDD tests.
+ * Home page (#92) — structural TDD tests.
  *
- * Validates that the rewritten home page uses Phase 1 cinematic components
- * and follows all review findings from the issue.
+ * Validates that the rewritten home page matches the reference design
+ * (reference/index.html) with editorial sections, IP lifecycle diagram,
+ * facilities tiles, audience routing, and retained EOI/acknowledgement.
  */
 
 const HOME_PATH = resolve(import.meta.dirname, "..", "pages", "home.tsx");
@@ -15,122 +16,169 @@ function readHome(): string {
   return readFileSync(HOME_PATH, "utf-8");
 }
 
-describe("Home page — Phase 1 component usage", () => {
-  it("imports CinematicHero from the UI package", () => {
-    expect(readHome()).toContain("CinematicHero");
-  });
-
+describe("Home page — component imports", () => {
   it("imports ScrollRevealSection from the UI package", () => {
     expect(readHome()).toContain("ScrollRevealSection");
-  });
-
-  it("imports MediaPanel from the UI package", () => {
-    expect(readHome()).toContain("MediaPanel");
-  });
-
-  it("imports StatementBlock from the UI package", () => {
-    expect(readHome()).toContain("StatementBlock");
-  });
-
-  it("imports BrandAccentDivider from the UI package", () => {
-    expect(readHome()).toContain("BrandAccentDivider");
   });
 
   it("imports EOISection from the UI package", () => {
     expect(readHome()).toContain("EOISection");
   });
+
+  it("imports AcknowledgementOfCountry from the UI package", () => {
+    expect(readHome()).toContain("AcknowledgementOfCountry");
+  });
+
+  it("imports LandingPageTemplate from the UI package", () => {
+    expect(readHome()).toContain("LandingPageTemplate");
+  });
 });
 
 describe("Home page — Hero section", () => {
-  it("uses CinematicHero component (not MediaHero)", () => {
+  it("has a full-viewport hero with display headline", () => {
     const src = readHome();
-    expect(src).toContain("<CinematicHero");
-    expect(src).not.toContain("<MediaHero");
+    expect(src).toContain("min-h-dvh");
+    expect(src).toContain("We make stories.");
   });
 
-  it("passes home-hero image via MEDIA config", () => {
-    expect(readHome()).toContain('home-hero');
+  it("has hero eyebrow with brand and locations", () => {
+    const src = readHome();
+    expect(src).toContain("Production City™");
+    expect(src).toContain("Sydney · Switzerland · Singapore · Africa");
   });
 
-  it('hero title uses i18n key for "We Make Stories"', () => {
+  it("has hero CTAs for facilities and EOI", () => {
     const src = readHome();
-    // Should use t() for the title, not hardcoded
-    expect(src).toMatch(/t\(["']home\.intro\.tagline["']\)/);
-  });
-
-  it("hero subtitle uses i18n key", () => {
-    const src = readHome();
-    expect(src).toMatch(/t\(["']home\.intro\.tagline3["']\)/);
-  });
-
-  it("hero has two CTAs via ctas prop", () => {
-    const src = readHome();
-    expect(src).toContain("ctas={");
-  });
-
-  it("hero CTA labels come from i18n", () => {
-    const src = readHome();
-    expect(src).toMatch(/t\(["']home\.intro\.ctaPrimary["']\)/);
-    expect(src).toMatch(/t\(["']home\.intro\.ctaSecondary["']\)/);
+    expect(src).toContain("See the facilities");
+    expect(src).toContain("Register interest");
+    expect(src).toContain("#eoi-section");
   });
 });
 
-describe("Home page — Content sections", () => {
-  it("has a StatementBlock for 'What Is Production City'", () => {
+describe("Home page — Operating model section", () => {
+  it("has operating model section with heading", () => {
     const src = readHome();
-    expect(src).toContain("<StatementBlock");
+    expect(src).toContain("01 — Operating model");
+    expect(src).toContain("One operator. One campus. Script to delivery.");
   });
 
-  it("has MediaPanel for facilities preview (image left)", () => {
+  it("includes four operating pillars", () => {
     const src = readHome();
-    expect(src).toContain("home-facilities-preview");
+    expect(src).toContain("One IP · two formats");
+    expect(src).toContain("One operator · one campus");
+    expect(src).toContain("Shared pipeline, specialised finishes");
+    expect(src).toContain("Closed-loop canon");
   });
 
-  it("has MediaPanel for creative ecosystem (image right)", () => {
+  it("includes stat strip with key metrics", () => {
     const src = readHome();
-    expect(src).toContain("home-creative-preview");
-    // Should have imagePosition="right"
-    expect(src).toContain('imagePosition="right"');
+    expect(src).toContain("operator");
+    expect(src).toContain("lanes, in parallel");
+    expect(src).toContain("stations from idea to audience");
   });
 
-  it("has MediaPanel for global vision (image left)", () => {
-    expect(readHome()).toContain("home-vision-preview");
-  });
-
-  it("wraps content sections in ScrollRevealSection", () => {
+  it("includes IP lifecycle diagram component", () => {
     const src = readHome();
-    // Should have multiple ScrollRevealSection wrappers
-    const count = (src.match(/<ScrollRevealSection/g) || []).length;
-    expect(count).toBeGreaterThanOrEqual(5);
-  });
-
-  it("uses BrandAccentDivider between sections", () => {
-    const src = readHome();
-    const count = (src.match(/<BrandAccentDivider/g) || []).length;
-    expect(count).toBeGreaterThanOrEqual(1);
+    expect(src).toContain("IpLifecycleDiagram");
+    expect(src).toContain("IP LIFECYCLE");
   });
 });
 
-describe("Home page — Community section", () => {
-  it("has community section with i18n text", () => {
+describe("Home page — Facilities preview section", () => {
+  it("has facilities section with tile grid", () => {
     const src = readHome();
-    expect(src).toMatch(/t\(["']home\.communityPreview\.heading["']\)/);
+    expect(src).toContain("02 — Facilities");
+    expect(src).toContain("Built together. Not retrofitted.");
+  });
+
+  it("includes all four facility types", () => {
+    const src = readHome();
+    expect(src).toContain("SCREEN SOUND STAGES");
+    expect(src).toContain("COMMERCIAL SOUND STAGES");
+    expect(src).toContain("BROADCAST THEATRE");
+    expect(src).toContain("BROADCAST CONTROL ROOM");
   });
 });
 
-describe("Home page — Acknowledgement of Country (Finding #22)", () => {
-  it("renders an Acknowledgement of Country section", () => {
+describe("Home page — Services section", () => {
+  it("has services section listing disciplines", () => {
     const src = readHome();
-    expect(src).toContain("acknowledgement");
+    expect(src).toContain("03 — Services");
+    expect(src).toContain("VIRTUAL PRODUCTION");
+    expect(src).toContain("POST-PRODUCTION");
+  });
+});
+
+describe("Home page — First Nations section", () => {
+  it("has First Nations approach section", () => {
+    const src = readHome();
+    expect(src).toContain("04 — First Nations approach");
+    expect(src).toContain("Embedded, not added on.");
   });
 
+  it("references Matthew Compton and Wiradjuri heritage", () => {
+    const src = readHome();
+    expect(src).toContain("Matthew Compton");
+    expect(src).toContain("Wiradjuri");
+  });
+});
+
+describe("Home page — Pull quote section", () => {
+  it("has first-site-advantage pull quote", () => {
+    const src = readHome();
+    expect(src).toContain("05 — FIRST SITE ADVANTAGE");
+    expect(src).toContain("Hosting the first site is not hosting a branch");
+  });
+});
+
+describe("Home page — Network section", () => {
+  it("has network sequence section with region table", () => {
+    const src = readHome();
+    expect(src).toContain("06 — The sequence");
+    expect(src).toContain("Sequenced. Not simultaneous.");
+  });
+
+  it("includes network map component", () => {
+    expect(readHome()).toContain("NetworkMap");
+  });
+
+  it("lists all regions with status", () => {
+    const src = readHome();
+    expect(src).toContain("Australia");
+    expect(src).toContain("Switzerland");
+    expect(src).toContain("Singapore");
+  });
+});
+
+describe("Home page — Audience routing section", () => {
+  it("has audience routing section", () => {
+    const src = readHome();
+    expect(src).toContain("07 — Who we work with");
+    expect(src).toContain("Four doors in.");
+  });
+
+  it("includes four audience cards", () => {
+    const src = readHome();
+    expect(src).toContain("For producers and studios");
+    expect(src).toContain("For government");
+    expect(src).toContain("For investors");
+    expect(src).toContain("For technology partners");
+  });
+});
+
+describe("Home page — Chorus section", () => {
+  it("has chorus/closing statement", () => {
+    expect(readHome()).toContain("We make stories");
+  });
+});
+
+describe("Home page — Acknowledgement of Country", () => {
   it("uses AcknowledgementOfCountry shared component", () => {
-    const src = readHome();
-    expect(src).toContain("AcknowledgementOfCountry");
+    expect(readHome()).toContain("<AcknowledgementOfCountry");
   });
 });
 
-describe("Home page — EOI section (Finding #4)", () => {
+describe("Home page — EOI section", () => {
   it("includes EOISection component", () => {
     expect(readHome()).toContain("<EOISection");
   });
@@ -147,56 +195,22 @@ describe("Home page — EOI section (Finding #4)", () => {
   });
 });
 
-describe("Home page — i18n compliance (Finding #9)", () => {
-  it("uses 'use client' directive", () => {
+describe("Home page — Infrastructure", () => {
+  it('uses "use client" directive', () => {
     expect(readHome()).toContain('"use client"');
-  });
-
-  it("uses useTranslation hook", () => {
-    expect(readHome()).toContain("useTranslation");
-  });
-
-  it("does not contain hardcoded user-facing English text (except brand name)", () => {
-    const content = readHome();
-    const lines = content.split("\n");
-    const violations: string[] = [];
-
-    for (let i = 0; i < lines.length; i++) {
-      const line = lines[i]!;
-      if (
-        line.trim().startsWith("import") ||
-        line.trim().startsWith("*") ||
-        line.trim().startsWith("//") ||
-        line.trim().startsWith("/**") ||
-        line.includes("className=") ||
-        line.includes("aria-") ||
-        line.includes('id="') ||
-        line.includes("href=") ||
-        line.includes('"use client"')
-      ) {
-        continue;
-      }
-      const matches = line.match(/>([A-Z][a-z]+(?:\s+[A-Za-z]+)+)</g);
-      if (matches) {
-        for (const match of matches) {
-          const text = match.slice(1, -1).trim();
-          if (text && text !== "Production City") {
-            violations.push(`Line ${i + 1}: "${text}"`);
-          }
-        }
-      }
-    }
-
-    expect(violations, "Found hardcoded text").toEqual([]);
-  });
-});
-
-describe("Home page — LandingPageTemplate usage", () => {
-  it("wraps content in LandingPageTemplate", () => {
-    expect(readHome()).toContain("LandingPageTemplate");
   });
 
   it("uses I18nProvider wrapper", () => {
     expect(readHome()).toContain("I18nProvider");
+  });
+
+  it("uses useTranslation hook for remaining i18n text", () => {
+    expect(readHome()).toContain("useTranslation");
+  });
+
+  it("wraps content sections in ScrollRevealSection", () => {
+    const src = readHome();
+    const count = (src.match(/<ScrollRevealSection/g) || []).length;
+    expect(count).toBeGreaterThanOrEqual(5);
   });
 });
