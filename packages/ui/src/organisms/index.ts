@@ -212,3 +212,15 @@ export { SecurityCanvas } from './SecurityCanvas/SecurityCanvas';
 export type { SecurityCanvasProps, AuditLogEntryData, AuditLogFilters } from './SecurityCanvas/SecurityCanvas';
 export { EoiCanvas } from './EoiCanvas/EoiCanvas';
 export type { EoiCanvasProps } from './EoiCanvas/EoiCanvas';
+
+// Issue #91: Landing page component audit
+export { PageHero } from './PageHero/PageHero';
+export type { PageHeroProps, PageHeroCTA } from './PageHero/PageHero';
+export { OperatingPillars } from './OperatingPillars/OperatingPillars';
+export type { OperatingPillarsProps, OperatingPillarItem } from './OperatingPillars/OperatingPillars';
+export { ServiceTable } from './ServiceTable/ServiceTable';
+export type { ServiceTableProps, ServiceTableRow } from './ServiceTable/ServiceTable';
+export { AudienceGrid } from './AudienceGrid/AudienceGrid';
+export type { AudienceGridProps, AudienceCard } from './AudienceGrid/AudienceGrid';
+export { FnPrincipleList } from './FnPrincipleList/FnPrincipleList';
+export type { FnPrincipleListProps, FnPrincipleItem } from './FnPrincipleList/FnPrincipleList';
