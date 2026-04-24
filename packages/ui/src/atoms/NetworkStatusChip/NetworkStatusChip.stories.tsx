@@ -34,6 +34,7 @@ export const Follow: Story = {
 };
 
 export const AllStatuses: Story = {
+  args: { label: "All statuses", status: "active" },
   render: () => (
     <div style={{ display: "flex", flexWrap: "wrap", gap: "12px" }}>
       <NetworkStatusChip label="Sydney · Leading candidate" status="lead" />

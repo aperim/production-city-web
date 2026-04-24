@@ -28,6 +28,6 @@ export const Default: Story = {};
 
 export const SingleService: Story = {
   args: {
-    rows: [SERVICES[0]],
+    rows: [SERVICES[0]!],
   },
 };
