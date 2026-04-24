@@ -3,6 +3,8 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { colors, typography, spacing } from '../src/index.js';
 
+const __srcTokens = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../src/tokens');
+
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const distDir = path.resolve(__dirname, '../dist');
 
@@ -33,7 +35,25 @@ function flattenTokens(obj: TokenObject, prefix: string = ''): Record<string, st
   return result;
 }
 
+function readCssTokenFile(name: string): string {
+  const file = path.join(__srcTokens, name);
+  return fs.existsSync(file) ? fs.readFileSync(file, 'utf8') : '';
+}
+
 function generateCss() {
+  // Prepend the brand CSS token files (colors, typography, spacing, breakpoints)
+  // so consumers get the primitive `--black`, `--serif`, etc. variables as well as
+  // the generated `--pc-color-*`, `--pc-font-*`, `--pc-spacing-*` aliases.
+  const brandCss = [
+    '/* ── Brand primitive tokens (src/tokens/*.css) ── */',
+    readCssTokenFile('colors.css'),
+    readCssTokenFile('typography.css'),
+    readCssTokenFile('spacing.css'),
+    readCssTokenFile('breakpoints.css'),
+    '',
+    '/* ── Generated alias tokens (from TypeScript constants) ── */',
+  ].join('\n');
+
   const allTokens = {
     color: colors,
     font: typography,
@@ -41,18 +61,26 @@ function generateCss() {
   };
 
   const flattened = flattenTokens(allTokens, 'pc');
-  
-  let css = ':root {\n';
-  for (const [key, value] of Object.entries(flattened)) {
-    // Convert camelCase to kebab-case for keys if needed, but here keys are mostly simple or numeric.
-    // However, `fontFamily` -> `font-family`.
-    const cssVarName = `--${key.replace(/[A-Z]/g, m => `-${m.toLowerCase()}`)}`;
-    css += `  ${cssVarName}: ${value};\n`;
-  }
-  css += '}\n';
 
-  fs.writeFileSync(path.join(distDir, 'tokens.css'), css);
+  let aliasCss = ':root {\n';
+  for (const [key, value] of Object.entries(flattened)) {
+    const cssVarName = `--${key.replace(/[A-Z]/g, m => `-${m.toLowerCase()}`)}`;
+    aliasCss += `  ${cssVarName}: ${value};\n`;
+  }
+  aliasCss += '}\n';
+
+  fs.writeFileSync(path.join(distDir, 'tokens.css'), brandCss + '\n' + aliasCss);
   console.log('Generated dist/tokens.css');
+
+  // Also copy the raw index.css so consumers can import just the brand tokens
+  fs.writeFileSync(
+    path.join(distDir, 'brand-tokens.css'),
+    readCssTokenFile('colors.css') + '\n' +
+    readCssTokenFile('typography.css') + '\n' +
+    readCssTokenFile('spacing.css') + '\n' +
+    readCssTokenFile('breakpoints.css'),
+  );
+  console.log('Generated dist/brand-tokens.css');
 }
 
 function generateMdx() {

@@ -1,0 +1,44 @@
+/* Production City — Spacing & Layout Tokens
+   Extracted from reference/assets/site.css
+*/
+
+:root {
+  /* ── Layout bounds ── */
+  --max:       1440px;   /* standard max-width container */
+  --max-wide:  1720px;   /* wide container (.wrap-wide) */
+
+  /* ── Fluid gutter ── */
+  --gutter: clamp(20px, 4vw, 64px);
+
+  /* ── Section vertical rhythm ── */
+  --section-padding:       clamp(56px, 8vw, 128px);  /* .section */
+  --section-padding-tight: clamp(40px, 5vw, 80px);   /* .section-tight */
+
+  /* ── Hero ── */
+  --hero-min-height: 92vh;
+  --hero-padding:    clamp(48px, 6vw, 96px);
+
+  /* ── Grid gaps ── */
+  --grid-gap:       clamp(16px, 2vw, 32px);  /* 12-col grid */
+  --grid-gap-2col:  clamp(24px, 3vw, 64px);  /* 2-col grid */
+  --footer-gap:     clamp(24px, 3vw, 56px);  /* footer columns */
+
+  /* ── Component spacing ── */
+  --header-height: 64px;
+
+  /* ── Fixed spacing scale ── */
+  --space-1:  4px;
+  --space-2:  8px;
+  --space-3:  12px;
+  --space-4:  16px;
+  --space-5:  20px;
+  --space-6:  24px;
+  --space-8:  32px;
+  --space-10: 40px;
+  --space-12: 48px;
+  --space-14: 56px;
+  --space-16: 64px;
+  --space-20: 80px;
+  --space-24: 96px;
+  --space-32: 128px;
+}

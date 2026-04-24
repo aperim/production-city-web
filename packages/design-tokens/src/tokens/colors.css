@@ -1,0 +1,27 @@
+/* Production City — Brand Colour Tokens
+   Extracted from reference/assets/site.css
+   Black #0A0A0A · Paper #F7F5F0 · Accent Red #D93B2B (amber alt: #E8A53F) · Ochre #B45A2A
+*/
+
+:root {
+  /* ── Foundational neutrals ── */
+  --black:        #0A0A0A;
+  --ink:          #141414;
+  --charcoal:     #1C1C1C;
+  --charcoal-2:   #242424;
+  --paper:        #F7F5F0;
+  --paper-2:      #EFEBE2;
+
+  /* ── Dividers / rules ── */
+  --rule:         #2A2A2A;   /* dark surface rule */
+  --rule-paper:   #D9D4C7;   /* light surface rule */
+
+  /* ── Muted text ── */
+  --muted-paper:  #6C6A62;   /* muted on light/paper surface */
+  --muted-ink:    #9C9A92;   /* muted on dark/ink surface */
+
+  /* ── Accent palette ── */
+  --accent:        #D93B2B;  /* filmic red — default brand accent */
+  --accent-amber:  #E8A53F;  /* amber alternate accent */
+  --ochre:         #B45A2A;  /* First Nations contexts only — do not use decoratively */
+}

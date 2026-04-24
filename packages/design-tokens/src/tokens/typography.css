@@ -1,0 +1,50 @@
+/* Production City — Typography Tokens
+   Extracted from reference/assets/site.css
+*/
+
+:root {
+  /* ── Font families ── */
+  --serif: "Source Serif 4", "Source Serif Pro", "GT Sectra", Georgia, "Times New Roman", serif;
+  --sans:  "Inter Tight", "Inter", "Neue Haas Grotesk", "Söhne", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+  --mono:  "JetBrains Mono", "Söhne Mono", "IBM Plex Mono", ui-monospace, Menlo, Consolas, monospace;
+
+  /* ── Fluid type scale (clamp-based) ── */
+  --font-size-display: clamp(56px, 9vw, 168px);   /* .display — editorial hero headline */
+  --font-size-h1:      clamp(40px, 6vw, 96px);    /* h1 */
+  --font-size-h2:      clamp(32px, 4vw, 56px);    /* h2 */
+  --font-size-h3:      clamp(22px, 2vw, 30px);    /* h3 */
+  --font-size-lead:    clamp(19px, 1.6vw, 24px);  /* .lead — lede paragraph */
+  --font-size-hero-sub: clamp(18px, 1.8vw, 26px); /* hero subtitle */
+  --font-size-huge-num: clamp(64px, 9vw, 144px);  /* .huge-num — stat display */
+  --font-size-body:    17px;                       /* body copy */
+  --font-size-prose:   18px;                       /* .prose — long-form reading */
+  --font-size-eyebrow: 11px;                       /* .eyebrow — label / mono label */
+  --font-size-small-caps: 12px;                    /* .small-caps */
+  --font-size-nav:     13px;                       /* navigation links */
+
+  /* ── Line heights ── */
+  --leading-display:  0.95;   /* tight for display text */
+  --leading-h1:       1.0;
+  --leading-h2:       1.05;
+  --leading-h3:       1.15;
+  --leading-lead:     1.45;
+  --leading-body:     1.55;
+  --leading-prose:    1.6;
+  --leading-huge-num: 0.85;
+
+  /* ── Letter spacing ── */
+  --tracking-display:    -0.02em;
+  --tracking-h1:         -0.015em;
+  --tracking-h2:         -0.01em;
+  --tracking-h3:         -0.005em;
+  --tracking-huge-num:   -0.03em;
+  --tracking-eyebrow:     0.18em;
+  --tracking-small-caps:  0.14em;
+  --tracking-nav:         0.02em;
+  --tracking-btn:         0.16em;
+  --tracking-brand:      -0.01em;
+
+  /* ── Font weights ── */
+  --weight-regular: 400;
+  --weight-medium:  500;
+}
