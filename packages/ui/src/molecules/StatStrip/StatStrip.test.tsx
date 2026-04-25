@@ -22,7 +22,8 @@ describe("StatStrip", () => {
 
   it("renders unit when provided", () => {
     render(<StatStrip stats={[{ value: "1", unit: " loop", label: "feedback" }]} />);
-    expect(screen.getByText(" loop")).toBeInTheDocument();
+    // Unit is inside aria-hidden; the sr-only span carries the accessible combined text
+    expect(screen.getByText("1 loop feedback")).toBeInTheDocument();
   });
 
   it("renders empty gracefully", () => {

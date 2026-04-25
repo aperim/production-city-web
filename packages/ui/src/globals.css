@@ -4,7 +4,7 @@
 /* ==========================================================================
    Dark-Mode-First Cinematic Theme — Issue #236
    Production City uses a dark-mode-first approach. :root is dark.
-   Light mode is activated via the .light class on <html>.
+   Light mode is activated via the 'light' class on <html>.
    ========================================================================== */
 
 :root {
