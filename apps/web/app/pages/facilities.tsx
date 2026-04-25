@@ -1,14 +1,13 @@
 /**
- * Facilities page — deep-dive into Production City's planned facilities.
- * Hero with media, facility sections with images, specs grid, case studies,
- * forward-looking disclaimer, persona CTAs. All text from i18n.
+ * Facilities page — matches reference/facilities.html design.
+ * Page hero, alternating facility sections with plate placeholders,
+ * spec grids, services lead-in, forward-looking disclaimer, EOI.
  */
 
 "use client";
 
 import {
   LandingPageTemplate,
-  MediaHero,
   ForwardLookingDisclaimer,
   EOISection,
   ScrollRevealSection,
@@ -21,7 +20,6 @@ import {
   useEoiCategories,
   useEoiSubmit,
 } from "../lib/use-landing-layout";
-import { MEDIA } from "../lib/media-config";
 
 export function FacilitiesPage() {
   return (
@@ -31,205 +29,258 @@ export function FacilitiesPage() {
   );
 }
 
-/** Facility section with image and specs grid */
-function FacilitySection({
-  id,
-  heading,
-  description,
-  imageSrc,
-  imageAlt,
-  specs,
-}: {
+/* ─── Facility data ─── */
+interface FacilityData {
   id: string;
+  slug: string;
+  label: string;
   heading: string;
   description: string;
-  imageSrc?: string;
-  imageAlt?: string;
-  specs?: Array<{ label: string; value: string }>;
-}) {
-  return (
-    <section className="py-10 border-t border-border" aria-labelledby={`${id}-heading`}>
-      <div className="grid grid-cols-1 gap-8 lg:grid-cols-2 lg:items-start">
-        {imageSrc && (
-          <div className="overflow-hidden rounded-sm">
-            <img
-              src={imageSrc}
-              alt={imageAlt ?? ""}
-              width={1920}
-              height={1080}
-              loading="lazy"
-              className="h-auto w-full object-cover"
-              style={{ aspectRatio: "16 / 9" }}
-            />
-          </div>
-        )}
-        <div>
-          <h2 id={`${id}-heading`} className="text-xl font-semibold text-foreground">
-            {heading}
-          </h2>
-          <p className="mt-3 text-sm text-muted-foreground">
-            {description}
-          </p>
-          {specs && specs.length > 0 && (
-            <div className="mt-4 grid grid-cols-2 gap-3">
-              {specs.map((spec) => (
-                <div key={spec.label} className="border-l-2 border-primary pl-3 py-1">
-                  <p className="text-xs text-muted-foreground">{spec.label}</p>
-                  <p className="text-sm font-medium text-foreground">{spec.value}</p>
-                </div>
-              ))}
-            </div>
-          )}
-        </div>
-      </div>
-    </section>
-  );
+  plate: {
+    corner: string;
+    cornerR: string;
+    label: string;
+    bottomL: string;
+    bottomR: string;
+  };
+  specs: Array<{ label: string; value: string }>;
+  ctaLabel: string;
+  imagePosition: "left" | "right";
+  bgClass: string;
 }
 
+const FACILITIES: FacilityData[] = [
+  {
+    id: "screen-stages",
+    slug: "screen-sound-stages",
+    label: "A · SCREEN SOUND STAGES",
+    heading: "Grand-scale screen work.",
+    description: "Feature film. Episodic television. Live broadcast. Each stage is 45 m × 45 m, 15 m to grid, full-coverage catwalk. Designed against the technical specifications of major-studio and streamer productions.",
+    plate: {
+      corner: "A · SCREEN SOUND STAGE",
+      cornerR: "2,025 m²",
+      label: "[ STAGE INTERIOR · FULL-SURROUND LED ]",
+      bottomL: "45 × 45 m",
+      bottomR: "H 15 m",
+    },
+    specs: [
+      { label: "Floor area", value: "2,025 m² · 21,797 ft²" },
+      { label: "To grid", value: "15 m · 49 ft" },
+      { label: "Acoustics", value: "NRC 1.05 · NC 25" },
+      { label: "LED volume", value: "Flat · Arc · Full-surround" },
+    ],
+    ctaLabel: "Read the spec",
+    imagePosition: "left",
+    bgClass: "bg-(--pc-color-neutral-900)",
+  },
+  {
+    id: "commercial-stages",
+    slug: "commercial-sound-stages",
+    label: "B · COMMERCIAL SOUND STAGES",
+    heading: "Small footprint. Full specification.",
+    description: "Commercials, TVCs, music videos, short-form, and digital. Same 15 m to grid. Same acoustics. Walk-in-ready LED configurations.",
+    plate: {
+      corner: "B · COMMERCIAL STAGE",
+      cornerR: "100 m²",
+      label: "[ WALK-IN LED · SHORT-FORM SHOOT ]",
+      bottomL: "10 × 10 m",
+      bottomR: "H 15 m",
+    },
+    specs: [
+      { label: "Floor area", value: "100 m² · 1,076 ft²" },
+      { label: "To grid", value: "15 m · 49 ft" },
+      { label: "Acoustics", value: "NRC 1.05 · NC 25" },
+      { label: "LED volume", value: "Flat · Arc · Full-surround" },
+    ],
+    ctaLabel: "Read the spec",
+    imagePosition: "right",
+    bgClass: "bg-(--pc-color-neutral-950)",
+  },
+  {
+    id: "broadcast-theatre",
+    slug: "broadcast-theatre",
+    label: "C · BROADCAST THEATRE",
+    heading: "Theatre wired for broadcast.",
+    description: "Multi-modal live venue with a broadcast gallery wrapped around it. Robotic cameras, AR/VR-ready, broadcast-partner compliant.",
+    plate: {
+      corner: "C · BROADCAST THEATRE",
+      cornerR: "450 SEATS",
+      label: "[ AUDIENCE MODE · GALLERY LIVE ]",
+      bottomL: "THEATRE · CABARET",
+      bottomR: "AR / VR READY",
+    },
+    specs: [
+      { label: "Theatre", value: "450 seats" },
+      { label: "Cabaret", value: "300 seats" },
+      { label: "Robotic cameras", value: "8 integrated positions" },
+      { label: "Virtual sets", value: "Library + bespoke" },
+    ],
+    ctaLabel: "Read the spec",
+    imagePosition: "left",
+    bgClass: "bg-(--pc-color-neutral-900)",
+  },
+];
+
 function FacilitiesPageContent() {
-  const { t } = useTranslation();
+  const { t, locale } = useTranslation();
   const nav = useLandingNav();
   const footer = useLandingFooter();
+  const prefix = locale === "en" ? "" : `/${locale}`;
   const eoiLabels = useEoiLabels();
   const eoiCategories = useEoiCategories();
   const handleEoiSubmit = useEoiSubmit();
 
-  const heroMedia = MEDIA["facilities-hero"];
-
   return (
     <LandingPageTemplate nav={nav} footer={footer}>
-      {/* Hero */}
-      {heroMedia && (
-        <MediaHero
-          lightSrc={heroMedia.lightSrc}
-          darkSrc={heroMedia.darkSrc}
-          alt={heroMedia.alt}
-          width={heroMedia.width}
-          height={heroMedia.height}
-          averageColor={heroMedia.averageColor}
-          photographer={heroMedia.photographer}
-          source={heroMedia.source}
-          className="max-h-[60vh] -mx-4 sm:-mx-6"
-        >
-          <div className="pb-8">
-            <h1 id="page-heading" className="text-3xl font-semibold text-white sm:text-4xl">
-              {t("facilities.overview.heading")}
-            </h1>
-            <p className="mt-2 max-w-2xl text-base text-white/90">
-              {t("facilities.overview.intro")}
-            </p>
+      {/* ═══════════ PAGE HERO ═══════════ */}
+      <section className="bg-(--pc-color-neutral-950) px-(--pc-spacing-6) py-[clamp(80px,12vw,160px)] text-(--pc-color-neutral-100)">
+        <div className="mx-auto max-w-[1720px]">
+          <div className="font-mono text-[11px] uppercase tracking-[0.18em] text-(--pc-color-neutral-400)">
+            Facilities — 01/04
           </div>
-        </MediaHero>
-      )}
-
-      {/* Screen Sound Stages */}
-      <ScrollRevealSection delay={0}>
-        <FacilitySection
-          id="screen-stages"
-          heading={t("facilities.screenStages.name")}
-          description={t("facilities.screenStages.description")}
-          imageSrc={MEDIA["facilities-screen-stage"]?.lightSrc}
-          imageAlt={MEDIA["facilities-screen-stage"]?.alt}
-          specs={[
-            { label: t("facilities.screenStages.dimensions"), value: t("facilities.screenStages.specDimensions") },
-            { label: t("facilities.screenStages.height"), value: t("facilities.screenStages.specHeight") },
-            { label: t("facilities.screenStages.soundproofing"), value: t("facilities.screenStages.specNrc") },
-            { label: t("facilities.screenStages.ledConfigs"), value: t("facilities.screenStages.specLed") },
-          ]}
-        />
-      </ScrollRevealSection>
-
-      {/* Commercial Sound Stages */}
-      <ScrollRevealSection delay={100}>
-        <FacilitySection
-          id="commercial-stages"
-          heading={t("facilities.commercialStages.name")}
-          description={t("facilities.commercialStages.description")}
-          imageSrc={MEDIA["facilities-commercial-stage"]?.lightSrc}
-          imageAlt={MEDIA["facilities-commercial-stage"]?.alt}
-          specs={[
-            { label: t("facilities.screenStages.dimensions"), value: t("facilities.commercialStages.specDimensions") },
-            { label: t("facilities.screenStages.height"), value: t("facilities.commercialStages.specHeight") },
-            { label: t("facilities.screenStages.soundproofing"), value: t("facilities.commercialStages.specNrc") },
-            { label: t("facilities.screenStages.ledConfigs"), value: t("facilities.commercialStages.specLed") },
-          ]}
-        />
-      </ScrollRevealSection>
-
-      {/* Broadcast Theatre */}
-      <ScrollRevealSection delay={100}>
-        <FacilitySection
-          id="broadcast-theatre"
-          heading={t("facilities.broadcastTheatre.name")}
-          description={t("facilities.broadcastTheatre.description")}
-          imageSrc={MEDIA["facilities-broadcast-theatre"]?.lightSrc}
-          imageAlt={MEDIA["facilities-broadcast-theatre"]?.alt}
-          specs={[
-            { label: t("facilities.broadcastTheatre.seating"), value: t("facilities.broadcastTheatre.specSeatingTheatre") },
-            { label: t("facilities.broadcastTheatre.cabaret"), value: t("facilities.broadcastTheatre.specSeatingCabaret") },
-            { label: t("facilities.broadcastTheatre.cameras"), value: t("facilities.broadcastTheatre.specCameras") },
-            { label: t("facilities.broadcastTheatre.compliance"), value: t("facilities.broadcastTheatre.specBroadcast") },
-          ]}
-        />
-      </ScrollRevealSection>
-
-      {/* Broadcast Control Room */}
-      <ScrollRevealSection delay={200}>
-        <FacilitySection
-          id="control-room"
-          heading={t("facilities.controlRoom.name")}
-          description={t("facilities.controlRoom.description")}
-          imageSrc={MEDIA["facilities-control-room"]?.lightSrc}
-          imageAlt={MEDIA["facilities-control-room"]?.alt}
-          specs={[
-            { label: t("facilities.controlRoom.management"), value: t("facilities.controlRoom.specManagement") },
-            { label: t("facilities.controlRoom.sync"), value: t("facilities.controlRoom.specSync") },
-          ]}
-        />
-      </ScrollRevealSection>
-
-      {/* Ancillary Spaces */}
-      <ScrollRevealSection delay={100}>
-      <section className="py-10 border-t border-border" aria-labelledby="ancillary-heading">
-        <div className="grid grid-cols-1 gap-8 lg:grid-cols-2 lg:items-start">
-          {MEDIA["facilities-ancillary"] && (
-            <div className="overflow-hidden rounded-sm">
-              <img
-                src={MEDIA["facilities-ancillary"].lightSrc}
-                alt={MEDIA["facilities-ancillary"].alt}
-                width={1920}
-                height={1080}
-                loading="lazy"
-                className="h-auto w-full object-cover"
-                style={{ aspectRatio: "16 / 9" }}
-              />
-            </div>
-          )}
-          <div>
-            <h2 id="ancillary-heading" className="text-xl font-semibold text-foreground">
-              {t("facilities.ancillary.heading")}
-            </h2>
-            <p className="mt-3 text-sm text-muted-foreground">
-              {t("facilities.ancillary.description")}
-            </p>
-            <div className="mt-4 grid grid-cols-2 gap-2 sm:grid-cols-3">
-              {[
-                "recordingStudio", "dressingRooms", "storage",
-                "orchestraPit", "offices", "restaurant",
-                "kitchen", "exhibition", "foyer",
-                "warehouse", "laundry",
-              ].map((key) => (
-                <div key={key} className="border-l-2 border-muted pl-3 py-1">
-                  <p className="text-sm text-foreground">{t(`facilities.ancillary.${key}` as Parameters<typeof t>[0])}</p>
-                </div>
-              ))}
-            </div>
-          </div>
+          <h1 className="mt-6 font-serif text-[clamp(40px,6vw,96px)] font-normal leading-[1.0] tracking-[-0.015em]">
+            Built together.<br />Not retrofitted.
+          </h1>
+          <p className="mt-6 max-w-[42ch] text-[clamp(19px,1.6vw,24px)] leading-[1.45] text-(--pc-color-neutral-300)">
+            The stages, the volume, the theatre, and the control room were designed as one system. Specifications below are the specifications.
+          </p>
         </div>
       </section>
+
+      {/* ═══════════ FACILITY SECTIONS A, B, C ═══════════ */}
+      {FACILITIES.map((f) => (
+        <ScrollRevealSection key={f.id} delay={100}>
+          <section
+            id={f.id}
+            className={`${f.bgClass} px-(--pc-spacing-6) py-[clamp(56px,8vw,128px)] text-(--pc-color-neutral-100) border-t border-(--pc-color-neutral-800)`}
+          >
+            <div className="mx-auto max-w-[1720px]">
+              <div className="grid grid-cols-1 items-center gap-8 lg:grid-cols-12">
+                {/* Plate placeholder */}
+                <div className={`lg:col-span-6 ${f.imagePosition === "right" ? "lg:order-2 lg:col-start-7" : ""}`}>
+                  <div className="relative flex aspect-[4/3] flex-col justify-between border border-(--pc-color-neutral-700) bg-(--pc-color-neutral-950) p-5">
+                    <div className="flex justify-between font-mono text-[9px] uppercase tracking-[0.14em] text-(--pc-color-neutral-500)">
+                      <span>{f.plate.corner}</span>
+                      <span>{f.plate.cornerR}</span>
+                    </div>
+                    <div className="text-center font-mono text-xs uppercase tracking-[0.1em] text-(--pc-color-neutral-600)">
+                      {f.plate.label}
+                    </div>
+                    <div className="flex justify-between font-mono text-[9px] uppercase tracking-[0.14em] text-(--pc-color-neutral-500)">
+                      <span>{f.plate.bottomL}</span>
+                      <span>{f.plate.bottomR}</span>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Text + specs */}
+                <div className={`${f.imagePosition === "right" ? "lg:col-span-5 lg:order-1" : "lg:col-start-8 lg:col-span-5"}`}>
+                  <div className="font-mono text-[10px] uppercase tracking-[0.14em] text-(--pc-color-neutral-400)">
+                    {f.label}
+                  </div>
+                  <h2 className="mt-4 font-serif text-[clamp(32px,4vw,56px)] font-normal leading-[1.05] tracking-[-0.01em]">
+                    {f.heading}
+                  </h2>
+                  <p className="mt-4 max-w-[44ch] text-(--pc-color-neutral-300)">
+                    {f.description}
+                  </p>
+
+                  {/* Spec grid */}
+                  <div className="mt-8 flex flex-col gap-3">
+                    {f.specs.map((s) => (
+                      <div key={s.label} className="flex justify-between border-b border-(--pc-color-neutral-800) pb-3">
+                        <span className="font-mono text-xs text-(--pc-color-neutral-500)">{s.label}</span>
+                        <span className="text-sm text-(--pc-color-neutral-200)">{s.value}</span>
+                      </div>
+                    ))}
+                  </div>
+
+                  <div className="mt-8">
+                    <a
+                      href={`${prefix}/facilities/${f.slug}`}
+                      className="inline-flex items-center gap-2 border border-(--pc-color-neutral-100) px-6 py-3 text-sm text-(--pc-color-neutral-100) no-underline transition-opacity duration-200 hover:opacity-65"
+                    >
+                      {f.ctaLabel} <span aria-hidden="true">→</span>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+        </ScrollRevealSection>
+      ))}
+
+      {/* ═══════════ D — CONTROL ROOM ═══════════ */}
+      <ScrollRevealSection delay={100}>
+        <section
+          id="control-room"
+          className="border-t border-(--pc-color-neutral-800) bg-(--pc-color-neutral-950) px-(--pc-spacing-6) py-[clamp(56px,8vw,128px)] text-(--pc-color-neutral-100)"
+        >
+          <div className="mx-auto max-w-[1720px]">
+            <div className="grid grid-cols-1 items-center gap-8 lg:grid-cols-12">
+              {/* Text */}
+              <div className="lg:col-span-5">
+                <div className="font-mono text-[10px] uppercase tracking-[0.14em] text-(--pc-color-neutral-400)">
+                  D · BROADCAST CONTROL ROOM
+                </div>
+                <h2 className="mt-4 font-serif text-[clamp(32px,4vw,56px)] font-normal leading-[1.05] tracking-[-0.01em]">
+                  The nerve centre.
+                </h2>
+                <p className="mt-4 max-w-[44ch] text-(--pc-color-neutral-300)">
+                  Central synchronisation. Live broadcast control across on-campus stages, the theatre, and external sports and event venues globally.
+                </p>
+                <ul className="mt-8 list-none space-y-2 p-0 font-mono text-xs tracking-[0.08em]">
+                  <li>→ CENTRALISED PRODUCTION MANAGEMENT</li>
+                  <li>→ LIVE BROADCAST CONTROL</li>
+                  <li>→ ADVANCED SYNCHRONISATION</li>
+                  <li>→ MULTI-PLATFORM · MULTI-LOCATION</li>
+                </ul>
+                <div className="mt-8">
+                  <a
+                    href={`${prefix}/facilities#control-room`}
+                    className="inline-flex items-center gap-2 border border-(--pc-color-neutral-100) px-6 py-3 text-sm text-(--pc-color-neutral-100) no-underline transition-opacity duration-200 hover:opacity-65"
+                  >
+                    Read the capability <span aria-hidden="true">→</span>
+                  </a>
+                </div>
+              </div>
+
+              {/* Plate */}
+              <div className="lg:col-start-7 lg:col-span-6">
+                <div className="relative flex aspect-[4/3] flex-col justify-between border border-(--pc-color-neutral-700) bg-(--pc-color-neutral-950) p-5">
+                  <div className="flex justify-between font-mono text-[9px] uppercase tracking-[0.14em] text-(--pc-color-neutral-500)">
+                    <span>D · CONTROL ROOM</span>
+                    <span>CENTRAL SPINE</span>
+                  </div>
+                  <div className="text-center font-mono text-xs uppercase tracking-[0.1em] text-(--pc-color-neutral-600)">
+                    [ GALLERY · LIVE ORIGINATION ]
+                  </div>
+                  <div className="flex justify-between font-mono text-[9px] uppercase tracking-[0.14em] text-(--pc-color-neutral-500)">
+                    <span>ON-CAMPUS + EXTERNAL</span>
+                    <span>GLOBAL</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
       </ScrollRevealSection>
 
-      {/* Producer EOI */}
+      {/* ═══════════ SERVICES LEAD-IN ═══════════ */}
+      <ScrollRevealSection delay={0}>
+        <section className="bg-(--pc-color-neutral-50) px-(--pc-spacing-6) py-[clamp(56px,8vw,128px)] text-(--pc-color-neutral-900)">
+          <div className="mx-auto grid max-w-[1720px] gap-6">
+            <div className="font-mono text-[11px] uppercase tracking-[0.18em] text-(--pc-color-neutral-500)">
+              Integrated services
+            </div>
+            <h2 className="m-0 max-w-[24ch] font-serif text-[clamp(32px,4vw,56px)] font-normal leading-[1.05] tracking-[-0.01em]">
+              Every facility is supported by the full creative service stack, on the same campus.
+            </h2>
+          </div>
+        </section>
+      </ScrollRevealSection>
+
+      {/* ═══════════ EOI ═══════════ */}
       <div id="eoi-section" className="border-t border-border">
         <EOISection
           heading={t("facilities.eoi.heading")}
@@ -241,7 +292,7 @@ function FacilitiesPageContent() {
         />
       </div>
 
-      {/* Forward-Looking Disclaimer */}
+      {/* ═══════════ DISCLAIMER ═══════════ */}
       <ForwardLookingDisclaimer text={t("facilities.disclaimer.forwardLooking")} />
     </LandingPageTemplate>
   );
