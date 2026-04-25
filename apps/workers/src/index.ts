@@ -1,4 +1,5 @@
 import type { QueueMessage } from "./types.js";
+import { buildGelfMessage, toGelfJson, Level } from "@productioncity/holding-logging";
 import { validateQueueMessage } from "./validate.js";
 import { runAllCleanups } from "./cleanup.js";
 import { processDeliveryJob } from "./delivery-handler.js";
@@ -26,7 +27,15 @@ export default {
     _ctx: ExecutionContext,
   ): Promise<void> {
     const startTime = Date.now();
-    console.log(JSON.stringify({ event: "cleanup.start", timestamp: new Date().toISOString() }));
+    console.log(
+      toGelfJson(
+        buildGelfMessage("holding-workers", {
+          short_message: "cron.cleanup.start",
+          level: Level.INFO,
+          service: "holding-workers",
+        }),
+      ),
+    );
 
     try {
       const [{ PrismaClient }, { PrismaD1 }] = await Promise.all([
@@ -41,30 +50,58 @@ export default {
 
         for (const result of results) {
           console.log(
-            JSON.stringify({
-              event: "cleanup.model",
-              model: result.model,
-              checked: result.checked,
-              deleted: result.deleted,
-              durationMs: result.durationMs,
-            }),
+            toGelfJson(
+              buildGelfMessage("holding-workers", {
+                short_message: "cron.cleanup.model",
+                level: Level.INFO,
+                service: "holding-workers",
+                extra: {
+                  model: result.model,
+                  checked: result.checked,
+                  deleted: result.deleted,
+                  duration_ms: result.durationMs,
+                },
+              }),
+            ),
           );
         }
 
         console.log(
-          JSON.stringify({
-            event: "cleanup.complete",
-            totalDurationMs: Date.now() - startTime,
-          }),
+          toGelfJson(
+            buildGelfMessage("holding-workers", {
+              short_message: "cron.cleanup.complete",
+              level: Level.INFO,
+              service: "holding-workers",
+              extra: { duration_ms: Date.now() - startTime },
+            }),
+          ),
         );
       } finally {
         await prisma.$disconnect().catch((err: unknown) => {
-          console.error(JSON.stringify({ event: "cleanup.disconnect.error", error: String(err) }));
+          console.error(
+            toGelfJson(
+              buildGelfMessage("holding-workers", {
+                short_message: "cron.cleanup.disconnect.error",
+                level: Level.ERROR,
+                service: "holding-workers",
+                full_message: String(err),
+              }),
+            ),
+          );
         });
       }
     } catch (err) {
       console.error(
-        JSON.stringify({ event: "cleanup.error", error: String(err), durationMs: Date.now() - startTime }),
+        toGelfJson(
+          buildGelfMessage("holding-workers", {
+            short_message: "cron.cleanup.error",
+            level: Level.ERROR,
+            service: "holding-workers",
+            full_message: String(err),
+            error_type: err instanceof Error ? err.constructor.name : "Error",
+            extra: { duration_ms: Date.now() - startTime },
+          }),
+        ),
       );
     }
   },
@@ -73,18 +110,38 @@ export default {
     batch: MessageBatch<QueueMessage>,
     _env: Env,
   ): Promise<void> {
+    const batchRetries = batch.messages.reduce((sum, m) => sum + m.attempts, 0);
+    // Batch-level metrics log — wrapped so logging failures cannot abort processing
+    try {
+      console.log(
+        toGelfJson(
+          buildGelfMessage("holding-workers", {
+            short_message: "queue.batch.start",
+            level: Level.INFO,
+            service: "holding-workers",
+            extra: {
+              queue_batch_size: batch.messages.length,
+              queue_retries: batchRetries,
+            },
+          }),
+        ),
+      );
+    } catch { /* ignore logging failures */ }
+
     for (const message of batch.messages) {
       try {
         const validation = validateQueueMessage(message.body);
 
         if (!validation.success) {
           console.error(
-            JSON.stringify({
-              event: "queue.message.invalid",
-              id: message.id,
-              attempt: message.attempts,
-              error: "Invalid message shape",
-            }),
+            toGelfJson(
+              buildGelfMessage("holding-workers", {
+                short_message: "queue.message.invalid",
+                level: Level.ERROR,
+                service: "holding-workers",
+                extra: { message_id: message.id, queue_retries: message.attempts },
+              }),
+            ),
           );
           message.ack();
           continue;
@@ -92,12 +149,18 @@ export default {
 
         // Use the validated/parsed data — not the raw untrusted body
         console.log(
-          JSON.stringify({
-            event: "queue.message",
-            id: message.id,
-            type: validation.data.type,
-            attempt: message.attempts,
-          }),
+          toGelfJson(
+            buildGelfMessage("holding-workers", {
+              short_message: "queue.message.processing",
+              level: Level.INFO,
+              service: "holding-workers",
+              extra: {
+                message_id: message.id,
+                message_type: validation.data.type,
+                queue_retries: message.attempts,
+              },
+            }),
+          ),
         );
 
         // Dispatch to domain handlers based on type
@@ -129,15 +192,44 @@ export default {
           typeof (message.body as Record<string, unknown>).type === "string"
             ? (message.body as Record<string, unknown>).type
             : undefined;
-        console.error(
-          JSON.stringify({
-            event: "queue.message.error",
-            id: message.id,
-            type: rawType,
-            attempt: message.attempts,
-            error: String(err),
-          }),
-        );
+
+        // Detect DLQ-bound messages: attempts at max_retries means next stop is dead letter queue
+        const isDlqBound = message.attempts >= 3;
+        if (isDlqBound) {
+          console.error(
+            toGelfJson(
+              buildGelfMessage("holding-workers", {
+                short_message: "queue.message.dlq",
+                level: Level.ERROR,
+                service: "holding-workers",
+                full_message: String(err),
+                error_type: err instanceof Error ? err.constructor.name : "Error",
+                extra: {
+                  message_id: message.id,
+                  message_type: String(rawType ?? ""),
+                  queue_retries: message.attempts,
+                },
+              }),
+            ),
+          );
+        } else {
+          console.error(
+            toGelfJson(
+              buildGelfMessage("holding-workers", {
+                short_message: "queue.message.error",
+                level: Level.ERROR,
+                service: "holding-workers",
+                full_message: String(err),
+                error_type: err instanceof Error ? err.constructor.name : "Error",
+                extra: {
+                  message_id: message.id,
+                  message_type: String(rawType ?? ""),
+                  queue_retries: message.attempts,
+                },
+              }),
+            ),
+          );
+        }
         message.retry();
       }
     }

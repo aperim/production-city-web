@@ -6,6 +6,7 @@
  */
 
 import { OpenAPIHono, createRoute, z } from "@hono/zod-openapi";
+import { buildGelfMessage, toGelfJson, Level } from "@productioncity/holding-logging";
 import { createPrismaClient } from "../lib/prisma.js";
 import { authMiddleware, requirePermission } from "../auth/middleware.js";
 import type { AuthContext } from "../auth/middleware.js";
@@ -244,7 +245,17 @@ approvalsApp.openapi(rejectRoute, async (c) => {
           }),
         });
       } catch (err) {
-        console.error(JSON.stringify({ event: "rejection.email.failed", error: String(err) }));
+        console.error(
+          toGelfJson(
+            buildGelfMessage("holding-backend", {
+              short_message: "rejection.email.failed",
+              level: Level.ERROR,
+              service: "holding-backend",
+              full_message: String(err),
+              error_type: err instanceof Error ? err.constructor.name : "Error",
+            }),
+          ),
+        );
       }
     }
 
