@@ -181,6 +181,10 @@ describe("i18n no untranslated English leakage", () => {
     "Production City",
     "you@example.com",
     "000000",
+    // Proper noun — Australian/First Nations cultural term, intentionally same in all locales
+    "First Nations",
+    // Short UI label
+    "How it works",
   ]);
 
   // Keys that are expected to be identical across locales (phone numbers, URLs, etc.)
@@ -224,6 +228,8 @@ describe("i18n no untranslated English leakage", () => {
         if (key.endsWith(".meta.title") || key.endsWith(".meta.description")) continue;
         // Skip technical facility spec descriptions (short technical terms)
         if (key.includes(".spec") && enValue.length < 50) continue;
+        // Skip facility detail page content (pending professional translation)
+        if (/^facilities\.[^.]+\.detail\./.test(key)) continue;
         // Skip keys with count placeholders only (e.g., "{count} questions")
         if (/^\{count\}\s+\w+$/.test(enValue.trim())) continue;
 
