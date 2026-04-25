@@ -1,1 +1,15 @@
 import "@testing-library/jest-dom/vitest";
+
+// JSDOM does not implement window.matchMedia — provide a spyable stub so tests
+// that call vi.spyOn(window, 'matchMedia') or use matchMedia directly don't crash.
+Object.defineProperty(window, "matchMedia", {
+  writable: true,
+  configurable: true,
+  value: vi.fn().mockImplementation((query: string) => ({
+    matches: false,
+    media: query,
+    addEventListener: vi.fn(),
+    removeEventListener: vi.fn(),
+    dispatchEvent: vi.fn(),
+  })),
+});
