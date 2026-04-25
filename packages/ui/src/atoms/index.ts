@@ -108,3 +108,7 @@ export type { TabItemProps as WorkspaceTabItemProps } from "./TabItem/TabItem";
 // Issue #396: Inbox Atoms
 export { AttentionDot } from "./AttentionDot/AttentionDot";
 export type { AttentionDotProps, AttentionPriority } from "./AttentionDot/AttentionDot";
+
+// Issue #91: Landing page component audit
+export { NetworkStatusChip } from "./NetworkStatusChip/NetworkStatusChip";
+export type { NetworkStatusChipProps, NetworkStatus } from "./NetworkStatusChip/NetworkStatusChip";

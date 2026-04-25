@@ -10,37 +10,37 @@
 :root {
   color-scheme: dark;
 
-  /* --- Dark palette (default) --- */
-  --color-background: var(--pc-color-neutral-950);
-  --color-foreground: var(--pc-color-neutral-100);
-  --color-muted: var(--pc-color-neutral-800);
-  --color-muted-foreground: var(--pc-color-neutral-400);
-  --color-border: var(--pc-color-neutral-700);
-  --color-primary: var(--pc-color-primary-400);
-  --color-primary-foreground: var(--pc-color-primary-950);
-  --color-secondary: var(--pc-color-secondary-400);
-  --color-secondary-foreground: var(--pc-color-secondary-950);
+  /* --- Dark palette (default) — maps brand tokens to semantic roles --- */
+  --color-background: var(--black);         /* #0A0A0A */
+  --color-foreground: var(--paper);         /* #F7F5F0 */
+  --color-muted: var(--charcoal);           /* #1C1C1C */
+  --color-muted-foreground: var(--muted-ink); /* #9C9A92 */
+  --color-border: var(--rule);              /* #2A2A2A */
+  --color-primary: var(--accent);           /* #D93B2B — filmic red */
+  --color-primary-foreground: var(--paper); /* #F7F5F0 */
+  --color-secondary: var(--accent-amber);   /* #E8A53F */
+  --color-secondary-foreground: var(--black); /* #0A0A0A */
   --color-destructive: var(--pc-color-semantic-error-500);
-  --color-destructive-foreground: var(--pc-color-neutral-50);
-  --color-accent: var(--pc-color-primary-950);
-  --color-accent-foreground: var(--pc-color-primary-300);
-  --color-ring: var(--pc-color-primary-400);
+  --color-destructive-foreground: var(--paper);
+  --color-accent: var(--charcoal);          /* #1C1C1C */
+  --color-accent-foreground: var(--muted-ink); /* #9C9A92 */
+  --color-ring: var(--accent);              /* #D93B2B */
 
   /* --- Radius --- */
-  --radius-sm: var(--pc-spacing-1); /* 4px */
-  --radius-md: var(--pc-spacing-2); /* 8px */
-  --radius-lg: var(--pc-spacing-3); /* 12px */
+  --radius-sm: var(--space-1); /* 4px */
+  --radius-md: var(--space-2); /* 8px */
+  --radius-lg: var(--space-3); /* 12px */
 
-  /* --- Cinematic layout tokens --- */
-  --section-padding: clamp(5rem, 8vw, 7.5rem);
-  --hero-height: 100vh;
-  --content-max-width: 75rem; /* 1200px */
+  /* --- Layout tokens — from brand spacing tokens --- */
+  --section-padding: var(--section-padding);   /* clamp(56px, 8vw, 128px) */
+  --hero-height: var(--hero-min-height);        /* 92vh */
+  --content-max-width: var(--max);              /* 1440px */
 
-  /* --- Typography scale --- */
-  --font-size-display: clamp(3rem, 5vw, 4.5rem);    /* 48-72px */
-  --font-size-heading: clamp(1.5rem, 2.5vw, 2.25rem); /* 24-36px */
-  --font-size-body: clamp(1rem, 1.2vw, 1.125rem);     /* 16-18px */
-  --font-size-caption: clamp(0.75rem, 1vw, 0.875rem);  /* 12-14px */
+  /* --- Typography scale — from brand typography tokens --- */
+  --font-size-display: var(--font-size-display); /* clamp(56px, 9vw, 168px) */
+  --font-size-heading: var(--font-size-h2);      /* clamp(32px, 4vw, 56px) */
+  --font-size-body: var(--font-size-body);       /* 17px */
+  --font-size-caption: var(--font-size-eyebrow); /* 11px */
 }
 
 /* --- Light mode override via .light class or data-theme attribute --- */
@@ -48,40 +48,40 @@
 [data-theme="light"] {
   color-scheme: light;
 
-  --color-background: var(--pc-color-neutral-50);
-  --color-foreground: var(--pc-color-neutral-950);
-  --color-muted: var(--pc-color-neutral-100);
-  --color-muted-foreground: var(--pc-color-neutral-500);
-  --color-border: var(--pc-color-neutral-200);
-  --color-primary: var(--pc-color-primary-700);
-  --color-primary-foreground: var(--pc-color-neutral-50);
-  --color-secondary: var(--pc-color-secondary-700);
-  --color-secondary-foreground: var(--pc-color-neutral-50);
+  --color-background: var(--paper);          /* #F7F5F0 */
+  --color-foreground: var(--ink);            /* #141414 */
+  --color-muted: var(--paper-2);             /* #EFEBE2 */
+  --color-muted-foreground: var(--muted-paper); /* #6C6A62 */
+  --color-border: var(--rule-paper);         /* #D9D4C7 */
+  --color-primary: var(--accent);            /* #D93B2B — filmic red */
+  --color-primary-foreground: var(--paper);  /* #F7F5F0 */
+  --color-secondary: var(--accent-amber);    /* #E8A53F */
+  --color-secondary-foreground: var(--ink);  /* #141414 */
   --color-destructive: var(--pc-color-semantic-error-500);
-  --color-destructive-foreground: var(--pc-color-neutral-50);
-  --color-accent: var(--pc-color-primary-50);
-  --color-accent-foreground: var(--pc-color-primary-900);
-  --color-ring: var(--pc-color-primary-700);
+  --color-destructive-foreground: var(--paper);
+  --color-accent: var(--paper-2);            /* #EFEBE2 */
+  --color-accent-foreground: var(--ink);     /* #141414 */
+  --color-ring: var(--accent);               /* #D93B2B */
 }
 
 /* Storybook data-theme="dark" — reinforces :root dark defaults */
 [data-theme="dark"] {
   color-scheme: dark;
 
-  --color-background: var(--pc-color-neutral-950);
-  --color-foreground: var(--pc-color-neutral-100);
-  --color-muted: var(--pc-color-neutral-800);
-  --color-muted-foreground: var(--pc-color-neutral-400);
-  --color-border: var(--pc-color-neutral-700);
-  --color-primary: var(--pc-color-primary-400);
-  --color-primary-foreground: var(--pc-color-primary-950);
-  --color-secondary: var(--pc-color-secondary-400);
-  --color-secondary-foreground: var(--pc-color-secondary-950);
+  --color-background: var(--black);          /* #0A0A0A */
+  --color-foreground: var(--paper);          /* #F7F5F0 */
+  --color-muted: var(--charcoal);            /* #1C1C1C */
+  --color-muted-foreground: var(--muted-ink); /* #9C9A92 */
+  --color-border: var(--rule);               /* #2A2A2A */
+  --color-primary: var(--accent);            /* #D93B2B */
+  --color-primary-foreground: var(--paper);  /* #F7F5F0 */
+  --color-secondary: var(--accent-amber);    /* #E8A53F */
+  --color-secondary-foreground: var(--black); /* #0A0A0A */
   --color-destructive: var(--pc-color-semantic-error-500);
-  --color-destructive-foreground: var(--pc-color-neutral-50);
-  --color-accent: var(--pc-color-primary-950);
-  --color-accent-foreground: var(--pc-color-primary-300);
-  --color-ring: var(--pc-color-primary-400);
+  --color-destructive-foreground: var(--paper);
+  --color-accent: var(--charcoal);           /* #1C1C1C */
+  --color-accent-foreground: var(--muted-ink); /* #9C9A92 */
+  --color-ring: var(--accent);               /* #D93B2B */
 }
 
 @theme inline {
@@ -123,7 +123,7 @@ html {
 }
 
 body {
-  font-family: var(--pc-font-font-family-primary);
+  font-family: var(--sans);
   color: var(--color-foreground);
   background-color: var(--color-background);
 }
@@ -299,5 +299,5 @@ body {
 
 .guide-page__token-value {
   margin-top: 0.5rem;
-  font-family: var(--pc-font-font-family-mono);
+  font-family: var(--mono);
 }

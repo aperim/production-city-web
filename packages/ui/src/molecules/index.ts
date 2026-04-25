@@ -166,3 +166,15 @@ export type { WireframePreviewProps, WireframeType } from "./WireframePreview/Wi
 // Issue #442: SubViewTabs Molecule
 export { SubViewTabs } from "./SubViewTabs/SubViewTabs";
 export type { SubViewTabsProps, SubViewTab } from "./SubViewTabs/SubViewTabs";
+
+// Issue #91: Landing page component audit
+export { PlateImage } from "./PlateImage/PlateImage";
+export type { PlateImageProps, PlateImageAspect } from "./PlateImage/PlateImage";
+export { StatStrip } from "./StatStrip/StatStrip";
+export type { StatStripProps, StatItem } from "./StatStrip/StatStrip";
+export { SpecTable } from "./SpecTable/SpecTable";
+export type { SpecTableProps, SpecRow } from "./SpecTable/SpecTable";
+export { SectionHead } from "./SectionHead/SectionHead";
+export type { SectionHeadProps } from "./SectionHead/SectionHead";
+export { PullQuote } from "./PullQuote/PullQuote";
+export type { PullQuoteProps } from "./PullQuote/PullQuote";

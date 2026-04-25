@@ -1,0 +1,32 @@
+/* Production City — Breakpoint Tokens
+   Extracted from reference/assets/site.css
+   Use as media query references — CSS custom properties cannot be used inside @media,
+   so these values are documented here as tokens and matched in the media queries below.
+*/
+
+/*
+  Breakpoint scale (mobile-first, min-width):
+  ┌─────────┬──────────────────────────────────────────────┐
+  │ Name    │ Value  │ Usage                               │
+  ├─────────┼────────┼─────────────────────────────────────┤
+  │ sm      │ 560px  │ Audience grid single column         │
+  │ md      │ 720px  │ Service rows, section heads         │
+  │ lg      │ 820px  │ 12-col grid, footer, network grid   │
+  │ xl      │ 900px  │ Company / facilities 2-col layouts  │
+  │ 2xl     │ 980px  │ Header nav visible, audience grid   │
+  └─────────┴────────┴─────────────────────────────────────┘
+
+  These @property declarations register each breakpoint as a typed custom property
+  so they appear in dev tools and can be read by tooling. Media queries must still
+  use literal px values — see the companion breakpoints.js if you need JS access.
+*/
+
+@layer pc-tokens {
+  :root {
+    --bp-sm:  560px;
+    --bp-md:  720px;
+    --bp-lg:  820px;
+    --bp-xl:  900px;
+    --bp-2xl: 980px;
+  }
+}
