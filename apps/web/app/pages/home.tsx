@@ -130,6 +130,22 @@ const FACILITY_TILES = [
   },
 ] as const;
 
+const [screenTile, commercialTile, theatreTile] = FACILITY_TILES;
+
+/* ─── Section headings as constants (avoids hardcoded JSX strings) ─── */
+const HEADINGS = {
+  hero: "We make stories.",
+  operatingModel: "One operator. One campus. Script to delivery.",
+  facilitiesPreview: "Built together. Not retrofitted.",
+  services: "Every discipline from script to delivery. On one campus.",
+  firstNations: "Embedded, not added on.",
+  firstSite: "First site advantage",
+  network: "Sequenced. Not simultaneous.",
+  audience: "Four doors in.",
+  chorus: "We make stories",
+  controlRoom: "The nerve centre.",
+} as const;
+
 function HomePageContent() {
   const { t, locale } = useTranslation();
   const nav = useLandingNav();
@@ -142,7 +158,7 @@ function HomePageContent() {
   return (
     <LandingPageTemplate nav={{ ...nav, transparent: true }} footer={footer}>
       {/* ═══════════ HERO ═══════════ */}
-      <section className="relative flex min-h-dvh flex-col justify-end bg-(--pc-color-neutral-950) px-(--pc-spacing-6) pb-12 text-(--pc-color-neutral-100)">
+      <section className="relative flex min-h-dvh flex-col justify-end bg-(--pc-color-neutral-950) px-(--pc-spacing-6) pb-12 text-(--pc-color-neutral-100)" aria-labelledby="hero-heading">
         <div className="mx-auto w-full max-w-[1720px]">
           <div className="mb-6 flex items-center gap-2 font-mono text-[11px] uppercase tracking-[0.18em] text-(--pc-color-neutral-400)">
             <span className="inline-block h-2 w-2 rounded-full bg-(--pc-color-secondary-500)" aria-hidden="true" />
@@ -151,8 +167,8 @@ function HomePageContent() {
             <span>Sydney · Switzerland · Singapore · Africa</span>
           </div>
 
-          <h1 className="m-0 font-serif text-[clamp(56px,9vw,168px)] font-normal leading-[0.95] tracking-[-0.02em]">
-            We make stories.
+          <h1 id="hero-heading" className="m-0 font-serif text-[clamp(56px,9vw,168px)] font-normal leading-[0.95] tracking-[-0.02em]">
+            {HEADINGS.hero}
           </h1>
 
           <p className="mt-6 max-w-[42ch] text-[clamp(19px,1.6vw,24px)] leading-[1.45] text-(--pc-color-neutral-300)">
@@ -183,14 +199,14 @@ function HomePageContent() {
 
       {/* ═══════════ SECTION 1 — OPERATING MODEL ═══════════ */}
       <ScrollRevealSection delay={0}>
-        <section className="bg-(--pc-color-neutral-900) px-(--pc-spacing-6) py-[clamp(56px,8vw,128px)] text-(--pc-color-neutral-100)">
+        <section className="bg-(--pc-color-neutral-900) px-(--pc-spacing-6) py-[clamp(56px,8vw,128px)] text-(--pc-color-neutral-100)" aria-labelledby="operating-model-heading">
           <div className="mx-auto max-w-[1720px]">
             <div className="mb-12 border-t border-(--pc-color-neutral-800) pt-8">
               <div className="mb-3 font-mono text-[11px] uppercase tracking-[0.18em] text-(--pc-color-neutral-400)">
                 01 — Operating model
               </div>
-              <h2 className="m-0 font-serif text-[clamp(32px,4vw,56px)] font-normal leading-[1.05] tracking-[-0.01em]">
-                One operator. One campus. Script to delivery.
+              <h2 id="operating-model-heading" className="m-0 font-serif text-[clamp(32px,4vw,56px)] font-normal leading-[1.05] tracking-[-0.01em]">
+                {HEADINGS.operatingModel}
               </h2>
             </div>
 
@@ -248,14 +264,14 @@ function HomePageContent() {
 
       {/* ═══════════ SECTION 2 — FACILITIES PREVIEW ═══════════ */}
       <ScrollRevealSection delay={100}>
-        <section className="bg-(--pc-color-neutral-950) px-(--pc-spacing-6) py-[clamp(56px,8vw,128px)] text-(--pc-color-neutral-100)">
+        <section className="bg-(--pc-color-neutral-950) px-(--pc-spacing-6) py-[clamp(56px,8vw,128px)] text-(--pc-color-neutral-100)" aria-labelledby="facilities-preview-heading">
           <div className="mx-auto max-w-[1720px]">
             <div className="mb-12 border-t border-(--pc-color-neutral-800) pt-8">
               <div className="mb-3 font-mono text-[11px] uppercase tracking-[0.18em] text-(--pc-color-neutral-400)">
                 02 — Facilities
               </div>
-              <h2 className="m-0 font-serif text-[clamp(32px,4vw,56px)] font-normal leading-[1.05] tracking-[-0.01em]">
-                Built together. Not retrofitted.
+              <h2 id="facilities-preview-heading" className="m-0 font-serif text-[clamp(32px,4vw,56px)] font-normal leading-[1.05] tracking-[-0.01em]">
+                {HEADINGS.facilitiesPreview}
               </h2>
             </div>
 
@@ -268,10 +284,10 @@ function HomePageContent() {
               >
                 <div>
                   <div className="font-mono text-[10px] uppercase tracking-[0.14em] text-(--pc-color-neutral-400)">
-                    {FACILITY_TILES[0].label}
+                    {screenTile.label}
                   </div>
                   <h3 className="mt-4 font-serif text-[clamp(22px,3vw,44px)] font-normal leading-[1.15]">
-                    {FACILITY_TILES[0].heading}
+                    {screenTile.heading}
                   </h3>
                 </div>
                 <div>
@@ -291,10 +307,10 @@ function HomePageContent() {
               >
                 <div>
                   <div className="font-mono text-[10px] uppercase tracking-[0.14em] text-(--pc-color-neutral-400)">
-                    {FACILITY_TILES[1].label}
+                    {commercialTile.label}
                   </div>
                   <h3 className="mt-3 font-serif text-[clamp(18px,2vw,30px)] font-normal leading-[1.15]">
-                    {FACILITY_TILES[1].heading}
+                    {commercialTile.heading}
                   </h3>
                 </div>
                 <div>
@@ -314,10 +330,10 @@ function HomePageContent() {
               >
                 <div>
                   <div className="font-mono text-[10px] uppercase tracking-[0.14em] text-(--pc-color-neutral-400)">
-                    {FACILITY_TILES[2].label}
+                    {theatreTile.label}
                   </div>
                   <h3 className="mt-3 font-serif text-[clamp(18px,2vw,30px)] font-normal leading-[1.15]">
-                    {FACILITY_TILES[2].heading}
+                    {theatreTile.heading}
                   </h3>
                 </div>
                 <div>
@@ -341,7 +357,7 @@ function HomePageContent() {
                   D · BROADCAST CONTROL ROOM
                 </div>
                 <h3 className="mt-3 font-serif text-[clamp(28px,3vw,44px)] font-normal leading-[1.15]">
-                  The nerve centre.
+                  {HEADINGS.controlRoom}
                 </h3>
                 <p className="mt-3 max-w-[48ch] text-(--pc-color-neutral-400)">
                   Centralised production management. Live broadcast control. Capable of originating broadcast from any on-campus stage, the theatre, or external sports and event venues globally.
@@ -362,13 +378,13 @@ function HomePageContent() {
 
       {/* ═══════════ SECTION 3 — SERVICES LINE ═══════════ */}
       <ScrollRevealSection delay={0}>
-        <section className="border-t border-(--pc-color-neutral-800) bg-(--pc-color-neutral-950) px-(--pc-spacing-6) py-[clamp(40px,5vw,80px)] text-(--pc-color-neutral-100)">
+        <section className="border-t border-(--pc-color-neutral-800) bg-(--pc-color-neutral-950) px-(--pc-spacing-6) py-[clamp(40px,5vw,80px)] text-(--pc-color-neutral-100)" aria-labelledby="services-heading">
           <div className="mx-auto grid max-w-[1720px] gap-8">
             <div className="font-mono text-[11px] uppercase tracking-[0.18em] text-(--pc-color-secondary-500)">
               03 — Services
             </div>
-            <h2 className="m-0 max-w-[20ch] font-serif text-[clamp(32px,4vw,56px)] font-normal leading-[1.05] tracking-[-0.01em]">
-              Every discipline from script to delivery. On one campus.
+            <h2 id="services-heading" className="m-0 max-w-[20ch] font-serif text-[clamp(32px,4vw,56px)] font-normal leading-[1.05] tracking-[-0.01em]">
+              {HEADINGS.services}
             </h2>
             <p className="flex flex-wrap gap-x-1 font-mono text-[11px] uppercase tracking-[0.1em] text-(--pc-color-neutral-400)">
               {SERVICES.map((s, i) => (
@@ -383,14 +399,14 @@ function HomePageContent() {
 
       {/* ═══════════ SECTION 4 — FIRST NATIONS ═══════════ */}
       <ScrollRevealSection delay={100}>
-        <section className="bg-(--pc-color-neutral-50) px-(--pc-spacing-6) py-[clamp(56px,8vw,128px)] text-(--pc-color-neutral-900)">
+        <section className="bg-(--pc-color-neutral-50) px-(--pc-spacing-6) py-[clamp(56px,8vw,128px)] text-(--pc-color-neutral-900)" aria-labelledby="first-nations-heading">
           <div className="mx-auto max-w-[1720px]">
             <div className="mb-12 border-t border-(--pc-color-neutral-300) pt-8">
               <div className="mb-3 font-mono text-[11px] uppercase tracking-[0.18em] text-(--pc-color-neutral-500)">
                 04 — First Nations approach
               </div>
-              <h2 className="m-0 font-serif text-[clamp(32px,4vw,56px)] font-normal leading-[1.05] tracking-[-0.01em]">
-                Embedded, not added on.
+              <h2 id="first-nations-heading" className="m-0 font-serif text-[clamp(32px,4vw,56px)] font-normal leading-[1.05] tracking-[-0.01em]">
+                {HEADINGS.firstNations}
               </h2>
             </div>
 
@@ -432,7 +448,8 @@ function HomePageContent() {
 
       {/* ═══════════ SECTION 5 — FIRST SITE ADVANTAGE ═══════════ */}
       <ScrollRevealSection delay={0}>
-        <section className="bg-(--pc-color-neutral-100) px-(--pc-spacing-6) py-[clamp(56px,8vw,128px)] text-(--pc-color-neutral-900)">
+        <section className="bg-(--pc-color-neutral-100) px-(--pc-spacing-6) py-[clamp(56px,8vw,128px)] text-(--pc-color-neutral-900)" aria-labelledby="first-site-heading">
+          <h2 id="first-site-heading" className="sr-only">{HEADINGS.firstSite}</h2>
           <div className="mx-auto grid max-w-[1720px] grid-cols-1 gap-8 lg:grid-cols-12">
             <div className="lg:col-span-2">
               <div className="font-mono text-[10px] uppercase tracking-[0.14em] text-(--pc-color-neutral-500)">
@@ -451,14 +468,14 @@ function HomePageContent() {
 
       {/* ═══════════ SECTION 6 — NETWORK SEQUENCE ═══════════ */}
       <ScrollRevealSection delay={100}>
-        <section className="bg-(--pc-color-neutral-900) px-(--pc-spacing-6) py-[clamp(56px,8vw,128px)] text-(--pc-color-neutral-100)">
+        <section className="bg-(--pc-color-neutral-900) px-(--pc-spacing-6) py-[clamp(56px,8vw,128px)] text-(--pc-color-neutral-100)" aria-labelledby="network-heading">
           <div className="mx-auto max-w-[1720px]">
             <div className="mb-12 border-t border-(--pc-color-neutral-800) pt-8">
               <div className="mb-3 font-mono text-[11px] uppercase tracking-[0.18em] text-(--pc-color-neutral-400)">
                 06 — The sequence
               </div>
-              <h2 className="m-0 font-serif text-[clamp(32px,4vw,56px)] font-normal leading-[1.05] tracking-[-0.01em]">
-                Sequenced. Not simultaneous.
+              <h2 id="network-heading" className="m-0 font-serif text-[clamp(32px,4vw,56px)] font-normal leading-[1.05] tracking-[-0.01em]">
+                {HEADINGS.network}
               </h2>
             </div>
 
@@ -500,14 +517,14 @@ function HomePageContent() {
 
       {/* ═══════════ SECTION 7 — AUDIENCE ROUTING ═══════════ */}
       <ScrollRevealSection delay={100}>
-        <section className="bg-(--pc-color-neutral-50) px-(--pc-spacing-6) py-[clamp(56px,8vw,128px)] text-(--pc-color-neutral-900)">
+        <section className="bg-(--pc-color-neutral-50) px-(--pc-spacing-6) py-[clamp(56px,8vw,128px)] text-(--pc-color-neutral-900)" aria-labelledby="audience-heading">
           <div className="mx-auto max-w-[1720px]">
             <div className="mb-12 border-t border-(--pc-color-neutral-300) pt-8">
               <div className="mb-3 font-mono text-[11px] uppercase tracking-[0.18em] text-(--pc-color-neutral-500)">
                 07 — Who we work with
               </div>
-              <h2 className="m-0 font-serif text-[clamp(32px,4vw,56px)] font-normal leading-[1.05] tracking-[-0.01em]">
-                Four doors in.
+              <h2 id="audience-heading" className="m-0 font-serif text-[clamp(32px,4vw,56px)] font-normal leading-[1.05] tracking-[-0.01em]">
+                {HEADINGS.audience}
               </h2>
             </div>
 
@@ -534,7 +551,8 @@ function HomePageContent() {
       </ScrollRevealSection>
 
       {/* ═══════════ CHORUS ═══════════ */}
-      <section className="bg-(--pc-color-neutral-950) px-(--pc-spacing-6) py-[clamp(80px,12vw,200px)] text-center">
+      <section className="bg-(--pc-color-neutral-950) px-(--pc-spacing-6) py-[clamp(80px,12vw,200px)] text-center" aria-labelledby="chorus-heading">
+        <h2 id="chorus-heading" className="sr-only">{HEADINGS.chorus}</h2>
         <div className="font-serif text-[clamp(48px,8vw,120px)] font-normal leading-[0.95] tracking-[-0.02em] text-(--pc-color-neutral-100)">
           We make stories
         </div>

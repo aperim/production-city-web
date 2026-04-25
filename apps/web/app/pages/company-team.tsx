@@ -116,10 +116,10 @@ function CompanyTeamPageContent() {
 
       {/* Additional executives */}
       <ScrollRevealSection delay={0}>
-        <section className="py-16 border-b border-border">
-          <p className="text-xs font-mono tracking-widest text-muted-foreground uppercase mb-6">
+        <section className="py-16 border-b border-border" aria-labelledby="additional-heading">
+          <h2 id="additional-heading" className="text-xs font-mono tracking-widest text-muted-foreground uppercase mb-6">
             {t("companyTeam.additionalLabel")}
-          </p>
+          </h2>
           <p className="text-lg text-foreground leading-relaxed max-w-xl mb-10" style={{ fontFamily: "var(--font-serif, serif)" }}>
             {t("companyTeam.additionalDesc")}
           </p>

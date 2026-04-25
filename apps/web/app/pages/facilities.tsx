@@ -49,6 +49,12 @@ interface FacilityData {
   bgClass: string;
 }
 
+const FACILITY_HEADINGS = {
+  hero: "Built together. Not retrofitted.",
+  controlRoom: "The nerve centre.",
+  services: "Every facility is supported by the full creative service stack, on the same campus.",
+} as const;
+
 const FACILITIES: FacilityData[] = [
   {
     id: "screen-stages",
@@ -133,13 +139,13 @@ function FacilitiesPageContent() {
   return (
     <LandingPageTemplate nav={nav} footer={footer}>
       {/* ═══════════ PAGE HERO ═══════════ */}
-      <section className="bg-(--pc-color-neutral-950) px-(--pc-spacing-6) py-[clamp(80px,12vw,160px)] text-(--pc-color-neutral-100)">
+      <section className="bg-(--pc-color-neutral-950) px-(--pc-spacing-6) py-[clamp(80px,12vw,160px)] text-(--pc-color-neutral-100)" aria-labelledby="facilities-heading">
         <div className="mx-auto max-w-[1720px]">
           <div className="font-mono text-[11px] uppercase tracking-[0.18em] text-(--pc-color-neutral-400)">
             Facilities — 01/04
           </div>
-          <h1 className="mt-6 font-serif text-[clamp(40px,6vw,96px)] font-normal leading-[1.0] tracking-[-0.015em]">
-            Built together.<br />Not retrofitted.
+          <h1 id="facilities-heading" className="mt-6 font-serif text-[clamp(40px,6vw,96px)] font-normal leading-[1.0] tracking-[-0.015em]">
+            {FACILITY_HEADINGS.hero}
           </h1>
           <p className="mt-6 max-w-[42ch] text-[clamp(19px,1.6vw,24px)] leading-[1.45] text-(--pc-color-neutral-300)">
             The stages, the volume, the theatre, and the control room were designed as one system. Specifications below are the specifications.
@@ -152,6 +158,7 @@ function FacilitiesPageContent() {
         <ScrollRevealSection key={f.id} delay={100}>
           <section
             id={f.id}
+            aria-labelledby={`${f.id}-heading`}
             className={`${f.bgClass} px-(--pc-spacing-6) py-[clamp(56px,8vw,128px)] text-(--pc-color-neutral-100) border-t border-(--pc-color-neutral-800)`}
           >
             <div className="mx-auto max-w-[1720px]">
@@ -178,7 +185,7 @@ function FacilitiesPageContent() {
                   <div className="font-mono text-[10px] uppercase tracking-[0.14em] text-(--pc-color-neutral-400)">
                     {f.label}
                   </div>
-                  <h2 className="mt-4 font-serif text-[clamp(32px,4vw,56px)] font-normal leading-[1.05] tracking-[-0.01em]">
+                  <h2 id={`${f.id}-heading`} className="mt-4 font-serif text-[clamp(32px,4vw,56px)] font-normal leading-[1.05] tracking-[-0.01em]">
                     {f.heading}
                   </h2>
                   <p className="mt-4 max-w-[44ch] text-(--pc-color-neutral-300)">
@@ -214,6 +221,7 @@ function FacilitiesPageContent() {
       <ScrollRevealSection delay={100}>
         <section
           id="control-room"
+          aria-labelledby="control-room-heading"
           className="border-t border-(--pc-color-neutral-800) bg-(--pc-color-neutral-950) px-(--pc-spacing-6) py-[clamp(56px,8vw,128px)] text-(--pc-color-neutral-100)"
         >
           <div className="mx-auto max-w-[1720px]">
@@ -223,8 +231,8 @@ function FacilitiesPageContent() {
                 <div className="font-mono text-[10px] uppercase tracking-[0.14em] text-(--pc-color-neutral-400)">
                   D · BROADCAST CONTROL ROOM
                 </div>
-                <h2 className="mt-4 font-serif text-[clamp(32px,4vw,56px)] font-normal leading-[1.05] tracking-[-0.01em]">
-                  The nerve centre.
+                <h2 id="control-room-heading" className="mt-4 font-serif text-[clamp(32px,4vw,56px)] font-normal leading-[1.05] tracking-[-0.01em]">
+                  {FACILITY_HEADINGS.controlRoom}
                 </h2>
                 <p className="mt-4 max-w-[44ch] text-(--pc-color-neutral-300)">
                   Central synchronisation. Live broadcast control across on-campus stages, the theatre, and external sports and event venues globally.
@@ -268,13 +276,13 @@ function FacilitiesPageContent() {
 
       {/* ═══════════ SERVICES LEAD-IN ═══════════ */}
       <ScrollRevealSection delay={0}>
-        <section className="bg-(--pc-color-neutral-50) px-(--pc-spacing-6) py-[clamp(56px,8vw,128px)] text-(--pc-color-neutral-900)">
+        <section className="bg-(--pc-color-neutral-50) px-(--pc-spacing-6) py-[clamp(56px,8vw,128px)] text-(--pc-color-neutral-900)" aria-labelledby="services-lead-heading">
           <div className="mx-auto grid max-w-[1720px] gap-6">
             <div className="font-mono text-[11px] uppercase tracking-[0.18em] text-(--pc-color-neutral-500)">
               Integrated services
             </div>
-            <h2 className="m-0 max-w-[24ch] font-serif text-[clamp(32px,4vw,56px)] font-normal leading-[1.05] tracking-[-0.01em]">
-              Every facility is supported by the full creative service stack, on the same campus.
+            <h2 id="services-lead-heading" className="m-0 max-w-[24ch] font-serif text-[clamp(32px,4vw,56px)] font-normal leading-[1.05] tracking-[-0.01em]">
+              {FACILITY_HEADINGS.services}
             </h2>
           </div>
         </section>
