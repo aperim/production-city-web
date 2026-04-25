@@ -14,6 +14,17 @@ export const LANDING_PAGES = [
   { path: "/community", name: "Community" },
   { path: "/faq", name: "FAQ" },
   { path: "/contact", name: "Contact" },
+  // New pages from PRO-93
+  { path: "/services", name: "Services" },
+  { path: "/network", name: "Network" },
+  { path: "/company", name: "Company" },
+  { path: "/company/team", name: "Company — Team" },
+  { path: "/company/approach", name: "Company — Approach" },
+  { path: "/first-nations", name: "First Nations" },
+  { path: "/facilities/broadcast-control-room", name: "Broadcast Control Room" },
+  { path: "/facilities/broadcast-theatre", name: "Broadcast Theatre" },
+  { path: "/facilities/commercial-sound-stages", name: "Commercial Sound Stages" },
+  { path: "/facilities/screen-sound-stages", name: "Screen Sound Stages" },
 ];
 
 /** Supported locale codes. */
