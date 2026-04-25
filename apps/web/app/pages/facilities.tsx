@@ -32,6 +32,7 @@ export function FacilitiesPage() {
 /* ─── Facility data ─── */
 interface FacilityData {
   id: string;
+  slug: string;
   label: string;
   heading: string;
   description: string;
@@ -51,6 +52,7 @@ interface FacilityData {
 const FACILITIES: FacilityData[] = [
   {
     id: "screen-stages",
+    slug: "screen-sound-stages",
     label: "A · SCREEN SOUND STAGES",
     heading: "Grand-scale screen work.",
     description: "Feature film. Episodic television. Live broadcast. Each stage is 45 m × 45 m, 15 m to grid, full-coverage catwalk. Designed against the technical specifications of major-studio and streamer productions.",
@@ -73,6 +75,7 @@ const FACILITIES: FacilityData[] = [
   },
   {
     id: "commercial-stages",
+    slug: "commercial-sound-stages",
     label: "B · COMMERCIAL SOUND STAGES",
     heading: "Small footprint. Full specification.",
     description: "Commercials, TVCs, music videos, short-form, and digital. Same 15 m to grid. Same acoustics. Walk-in-ready LED configurations.",
@@ -95,6 +98,7 @@ const FACILITIES: FacilityData[] = [
   },
   {
     id: "broadcast-theatre",
+    slug: "broadcast-theatre",
     label: "C · BROADCAST THEATRE",
     heading: "Theatre wired for broadcast.",
     description: "Multi-modal live venue with a broadcast gallery wrapped around it. Robotic cameras, AR/VR-ready, broadcast-partner compliant.",
@@ -193,7 +197,7 @@ function FacilitiesPageContent() {
 
                   <div className="mt-8">
                     <a
-                      href={`${prefix}/facilities#${f.id}`}
+                      href={`${prefix}/facilities/${f.slug}`}
                       className="inline-flex items-center gap-2 border border-(--pc-color-neutral-100) px-6 py-3 text-sm text-(--pc-color-neutral-100) no-underline transition-opacity duration-200 hover:opacity-65"
                     >
                       {f.ctaLabel} <span aria-hidden="true">→</span>
