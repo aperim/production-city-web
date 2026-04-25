@@ -82,12 +82,12 @@ function CompanyPageContent() {
 
       {/* What we do */}
       <ScrollRevealSection delay={0}>
-        <section className="py-12 border-b border-border">
+        <section className="py-12 border-b border-border" aria-labelledby="what-heading">
           <div className="mb-8">
             <p className="text-xs font-mono tracking-widest text-muted-foreground uppercase">
               {t("company.whatLabel")}
             </p>
-            <h2 className="mt-2 text-xl font-semibold text-foreground">
+            <h2 id="what-heading" className="mt-2 text-xl font-semibold text-foreground">
               {t("company.whatHeading")}
             </h2>
           </div>
@@ -110,12 +110,12 @@ function CompanyPageContent() {
 
       {/* Five pillars */}
       <ScrollRevealSection delay={0}>
-        <section className="py-12 border-b border-border">
+        <section className="py-12 border-b border-border" aria-labelledby="pillars-heading">
           <div className="mb-8">
             <p className="text-xs font-mono tracking-widest text-muted-foreground uppercase">
               {t("company.pillarsLabel")}
             </p>
-            <h2 className="mt-2 text-xl font-semibold text-foreground">
+            <h2 id="pillars-heading" className="mt-2 text-xl font-semibold text-foreground">
               {t("company.pillarsHeading")}
             </h2>
           </div>
@@ -162,12 +162,12 @@ function CompanyPageContent() {
 
       {/* Leadership teaser */}
       <ScrollRevealSection delay={0}>
-        <section className="py-12 border-b border-border">
+        <section className="py-12 border-b border-border" aria-labelledby="leadership-heading">
           <div className="mb-8">
             <p className="text-xs font-mono tracking-widest text-muted-foreground uppercase">
               {t("company.leadershipLabel")}
             </p>
-            <h2 className="mt-2 text-xl font-semibold text-foreground">
+            <h2 id="leadership-heading" className="mt-2 text-xl font-semibold text-foreground">
               {t("company.leadershipHeading")}
             </h2>
           </div>
@@ -183,7 +183,7 @@ function CompanyPageContent() {
                 <div className="flex justify-between"><span>FOUNDER</span><span>CHIEF EXECUTIVE</span></div>
               </div>
               <div className="p-4 pb-5">
-                <h3 className="text-base font-semibold text-foreground">Troy Kelly</h3>
+                <p className="text-base font-semibold text-foreground">Troy Kelly</p>
                 <p className="mt-2 text-sm text-muted-foreground leading-relaxed">
                   Founder and Chief Executive. Stage and screen production, broadcast and data-centre infrastructure, machine learning in Silicon Valley.
                 </p>
@@ -203,7 +203,7 @@ function CompanyPageContent() {
                 <div className="flex justify-between"><span>WIRADJURI</span><span>MD</span></div>
               </div>
               <div className="p-4 pb-5">
-                <h3 className="text-base font-semibold text-foreground">
+                <p className="text-base font-semibold text-foreground">
                   Matthew Compton{" "}
                   <span
                     className="text-xs font-mono"
@@ -211,7 +211,7 @@ function CompanyPageContent() {
                   >
                     Wiradjuri
                   </span>
-                </h3>
+                </p>
                 <p className="mt-2 text-sm text-muted-foreground leading-relaxed">
                   Chief Operating Officer and Managing Director. His authority is substantive, not advisory.
                 </p>
@@ -227,12 +227,12 @@ function CompanyPageContent() {
 
       {/* Partners */}
       <ScrollRevealSection delay={0}>
-        <section className="py-12 border-b border-border">
+        <section className="py-12 border-b border-border" aria-labelledby="partners-heading">
           <div className="mb-8">
             <p className="text-xs font-mono tracking-widest text-muted-foreground uppercase">
               {t("company.partnersLabel")}
             </p>
-            <h2 className="mt-2 text-xl font-semibold text-foreground">
+            <h2 id="partners-heading" className="mt-2 text-xl font-semibold text-foreground">
               {t("company.partnersHeading")}
             </h2>
           </div>
@@ -256,12 +256,12 @@ function CompanyPageContent() {
 
       {/* Pull quote */}
       <ScrollRevealSection delay={0}>
-        <section className="py-12 border-b border-border">
+        <section className="py-12 border-b border-border" aria-labelledby="pull-quote-heading">
           <div className="grid grid-cols-1 gap-6 lg:grid-cols-12">
             <div className="lg:col-span-2">
-              <p className="text-xs font-mono tracking-widest text-muted-foreground uppercase">
+              <h2 id="pull-quote-heading" className="text-xs font-mono tracking-widest text-muted-foreground uppercase">
                 {t("company.pullQuoteLabel")}
-              </p>
+              </h2>
             </div>
             <blockquote className="lg:col-span-9 text-lg text-foreground leading-relaxed" style={{ fontFamily: "var(--font-serif, serif)" }}>
               {t("company.pullQuote")}
@@ -271,9 +271,9 @@ function CompanyPageContent() {
       </ScrollRevealSection>
 
       {/* CTA */}
-      <section className="py-12 border-b border-primary text-center">
+      <section className="py-12 border-b border-primary text-center" aria-labelledby="company-cta-heading">
         <p className="text-xs font-mono tracking-widest text-primary uppercase mb-4">Next</p>
-        <h2 className="text-xl font-semibold text-foreground mb-6">
+        <h2 id="company-cta-heading" className="text-xl font-semibold text-foreground mb-6">
           {t("company.cta")}
         </h2>
         <div className="flex flex-wrap gap-3 justify-center">

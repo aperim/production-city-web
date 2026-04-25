@@ -61,7 +61,7 @@ function FacilityBroadcastControlRoomContent() {
 
       {/* Main content */}
       <ScrollRevealSection delay={0}>
-        <section className="py-10 border-b border-border">
+        <section className="py-10 border-b border-border" aria-labelledby="bcr-content-heading">
           <div className="grid grid-cols-1 gap-10 lg:grid-cols-2 lg:items-start">
             {/* Prose */}
             <div className="flex flex-col gap-4">
@@ -75,9 +75,9 @@ function FacilityBroadcastControlRoomContent() {
 
             {/* Capabilities list */}
             <div>
-              <p className="text-xs font-mono tracking-widest text-muted-foreground uppercase mb-4">
+              <h2 id="bcr-content-heading" className="text-xs font-mono tracking-widest text-muted-foreground uppercase mb-4">
                 {t("facilities.controlRoom.detail.capabilityLabel")}
-              </p>
+              </h2>
               <ul className="flex flex-col divide-y divide-border">
                 {capabilities.map((cap) => (
                   <li key={cap} className="py-4 text-sm text-foreground font-mono tracking-wide">
@@ -91,8 +91,8 @@ function FacilityBroadcastControlRoomContent() {
       </ScrollRevealSection>
 
       {/* CTA */}
-      <section className="py-12 border-b border-border text-center">
-        <h2 className="text-xl font-semibold text-foreground mb-6">
+      <section className="py-12 border-b border-border text-center" aria-labelledby="bcr-cta-heading">
+        <h2 id="bcr-cta-heading" className="text-xl font-semibold text-foreground mb-6">
           {t("facilities.controlRoom.detail.cta")}
         </h2>
         <a

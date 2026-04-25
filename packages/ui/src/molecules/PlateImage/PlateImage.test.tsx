@@ -38,7 +38,8 @@ describe("PlateImage", () => {
   it("applies paper variant styling", () => {
     const { container } = render(<PlateImage paper />);
     const el = container.firstElementChild as HTMLElement;
-    expect(el.style.background).toContain("#EFEBE0");
+    // JSDOM normalizes hex colours to rgb() in inline styles
+    expect(el.style.background).toContain("rgb(239, 235, 224)");
   });
 
   it("defaults to 16/9 aspect ratio", () => {

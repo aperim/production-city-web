@@ -77,13 +77,14 @@ function FirstNationsPageContent() {
 
       {/* Acknowledgement of Country */}
       <ScrollRevealSection delay={0}>
-        <section className="py-14 border-b border-border bg-background">
-          <p
+        <section className="py-14 border-b border-border bg-background" aria-labelledby="ack-heading">
+          <h2
+            id="ack-heading"
             className="text-xs font-mono tracking-widest text-center uppercase mb-10"
             style={{ color: "var(--ochre, oklch(0.72 0.15 60))" }}
           >
             {t("firstNations.ackLabel")}
-          </p>
+          </h2>
           <blockquote
             className="mx-auto max-w-3xl text-xl leading-relaxed text-foreground pl-6"
             style={{
@@ -98,7 +99,7 @@ function FirstNationsPageContent() {
 
       {/* Leadership */}
       <ScrollRevealSection delay={0}>
-        <section className="py-12 border-b border-border">
+        <section className="py-12 border-b border-border" aria-labelledby="fn-leadership-heading">
           <div className="mb-8 border-t-2 pt-4" style={{ borderColor: "var(--ochre, oklch(0.72 0.15 60))" }}>
             <p
               className="text-xs font-mono tracking-widest uppercase"
@@ -106,7 +107,7 @@ function FirstNationsPageContent() {
             >
               {t("firstNations.leadershipLabel")}
             </p>
-            <h2 className="mt-2 text-xl font-semibold text-foreground">
+            <h2 id="fn-leadership-heading" className="mt-2 text-xl font-semibold text-foreground">
               {t("firstNations.leadershipHeading")}
             </h2>
           </div>
@@ -140,7 +141,7 @@ function FirstNationsPageContent() {
 
       {/* IP & Data provenance */}
       <ScrollRevealSection delay={0}>
-        <section className="py-12 border-b border-border">
+        <section className="py-12 border-b border-border" aria-labelledby="ip-heading">
           <div className="mb-8 border-t-2 pt-4" style={{ borderColor: "var(--ochre, oklch(0.72 0.15 60))" }}>
             <p
               className="text-xs font-mono tracking-widest uppercase"
@@ -148,7 +149,7 @@ function FirstNationsPageContent() {
             >
               {t("firstNations.ipLabel")}
             </p>
-            <h2 className="mt-2 text-xl font-semibold text-foreground">
+            <h2 id="ip-heading" className="mt-2 text-xl font-semibold text-foreground">
               {t("firstNations.ipHeading")}
             </h2>
           </div>
@@ -172,7 +173,7 @@ function FirstNationsPageContent() {
 
       {/* On Country */}
       <ScrollRevealSection delay={0}>
-        <section className="py-12 border-b border-border">
+        <section className="py-12 border-b border-border" aria-labelledby="on-country-heading">
           <div className="mb-8 border-t-2 pt-4" style={{ borderColor: "var(--ochre, oklch(0.72 0.15 60))" }}>
             <p
               className="text-xs font-mono tracking-widest uppercase"
@@ -180,7 +181,7 @@ function FirstNationsPageContent() {
             >
               {t("firstNations.onCountryLabel")}
             </p>
-            <h2 className="mt-2 text-xl font-semibold text-foreground">
+            <h2 id="on-country-heading" className="mt-2 text-xl font-semibold text-foreground">
               {t("firstNations.onCountryHeading")}
             </h2>
           </div>
@@ -204,7 +205,7 @@ function FirstNationsPageContent() {
 
       {/* Creative work */}
       <ScrollRevealSection delay={0}>
-        <section className="py-12 border-b border-border">
+        <section className="py-12 border-b border-border" aria-labelledby="creative-heading">
           <div className="mb-8 border-t-2 pt-4" style={{ borderColor: "var(--ochre, oklch(0.72 0.15 60))" }}>
             <p
               className="text-xs font-mono tracking-widest uppercase"
@@ -212,7 +213,7 @@ function FirstNationsPageContent() {
             >
               {t("firstNations.creativeLabel")}
             </p>
-            <h2 className="mt-2 text-xl font-semibold text-foreground">
+            <h2 id="creative-heading" className="mt-2 text-xl font-semibold text-foreground">
               {t("firstNations.creativeHeading")}
             </h2>
           </div>
@@ -227,7 +228,7 @@ function FirstNationsPageContent() {
 
       {/* Evidence */}
       <ScrollRevealSection delay={0}>
-        <section className="py-12 border-b border-border">
+        <section className="py-12 border-b border-border" aria-labelledby="evidence-heading">
           <div className="mb-8 border-t-2 pt-4" style={{ borderColor: "var(--ochre, oklch(0.72 0.15 60))" }}>
             <p
               className="text-xs font-mono tracking-widest uppercase"
@@ -235,7 +236,7 @@ function FirstNationsPageContent() {
             >
               {t("firstNations.evidenceLabel")}
             </p>
-            <h2 className="mt-2 text-xl font-semibold text-foreground">
+            <h2 id="evidence-heading" className="mt-2 text-xl font-semibold text-foreground">
               {t("firstNations.evidenceHeading")}
             </h2>
           </div>
@@ -253,6 +254,7 @@ function FirstNationsPageContent() {
       <section
         className="py-12 border-b text-center"
         style={{ borderColor: "var(--ochre, oklch(0.72 0.15 60))" }}
+        aria-labelledby="fn-cta-heading"
       >
         <p
           className="text-xs font-mono tracking-widest uppercase mb-4"
@@ -260,7 +262,7 @@ function FirstNationsPageContent() {
         >
           Next
         </p>
-        <h2 className="text-xl font-semibold text-foreground mb-6">
+        <h2 id="fn-cta-heading" className="text-xl font-semibold text-foreground mb-6">
           {t("firstNations.ctaHeading")}
         </h2>
         <a

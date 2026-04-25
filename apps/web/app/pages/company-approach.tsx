@@ -53,12 +53,12 @@ function CompanyApproachPageContent() {
 
       {/* Vertical integration argument */}
       <ScrollRevealSection delay={0}>
-        <section className="py-12 border-b border-border">
+        <section className="py-12 border-b border-border" aria-labelledby="vert-heading">
           <div className="mb-8">
             <p className="text-xs font-mono tracking-widest text-muted-foreground uppercase">
               {t("companyApproach.vertLabel")}
             </p>
-            <h2 className="mt-2 text-xl font-semibold text-foreground">
+            <h2 id="vert-heading" className="mt-2 text-xl font-semibold text-foreground">
               {t("companyApproach.vertHeading")}
             </h2>
           </div>
@@ -73,12 +73,12 @@ function CompanyApproachPageContent() {
 
       {/* Operator platform */}
       <ScrollRevealSection delay={0}>
-        <section className="py-12 border-b border-border">
+        <section className="py-12 border-b border-border" aria-labelledby="platform-heading">
           <div className="mb-8">
             <p className="text-xs font-mono tracking-widest text-muted-foreground uppercase">
               {t("companyApproach.platformLabel")}
             </p>
-            <h2 className="mt-2 text-xl font-semibold text-foreground">
+            <h2 id="platform-heading" className="mt-2 text-xl font-semibold text-foreground">
               {t("companyApproach.platformHeading")}
             </h2>
           </div>
@@ -92,8 +92,8 @@ function CompanyApproachPageContent() {
       </ScrollRevealSection>
 
       {/* CTA */}
-      <section className="py-12 border-b border-border text-center">
-        <h2 className="text-xl font-semibold text-foreground mb-6">
+      <section className="py-12 border-b border-border text-center" aria-labelledby="cta-heading">
+        <h2 id="cta-heading" className="text-xl font-semibold text-foreground mb-6">
           {t("companyApproach.cta")}
         </h2>
         <a

@@ -146,7 +146,7 @@ describe("landing page component-specific content", () => {
 
   it("Facilities page renders facility sections", () => {
     const content = readFileSync(resolve(APP_ROOT, "pages/facilities.tsx"), "utf-8");
-    expect(content).toContain("FacilitySection");
+    expect(content).toContain("FacilityData");
   });
 
   it("Facilities page includes ForwardLookingDisclaimer", () => {
@@ -156,9 +156,8 @@ describe("landing page component-specific content", () => {
 
   it("Facilities page displays facility specs with real values", () => {
     const content = readFileSync(resolve(APP_ROOT, "pages/facilities.tsx"), "utf-8");
-    expect(content).toContain("specDimensions");
-    expect(content).toContain("specHeight");
-    expect(content).toContain("specNrc");
+    expect(content).toContain("2,025 m²");
+    expect(content).toContain("NRC 1.05");
   });
 
   it("Creative page uses ServiceGrid", () => {

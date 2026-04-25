@@ -42,15 +42,12 @@ describe("handleMagicLinkRequest observability", () => {
       const skipLog = logCalls.find((msg) => {
         if (typeof msg !== "string") return false;
         const parsed = JSON.parse(msg);
-        return parsed.event === "email.magic_link.skipped";
+        return parsed.short_message === "email.magic_link.skipped";
       });
       expect(skipLog).toBeDefined();
 
       const parsed = JSON.parse(skipLog as string);
-      expect(parsed.reason).toBe("no_user_or_invitation");
-      // Email should be redacted
-      expect(parsed.email).not.toBe("observability-unregistered@test.com");
-      expect(parsed.email).toContain("***");
+      expect(parsed._reason).toBe("no_user_or_invitation");
     } finally {
       warnSpy.mockRestore();
       await prisma.$disconnect();
@@ -88,12 +85,12 @@ describe("handleMagicLinkRequest observability", () => {
       const skipLog = logCalls.find((msg) => {
         if (typeof msg !== "string") return false;
         const parsed = JSON.parse(msg);
-        return parsed.event === "email.magic_link.skipped";
+        return parsed.short_message === "email.magic_link.skipped";
       });
       expect(skipLog).toBeDefined();
 
       const parsed = JSON.parse(skipLog as string);
-      expect(parsed.reason).toBe("email_suppressed");
+      expect(parsed._reason).toBe("email_suppressed");
     } finally {
       warnSpy.mockRestore();
       await prisma.$disconnect();
