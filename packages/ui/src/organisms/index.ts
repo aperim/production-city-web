@@ -224,3 +224,7 @@ export { AudienceGrid } from './AudienceGrid/AudienceGrid';
 export type { AudienceGridProps, AudienceCard } from './AudienceGrid/AudienceGrid';
 export { FnPrincipleList } from './FnPrincipleList/FnPrincipleList';
 export type { FnPrincipleListProps, FnPrincipleItem } from './FnPrincipleList/FnPrincipleList';
+
+// Issue PRO-164: SignalDiagram — IP LIFECYCLE · LIVE animated diagram
+export { SignalDiagram } from './SignalDiagram/SignalDiagram';
+export type { SignalDiagramProps } from './SignalDiagram/SignalDiagram';

@@ -12,6 +12,7 @@ import {
   LandingPageTemplate,
   EOISection,
   ScrollRevealSection,
+  SignalDiagram,
 } from "@productioncity/holding-ui";
 import { I18nProvider, useTranslation } from "../i18n/context";
 import {
@@ -238,7 +239,7 @@ function HomePageContent() {
 
               {/* Right column — IP lifecycle */}
               <div className="lg:col-start-7 lg:col-span-6">
-                <IpLifecycleDiagram />
+                <SignalDiagram />
               </div>
             </div>
           </div>
@@ -565,121 +566,6 @@ function HomePageContent() {
 }
 
 /* ─── IP Lifecycle Diagram (simplified SVG) ─── */
-function IpLifecycleDiagram() {
-  const sharedNodes = [
-    { y: 80, num: "01", name: "IDEATION", sub: "concept · themes · audience" },
-    { y: 170, num: "02", name: "IP STRATEGY", sub: "canon · rights · format split" },
-    { y: 260, num: "03", name: "SCRIPT · LIBRETTO · SCORE", sub: "drafts for both formats" },
-    { y: 350, num: "04", name: "PRE-VIS · STORYBOARD", sub: "shared visual language" },
-    { y: 440, num: "05", name: "DIGITAL ASSETS", sub: "3D · CGI · LED content · mocap" },
-    { y: 530, num: "06", name: "DESIGN · BUILD · COSTUME", sub: "sets · props · wardrobe" },
-  ];
-  const screenNodes = [
-    { y: 680, num: "S1", name: "CASTING · CREW" },
-    { y: 760, num: "S2", name: "PRINCIPAL PHOTOGRAPHY", sub: "stages · LED volume" },
-    { y: 840, num: "S3", name: "EDITORIAL" },
-    { y: 920, num: "S4", name: "VFX · CGI" },
-    { y: 1000, num: "S5", name: "SOUND · COLOUR · FINISHING" },
-  ];
-  const stageNodes = [
-    { y: 680, num: "T1", name: "CASTING · COMPANY" },
-    { y: 760, num: "T2", name: "REHEARSAL" },
-    { y: 840, num: "T3", name: "TECH · PREVIEWS" },
-    { y: 920, num: "T4", name: "OPENING · SEASON RUN", sub: "broadcast theatre · live capture" },
-    { y: 1000, num: "T5", name: "TOUR · TRANSFERS" },
-  ];
-  const convergeNodes = [
-    { y: 1060, num: "07", name: "DISTRIBUTION", sub: "theatrical · SVOD · broadcast · live · VR/AR" },
-    { y: 1110, num: "08", name: "AUDIENCE · ANCILLARY", sub: "box office · subs · merch · fandom" },
-    { y: 1160, num: "09", name: "ANALYTICS & R&D", sub: "performance · insight · new techniques" },
-  ];
-
-  return (
-    <div className="border border-(--pc-color-neutral-800) bg-(--pc-color-neutral-950)">
-      <div className="flex items-center justify-between border-b border-(--pc-color-neutral-800) px-4 py-2 font-mono text-[9px] uppercase tracking-[0.14em] text-(--pc-color-neutral-500)">
-        <span className="flex items-center gap-2">
-          <span className="inline-block h-2 w-2 rounded-full bg-(--pc-color-secondary-500)" />
-          IP LIFECYCLE · LIVE
-        </span>
-        <span className="hidden sm:inline">ONE IP · TWO LANES · ONE LOOP</span>
-      </div>
-
-      <svg
-        viewBox="-80 0 840 1220"
-        className="block w-full"
-        role="img"
-        aria-label="Production City IP lifecycle: one idea moves through ideation, strategy, script, pre-vis, digital assets and design, then diverges into parallel screen and stage lanes, reconverges at distribution and audience, with analytics feeding back into ideation."
-      >
-        {/* Paths */}
-        <line x1="360" y1="80" x2="360" y2="620" stroke="var(--pc-color-neutral-700)" strokeWidth="1.5" />
-        <path d="M 360 620 C 280 640, 200 650, 180 680" fill="none" stroke="var(--pc-color-neutral-700)" strokeWidth="1.5" />
-        <path d="M 360 620 C 440 640, 520 650, 540 680" fill="none" stroke="var(--pc-color-neutral-700)" strokeWidth="1.5" />
-        <line x1="180" y1="680" x2="180" y2="1000" stroke="var(--pc-color-neutral-700)" strokeWidth="1.5" />
-        <line x1="540" y1="680" x2="540" y2="1000" stroke="var(--pc-color-neutral-700)" strokeWidth="1.5" />
-        <path d="M 180 1000 C 200 1030, 280 1050, 360 1060" fill="none" stroke="var(--pc-color-neutral-700)" strokeWidth="1.5" />
-        <path d="M 540 1000 C 520 1030, 440 1050, 360 1060" fill="none" stroke="var(--pc-color-neutral-700)" strokeWidth="1.5" />
-        <line x1="360" y1="1060" x2="360" y2="1160" stroke="var(--pc-color-neutral-700)" strokeWidth="1.5" />
-        <path d="M 360 1160 C 780 1160, 780 40, 360 40 L 360 80" fill="none" stroke="var(--pc-color-neutral-700)" strokeWidth="1" strokeDasharray="6 4" opacity="0.5" />
-
-        {/* Lane headers */}
-        <text x="180" y="658" textAnchor="middle" fill="var(--pc-color-primary-400)" fontFamily="monospace" fontSize="9" letterSpacing="0.14em">SCREEN LANE</text>
-        <text x="540" y="658" textAnchor="middle" fill="var(--pc-color-secondary-400)" fontFamily="monospace" fontSize="9" letterSpacing="0.14em">STAGE LANE</text>
-
-        {/* Shared spine nodes */}
-        {sharedNodes.map((n) => (
-          <g key={n.num} transform={`translate(360, ${n.y})`}>
-            <circle r="5" fill="var(--pc-color-neutral-300)" />
-            <text x="20" y="4" fill="var(--pc-color-neutral-500)" fontFamily="monospace" fontSize="8">{n.num}</text>
-            <text x="20" y="16" fill="var(--pc-color-neutral-200)" fontFamily="monospace" fontSize="10" fontWeight="500">{n.name}</text>
-            {n.sub && <text x="20" y="28" fill="var(--pc-color-neutral-500)" fontFamily="sans-serif" fontSize="9">{n.sub}</text>}
-          </g>
-        ))}
-
-        {/* Screen lane nodes */}
-        {screenNodes.map((n) => (
-          <g key={n.num} transform={`translate(180, ${n.y})`}>
-            <circle r="4" fill="var(--pc-color-primary-400)" />
-            <text x="-18" y="4" textAnchor="end" fill="var(--pc-color-neutral-500)" fontFamily="monospace" fontSize="8">{n.num}</text>
-            <text x="-18" y="16" textAnchor="end" fill="var(--pc-color-neutral-300)" fontFamily="monospace" fontSize="9" fontWeight="500">{n.name}</text>
-            {n.sub && <text x="-18" y="28" textAnchor="end" fill="var(--pc-color-neutral-500)" fontFamily="sans-serif" fontSize="8">{n.sub}</text>}
-          </g>
-        ))}
-
-        {/* Stage lane nodes */}
-        {stageNodes.map((n) => (
-          <g key={n.num} transform={`translate(540, ${n.y})`}>
-            <circle r="4" fill="var(--pc-color-secondary-400)" />
-            <text x="18" y="4" fill="var(--pc-color-neutral-500)" fontFamily="monospace" fontSize="8">{n.num}</text>
-            <text x="18" y="16" fill="var(--pc-color-neutral-300)" fontFamily="monospace" fontSize="9" fontWeight="500">{n.name}</text>
-            {n.sub && <text x="18" y="28" fill="var(--pc-color-neutral-500)" fontFamily="sans-serif" fontSize="8">{n.sub}</text>}
-          </g>
-        ))}
-
-        {/* Converge nodes */}
-        {convergeNodes.map((n) => (
-          <g key={n.num} transform={`translate(360, ${n.y})`}>
-            <circle r="6" fill="var(--pc-color-neutral-200)" />
-            <text x="20" y="4" fill="var(--pc-color-neutral-500)" fontFamily="monospace" fontSize="8">{n.num}</text>
-            <text x="20" y="16" fill="var(--pc-color-neutral-200)" fontFamily="monospace" fontSize="10" fontWeight="500">{n.name}</text>
-            {n.sub && <text x="20" y="28" fill="var(--pc-color-neutral-500)" fontFamily="sans-serif" fontSize="9">{n.sub}</text>}
-          </g>
-        ))}
-
-        {/* Feedback caption */}
-        <text x="715" y="600" textAnchor="middle" transform="rotate(90 715 600)" fill="var(--pc-color-neutral-600)" fontFamily="monospace" fontSize="9" letterSpacing="0.1em">
-          FEEDBACK · INSIGHT · CANON · NEXT CYCLE
-        </text>
-      </svg>
-
-      <div className="flex items-center justify-between border-t border-(--pc-color-neutral-800) px-4 py-2 font-mono text-[9px] uppercase tracking-[0.14em] text-(--pc-color-neutral-500)">
-        <span>NOW</span>
-        <span>— DEVELOPMENT → DELIVERY</span>
-        <span className="hidden sm:inline">SHARED · SPLIT · MERGE · LOOP</span>
-      </div>
-    </div>
-  );
-}
-
 /* ─── Network Map (minimal SVG) ─── */
 function NetworkMap() {
   return (
