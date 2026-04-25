@@ -36,8 +36,12 @@ export function useLandingNav(): LandingNavigationProps {
     links: [
       { label: t("nav.home"), href: `${prefix}/` },
       { label: t("nav.facilities"), href: `${prefix}/facilities` },
+      { label: t("nav.services"), href: `${prefix}/services` },
       { label: t("nav.creative"), href: `${prefix}/creative` },
       { label: t("nav.vision"), href: `${prefix}/vision` },
+      { label: t("nav.network"), href: `${prefix}/network` },
+      { label: t("nav.company"), href: `${prefix}/company` },
+      { label: t("nav.firstNations"), href: `${prefix}/first-nations` },
       { label: t("nav.updates"), href: `${prefix}/announcements` },
       { label: t("nav.community"), href: `${prefix}/community` },
       { label: t("nav.faq"), href: `${prefix}/faq` },
@@ -70,8 +74,10 @@ export function useLandingFooter(): LandingFooterProps {
         links: [
           { label: t("nav.home"), href: `${prefix}/` },
           { label: t("nav.facilities"), href: `${prefix}/facilities` },
+          { label: t("nav.services"), href: `${prefix}/services` },
           { label: t("nav.creative"), href: `${prefix}/creative` },
           { label: t("nav.vision"), href: `${prefix}/vision` },
+          { label: t("nav.network"), href: `${prefix}/network` },
           { label: t("nav.community"), href: `${prefix}/community` },
           { label: t("nav.updates"), href: `${prefix}/announcements` },
         ],
@@ -79,6 +85,8 @@ export function useLandingFooter(): LandingFooterProps {
       {
         heading: t("footer.resources"),
         links: [
+          { label: t("nav.company"), href: `${prefix}/company` },
+          { label: t("nav.firstNations"), href: `${prefix}/first-nations` },
           { label: t("nav.faq"), href: `${prefix}/faq` },
           { label: t("nav.contact"), href: `${prefix}/contact` },
         ],
