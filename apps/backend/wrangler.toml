@@ -52,6 +52,10 @@ ALLOWED_ORIGIN = "https://staging.production.city"
 [[env.staging.durable_objects.bindings]]
 name = "WEBSOCKET_SERVER"
 class_name = "WebSocketHibernationServer"
+# Issue PRO-165: Route api.staging.production.city/* to this Worker (requires DNS CNAME — see PRO-165)
+[[env.staging.routes]]
+pattern = "api.staging.production.city/*"
+zone_name = "production.city"
 [[env.staging.d1_databases]]
 binding = "DB"
 database_name = "holding-staging"

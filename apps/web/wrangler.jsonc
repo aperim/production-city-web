@@ -29,6 +29,10 @@
     },
     "staging": {
       "name": "holding-web-staging",
+      // Issue PRO-165: Route staging.production.city/* to this Worker (requires DNS CNAME — see PRO-165)
+      "routes": [
+        { "pattern": "staging.production.city/*", "zone_name": "production.city" }
+      ],
       "d1_databases": [
         {
           "binding": "DB",

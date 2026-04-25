@@ -22,7 +22,9 @@ const ENV_CONFIG = {
   staging: {
     name: 'holding-web-staging',
     d1DatabaseId: '527c2f52-144b-422f-aa16-46e5b86cdd9f',
-    routes: [],
+    routes: [
+      { pattern: 'staging.production.city/*', zone_name: 'production.city' },
+    ],
   },
   production: {
     name: 'holding-web-production',
