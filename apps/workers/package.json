@@ -21,6 +21,7 @@
   "dependencies": {
     "@prisma/adapter-d1": "^7.5.0",
     "@prisma/client": "^7.5.0",
+    "@productioncity/holding-logging": "workspace:*",
     "zod": "^4.3.6"
   },
   "devDependencies": {

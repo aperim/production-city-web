@@ -11,6 +11,7 @@
  */
 
 import { DurableObject } from "cloudflare:workers";
+import { buildGelfMessage, toGelfJson, Level } from "@productioncity/holding-logging";
 import {
   type WSAttachment,
   type WSEnvelope,
@@ -126,11 +127,16 @@ export class WebSocketHibernationServer extends DurableObject<Env> {
       if (lastPong !== null) {
         const pongAge = now - lastPong.getTime();
         if (pongAge > ZOMBIE_TIMEOUT_MS) {
-          console.log(JSON.stringify({
-            event: "ws.zombie_detected",
-            userId: attachment.userId,
-            lastPongAge: pongAge,
-          }));
+          console.log(
+            toGelfJson(
+              buildGelfMessage("holding-backend", {
+                short_message: "ws.zombie_detected",
+                level: Level.WARNING,
+                service: "holding-backend",
+                extra: { user_id: attachment.userId, last_pong_age_ms: pongAge },
+              }),
+            ),
+          );
           ws.close(1001, "Connection timed out (no pong)");
           continue;
         }
@@ -140,11 +146,16 @@ export class WebSocketHibernationServer extends DurableObject<Env> {
       if (attachment.channels.length === 0 && !attachment.deliveryOnly) {
         const lastActive = this.lastActivity.get(ws) ?? attachment.connectedAt;
         if (now - lastActive > IDLE_TIMEOUT_MS) {
-          console.log(JSON.stringify({
-            event: "ws.idle_timeout",
-            userId: attachment.userId,
-            idleDuration: now - lastActive,
-          }));
+          console.log(
+            toGelfJson(
+              buildGelfMessage("holding-backend", {
+                short_message: "ws.idle_timeout",
+                level: Level.INFO,
+                service: "holding-backend",
+                extra: { user_id: attachment.userId, idle_duration_ms: now - lastActive },
+              }),
+            ),
+          );
           ws.close(1000, "Idle timeout");
           continue;
         }
@@ -381,14 +392,22 @@ export class WebSocketHibernationServer extends DurableObject<Env> {
     const truncatedReason = truncateCloseReason(reason);
     const attachment = ws.deserializeAttachment() as WSAttachment | null;
 
-    console.log(JSON.stringify({
-      event: "ws.close",
-      userId: attachment?.userId,
-      code,
-      reason: truncatedReason,
-      wasClean,
-      duration: attachment ? Date.now() - attachment.connectedAt : undefined,
-    }));
+    console.log(
+      toGelfJson(
+        buildGelfMessage("holding-backend", {
+          short_message: "ws.close",
+          level: Level.INFO,
+          service: "holding-backend",
+          extra: {
+            user_id: attachment?.userId ?? "",
+            ws_close_code: code,
+            ws_close_reason: truncatedReason,
+            ws_was_clean: wasClean ? 1 : 0,
+            ...(attachment ? { duration_ms: Date.now() - attachment.connectedAt } : {}),
+          },
+        }),
+      ),
+    );
 
     this.channelManager.unsubscribeAll(ws);
     this.rateLimits.delete(ws);
@@ -401,11 +420,18 @@ export class WebSocketHibernationServer extends DurableObject<Env> {
   async webSocketError(ws: WebSocket, error: unknown): Promise<void> {
     const attachment = ws.deserializeAttachment() as WSAttachment | null;
 
-    console.error(JSON.stringify({
-      event: "ws.error",
-      userId: attachment?.userId,
-      error: String(error),
-    }));
+    console.error(
+      toGelfJson(
+        buildGelfMessage("holding-backend", {
+          short_message: "ws.error",
+          level: Level.ERROR,
+          service: "holding-backend",
+          full_message: String(error),
+          error_type: error instanceof Error ? error.constructor.name : "Error",
+          extra: { user_id: attachment?.userId ?? "" },
+        }),
+      ),
+    );
 
     this.rateLimits.delete(ws);
     this.lastActivity.delete(ws);
@@ -614,13 +640,16 @@ export class WebSocketHibernationServer extends DurableObject<Env> {
     if (rateState.count >= MAX_AUDIT_LOGS_PER_SOURCE_PER_MINUTE) return;
     rateState.count++;
 
-    console.log(JSON.stringify({
-      event: "ws.validation_failure",
-      source,
-      code,
-      message,
-      timestamp: now,
-    }));
+    console.log(
+      toGelfJson(
+        buildGelfMessage("holding-backend", {
+          short_message: "ws.validation_failure",
+          level: Level.WARNING,
+          service: "holding-backend",
+          extra: { ws_source: source, ws_code: code, ws_message: message },
+        }),
+      ),
+    );
   }
 
   /**

@@ -68,6 +68,9 @@ importers:
       '@prisma/client':
         specifier: ^7.5.0
         version: 7.5.0(prisma@7.5.0(@types/react@19.2.14)(better-sqlite3@12.6.2)(react-dom@19.2.4(react@19.2.4))(react@19.2.4)(typescript@5.9.3))(typescript@5.9.3)
+      '@productioncity/holding-logging':
+        specifier: workspace:*
+        version: link:../../packages/logging
       hono:
         specifier: ^4.12.7
         version: 4.12.7
@@ -163,6 +166,9 @@ importers:
       '@prisma/client':
         specifier: ^7.5.0
         version: 7.5.0(prisma@7.5.0(@types/react@19.2.14)(better-sqlite3@12.6.2)(react-dom@19.2.4(react@19.2.4))(react@19.2.4)(typescript@5.9.3))(typescript@5.9.3)
+      '@productioncity/holding-logging':
+        specifier: workspace:*
+        version: link:../../packages/logging
       zod:
         specifier: ^4.3.6
         version: 4.3.6
@@ -188,6 +194,18 @@ importers:
       tsx:
         specifier: ^4.21.0
         version: 4.21.0
+      typescript:
+        specifier: ^5.9.3
+        version: 5.9.3
+      vitest:
+        specifier: ^4.0.18
+        version: 4.0.18(@types/node@25.4.0)(@vitest/browser-playwright@4.0.18)(jiti@2.6.1)(jsdom@28.1.0)(lightningcss@1.31.1)(terser@5.46.0)(tsx@4.21.0)(yaml@2.8.2)
+
+  packages/logging:
+    devDependencies:
+      '@cloudflare/workers-types':
+        specifier: ^4.20260312.1
+        version: 4.20260312.1
       typescript:
         specifier: ^5.9.3
         version: 5.9.3

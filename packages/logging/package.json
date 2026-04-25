@@ -1,0 +1,36 @@
+{
+  "name": "@productioncity/holding-logging",
+  "version": "0.1.0",
+  "type": "module",
+  "description": "Production City structured logging library — GELF builder for Cloudflare Workers.",
+  "keywords": ["gelf", "logging", "cloudflare-workers", "production-city"],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/productioncity/holding.git",
+    "directory": "packages/logging"
+  },
+  "license": "UNLICENSED",
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com",
+    "access": "restricted"
+  },
+  "sideEffects": false,
+  "exports": {
+    ".": {
+      "import": "./src/index.ts",
+      "types": "./src/index.ts"
+    }
+  },
+  "main": "./src/index.ts",
+  "types": "./src/index.ts",
+  "scripts": {
+    "test": "vitest run",
+    "lint": "eslint src test eslint.config.js vitest.config.ts",
+    "typecheck": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "@cloudflare/workers-types": "^4.20260312.1",
+    "typescript": "^5.9.3",
+    "vitest": "^4.0.18"
+  }
+}

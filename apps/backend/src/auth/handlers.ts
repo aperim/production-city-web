@@ -3,6 +3,7 @@
  */
 
 import { OpenAPIHono, createRoute, z } from "@hono/zod-openapi";
+import { buildGelfMessage, toGelfJson, Level } from "@productioncity/holding-logging";
 import { createPrismaClient } from "../lib/prisma.js";
 import { verifyMagicLinkToken, verifyMagicCode, TOKEN_INVALID_ERROR } from "./token.js";
 import { t } from "../i18n/index.js";
@@ -197,11 +198,17 @@ authApp.openapi(magicLinkRoute, async (c) => {
     const postmarkApiToken = c.env.POSTMARK_API_TOKEN || "";
 
     if (!postmarkApiToken) {
-      console.error(JSON.stringify({
-        event: "config.missing",
-        key: "POSTMARK_API_TOKEN",
-        message: "Email sending will fail — POSTMARK_API_TOKEN is not configured",
-      }));
+      console.error(
+        toGelfJson(
+          buildGelfMessage("holding-backend", {
+            short_message: "config.missing",
+            level: Level.ERROR,
+            service: "holding-backend",
+            full_message: "Email sending will fail — POSTMARK_API_TOKEN is not configured",
+            extra: { config_key: "POSTMARK_API_TOKEN" },
+          }),
+        ),
+      );
     }
 
     const result = await handleMagicLinkRequest(
@@ -227,7 +234,15 @@ authApp.openapi(verifyTokenRoute, async (c) => {
 
     if (!result) {
       // Log server-side, return generic error
-      console.error(JSON.stringify({ event: "auth.token.verification.failed" }));
+      console.error(
+        toGelfJson(
+          buildGelfMessage("holding-backend", {
+            short_message: "auth.token.verification.failed",
+            level: Level.ERROR,
+            service: "holding-backend",
+          }),
+        ),
+      );
       await createAuditLog(prisma, {
         action: "auth.magic_link.verified",
         resource: "auth",
@@ -351,7 +366,16 @@ authApp.openapi(verifyCodeRoute, async (c) => {
 
     if (!result) {
       // Log specific reason server-side
-      console.error(JSON.stringify({ event: "auth.code.verification.failed", reason }));
+      console.error(
+        toGelfJson(
+          buildGelfMessage("holding-backend", {
+            short_message: "auth.code.verification.failed",
+            level: Level.ERROR,
+            service: "holding-backend",
+            extra: { reason: reason ?? "" },
+          }),
+        ),
+      );
 
       await createAuditLog(prisma, {
         action: "auth.code.failed",

@@ -1,6 +1,7 @@
 import { OpenAPIHono, createRoute, z } from "@hono/zod-openapi";
 import { swaggerUI } from "@hono/swagger-ui";
 import { cors } from "hono/cors";
+import { buildGelfMessage, toGelfJson, Level } from "@productioncity/holding-logging";
 import { createPrismaClient } from "./lib/prisma.js";
 import { mountRoutes } from "./routes.js";
 import { requestIdMiddleware } from "./middleware/request-id.js";
@@ -20,6 +21,25 @@ export const app = new OpenAPIHono<{ Bindings: Bindings }>();
 
 // Request ID middleware: generates X-Request-ID for every request
 app.use("*", requestIdMiddleware());
+
+// Request lifecycle logging: logs method, path, duration, status for every request
+app.use("*", async (c, next) => {
+  const start = Date.now();
+  await next();
+  const requestId = c.res.headers.get("X-Request-ID") ?? undefined;
+  console.log(
+    toGelfJson(
+      buildGelfMessage("holding-backend", {
+        short_message: `${c.req.method} ${c.req.path}`,
+        level: Level.INFO,
+        service: "holding-backend",
+        request_id: requestId,
+        duration_ms: Date.now() - start,
+        status_code: c.res.status,
+      }),
+    ),
+  );
+});
 
 // Environment validation: runs on every request, throws if required bindings are missing
 app.use("*", async (c, next) => {
@@ -94,21 +114,45 @@ app.openapi(liveRoute, (c) => {
 app.openapi(readyRoute, async (c) => {
   const prisma = await createPrismaClient(c.env.DB);
   try {
+    const d1Start = Date.now();
     await prisma.$queryRaw`SELECT 1`;
+    const d1QueryMs = Date.now() - d1Start;
+    console.log(
+      toGelfJson(
+        buildGelfMessage("holding-backend", {
+          short_message: "readiness.check.passed",
+          level: Level.DEBUG,
+          service: "holding-backend",
+          extra: { d1_query_ms: d1QueryMs },
+        }),
+      ),
+    );
     return c.json({ status: "ok" as const, db: "ok" as const }, 200);
   } catch (err) {
     console.error(
-      JSON.stringify({ event: "readiness.check.failed", error: String(err) }),
+      toGelfJson(
+        buildGelfMessage("holding-backend", {
+          short_message: "readiness.check.failed",
+          level: Level.ERROR,
+          service: "holding-backend",
+          full_message: String(err),
+          error_type: err instanceof Error ? err.constructor.name : "Error",
+        }),
+      ),
     );
     return c.json({ status: "error", db: "unavailable" }, 503);
   } finally {
     // Guard disconnect errors so they don't mask the health check result
     await prisma.$disconnect().catch((disconnectErr: unknown) => {
       console.error(
-        JSON.stringify({
-          event: "readiness.disconnect.failed",
-          error: String(disconnectErr),
-        }),
+        toGelfJson(
+          buildGelfMessage("holding-backend", {
+            short_message: "readiness.disconnect.failed",
+            level: Level.ERROR,
+            service: "holding-backend",
+            full_message: String(disconnectErr),
+          }),
+        ),
       );
     });
   }
@@ -130,12 +174,18 @@ mountRoutes(app as unknown as OpenAPIHono<{ Bindings: Record<string, unknown> }>
 
 // Global error handler: catch env validation and other uncaught errors
 app.onError((err, c) => {
+  const requestId = c.res.headers.get("X-Request-ID") ?? undefined;
   console.error(
-    JSON.stringify({
-      event: "unhandled.error",
-      error: String(err),
-      requestId: c.res.headers.get("X-Request-ID") ?? undefined,
-    }),
+    toGelfJson(
+      buildGelfMessage("holding-backend", {
+        short_message: "unhandled.error",
+        level: Level.ERROR,
+        service: "holding-backend",
+        full_message: String(err),
+        error_type: err instanceof Error ? err.constructor.name : "Error",
+        request_id: requestId || undefined,
+      }),
+    ),
   );
   return c.json(
     { error: "internal_error", message: t("errors.internalError") },

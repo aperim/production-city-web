@@ -6,6 +6,7 @@
  */
 
 import { OpenAPIHono, createRoute, z } from "@hono/zod-openapi";
+import { buildGelfMessage, toGelfJson, Level } from "@productioncity/holding-logging";
 import { createPrismaClient } from "../lib/prisma.js";
 import { t, LOCALE_META, isSupportedLocale } from "../i18n/index.js";
 import { rateLimitMiddleware } from "../middleware/rate-limit.js";
@@ -243,21 +244,31 @@ eoiApp.openapi(submitEoiRoute, async (c) => {
         }
       }
     } catch (emailErr) {
-      console.error(JSON.stringify({
-        event: "eoi.confirmation.failed",
-        eoiId: eoi.id,
-        error: String(emailErr),
-      }));
+      console.error(
+        toGelfJson(
+          buildGelfMessage("holding-backend", {
+            short_message: "eoi.confirmation.failed",
+            level: Level.ERROR,
+            service: "holding-backend",
+            full_message: String(emailErr),
+            error_type: emailErr instanceof Error ? emailErr.constructor.name : "Error",
+            extra: { eoi_id: eoi.id },
+          }),
+        ),
+      );
     }
 
     // Log structured event
-    console.log(JSON.stringify({
-      event: "eoi.submitted",
-      eoiId: eoi.id,
-      category: data.category,
-      locale,
-      sourcePage: data.sourcePage,
-    }));
+    console.log(
+      toGelfJson(
+        buildGelfMessage("holding-backend", {
+          short_message: "eoi.submitted",
+          level: Level.INFO,
+          service: "holding-backend",
+          extra: { eoi_id: eoi.id, category: data.category, locale, source_page: data.sourcePage ?? "" },
+        }),
+      ),
+    );
 
     return c.json(
       { id: eoi.id, message: t("eoi.submitted", undefined, locale) },

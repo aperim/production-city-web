@@ -4,6 +4,7 @@
  */
 
 import type { PrismaClient } from "@prisma/client";
+import { buildGelfMessage, toGelfJson, Level } from "@productioncity/holding-logging";
 import { t } from "../i18n/index.js";
 import { sendEmail } from "./postmark.js";
 import type { PostmarkSendRequest } from "./postmark.js";
@@ -294,11 +295,16 @@ export async function handleMagicLinkRequest(
   const purpose = "login";
 
   if (!shouldSend) {
-    console.warn(JSON.stringify({
-      event: "email.magic_link.skipped",
-      reason: suppressed ? "email_suppressed" : "no_user_or_invitation",
-      email: email.replace(/^(.{1,2}).*(@.*)$/, "$1***$2"),
-    }));
+    console.warn(
+      toGelfJson(
+        buildGelfMessage("holding-backend", {
+          short_message: "email.magic_link.skipped",
+          level: Level.WARNING,
+          service: "holding-backend",
+          extra: { reason: suppressed ? "email_suppressed" : "no_user_or_invitation" },
+        }),
+      ),
+    );
   }
 
   // Create MagicLink record regardless (for rate limiting tracking)
@@ -380,11 +386,17 @@ export async function handleMagicLinkRequest(
         data: { deliveryStatus: "failed" },
       });
       console.error(
-        JSON.stringify({
-          event: "email.send.failed",
-          errorCode: result.error.ErrorCode,
-          errorMessage: result.error.Message,
-        }),
+        toGelfJson(
+          buildGelfMessage("holding-backend", {
+            short_message: "email.send.failed",
+            level: Level.ERROR,
+            service: "holding-backend",
+            extra: {
+              error_code: result.error.ErrorCode,
+              error_message: result.error.Message,
+            },
+          }),
+        ),
       );
     }
   }
