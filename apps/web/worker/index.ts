@@ -259,7 +259,21 @@ export default {
       }
     }
 
-    // 5. Set X-Locale and X-Path headers on forwarded request.
+    // 5. Hidden page redirects — temporarily redirect pages with incomplete content (PRO-261).
+    if (forwardPath === "/company/team" || forwardPath === "/company/team/") {
+      const target = locale === "en" ? "/company" : `/${locale}/company`;
+      try {
+        const redirectUrl = buildRedirectUrl(target, canonicalOrigin);
+        return applySecurityHeaders(
+          new Response(null, { status: 302, headers: { Location: redirectUrl, "Cache-Control": "no-cache" } }),
+          url.hostname,
+        );
+      } catch {
+        return applySecurityHeaders(Response.redirect(canonicalOrigin + "/", 302), url.hostname);
+      }
+    }
+
+    // 6. Set X-Locale and X-Path headers on forwarded request.
     headers.set("X-Locale", locale);
     headers.set("X-Path", forwardPath);
 
@@ -272,21 +286,21 @@ export default {
       redirect: request.redirect,
     });
 
-    // 6. Forward to vinext handler.
+    // 7. Forward to vinext handler.
     // eslint-disable-next-line @typescript-eslint/no-explicit-any -- vinext handler types are opaque
     const response = await (handler as any).fetch(forwardRequest, env, ctx);
     const newResponse = applySecurityHeaders(response, url.hostname, forwardPath);
 
-    // 7. Set Content-Language response header.
+    // 8. Set Content-Language response header.
     newResponse.headers.set("Content-Language", locale);
 
-    // 8. Set Vary header on HTML responses (Finding #1).
+    // 9. Set Vary header on HTML responses (Finding #1).
     const contentType = newResponse.headers.get("Content-Type") ?? "";
     if (contentType.includes("text/html")) {
       newResponse.headers.set("Vary", "Accept-Language, Cookie");
     }
 
-    // 9. First-visit detection: set pc-locale-suggestion cookie (Finding #7, #9).
+    // 10. First-visit detection: set pc-locale-suggestion cookie (Finding #7, #9).
     if (locale === "en" && url.pathname === "/") {
       const suggestion = parseAcceptLanguage(request.headers.get("Accept-Language"));
       if (suggestion) {

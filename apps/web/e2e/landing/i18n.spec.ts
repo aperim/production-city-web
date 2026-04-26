@@ -287,7 +287,6 @@ const NEW_PAGES_PATHS = [
   "/services",
   "/network",
   "/company",
-  "/company/team",
   "/company/approach",
   "/first-nations",
   "/facilities/broadcast-control-room",

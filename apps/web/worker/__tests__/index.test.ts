@@ -165,6 +165,67 @@ describe("CSP headers — WebSocket directives (#194)", () => {
   });
 });
 
+/**
+ * Inline implementation of hidden-page redirect logic mirroring worker/index.ts (PRO-261).
+ * Tests that /company/team redirects to /company for all locale variants.
+ */
+function applyHiddenPageRedirect(forwardPath: string, locale: string): Response | null {
+  if (forwardPath === "/company/team" || forwardPath === "/company/team/") {
+    const target = locale === "en" ? "/company" : `/${locale}/company`;
+    return new Response(null, {
+      status: 302,
+      headers: { Location: `https://production.city${target}`, "Cache-Control": "no-cache" },
+    });
+  }
+  return null;
+}
+
+describe("Hidden page redirects — /company/team (PRO-261)", () => {
+  it("redirects /company/team to /company with 302", () => {
+    const response = applyHiddenPageRedirect("/company/team", "en");
+    expect(response).not.toBeNull();
+    expect(response!.status).toBe(302);
+    expect(response!.headers.get("Location")).toBe("https://production.city/company");
+    expect(response!.headers.get("Cache-Control")).toBe("no-cache");
+  });
+
+  it("redirects /company/team/ (trailing slash) to /company", () => {
+    const response = applyHiddenPageRedirect("/company/team/", "en");
+    expect(response).not.toBeNull();
+    expect(response!.status).toBe(302);
+    expect(response!.headers.get("Location")).toBe("https://production.city/company");
+  });
+
+  it("redirects locale variant /zh/company/team to /zh/company", () => {
+    const response = applyHiddenPageRedirect("/company/team", "zh");
+    expect(response).not.toBeNull();
+    expect(response!.status).toBe(302);
+    expect(response!.headers.get("Location")).toBe("https://production.city/zh/company");
+  });
+
+  it("redirects locale variant /ar/company/team to /ar/company", () => {
+    const response = applyHiddenPageRedirect("/company/team", "ar");
+    expect(response).not.toBeNull();
+    expect(response!.status).toBe(302);
+    expect(response!.headers.get("Location")).toBe("https://production.city/ar/company");
+  });
+
+  it("does not redirect /company (parent page)", () => {
+    const response = applyHiddenPageRedirect("/company", "en");
+    expect(response).toBeNull();
+  });
+
+  it("does not redirect /company/approach", () => {
+    const response = applyHiddenPageRedirect("/company/approach", "en");
+    expect(response).toBeNull();
+  });
+
+  it("does not redirect /company/team/other (subpath)", () => {
+    const response = applyHiddenPageRedirect("/company/team/other", "en");
+    expect(response).toBeNull();
+  });
+});
+
 describe("CSP headers — Cloudflare Web Analytics (#319)", () => {
   it("production CSP allows Cloudflare Analytics beacon script", () => {
     const csp = buildCsp("production.city");

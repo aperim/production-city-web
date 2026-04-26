@@ -22,11 +22,6 @@ const NEW_PAGES = [
     heading: /A first site, not a branch/i,
   },
   {
-    path: "/company/team",
-    name: "Company — Team",
-    heading: /Leadership/i,
-  },
-  {
     path: "/company/approach",
     name: "Company — Approach",
     heading: /Built together/i,
@@ -90,4 +85,14 @@ test.describe("New landing pages — navigation and footer", () => {
       await expect(page.getByRole("contentinfo")).toBeVisible();
     });
   }
+});
+
+test.describe("Hidden pages — redirects (PRO-261)", () => {
+  test("/company/team redirects to /company", async ({ page }) => {
+    const response = await page.goto("/company/team");
+    expect(response).not.toBeNull();
+    expect(response!.status()).toBe(200);
+    expect(page.url()).toContain("/company");
+    expect(page.url()).not.toContain("/company/team");
+  });
 });
