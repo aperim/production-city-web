@@ -91,7 +91,7 @@ jobs:
             # Add any new seeded tables here in foreign-key dependency order.
             for TABLE in Role Permission AnnouncementCategory User \
                          RolePermission UserRole NotificationPreference \
-                         FeatureNotification; do
+                         feature_notifications; do
               printf -- "-- %s\n" "$TABLE"
               sqlite3 ../../local.db ".mode insert $TABLE" \
                 "SELECT * FROM \"$TABLE\";" 2>/dev/null \
