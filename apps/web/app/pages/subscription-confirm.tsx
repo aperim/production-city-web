@@ -13,8 +13,18 @@
 
 import { useEffect, useRef, useState } from "react";
 import { confirmSubscription } from "../lib/api-client";
+import { I18nProvider, useTranslation } from "../i18n/context";
 
 export function SubscriptionConfirmPage() {
+  return (
+    <I18nProvider>
+      <SubscriptionConfirmPageContent />
+    </I18nProvider>
+  );
+}
+
+function SubscriptionConfirmPageContent() {
+  const { t } = useTranslation();
   const [status, setStatus] = useState<"loading" | "success" | "error">("loading");
   const [message, setMessage] = useState("");
   const tokenRef = useRef<string | null>(null);
@@ -29,7 +39,7 @@ export function SubscriptionConfirmPage() {
 
     if (!tokenRef.current) {
       setStatus("error");
-      setMessage("Invalid or expired confirmation link.");
+      setMessage(t("subscriptions.confirm.error"));
       return;
     }
 
@@ -40,15 +50,17 @@ export function SubscriptionConfirmPage() {
       } else {
         // Generic error — do NOT differentiate between error types (prevents token oracle)
         setStatus("error");
-        setMessage("Invalid or expired confirmation link.");
+        setMessage(t("subscriptions.confirm.error"));
       }
     }).catch(() => {
       setStatus("error");
-      setMessage("Invalid or expired confirmation link.");
+      setMessage(t("subscriptions.confirm.error"));
     });
   }, []);
 
-  const heading = status === "success" ? "Subscription Confirmed" : "Confirmation Failed";
+  const heading = status === "success"
+    ? t("subscriptions.confirm.title")
+    : t("subscriptions.confirm.failedTitle");
 
   return (
     <>
@@ -90,7 +102,7 @@ export function SubscriptionConfirmPage() {
                 href="/announcements"
                 className="text-sm font-medium text-primary underline underline-offset-4"
               >
-                {status === "success" ? "View Updates" : "Back to Updates"}
+                {status === "success" ? t("subscriptions.confirm.viewUpdates") : t("announcements.detail.back")}
               </a>
             </>
           )}

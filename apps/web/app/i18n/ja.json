@@ -1238,19 +1238,27 @@
     "confirm": {
       "title": "購読確認完了",
       "success": "{channel}による{categoryName}の購読が確認されました。",
-      "error": "無効または期限切れの確認リンクです。"
+      "error": "無効または期限切れの確認リンクです。",
+      "failedTitle": "確認に失敗しました",
+      "viewUpdates": "更新を見る"
     },
     "decline": {
       "title": "購読辞退",
       "success": "購読リクエストを辞退しました。",
-      "error": "無効または期限切れのリンクです。"
+      "error": "無効または期限切れのリンクです。",
+      "failedTitle": "確認に失敗しました",
+      "viewUpdates": "更新を見る"
     },
     "unsubscribe": {
       "title": "購読解除",
       "confirm": "{channel}による{categoryName}のアップデートの購読を解除しますか？",
       "button": "購読解除を確認",
       "success": "購読が解除されました。",
-      "error": "無効または期限切れのリンクです。"
+      "error": "無効または期限切れのリンクです。",
+      "successTitle": "購読解除済み",
+      "errorTitle": "エラー",
+      "confirmMessage": "これらの更新の購読を解除してもよろしいですか？",
+      "managePreferences": "通知設定を管理"
     },
     "preferences": {
       "title": "通知設定",

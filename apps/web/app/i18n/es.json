@@ -1238,19 +1238,27 @@
     "confirm": {
       "title": "Suscripción confirmada",
       "success": "Tu suscripción a {categoryName} vía {channel} ha sido confirmada.",
-      "error": "Enlace de confirmación inválido o expirado."
+      "error": "Enlace de confirmación inválido o expirado.",
+      "failedTitle": "Confirmación fallida",
+      "viewUpdates": "Ver actualizaciones"
     },
     "decline": {
       "title": "Suscripción rechazada",
       "success": "Has rechazado la solicitud de suscripción.",
-      "error": "Enlace inválido o expirado."
+      "error": "Enlace inválido o expirado.",
+      "failedTitle": "Confirmación fallida",
+      "viewUpdates": "Ver actualizaciones"
     },
     "unsubscribe": {
       "title": "Cancelar suscripción",
       "confirm": "¿Cancelar suscripción de las novedades de {categoryName} vía {channel}?",
       "button": "Confirmar cancelación",
       "success": "Tu suscripción ha sido cancelada.",
-      "error": "Enlace inválido o expirado."
+      "error": "Enlace inválido o expirado.",
+      "successTitle": "Suscripción cancelada",
+      "errorTitle": "Error",
+      "confirmMessage": "¿Está seguro de que desea cancelar su suscripción a estas actualizaciones?",
+      "managePreferences": "Gestionar preferencias"
     },
     "preferences": {
       "title": "Preferencias de notificación",

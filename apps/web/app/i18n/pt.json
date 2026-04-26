@@ -1238,19 +1238,27 @@
     "confirm": {
       "title": "Inscrição confirmada",
       "success": "Sua inscrição em {categoryName} via {channel} foi confirmada.",
-      "error": "Link de confirmação inválido ou expirado."
+      "error": "Link de confirmação inválido ou expirado.",
+      "failedTitle": "Falha na confirmação",
+      "viewUpdates": "Ver atualizações"
     },
     "decline": {
       "title": "Inscrição recusada",
       "success": "Você recusou a solicitação de inscrição.",
-      "error": "Link inválido ou expirado."
+      "error": "Link inválido ou expirado.",
+      "failedTitle": "Falha na confirmação",
+      "viewUpdates": "Ver atualizações"
     },
     "unsubscribe": {
       "title": "Cancelar inscrição",
       "confirm": "Cancelar inscrição das atualizações de {categoryName} via {channel}?",
       "button": "Confirmar cancelamento",
       "success": "Sua inscrição foi cancelada.",
-      "error": "Link inválido ou expirado."
+      "error": "Link inválido ou expirado.",
+      "successTitle": "Inscrição cancelada",
+      "errorTitle": "Erro",
+      "confirmMessage": "Tem certeza de que deseja cancelar sua inscrição nessas atualizações?",
+      "managePreferences": "Gerenciar preferências"
     },
     "preferences": {
       "title": "Preferências de notificação",

@@ -1238,19 +1238,27 @@
     "confirm": {
       "title": "Abonnement confirmé",
       "success": "Votre abonnement à {categoryName} par {channel} a été confirmé.",
-      "error": "Lien de confirmation invalide ou expiré."
+      "error": "Lien de confirmation invalide ou expiré.",
+      "failedTitle": "Échec de la confirmation",
+      "viewUpdates": "Voir les mises à jour"
     },
     "decline": {
       "title": "Abonnement refusé",
       "success": "Vous avez refusé la demande d'abonnement.",
-      "error": "Lien invalide ou expiré."
+      "error": "Lien invalide ou expiré.",
+      "failedTitle": "Échec de la confirmation",
+      "viewUpdates": "Voir les mises à jour"
     },
     "unsubscribe": {
       "title": "Se désabonner",
       "confirm": "Se désabonner des actualités {categoryName} par {channel} ?",
       "button": "Confirmer le désabonnement",
       "success": "Vous avez été désabonné.",
-      "error": "Lien invalide ou expiré."
+      "error": "Lien invalide ou expiré.",
+      "successTitle": "Désabonné",
+      "errorTitle": "Erreur",
+      "confirmMessage": "Êtes-vous sûr de vouloir vous désabonner de ces mises à jour ?",
+      "managePreferences": "Gérer les préférences"
     },
     "preferences": {
       "title": "Préférences de notification",

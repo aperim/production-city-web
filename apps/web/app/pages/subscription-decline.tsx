@@ -13,8 +13,18 @@
 
 import { useEffect, useRef, useState } from "react";
 import { declineSubscription } from "../lib/api-client";
+import { I18nProvider, useTranslation } from "../i18n/context";
 
 export function SubscriptionDeclinePage() {
+  return (
+    <I18nProvider>
+      <SubscriptionDeclinePageContent />
+    </I18nProvider>
+  );
+}
+
+function SubscriptionDeclinePageContent() {
+  const { t } = useTranslation();
   const [status, setStatus] = useState<"loading" | "success" | "error">("loading");
   const [message, setMessage] = useState("");
   const tokenRef = useRef<string | null>(null);
@@ -29,25 +39,27 @@ export function SubscriptionDeclinePage() {
 
     if (!tokenRef.current) {
       setStatus("error");
-      setMessage("Invalid or expired link.");
+      setMessage(t("subscriptions.decline.error"));
       return;
     }
 
     declineSubscription(tokenRef.current).then((result) => {
       if (result.ok) {
         setStatus("success");
-        setMessage("You have declined the subscription request.");
+        setMessage(t("subscriptions.decline.success"));
       } else {
         setStatus("error");
-        setMessage("Invalid or expired link.");
+        setMessage(t("subscriptions.decline.error"));
       }
     }).catch(() => {
       setStatus("error");
-      setMessage("Invalid or expired link.");
+      setMessage(t("subscriptions.decline.error"));
     });
   }, []);
 
-  const heading = status === "success" ? "Subscription Declined" : "Confirmation Failed";
+  const heading = status === "success"
+    ? t("subscriptions.decline.title")
+    : t("subscriptions.decline.failedTitle");
 
   return (
     <>
@@ -88,7 +100,7 @@ export function SubscriptionDeclinePage() {
                 href="/announcements"
                 className="text-sm font-medium text-primary underline underline-offset-4"
               >
-                {status === "success" ? "View Updates" : "Back to Updates"}
+                {status === "success" ? t("subscriptions.decline.viewUpdates") : t("announcements.detail.back")}
               </a>
             </>
           )}

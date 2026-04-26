@@ -348,19 +348,27 @@
     "confirm": {
       "title": "Subscription Confirmed",
       "success": "Your subscription to {categoryName} via {channel} has been confirmed.",
-      "error": "Invalid or expired confirmation link."
+      "error": "Invalid or expired confirmation link.",
+      "failedTitle": "Confirmation Failed",
+      "viewUpdates": "View Updates"
     },
     "decline": {
       "title": "Subscription Declined",
       "success": "You have declined the subscription request.",
-      "error": "Invalid or expired link."
+      "error": "Invalid or expired link.",
+      "failedTitle": "Confirmation Failed",
+      "viewUpdates": "View Updates"
     },
     "unsubscribe": {
       "title": "Unsubscribe",
       "confirm": "Unsubscribe from {categoryName} updates via {channel}?",
       "button": "Confirm Unsubscribe",
       "success": "You have been unsubscribed.",
-      "error": "Invalid or expired link."
+      "error": "Invalid or expired link.",
+      "successTitle": "Unsubscribed",
+      "errorTitle": "Error",
+      "confirmMessage": "Are you sure you want to unsubscribe from these updates?",
+      "managePreferences": "Manage preferences"
     },
     "preferences": {
       "title": "Notification Preferences",

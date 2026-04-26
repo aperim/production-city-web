@@ -14,8 +14,18 @@
 
 import { useCallback, useEffect, useRef, useState } from "react";
 import { unsubscribeByToken } from "../lib/api-client";
+import { I18nProvider, useTranslation } from "../i18n/context";
 
 export function SubscriptionUnsubscribePage() {
+  return (
+    <I18nProvider>
+      <SubscriptionUnsubscribePageContent />
+    </I18nProvider>
+  );
+}
+
+function SubscriptionUnsubscribePageContent() {
+  const { t } = useTranslation();
   const [step, setStep] = useState<"confirm" | "processing" | "success" | "error">("confirm");
   const [message, setMessage] = useState("");
   const tokenRef = useRef<string | null>(null);
@@ -32,7 +42,7 @@ export function SubscriptionUnsubscribePage() {
     if (!tokenRef.current) {
       setTokenMissing(true);
       setStep("error");
-      setMessage("Invalid or expired link.");
+      setMessage(t("subscriptions.unsubscribe.error"));
     }
   }, []);
 
@@ -46,18 +56,22 @@ export function SubscriptionUnsubscribePage() {
       const result = await unsubscribeByToken(tokenRef.current);
       if (result.ok) {
         setStep("success");
-        setMessage("You have been unsubscribed.");
+        setMessage(t("subscriptions.unsubscribe.success"));
       } else {
         setStep("error");
-        setMessage("Invalid or expired link.");
+        setMessage(t("subscriptions.unsubscribe.error"));
       }
     } catch {
       setStep("error");
-      setMessage("Invalid or expired link.");
+      setMessage(t("subscriptions.unsubscribe.error"));
     }
   }, []);
 
-  const heading = step === "confirm" && !tokenMissing ? "Unsubscribe" : step === "success" ? "Unsubscribed" : "Error";
+  const heading = step === "confirm" && !tokenMissing
+    ? t("subscriptions.unsubscribe.title")
+    : step === "success"
+      ? t("subscriptions.unsubscribe.successTitle")
+      : t("subscriptions.unsubscribe.errorTitle");
 
   return (
     <>
@@ -79,21 +93,21 @@ export function SubscriptionUnsubscribePage() {
           {step === "confirm" && !tokenMissing && (
             <>
               <p className="text-sm text-muted-foreground mb-6">
-                Are you sure you want to unsubscribe from these updates?
+                {t("subscriptions.unsubscribe.confirmMessage")}
               </p>
               <button
                 type="button"
                 onClick={handleUnsubscribe}
                 className="rounded-md border border-red-800/50 bg-red-900/20 px-4 py-2 text-sm font-medium text-red-400 hover:bg-red-900/40 transition-colors duration-150"
               >
-                Confirm Unsubscribe
+                {t("subscriptions.unsubscribe.button")}
               </button>
               <div className="mt-4">
                 <a
                   href="/announcements"
                   className="text-xs text-muted-foreground hover:text-foreground transition-colors duration-150"
                 >
-                  Cancel
+                  {t("common.cancel")}
                 </a>
               </div>
             </>
@@ -120,7 +134,7 @@ export function SubscriptionUnsubscribePage() {
                 href="/settings/subscriptions"
                 className="text-sm font-medium text-primary underline underline-offset-4"
               >
-                Manage preferences
+                {t("subscriptions.unsubscribe.managePreferences")}
               </a>
             </>
           )}
@@ -133,7 +147,7 @@ export function SubscriptionUnsubscribePage() {
                 href="/announcements"
                 className="text-sm font-medium text-primary underline underline-offset-4"
               >
-                Back to Updates
+                {t("announcements.detail.back")}
               </a>
             </>
           )}
