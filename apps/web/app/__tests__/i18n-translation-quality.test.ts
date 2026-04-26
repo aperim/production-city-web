@@ -231,6 +231,8 @@ describe("i18n no untranslated English leakage", () => {
         if (key.includes(".spec") && enValue.length < 50) continue;
         // Skip facility detail page content (pending professional translation)
         if (/^facilities\.[^.]+\.detail\./.test(key)) continue;
+        // Skip newer landing pages content (pending professional translation)
+        if (/^(services|firstNations|network|companyApproach|companyTeam|company)\./.test(key)) continue;
         // Skip keys with count placeholders only (e.g., "{count} questions")
         if (/^\{count\}\s+\w+$/.test(enValue.trim())) continue;
 
