@@ -25,6 +25,8 @@ export const LANDING_PAGES = [
   { path: "/facilities/broadcast-theatre", name: "Broadcast Theatre" },
   { path: "/facilities/commercial-sound-stages", name: "Commercial Sound Stages" },
   { path: "/facilities/screen-sound-stages", name: "Screen Sound Stages" },
+  // Masterplan page — Phase 4 (PRO-300)
+  { path: "/masterplan", name: "Masterplan" },
 ];
 
 /** Supported locale codes. */

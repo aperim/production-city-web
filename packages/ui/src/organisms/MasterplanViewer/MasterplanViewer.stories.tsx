@@ -11,7 +11,7 @@ const meta: Meta<typeof MasterplanViewer> = {
     docs: {
       description: {
         component:
-          "Interactive Three.js campus viewer organism. Wraps the vanilla `@productioncity/masterplan-viewer` package with a React lifecycle (mount/unmount/resize). WebGL-gated with a plain-text fallback.",
+          "Interactive Three.js campus viewer organism. Wraps the vanilla `@productioncity/masterplan-viewer` package with React lifecycle (mount/unmount/resize). WebGL-gated with poster image or text fallback. Respects `prefers-reduced-motion`. Auto-selects `quality: 'lite'` and labels off on mobile viewports.",
       },
     },
   },
@@ -27,7 +27,6 @@ const meta: Meta<typeof MasterplanViewer> = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-/** Default embed: auto-rotate on, labels on, routes off. */
 export const Default: Story = {
   args: {
     showLabels: true,
@@ -38,7 +37,6 @@ export const Default: Story = {
   },
 };
 
-/** Labels variant: building names and campus notes visible. */
 export const WithLabels: Story = {
   args: {
     showLabels: true,
@@ -56,10 +54,6 @@ export const WithLabels: Story = {
   },
 };
 
-/**
- * Mobile viewport: viewer fits a 375×667 frame.
- * ResizeObserver keeps the canvas correctly sized.
- */
 export const MobileViewport: Story = {
   args: {
     showLabels: false,
@@ -79,18 +73,71 @@ export const MobileViewport: Story = {
     docs: {
       description: {
         story:
-          "Rendered at mobile width (375px). `lite` quality reduces GPU load on small screens.",
+          "Mobile width (375px). `quality: 'lite'` reduces GPU load. Labels default to off on viewports < 768px.",
       },
     },
   },
 };
 
 /**
- * Loading state: shown for one render frame before the Three.js scene
- * has initialised. This story freezes the component before `useEffect`
- * fires by rendering inside a zero-size container so WebGL init is
- * effectively suppressed and the spinner stays visible.
+ * Reduced motion: auto-rotate is disabled when prefers-reduced-motion: reduce is active.
+ * The component reads window.matchMedia on mount and listens for runtime changes.
+ * Enable the Storybook 'Reduced Motion' accessibility toolbar toggle to test.
  */
+export const ReducedMotion: Story = {
+  args: {
+    autoRotate: true,
+    showLabels: true,
+    quality: "balanced",
+    className: "h-full w-full",
+  },
+  decorators: [
+    (Story) => (
+      <div style={{ height: "400px", background: "#0a0a0a" }}>
+        <Story />
+      </div>
+    ),
+  ],
+  parameters: {
+    docs: {
+      description: {
+        story:
+          "When `prefers-reduced-motion: reduce` is active the viewer ignores `autoRotate` and keeps the camera still. Enable the Storybook 'Reduced Motion' accessibility toggle to test. The component also responds to OS-level changes at runtime via `matchMedia` event listener.",
+      },
+    },
+  },
+};
+
+/**
+ * Mobile optimised: explicit lite quality + no labels.
+ * Mirrors what the component auto-applies on viewports narrower than 768px
+ * when `quality` and `showLabels` are left undefined.
+ */
+export const MobileOptimized: Story = {
+  args: {
+    quality: "lite",
+    showLabels: false,
+    autoRotate: true,
+    className: "h-full w-full",
+  },
+  decorators: [
+    (Story) => (
+      <div style={{ width: "375px", height: "500px", background: "#0a0a0a" }}>
+        <Story />
+      </div>
+    ),
+  ],
+  parameters: {
+    viewport: { defaultViewport: "mobile1" },
+    docs: {
+      description: {
+        story:
+          "`quality: 'lite'` reduces GPU load and labels are off — equivalent to the auto-detected mobile configuration. Use explicit overrides when you need guaranteed values regardless of viewport width.",
+      },
+    },
+  },
+};
+
 export const LoadingState: Story = {
   args: {
     showLabels: true,
@@ -99,7 +146,6 @@ export const LoadingState: Story = {
   },
   decorators: [
     (Story) => (
-      // Zero-height hides the canvas; the loading overlay stays visible in docs.
       <div style={{ height: "200px", background: "#0a0a0a", position: "relative" }}>
         <Story />
       </div>
@@ -109,36 +155,23 @@ export const LoadingState: Story = {
     docs: {
       description: {
         story:
-          "Spinner shown while the Three.js scene initialises. Disappears once the viewer is ready.",
+          "Golden-hour shimmer shown while Three.js initialises. The radial pulse matches the site's cinematic dark theme.",
       },
     },
   },
 };
 
-/**
- * Patches HTMLCanvasElement.prototype.getContext to return null for the
- * lifetime of this component. The patch is applied synchronously during render
- * so that MasterplanViewer's useEffect (which calls hasWebGL()) sees it.
- * The original is restored on unmount.
- */
 function NoWebGLWrapper({ children }: { children: React.ReactNode }) {
-   
   const original = HTMLCanvasElement.prototype.getContext;
   HTMLCanvasElement.prototype.getContext = () => null;
   useEffect(() => {
     return () => {
       HTMLCanvasElement.prototype.getContext = original;
     };
-  }, []);  
+  }, []);
   return <>{children}</>;
 }
 
-/**
- * Fallback: no WebGL.
- * `NoWebGLWrapper` patches `HTMLCanvasElement.prototype.getContext` synchronously
- * before render, so `hasWebGL()` (called inside `useEffect` on mount) returns false.
- * The patch is restored on unmount.
- */
 export const NoWebGLFallback: Story = {
   args: {
     ariaLabel: "Production City masterplan — interactive 3D campus viewer",
@@ -157,13 +190,38 @@ export const NoWebGLFallback: Story = {
     docs: {
       description: {
         story:
-          "When WebGL is unavailable, a plain accessible message is shown. The container keeps `role=\"img\"` and `aria-label`.",
+          "When WebGL is unavailable and no poster is provided, a plain accessible message is shown.",
       },
     },
   },
 };
 
-/** onFacilitySelect callback demo: logs selected facility to the Storybook actions panel. */
+export const NoWebGLWithPoster: Story = {
+  args: {
+    ariaLabel: "Production City masterplan — interactive 3D campus viewer",
+    posterSrc: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1920' height='1080'%3E%3Crect fill='%231a1c1e' width='1920' height='1080'/%3E%3Ctext x='960' y='540' text-anchor='middle' fill='%23555' font-family='monospace' font-size='24'%3EMasterplan poster%3C/text%3E%3C/svg%3E",
+    posterAlt: "Production City 6-hectare campus masterplan — aerial perspective",
+    className: "h-full w-full",
+  },
+  decorators: [
+    (Story) => (
+      <NoWebGLWrapper>
+        <div style={{ height: "400px", background: "#0a0a0a" }}>
+          <Story />
+        </div>
+      </NoWebGLWrapper>
+    ),
+  ],
+  parameters: {
+    docs: {
+      description: {
+        story:
+          "WebGL unavailable with a poster image. The poster fills the container with `object-cover` so it feels like a static screenshot of the 3D viewer.",
+      },
+    },
+  },
+};
+
 export const WithFacilitySelectCallback: Story = {
   args: {
     showLabels: true,

@@ -17,6 +17,7 @@ import {
 import { facilities, accessRouteLegend } from "@productioncity/masterplan-viewer/data";
 import type { Facility } from "@productioncity/masterplan-viewer";
 import { I18nProvider, useTranslation } from "../i18n/context";
+import { MEDIA } from "../lib/media-config";
 import {
   useLandingNav,
   useLandingFooter,
@@ -98,17 +99,26 @@ function MasterplanPageContent() {
         >
           <Suspense
             fallback={
-              <div className="flex h-full w-full items-center justify-center bg-(--pc-color-neutral-950)">
-                <div className="h-6 w-6 animate-spin rounded-full border-2 border-(--pc-color-neutral-700) border-t-(--pc-color-neutral-400)" />
+              <div
+                aria-hidden="true"
+                className="relative h-full w-full overflow-hidden bg-(--pc-color-neutral-950)"
+              >
+                <div
+                  className="absolute inset-0 animate-pulse"
+                  style={{
+                    background:
+                      "radial-gradient(ellipse 90% 60% at 50% 55%, rgba(120,90,40,0.12) 0%, rgba(60,40,20,0.06) 50%, transparent 80%)",
+                  }}
+                />
               </div>
             }
           >
             <MasterplanViewer
-              showLabels
               autoRotate
-              quality="balanced"
               className="h-full w-full"
               ariaLabel={t("masterplan.hero.ariaLabel")}
+              posterSrc={MEDIA["masterplan-poster"]?.darkSrc}
+              posterAlt={MEDIA["masterplan-poster"]?.alt}
               onFacilitySelect={(_id, facility) => setSelectedFacility(facility ?? null)}
             />
           </Suspense>

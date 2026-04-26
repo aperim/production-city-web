@@ -462,6 +462,7 @@ function HomePageContent() {
                 </div>
                 <a
                   href={`${prefix}/masterplan`}
+                  onMouseEnter={() => { void import("@productioncity/holding-ui"); }}
                   className="mt-8 inline-flex items-center gap-2 border border-(--pc-color-neutral-100) px-6 py-3 font-sans text-sm font-medium text-(--pc-color-neutral-100) no-underline transition-opacity duration-200 hover:opacity-65"
                 >
                   {t("home.masterplanTeaser.ctaLabel")} <span aria-hidden="true">→</span>
