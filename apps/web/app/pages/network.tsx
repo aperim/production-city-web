@@ -92,10 +92,10 @@ function NetworkPageContent() {
 
       {/* Why sequenced */}
       <ScrollRevealSection delay={0}>
-        <section className="py-12 border-b border-border">
+        <section className="py-12 border-b border-border" aria-labelledby="sequence-heading">
           <div className="grid grid-cols-1 gap-8 lg:grid-cols-12">
             <div className="lg:col-span-3">
-              <h2 className="text-xl font-semibold text-foreground">
+              <h2 id="sequence-heading" className="text-xl font-semibold text-foreground">
                 {t("network.sequenceHeading")}
               </h2>
             </div>
@@ -108,10 +108,10 @@ function NetworkPageContent() {
 
       {/* One operator */}
       <ScrollRevealSection delay={0}>
-        <section className="py-12 border-b border-border">
+        <section className="py-12 border-b border-border" aria-labelledby="operator-heading">
           <div className="grid grid-cols-1 gap-8 lg:grid-cols-12">
             <div className="lg:col-span-3">
-              <h2 className="text-xl font-semibold text-foreground">
+              <h2 id="operator-heading" className="text-xl font-semibold text-foreground">
                 {t("network.operatorHeading")}
               </h2>
             </div>
@@ -123,8 +123,8 @@ function NetworkPageContent() {
       </ScrollRevealSection>
 
       {/* CTA */}
-      <section className="py-12 border-b border-border text-center">
-        <h2 className="text-xl font-semibold text-foreground mb-6">
+      <section className="py-12 border-b border-border text-center" aria-labelledby="network-cta-heading">
+        <h2 id="network-cta-heading" className="text-xl font-semibold text-foreground mb-6">
           {t("network.cta")}
         </h2>
         <a

@@ -129,8 +129,8 @@ function FacilityScreenSoundStagesContent() {
       </ScrollRevealSection>
 
       {/* CTA */}
-      <section className="py-12 border-b border-border text-center">
-        <h2 className="text-xl font-semibold text-foreground mb-6">
+      <section className="py-12 border-b border-border text-center" aria-labelledby="sss-cta-heading">
+        <h2 id="sss-cta-heading" className="text-xl font-semibold text-foreground mb-6">
           {t("facilities.screenStages.detail.cta")}
         </h2>
         <a

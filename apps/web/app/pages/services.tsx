@@ -58,7 +58,7 @@ function ServicesPageContent() {
 
       {/* Service list */}
       <ScrollRevealSection delay={0}>
-        <section className="py-10 border-b border-border" aria-label="Services list">
+        <section className="py-10 border-b border-border" aria-labelledby="page-heading">
           <div className="flex flex-col divide-y divide-border">
             {SERVICE_KEYS.map((num) => (
               <div key={num} className="flex gap-6 py-5 items-baseline">
@@ -81,12 +81,12 @@ function ServicesPageContent() {
 
       {/* Operational argument */}
       <ScrollRevealSection delay={100}>
-        <section className="py-10 border-b border-border bg-foreground/5">
+        <section className="py-10 border-b border-border bg-foreground/5" aria-labelledby="operational-heading">
           <div className="grid grid-cols-1 gap-8 lg:grid-cols-12">
             <div className="lg:col-span-2">
-              <p className="text-xs font-mono tracking-widest text-muted-foreground uppercase">
-                How it works
-              </p>
+              <h2 id="operational-heading" className="text-xs font-mono tracking-widest text-muted-foreground uppercase">
+                {t("services.operationalLabel")}
+              </h2>
             </div>
             <p className="lg:col-span-9 text-lg text-foreground leading-relaxed" style={{ fontFamily: "var(--font-serif, serif)" }}>
               {t("services.operationalPoint")}
@@ -96,8 +96,8 @@ function ServicesPageContent() {
       </ScrollRevealSection>
 
       {/* CTA */}
-      <section className="py-12 border-b border-border text-center">
-        <h2 className="text-xl font-semibold text-foreground mb-6">
+      <section className="py-12 border-b border-border text-center" aria-labelledby="services-cta-heading">
+        <h2 id="services-cta-heading" className="text-xl font-semibold text-foreground mb-6">
           {t("services.cta")}
         </h2>
         <a

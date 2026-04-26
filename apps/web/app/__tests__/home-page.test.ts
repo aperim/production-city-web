@@ -77,10 +77,9 @@ describe("Home page — Operating model section", () => {
     expect(src).toContain("stations from idea to audience");
   });
 
-  it("includes IP lifecycle diagram component", () => {
+  it("includes signal diagram component", () => {
     const src = readHome();
-    expect(src).toContain("IpLifecycleDiagram");
-    expect(src).toContain("IP LIFECYCLE");
+    expect(src).toContain("SignalDiagram");
   });
 });
 

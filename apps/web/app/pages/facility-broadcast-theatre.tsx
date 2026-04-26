@@ -62,7 +62,7 @@ function FacilityBroadcastTheatreContent() {
 
       {/* Main content */}
       <ScrollRevealSection delay={0}>
-        <section className="py-10 border-b border-border">
+        <section className="py-10 border-b border-border" aria-labelledby="bt-content-heading">
           <div className="grid grid-cols-1 gap-10 lg:grid-cols-2 lg:items-start">
             {/* Prose */}
             <div className="flex flex-col gap-4">
@@ -89,9 +89,9 @@ function FacilityBroadcastTheatreContent() {
 
             {/* Spec table */}
             <div>
-              <p className="text-xs font-mono tracking-widest text-muted-foreground uppercase mb-4">
+              <h2 id="bt-content-heading" className="text-xs font-mono tracking-widest text-muted-foreground uppercase mb-4">
                 {t("facilities.broadcastTheatre.detail.specLabel")}
-              </p>
+              </h2>
               <dl className="flex flex-col divide-y divide-border">
                 {specs.map(({ k, v }) => (
                   <div key={k} className="flex justify-between py-3 text-sm">
@@ -126,8 +126,8 @@ function FacilityBroadcastTheatreContent() {
       </ScrollRevealSection>
 
       {/* CTA */}
-      <section className="py-12 border-b border-border text-center">
-        <h2 className="text-xl font-semibold text-foreground mb-6">
+      <section className="py-12 border-b border-border text-center" aria-labelledby="bt-cta-heading">
+        <h2 id="bt-cta-heading" className="text-xl font-semibold text-foreground mb-6">
           {t("facilities.broadcastTheatre.detail.cta")}
         </h2>
         <a
