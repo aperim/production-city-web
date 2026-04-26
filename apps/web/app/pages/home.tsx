@@ -465,7 +465,7 @@ function HomePageContent() {
                   onMouseEnter={() => { void import("@productioncity/holding-ui"); }}
                   className="mt-8 inline-flex items-center gap-2 border border-(--pc-color-neutral-100) px-6 py-3 font-sans text-sm font-medium text-(--pc-color-neutral-100) no-underline transition-opacity duration-200 hover:opacity-65"
                 >
-                  {t("home.masterplanTeaser.ctaLabel")} <span aria-hidden="true">→</span>
+                  {t("home.masterplanTeaser.ctaLabel")}
                 </a>
               </div>
 
@@ -482,14 +482,7 @@ function HomePageContent() {
                     style={{ aspectRatio: "16/9" }}
                   />
                 </div>
-              ) : (
-                <div
-                  className="flex aspect-video items-center justify-center border border-(--pc-color-neutral-800) bg-(--pc-color-neutral-950) font-mono text-xs text-(--pc-color-neutral-600)"
-                  aria-hidden="true"
-                >
-                  [ 3D MASTERPLAN POSTER — TO BE CAPTURED FROM VIEWER ]
-                </div>
-              )}
+              ) : null}
             </div>
           </div>
         </section>
