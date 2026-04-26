@@ -7,6 +7,7 @@
 
 import {
   LandingPageTemplate,
+  MediaHero,
   EOISection,
   ScrollRevealSection,
   ForwardLookingDisclaimer,
@@ -19,6 +20,7 @@ import {
   useEoiCategories,
   useEoiSubmit,
 } from "../lib/use-landing-layout";
+import { MEDIA } from "../lib/media-config";
 
 export function FacilityBroadcastTheatrePage() {
   return (
@@ -48,17 +50,32 @@ function FacilityBroadcastTheatreContent() {
   return (
     <LandingPageTemplate nav={nav} footer={footer}>
       {/* Hero */}
-      <section className="py-16 border-b border-border" aria-labelledby="page-heading">
-        <p className="text-xs font-mono tracking-widest text-muted-foreground uppercase mb-4">
-          {t("facilities.broadcastTheatre.detail.eyebrow")}
-        </p>
-        <h1 id="page-heading" className="text-3xl font-semibold text-foreground sm:text-4xl">
-          {t("facilities.broadcastTheatre.detail.heading")}
-        </h1>
-        <p className="mt-3 max-w-2xl text-base text-muted-foreground">
-          {t("facilities.broadcastTheatre.detail.lead")}
-        </p>
-      </section>
+      {MEDIA["facilities-broadcast-theatre"] && (
+        <MediaHero
+          lightSrc={MEDIA["facilities-broadcast-theatre"].lightSrc}
+          darkSrc={MEDIA["facilities-broadcast-theatre"].darkSrc}
+          alt={MEDIA["facilities-broadcast-theatre"].alt}
+          width={MEDIA["facilities-broadcast-theatre"].width}
+          height={500}
+          averageColor={MEDIA["facilities-broadcast-theatre"].averageColor}
+          photographer={MEDIA["facilities-broadcast-theatre"].photographer}
+          photographerUrl={MEDIA["facilities-broadcast-theatre"].photographerUrl}
+          source={MEDIA["facilities-broadcast-theatre"].source}
+          sourceUrl={MEDIA["facilities-broadcast-theatre"].sourceUrl}
+        >
+          <div className="pb-8">
+            <p className="text-xs font-mono tracking-widest text-white/60 uppercase mb-4">
+              {t("facilities.broadcastTheatre.detail.eyebrow")}
+            </p>
+            <h1 id="page-heading" className="text-3xl font-semibold text-white sm:text-4xl">
+              {t("facilities.broadcastTheatre.detail.heading")}
+            </h1>
+            <p className="mt-3 max-w-2xl text-base text-white/80">
+              {t("facilities.broadcastTheatre.detail.lead")}
+            </p>
+          </div>
+        </MediaHero>
+      )}
 
       {/* Main content */}
       <ScrollRevealSection delay={0}>

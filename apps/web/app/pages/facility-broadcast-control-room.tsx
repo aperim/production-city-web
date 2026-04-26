@@ -7,6 +7,7 @@
 
 import {
   LandingPageTemplate,
+  MediaHero,
   EOISection,
   ScrollRevealSection,
   ForwardLookingDisclaimer,
@@ -19,6 +20,7 @@ import {
   useEoiCategories,
   useEoiSubmit,
 } from "../lib/use-landing-layout";
+import { MEDIA } from "../lib/media-config";
 
 export function FacilityBroadcastControlRoomPage() {
   return (
@@ -47,17 +49,32 @@ function FacilityBroadcastControlRoomContent() {
   return (
     <LandingPageTemplate nav={nav} footer={footer}>
       {/* Hero */}
-      <section className="py-16 border-b border-border" aria-labelledby="page-heading">
-        <p className="text-xs font-mono tracking-widest text-muted-foreground uppercase mb-4">
-          {t("facilities.controlRoom.detail.eyebrow")}
-        </p>
-        <h1 id="page-heading" className="text-3xl font-semibold text-foreground sm:text-4xl">
-          {t("facilities.controlRoom.detail.heading")}
-        </h1>
-        <p className="mt-3 max-w-2xl text-base text-muted-foreground">
-          {t("facilities.controlRoom.detail.lead")}
-        </p>
-      </section>
+      {MEDIA["facilities-control-room"] && (
+        <MediaHero
+          lightSrc={MEDIA["facilities-control-room"].lightSrc}
+          darkSrc={MEDIA["facilities-control-room"].darkSrc}
+          alt={MEDIA["facilities-control-room"].alt}
+          width={MEDIA["facilities-control-room"].width}
+          height={500}
+          averageColor={MEDIA["facilities-control-room"].averageColor}
+          photographer={MEDIA["facilities-control-room"].photographer}
+          photographerUrl={MEDIA["facilities-control-room"].photographerUrl}
+          source={MEDIA["facilities-control-room"].source}
+          sourceUrl={MEDIA["facilities-control-room"].sourceUrl}
+        >
+          <div className="pb-8">
+            <p className="text-xs font-mono tracking-widest text-white/60 uppercase mb-4">
+              {t("facilities.controlRoom.detail.eyebrow")}
+            </p>
+            <h1 id="page-heading" className="text-3xl font-semibold text-white sm:text-4xl">
+              {t("facilities.controlRoom.detail.heading")}
+            </h1>
+            <p className="mt-3 max-w-2xl text-base text-white/80">
+              {t("facilities.controlRoom.detail.lead")}
+            </p>
+          </div>
+        </MediaHero>
+      )}
 
       {/* Main content */}
       <ScrollRevealSection delay={0}>

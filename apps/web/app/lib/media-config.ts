@@ -86,6 +86,18 @@ export const MEDIA: Record<string, MediaSource> = {
 
   // Contact page
   "contact-hero": media("contact-hero", "Professional meeting and business conversation", "Werner Pfennig", "https://www.pexels.com/@werner-pfennig", "#AEADAD"),
+
+  // Network page
+  "network-hero": media("network-hero", "Breathtaking aerial cityscape of Tokyo, Japan, illuminated at night with vibrant lights", "Michael Pointner", "https://www.pexels.com/@michael-pointner-134459625", "#1E1E26"),
+
+  // Services page
+  "services-hero": media("services-hero", "A professional film crew collaborates in a modern studio setting, focusing on high-quality production", "Minh Tri", "https://www.pexels.com/@minhtribgn", "#616765"),
+
+  // Company approach page
+  "company-approach-hero": media("company-approach-hero", "A spacious, modern interior with escalators in a silent architectural setting", "daydream", "https://www.pexels.com/@daydream-753072845", "#3A3A38"),
+
+  // First Nations page (landscape — no portraiture)
+  "first-nations-hero": media("first-nations-hero", "Desert sunset with silhouetted trees and birds in Witjira, South Australia — deep country", "Mark Direen", "https://www.pexels.com/@mark-direen-622749", "#665963"),
 };
 
 /** Get media source for a content context. Returns undefined if not found. */

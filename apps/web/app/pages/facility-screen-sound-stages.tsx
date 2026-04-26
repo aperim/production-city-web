@@ -7,6 +7,7 @@
 
 import {
   LandingPageTemplate,
+  MediaHero,
   EOISection,
   ScrollRevealSection,
   ForwardLookingDisclaimer,
@@ -19,6 +20,7 @@ import {
   useEoiCategories,
   useEoiSubmit,
 } from "../lib/use-landing-layout";
+import { MEDIA } from "../lib/media-config";
 
 export function FacilityScreenSoundStagesPage() {
   return (
@@ -48,17 +50,32 @@ function FacilityScreenSoundStagesContent() {
   return (
     <LandingPageTemplate nav={nav} footer={footer}>
       {/* Hero */}
-      <section className="py-16 border-b border-border" aria-labelledby="page-heading">
-        <p className="text-xs font-mono tracking-widest text-muted-foreground uppercase mb-4">
-          {t("facilities.screenStages.detail.eyebrow")}
-        </p>
-        <h1 id="page-heading" className="text-3xl font-semibold text-foreground sm:text-4xl">
-          {t("facilities.screenStages.detail.heading")}
-        </h1>
-        <p className="mt-3 max-w-2xl text-base text-muted-foreground">
-          {t("facilities.screenStages.detail.lead")}
-        </p>
-      </section>
+      {MEDIA["facilities-screen-stage"] && (
+        <MediaHero
+          lightSrc={MEDIA["facilities-screen-stage"].lightSrc}
+          darkSrc={MEDIA["facilities-screen-stage"].darkSrc}
+          alt={MEDIA["facilities-screen-stage"].alt}
+          width={MEDIA["facilities-screen-stage"].width}
+          height={500}
+          averageColor={MEDIA["facilities-screen-stage"].averageColor}
+          photographer={MEDIA["facilities-screen-stage"].photographer}
+          photographerUrl={MEDIA["facilities-screen-stage"].photographerUrl}
+          source={MEDIA["facilities-screen-stage"].source}
+          sourceUrl={MEDIA["facilities-screen-stage"].sourceUrl}
+        >
+          <div className="pb-8">
+            <p className="text-xs font-mono tracking-widest text-white/60 uppercase mb-4">
+              {t("facilities.screenStages.detail.eyebrow")}
+            </p>
+            <h1 id="page-heading" className="text-3xl font-semibold text-white sm:text-4xl">
+              {t("facilities.screenStages.detail.heading")}
+            </h1>
+            <p className="mt-3 max-w-2xl text-base text-white/80">
+              {t("facilities.screenStages.detail.lead")}
+            </p>
+          </div>
+        </MediaHero>
+      )}
 
       {/* Main content */}
       <ScrollRevealSection delay={0}>

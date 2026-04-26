@@ -7,11 +7,13 @@
 
 import {
   LandingPageTemplate,
+  MediaHero,
   ScrollRevealSection,
   ForwardLookingDisclaimer,
   EOISection,
 } from "@productioncity/holding-ui";
 import { I18nProvider, useTranslation } from "../i18n/context";
+import { MEDIA } from "../lib/media-config";
 import {
   useLandingNav,
   useLandingFooter,
@@ -39,17 +41,32 @@ function CompanyApproachPageContent() {
   return (
     <LandingPageTemplate nav={nav} footer={footer}>
       {/* Hero */}
-      <section className="py-16 border-b border-border" aria-labelledby="page-heading">
-        <p className="text-xs font-mono tracking-widest text-muted-foreground uppercase mb-4">
-          {t("companyApproach.eyebrow")}
-        </p>
-        <h1 id="page-heading" className="text-3xl font-semibold text-foreground sm:text-4xl">
-          {t("companyApproach.heading")}
-        </h1>
-        <p className="mt-3 max-w-2xl text-base text-muted-foreground">
-          {t("companyApproach.lead")}
-        </p>
-      </section>
+      {MEDIA["company-approach-hero"] && (
+        <MediaHero
+          lightSrc={MEDIA["company-approach-hero"].lightSrc}
+          darkSrc={MEDIA["company-approach-hero"].darkSrc}
+          alt={MEDIA["company-approach-hero"].alt}
+          width={MEDIA["company-approach-hero"].width}
+          height={500}
+          averageColor={MEDIA["company-approach-hero"].averageColor}
+          photographer={MEDIA["company-approach-hero"].photographer}
+          photographerUrl={MEDIA["company-approach-hero"].photographerUrl}
+          source={MEDIA["company-approach-hero"].source}
+          sourceUrl={MEDIA["company-approach-hero"].sourceUrl}
+        >
+          <div className="pb-8">
+            <p className="text-xs font-mono tracking-widest text-white/60 uppercase mb-4">
+              {t("companyApproach.eyebrow")}
+            </p>
+            <h1 id="page-heading" className="text-3xl font-semibold text-white sm:text-4xl">
+              {t("companyApproach.heading")}
+            </h1>
+            <p className="mt-3 max-w-2xl text-base text-white/80">
+              {t("companyApproach.lead")}
+            </p>
+          </div>
+        </MediaHero>
+      )}
 
       {/* Vertical integration argument */}
       <ScrollRevealSection delay={0}>

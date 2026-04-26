@@ -8,11 +8,13 @@
 import {
   LandingPageTemplate,
   GlobalCampusMap,
+  MediaHero,
   ScrollRevealSection,
   ForwardLookingDisclaimer,
   EOISection,
 } from "@productioncity/holding-ui";
 import { I18nProvider, useTranslation } from "../i18n/context";
+import { MEDIA } from "../lib/media-config";
 import {
   useLandingNav,
   useLandingFooter,
@@ -68,17 +70,32 @@ function NetworkPageContent() {
   return (
     <LandingPageTemplate nav={nav} footer={footer}>
       {/* Hero */}
-      <section className="py-16 border-b border-border" aria-labelledby="page-heading">
-        <p className="text-xs font-mono tracking-widest text-muted-foreground uppercase mb-4">
-          {t("network.eyebrow")}
-        </p>
-        <h1 id="page-heading" className="text-3xl font-semibold text-foreground sm:text-4xl">
-          {t("network.heading")}
-        </h1>
-        <p className="mt-3 max-w-2xl text-base text-muted-foreground">
-          {t("network.lead")}
-        </p>
-      </section>
+      {MEDIA["network-hero"] && (
+        <MediaHero
+          lightSrc={MEDIA["network-hero"].lightSrc}
+          darkSrc={MEDIA["network-hero"].darkSrc}
+          alt={MEDIA["network-hero"].alt}
+          width={MEDIA["network-hero"].width}
+          height={500}
+          averageColor={MEDIA["network-hero"].averageColor}
+          photographer={MEDIA["network-hero"].photographer}
+          photographerUrl={MEDIA["network-hero"].photographerUrl}
+          source={MEDIA["network-hero"].source}
+          sourceUrl={MEDIA["network-hero"].sourceUrl}
+        >
+          <div className="pb-8">
+            <p className="text-xs font-mono tracking-widest text-white/60 uppercase mb-4">
+              {t("network.eyebrow")}
+            </p>
+            <h1 id="page-heading" className="text-3xl font-semibold text-white sm:text-4xl">
+              {t("network.heading")}
+            </h1>
+            <p className="mt-3 max-w-2xl text-base text-white/80">
+              {t("network.lead")}
+            </p>
+          </div>
+        </MediaHero>
+      )}
 
       {/* Campus map / location list */}
       <ScrollRevealSection delay={0}>

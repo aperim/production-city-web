@@ -15,6 +15,7 @@ import {
   SignalDiagram,
 } from "@productioncity/holding-ui";
 import { I18nProvider, useTranslation } from "../i18n/context";
+import { MEDIA } from "../lib/media-config";
 import {
   useLandingNav,
   useLandingFooter,
@@ -159,6 +160,26 @@ function HomePageContent() {
     <LandingPageTemplate nav={{ ...nav, transparent: true }} footer={footer}>
       {/* ═══════════ HERO ═══════════ */}
       <section className="relative flex min-h-dvh flex-col justify-end bg-(--pc-color-neutral-950) px-(--pc-spacing-6) pb-12 text-(--pc-color-neutral-100)" aria-labelledby="hero-heading">
+        {/* Hero background image */}
+        {MEDIA["home-hero"] && (
+          <div className="absolute inset-0 overflow-hidden" aria-hidden="true">
+            <img
+              src={MEDIA["home-hero"].lightSrc}
+              alt=""
+              width={1920}
+              height={1080}
+              loading="eager"
+              className="h-full w-full object-cover opacity-40"
+              style={{ objectPosition: "center 40%" }}
+            />
+            <div
+              className="absolute inset-0"
+              style={{
+                background: "linear-gradient(to top, rgba(0,0,0,0.92) 0%, rgba(0,0,0,0.55) 50%, rgba(0,0,0,0.35) 100%)",
+              }}
+            />
+          </div>
+        )}
         <div className="mx-auto w-full max-w-[1720px]">
           <div className="mb-6 flex items-center gap-2 font-mono text-[11px] uppercase tracking-[0.18em] text-(--pc-color-neutral-400)">
             <span className="inline-block h-2 w-2 rounded-full bg-(--pc-color-secondary-500)" aria-hidden="true" />
@@ -280,22 +301,37 @@ function HomePageContent() {
               {/* Screen stages — tall, spans 2 rows */}
               <a
                 href={`${prefix}/facilities#screen-stages`}
-                className="group flex min-h-[520px] flex-col justify-between border border-(--pc-color-neutral-800) p-6 no-underline transition-colors duration-200 hover:border-(--pc-color-neutral-600) md:row-span-2"
+                className="group flex min-h-[520px] flex-col justify-between border border-(--pc-color-neutral-800) no-underline transition-colors duration-200 hover:border-(--pc-color-neutral-600) md:row-span-2"
               >
-                <div>
-                  <div className="font-mono text-[10px] uppercase tracking-[0.14em] text-(--pc-color-neutral-400)">
-                    {screenTile.label}
+                {MEDIA["facilities-screen-stage"] && (
+                  <div className="overflow-hidden">
+                    <img
+                      src={MEDIA["facilities-screen-stage"].lightSrc}
+                      alt={MEDIA["facilities-screen-stage"].alt}
+                      width={1920}
+                      height={1080}
+                      loading="lazy"
+                      className="h-auto w-full object-cover transition-transform duration-500 group-hover:scale-[1.02]"
+                      style={{ aspectRatio: "16/9" }}
+                    />
                   </div>
-                  <h3 className="mt-4 font-serif text-[clamp(22px,3vw,44px)] font-normal leading-[1.15]">
-                    {screenTile.heading}
-                  </h3>
-                </div>
-                <div>
-                  <div className="whitespace-pre-line font-mono text-xs leading-relaxed text-(--pc-color-neutral-400)">
-                    {FACILITY_TILES[0].specs}
+                )}
+                <div className="flex flex-1 flex-col justify-between p-6">
+                  <div>
+                    <div className="font-mono text-[10px] uppercase tracking-[0.14em] text-(--pc-color-neutral-400)">
+                      {screenTile.label}
+                    </div>
+                    <h3 className="mt-4 font-serif text-[clamp(22px,3vw,44px)] font-normal leading-[1.15]">
+                      {screenTile.heading}
+                    </h3>
                   </div>
-                  <div className="mt-4 flex items-center gap-2 text-sm text-(--pc-color-neutral-300)">
-                    {FACILITY_TILES[0].linkLabel} <span aria-hidden="true">→</span>
+                  <div>
+                    <div className="whitespace-pre-line font-mono text-xs leading-relaxed text-(--pc-color-neutral-400)">
+                      {FACILITY_TILES[0].specs}
+                    </div>
+                    <div className="mt-4 flex items-center gap-2 text-sm text-(--pc-color-neutral-300)">
+                      {FACILITY_TILES[0].linkLabel} <span aria-hidden="true">→</span>
+                    </div>
                   </div>
                 </div>
               </a>
@@ -303,22 +339,37 @@ function HomePageContent() {
               {/* Commercial stages */}
               <a
                 href={`${prefix}/facilities#commercial-stages`}
-                className="group flex flex-col justify-between border border-(--pc-color-neutral-800) p-6 no-underline transition-colors duration-200 hover:border-(--pc-color-neutral-600)"
+                className="group flex flex-col justify-between border border-(--pc-color-neutral-800) no-underline transition-colors duration-200 hover:border-(--pc-color-neutral-600)"
               >
-                <div>
-                  <div className="font-mono text-[10px] uppercase tracking-[0.14em] text-(--pc-color-neutral-400)">
-                    {commercialTile.label}
+                {MEDIA["facilities-commercial-stage"] && (
+                  <div className="overflow-hidden">
+                    <img
+                      src={MEDIA["facilities-commercial-stage"].lightSrc}
+                      alt={MEDIA["facilities-commercial-stage"].alt}
+                      width={1920}
+                      height={1080}
+                      loading="lazy"
+                      className="h-auto w-full object-cover transition-transform duration-500 group-hover:scale-[1.02]"
+                      style={{ aspectRatio: "16/9" }}
+                    />
                   </div>
-                  <h3 className="mt-3 font-serif text-[clamp(18px,2vw,30px)] font-normal leading-[1.15]">
-                    {commercialTile.heading}
-                  </h3>
-                </div>
-                <div>
-                  <div className="mt-4 whitespace-pre-line font-mono text-xs leading-relaxed text-(--pc-color-neutral-400)">
-                    {FACILITY_TILES[1].specs}
+                )}
+                <div className="flex flex-1 flex-col justify-between p-6">
+                  <div>
+                    <div className="font-mono text-[10px] uppercase tracking-[0.14em] text-(--pc-color-neutral-400)">
+                      {commercialTile.label}
+                    </div>
+                    <h3 className="mt-3 font-serif text-[clamp(18px,2vw,30px)] font-normal leading-[1.15]">
+                      {commercialTile.heading}
+                    </h3>
                   </div>
-                  <div className="mt-4 flex items-center gap-2 text-sm text-(--pc-color-neutral-300)">
-                    {FACILITY_TILES[1].linkLabel} <span aria-hidden="true">→</span>
+                  <div>
+                    <div className="mt-4 whitespace-pre-line font-mono text-xs leading-relaxed text-(--pc-color-neutral-400)">
+                      {FACILITY_TILES[1].specs}
+                    </div>
+                    <div className="mt-4 flex items-center gap-2 text-sm text-(--pc-color-neutral-300)">
+                      {FACILITY_TILES[1].linkLabel} <span aria-hidden="true">→</span>
+                    </div>
                   </div>
                 </div>
               </a>
@@ -326,22 +377,37 @@ function HomePageContent() {
               {/* Broadcast theatre */}
               <a
                 href={`${prefix}/facilities#broadcast-theatre`}
-                className="group flex flex-col justify-between border border-(--pc-color-neutral-800) p-6 no-underline transition-colors duration-200 hover:border-(--pc-color-neutral-600)"
+                className="group flex flex-col justify-between border border-(--pc-color-neutral-800) no-underline transition-colors duration-200 hover:border-(--pc-color-neutral-600)"
               >
-                <div>
-                  <div className="font-mono text-[10px] uppercase tracking-[0.14em] text-(--pc-color-neutral-400)">
-                    {theatreTile.label}
+                {MEDIA["facilities-broadcast-theatre"] && (
+                  <div className="overflow-hidden">
+                    <img
+                      src={MEDIA["facilities-broadcast-theatre"].lightSrc}
+                      alt={MEDIA["facilities-broadcast-theatre"].alt}
+                      width={1920}
+                      height={1080}
+                      loading="lazy"
+                      className="h-auto w-full object-cover transition-transform duration-500 group-hover:scale-[1.02]"
+                      style={{ aspectRatio: "16/9" }}
+                    />
                   </div>
-                  <h3 className="mt-3 font-serif text-[clamp(18px,2vw,30px)] font-normal leading-[1.15]">
-                    {theatreTile.heading}
-                  </h3>
-                </div>
-                <div>
-                  <div className="mt-4 whitespace-pre-line font-mono text-xs leading-relaxed text-(--pc-color-neutral-400)">
-                    {FACILITY_TILES[2].specs}
+                )}
+                <div className="flex flex-1 flex-col justify-between p-6">
+                  <div>
+                    <div className="font-mono text-[10px] uppercase tracking-[0.14em] text-(--pc-color-neutral-400)">
+                      {theatreTile.label}
+                    </div>
+                    <h3 className="mt-3 font-serif text-[clamp(18px,2vw,30px)] font-normal leading-[1.15]">
+                      {theatreTile.heading}
+                    </h3>
                   </div>
-                  <div className="mt-4 flex items-center gap-2 text-sm text-(--pc-color-neutral-300)">
-                    {FACILITY_TILES[2].linkLabel} <span aria-hidden="true">→</span>
+                  <div>
+                    <div className="mt-4 whitespace-pre-line font-mono text-xs leading-relaxed text-(--pc-color-neutral-400)">
+                      {FACILITY_TILES[2].specs}
+                    </div>
+                    <div className="mt-4 flex items-center gap-2 text-sm text-(--pc-color-neutral-300)">
+                      {FACILITY_TILES[2].linkLabel} <span aria-hidden="true">→</span>
+                    </div>
                   </div>
                 </div>
               </a>

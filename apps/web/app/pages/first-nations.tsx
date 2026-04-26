@@ -9,6 +9,7 @@
 
 import {
   LandingPageTemplate,
+  MediaHero,
   ScrollRevealSection,
   ForwardLookingDisclaimer,
 } from "@productioncity/holding-ui";
@@ -17,6 +18,7 @@ import {
   useLandingNav,
   useLandingFooter,
 } from "../lib/use-landing-layout";
+import { MEDIA } from "../lib/media-config";
 
 export function FirstNationsPage() {
   return (
@@ -55,25 +57,36 @@ function FirstNationsPageContent() {
 
   return (
     <LandingPageTemplate nav={nav} footer={footer}>
-      {/* Hero — ochre accent border */}
-      <section
-        className="py-16 border-b"
-        style={{ borderColor: "var(--ochre, oklch(0.72 0.15 60))" }}
-        aria-labelledby="page-heading"
-      >
-        <p
-          className="text-xs font-mono tracking-widest uppercase mb-4"
-          style={{ color: "var(--ochre, oklch(0.72 0.15 60))" }}
+      {/* Hero — Australian country landscape, ochre accent */}
+      {MEDIA["first-nations-hero"] && (
+        <MediaHero
+          lightSrc={MEDIA["first-nations-hero"].lightSrc}
+          darkSrc={MEDIA["first-nations-hero"].darkSrc}
+          alt={MEDIA["first-nations-hero"].alt}
+          width={MEDIA["first-nations-hero"].width}
+          height={500}
+          averageColor={MEDIA["first-nations-hero"].averageColor}
+          photographer={MEDIA["first-nations-hero"].photographer}
+          photographerUrl={MEDIA["first-nations-hero"].photographerUrl}
+          source={MEDIA["first-nations-hero"].source}
+          sourceUrl={MEDIA["first-nations-hero"].sourceUrl}
         >
-          {t("firstNations.eyebrow")}
-        </p>
-        <h1 id="page-heading" className="text-3xl font-semibold text-foreground sm:text-4xl">
-          {t("firstNations.heading")}
-        </h1>
-        <p className="mt-3 max-w-2xl text-base text-muted-foreground">
-          {t("firstNations.lead")}
-        </p>
-      </section>
+          <div className="pb-8">
+            <p
+              className="text-xs font-mono tracking-widest uppercase mb-4"
+              style={{ color: "oklch(0.82 0.15 60)" }}
+            >
+              {t("firstNations.eyebrow")}
+            </p>
+            <h1 id="page-heading" className="text-3xl font-semibold text-white sm:text-4xl">
+              {t("firstNations.heading")}
+            </h1>
+            <p className="mt-3 max-w-2xl text-base text-white/80">
+              {t("firstNations.lead")}
+            </p>
+          </div>
+        </MediaHero>
+      )}
 
       {/* Acknowledgement of Country */}
       <ScrollRevealSection delay={0}>

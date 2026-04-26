@@ -1,6 +1,6 @@
 /**
  * Facilities page — matches reference/facilities.html design.
- * Page hero, alternating facility sections with plate placeholders,
+ * Page hero, alternating facility sections with curated Pexels images,
  * spec grids, services lead-in, forward-looking disclaimer, EOI.
  */
 
@@ -11,6 +11,7 @@ import {
   ForwardLookingDisclaimer,
   EOISection,
   ScrollRevealSection,
+  MediaHero,
 } from "@productioncity/holding-ui";
 import { I18nProvider, useTranslation } from "../i18n/context";
 import {
@@ -20,6 +21,7 @@ import {
   useEoiCategories,
   useEoiSubmit,
 } from "../lib/use-landing-layout";
+import { MEDIA } from "../lib/media-config";
 
 export function FacilitiesPage() {
   return (
@@ -36,13 +38,7 @@ interface FacilityData {
   label: string;
   heading: string;
   description: string;
-  plate: {
-    corner: string;
-    cornerR: string;
-    label: string;
-    bottomL: string;
-    bottomR: string;
-  };
+  mediaKey: string;
   specs: Array<{ label: string; value: string }>;
   ctaLabel: string;
   imagePosition: "left" | "right";
@@ -62,13 +58,7 @@ const FACILITIES: FacilityData[] = [
     label: "A · SCREEN SOUND STAGES",
     heading: "Grand-scale screen work.",
     description: "Feature film. Episodic television. Live broadcast. Each stage is 45 m × 45 m, 15 m to grid, full-coverage catwalk. Designed against the technical specifications of major-studio and streamer productions.",
-    plate: {
-      corner: "A · SCREEN SOUND STAGE",
-      cornerR: "2,025 m²",
-      label: "[ STAGE INTERIOR · FULL-SURROUND LED ]",
-      bottomL: "45 × 45 m",
-      bottomR: "H 15 m",
-    },
+    mediaKey: "facilities-screen-stage",
     specs: [
       { label: "Floor area", value: "2,025 m² · 21,797 ft²" },
       { label: "To grid", value: "15 m · 49 ft" },
@@ -85,13 +75,7 @@ const FACILITIES: FacilityData[] = [
     label: "B · COMMERCIAL SOUND STAGES",
     heading: "Small footprint. Full specification.",
     description: "Commercials, TVCs, music videos, short-form, and digital. Same 15 m to grid. Same acoustics. Walk-in-ready LED configurations.",
-    plate: {
-      corner: "B · COMMERCIAL STAGE",
-      cornerR: "100 m²",
-      label: "[ WALK-IN LED · SHORT-FORM SHOOT ]",
-      bottomL: "10 × 10 m",
-      bottomR: "H 15 m",
-    },
+    mediaKey: "facilities-commercial-stage",
     specs: [
       { label: "Floor area", value: "100 m² · 1,076 ft²" },
       { label: "To grid", value: "15 m · 49 ft" },
@@ -108,13 +92,7 @@ const FACILITIES: FacilityData[] = [
     label: "C · BROADCAST THEATRE",
     heading: "Theatre wired for broadcast.",
     description: "Multi-modal live venue with a broadcast gallery wrapped around it. Robotic cameras, AR/VR-ready, broadcast-partner compliant.",
-    plate: {
-      corner: "C · BROADCAST THEATRE",
-      cornerR: "450 SEATS",
-      label: "[ AUDIENCE MODE · GALLERY LIVE ]",
-      bottomL: "THEATRE · CABARET",
-      bottomR: "AR / VR READY",
-    },
+    mediaKey: "facilities-broadcast-theatre",
     specs: [
       { label: "Theatre", value: "450 seats" },
       { label: "Cabaret", value: "300 seats" },
@@ -139,22 +117,37 @@ function FacilitiesPageContent() {
   return (
     <LandingPageTemplate nav={nav} footer={footer}>
       {/* ═══════════ PAGE HERO ═══════════ */}
-      <section className="bg-(--pc-color-neutral-950) px-(--pc-spacing-6) py-[clamp(80px,12vw,160px)] text-(--pc-color-neutral-100)" aria-labelledby="facilities-heading">
-        <div className="mx-auto max-w-[1720px]">
-          <div className="font-mono text-[11px] uppercase tracking-[0.18em] text-(--pc-color-neutral-400)">
-            Facilities — 01/04
+      {MEDIA["facilities-hero"] && (
+        <MediaHero
+          lightSrc={MEDIA["facilities-hero"].lightSrc}
+          darkSrc={MEDIA["facilities-hero"].darkSrc}
+          alt={MEDIA["facilities-hero"].alt}
+          width={MEDIA["facilities-hero"].width}
+          height={600}
+          averageColor={MEDIA["facilities-hero"].averageColor}
+          photographer={MEDIA["facilities-hero"].photographer}
+          photographerUrl={MEDIA["facilities-hero"].photographerUrl}
+          source={MEDIA["facilities-hero"].source}
+          sourceUrl={MEDIA["facilities-hero"].sourceUrl}
+        >
+          <div className="pb-8">
+            <p className="font-mono text-[11px] uppercase tracking-[0.18em] text-white/60">
+              Facilities — 01/04
+            </p>
+            <h1 id="facilities-heading" className="mt-4 font-serif text-[clamp(40px,6vw,96px)] font-normal leading-[1.0] tracking-[-0.015em] text-white">
+              {FACILITY_HEADINGS.hero}
+            </h1>
+            <p className="mt-6 max-w-[42ch] text-[clamp(17px,1.4vw,22px)] leading-[1.45] text-white/80">
+              The stages, the volume, the theatre, and the control room were designed as one system. Specifications below are the specifications.
+            </p>
           </div>
-          <h1 id="facilities-heading" className="mt-6 font-serif text-[clamp(40px,6vw,96px)] font-normal leading-[1.0] tracking-[-0.015em]">
-            {FACILITY_HEADINGS.hero}
-          </h1>
-          <p className="mt-6 max-w-[42ch] text-[clamp(19px,1.6vw,24px)] leading-[1.45] text-(--pc-color-neutral-300)">
-            The stages, the volume, the theatre, and the control room were designed as one system. Specifications below are the specifications.
-          </p>
-        </div>
-      </section>
+        </MediaHero>
+      )}
 
       {/* ═══════════ FACILITY SECTIONS A, B, C ═══════════ */}
-      {FACILITIES.map((f) => (
+      {FACILITIES.map((f) => {
+        const facilityMedia = MEDIA[f.mediaKey];
+        return (
         <ScrollRevealSection key={f.id} delay={100}>
           <section
             id={f.id}
@@ -163,21 +156,19 @@ function FacilitiesPageContent() {
           >
             <div className="mx-auto max-w-[1720px]">
               <div className="grid grid-cols-1 items-center gap-8 lg:grid-cols-12">
-                {/* Plate placeholder — decorative, information conveyed by text + spec grid */}
-                <div className={`lg:col-span-6 ${f.imagePosition === "right" ? "lg:order-2 lg:col-start-7" : ""}`} aria-hidden="true">
-                  <div className="relative flex aspect-[4/3] flex-col justify-between border border-(--pc-color-neutral-700) bg-(--pc-color-neutral-950) p-5">
-                    <div className="flex justify-between font-mono text-[9px] uppercase tracking-[0.14em] text-(--pc-color-neutral-500)">
-                      <span>{f.plate.corner}</span>
-                      <span>{f.plate.cornerR}</span>
-                    </div>
-                    <div className="text-center font-mono text-xs uppercase tracking-[0.1em] text-(--pc-color-neutral-600)">
-                      {f.plate.label}
-                    </div>
-                    <div className="flex justify-between font-mono text-[9px] uppercase tracking-[0.14em] text-(--pc-color-neutral-500)">
-                      <span>{f.plate.bottomL}</span>
-                      <span>{f.plate.bottomR}</span>
-                    </div>
-                  </div>
+                {/* Facility image */}
+                <div className={`lg:col-span-6 ${f.imagePosition === "right" ? "lg:order-2 lg:col-start-7" : ""}`}>
+                  {facilityMedia && (
+                    <img
+                      src={facilityMedia.lightSrc}
+                      alt={facilityMedia.alt}
+                      width={1920}
+                      height={1080}
+                      loading="lazy"
+                      className="h-auto w-full object-cover"
+                      style={{ aspectRatio: "4/3" }}
+                    />
+                  )}
                 </div>
 
                 {/* Text + specs */}
@@ -215,7 +206,8 @@ function FacilitiesPageContent() {
             </div>
           </section>
         </ScrollRevealSection>
-      ))}
+        );
+      })}
 
       {/* ═══════════ D — CONTROL ROOM ═══════════ */}
       <ScrollRevealSection delay={100}>
@@ -253,21 +245,19 @@ function FacilitiesPageContent() {
                 </div>
               </div>
 
-              {/* Plate */}
+              {/* Control room image */}
               <div className="lg:col-start-7 lg:col-span-6">
-                <div className="relative flex aspect-[4/3] flex-col justify-between border border-(--pc-color-neutral-700) bg-(--pc-color-neutral-950) p-5">
-                  <div className="flex justify-between font-mono text-[9px] uppercase tracking-[0.14em] text-(--pc-color-neutral-500)">
-                    <span>D · CONTROL ROOM</span>
-                    <span>CENTRAL SPINE</span>
-                  </div>
-                  <div className="text-center font-mono text-xs uppercase tracking-[0.1em] text-(--pc-color-neutral-600)">
-                    [ GALLERY · LIVE ORIGINATION ]
-                  </div>
-                  <div className="flex justify-between font-mono text-[9px] uppercase tracking-[0.14em] text-(--pc-color-neutral-500)">
-                    <span>ON-CAMPUS + EXTERNAL</span>
-                    <span>GLOBAL</span>
-                  </div>
-                </div>
+                {MEDIA["facilities-control-room"] && (
+                  <img
+                    src={MEDIA["facilities-control-room"].lightSrc}
+                    alt={MEDIA["facilities-control-room"].alt}
+                    width={1920}
+                    height={1080}
+                    loading="lazy"
+                    className="h-auto w-full object-cover"
+                    style={{ aspectRatio: "4/3" }}
+                  />
+                )}
               </div>
             </div>
           </div>
