@@ -92,7 +92,7 @@ jobs:
             for TABLE in Role Permission AnnouncementCategory User \
                          RolePermission UserRole NotificationPreference \
                          FeatureNotification; do
-              printf "-- %s\n" "$TABLE"
+              printf -- "-- %s\n" "$TABLE"
               sqlite3 ../../local.db ".mode insert $TABLE" \
                 "SELECT * FROM \"$TABLE\";" 2>/dev/null \
                 | sed 's/^INSERT INTO /INSERT OR REPLACE INTO /'
