@@ -573,7 +573,7 @@
     },
     "common": {
       "detail": {
-        "sectionHeading": "Facility details and technical specifications"
+        "sectionHeading": "सुविधा विवरण और तकनीकी विशिष्टताएँ"
       }
     },
     "screenStages": {
@@ -610,18 +610,18 @@
         "statArea": "2,025",
         "statGrid": "15",
         "ctaLink": "Enquire",
-        "eyebrow": "Facilities · A — Screen sound stages",
-        "heading": "Grand-scale screen work. Engineered for it.",
-        "lead": "2,025 m² of stage floor. 15 m to grid. NRC 1.05. Full-surround LED volume ready.",
-        "prose": "Feature film. Episodic. Live television. When the production is large-format, the stage has to be built for it from the ground up.",
-        "prose2": "Each screen sound stage is 45 m × 45 m, 15 m to grid, full-coverage grid and catwalk. Sound-proofing is NRC 1.05 / NC 25. LED volume is configurable flat, arc, or full-surround.",
-        "prose3": "These stages were designed against the technical specifications of major-studio and streamer productions. As the first site, the standards are set here.",
-        "usage1": "Feature film production",
-        "usage2": "Episodic television",
-        "usage3": "Live television broadcasting",
-        "statAreaLabel": "Square metres",
-        "statGridLabel": "Metres to grid",
-        "cta": "Book a screen stage."
+        "eyebrow": "सुविधाएँ · A — स्क्रीन साउंड स्टेज",
+        "heading": "बड़े पैमाने पर स्क्रीन का काम। इसी के लिए इंजीनियर किया गया।",
+        "lead": "2,025 m² स्टेज फ्लोर। 15 m ग्रिड तक। NRC 1.05। फुल-सराउंड LED वॉल्यूम तैयार।",
+        "prose": "फीचर फिल्म। एपिसोडिक। लाइव टेलीविजन। जब प्रोडक्शन बड़े पैमाने का हो, तो स्टेज को शुरू से ही उसके लिए बनाया जाना चाहिए।",
+        "prose2": "हर स्क्रीन साउंड स्टेज 45 m × 45 m, 15 m ग्रिड तक, फुल-कवरेज ग्रिड और कैटवॉक है। साउंडप्रूफिंग NRC 1.05 / NC 25 है। LED वॉल्यूम फ्लैट, आर्क या फुल-सराउंड रूप में कॉन्फ़िगर करने योग्य है।",
+        "prose3": "इन स्टेज को प्रमुख स्टूडियो और स्ट्रीमर प्रोडक्शन की तकनीकी विशिष्टताओं के आधार पर डिज़ाइन किया गया था। पहले स्थल के रूप में, मानक यहीं निर्धारित होते हैं।",
+        "usage1": "फीचर फिल्म प्रोडक्शन",
+        "usage2": "एपिसोडिक टेलीविजन",
+        "usage3": "लाइव टेलीविजन प्रसारण",
+        "statAreaLabel": "वर्ग मीटर",
+        "statGridLabel": "ग्रिड तक मीटर",
+        "cta": "एक स्क्रीन स्टेज बुक करें।"
       }
     },
     "commercialStages": {
@@ -654,16 +654,16 @@
         "statArea": "100",
         "statGrid": "15",
         "ctaLink": "Enquire",
-        "eyebrow": "Facilities · B — Commercial sound stages",
-        "heading": "Small footprint. Full specification.",
-        "lead": "100 m² of stage. Same 15 m to grid. Same sound-proofing. Walk-in-ready LED volume.",
-        "prose2": "That is what these stages are. Walk in on a Monday. Shoot. Strike by Friday. The volume configurations are shared with the screen stages, so a look developed on one can move to the other.",
-        "usage1": "TV commercials and infomercials",
-        "usage2": "Music video production",
-        "usage3": "Small-scale digital content",
-        "statAreaLabel": "Square metres",
-        "statGridLabel": "Metres to grid",
-        "cta": "Book a commercial stage."
+        "eyebrow": "सुविधाएँ · B — कमर्शियल साउंड स्टेज",
+        "heading": "छोटा स्थान। पूर्ण विशिष्टता।",
+        "lead": "100 m² स्टेज। वही 15 m ग्रिड तक। वही साउंडप्रूफिंग। वॉक-इन-रेडी LED वॉल्यूम।",
+        "prose2": "यही ये स्टेज हैं। सोमवार को आएँ। शूट करें। शुक्रवार तक खाली करें। वॉल्यूम कॉन्फ़िगरेशन स्क्रीन स्टेज के साथ साझा हैं, इसलिए एक पर विकसित लुक को दूसरे पर ले जाया जा सकता है।",
+        "usage1": "टीवी विज्ञापन और इन्फोमर्शियल",
+        "usage2": "म्यूजिक वीडियो प्रोडक्शन",
+        "usage3": "छोटे पैमाने की डिजिटल सामग्री",
+        "statAreaLabel": "वर्ग मीटर",
+        "statGridLabel": "ग्रिड तक मीटर",
+        "cta": "एक कमर्शियल स्टेज बुक करें।"
       }
     },
     "broadcastTheatre": {
@@ -697,17 +697,17 @@
         "statSeats": "450",
         "statCameras": "8",
         "ctaLink": "Enquire",
-        "eyebrow": "Facilities · C — Broadcast theatre",
-        "heading": "A live theatre wired as a broadcast studio.",
-        "lead": "450 in theatre mode. 300 in cabaret. Eight fully integrated robotic camera positions. AR and VR ready. Broadcast-partner compliant.",
-        "prose": "The broadcast theatre is a multi-modal live venue with a broadcast gallery wrapped around it.",
-        "prose2": "Robotic cameras, an LED virtual set library, and streaming compliance are built into the room. Every performance here can reach the people in the seats and the audience at home at the same time, without a separate broadcast setup.",
-        "usage1": "Live performance and events",
-        "usage2": "Live broadcast",
-        "usage3": "AR/VR showcase experiences",
-        "statSeatsLabel": "Theatre seats",
-        "statCamerasLabel": "Robotic cameras",
-        "cta": "Discuss a live broadcast or event."
+        "eyebrow": "सुविधाएँ · C — ब्रॉडकास्ट थिएटर",
+        "heading": "एक लाइव थिएटर जो ब्रॉडकास्ट स्टूडियो के रूप में तैयार है।",
+        "lead": "थिएटर मोड में 450 सीटें। कैबरे में 300। आठ पूरी तरह एकीकृत रोबोटिक कैमरा पोजीशन। AR और VR तैयार। ब्रॉडकास्ट-पार्टनर अनुपालक।",
+        "prose": "ब्रॉडकास्ट थिएटर एक बहु-मोडल लाइव स्थल है जिसके चारों ओर एक ब्रॉडकास्ट गैलरी है।",
+        "prose2": "रोबोटिक कैमरे, एक LED वर्चुअल सेट लाइब्रेरी और स्ट्रीमिंग अनुपालन कमरे में निर्मित हैं। यहाँ का हर प्रदर्शन एक साथ सीटों पर बैठे दर्शकों और घर पर दर्शकों तक पहुँच सकता है, बिना किसी अलग ब्रॉडकास्ट सेटअप के।",
+        "usage1": "लाइव प्रदर्शन और कार्यक्रम",
+        "usage2": "लाइव ब्रॉडकास्ट",
+        "usage3": "AR/VR शोकेस अनुभव",
+        "statSeatsLabel": "थिएटर सीटें",
+        "statCamerasLabel": "रोबोटिक कैमरे",
+        "cta": "लाइव ब्रॉडकास्ट या कार्यक्रम पर चर्चा करें।"
       }
     },
     "controlRoom": {
@@ -721,17 +721,17 @@
       "detail": {
         "capabilityLabel": "Capability",
         "ctaLink": "Enquire",
-        "eyebrow": "Facilities · D — Broadcast control room",
-        "heading": "The nerve centre.",
-        "lead": "Central production management, live broadcast control, advanced synchronisation — feeding stages, the theatre, and external venues globally.",
-        "prose": "The control room is the campus’s single broadcast spine. It manages and synchronises every live production on site.",
-        "prose2": "It is designed to originate broadcast from external sports and event venues anywhere in the world. Production City’s broadcast and data-centre pedigree sits here. The control room is engineered the way critical broadcast infrastructure is engineered.",
-        "cap1": "Centralised production management",
-        "cap2": "Live broadcast control",
-        "cap3": "Advanced synchronisation across multi-platform and multi-location broadcasts",
-        "cap4": "Origination from on-campus stages and theatre",
-        "cap5": "Origination from external sports and event venues globally",
-        "cta": "Discuss a live origination."
+        "eyebrow": "सुविधाएँ · D — ब्रॉडकास्ट कंट्रोल रूम",
+        "heading": "तंत्रिका केंद्र।",
+        "lead": "केंद्रीय प्रोडक्शन प्रबंधन, लाइव ब्रॉडकास्ट नियंत्रण, उन्नत सिंक्रोनाइजेशन — स्टेज, थिएटर और वैश्विक बाहरी स्थलों को सहायता।",
+        "prose": "कंट्रोल रूम परिसर की एकमात्र ब्रॉडकास्ट रीढ़ है। यह साइट पर हर लाइव प्रोडक्शन को प्रबंधित और सिंक्रोनाइज़ करता है।",
+        "prose2": "यह दुनिया में कहीं भी बाहरी खेल और आयोजन स्थलों से ब्रॉडकास्ट उत्पन्न करने के लिए डिज़ाइन किया गया है। Production City की ब्रॉडकास्ट और डेटा-सेंटर विरासत यहाँ स्थित है। कंट्रोल रूम को उसी तरह इंजीनियर किया गया है जैसे महत्वपूर्ण ब्रॉडकास्ट अवसंरचना।",
+        "cap1": "केंद्रीकृत प्रोडक्शन प्रबंधन",
+        "cap2": "लाइव ब्रॉडकास्ट नियंत्रण",
+        "cap3": "मल्टी-प्लेटफ़ॉर्म और मल्टी-लोकेशन प्रसारण में उन्नत सिंक्रोनाइजेशन",
+        "cap4": "परिसर के स्टेज और थिएटर से प्रसारण उत्पत्ति",
+        "cap5": "वैश्विक बाहरी खेल और आयोजन स्थलों से प्रसारण उत्पत्ति",
+        "cta": "लाइव प्रसारण उत्पत्ति पर चर्चा करें।"
       }
     },
     "ancillary": {

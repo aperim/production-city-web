@@ -573,7 +573,7 @@
     },
     "common": {
       "detail": {
-        "sectionHeading": "Facility details and technical specifications"
+        "sectionHeading": "施設の詳細と技術仕様"
       }
     },
     "screenStages": {
@@ -610,18 +610,18 @@
         "statArea": "2,025",
         "statGrid": "15",
         "ctaLink": "Enquire",
-        "eyebrow": "Facilities · A — Screen sound stages",
-        "heading": "Grand-scale screen work. Engineered for it.",
-        "lead": "2,025 m² of stage floor. 15 m to grid. NRC 1.05. Full-surround LED volume ready.",
-        "prose": "Feature film. Episodic. Live television. When the production is large-format, the stage has to be built for it from the ground up.",
-        "prose2": "Each screen sound stage is 45 m × 45 m, 15 m to grid, full-coverage grid and catwalk. Sound-proofing is NRC 1.05 / NC 25. LED volume is configurable flat, arc, or full-surround.",
-        "prose3": "These stages were designed against the technical specifications of major-studio and streamer productions. As the first site, the standards are set here.",
-        "usage1": "Feature film production",
-        "usage2": "Episodic television",
-        "usage3": "Live television broadcasting",
-        "statAreaLabel": "Square metres",
-        "statGridLabel": "Metres to grid",
-        "cta": "Book a screen stage."
+        "eyebrow": "施設 · A — スクリーン・サウンドステージ",
+        "heading": "大規模なスクリーン制作。そのために設計されています。",
+        "lead": "2,025 m²のステージフロア。グリッドまで15 m。NRC 1.05。フルサラウンドLEDボリューム対応済み。",
+        "prose": "長編映画。エピソード。ライブテレビ。大規模なプロダクションの場合、ステージは最初からそのために構築される必要があります。",
+        "prose2": "各スクリーン・サウンドステージは45 m × 45 m、グリッドまで15 m、全面グリッドとキャットウォーク付きです。防音はNRC 1.05 / NC 25です。LEDボリュームはフラット、アーク、またはフルサラウンドとして設定可能です。",
+        "prose3": "これらのステージは、主要スタジオおよびストリーマープロダクションの技術仕様に基づいて設計されました。最初のサイトとして、ここで標準が設定されます。",
+        "usage1": "長編映画制作",
+        "usage2": "エピソードテレビ",
+        "usage3": "ライブテレビ放送",
+        "statAreaLabel": "平方メートル",
+        "statGridLabel": "グリッドまでのメートル数",
+        "cta": "スクリーンステージを予約する。"
       }
     },
     "commercialStages": {
@@ -654,16 +654,16 @@
         "statArea": "100",
         "statGrid": "15",
         "ctaLink": "Enquire",
-        "eyebrow": "Facilities · B — Commercial sound stages",
-        "heading": "Small footprint. Full specification.",
-        "lead": "100 m² of stage. Same 15 m to grid. Same sound-proofing. Walk-in-ready LED volume.",
-        "prose2": "That is what these stages are. Walk in on a Monday. Shoot. Strike by Friday. The volume configurations are shared with the screen stages, so a look developed on one can move to the other.",
-        "usage1": "TV commercials and infomercials",
-        "usage2": "Music video production",
-        "usage3": "Small-scale digital content",
-        "statAreaLabel": "Square metres",
-        "statGridLabel": "Metres to grid",
-        "cta": "Book a commercial stage."
+        "eyebrow": "施設 · B — コマーシャル・サウンドステージ",
+        "heading": "小さなフットプリント。フル仕様。",
+        "lead": "100 m²のステージ。同じグリッドまで15 m。同じ防音。すぐに使えるLEDボリューム。",
+        "prose2": "それがこのステージです。月曜日に入る。撮影する。金曜日までに撤収する。ボリューム設定はスクリーンステージと共有されているため、一方で開発したルックをもう一方に移すことができます。",
+        "usage1": "テレビCMとインフォマーシャル",
+        "usage2": "ミュージックビデオ制作",
+        "usage3": "小規模デジタルコンテンツ",
+        "statAreaLabel": "平方メートル",
+        "statGridLabel": "グリッドまでのメートル数",
+        "cta": "コマーシャルステージを予約する。"
       }
     },
     "broadcastTheatre": {
@@ -697,17 +697,17 @@
         "statSeats": "450",
         "statCameras": "8",
         "ctaLink": "Enquire",
-        "eyebrow": "Facilities · C — Broadcast theatre",
-        "heading": "A live theatre wired as a broadcast studio.",
-        "lead": "450 in theatre mode. 300 in cabaret. Eight fully integrated robotic camera positions. AR and VR ready. Broadcast-partner compliant.",
-        "prose": "The broadcast theatre is a multi-modal live venue with a broadcast gallery wrapped around it.",
-        "prose2": "Robotic cameras, an LED virtual set library, and streaming compliance are built into the room. Every performance here can reach the people in the seats and the audience at home at the same time, without a separate broadcast setup.",
-        "usage1": "Live performance and events",
-        "usage2": "Live broadcast",
-        "usage3": "AR/VR showcase experiences",
-        "statSeatsLabel": "Theatre seats",
-        "statCamerasLabel": "Robotic cameras",
-        "cta": "Discuss a live broadcast or event."
+        "eyebrow": "施設 · C — ブロードキャスト・シアター",
+        "heading": "放送スタジオとして配線されたライブシアター。",
+        "lead": "シアターモードで450席。キャバレーで300席。8つの完全統合ロボットカメラポジション。ARとVR対応。放送パートナー準拠。",
+        "prose": "ブロードキャスト・シアターは、放送ギャラリーを周囲に備えたマルチモーダルのライブ会場です。",
+        "prose2": "ロボットカメラ、LEDバーチャルセットライブラリー、ストリーミングコンプライアンスが室内に組み込まれています。ここでの公演は、会場内の観客と自宅の視聴者の両方に同時に届けることができ、別途放送設備を用意する必要はありません。",
+        "usage1": "ライブパフォーマンスとイベント",
+        "usage2": "ライブ放送",
+        "usage3": "AR/VRショーケース体験",
+        "statSeatsLabel": "シアター座席数",
+        "statCamerasLabel": "ロボットカメラ",
+        "cta": "ライブ放送またはイベントについて相談する。"
       }
     },
     "controlRoom": {
@@ -721,17 +721,17 @@
       "detail": {
         "capabilityLabel": "Capability",
         "ctaLink": "Enquire",
-        "eyebrow": "Facilities · D — Broadcast control room",
-        "heading": "The nerve centre.",
-        "lead": "Central production management, live broadcast control, advanced synchronisation — feeding stages, the theatre, and external venues globally.",
-        "prose": "The control room is the campus’s single broadcast spine. It manages and synchronises every live production on site.",
-        "prose2": "It is designed to originate broadcast from external sports and event venues anywhere in the world. Production City’s broadcast and data-centre pedigree sits here. The control room is engineered the way critical broadcast infrastructure is engineered.",
-        "cap1": "Centralised production management",
-        "cap2": "Live broadcast control",
-        "cap3": "Advanced synchronisation across multi-platform and multi-location broadcasts",
-        "cap4": "Origination from on-campus stages and theatre",
-        "cap5": "Origination from external sports and event venues globally",
-        "cta": "Discuss a live origination."
+        "eyebrow": "施設 · D — ブロードキャスト・コントロールルーム",
+        "heading": "神経中枢。",
+        "lead": "集中プロダクション管理、ライブ放送制御、高度な同期——ステージ、シアター、世界中の外部会場をサポート。",
+        "prose": "コントロールルームはキャンパスの唯一の放送バックボーンです。サイト上のすべてのライブ制作を管理・同期します。",
+        "prose2": "世界中の外部スポーツ・イベント会場からの放送の起点となるように設計されています。Production Cityの放送およびデータセンターの実績がここに集約されています。コントロールルームは重要放送インフラと同様の方法でエンジニアリングされています。",
+        "cap1": "集中プロダクション管理",
+        "cap2": "ライブ放送制御",
+        "cap3": "マルチプラットフォームおよびマルチロケーション放送の高度な同期",
+        "cap4": "キャンパス内ステージおよびシアターからの起点",
+        "cap5": "世界中の外部スポーツ・イベント会場からの起点",
+        "cta": "ライブ起点について相談する。"
       }
     },
     "ancillary": {

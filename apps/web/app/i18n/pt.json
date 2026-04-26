@@ -573,7 +573,7 @@
     },
     "common": {
       "detail": {
-        "sectionHeading": "Facility details and technical specifications"
+        "sectionHeading": "Detalhes das instalações e especificações técnicas"
       }
     },
     "screenStages": {
@@ -610,18 +610,18 @@
         "statArea": "2,025",
         "statGrid": "15",
         "ctaLink": "Enquire",
-        "eyebrow": "Facilities · A — Screen sound stages",
-        "heading": "Grand-scale screen work. Engineered for it.",
-        "lead": "2,025 m² of stage floor. 15 m to grid. NRC 1.05. Full-surround LED volume ready.",
-        "prose": "Feature film. Episodic. Live television. When the production is large-format, the stage has to be built for it from the ground up.",
-        "prose2": "Each screen sound stage is 45 m × 45 m, 15 m to grid, full-coverage grid and catwalk. Sound-proofing is NRC 1.05 / NC 25. LED volume is configurable flat, arc, or full-surround.",
-        "prose3": "These stages were designed against the technical specifications of major-studio and streamer productions. As the first site, the standards are set here.",
-        "usage1": "Feature film production",
-        "usage2": "Episodic television",
-        "usage3": "Live television broadcasting",
-        "statAreaLabel": "Square metres",
-        "statGridLabel": "Metres to grid",
-        "cta": "Book a screen stage."
+        "eyebrow": "Instalações · A — Estúdios de som para ecrã",
+        "heading": "Produção para ecrã em grande escala. Concebida para isso.",
+        "lead": "2.025 m² de chão de palco. 15 m até à grelha. NRC 1.05. Volume LED envolvente total disponível.",
+        "prose": "Longa-metragem. Série. Televisão ao vivo. Quando a produção é de grande formato, o palco tem de ser construído para isso desde o início.",
+        "prose2": "Cada estúdio de som para ecrã mede 45 m × 45 m, 15 m até à grelha, com grelha e passarela de cobertura total. O isolamento acústico é NRC 1.05 / NC 25. O volume LED é configurável em plano, arco ou envolvente total.",
+        "prose3": "Estes palcos foram concebidos de acordo com as especificações técnicas dos principais estúdios e produções de plataformas de streaming. Como primeiro local, os padrões são definidos aqui.",
+        "usage1": "Produção de longas-metragens",
+        "usage2": "Televisão episódica",
+        "usage3": "Transmissão televisiva ao vivo",
+        "statAreaLabel": "Metros quadrados",
+        "statGridLabel": "Metros até à grelha",
+        "cta": "Reserve um palco para ecrã."
       }
     },
     "commercialStages": {
@@ -654,16 +654,16 @@
         "statArea": "100",
         "statGrid": "15",
         "ctaLink": "Enquire",
-        "eyebrow": "Facilities · B — Commercial sound stages",
-        "heading": "Small footprint. Full specification.",
-        "lead": "100 m² of stage. Same 15 m to grid. Same sound-proofing. Walk-in-ready LED volume.",
-        "prose2": "That is what these stages are. Walk in on a Monday. Shoot. Strike by Friday. The volume configurations are shared with the screen stages, so a look developed on one can move to the other.",
-        "usage1": "TV commercials and infomercials",
-        "usage2": "Music video production",
-        "usage3": "Small-scale digital content",
-        "statAreaLabel": "Square metres",
-        "statGridLabel": "Metres to grid",
-        "cta": "Book a commercial stage."
+        "eyebrow": "Instalações · B — Estúdios de som comerciais",
+        "heading": "Espaço reduzido. Especificações completas.",
+        "lead": "100 m² de palco. Os mesmos 15 m até à grelha. O mesmo isolamento acústico. Volume LED pronto a usar.",
+        "prose2": "É isso que estes palcos são. Entre na segunda-feira. Filme. Termine na sexta-feira. As configurações de volume são partilhadas com os palcos de ecrã, por isso um look desenvolvido num pode ser transferido para o outro.",
+        "usage1": "Anúncios de TV e infomerciais",
+        "usage2": "Produção de videoclipes",
+        "usage3": "Conteúdo digital de pequena escala",
+        "statAreaLabel": "Metros quadrados",
+        "statGridLabel": "Metros até à grelha",
+        "cta": "Reserve um palco comercial."
       }
     },
     "broadcastTheatre": {
@@ -697,17 +697,17 @@
         "statSeats": "450",
         "statCameras": "8",
         "ctaLink": "Enquire",
-        "eyebrow": "Facilities · C — Broadcast theatre",
-        "heading": "A live theatre wired as a broadcast studio.",
-        "lead": "450 in theatre mode. 300 in cabaret. Eight fully integrated robotic camera positions. AR and VR ready. Broadcast-partner compliant.",
-        "prose": "The broadcast theatre is a multi-modal live venue with a broadcast gallery wrapped around it.",
-        "prose2": "Robotic cameras, an LED virtual set library, and streaming compliance are built into the room. Every performance here can reach the people in the seats and the audience at home at the same time, without a separate broadcast setup.",
-        "usage1": "Live performance and events",
-        "usage2": "Live broadcast",
-        "usage3": "AR/VR showcase experiences",
-        "statSeatsLabel": "Theatre seats",
-        "statCamerasLabel": "Robotic cameras",
-        "cta": "Discuss a live broadcast or event."
+        "eyebrow": "Instalações · C — Teatro de transmissão",
+        "heading": "Um teatro ao vivo equipado como estúdio de transmissão.",
+        "lead": "450 em modo teatro. 300 em cabaré. Oito posições de câmera robótica totalmente integradas. AR e VR disponíveis. Conforme com os requisitos dos parceiros de transmissão.",
+        "prose": "O teatro de transmissão é um local multimodal de espetáculos ao vivo com uma galeria de transmissão integrada.",
+        "prose2": "As câmeras robóticas, uma biblioteca de cenários virtuais LED e a conformidade com streaming estão integradas na sala. Cada espetáculo pode chegar simultaneamente ao público presente e aos espectadores em casa, sem necessidade de uma configuração de transmissão separada.",
+        "usage1": "Espetáculos e eventos ao vivo",
+        "usage2": "Transmissão ao vivo",
+        "usage3": "Experiências de apresentação AR/VR",
+        "statSeatsLabel": "Lugares de teatro",
+        "statCamerasLabel": "Câmeras robóticas",
+        "cta": "Discutir uma transmissão ao vivo ou evento."
       }
     },
     "controlRoom": {
@@ -721,17 +721,17 @@
       "detail": {
         "capabilityLabel": "Capability",
         "ctaLink": "Enquire",
-        "eyebrow": "Facilities · D — Broadcast control room",
-        "heading": "The nerve centre.",
-        "lead": "Central production management, live broadcast control, advanced synchronisation — feeding stages, the theatre, and external venues globally.",
-        "prose": "The control room is the campus’s single broadcast spine. It manages and synchronises every live production on site.",
-        "prose2": "It is designed to originate broadcast from external sports and event venues anywhere in the world. Production City’s broadcast and data-centre pedigree sits here. The control room is engineered the way critical broadcast infrastructure is engineered.",
-        "cap1": "Centralised production management",
-        "cap2": "Live broadcast control",
-        "cap3": "Advanced synchronisation across multi-platform and multi-location broadcasts",
-        "cap4": "Origination from on-campus stages and theatre",
-        "cap5": "Origination from external sports and event venues globally",
-        "cta": "Discuss a live origination."
+        "eyebrow": "Instalações · D — Sala de controlo de transmissão",
+        "heading": "O centro nevrálgico.",
+        "lead": "Gestão centralizada de produção, controlo de transmissão ao vivo, sincronização avançada — alimentando palcos, o teatro e locais externos a nível global.",
+        "prose": "A sala de controlo é a única espinha dorsal de transmissão do campus. Gere e sincroniza cada produção ao vivo no local.",
+        "prose2": "Foi concebida para originar transmissões a partir de locais desportivos e de eventos externos em qualquer parte do mundo. O legado de transmissão e de centro de dados da Production City reside aqui. A sala de controlo é concebida da mesma forma que a infraestrutura crítica de transmissão.",
+        "cap1": "Gestão centralizada de produção",
+        "cap2": "Controlo de transmissão ao vivo",
+        "cap3": "Sincronização avançada para transmissões multiplataforma e multilocalização",
+        "cap4": "Origem a partir de palcos e do teatro do campus",
+        "cap5": "Origem a partir de locais desportivos e de eventos externos a nível global",
+        "cta": "Discutir uma origem ao vivo."
       }
     },
     "ancillary": {

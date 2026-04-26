@@ -573,7 +573,7 @@
     },
     "common": {
       "detail": {
-        "sectionHeading": "Facility details and technical specifications"
+        "sectionHeading": "সুবিধার বিবরণ এবং প্রযুক্তিগত বিশেষত্ব"
       }
     },
     "screenStages": {
@@ -610,18 +610,18 @@
         "statArea": "2,025",
         "statGrid": "15",
         "ctaLink": "Enquire",
-        "eyebrow": "Facilities · A — Screen sound stages",
-        "heading": "Grand-scale screen work. Engineered for it.",
-        "lead": "2,025 m² of stage floor. 15 m to grid. NRC 1.05. Full-surround LED volume ready.",
-        "prose": "Feature film. Episodic. Live television. When the production is large-format, the stage has to be built for it from the ground up.",
-        "prose2": "Each screen sound stage is 45 m × 45 m, 15 m to grid, full-coverage grid and catwalk. Sound-proofing is NRC 1.05 / NC 25. LED volume is configurable flat, arc, or full-surround.",
-        "prose3": "These stages were designed against the technical specifications of major-studio and streamer productions. As the first site, the standards are set here.",
-        "usage1": "Feature film production",
-        "usage2": "Episodic television",
-        "usage3": "Live television broadcasting",
-        "statAreaLabel": "Square metres",
-        "statGridLabel": "Metres to grid",
-        "cta": "Book a screen stage."
+        "eyebrow": "সুবিধাসমূহ · A — স্ক্রিন সাউন্ড স্টেজ",
+        "heading": "বড় পর্দার কাজ। এর জন্যই তৈরি।",
+        "lead": "2,025 m² স্টেজ মেঝে। 15 m গ্রিড পর্যন্ত। NRC 1.05। ফুল-সারাউন্ড LED ভলিউম প্রস্তুত।",
+        "prose": "ফিচার ফিল্ম। এপিসোডিক। লাইভ টেলিভিশন। যখন প্রযোজনা বৃহৎ আকারের, তখন শুরু থেকেই এর জন্য স্টেজ তৈরি করতে হবে।",
+        "prose2": "প্রতিটি স্ক্রিন সাউন্ড স্টেজ 45 m × 45 m, 15 m গ্রিড পর্যন্ত, সম্পূর্ণ আচ্ছাদিত গ্রিড এবং ক্যাটওয়াক সহ। সাউন্ডপ্রুফিং NRC 1.05 / NC 25। LED ভলিউম ফ্ল্যাট, আর্ক বা ফুল-সারাউন্ড রূপে কনফিগারযোগ্য।",
+        "prose3": "এই স্টেজগুলি প্রধান স্টুডিও এবং স্ট্রিমার প্রযোজনার প্রযুক্তিগত বিশেষত্ব অনুযায়ী ডিজাইন করা হয়েছিল। প্রথম স্থান হিসেবে, মানদণ্ড এখানেই নির্ধারিত হয়।",
+        "usage1": "ফিচার ফিল্ম প্রযোজনা",
+        "usage2": "এপিসোডিক টেলিভিশন",
+        "usage3": "লাইভ টেলিভিশন সম্প্রচার",
+        "statAreaLabel": "বর্গমিটার",
+        "statGridLabel": "গ্রিড পর্যন্ত মিটার",
+        "cta": "একটি স্ক্রিন স্টেজ বুক করুন।"
       }
     },
     "commercialStages": {
@@ -654,16 +654,16 @@
         "statArea": "100",
         "statGrid": "15",
         "ctaLink": "Enquire",
-        "eyebrow": "Facilities · B — Commercial sound stages",
-        "heading": "Small footprint. Full specification.",
-        "lead": "100 m² of stage. Same 15 m to grid. Same sound-proofing. Walk-in-ready LED volume.",
-        "prose2": "That is what these stages are. Walk in on a Monday. Shoot. Strike by Friday. The volume configurations are shared with the screen stages, so a look developed on one can move to the other.",
-        "usage1": "TV commercials and infomercials",
-        "usage2": "Music video production",
-        "usage3": "Small-scale digital content",
-        "statAreaLabel": "Square metres",
-        "statGridLabel": "Metres to grid",
-        "cta": "Book a commercial stage."
+        "eyebrow": "সুবিধাসমূহ · B — বাণিজ্যিক সাউন্ড স্টেজ",
+        "heading": "ছোট জায়গা। সম্পূর্ণ বিশেষত্ব।",
+        "lead": "100 m² স্টেজ। একই 15 m গ্রিড পর্যন্ত। একই সাউন্ডপ্রুফিং। ব্যবহারের জন্য প্রস্তুত LED ভলিউম।",
+        "prose2": "এই স্টেজগুলি ঠিক এটাই। সোমবার ঢুকুন। শুট করুন। শুক্রবারের মধ্যে শেষ করুন। ভলিউম কনফিগারেশন স্ক্রিন স্টেজের সাথে ভাগ করা, তাই একটিতে তৈরি লুক অন্যটিতে নেওয়া যায়।",
+        "usage1": "টিভি বিজ্ঞাপন এবং ইনফোমার্শিয়াল",
+        "usage2": "মিউজিক ভিডিও প্রযোজনা",
+        "usage3": "ছোট আকারের ডিজিটাল কন্টেন্ট",
+        "statAreaLabel": "বর্গমিটার",
+        "statGridLabel": "গ্রিড পর্যন্ত মিটার",
+        "cta": "একটি বাণিজ্যিক স্টেজ বুক করুন।"
       }
     },
     "broadcastTheatre": {
@@ -697,17 +697,17 @@
         "statSeats": "450",
         "statCameras": "8",
         "ctaLink": "Enquire",
-        "eyebrow": "Facilities · C — Broadcast theatre",
-        "heading": "A live theatre wired as a broadcast studio.",
-        "lead": "450 in theatre mode. 300 in cabaret. Eight fully integrated robotic camera positions. AR and VR ready. Broadcast-partner compliant.",
-        "prose": "The broadcast theatre is a multi-modal live venue with a broadcast gallery wrapped around it.",
-        "prose2": "Robotic cameras, an LED virtual set library, and streaming compliance are built into the room. Every performance here can reach the people in the seats and the audience at home at the same time, without a separate broadcast setup.",
-        "usage1": "Live performance and events",
-        "usage2": "Live broadcast",
-        "usage3": "AR/VR showcase experiences",
-        "statSeatsLabel": "Theatre seats",
-        "statCamerasLabel": "Robotic cameras",
-        "cta": "Discuss a live broadcast or event."
+        "eyebrow": "সুবিধাসমূহ · C — ব্রডকাস্ট থিয়েটার",
+        "heading": "একটি লাইভ থিয়েটার যা ব্রডকাস্ট স্টুডিও হিসেবে সংযুক্ত।",
+        "lead": "থিয়েটার মোডে 450 আসন। ক্যাবারেতে 300। আটটি সম্পূর্ণ সমন্বিত রোবোটিক ক্যামেরা পজিশন। AR এবং VR প্রস্তুত। ব্রডকাস্ট-পার্টনার সম্মত।",
+        "prose": "ব্রডকাস্ট থিয়েটার একটি বহু-মোডের লাইভ ভেন্যু যার চারপাশে একটি ব্রডকাস্ট গ্যালারি রয়েছে।",
+        "prose2": "রোবোটিক ক্যামেরা, একটি LED ভার্চুয়াল সেট লাইব্রেরি এবং স্ট্রিমিং সম্মতি ঘরের মধ্যে তৈরি। এখানকার প্রতিটি পারফরমেন্স একই সাথে আসনে থাকা দর্শকদের এবং বাড়িতে থাকা দর্শকদের কাছে পৌঁছাতে পারে, আলাদা ব্রডকাস্ট সেটআপ ছাড়াই।",
+        "usage1": "লাইভ পারফরমেন্স এবং ইভেন্ট",
+        "usage2": "লাইভ ব্রডকাস্ট",
+        "usage3": "AR/VR শোকেস অভিজ্ঞতা",
+        "statSeatsLabel": "থিয়েটার আসন",
+        "statCamerasLabel": "রোবোটিক ক্যামেরা",
+        "cta": "একটি লাইভ ব্রডকাস্ট বা ইভেন্ট নিয়ে আলোচনা করুন।"
       }
     },
     "controlRoom": {
@@ -721,17 +721,17 @@
       "detail": {
         "capabilityLabel": "Capability",
         "ctaLink": "Enquire",
-        "eyebrow": "Facilities · D — Broadcast control room",
-        "heading": "The nerve centre.",
-        "lead": "Central production management, live broadcast control, advanced synchronisation — feeding stages, the theatre, and external venues globally.",
-        "prose": "The control room is the campus’s single broadcast spine. It manages and synchronises every live production on site.",
-        "prose2": "It is designed to originate broadcast from external sports and event venues anywhere in the world. Production City’s broadcast and data-centre pedigree sits here. The control room is engineered the way critical broadcast infrastructure is engineered.",
-        "cap1": "Centralised production management",
-        "cap2": "Live broadcast control",
-        "cap3": "Advanced synchronisation across multi-platform and multi-location broadcasts",
-        "cap4": "Origination from on-campus stages and theatre",
-        "cap5": "Origination from external sports and event venues globally",
-        "cta": "Discuss a live origination."
+        "eyebrow": "সুবিধাসমূহ · D — ব্রডকাস্ট কন্ট্রোল রুম",
+        "heading": "নার্ভ সেন্টার।",
+        "lead": "কেন্দ্রীয় প্রযোজনা ব্যবস্থাপনা, লাইভ ব্রডকাস্ট নিয়ন্ত্রণ, উন্নত সিঙ্ক্রোনাইজেশন — স্টেজ, থিয়েটার এবং বিশ্বব্যাপী বাইরের ভেন্যু সরবরাহ।",
+        "prose": "কন্ট্রোল রুম ক্যাম্পাসের একমাত্র ব্রডকাস্ট মেরুদণ্ড। এটি সাইটে প্রতিটি লাইভ প্রযোজনা পরিচালনা ও সিঙ্ক্রোনাইজ করে।",
+        "prose2": "এটি বিশ্বের যেকোনো জায়গায় বাইরের খেলাধুলা এবং ইভেন্ট ভেন্যু থেকে ব্রডকাস্ট উৎপন্ন করার জন্য ডিজাইন করা হয়েছে। Production City-র ব্রডকাস্ট এবং ডেটা-সেন্টারের ঐতিহ্য এখানে রয়েছে। কন্ট্রোল রুম গুরুত্বপূর্ণ ব্রডকাস্ট অবকাঠামোর মতো একইভাবে ইঞ্জিনিয়ার করা হয়েছে।",
+        "cap1": "কেন্দ্রীভূত প্রযোজনা ব্যবস্থাপনা",
+        "cap2": "লাইভ ব্রডকাস্ট নিয়ন্ত্রণ",
+        "cap3": "মাল্টি-প্ল্যাটফর্ম এবং মাল্টি-লোকেশন ব্রডকাস্টে উন্নত সিঙ্ক্রোনাইজেশন",
+        "cap4": "ক্যাম্পাসের স্টেজ এবং থিয়েটার থেকে উৎপত্তি",
+        "cap5": "বিশ্বব্যাপী বাইরের খেলাধুলা এবং ইভেন্ট ভেন্যু থেকে উৎপত্তি",
+        "cta": "একটি লাইভ উৎপত্তি নিয়ে আলোচনা করুন।"
       }
     },
     "ancillary": {

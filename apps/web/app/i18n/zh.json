@@ -573,7 +573,7 @@
     },
     "common": {
       "detail": {
-        "sectionHeading": "Facility details and technical specifications"
+        "sectionHeading": "设施详情与技术规格"
       }
     },
     "screenStages": {
@@ -610,18 +610,18 @@
         "statArea": "2,025",
         "statGrid": "15",
         "ctaLink": "Enquire",
-        "eyebrow": "Facilities · A — Screen sound stages",
-        "heading": "Grand-scale screen work. Engineered for it.",
-        "lead": "2,025 m² of stage floor. 15 m to grid. NRC 1.05. Full-surround LED volume ready.",
-        "prose": "Feature film. Episodic. Live television. When the production is large-format, the stage has to be built for it from the ground up.",
-        "prose2": "Each screen sound stage is 45 m × 45 m, 15 m to grid, full-coverage grid and catwalk. Sound-proofing is NRC 1.05 / NC 25. LED volume is configurable flat, arc, or full-surround.",
-        "prose3": "These stages were designed against the technical specifications of major-studio and streamer productions. As the first site, the standards are set here.",
-        "usage1": "Feature film production",
-        "usage2": "Episodic television",
-        "usage3": "Live television broadcasting",
-        "statAreaLabel": "Square metres",
-        "statGridLabel": "Metres to grid",
-        "cta": "Book a screen stage."
+        "eyebrow": "设施 · A — 影视录音棚",
+        "heading": "大型影视制作。专为此而建。",
+        "lead": "2,025 m² 舞台面积。15 m 格栅高度。NRC 1.05。全景 LED 幕已就绪。",
+        "prose": "故事长片。连续剧。直播电视。当制作规模宏大，舞台必须从一开始就为此而建。",
+        "prose2": "每个影视录音棚为 45 m × 45 m，15 m 格栅高度，全覆盖格栅与猫道。隔音达到 NRC 1.05 / NC 25。LED 幕可配置为平面、弧形或全景环绕。",
+        "prose3": "这些舞台的设计标准参照主要制片公司和流媒体平台的技术规格。作为首个站点，标准在此确立。",
+        "usage1": "故事片制作",
+        "usage2": "连续剧电视",
+        "usage3": "现场电视直播",
+        "statAreaLabel": "平方米",
+        "statGridLabel": "格栅高度（米）",
+        "cta": "预订影视棚。"
       }
     },
     "commercialStages": {
@@ -654,16 +654,16 @@
         "statArea": "100",
         "statGrid": "15",
         "ctaLink": "Enquire",
-        "eyebrow": "Facilities · B — Commercial sound stages",
-        "heading": "Small footprint. Full specification.",
-        "lead": "100 m² of stage. Same 15 m to grid. Same sound-proofing. Walk-in-ready LED volume.",
-        "prose2": "That is what these stages are. Walk in on a Monday. Shoot. Strike by Friday. The volume configurations are shared with the screen stages, so a look developed on one can move to the other.",
-        "usage1": "TV commercials and infomercials",
-        "usage2": "Music video production",
-        "usage3": "Small-scale digital content",
-        "statAreaLabel": "Square metres",
-        "statGridLabel": "Metres to grid",
-        "cta": "Book a commercial stage."
+        "eyebrow": "设施 · B — 商业录音棚",
+        "heading": "小面积。全规格。",
+        "lead": "100 m² 舞台。同样 15 m 格栅高度。同等隔音标准。开箱即用的 LED 幕。",
+        "prose2": "这就是这些舞台的本质。周一进入，拍摄，周五撤场。幕配置与影视棚共享，在一处发展的视效可以转移到另一处。",
+        "usage1": "电视广告与购物节目",
+        "usage2": "音乐视频制作",
+        "usage3": "小规模数字内容",
+        "statAreaLabel": "平方米",
+        "statGridLabel": "格栅高度（米）",
+        "cta": "预订商业舞台。"
       }
     },
     "broadcastTheatre": {
@@ -697,17 +697,17 @@
         "statSeats": "450",
         "statCameras": "8",
         "ctaLink": "Enquire",
-        "eyebrow": "Facilities · C — Broadcast theatre",
-        "heading": "A live theatre wired as a broadcast studio.",
-        "lead": "450 in theatre mode. 300 in cabaret. Eight fully integrated robotic camera positions. AR and VR ready. Broadcast-partner compliant.",
-        "prose": "The broadcast theatre is a multi-modal live venue with a broadcast gallery wrapped around it.",
-        "prose2": "Robotic cameras, an LED virtual set library, and streaming compliance are built into the room. Every performance here can reach the people in the seats and the audience at home at the same time, without a separate broadcast setup.",
-        "usage1": "Live performance and events",
-        "usage2": "Live broadcast",
-        "usage3": "AR/VR showcase experiences",
-        "statSeatsLabel": "Theatre seats",
-        "statCamerasLabel": "Robotic cameras",
-        "cta": "Discuss a live broadcast or event."
+        "eyebrow": "设施 · C — 广播剧场",
+        "heading": "配备广播工作室的现场剧场。",
+        "lead": "剧场模式 450 座。歌舞厅模式 300 座。八个全集成机器人摄像机位。AR 与 VR 就绪。符合广播伙伴要求。",
+        "prose": "广播剧场是一个多模式现场场馆，周围环绕着广播控制室。",
+        "prose2": "机器人摄像机、LED 虚拟布景库和流媒体合规功能内置于场馆内。每场演出都能同时触达现场观众和家庭观众，无需单独搭建广播设置。",
+        "usage1": "现场演出与活动",
+        "usage2": "现场广播",
+        "usage3": "AR/VR 展示体验",
+        "statSeatsLabel": "剧场座位",
+        "statCamerasLabel": "机器人摄像机",
+        "cta": "探讨现场广播或活动合作。"
       }
     },
     "controlRoom": {
@@ -721,17 +721,17 @@
       "detail": {
         "capabilityLabel": "Capability",
         "ctaLink": "Enquire",
-        "eyebrow": "Facilities · D — Broadcast control room",
-        "heading": "The nerve centre.",
-        "lead": "Central production management, live broadcast control, advanced synchronisation — feeding stages, the theatre, and external venues globally.",
-        "prose": "The control room is the campus’s single broadcast spine. It manages and synchronises every live production on site.",
-        "prose2": "It is designed to originate broadcast from external sports and event venues anywhere in the world. Production City’s broadcast and data-centre pedigree sits here. The control room is engineered the way critical broadcast infrastructure is engineered.",
-        "cap1": "Centralised production management",
-        "cap2": "Live broadcast control",
-        "cap3": "Advanced synchronisation across multi-platform and multi-location broadcasts",
-        "cap4": "Origination from on-campus stages and theatre",
-        "cap5": "Origination from external sports and event venues globally",
-        "cta": "Discuss a live origination."
+        "eyebrow": "设施 · D — 广播控制室",
+        "heading": "神经中枢。",
+        "lead": "集中制作管理、现场广播控制、高级同步——为场馆、剧场及全球外部场地提供支持。",
+        "prose": "控制室是园区的单一广播枢纽，负责管理和同步现场的每一项现场制作。",
+        "prose2": "它专为来自世界各地外部体育和活动场地的广播起源而设计。Production City 的广播与数据中心传承在此汇聚。控制室的工程标准与关键广播基础设施相同。",
+        "cap1": "集中制作管理",
+        "cap2": "现场广播控制",
+        "cap3": "跨多平台和多地点广播的高级同步",
+        "cap4": "来自园区内舞台与剧场的起源",
+        "cap5": "来自全球外部体育与活动场地的起源",
+        "cta": "探讨现场起源合作。"
       }
     },
     "ancillary": {

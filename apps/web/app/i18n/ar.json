@@ -573,7 +573,7 @@
     },
     "common": {
       "detail": {
-        "sectionHeading": "Facility details and technical specifications"
+        "sectionHeading": "تفاصيل المرفق والمواصفات التقنية"
       }
     },
     "screenStages": {
@@ -610,18 +610,18 @@
         "statArea": "2,025",
         "statGrid": "15",
         "ctaLink": "Enquire",
-        "eyebrow": "Facilities · A — Screen sound stages",
-        "heading": "Grand-scale screen work. Engineered for it.",
-        "lead": "2,025 m² of stage floor. 15 m to grid. NRC 1.05. Full-surround LED volume ready.",
-        "prose": "Feature film. Episodic. Live television. When the production is large-format, the stage has to be built for it from the ground up.",
-        "prose2": "Each screen sound stage is 45 m × 45 m, 15 m to grid, full-coverage grid and catwalk. Sound-proofing is NRC 1.05 / NC 25. LED volume is configurable flat, arc, or full-surround.",
-        "prose3": "These stages were designed against the technical specifications of major-studio and streamer productions. As the first site, the standards are set here.",
-        "usage1": "Feature film production",
-        "usage2": "Episodic television",
-        "usage3": "Live television broadcasting",
-        "statAreaLabel": "Square metres",
-        "statGridLabel": "Metres to grid",
-        "cta": "Book a screen stage."
+        "eyebrow": "المرافق · أ — استوديوهات الصوت للشاشة",
+        "heading": "أعمال شاشة على نطاق واسع. مُصمَّمة لذلك.",
+        "lead": "2,025 م² من أرضية المسرح. 15 م حتى الشبكة. NRC 1.05. حجم LED محيطي كامل جاهز.",
+        "prose": "أفلام روائية طويلة. مسلسلات. تلفزيون مباشر. عندما يكون الإنتاج بتنسيق كبير، يجب بناء المسرح لذلك من الأساس.",
+        "prose2": "يبلغ حجم كل استوديو صوتي للشاشة 45 م × 45 م، 15 م حتى الشبكة، مع شبكة وممر كامل التغطية. العزل الصوتي NRC 1.05 / NC 25. حجم LED قابل للضبط بشكل مستوٍ أو قوسي أو محيطي كامل.",
+        "prose3": "صُممت هذه الاستوديوهات وفقاً للمواصفات التقنية لكبرى استوديوهات الإنتاج ومنصات البث. باعتبارها الموقع الأول، تُحدَّد المعايير هنا.",
+        "usage1": "إنتاج الأفلام الروائية الطويلة",
+        "usage2": "تلفزيون المسلسلات",
+        "usage3": "البث التلفزيوني المباشر",
+        "statAreaLabel": "أمتار مربعة",
+        "statGridLabel": "أمتار حتى الشبكة",
+        "cta": "احجز استوديو شاشة."
       }
     },
     "commercialStages": {
@@ -654,16 +654,16 @@
         "statArea": "100",
         "statGrid": "15",
         "ctaLink": "Enquire",
-        "eyebrow": "Facilities · B — Commercial sound stages",
-        "heading": "Small footprint. Full specification.",
-        "lead": "100 m² of stage. Same 15 m to grid. Same sound-proofing. Walk-in-ready LED volume.",
-        "prose2": "That is what these stages are. Walk in on a Monday. Shoot. Strike by Friday. The volume configurations are shared with the screen stages, so a look developed on one can move to the other.",
-        "usage1": "TV commercials and infomercials",
-        "usage2": "Music video production",
-        "usage3": "Small-scale digital content",
-        "statAreaLabel": "Square metres",
-        "statGridLabel": "Metres to grid",
-        "cta": "Book a commercial stage."
+        "eyebrow": "المرافق · ب — استوديوهات الصوت التجارية",
+        "heading": "مساحة صغيرة. مواصفات كاملة.",
+        "lead": "100 م² من المسرح. نفس 15 م حتى الشبكة. نفس العزل الصوتي. حجم LED جاهز للدخول الفوري.",
+        "prose2": "هذا ما هذه الاستوديوهات عليه. ادخل يوم الاثنين. صوِّر. انته يوم الجمعة. إعدادات الحجم مشتركة مع استوديوهات الشاشة، لذا يمكن نقل المظهر المطور في أحدهما إلى الآخر.",
+        "usage1": "الإعلانات التجارية ومقاطع المعلومات",
+        "usage2": "إنتاج مقاطع الفيديو الموسيقية",
+        "usage3": "محتوى رقمي صغير النطاق",
+        "statAreaLabel": "أمتار مربعة",
+        "statGridLabel": "أمتار حتى الشبكة",
+        "cta": "احجز مسرحاً تجارياً."
       }
     },
     "broadcastTheatre": {
@@ -697,17 +697,17 @@
         "statSeats": "450",
         "statCameras": "8",
         "ctaLink": "Enquire",
-        "eyebrow": "Facilities · C — Broadcast theatre",
-        "heading": "A live theatre wired as a broadcast studio.",
-        "lead": "450 in theatre mode. 300 in cabaret. Eight fully integrated robotic camera positions. AR and VR ready. Broadcast-partner compliant.",
-        "prose": "The broadcast theatre is a multi-modal live venue with a broadcast gallery wrapped around it.",
-        "prose2": "Robotic cameras, an LED virtual set library, and streaming compliance are built into the room. Every performance here can reach the people in the seats and the audience at home at the same time, without a separate broadcast setup.",
-        "usage1": "Live performance and events",
-        "usage2": "Live broadcast",
-        "usage3": "AR/VR showcase experiences",
-        "statSeatsLabel": "Theatre seats",
-        "statCamerasLabel": "Robotic cameras",
-        "cta": "Discuss a live broadcast or event."
+        "eyebrow": "المرافق · ج — مسرح البث",
+        "heading": "مسرح حي مُجهَّز كاستوديو بث.",
+        "lead": "450 في وضع المسرح. 300 في وضع الكباريه. ثماني مواضع كاميرا آلية متكاملة بالكامل. AR وVR جاهزان. متوافق مع متطلبات شركاء البث.",
+        "prose": "مسرح البث هو مكان عرض حي متعدد الأوضاع مع صالة بث محيطية.",
+        "prose2": "الكاميرات الآلية ومكتبة المجموعات الافتراضية LED والامتثال لمتطلبات البث مدمجة في القاعة. يمكن لكل عرض الوصول في آنٍ واحد إلى الجمهور في المقاعد والمشاهدين في المنزل، دون الحاجة إلى إعداد بث منفصل.",
+        "usage1": "العروض الحية والفعاليات",
+        "usage2": "البث المباشر",
+        "usage3": "تجارب عرض AR/VR",
+        "statSeatsLabel": "مقاعد المسرح",
+        "statCamerasLabel": "كاميرات آلية",
+        "cta": "ناقش بثاً مباشراً أو فعالية."
       }
     },
     "controlRoom": {
@@ -721,17 +721,17 @@
       "detail": {
         "capabilityLabel": "Capability",
         "ctaLink": "Enquire",
-        "eyebrow": "Facilities · D — Broadcast control room",
-        "heading": "The nerve centre.",
-        "lead": "Central production management, live broadcast control, advanced synchronisation — feeding stages, the theatre, and external venues globally.",
-        "prose": "The control room is the campus’s single broadcast spine. It manages and synchronises every live production on site.",
-        "prose2": "It is designed to originate broadcast from external sports and event venues anywhere in the world. Production City’s broadcast and data-centre pedigree sits here. The control room is engineered the way critical broadcast infrastructure is engineered.",
-        "cap1": "Centralised production management",
-        "cap2": "Live broadcast control",
-        "cap3": "Advanced synchronisation across multi-platform and multi-location broadcasts",
-        "cap4": "Origination from on-campus stages and theatre",
-        "cap5": "Origination from external sports and event venues globally",
-        "cta": "Discuss a live origination."
+        "eyebrow": "المرافق · د — غرفة تحكم البث",
+        "heading": "المركز العصبي.",
+        "lead": "إدارة الإنتاج المركزية، التحكم في البث المباشر، المزامنة المتقدمة — تغذية الاستوديوهات والمسرح والأماكن الخارجية عالمياً.",
+        "prose": "غرفة التحكم هي العمود الفقري الوحيد للبث في الحرم. تدير وتزامن كل إنتاج مباشر في الموقع.",
+        "prose2": "مُصممة لإنشاء البث من أماكن الرياضة والفعاليات الخارجية في أي مكان بالعالم. يوجد هنا إرث البث ومراكز البيانات لـ Production City. غرفة التحكم مُصممة بنفس أسلوب البنية التحتية الحيوية للبث.",
+        "cap1": "إدارة الإنتاج المركزية",
+        "cap2": "التحكم في البث المباشر",
+        "cap3": "المزامنة المتقدمة عبر بث متعدد المنصات والمواقع",
+        "cap4": "الإنشاء من استوديوهات الحرم والمسرح",
+        "cap5": "الإنشاء من أماكن الرياضة والفعاليات الخارجية عالمياً",
+        "cta": "ناقش إنشاء بث مباشر."
       }
     },
     "ancillary": {

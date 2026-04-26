@@ -573,7 +573,7 @@
     },
     "common": {
       "detail": {
-        "sectionHeading": "Facility details and technical specifications"
+        "sectionHeading": "Подробности объекта и технические характеристики"
       }
     },
     "screenStages": {
@@ -610,18 +610,18 @@
         "statArea": "2,025",
         "statGrid": "15",
         "ctaLink": "Enquire",
-        "eyebrow": "Facilities · A — Screen sound stages",
-        "heading": "Grand-scale screen work. Engineered for it.",
-        "lead": "2,025 m² of stage floor. 15 m to grid. NRC 1.05. Full-surround LED volume ready.",
-        "prose": "Feature film. Episodic. Live television. When the production is large-format, the stage has to be built for it from the ground up.",
-        "prose2": "Each screen sound stage is 45 m × 45 m, 15 m to grid, full-coverage grid and catwalk. Sound-proofing is NRC 1.05 / NC 25. LED volume is configurable flat, arc, or full-surround.",
-        "prose3": "These stages were designed against the technical specifications of major-studio and streamer productions. As the first site, the standards are set here.",
-        "usage1": "Feature film production",
-        "usage2": "Episodic television",
-        "usage3": "Live television broadcasting",
-        "statAreaLabel": "Square metres",
-        "statGridLabel": "Metres to grid",
-        "cta": "Book a screen stage."
+        "eyebrow": "Объекты · A — Звуковые павильоны для экрана",
+        "heading": "Съёмка крупного формата. Создано для этого.",
+        "lead": "2 025 м² пола павильона. 15 м до колосников. NRC 1.05. Готов полносферический объём LED.",
+        "prose": "Полнометражный фильм. Сериал. Прямой эфир. Когда производство крупного формата, павильон должен быть построен для этого с нуля.",
+        "prose2": "Каждый звуковой павильон для экрана — 45 м × 45 м, 15 м до колосников, полное покрытие колосников и обходных галерей. Звукоизоляция NRC 1.05 / NC 25. Объём LED настраивается: плоский, дуговой или полносферический.",
+        "prose3": "Эти павильоны спроектированы по техническим требованиям крупных студий и стриминговых платформ. Как первый объект, стандарты устанавливаются здесь.",
+        "usage1": "Производство полнометражных фильмов",
+        "usage2": "Телевизионные сериалы",
+        "usage3": "Прямое телевизионное вещание",
+        "statAreaLabel": "Квадратные метры",
+        "statGridLabel": "Метры до колосников",
+        "cta": "Забронируйте экранный павильон."
       }
     },
     "commercialStages": {
@@ -654,16 +654,16 @@
         "statArea": "100",
         "statGrid": "15",
         "ctaLink": "Enquire",
-        "eyebrow": "Facilities · B — Commercial sound stages",
-        "heading": "Small footprint. Full specification.",
-        "lead": "100 m² of stage. Same 15 m to grid. Same sound-proofing. Walk-in-ready LED volume.",
-        "prose2": "That is what these stages are. Walk in on a Monday. Shoot. Strike by Friday. The volume configurations are shared with the screen stages, so a look developed on one can move to the other.",
-        "usage1": "TV commercials and infomercials",
-        "usage2": "Music video production",
-        "usage3": "Small-scale digital content",
-        "statAreaLabel": "Square metres",
-        "statGridLabel": "Metres to grid",
-        "cta": "Book a commercial stage."
+        "eyebrow": "Объекты · B — Коммерческие звуковые павильоны",
+        "heading": "Малая площадь. Полные характеристики.",
+        "lead": "100 м² павильона. Те же 15 м до колосников. Та же звукоизоляция. Объём LED готов к работе.",
+        "prose2": "Именно таковы эти павильоны. Приходите в понедельник. Снимайте. Освобождайте в пятницу. Конфигурации объёма совместимы с экранными павильонами, поэтому образ, разработанный на одном, можно перенести на другой.",
+        "usage1": "Телерекламы и инфомерсиалы",
+        "usage2": "Производство музыкальных клипов",
+        "usage3": "Цифровой контент малого масштаба",
+        "statAreaLabel": "Квадратные метры",
+        "statGridLabel": "Метры до колосников",
+        "cta": "Забронируйте коммерческий павильон."
       }
     },
     "broadcastTheatre": {
@@ -697,17 +697,17 @@
         "statSeats": "450",
         "statCameras": "8",
         "ctaLink": "Enquire",
-        "eyebrow": "Facilities · C — Broadcast theatre",
-        "heading": "A live theatre wired as a broadcast studio.",
-        "lead": "450 in theatre mode. 300 in cabaret. Eight fully integrated robotic camera positions. AR and VR ready. Broadcast-partner compliant.",
-        "prose": "The broadcast theatre is a multi-modal live venue with a broadcast gallery wrapped around it.",
-        "prose2": "Robotic cameras, an LED virtual set library, and streaming compliance are built into the room. Every performance here can reach the people in the seats and the audience at home at the same time, without a separate broadcast setup.",
-        "usage1": "Live performance and events",
-        "usage2": "Live broadcast",
-        "usage3": "AR/VR showcase experiences",
-        "statSeatsLabel": "Theatre seats",
-        "statCamerasLabel": "Robotic cameras",
-        "cta": "Discuss a live broadcast or event."
+        "eyebrow": "Объекты · C — Вещательный театр",
+        "heading": "Живой театр, оборудованный как вещательная студия.",
+        "lead": "450 в режиме театра. 300 в режиме кабаре. Восемь полностью интегрированных позиций роботизированных камер. AR и VR готовы. Соответствует требованиям партнёров по вещанию.",
+        "prose": "Вещательный театр — это многофункциональная площадка для живых выступлений с интегрированной вещательной галереей.",
+        "prose2": "Роботизированные камеры, библиотека виртуальных декораций LED и соответствие требованиям стриминга встроены в зал. Каждое выступление может одновременно достигать зрителей в зале и дома, без отдельной вещательной установки.",
+        "usage1": "Живые выступления и мероприятия",
+        "usage2": "Прямое вещание",
+        "usage3": "Демонстрация возможностей AR/VR",
+        "statSeatsLabel": "Театральные места",
+        "statCamerasLabel": "Роботизированные камеры",
+        "cta": "Обсудить прямую трансляцию или мероприятие."
       }
     },
     "controlRoom": {
@@ -721,17 +721,17 @@
       "detail": {
         "capabilityLabel": "Capability",
         "ctaLink": "Enquire",
-        "eyebrow": "Facilities · D — Broadcast control room",
-        "heading": "The nerve centre.",
-        "lead": "Central production management, live broadcast control, advanced synchronisation — feeding stages, the theatre, and external venues globally.",
-        "prose": "The control room is the campus’s single broadcast spine. It manages and synchronises every live production on site.",
-        "prose2": "It is designed to originate broadcast from external sports and event venues anywhere in the world. Production City’s broadcast and data-centre pedigree sits here. The control room is engineered the way critical broadcast infrastructure is engineered.",
-        "cap1": "Centralised production management",
-        "cap2": "Live broadcast control",
-        "cap3": "Advanced synchronisation across multi-platform and multi-location broadcasts",
-        "cap4": "Origination from on-campus stages and theatre",
-        "cap5": "Origination from external sports and event venues globally",
-        "cta": "Discuss a live origination."
+        "eyebrow": "Объекты · D — Вещательная аппаратная",
+        "heading": "Нервный центр.",
+        "lead": "Централизованное управление производством, контроль прямого вещания, расширенная синхронизация — обеспечение павильонов, театра и внешних площадок по всему миру.",
+        "prose": "Аппаратная — единый вещательный хребет кампуса. Она управляет и синхронизирует каждое прямое производство на месте.",
+        "prose2": "Она предназначена для организации вещания с внешних спортивных и мероприятийных площадок в любой точке мира. Здесь сосредоточен опыт Production City в вещании и дата-центрах. Аппаратная спроектирована по стандартам критической вещательной инфраструктуры.",
+        "cap1": "Централизованное управление производством",
+        "cap2": "Контроль прямого вещания",
+        "cap3": "Расширенная синхронизация для многоплатформенных и многолокальных трансляций",
+        "cap4": "Исходящий сигнал с павильонов и театра кампуса",
+        "cap5": "Исходящий сигнал с внешних спортивных и мероприятийных площадок по всему миру",
+        "cta": "Обсудить прямое вещание."
       }
     },
     "ancillary": {
