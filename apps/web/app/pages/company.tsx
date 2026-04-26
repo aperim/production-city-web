@@ -173,7 +173,7 @@ function CompanyPageContent() {
           </div>
           <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
             {/* Troy Kelly */}
-            <a href="/company/team" className="group flex flex-col gap-4 border border-border p-0 hover:bg-muted/30 transition-colors">
+            <div className="flex flex-col gap-4 border border-border p-0">
               <div
                 className="aspect-[4/5] border-0 flex flex-col justify-between p-4 text-xs font-mono tracking-widest text-muted-foreground"
                 role="img"
@@ -188,12 +188,11 @@ function CompanyPageContent() {
                 <p className="mt-2 text-sm text-muted-foreground leading-relaxed">
                   Founder and Chief Executive. Stage and screen production, broadcast and data-centre infrastructure, machine learning in Silicon Valley.
                 </p>
-                <span className="mt-3 block text-xs font-mono text-primary">Full bio →</span>
               </div>
-            </a>
+            </div>
 
             {/* Matthew Compton */}
-            <a href="/company/team" className="group flex flex-col gap-4 border border-border p-0 hover:bg-muted/30 transition-colors">
+            <div className="flex flex-col gap-4 border border-border p-0">
               <div
                 className="aspect-[4/5] border-0 flex flex-col justify-between p-4 text-xs font-mono tracking-widest text-muted-foreground"
                 style={{ borderLeft: "3px solid var(--ochre, oklch(0.72 0.15 60))" }}
@@ -217,9 +216,8 @@ function CompanyPageContent() {
                 <p className="mt-2 text-sm text-muted-foreground leading-relaxed">
                   Chief Operating Officer and Managing Director. His authority is substantive, not advisory.
                 </p>
-                <span className="mt-3 block text-xs font-mono text-primary">Full bio →</span>
               </div>
-            </a>
+            </div>
           </div>
           <p className="mt-6 text-sm text-muted-foreground">
             {t("company.leadershipNote")}

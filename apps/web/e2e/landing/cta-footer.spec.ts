@@ -189,28 +189,7 @@ test.describe("Footer — contact information", () => {
 });
 
 // ─── Footer legal links ───────────────────────────────────────────────────────
-
-test.describe("Footer — legal links", () => {
-  test("footer privacy policy link points to /privacy", async ({ page }) => {
-    await page.goto("/");
-    const footer = page.getByRole("contentinfo");
-    const privacyLink = footer
-      .getByRole("link", { name: /privacy/i })
-      .first();
-    await expect(privacyLink).toBeVisible();
-    const href = await privacyLink.getAttribute("href");
-    expect(href).toContain("/privacy");
-  });
-
-  test("footer terms of use link points to /terms", async ({ page }) => {
-    await page.goto("/");
-    const footer = page.getByRole("contentinfo");
-    const termsLink = footer.getByRole("link", { name: /terms/i }).first();
-    await expect(termsLink).toBeVisible();
-    const href = await termsLink.getAttribute("href");
-    expect(href).toContain("/terms");
-  });
-});
+// Privacy and Terms pages removed from footer until pages exist (PRO-253 / PRO-260).
 
 // ─── Hamburger menu close and Escape key ─────────────────────────────────────
 

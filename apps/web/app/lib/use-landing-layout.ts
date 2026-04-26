@@ -42,7 +42,6 @@ export function useLandingNav(): LandingNavigationProps {
       { label: t("nav.network"), href: `${prefix}/network` },
       { label: t("nav.company"), href: `${prefix}/company` },
       { label: t("nav.firstNations"), href: `${prefix}/first-nations` },
-      { label: t("nav.updates"), href: `${prefix}/announcements` },
       { label: t("nav.community"), href: `${prefix}/community` },
       { label: t("nav.faq"), href: `${prefix}/faq` },
       { label: t("nav.contact"), href: `${prefix}/contact` },
@@ -79,7 +78,6 @@ export function useLandingFooter(): LandingFooterProps {
           { label: t("nav.vision"), href: `${prefix}/vision` },
           { label: t("nav.network"), href: `${prefix}/network` },
           { label: t("nav.community"), href: `${prefix}/community` },
-          { label: t("nav.updates"), href: `${prefix}/announcements` },
         ],
       },
       {
@@ -89,13 +87,6 @@ export function useLandingFooter(): LandingFooterProps {
           { label: t("nav.firstNations"), href: `${prefix}/first-nations` },
           { label: t("nav.faq"), href: `${prefix}/faq` },
           { label: t("nav.contact"), href: `${prefix}/contact` },
-        ],
-      },
-      {
-        heading: t("footer.company"),
-        links: [
-          { label: t("footer.privacyPolicy"), href: `${prefix}/privacy` },
-          { label: t("footer.termsOfUse"), href: `${prefix}/terms` },
         ],
       },
     ],
@@ -110,10 +101,7 @@ export function useLandingFooter(): LandingFooterProps {
       phoneAU: "+61 2 9137 9100",
       phoneUS: "+1 650 215 6253",
     },
-    legalLinks: [
-      { label: t("footer.privacyPolicy"), href: `${prefix}/privacy` },
-      { label: t("footer.termsOfUse"), href: `${prefix}/terms` },
-    ],
+    legalLinks: [],
     languages: LOCALE_META.map((m) => ({
       code: m.code,
       label: m.nativeName,
@@ -125,8 +113,7 @@ export function useLandingFooter(): LandingFooterProps {
 
 /** Build EOI form labels from i18n context. */
 export function useEoiLabels(): EOIFormLabels {
-  const { t, locale } = useTranslation();
-  const prefix = locale === "en" ? "" : `/${locale}`;
+  const { t } = useTranslation();
 
   return {
     name: t("eoi.nameLabel"),
@@ -140,7 +127,7 @@ export function useEoiLabels(): EOIFormLabels {
     submitting: t("eoi.submitting"),
     success: t("eoi.successMessage"),
     error: t("eoi.errorMessage"),
-    privacyUrl: `${prefix}/privacy`,
+    privacyUrl: "#",
   };
 }
 
