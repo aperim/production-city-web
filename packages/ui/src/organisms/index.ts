@@ -228,3 +228,11 @@ export type { FnPrincipleListProps, FnPrincipleItem } from './FnPrincipleList/Fn
 // Issue PRO-164: SignalDiagram — IP LIFECYCLE · LIVE animated diagram
 export { SignalDiagram } from './SignalDiagram/SignalDiagram';
 export type { SignalDiagramProps } from './SignalDiagram/SignalDiagram';
+
+// Issue PRO-299: MasterplanViewer — Three.js campus viewer React wrapper
+export { MasterplanViewer } from './MasterplanViewer/MasterplanViewer';
+export type {
+  MasterplanViewerProps,
+  Facility,
+  MasterplanQuality,
+} from './MasterplanViewer/MasterplanViewer';
