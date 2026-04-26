@@ -878,9 +878,9 @@
     "global": {
       "heading": "شبكة الحُرم العالمية",
       "operatingModel": "حُرم مترابطة تحت علامة Production City الموحدة، تهدف لتوفير معايير خدمة متسقة ودعم الإنتاجات المتزامنة متعددة المواقع.",
-      "queensland": "كوينزلاند، أستراليا",
-      "queenslandStatus": "موقع الإطلاق (مخطط)",
-      "queenslandDesc": "أول حرم Production City، بدءاً من كوينزلاند.",
+      "sydney": "سيدني، أستراليا",
+      "sydneyStatus": "موقع الإطلاق (مخطط)",
+      "sydneyDesc": "أول حرم Production City، بدءاً من سيدني.",
       "singapore": "سنغافورة",
       "singaporeStatus": "توسع مستقبلي (مخطط)",
       "singaporeDesc": "توسع مخطط لخدمة سوق آسيا والمحيط الهادئ.",

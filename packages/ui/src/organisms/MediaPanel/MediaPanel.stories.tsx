@@ -52,7 +52,7 @@ export const WithAttribution: Story = {
       <div>
         <h2 style={{ fontSize: "1.5rem", fontWeight: 600 }}>Our Vision</h2>
         <p style={{ marginTop: "1rem", color: "var(--color-muted-foreground)" }}>
-          Building Queensland's premier production hub.
+          Building Sydney's premier production hub.
         </p>
       </div>
     ),

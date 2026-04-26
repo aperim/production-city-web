@@ -533,7 +533,7 @@
       "heading": "Qu'est-ce que Production City ?",
       "claim1": "Fusionne tradition et innovation pour la narration sur écran, sur scène et expérientielle.",
       "claim2": "Offre des plateaux de tournage ultramodernes, un théâtre de diffusion unique, des régies et des services de production intégrés.",
-      "claim3": "Prévoit de créer un réseau mondial de campus interconnectés, à partir du Queensland.",
+      "claim3": "Prévoit de créer un réseau mondial de campus interconnectés, à partir de Sydney.",
       "claim4": "Conçu pour réduire les risques liés à l'adoption de nouvelles technologies en les ancrant dans des pratiques éprouvées."
     },
     "facilitiesPreview": {
@@ -547,7 +547,7 @@
     },
     "visionTeaser": {
       "heading": "Une vision mondiale",
-      "description": "Production City prévoit de créer un réseau mondial de campus interconnectés, à partir du Queensland, Australie, s'étendant à Singapour, Hawaï, l'Europe et les États-Unis.",
+      "description": "Production City prévoit de créer un réseau mondial de campus interconnectés, à partir de Sydney, Australie, s'étendant à Singapour, Hawaï, l'Europe et les États-Unis.",
       "viewAll": "Découvrir notre vision"
     },
     "acknowledgement": {
@@ -856,7 +856,7 @@
   "vision": {
     "meta": {
       "title": "Vision et réseau mondial — Production City",
-      "description": "Découvrez la vision de Production City pour un réseau mondial de campus de production interconnectés, à partir du Queensland, Australie."
+      "description": "Découvrez la vision de Production City pour un réseau mondial de campus de production interconnectés, à partir de Sydney, Australie."
     },
     "mission": {
       "heading": "Vision et mission",
@@ -878,9 +878,9 @@
     "global": {
       "heading": "Réseau mondial de campus",
       "operatingModel": "Campus interconnectés sous une marque unifiée, avec des standards de service cohérents et un soutien aux productions simultanées multi-sites.",
-      "queensland": "Queensland, Australie",
-      "queenslandStatus": "Site de lancement (prévu)",
-      "queenslandDesc": "Le premier campus de Production City, débutant au Queensland.",
+      "sydney": "Sydney, Australie",
+      "sydneyStatus": "Site de lancement (prévu)",
+      "sydneyDesc": "Le premier campus de Production City, débutant à Sydney.",
       "singapore": "Singapour",
       "singaporeStatus": "Expansion future (prévue)",
       "singaporeDesc": "Expansion prévue pour servir le marché Asie-Pacifique.",

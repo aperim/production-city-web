@@ -5,7 +5,7 @@ import { FAQSection } from "./FAQSection";
 
 const faqs = [
   { question: "What is Production City?", answer: "A creative campus." },
-  { question: "Where is it located?", answer: "Queensland, Australia." },
+  { question: "Where is it located?", answer: "Sydney, Australia." },
   { question: "How do I apply?", answer: "Submit an EOI." },
 ];
 

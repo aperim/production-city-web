@@ -1,6 +1,6 @@
 /**
  * Vision & Global Network page — global vision, market position, stakeholders.
- * Hero with media, statement block, Queensland + Global sections,
+ * Hero with media, statement block, Sydney + Global sections,
  * GlobalCampusMap, StakeholderGrid, split CTAs, forward-looking disclaimer.
  * All text from i18n.
  */
@@ -89,9 +89,9 @@ function VisionPageContent() {
       </section>
       </ScrollRevealSection>
 
-      {/* Queensland First — with media */}
+      {/* Sydney First — with media */}
       <ScrollRevealSection delay={100}>
-      <section className="py-10 border-t border-border" aria-labelledby="queensland-heading">
+      <section className="py-10 border-t border-border" aria-labelledby="sydney-heading">
         <div className="grid grid-cols-1 gap-8 lg:grid-cols-2 lg:items-start">
           {MEDIA["vision-queensland"] && (
             <div className="overflow-hidden rounded-sm">
@@ -107,14 +107,14 @@ function VisionPageContent() {
             </div>
           )}
           <div>
-            <h2 id="queensland-heading" className="text-xl font-semibold text-foreground">
-              {t("vision.global.queensland")}
+            <h2 id="sydney-heading" className="text-xl font-semibold text-foreground">
+              {t("vision.global.sydney")}
             </h2>
             <p className="mt-1 text-xs text-muted-foreground">
-              {t("vision.global.queenslandStatus")}
+              {t("vision.global.sydneyStatus")}
             </p>
             <p className="mt-3 text-sm text-muted-foreground">
-              {t("vision.global.queenslandDesc")}
+              {t("vision.global.sydneyDesc")}
             </p>
           </div>
         </div>
@@ -157,9 +157,9 @@ function VisionPageContent() {
           heading={t("vision.global.heading")}
           locations={[
             {
-              name: t("vision.global.queensland"),
-              status: t("vision.global.queenslandStatus"),
-              description: t("vision.global.queenslandDesc"),
+              name: t("vision.global.sydney"),
+              status: t("vision.global.sydneyStatus"),
+              description: t("vision.global.sydneyDesc"),
             },
             {
               name: t("vision.global.singapore"),

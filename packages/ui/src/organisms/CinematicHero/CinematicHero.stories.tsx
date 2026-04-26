@@ -28,7 +28,7 @@ export const WithSubtitle: Story = {
 
 export const WithCTAs: Story = {
   args: {
-    subtitle: "The future of production in Queensland",
+    subtitle: "The future of production in Sydney",
     ctas: [
       { label: "Register Interest", href: "/register", variant: "primary" },
       { label: "Learn More", href: "/about", variant: "secondary" },

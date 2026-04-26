@@ -20,7 +20,7 @@ export const Collapsed: Story = {
 export const Expanded: Story = {
   args: {
     question: "Where is Production City located?",
-    answer: "The primary campus is planned for Queensland, Australia, with additional locations in Singapore, Hawaii, Europe, and the USA.",
+    answer: "The primary campus is planned for Sydney, Australia, with additional locations in Singapore, Hawaii, Europe, and the USA.",
     defaultOpen: true,
   },
 };

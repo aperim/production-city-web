@@ -914,7 +914,7 @@
   "vision": {
     "meta": {
       "title": "Vision & Global Network — Production City",
-      "description": "Discover Production City's vision for a global network of interconnected production campuses, beginning in Queensland, Australia."
+      "description": "Discover Production City's vision for a global network of interconnected production campuses, beginning in Sydney, Australia."
     },
     "mission": {
       "heading": "Vision & Mission",
@@ -936,9 +936,9 @@
     "global": {
       "heading": "Global Campus Network",
       "operatingModel": "Each campus runs under the same brand, the same technology stack, and the same ownership model. A production that starts in Sydney can continue in Singapore on the same terms.",
-      "queensland": "Queensland, Australia",
-      "queenslandStatus": "Launch Location (Planned)",
-      "queenslandDesc": "First campus. Technical standards, R&D, and executive functions are set here before replication.",
+      "sydney": "Sydney, Australia",
+      "sydneyStatus": "Launch Location (Planned)",
+      "sydneyDesc": "First campus. Technical standards, R&D, and executive functions are set here before replication.",
       "singapore": "Singapore",
       "singaporeStatus": "Future Expansion (Planned)",
       "singaporeDesc": "Preferred Asia-Pacific site. Assessment in progress, chosen for production demand, regional connectivity, and incentive structure.",

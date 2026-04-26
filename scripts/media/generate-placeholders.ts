@@ -37,7 +37,7 @@ const MEDIA_CONTEXTS: MediaContext[] = [
   { context: "creative-post-production", description: "Editing suite, color grading", searchQuery: "video editing color grading" },
   // Vision page
   { context: "vision-hero", description: "Futuristic campus or innovation center", searchQuery: "modern innovation center" },
-  { context: "vision-queensland", description: "Queensland, Australia landscape/cityscape", searchQuery: "queensland australia coastline" },
+  { context: "vision-queensland", description: "Sydney, Australia landscape/cityscape", searchQuery: "sydney australia coastline" },
   { context: "vision-global", description: "Global connectivity, world map concept", searchQuery: "global network connection" },
   // Community page
   { context: "community-hero", description: "Education/learning environment, students", searchQuery: "education learning environment" },

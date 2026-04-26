@@ -175,7 +175,7 @@ function TypographyTokens() {
             fontSize: "var(--font-size-lead, clamp(19px, 1.6vw, 24px))",
             lineHeight: 1.45,
           }}
-          text="The intersection of craft and technology in South-East Queensland."
+          text="The intersection of craft and technology in Sydney."
         />
         <Specimen
           label="Body"

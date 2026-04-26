@@ -878,9 +878,9 @@
     "global": {
       "heading": "グローバルキャンパスネットワーク",
       "operatingModel": "統一されたProduction Cityブランドの下で相互接続されたキャンパス。一貫したサービス基準と同時マルチロケーション制作の支援を目指します。",
-      "queensland": "クイーンズランド、オーストラリア",
-      "queenslandStatus": "ローンチ拠点（計画中）",
-      "queenslandDesc": "最初のProduction Cityキャンパス。クイーンズランドから開始。",
+      "sydney": "シドニー、オーストラリア",
+      "sydneyStatus": "ローンチ拠点（計画中）",
+      "sydneyDesc": "最初のProduction Cityキャンパス。シドニーから開始。",
       "singapore": "シンガポール",
       "singaporeStatus": "将来の拡張（計画中）",
       "singaporeDesc": "アジア太平洋市場向けの計画中の拡張。",

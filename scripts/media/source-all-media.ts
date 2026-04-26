@@ -77,7 +77,7 @@ const MEDIA_CONTEXTS: ContentContext[] = [
   { context: "creative-post-production", description: "Editing suite, color grading", searchQuery: "video editing color grading monitor", altQueries: ["post production editing suite"] },
   // Vision page
   { context: "vision-hero", description: "Futuristic campus or innovation center", searchQuery: "futuristic architecture innovation", altQueries: ["modern building design glass"] },
-  { context: "vision-queensland", description: "Queensland, Australia landscape/cityscape", searchQuery: "queensland australia gold coast skyline", altQueries: ["brisbane city skyline river"] },
+  { context: "vision-queensland", description: "Sydney, Australia landscape/cityscape", searchQuery: "sydney australia skyline harbour", altQueries: ["sydney opera house harbour bridge"] },
   { context: "vision-global", description: "Global connectivity, world map concept", searchQuery: "global network technology connection", altQueries: ["world map digital connectivity"] },
   // Community page
   { context: "community-hero", description: "Education/learning environment, students", searchQuery: "students learning classroom technology", altQueries: ["education workshop creative learning"] },

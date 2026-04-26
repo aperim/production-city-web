@@ -73,7 +73,7 @@ export const MEDIA: Record<string, MediaSource> = {
 
   // Vision page
   "vision-hero": media("vision-hero", "Futuristic geometric architectural design representing innovation", "Engin Akyurt", "https://www.pexels.com/@enginakyurt", "#666666"),
-  "vision-queensland": media("vision-queensland", "Aerial view of Queensland, Australia coastline — lush green hills meeting the ocean", "Caleb Russell", "https://www.pexels.com/@caleb-russell-1573299", "#787966"),
+  "vision-queensland": media("vision-queensland", "Aerial view of Sydney, Australia — lush green hills meeting the ocean", "Caleb Russell", "https://www.pexels.com/@caleb-russell-1573299", "#787966"),
   "vision-global": media("vision-global", "Earth at night from space, city lights across Asia representing global connectivity", "Zelch Csaba", "https://www.pexels.com/@zelch", "#0F0B02"),
 
   // Community page

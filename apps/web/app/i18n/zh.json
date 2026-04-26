@@ -878,9 +878,9 @@
     "global": {
       "heading": "全球校区网络",
       "operatingModel": "在统一的 Production City 品牌下的互联校区，旨在提供一致的服务标准并支持同步多地点制作。",
-      "queensland": "澳大利亚昆士兰",
-      "queenslandStatus": "启动地点（规划中）",
-      "queenslandDesc": "从昆士兰开始的第一个 Production City 校区。",
+      "sydney": "悉尼，澳大利亚",
+      "sydneyStatus": "启动地点（规划中）",
+      "sydneyDesc": "第一个 Production City 校区，从悉尼开始。",
       "singapore": "新加坡",
       "singaporeStatus": "未来扩展（规划中）",
       "singaporeDesc": "为亚太市场规划的扩展。",
