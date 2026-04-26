@@ -1,13 +1,14 @@
 /**
  * E2E tests: i18n locale routing, RTL layout, LanguageSwitcher, and locale suggestion.
  *
- * Covers: locale prefix routing (10 locales), LanguageSwitcher navigation,
+ * Covers: locale prefix routing (10 locales), LanguageSwitcher end-to-end navigation,
  * invalid locale redirect, Arabic RTL, hreflang links, Content-Language header,
- * locale suggestion prompt, trailing slash normalization.
+ * locale suggestion prompt, trailing slash normalization, new-pages locale routing.
  *
  * Finding #24: Uses parameterized tests with explicit timeouts for 70-render verification.
  *
  * @see Issue #280
+ * @see PRO-190
  */
 
 import { test, expect } from "@playwright/test";
@@ -147,6 +148,84 @@ test.describe("i18n — LanguageSwitcher", () => {
       await expect(page.getByRole("menuitemradio", { name: "English" })).toBeVisible({ timeout: 1_000 });
     }).toPass({ timeout: 15_000 });
   });
+
+  test("selecting Chinese navigates to /zh/ from home page", async ({ page }) => {
+    await page.goto("/");
+    const footer = page.getByRole("contentinfo");
+    const trigger = footer.getByRole("button", { name: /language/i });
+
+    await expect(async () => {
+      await trigger.click();
+      await expect(
+        page.getByRole("menuitemradio", { name: "中文" }),
+      ).toBeVisible({ timeout: 1_000 });
+    }).toPass({ timeout: 15_000 });
+
+    await page.getByRole("menuitemradio", { name: "中文" }).click();
+
+    await expect(page).toHaveURL(/\/zh\//, { timeout: 10_000 });
+    await expect(page.locator("html")).toHaveAttribute("lang", "zh");
+  });
+
+  test("selecting Arabic navigates to /ar/ and sets dir=rtl", async ({ page }) => {
+    await page.goto("/");
+    const footer = page.getByRole("contentinfo");
+    const trigger = footer.getByRole("button", { name: /language/i });
+
+    await expect(async () => {
+      await trigger.click();
+      await expect(
+        page.getByRole("menuitemradio", { name: "العربية" }),
+      ).toBeVisible({ timeout: 1_000 });
+    }).toPass({ timeout: 15_000 });
+
+    await page.getByRole("menuitemradio", { name: "العربية" }).click();
+
+    await expect(page).toHaveURL(/\/ar\//, { timeout: 10_000 });
+    await expect(page.locator("html")).toHaveAttribute("lang", "ar");
+    await expect(page.locator("html")).toHaveAttribute("dir", "rtl");
+  });
+
+  test("selecting Chinese on /facilities navigates to /zh/facilities", async ({
+    page,
+  }) => {
+    await page.goto("/facilities");
+    const footer = page.getByRole("contentinfo");
+    const trigger = footer.getByRole("button", { name: /language/i });
+
+    await expect(async () => {
+      await trigger.click();
+      await expect(
+        page.getByRole("menuitemradio", { name: "中文" }),
+      ).toBeVisible({ timeout: 1_000 });
+    }).toPass({ timeout: 15_000 });
+
+    await page.getByRole("menuitemradio", { name: "中文" }).click();
+
+    await expect(page).toHaveURL(/\/zh\/facilities/, { timeout: 10_000 });
+    await expect(page.locator("html")).toHaveAttribute("lang", "zh");
+  });
+
+  test("selecting English on a non-English page returns to the base path", async ({
+    page,
+  }) => {
+    await page.goto("/zh/facilities");
+    const footer = page.getByRole("contentinfo");
+    const trigger = footer.getByRole("button", { name: /language/i });
+
+    await expect(async () => {
+      await trigger.click();
+      await expect(
+        page.getByRole("menuitemradio", { name: "English" }),
+      ).toBeVisible({ timeout: 1_000 });
+    }).toPass({ timeout: 15_000 });
+
+    await page.getByRole("menuitemradio", { name: "English" }).click();
+
+    // English has no locale prefix — URL should be /facilities (no /en/)
+    await expect(page).toHaveURL(/\/facilities$/, { timeout: 10_000 });
+    await expect(page.locator("html")).toHaveAttribute("lang", "en");
+  });
 });
 
 // ─── Page content ───────────────────────────────────────────────────────
@@ -196,6 +275,74 @@ test.describe("i18n — full locale rendering verification", () => {
         expect(untranslatedKeys).toEqual([]);
       });
     }
+  }
+});
+
+// ─── New pages locale routing (PRO-190) ─────────────────────────────────
+// Spot-checks a representative subset of locales against the 10 new pages
+// added in PRO-93. Full 100-render grid is not run to keep suite time
+// reasonable; en/zh/ar/ja provide LTR, CJK, RTL, and East-Asian coverage.
+
+const NEW_PAGES_PATHS = [
+  "/services",
+  "/network",
+  "/company",
+  "/company/team",
+  "/company/approach",
+  "/first-nations",
+  "/facilities/broadcast-control-room",
+  "/facilities/broadcast-theatre",
+  "/facilities/commercial-sound-stages",
+  "/facilities/screen-sound-stages",
+] as const;
+
+const SPOT_LOCALES = ["en", "zh", "ar", "ja"] as const;
+
+test.describe("i18n — new pages locale routing", () => {
+  test.describe.configure({ timeout: 120_000 });
+
+  for (const locale of SPOT_LOCALES) {
+    for (const pagePath of NEW_PAGES_PATHS) {
+      const url = localeUrl(locale, pagePath);
+      test(`${locale}${pagePath} returns 200 with correct lang`, async ({
+        page,
+      }) => {
+        const response = await page.goto(url);
+        expect(response?.status()).toBe(200);
+        await expect(page.locator("html")).toHaveAttribute("lang", locale);
+
+        const expectedDir = locale === "ar" ? "rtl" : "ltr";
+        await expect(page.locator("html")).toHaveAttribute("dir", expectedDir);
+
+        expect(response?.headers()["content-language"]).toBe(locale);
+      });
+    }
+  }
+});
+
+// ─── New pages hreflang ──────────────────────────────────────────────────
+
+test.describe("i18n — new pages hreflang links", () => {
+  const SAMPLE_NEW_PAGES = ["/services", "/company", "/first-nations"] as const;
+
+  for (const pagePath of SAMPLE_NEW_PAGES) {
+    test(`${pagePath} has hreflang links for all 10 locales + x-default`, async ({
+      page,
+    }) => {
+      await page.goto(pagePath);
+
+      for (const locale of SUPPORTED_LOCALES) {
+        const link = page.locator(
+          `link[rel="alternate"][hreflang="${locale}"]`,
+        );
+        await expect(link).toHaveCount(1);
+      }
+
+      const xDefault = page.locator(
+        'link[rel="alternate"][hreflang="x-default"]',
+      );
+      await expect(xDefault).toHaveCount(1);
+    });
   }
 });
 

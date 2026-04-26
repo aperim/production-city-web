@@ -1,6 +1,9 @@
 /**
  * E2E tests: Landing page navigation and routing.
- * Validates all 7 pages load, nav links work, and locale prefix routing.
+ * Validates all 17 pages load, nav links work, active-page indicators,
+ * and basic 404 behaviour for unknown routes.
+ *
+ * @see PRO-190
  */
 
 import { test, expect } from "@playwright/test";
@@ -79,5 +82,57 @@ test.describe("Landmark regions", () => {
       await expect(page.getByRole("main")).toBeVisible();
       await expect(page.getByRole("contentinfo")).toBeVisible();
     }
+  });
+});
+
+// ─── Active page indicator ───────────────────────────────────────────────────
+
+test.describe("Active page indicator", () => {
+  test("home page nav link has aria-current=page on /", async ({ page }) => {
+    await page.goto("/");
+    // The home/logo link should be marked current on the root path.
+    // Any nav link pointing to the current page must carry aria-current="page".
+    const currentLinks = page
+      .getByRole("navigation")
+      .locator('[aria-current="page"]');
+    await expect(currentLinks.first()).toBeVisible();
+  });
+
+  test("facilities nav link has aria-current=page on /facilities", async ({
+    page,
+  }) => {
+    await page.goto("/facilities");
+    const nav = page.getByRole("navigation");
+
+    // Open hamburger if needed
+    const menuBtn = nav.getByRole("button", { name: /navigation menu/i });
+    if (await menuBtn.isVisible()) {
+      await expect(async () => {
+        await menuBtn.click();
+        await expect(nav.locator('[aria-current="page"]')).toBeVisible({
+          timeout: 1_000,
+        });
+      }).toPass({ timeout: 15_000 });
+    }
+
+    const currentLinks = nav.locator('[aria-current="page"]');
+    await expect(currentLinks.first()).toBeVisible();
+  });
+});
+
+// ─── Unknown routes (404) ────────────────────────────────────────────────────
+
+test.describe("Unknown routes", () => {
+  test("completely unknown path returns a non-200 status or 404 page", async ({
+    page,
+  }) => {
+    const response = await page.goto("/this-path-does-not-exist-at-all");
+    // The response should be 404 — not a soft redirect to / that hides the 404.
+    expect(response?.status()).toBe(404);
+  });
+
+  test("deeply nested unknown path returns 404", async ({ page }) => {
+    const response = await page.goto("/a/b/c/d/e/f/g");
+    expect(response?.status()).toBe(404);
   });
 });
