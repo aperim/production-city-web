@@ -195,7 +195,7 @@ describe("i18n cross-locale parity (backend)", () => {
 // ============================================================================
 describe("i18n placeholder detection", () => {
   const FORBIDDEN_PATTERNS = [
-    /\bTODO\b/i,
+    /\bTODO\b/,
     /\bFIXME\b/i,
     /\bLorem\b/i,
     /\bipsum\b/i,

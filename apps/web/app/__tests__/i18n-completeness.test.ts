@@ -17,8 +17,10 @@ const BACKEND_I18N_DIR = resolve(
   "../../../../apps/backend/src/i18n",
 );
 const LOCALES = ["en", "zh", "hi", "es", "ar", "fr", "bn", "pt", "ru", "ja"];
-const BANNED_PATTERNS =
-  /\b(TODO|FIXME|Lorem|ipsum|placeholder|TRANSLATE|TBD)\b/i;
+const BANNED_PATTERNS = [
+  /\bTODO\b/,
+  /\b(FIXME|Lorem|ipsum|placeholder|TRANSLATE|TBD)\b/i,
+];
 
 /** Flatten a nested object into dot-notation keys with their values. */
 function flattenEntries(
@@ -134,7 +136,7 @@ function runI18nSuite(label: string, i18nDir: string) {
           const violations: string[] = [];
 
           for (const [key, value] of entries) {
-            if (typeof value === "string" && BANNED_PATTERNS.test(value)) {
+            if (typeof value === "string" && BANNED_PATTERNS.some((p) => p.test(value))) {
               violations.push(`${key}: "${value}"`);
             }
           }

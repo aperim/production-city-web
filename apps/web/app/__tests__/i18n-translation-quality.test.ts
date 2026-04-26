@@ -184,6 +184,8 @@ describe("i18n no untranslated English leakage", () => {
     "000000",
     // Proper noun — Australian/First Nations cultural term, intentionally same in all locales
     "First Nations",
+    // Proper nouns — personal name and cultural affiliation, same in all locales
+    "Matthew Compton (Wiradjuri).",
     // Short UI label
     "How it works",
   ]);
@@ -196,6 +198,9 @@ describe("i18n no untranslated English leakage", () => {
     /\.url$/i,
     /\.email$/i,
     /\.phone$/i,
+    /\.ctaLink$/,
+    /\.troyName$/,
+    /\.matthewName$/,
   ];
 
   for (const locale of LOCALES.filter((l) => l !== "en")) {
@@ -231,8 +236,6 @@ describe("i18n no untranslated English leakage", () => {
         if (key.includes(".spec") && enValue.length < 50) continue;
         // Skip facility detail page content (pending professional translation)
         if (/^facilities\.[^.]+\.detail\./.test(key)) continue;
-        // Skip newer landing pages content (pending professional translation)
-        if (/^(services|firstNations|network|companyApproach|companyTeam|company)\./.test(key)) continue;
         // Skip keys with count placeholders only (e.g., "{count} questions")
         if (/^\{count\}\s+\w+$/.test(enValue.trim())) continue;
 
