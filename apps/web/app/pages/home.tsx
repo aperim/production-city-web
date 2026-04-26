@@ -68,25 +68,25 @@ const AUDIENCES = [
   {
     num: "I",
     title: "For producers and studios",
-    text: "Stages, volumes, broadcast capability, services, and a working environment.",
+    text: "Major-studio-grade stages, LED volume, broadcast theatre, and 17 production services — all on one campus, one operator.",
     href: "#eoi-section",
   },
   {
     num: "II",
     title: "For government",
-    text: "First site of a global network. Employment, skills, procurement, First Nations outcomes.",
+    text: "Jobs in construction and operations, a skills pipeline through the education programme, First Nations outcomes designed into the model.",
     href: "#eoi-section",
   },
   {
     num: "III",
     title: "For investors",
-    text: "Vertically integrated model, sequenced international rollout, bankable infrastructure.",
+    text: "Infrastructure-grade asset with tenancy revenue, sequenced international rollout, and a single-operator model across every campus.",
     href: "#eoi-section",
   },
   {
     num: "IV",
     title: "For technology partners",
-    text: "A production platform that shapes its own stack.",
+    text: "A production campus that builds and operates its own technology stack. Integration partners, not vendors.",
     href: "#eoi-section",
   },
 ] as const;
