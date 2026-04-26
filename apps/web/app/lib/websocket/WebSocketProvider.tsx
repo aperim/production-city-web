@@ -10,6 +10,7 @@
 
 import { createContext, useCallback, useEffect, useRef, useState, type ReactNode } from "react";
 import { useAuth } from "../auth-context";
+import { getWsHost } from "../env";
 import { TabCoordinator } from "./TabCoordinator";
 import { MessageDeduplicator } from "./MessageDeduplicator";
 import type { ConnectionState, WSEnvelope, MessageHandler, Unsubscribe } from "./types";
@@ -127,10 +128,7 @@ export function WebSocketProvider({ children }: { children: ReactNode }) {
     setState("connecting");
 
     const protocol = window.location.protocol === "https:" ? "wss:" : "ws:";
-    const wsHost = window.location.hostname === "production.city"
-      ? "api.production.city"
-      : window.location.host;
-    const ws = new WebSocket(`${protocol}//${wsHost}/v1/ws`);
+    const ws = new WebSocket(`${protocol}//${getWsHost()}/v1/ws`);
 
     ws.onopen = () => {
       if (!mountedRef.current) {

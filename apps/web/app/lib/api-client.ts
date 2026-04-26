@@ -3,15 +3,9 @@
  * All auth is cookie-based — no tokens are stored in JS.
  */
 
-/**
- * Base URL for the backend API.
- * Production: https://api.production.city (backend Worker on api subdomain)
- * Dev/other: same origin (empty string)
- */
-const API_BASE =
-  typeof window !== "undefined" && window.location.hostname === "production.city"
-    ? "https://api.production.city"
-    : "";
+import { getApiBase } from "./env";
+
+const API_BASE = getApiBase();
 
 export interface ApiError {
   error: string;
