@@ -15,6 +15,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import { usePollingFallback } from "./usePollingFallback";
+import { getWsHost } from "../env";
 import type { DeliveryStatus, DeliveryStatusPayload, WSEnvelope } from "./types";
 import { isTerminalStatus } from "./types";
 
@@ -65,10 +66,7 @@ export function useDeliveryStatus(
     if (typeof WebSocket === "undefined") return;
 
     const protocol = window.location.protocol === "https:" ? "wss:" : "ws:";
-    const wsHost = window.location.hostname === "production.city"
-      ? "api.production.city"
-      : window.location.host;
-    const url = `${protocol}//${wsHost}/v1/ws/delivery?token=${encodeURIComponent(deliveryToken)}`;
+    const url = `${protocol}//${getWsHost()}/v1/ws/delivery?token=${encodeURIComponent(deliveryToken)}`;
 
     const ws = new WebSocket(url);
 

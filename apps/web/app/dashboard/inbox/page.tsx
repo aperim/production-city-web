@@ -13,10 +13,9 @@ import {
   sanitizeHref,
 } from "@productioncity/holding-ui";
 
-const API_BASE =
-  typeof window !== "undefined" && window.location.hostname === "production.city"
-    ? "https://api.production.city"
-    : "";
+import { getApiBase } from "../../lib/env";
+
+const API_BASE = getApiBase();
 
 export default function InboxPageRoute() {
   const [items, setItems] = useState<InboxFeedItem[]>([]);

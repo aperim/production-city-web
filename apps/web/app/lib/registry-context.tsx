@@ -43,11 +43,9 @@ export interface RegistryContextValue {
 
 const RegistryContext = createContext<RegistryContextValue | null>(null);
 
-/** API base URL — same as api-client.ts */
-const API_BASE =
-  typeof window !== "undefined" && window.location.hostname === "production.city"
-    ? "https://api.production.city"
-    : "";
+import { getApiBase } from "./env";
+
+const API_BASE = getApiBase();
 
 const SESSION_REFRESH_KEY = "pc-registry-refreshed";
 const CACHE_DURATION_MS = 5 * 60 * 1000;
