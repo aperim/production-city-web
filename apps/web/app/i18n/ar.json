@@ -324,7 +324,7 @@
     "services": "Services",
     "network": "Network",
     "company": "Company",
-    "firstNations": "First Nations"
+    "firstNations": "الشعوب الأصلية"
   },
   "eoi": {
     "formTitle": "عبّر عن اهتمامك",
@@ -397,23 +397,23 @@
         "title": "المعلومات التي نجمعها",
         "description": "عند تقديم تعبير عن الاهتمام، نجمع:",
         "items": [
-          "Your name and email address",
-          "Your selected category of interest",
-          "Any optional message you provide",
-          "Category-specific information (e.g., company name, portfolio URL)",
-          "Technical data: IP address, browser type, referring page, UTM campaign parameters",
-          "Consent records: privacy policy version accepted, timestamp, marketing preference"
+          "اسمك وعنوان بريدك الإلكتروني",
+          "فئة اهتمامك المحددة",
+          "أي رسالة اختيارية تقدمها",
+          "معلومات خاصة بالفئة (مثل: اسم الشركة، رابط ملف الأعمال)",
+          "البيانات التقنية: عنوان IP، نوع المتصفح، الصفحة المُحيلة، معلمات حملة UTM",
+          "سجلات الموافقة: إصدار سياسة الخصوصية المقبولة، الطابع الزمني، تفضيل التسويق"
         ]
       },
       "purpose": {
         "title": "كيف نستخدم معلوماتك",
         "description": "نستخدم المعلومات التي نجمعها من أجل:",
         "items": [
-          "Respond to your expression of interest",
-          "Send a confirmation email acknowledging your submission",
-          "Send marketing communications (only if you opted in)",
-          "Analyse submission trends to improve our services",
-          "Comply with legal obligations"
+          "الرد على طلب التعبير عن اهتمامك",
+          "إرسال بريد إلكتروني تأكيدي يُقرّ باستلام طلبك",
+          "إرسال اتصالات تسويقية (فقط إذا اخترت الاشتراك)",
+          "تحليل اتجاهات الطلبات لتحسين خدماتنا",
+          "الامتثال للالتزامات القانونية"
         ]
       },
       "lawfulBasis": {
@@ -430,8 +430,8 @@
         "title": "خدمات الطرف الثالث",
         "description": "نشارك بياناتك مع مقدمي الخدمات التالين:",
         "items": [
-          "Postmark (Wildbit LLC): Email delivery for confirmation and marketing communications",
-          "Cloudflare: Website hosting, CDN, and security services"
+          "Postmark (Wildbit LLC): تسليم البريد الإلكتروني للتأكيد والاتصالات التسويقية",
+          "Cloudflare: استضافة المواقع الإلكترونية، وشبكة CDN، والخدمات الأمنية"
         ],
         "note": "يعالج هؤلاء المزودون البيانات نيابة عنا بموجب اتفاقيات معالجة البيانات. لا نبيع بياناتك الشخصية."
       },
@@ -439,12 +439,12 @@
         "title": "حقوقك",
         "description": "بموجب تشريعات الخصوصية المعمول بها، لديك الحق في:",
         "items": [
-          "Access the personal data we hold about you",
-          "Request correction of inaccurate data",
-          "Request deletion of your data",
-          "Request portability of your data",
-          "Withdraw consent for marketing communications",
-          "Lodge a complaint with the relevant supervisory authority"
+          "الوصول إلى البيانات الشخصية التي نحتفظ بها عنك",
+          "طلب تصحيح البيانات غير الدقيقة",
+          "طلب حذف بياناتك",
+          "طلب قابلية نقل بياناتك",
+          "سحب موافقتك على الاتصالات التسويقية",
+          "تقديم شكوى إلى السلطة الرقابية المختصة"
         ],
         "contact": "لممارسة هذه الحقوق، اتصل بنا على privacy@production.city."
       },
@@ -595,18 +595,18 @@
       "detail": {
         "usageLabel": "Usage",
         "specLabel": "Specification",
-        "specDimensions": "Dimensions",
+        "specDimensions": "الأبعاد",
         "specDimensionsValue": "45 m × 45 m · 147 ft × 147 ft",
-        "specArea": "Floor area",
+        "specArea": "مساحة الأرضية",
         "specAreaValue": "2,025 m² · 21,797 ft²",
-        "specHeight": "Height to grid",
+        "specHeight": "الارتفاع إلى الشبكة",
         "specHeightValue": "15 m · 49 ft",
-        "specSoundproofing": "Sound-proofing",
+        "specSoundproofing": "العزل الصوتي",
         "specSoundproofingValue": "NRC 1.05 · NC 25",
-        "specLed": "LED volume",
-        "specLedValue": "Flat · Arc · Full-surround",
-        "specGrid": "Grid & catwalk",
-        "specGridValue": "Full-coverage",
+        "specLed": "حجم LED",
+        "specLedValue": "مسطح · قوسي · محيطي كامل",
+        "specGrid": "الشبكة والممر العلوي",
+        "specGridValue": "تغطية كاملة",
         "statArea": "2,025",
         "statGrid": "15",
         "ctaLink": "Enquire",
@@ -636,21 +636,21 @@
       "specNrc": "NRC 1.05، NC 25",
       "specLed": "مسطح، قوسي، محيط كامل",
       "detail": {
-        "prose": "Commercials, TVCs, music videos, short-form, and digital work do not need the 45 × 45. They do need proper acoustics, proper height, and the same LED configurations.",
+        "prose": "الإعلانات التجارية ومقاطع الفيديو الترويجية والأعمال الرقمية لا تحتاج إلى مساحة 45 × 45. لكنها تحتاج إلى خصائص صوتية مناسبة، وارتفاع كافٍ، ونفس تكوينات LED.",
         "usageLabel": "Usage",
         "specLabel": "Specification",
-        "specDimensions": "Dimensions",
+        "specDimensions": "الأبعاد",
         "specDimensionsValue": "10 m × 10 m · 32 ft × 32 ft",
-        "specArea": "Floor area",
+        "specArea": "مساحة الأرضية",
         "specAreaValue": "100 m² · 1,076 ft²",
-        "specHeight": "Height to grid",
+        "specHeight": "الارتفاع إلى الشبكة",
         "specHeightValue": "15 m · 49 ft",
-        "specSoundproofing": "Sound-proofing",
+        "specSoundproofing": "العزل الصوتي",
         "specSoundproofingValue": "NRC 1.05 · NC 25",
-        "specLed": "LED volume",
-        "specLedValue": "Flat · Arc · Full-surround",
-        "specGrid": "Grid & catwalk",
-        "specGridValue": "Full-coverage",
+        "specLed": "حجم LED",
+        "specLedValue": "مسطح · قوسي · محيطي كامل",
+        "specGrid": "الشبكة والممر العلوي",
+        "specGridValue": "تغطية كاملة",
         "statArea": "100",
         "statGrid": "15",
         "ctaLink": "Enquire",
@@ -682,18 +682,18 @@
       "detail": {
         "usageLabel": "Usage",
         "specLabel": "Specification",
-        "specTheatre": "Theatre mode",
-        "specTheatreValue": "450 seats",
-        "specCabaret": "Cabaret mode",
-        "specCabaretValue": "300 seats",
-        "specBroadcast": "Live broadcast",
-        "specBroadcastValue": "Ready",
-        "specCameras": "Robotic cameras",
-        "specCamerasValue": "8 integrated positions",
-        "specLed": "LED virtual sets",
-        "specLedValue": "Library + bespoke",
-        "specCompliance": "Compliance",
-        "specComplianceValue": "Meets streaming service requirements",
+        "specTheatre": "وضع المسرح",
+        "specTheatreValue": "450 مقعداً",
+        "specCabaret": "وضع الكابريه",
+        "specCabaretValue": "300 مقعداً",
+        "specBroadcast": "البث المباشر",
+        "specBroadcastValue": "جاهز",
+        "specCameras": "كاميرات آلية",
+        "specCamerasValue": "8 مواضع متكاملة",
+        "specLed": "مجموعات LED الافتراضية",
+        "specLedValue": "مكتبة + مخصص",
+        "specCompliance": "الامتثال",
+        "specComplianceValue": "يستوفي متطلبات خدمات البث",
         "statSeats": "450",
         "statCameras": "8",
         "ctaLink": "Enquire",
@@ -1378,7 +1378,7 @@
     "evidence4": "الشراكات والعلاقات المجتمعية التي يُنفَّذ البرنامج من خلالها.",
     "evidence5": "التوافق مع سياسة حكومة نيو ساوث ويلز ذات الصلة، بما فيها سياسة المشتريات من السكان الأصليين والتزامات برنامج Closing the Gap.",
     "ctaHeading": "اقرأ بيان القدرات.",
-    "ctaLink": "Request a copy"
+    "ctaLink": "طلب نسخة"
   },
   "network": {
     "meta": {
@@ -1454,7 +1454,7 @@
     "pullQuoteLabel": "05 — عن الموقع الأول",
     "pullQuote": "الحرم الأول قيد الإنشاء الآن. المعايير التقنية والبحث والتطوير والوظائف التنفيذية للشبكة مقرها في هذا الموقع الأول. أن تكون الأول ليس ادعاءً تسويقياً — بل هو ادعاء هيكلي يتراكم بمرور الوقت.",
     "cta": "تحدث مع الفريق.",
-    "ctaLink": "Start a conversation"
+    "ctaLink": "ابدأ محادثة"
   },
   "companyTeam": {
     "meta": {
@@ -1495,6 +1495,6 @@
     "platformHeading": "منصة المشغّل.",
     "platformDesc": "نظام متطور لإدارة الإنتاج والموقع قيد التصميم. سيتولى الجدولة والطواقم والمستأجرين والفوترة وتنسيق البث على مستوى الحرم. هذا النظام موجّه للمشغّل لا للعموم. سيرتبط هذا الموقع ببوابات المستأجرين والشركاء حين تتوفر.",
     "cta": "تواصل مع الفريق.",
-    "ctaLink": "Start a conversation"
+    "ctaLink": "ابدأ محادثة"
   }
 }

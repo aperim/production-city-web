@@ -324,7 +324,7 @@
     "services": "Services",
     "network": "Network",
     "company": "Company",
-    "firstNations": "First Nations"
+    "firstNations": "Primeiras Nações"
   },
   "eoi": {
     "formTitle": "Expresse seu interesse",
@@ -397,23 +397,23 @@
         "title": "Informações que coletamos",
         "description": "Quando você envia uma expressão de interesse, coletamos:",
         "items": [
-          "Your name and email address",
-          "Your selected category of interest",
-          "Any optional message you provide",
-          "Category-specific information (e.g., company name, portfolio URL)",
-          "Technical data: IP address, browser type, referring page, UTM campaign parameters",
-          "Consent records: privacy policy version accepted, timestamp, marketing preference"
+          "O seu nome e endereço de e-mail",
+          "A sua categoria de interesse selecionada",
+          "Qualquer mensagem opcional que forneça",
+          "Informações específicas da categoria (ex.: nome da empresa, URL do portfólio)",
+          "Dados técnicos: endereço IP, tipo de browser, página de referência, parâmetros de campanha UTM",
+          "Registos de consentimento: versão da política de privacidade aceite, data e hora, preferência de marketing"
         ]
       },
       "purpose": {
         "title": "Como usamos suas informações",
         "description": "Usamos as informações coletadas para:",
         "items": [
-          "Respond to your expression of interest",
-          "Send a confirmation email acknowledging your submission",
-          "Send marketing communications (only if you opted in)",
-          "Analyse submission trends to improve our services",
-          "Comply with legal obligations"
+          "Responder à sua expressão de interesse",
+          "Enviar um e-mail de confirmação a reconhecer a sua submissão",
+          "Enviar comunicações de marketing (apenas se tiver optado por recebê-las)",
+          "Analisar tendências de submissões para melhorar os nossos serviços",
+          "Cumprir obrigações legais"
         ]
       },
       "lawfulBasis": {
@@ -430,8 +430,8 @@
         "title": "Serviços de terceiros",
         "description": "Compartilhamos seus dados com os seguintes prestadores de serviços:",
         "items": [
-          "Postmark (Wildbit LLC): Email delivery for confirmation and marketing communications",
-          "Cloudflare: Website hosting, CDN, and security services"
+          "Postmark (Wildbit LLC): entrega de e-mail para confirmações e comunicações de marketing",
+          "Cloudflare: alojamento de website, CDN e serviços de segurança"
         ],
         "note": "Esses prestadores processam dados em nosso nome sob acordos de processamento de dados. Não vendemos seus dados pessoais."
       },
@@ -439,12 +439,12 @@
         "title": "Seus direitos",
         "description": "De acordo com a legislação de privacidade aplicável, você tem o direito de:",
         "items": [
-          "Access the personal data we hold about you",
-          "Request correction of inaccurate data",
-          "Request deletion of your data",
-          "Request portability of your data",
-          "Withdraw consent for marketing communications",
-          "Lodge a complaint with the relevant supervisory authority"
+          "Aceder aos dados pessoais que detemos sobre si",
+          "Solicitar a correção de dados incorretos",
+          "Solicitar a eliminação dos seus dados",
+          "Solicitar a portabilidade dos seus dados",
+          "Retirar o consentimento para comunicações de marketing",
+          "Apresentar uma reclamação junto da autoridade supervisora relevante"
         ],
         "contact": "Para exercer esses direitos, entre em contato conosco em privacy@production.city."
       },
@@ -595,18 +595,18 @@
       "detail": {
         "usageLabel": "Usage",
         "specLabel": "Specification",
-        "specDimensions": "Dimensions",
+        "specDimensions": "Dimensões",
         "specDimensionsValue": "45 m × 45 m · 147 ft × 147 ft",
-        "specArea": "Floor area",
+        "specArea": "Área do piso",
         "specAreaValue": "2,025 m² · 21,797 ft²",
-        "specHeight": "Height to grid",
+        "specHeight": "Altura até à grelha",
         "specHeightValue": "15 m · 49 ft",
-        "specSoundproofing": "Sound-proofing",
+        "specSoundproofing": "Insonorização",
         "specSoundproofingValue": "NRC 1.05 · NC 25",
-        "specLed": "LED volume",
-        "specLedValue": "Flat · Arc · Full-surround",
-        "specGrid": "Grid & catwalk",
-        "specGridValue": "Full-coverage",
+        "specLed": "Volume LED",
+        "specLedValue": "Plano · Arco · Full-surround",
+        "specGrid": "Grelha e passarela",
+        "specGridValue": "Cobertura total",
         "statArea": "2,025",
         "statGrid": "15",
         "ctaLink": "Enquire",
@@ -636,21 +636,21 @@
       "specNrc": "NRC 75+",
       "specLed": "Flat, Arc, Full-Surround",
       "detail": {
-        "prose": "Commercials, TVCs, music videos, short-form, and digital work do not need the 45 × 45. They do need proper acoustics, proper height, and the same LED configurations.",
+        "prose": "Os anúncios publicitários, TVC, videoclips, conteúdo curto e digital não precisam do espaço de 45 × 45. Mas precisam de acústica adequada, altura suficiente e as mesmas configurações LED.",
         "usageLabel": "Usage",
         "specLabel": "Specification",
-        "specDimensions": "Dimensions",
+        "specDimensions": "Dimensões",
         "specDimensionsValue": "10 m × 10 m · 32 ft × 32 ft",
-        "specArea": "Floor area",
+        "specArea": "Área do piso",
         "specAreaValue": "100 m² · 1,076 ft²",
-        "specHeight": "Height to grid",
+        "specHeight": "Altura até à grelha",
         "specHeightValue": "15 m · 49 ft",
-        "specSoundproofing": "Sound-proofing",
+        "specSoundproofing": "Insonorização",
         "specSoundproofingValue": "NRC 1.05 · NC 25",
-        "specLed": "LED volume",
-        "specLedValue": "Flat · Arc · Full-surround",
-        "specGrid": "Grid & catwalk",
-        "specGridValue": "Full-coverage",
+        "specLed": "Volume LED",
+        "specLedValue": "Plano · Arco · Full-surround",
+        "specGrid": "Grelha e passarela",
+        "specGridValue": "Cobertura total",
         "statArea": "100",
         "statGrid": "15",
         "ctaLink": "Enquire",
@@ -682,18 +682,18 @@
       "detail": {
         "usageLabel": "Usage",
         "specLabel": "Specification",
-        "specTheatre": "Theatre mode",
-        "specTheatreValue": "450 seats",
-        "specCabaret": "Cabaret mode",
-        "specCabaretValue": "300 seats",
-        "specBroadcast": "Live broadcast",
-        "specBroadcastValue": "Ready",
-        "specCameras": "Robotic cameras",
-        "specCamerasValue": "8 integrated positions",
-        "specLed": "LED virtual sets",
-        "specLedValue": "Library + bespoke",
-        "specCompliance": "Compliance",
-        "specComplianceValue": "Meets streaming service requirements",
+        "specTheatre": "Modo teatro",
+        "specTheatreValue": "450 lugares",
+        "specCabaret": "Modo cabaré",
+        "specCabaretValue": "300 lugares",
+        "specBroadcast": "Transmissão em direto",
+        "specBroadcastValue": "Disponível",
+        "specCameras": "Câmaras robóticas",
+        "specCamerasValue": "8 posições integradas",
+        "specLed": "Sets virtuais LED",
+        "specLedValue": "Biblioteca + personalizado",
+        "specCompliance": "Conformidade",
+        "specComplianceValue": "Cumpre os requisitos dos serviços de streaming",
         "statSeats": "450",
         "statCameras": "8",
         "ctaLink": "Enquire",
@@ -1378,7 +1378,7 @@
     "evidence4": "Relações de parceria e comunitárias por meio das quais o programa é executado.",
     "evidence5": "Alinhamento com a política relevante do Governo de Nova Gales do Sul, incluindo a Política de Contratação Aborígene e os compromissos do Closing the Gap.",
     "ctaHeading": "Leia o Relatório de Capacidades.",
-    "ctaLink": "Request a copy"
+    "ctaLink": "Solicitar uma cópia"
   },
   "network": {
     "meta": {
@@ -1454,7 +1454,7 @@
     "pullQuoteLabel": "05 — Sobre o primeiro site",
     "pullQuote": "O primeiro campus está sendo construído agora. Os padrões técnicos, a pesquisa e o desenvolvimento, e as funções executivas da rede têm sede nesse primeiro site. Ser o primeiro não é uma afirmação de marca — é uma afirmação estrutural, e ela se acumula.",
     "cta": "Fale com a equipe.",
-    "ctaLink": "Start a conversation"
+    "ctaLink": "Iniciar uma conversa"
   },
   "companyTeam": {
     "meta": {
@@ -1495,6 +1495,6 @@
     "platformHeading": "A plataforma do operador.",
     "platformDesc": "Um sistema complexo de gestão de produção e site está em desenvolvimento. Ele vai gerenciar agendamentos, equipes, locatários, faturamento e orquestração de broadcast em escala de campus. Esse sistema é voltado para o operador, não para o público. Este site terá links para os portais de locatários e parceiros quando eles existirem.",
     "cta": "Fale com a equipe.",
-    "ctaLink": "Start a conversation"
+    "ctaLink": "Iniciar uma conversa"
   }
 }

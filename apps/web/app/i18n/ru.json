@@ -324,7 +324,7 @@
     "services": "Services",
     "network": "Network",
     "company": "Company",
-    "firstNations": "First Nations"
+    "firstNations": "Коренные народы"
   },
   "eoi": {
     "formTitle": "Выразите свой интерес",
@@ -397,23 +397,23 @@
         "title": "Информация, которую мы собираем",
         "description": "При подаче заявки о заинтересованности мы собираем:",
         "items": [
-          "Your name and email address",
-          "Your selected category of interest",
-          "Any optional message you provide",
-          "Category-specific information (e.g., company name, portfolio URL)",
-          "Technical data: IP address, browser type, referring page, UTM campaign parameters",
-          "Consent records: privacy policy version accepted, timestamp, marketing preference"
+          "Ваше имя и адрес электронной почты",
+          "Ваша выбранная категория интересов",
+          "Любое необязательное сообщение, которое вы предоставите",
+          "Информация, специфичная для категории (например, название компании, URL портфолио)",
+          "Технические данные: IP-адрес, тип браузера, страница перехода, параметры UTM-кампании",
+          "Записи о согласии: принятая версия политики конфиденциальности, временная метка, маркетинговые предпочтения"
         ]
       },
       "purpose": {
         "title": "Как мы используем вашу информацию",
         "description": "Мы используем собранную информацию для:",
         "items": [
-          "Respond to your expression of interest",
-          "Send a confirmation email acknowledging your submission",
-          "Send marketing communications (only if you opted in)",
-          "Analyse submission trends to improve our services",
-          "Comply with legal obligations"
+          "Ответить на вашу заявку о заинтересованности",
+          "Отправить подтверждающее письмо о получении вашей заявки",
+          "Отправлять маркетинговые рассылки (только если вы дали согласие)",
+          "Анализировать тенденции заявок для улучшения наших услуг",
+          "Соблюдать правовые обязательства"
         ]
       },
       "lawfulBasis": {
@@ -430,8 +430,8 @@
         "title": "Сторонние сервисы",
         "description": "Мы передаём ваши данные следующим поставщикам услуг:",
         "items": [
-          "Postmark (Wildbit LLC): Email delivery for confirmation and marketing communications",
-          "Cloudflare: Website hosting, CDN, and security services"
+          "Postmark (Wildbit LLC): доставка электронной почты для подтверждений и маркетинговых рассылок",
+          "Cloudflare: хостинг сайта, CDN и сервисы безопасности"
         ],
         "note": "Эти поставщики обрабатывают данные от нашего имени. Мы не продаём ваши персональные данные."
       },
@@ -439,12 +439,12 @@
         "title": "Ваши права",
         "description": "В соответствии с применимым законодательством о конфиденциальности вы имеете право:",
         "items": [
-          "Access the personal data we hold about you",
-          "Request correction of inaccurate data",
-          "Request deletion of your data",
-          "Request portability of your data",
-          "Withdraw consent for marketing communications",
-          "Lodge a complaint with the relevant supervisory authority"
+          "Получить доступ к вашим персональным данным, которые мы храним",
+          "Запросить исправление неточных данных",
+          "Запросить удаление ваших данных",
+          "Запросить переносимость ваших данных",
+          "Отозвать согласие на маркетинговые рассылки",
+          "Подать жалобу в соответствующий надзорный орган"
         ],
         "contact": "Для реализации этих прав свяжитесь с нами по адресу privacy@production.city."
       },
@@ -457,7 +457,7 @@
         "description": "Мы можем время от времени обновлять настоящую политику конфиденциальности."
       },
       "contact": {
-        "title": "Contact Us",
+        "title": "Свяжитесь с нами",
         "description": "По вопросам конфиденциальности обращайтесь: privacy@production.city"
       }
     },
@@ -595,18 +595,18 @@
       "detail": {
         "usageLabel": "Usage",
         "specLabel": "Specification",
-        "specDimensions": "Dimensions",
+        "specDimensions": "Размеры",
         "specDimensionsValue": "45 m × 45 m · 147 ft × 147 ft",
-        "specArea": "Floor area",
+        "specArea": "Площадь пола",
         "specAreaValue": "2,025 m² · 21,797 ft²",
-        "specHeight": "Height to grid",
+        "specHeight": "Высота до грида",
         "specHeightValue": "15 m · 49 ft",
-        "specSoundproofing": "Sound-proofing",
+        "specSoundproofing": "Звукоизоляция",
         "specSoundproofingValue": "NRC 1.05 · NC 25",
-        "specLed": "LED volume",
-        "specLedValue": "Flat · Arc · Full-surround",
-        "specGrid": "Grid & catwalk",
-        "specGridValue": "Full-coverage",
+        "specLed": "LED объём",
+        "specLedValue": "Плоский · Дуговой · Полный охват",
+        "specGrid": "Грид и рабочий мостик",
+        "specGridValue": "Полное покрытие",
         "statArea": "2,025",
         "statGrid": "15",
         "ctaLink": "Enquire",
@@ -636,21 +636,21 @@
       "specNrc": "NRC 75+",
       "specLed": "Плоский, дуговой, полное окружение",
       "detail": {
-        "prose": "Commercials, TVCs, music videos, short-form, and digital work do not need the 45 × 45. They do need proper acoustics, proper height, and the same LED configurations.",
+        "prose": "Рекламные ролики, TVC, клипы, короткий и цифровой контент не требуют площадки 45 × 45. Им нужна правильная акустика, достаточная высота потолков и те же конфигурации LED.",
         "usageLabel": "Usage",
         "specLabel": "Specification",
-        "specDimensions": "Dimensions",
+        "specDimensions": "Размеры",
         "specDimensionsValue": "10 m × 10 m · 32 ft × 32 ft",
-        "specArea": "Floor area",
+        "specArea": "Площадь пола",
         "specAreaValue": "100 m² · 1,076 ft²",
-        "specHeight": "Height to grid",
+        "specHeight": "Высота до грида",
         "specHeightValue": "15 m · 49 ft",
-        "specSoundproofing": "Sound-proofing",
+        "specSoundproofing": "Звукоизоляция",
         "specSoundproofingValue": "NRC 1.05 · NC 25",
-        "specLed": "LED volume",
-        "specLedValue": "Flat · Arc · Full-surround",
-        "specGrid": "Grid & catwalk",
-        "specGridValue": "Full-coverage",
+        "specLed": "LED объём",
+        "specLedValue": "Плоский · Дуговой · Полный охват",
+        "specGrid": "Грид и рабочий мостик",
+        "specGridValue": "Полное покрытие",
         "statArea": "100",
         "statGrid": "15",
         "ctaLink": "Enquire",
@@ -682,18 +682,18 @@
       "detail": {
         "usageLabel": "Usage",
         "specLabel": "Specification",
-        "specTheatre": "Theatre mode",
-        "specTheatreValue": "450 seats",
-        "specCabaret": "Cabaret mode",
-        "specCabaretValue": "300 seats",
-        "specBroadcast": "Live broadcast",
-        "specBroadcastValue": "Ready",
-        "specCameras": "Robotic cameras",
-        "specCamerasValue": "8 integrated positions",
-        "specLed": "LED virtual sets",
-        "specLedValue": "Library + bespoke",
-        "specCompliance": "Compliance",
-        "specComplianceValue": "Meets streaming service requirements",
+        "specTheatre": "Режим театра",
+        "specTheatreValue": "450 мест",
+        "specCabaret": "Режим кабаре",
+        "specCabaretValue": "300 мест",
+        "specBroadcast": "Прямой эфир",
+        "specBroadcastValue": "Готов",
+        "specCameras": "Роботизированные камеры",
+        "specCamerasValue": "8 интегрированных позиций",
+        "specLed": "LED виртуальные декорации",
+        "specLedValue": "Библиотека + индивидуальные",
+        "specCompliance": "Соответствие требованиям",
+        "specComplianceValue": "Соответствует требованиям стриминговых сервисов",
         "statSeats": "450",
         "statCameras": "8",
         "ctaLink": "Enquire",
@@ -1378,7 +1378,7 @@
     "evidence4": "Партнёрства и общественные отношения, через которые реализуется программа.",
     "evidence5": "Соответствие актуальной политике правительства Нового Южного Уэльса, в том числе Политике закупок у аборигенов и обязательствам программы Closing the Gap.",
     "ctaHeading": "Ознакомьтесь с Заявлением о возможностях.",
-    "ctaLink": "Request a copy"
+    "ctaLink": "Запросить копию"
   },
   "network": {
     "meta": {
@@ -1454,7 +1454,7 @@
     "pullQuoteLabel": "05 — О первой площадке",
     "pullQuote": "Первый кампус строится сейчас. Технические стандарты, исследования и разработки, а также исполнительные функции сети базируются на этой первой площадке. Быть первым — не брендинговое заявление, а структурное, и оно накапливает силу.",
     "cta": "Поговорить с командой.",
-    "ctaLink": "Start a conversation"
+    "ctaLink": "Начать разговор"
   },
   "companyTeam": {
     "meta": {
@@ -1495,6 +1495,6 @@
     "platformHeading": "Операторская платформа.",
     "platformDesc": "Сложная система управления производством и площадкой находится в стадии проектирования. Она будет обрабатывать расписание, экипажи, арендаторов, выставление счетов и оркестрирование вещания в масштабе кампуса. Эта система предназначена для оператора, а не для широкой публики. На этом сайте появятся ссылки на порталы арендаторов и партнёров, когда они будут созданы.",
     "cta": "Связаться с командой.",
-    "ctaLink": "Start a conversation"
+    "ctaLink": "Начать разговор"
   }
 }

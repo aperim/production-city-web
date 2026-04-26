@@ -324,7 +324,7 @@
     "services": "Services",
     "network": "Network",
     "company": "Company",
-    "firstNations": "First Nations"
+    "firstNations": "प्रथम राष्ट्र"
   },
   "eoi": {
     "formTitle": "अपनी रुचि व्यक्त करें",
@@ -397,23 +397,23 @@
         "title": "हम कौन सी जानकारी एकत्र करते हैं",
         "description": "जब आप रुचि की अभिव्यक्ति प्रस्तुत करते हैं, तो हम एकत्र करते हैं:",
         "items": [
-          "Your name and email address",
-          "Your selected category of interest",
-          "Any optional message you provide",
-          "Category-specific information (e.g., company name, portfolio URL)",
-          "Technical data: IP address, browser type, referring page, UTM campaign parameters",
-          "Consent records: privacy policy version accepted, timestamp, marketing preference"
+          "आपका नाम और ईमेल पता",
+          "आपकी चुनी हुई रुचि की श्रेणी",
+          "आपके द्वारा प्रदान किया गया कोई भी वैकल्पिक संदेश",
+          "श्रेणी-विशिष्ट जानकारी (जैसे, कंपनी का नाम, पोर्टफोलियो URL)",
+          "तकनीकी डेटा: IP पता, ब्राउज़र प्रकार, रेफरिंग पेज, UTM अभियान पैरामीटर",
+          "सहमति रिकॉर्ड: स्वीकृत गोपनीयता नीति संस्करण, टाइमस्टैम्प, मार्केटिंग प्राथमिकता"
         ]
       },
       "purpose": {
         "title": "हम आपकी जानकारी का उपयोग कैसे करते हैं",
         "description": "हम एकत्र की गई जानकारी का उपयोग इसके लिए करते हैं:",
         "items": [
-          "Respond to your expression of interest",
-          "Send a confirmation email acknowledging your submission",
-          "Send marketing communications (only if you opted in)",
-          "Analyse submission trends to improve our services",
-          "Comply with legal obligations"
+          "आपकी रुचि की अभिव्यक्ति का जवाब देना",
+          "आपकी सबमिशन की पुष्टि करने वाला एक पुष्टिकरण ईमेल भेजना",
+          "मार्केटिंग संचार भेजना (केवल यदि आपने ऑप्ट इन किया हो)",
+          "हमारी सेवाओं को बेहतर बनाने के लिए सबमिशन रुझानों का विश्लेषण करना",
+          "कानूनी दायित्वों का पालन करना"
         ]
       },
       "lawfulBasis": {
@@ -430,8 +430,8 @@
         "title": "तृतीय-पक्ष सेवाएँ",
         "description": "हम निम्नलिखित सेवा प्रदाताओं के साथ आपका डेटा साझा करते हैं:",
         "items": [
-          "Postmark (Wildbit LLC): Email delivery for confirmation and marketing communications",
-          "Cloudflare: Website hosting, CDN, and security services"
+          "Postmark (Wildbit LLC): पुष्टिकरण और मार्केटिंग संचार के लिए ईमेल डिलीवरी",
+          "Cloudflare: वेबसाइट होस्टिंग, CDN और सुरक्षा सेवाएं"
         ],
         "note": "ये प्रदाता डेटा प्रसंस्करण समझौतों के तहत हमारी ओर से डेटा संसाधित करते हैं। हम आपका व्यक्तिगत डेटा नहीं बेचते।"
       },
@@ -439,12 +439,12 @@
         "title": "आपके अधिकार",
         "description": "लागू गोपनीयता कानून के तहत, आपके पास निम्नलिखित अधिकार हैं:",
         "items": [
-          "Access the personal data we hold about you",
-          "Request correction of inaccurate data",
-          "Request deletion of your data",
-          "Request portability of your data",
-          "Withdraw consent for marketing communications",
-          "Lodge a complaint with the relevant supervisory authority"
+          "हमारे पास आपके बारे में रखे गए व्यक्तिगत डेटा तक पहुंच",
+          "गलत डेटा के सुधार का अनुरोध करना",
+          "आपके डेटा को हटाने का अनुरोध करना",
+          "आपके डेटा की पोर्टेबिलिटी का अनुरोध करना",
+          "मार्केटिंग संचार के लिए सहमति वापस लेना",
+          "संबंधित पर्यवेक्षी प्राधिकरण के पास शिकायत दर्ज करना"
         ],
         "contact": "इन अधिकारों का प्रयोग करने के लिए, privacy@production.city पर हमसे संपर्क करें।"
       },
@@ -457,7 +457,7 @@
         "description": "हम समय-समय पर इस गोपनीयता नीति को अपडेट कर सकते हैं।"
       },
       "contact": {
-        "title": "Contact Us",
+        "title": "संपर्क करें",
         "description": "गोपनीयता संबंधी पूछताछ के लिए संपर्क करें: privacy@production.city"
       }
     },
@@ -595,18 +595,18 @@
       "detail": {
         "usageLabel": "Usage",
         "specLabel": "Specification",
-        "specDimensions": "Dimensions",
+        "specDimensions": "आयाम",
         "specDimensionsValue": "45 m × 45 m · 147 ft × 147 ft",
-        "specArea": "Floor area",
+        "specArea": "फ्लोर क्षेत्र",
         "specAreaValue": "2,025 m² · 21,797 ft²",
-        "specHeight": "Height to grid",
+        "specHeight": "ग्रिड तक ऊंचाई",
         "specHeightValue": "15 m · 49 ft",
-        "specSoundproofing": "Sound-proofing",
+        "specSoundproofing": "ध्वनिरोधन",
         "specSoundproofingValue": "NRC 1.05 · NC 25",
-        "specLed": "LED volume",
-        "specLedValue": "Flat · Arc · Full-surround",
-        "specGrid": "Grid & catwalk",
-        "specGridValue": "Full-coverage",
+        "specLed": "LED वॉल्यूम",
+        "specLedValue": "फ्लैट · आर्क · फुल-सराउंड",
+        "specGrid": "ग्रिड और कैटवॉक",
+        "specGridValue": "पूर्ण कवरेज",
         "statArea": "2,025",
         "statGrid": "15",
         "ctaLink": "Enquire",
@@ -636,21 +636,21 @@
       "specNrc": "NRC 75+",
       "specLed": "फ्लैट, आर्क, फुल-सराउंड",
       "detail": {
-        "prose": "Commercials, TVCs, music videos, short-form, and digital work do not need the 45 × 45. They do need proper acoustics, proper height, and the same LED configurations.",
+        "prose": "विज्ञापन, TVC, म्यूजिक वीडियो, शॉर्ट-फॉर्म और डिजिटल कार्य के लिए 45 × 45 की जरूरत नहीं है। लेकिन इन्हें सही ध्वनिकी, उचित ऊंचाई और समान LED कॉन्फिगरेशन की जरूरत है।",
         "usageLabel": "Usage",
         "specLabel": "Specification",
-        "specDimensions": "Dimensions",
+        "specDimensions": "आयाम",
         "specDimensionsValue": "10 m × 10 m · 32 ft × 32 ft",
-        "specArea": "Floor area",
+        "specArea": "फ्लोर क्षेत्र",
         "specAreaValue": "100 m² · 1,076 ft²",
-        "specHeight": "Height to grid",
+        "specHeight": "ग्रिड तक ऊंचाई",
         "specHeightValue": "15 m · 49 ft",
-        "specSoundproofing": "Sound-proofing",
+        "specSoundproofing": "ध्वनिरोधन",
         "specSoundproofingValue": "NRC 1.05 · NC 25",
-        "specLed": "LED volume",
-        "specLedValue": "Flat · Arc · Full-surround",
-        "specGrid": "Grid & catwalk",
-        "specGridValue": "Full-coverage",
+        "specLed": "LED वॉल्यूम",
+        "specLedValue": "फ्लैट · आर्क · फुल-सराउंड",
+        "specGrid": "ग्रिड और कैटवॉक",
+        "specGridValue": "पूर्ण कवरेज",
         "statArea": "100",
         "statGrid": "15",
         "ctaLink": "Enquire",
@@ -682,18 +682,18 @@
       "detail": {
         "usageLabel": "Usage",
         "specLabel": "Specification",
-        "specTheatre": "Theatre mode",
-        "specTheatreValue": "450 seats",
-        "specCabaret": "Cabaret mode",
-        "specCabaretValue": "300 seats",
-        "specBroadcast": "Live broadcast",
-        "specBroadcastValue": "Ready",
-        "specCameras": "Robotic cameras",
-        "specCamerasValue": "8 integrated positions",
-        "specLed": "LED virtual sets",
-        "specLedValue": "Library + bespoke",
-        "specCompliance": "Compliance",
-        "specComplianceValue": "Meets streaming service requirements",
+        "specTheatre": "थिएटर मोड",
+        "specTheatreValue": "450 सीटें",
+        "specCabaret": "कैबरे मोड",
+        "specCabaretValue": "300 सीटें",
+        "specBroadcast": "लाइव प्रसारण",
+        "specBroadcastValue": "तैयार",
+        "specCameras": "रोबोटिक कैमरे",
+        "specCamerasValue": "8 एकीकृत स्थान",
+        "specLed": "LED वर्चुअल सेट",
+        "specLedValue": "लाइब्रेरी + कस्टम",
+        "specCompliance": "अनुपालन",
+        "specComplianceValue": "स्ट्रीमिंग सेवा आवश्यकताओं को पूरा करता है",
         "statSeats": "450",
         "statCameras": "8",
         "ctaLink": "Enquire",
@@ -1378,7 +1378,7 @@
     "evidence4": "भागीदारी और सामुदायिक संबंध जिनके माध्यम से कार्यक्रम प्रदान किया जाता है।",
     "evidence5": "प्रासंगिक NSW सरकार नीति के साथ संरेखण, जिसमें Aboriginal Procurement Policy और Closing the Gap प्रतिबद्धताएँ शामिल हैं।",
     "ctaHeading": "Capability Statement पढ़ें।",
-    "ctaLink": "Request a copy"
+    "ctaLink": "एक प्रति का अनुरोध करें"
   },
   "network": {
     "meta": {
@@ -1454,7 +1454,7 @@
     "pullQuoteLabel": "05 — पहले स्थल पर",
     "pullQuote": "पहला परिसर अभी बनाया जा रहा है। तकनीकी मानक, अनुसंधान और विकास, और नेटवर्क के कार्यकारी कार्य उस पहले स्थल पर आधारित हैं। पहला होना एक ब्रांडिंग दावा नहीं है — यह एक संरचनात्मक दावा है, और यह बढ़ता जाता है।",
     "cta": "दल से बात करें।",
-    "ctaLink": "Start a conversation"
+    "ctaLink": "बातचीत शुरू करें"
   },
   "companyTeam": {
     "meta": {
@@ -1495,6 +1495,6 @@
     "platformHeading": "संचालक मंच।",
     "platformDesc": "एक जटिल प्रोडक्शन और साइट प्रबंधन प्रणाली डिज़ाइन में है। यह परिसर पैमाने पर शेड्यूलिंग, क्रू, किरायेदार, बिलिंग, और ब्रॉडकास्ट आयोजन को संभालेगी। वह प्रणाली संचालक-सामना करने वाली है, सार्वजनिक नहीं। यह वेबसाइट किरायेदार और भागीदार पोर्टल से तब लिंक करेगी जब वे मौजूद होंगे।",
     "cta": "दल से संपर्क करें।",
-    "ctaLink": "Start a conversation"
+    "ctaLink": "बातचीत शुरू करें"
   }
 }

@@ -324,7 +324,7 @@
     "services": "Services",
     "network": "Network",
     "company": "Company",
-    "firstNations": "First Nations"
+    "firstNations": "Primeras Naciones"
   },
   "eoi": {
     "formTitle": "Exprese su interés",
@@ -595,18 +595,18 @@
       "detail": {
         "usageLabel": "Usage",
         "specLabel": "Specification",
-        "specDimensions": "Dimensions",
+        "specDimensions": "Dimensiones",
         "specDimensionsValue": "45 m × 45 m · 147 ft × 147 ft",
-        "specArea": "Floor area",
+        "specArea": "Área de piso",
         "specAreaValue": "2,025 m² · 21,797 ft²",
-        "specHeight": "Height to grid",
+        "specHeight": "Altura hasta la grilla",
         "specHeightValue": "15 m · 49 ft",
-        "specSoundproofing": "Sound-proofing",
+        "specSoundproofing": "Insonorización",
         "specSoundproofingValue": "NRC 1.05 · NC 25",
-        "specLed": "LED volume",
-        "specLedValue": "Flat · Arc · Full-surround",
-        "specGrid": "Grid & catwalk",
-        "specGridValue": "Full-coverage",
+        "specLed": "Volumen LED",
+        "specLedValue": "Plano · Arco · Envolvente completo",
+        "specGrid": "Grilla y pasarela",
+        "specGridValue": "Cobertura total",
         "statArea": "2,025",
         "statGrid": "15",
         "ctaLink": "Enquire",
@@ -636,21 +636,21 @@
       "specNrc": "NRC 75+",
       "specLed": "Plano, arco, envolvente completo",
       "detail": {
-        "prose": "Commercials, TVCs, music videos, short-form, and digital work do not need the 45 × 45. They do need proper acoustics, proper height, and the same LED configurations.",
+        "prose": "Los comerciales, TVC, videoclips, contenido breve y digital no necesitan el espacio de 45 × 45. Pero sí necesitan acústica adecuada, altura suficiente y las mismas configuraciones LED.",
         "usageLabel": "Usage",
         "specLabel": "Specification",
-        "specDimensions": "Dimensions",
+        "specDimensions": "Dimensiones",
         "specDimensionsValue": "10 m × 10 m · 32 ft × 32 ft",
-        "specArea": "Floor area",
+        "specArea": "Área de piso",
         "specAreaValue": "100 m² · 1,076 ft²",
-        "specHeight": "Height to grid",
+        "specHeight": "Altura hasta la grilla",
         "specHeightValue": "15 m · 49 ft",
-        "specSoundproofing": "Sound-proofing",
+        "specSoundproofing": "Insonorización",
         "specSoundproofingValue": "NRC 1.05 · NC 25",
-        "specLed": "LED volume",
-        "specLedValue": "Flat · Arc · Full-surround",
-        "specGrid": "Grid & catwalk",
-        "specGridValue": "Full-coverage",
+        "specLed": "Volumen LED",
+        "specLedValue": "Plano · Arco · Envolvente completo",
+        "specGrid": "Grilla y pasarela",
+        "specGridValue": "Cobertura total",
         "statArea": "100",
         "statGrid": "15",
         "ctaLink": "Enquire",
@@ -682,18 +682,18 @@
       "detail": {
         "usageLabel": "Usage",
         "specLabel": "Specification",
-        "specTheatre": "Theatre mode",
-        "specTheatreValue": "450 seats",
-        "specCabaret": "Cabaret mode",
-        "specCabaretValue": "300 seats",
-        "specBroadcast": "Live broadcast",
-        "specBroadcastValue": "Ready",
-        "specCameras": "Robotic cameras",
-        "specCamerasValue": "8 integrated positions",
-        "specLed": "LED virtual sets",
-        "specLedValue": "Library + bespoke",
-        "specCompliance": "Compliance",
-        "specComplianceValue": "Meets streaming service requirements",
+        "specTheatre": "Modo teatro",
+        "specTheatreValue": "450 butacas",
+        "specCabaret": "Modo cabaret",
+        "specCabaretValue": "300 butacas",
+        "specBroadcast": "Transmisión en vivo",
+        "specBroadcastValue": "Disponible",
+        "specCameras": "Cámaras robóticas",
+        "specCamerasValue": "8 posiciones integradas",
+        "specLed": "Sets virtuales LED",
+        "specLedValue": "Biblioteca + personalizado",
+        "specCompliance": "Normativa",
+        "specComplianceValue": "Cumple los requisitos de los servicios de streaming",
         "statSeats": "450",
         "statCameras": "8",
         "ctaLink": "Enquire",
@@ -1378,7 +1378,7 @@
     "evidence4": "Relaciones de asociación y comunitarias a través de las cuales se ejecuta el programa.",
     "evidence5": "Alineación con la política pertinente del Gobierno de Nueva Gales del Sur, incluida la Política de Contratación Aborigen y los compromisos de Closing the Gap.",
     "ctaHeading": "Lea la Declaración de Capacidades.",
-    "ctaLink": "Request a copy"
+    "ctaLink": "Solicitar una copia"
   },
   "network": {
     "meta": {
@@ -1454,7 +1454,7 @@
     "pullQuoteLabel": "05 — Sobre el primer sitio",
     "pullQuote": "El primer campus se está construyendo ahora. Los estándares técnicos, la investigación y el desarrollo, y las funciones ejecutivas de la red tienen su sede en ese primer sitio. Ser el primero no es una afirmación de marca: es una afirmación estructural, y se capitaliza.",
     "cta": "Hable con el equipo.",
-    "ctaLink": "Start a conversation"
+    "ctaLink": "Iniciar una conversación"
   },
   "companyTeam": {
     "meta": {
@@ -1495,6 +1495,6 @@
     "platformHeading": "La plataforma del operador.",
     "platformDesc": "Un complejo sistema de gestión de producción y sitio está en diseño. Gestionará la programación, el personal, los inquilinos, la facturación y la orquestación de broadcast a escala de campus. Ese sistema está orientado al operador, no al público. Este sitio web enlazará con los portales de inquilinos y socios cuando existan.",
     "cta": "Contactar con el equipo.",
-    "ctaLink": "Start a conversation"
+    "ctaLink": "Iniciar una conversación"
   }
 }

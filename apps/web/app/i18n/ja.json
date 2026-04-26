@@ -324,7 +324,7 @@
     "services": "Services",
     "network": "Network",
     "company": "Company",
-    "firstNations": "First Nations"
+    "firstNations": "先住民族"
   },
   "eoi": {
     "formTitle": "関心を表明する",
@@ -397,23 +397,23 @@
         "title": "収集する情報",
         "description": "関心の表明を提出する際、以下を収集します：",
         "items": [
-          "Your name and email address",
-          "Your selected category of interest",
-          "Any optional message you provide",
-          "Category-specific information (e.g., company name, portfolio URL)",
-          "Technical data: IP address, browser type, referring page, UTM campaign parameters",
-          "Consent records: privacy policy version accepted, timestamp, marketing preference"
+          "お客様のお名前とメールアドレス",
+          "お客様が選択した関心カテゴリ",
+          "お客様が任意で提供するメッセージ",
+          "カテゴリ固有の情報（例：会社名、ポートフォリオURL）",
+          "技術データ：IPアドレス、ブラウザの種類、参照ページ、UTMキャンペーンパラメータ",
+          "同意記録：承認したプライバシーポリシーのバージョン、タイムスタンプ、マーケティング設定"
         ]
       },
       "purpose": {
         "title": "情報の利用方法",
         "description": "収集した情報を以下の目的で使用します：",
         "items": [
-          "Respond to your expression of interest",
-          "Send a confirmation email acknowledging your submission",
-          "Send marketing communications (only if you opted in)",
-          "Analyse submission trends to improve our services",
-          "Comply with legal obligations"
+          "お客様の関心表明に回答する",
+          "提出の確認メールを送信する",
+          "マーケティング通信を送信する（オプトインした場合のみ）",
+          "サービス改善のために提出動向を分析する",
+          "法的義務を遵守する"
         ]
       },
       "lawfulBasis": {
@@ -430,8 +430,8 @@
         "title": "サードパーティサービス",
         "description": "以下のサービスプロバイダーとデータを共有します：",
         "items": [
-          "Postmark (Wildbit LLC): Email delivery for confirmation and marketing communications",
-          "Cloudflare: Website hosting, CDN, and security services"
+          "Postmark（Wildbit LLC）：確認およびマーケティング通信のメール配信",
+          "Cloudflare：ウェブサイトホスティング、CDN、セキュリティサービス"
         ],
         "note": "これらのプロバイダーはデータ処理契約に基づき当社に代わってデータを処理します。個人データの販売は行いません。"
       },
@@ -439,12 +439,12 @@
         "title": "お客様の権利",
         "description": "適用されるプライバシー法に基づき、以下の権利があります：",
         "items": [
-          "Access the personal data we hold about you",
-          "Request correction of inaccurate data",
-          "Request deletion of your data",
-          "Request portability of your data",
-          "Withdraw consent for marketing communications",
-          "Lodge a complaint with the relevant supervisory authority"
+          "当社が保有するお客様の個人データへのアクセス",
+          "不正確なデータの訂正を要求する",
+          "お客様のデータの削除を要求する",
+          "お客様のデータの移植性を要求する",
+          "マーケティング通信への同意を撤回する",
+          "関連する監督機関に苦情を申し立てる"
         ],
         "contact": "これらの権利を行使するには、privacy@production.cityまでご連絡ください。"
       },
@@ -595,18 +595,18 @@
       "detail": {
         "usageLabel": "Usage",
         "specLabel": "Specification",
-        "specDimensions": "Dimensions",
+        "specDimensions": "寸法",
         "specDimensionsValue": "45 m × 45 m · 147 ft × 147 ft",
-        "specArea": "Floor area",
+        "specArea": "床面積",
         "specAreaValue": "2,025 m² · 21,797 ft²",
-        "specHeight": "Height to grid",
+        "specHeight": "グリッドまでの高さ",
         "specHeightValue": "15 m · 49 ft",
-        "specSoundproofing": "Sound-proofing",
+        "specSoundproofing": "防音",
         "specSoundproofingValue": "NRC 1.05 · NC 25",
-        "specLed": "LED volume",
-        "specLedValue": "Flat · Arc · Full-surround",
-        "specGrid": "Grid & catwalk",
-        "specGridValue": "Full-coverage",
+        "specLed": "LEDボリューム",
+        "specLedValue": "フラット · アーク · フルサラウンド",
+        "specGrid": "グリッド＆キャットウォーク",
+        "specGridValue": "全面カバー",
         "statArea": "2,025",
         "statGrid": "15",
         "ctaLink": "Enquire",
@@ -636,21 +636,21 @@
       "specNrc": "NRC 1.05、NC 25",
       "specLed": "フラット、アーク、フルサラウンド",
       "detail": {
-        "prose": "Commercials, TVCs, music videos, short-form, and digital work do not need the 45 × 45. They do need proper acoustics, proper height, and the same LED configurations.",
+        "prose": "コマーシャル、TVC、ミュージックビデオ、ショートフォーム、デジタルコンテンツには45×45のスペースは不要です。ただし、適切な音響、十分な高さ、そして同じLED構成が必要です。",
         "usageLabel": "Usage",
         "specLabel": "Specification",
-        "specDimensions": "Dimensions",
+        "specDimensions": "寸法",
         "specDimensionsValue": "10 m × 10 m · 32 ft × 32 ft",
-        "specArea": "Floor area",
+        "specArea": "床面積",
         "specAreaValue": "100 m² · 1,076 ft²",
-        "specHeight": "Height to grid",
+        "specHeight": "グリッドまでの高さ",
         "specHeightValue": "15 m · 49 ft",
-        "specSoundproofing": "Sound-proofing",
+        "specSoundproofing": "防音",
         "specSoundproofingValue": "NRC 1.05 · NC 25",
-        "specLed": "LED volume",
-        "specLedValue": "Flat · Arc · Full-surround",
-        "specGrid": "Grid & catwalk",
-        "specGridValue": "Full-coverage",
+        "specLed": "LEDボリューム",
+        "specLedValue": "フラット · アーク · フルサラウンド",
+        "specGrid": "グリッド＆キャットウォーク",
+        "specGridValue": "全面カバー",
         "statArea": "100",
         "statGrid": "15",
         "ctaLink": "Enquire",
@@ -682,18 +682,18 @@
       "detail": {
         "usageLabel": "Usage",
         "specLabel": "Specification",
-        "specTheatre": "Theatre mode",
-        "specTheatreValue": "450 seats",
-        "specCabaret": "Cabaret mode",
-        "specCabaretValue": "300 seats",
-        "specBroadcast": "Live broadcast",
-        "specBroadcastValue": "Ready",
-        "specCameras": "Robotic cameras",
-        "specCamerasValue": "8 integrated positions",
-        "specLed": "LED virtual sets",
-        "specLedValue": "Library + bespoke",
-        "specCompliance": "Compliance",
-        "specComplianceValue": "Meets streaming service requirements",
+        "specTheatre": "シアターモード",
+        "specTheatreValue": "450席",
+        "specCabaret": "キャバレーモード",
+        "specCabaretValue": "300席",
+        "specBroadcast": "ライブ放送",
+        "specBroadcastValue": "対応済み",
+        "specCameras": "ロボットカメラ",
+        "specCamerasValue": "8統合ポジション",
+        "specLed": "LEDバーチャルセット",
+        "specLedValue": "ライブラリ＋カスタム",
+        "specCompliance": "コンプライアンス",
+        "specComplianceValue": "ストリーミングサービス要件を満たす",
         "statSeats": "450",
         "statCameras": "8",
         "ctaLink": "Enquire",
@@ -755,9 +755,9 @@
     },
     "units": {
       "sqm": "㎡",
-      "sqft": "sqft",
+      "sqft": "平方フィート",
       "metres": "m",
-      "feet": "ft"
+      "feet": "フィート"
     },
     "disclaimer": {
       "forwardLooking": "このページにはProduction Cityの計画中の施設と能力に関する将来の見通しに関する記述が含まれています。これらの記述にはリスクと不確実性が伴い、実際の結果が大きく異なる場合があります。施設仕様は設計目標を示しており、変更される場合があります。"
@@ -1378,7 +1378,7 @@
     "evidence4": "プログラムを実施するパートナーシップおよびコミュニティとの関係。",
     "evidence5": "アボリジナル調達政策およびクロージング・ザ・ギャップへの取り組みを含む、ニューサウスウェールズ州政府の関連政策との整合。",
     "ctaHeading": "ケイパビリティ・ステートメントをご覧ください。",
-    "ctaLink": "Request a copy"
+    "ctaLink": "コピーをリクエスト"
   },
   "network": {
     "meta": {
@@ -1454,7 +1454,7 @@
     "pullQuoteLabel": "05 — 第1拠点について",
     "pullQuote": "最初のキャンパスは現在建設中です。技術標準、研究開発、ネットワークの経営機能はこの第1拠点を拠点とします。「最初」であることは、ブランディング上の主張ではなく、構造的な意味を持つものであり、そしてそれは積み重なっていきます。",
     "cta": "チームにお問い合わせください。",
-    "ctaLink": "Start a conversation"
+    "ctaLink": "会話を始める"
   },
   "companyTeam": {
     "meta": {
@@ -1495,6 +1495,6 @@
     "platformHeading": "オペレータープラットフォーム。",
     "platformDesc": "複雑な制作・拠点管理システムを現在設計中です。スケジュール、クルー、テナント、請求、そしてキャンパス規模のブロードキャストオーケストレーションを担います。このシステムは運営者向けであり、公開サービスではありません。テナントおよびパートナーポータルが開設された際には、本ウェブサイトからリンクします。",
     "cta": "チームにお問い合わせください。",
-    "ctaLink": "Start a conversation"
+    "ctaLink": "会話を始める"
   }
 }

@@ -324,7 +324,7 @@
     "services": "Services",
     "network": "Network",
     "company": "Company",
-    "firstNations": "First Nations"
+    "firstNations": "ফার্স্ট নেশনস"
   },
   "eoi": {
     "formTitle": "আপনার আগ্রহ প্রকাশ করুন",
@@ -397,23 +397,23 @@
         "title": "আমরা যে তথ্য সংগ্রহ করি",
         "description": "আপনি যখন আগ্রহের অভিব্যক্তি জমা দেন, তখন আমরা সংগ্রহ করি:",
         "items": [
-          "Your name and email address",
-          "Your selected category of interest",
-          "Any optional message you provide",
-          "Category-specific information (e.g., company name, portfolio URL)",
-          "Technical data: IP address, browser type, referring page, UTM campaign parameters",
-          "Consent records: privacy policy version accepted, timestamp, marketing preference"
+          "আপনার নাম এবং ইমেইল ঠিকানা",
+          "আপনার নির্বাচিত আগ্রহের বিভাগ",
+          "আপনার প্রদত্ত যেকোনো ঐচ্ছিক বার্তা",
+          "বিভাগ-নির্দিষ্ট তথ্য (যেমন, কোম্পানির নাম, পোর্টফোলিও URL)",
+          "প্রযুক্তিগত ডেটা: IP ঠিকানা, ব্রাউজার ধরন, রেফারিং পেজ, UTM ক্যাম্পেইন প্যারামিটার",
+          "সম্মতি রেকর্ড: গৃহীত গোপনীয়তা নীতির সংস্করণ, টাইমস্ট্যাম্প, মার্কেটিং পছন্দ"
         ]
       },
       "purpose": {
         "title": "আমরা কীভাবে আপনার তথ্য ব্যবহার করি",
         "description": "আমরা সংগৃহীত তথ্য ব্যবহার করি:",
         "items": [
-          "Respond to your expression of interest",
-          "Send a confirmation email acknowledging your submission",
-          "Send marketing communications (only if you opted in)",
-          "Analyse submission trends to improve our services",
-          "Comply with legal obligations"
+          "আপনার আগ্রহের প্রকাশে সাড়া দেওয়া",
+          "আপনার জমার স্বীকৃতি জানিয়ে একটি নিশ্চিতকরণ ইমেইল পাঠানো",
+          "মার্কেটিং যোগাযোগ পাঠানো (শুধুমাত্র আপনি অপ্ট ইন করলে)",
+          "আমাদের সেবা উন্নত করতে জমার প্রবণতা বিশ্লেষণ করা",
+          "আইনি বাধ্যবাধকতা মেনে চলা"
         ]
       },
       "lawfulBasis": {
@@ -430,8 +430,8 @@
         "title": "তৃতীয়-পক্ষ সেবা",
         "description": "আমরা নিম্নলিখিত সেবা প্রদানকারীদের সাথে আপনার ডেটা ভাগ করি:",
         "items": [
-          "Postmark (Wildbit LLC): Email delivery for confirmation and marketing communications",
-          "Cloudflare: Website hosting, CDN, and security services"
+          "Postmark (Wildbit LLC): নিশ্চিতকরণ এবং মার্কেটিং যোগাযোগের জন্য ইমেইল ডেলিভারি",
+          "Cloudflare: ওয়েবসাইট হোস্টিং, CDN এবং নিরাপত্তা পরিষেবা"
         ],
         "note": "এই প্রদানকারীরা ডেটা প্রক্রিয়াকরণ চুক্তির অধীনে আমাদের পক্ষে ডেটা প্রক্রিয়া করে। আমরা আপনার ব্যক্তিগত ডেটা বিক্রি করি না।"
       },
@@ -439,12 +439,12 @@
         "title": "আপনার অধিকার",
         "description": "প্রযোজ্য গোপনীয়তা আইনের অধীনে, আপনার অধিকার রয়েছে:",
         "items": [
-          "Access the personal data we hold about you",
-          "Request correction of inaccurate data",
-          "Request deletion of your data",
-          "Request portability of your data",
-          "Withdraw consent for marketing communications",
-          "Lodge a complaint with the relevant supervisory authority"
+          "আমাদের কাছে আপনার সম্পর্কে থাকা ব্যক্তিগত ডেটা অ্যাক্সেস করা",
+          "ভুল ডেটা সংশোধনের অনুরোধ করা",
+          "আপনার ডেটা মুছে ফেলার অনুরোধ করা",
+          "আপনার ডেটার পোর্টেবিলিটির অনুরোধ করা",
+          "মার্কেটিং যোগাযোগের জন্য সম্মতি প্রত্যাহার করা",
+          "প্রাসঙ্গিক তদারকি কর্তৃপক্ষের কাছে অভিযোগ দাখিল করা"
         ],
         "contact": "এই অধিকারগুলি ব্যবহার করতে, privacy@production.city-তে আমাদের সাথে যোগাযোগ করুন।"
       },
@@ -457,7 +457,7 @@
         "description": "আমরা সময়ে সময়ে এই গোপনীয়তা নীতি আপডেট করতে পারি।"
       },
       "contact": {
-        "title": "Contact Us",
+        "title": "আমাদের সাথে যোগাযোগ করুন",
         "description": "গোপনীয়তা সম্পর্কিত প্রশ্নের জন্য যোগাযোগ করুন: privacy@production.city"
       }
     },
@@ -595,18 +595,18 @@
       "detail": {
         "usageLabel": "Usage",
         "specLabel": "Specification",
-        "specDimensions": "Dimensions",
+        "specDimensions": "মাত্রা",
         "specDimensionsValue": "45 m × 45 m · 147 ft × 147 ft",
-        "specArea": "Floor area",
+        "specArea": "মেঝের আয়তন",
         "specAreaValue": "2,025 m² · 21,797 ft²",
-        "specHeight": "Height to grid",
+        "specHeight": "গ্রিড পর্যন্ত উচ্চতা",
         "specHeightValue": "15 m · 49 ft",
-        "specSoundproofing": "Sound-proofing",
+        "specSoundproofing": "শব্দ নিরোধক",
         "specSoundproofingValue": "NRC 1.05 · NC 25",
-        "specLed": "LED volume",
-        "specLedValue": "Flat · Arc · Full-surround",
-        "specGrid": "Grid & catwalk",
-        "specGridValue": "Full-coverage",
+        "specLed": "LED ভলিউম",
+        "specLedValue": "ফ্লাট · আর্ক · ফুল-সারাউন্ড",
+        "specGrid": "গ্রিড ও ক্যাটওয়াক",
+        "specGridValue": "পূর্ণ কভারেজ",
         "statArea": "2,025",
         "statGrid": "15",
         "ctaLink": "Enquire",
@@ -636,21 +636,21 @@
       "specNrc": "NRC 75+",
       "specLed": "ফ্ল্যাট, আর্ক, ফুল-সারাউন্ড",
       "detail": {
-        "prose": "Commercials, TVCs, music videos, short-form, and digital work do not need the 45 × 45. They do need proper acoustics, proper height, and the same LED configurations.",
+        "prose": "বিজ্ঞাপন, TVC, মিউজিক ভিডিও, শর্ট-ফর্ম এবং ডিজিটাল কাজের জন্য 45 × 45-এর জায়গার প্রয়োজন নেই। তবে সঠিক অ্যাকোস্টিক্স, উপযুক্ত উচ্চতা এবং একই LED কনফিগারেশন প্রয়োজন।",
         "usageLabel": "Usage",
         "specLabel": "Specification",
-        "specDimensions": "Dimensions",
+        "specDimensions": "মাত্রা",
         "specDimensionsValue": "10 m × 10 m · 32 ft × 32 ft",
-        "specArea": "Floor area",
+        "specArea": "মেঝের আয়তন",
         "specAreaValue": "100 m² · 1,076 ft²",
-        "specHeight": "Height to grid",
+        "specHeight": "গ্রিড পর্যন্ত উচ্চতা",
         "specHeightValue": "15 m · 49 ft",
-        "specSoundproofing": "Sound-proofing",
+        "specSoundproofing": "শব্দ নিরোধক",
         "specSoundproofingValue": "NRC 1.05 · NC 25",
-        "specLed": "LED volume",
-        "specLedValue": "Flat · Arc · Full-surround",
-        "specGrid": "Grid & catwalk",
-        "specGridValue": "Full-coverage",
+        "specLed": "LED ভলিউম",
+        "specLedValue": "ফ্লাট · আর্ক · ফুল-সারাউন্ড",
+        "specGrid": "গ্রিড ও ক্যাটওয়াক",
+        "specGridValue": "পূর্ণ কভারেজ",
         "statArea": "100",
         "statGrid": "15",
         "ctaLink": "Enquire",
@@ -682,18 +682,18 @@
       "detail": {
         "usageLabel": "Usage",
         "specLabel": "Specification",
-        "specTheatre": "Theatre mode",
-        "specTheatreValue": "450 seats",
-        "specCabaret": "Cabaret mode",
-        "specCabaretValue": "300 seats",
-        "specBroadcast": "Live broadcast",
-        "specBroadcastValue": "Ready",
-        "specCameras": "Robotic cameras",
-        "specCamerasValue": "8 integrated positions",
-        "specLed": "LED virtual sets",
-        "specLedValue": "Library + bespoke",
-        "specCompliance": "Compliance",
-        "specComplianceValue": "Meets streaming service requirements",
+        "specTheatre": "থিয়েটার মোড",
+        "specTheatreValue": "450 আসন",
+        "specCabaret": "ক্যাবারে মোড",
+        "specCabaretValue": "300 আসন",
+        "specBroadcast": "লাইভ সম্প্রচার",
+        "specBroadcastValue": "প্রস্তুত",
+        "specCameras": "রোবোটিক ক্যামেরা",
+        "specCamerasValue": "8টি সমন্বিত অবস্থান",
+        "specLed": "LED ভার্চুয়াল সেট",
+        "specLedValue": "লাইব্রেরি + কাস্টম",
+        "specCompliance": "সম্মতি",
+        "specComplianceValue": "স্ট্রিমিং সেবার প্রয়োজনীয়তা পূরণ করে",
         "statSeats": "450",
         "statCameras": "8",
         "ctaLink": "Enquire",
@@ -1378,7 +1378,7 @@
     "evidence4": "অংশীদারিত্ব ও সামুদায়িক সম্পর্ক যার মাধ্যমে কার্যক্রম প্রদান করা হয়।",
     "evidence5": "প্রাসঙ্গিক NSW সরকার নীতির সাথে সামঞ্জস্য, যার মধ্যে Aboriginal Procurement Policy এবং Closing the Gap প্রতিশ্রুতি অন্তর্ভুক্ত।",
     "ctaHeading": "Capability Statement পড়ুন।",
-    "ctaLink": "Request a copy"
+    "ctaLink": "একটি কপির অনুরোধ করুন"
   },
   "network": {
     "meta": {
@@ -1454,7 +1454,7 @@
     "pullQuoteLabel": "০৫ — প্রথম স্থানে",
     "pullQuote": "প্রথম ক্যাম্পাস এখন নির্মিত হচ্ছে। প্রযুক্তিগত মানদণ্ড, গবেষণা ও উন্নয়ন এবং নেটওয়ার্কের কার্যকারী কাজ সেই প্রথম স্থানে ভিত্তিক। প্রথম হওয়া একটি ব্র্যান্ডিং দাবি নয় — এটি একটি কাঠামোগত দাবি, এবং এটি বৃদ্ধি পায়।",
     "cta": "দলের সাথে কথা বলুন।",
-    "ctaLink": "Start a conversation"
+    "ctaLink": "কথোপকথন শুরু করুন"
   },
   "companyTeam": {
     "meta": {
@@ -1495,6 +1495,6 @@
     "platformHeading": "পরিচালক প্ল্যাটফর্ম।",
     "platformDesc": "একটি জটিল প্রোডাকশন ও সাইট ব্যবস্থাপনা সিস্টেম ডিজাইনে রয়েছে। এটি ক্যাম্পাস স্কেলে সময়সূচি, ক্রু, ভাড়াটে, বিলিং এবং ব্রডকাস্ট পরিচালনা পরিচালনা করবে। সেই সিস্টেম পরিচালক-মুখী, জনসাধারণের জন্য নয়। এই ওয়েবসাইট ভাড়াটে ও অংশীদার পোর্টালের সাথে লিঙ্ক করবে যখন সেগুলো বিদ্যমান থাকবে।",
     "cta": "দলের সাথে যোগাযোগ করুন।",
-    "ctaLink": "Start a conversation"
+    "ctaLink": "কথোপকথন শুরু করুন"
   }
 }

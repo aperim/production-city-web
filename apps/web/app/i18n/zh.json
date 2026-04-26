@@ -324,7 +324,7 @@
     "services": "Services",
     "network": "Network",
     "company": "Company",
-    "firstNations": "First Nations"
+    "firstNations": "原住民"
   },
   "eoi": {
     "formTitle": "表达您的兴趣",
@@ -397,23 +397,23 @@
         "title": "我们收集的信息",
         "description": "当您提交意向登记时，我们会收集以下信息：",
         "items": [
-          "Your name and email address",
-          "Your selected category of interest",
-          "Any optional message you provide",
-          "Category-specific information (e.g., company name, portfolio URL)",
-          "Technical data: IP address, browser type, referring page, UTM campaign parameters",
-          "Consent records: privacy policy version accepted, timestamp, marketing preference"
+          "您的姓名和电子邮件地址",
+          "您选择的兴趣类别",
+          "您提供的任何可选消息",
+          "特定类别信息（例如，公司名称、作品集网址）",
+          "技术数据：IP地址、浏览器类型、来源页面、UTM活动参数",
+          "同意记录：接受的隐私政策版本、时间戳、营销偏好"
         ]
       },
       "purpose": {
         "title": "信息使用方式",
         "description": "我们将收集的信息用于：",
         "items": [
-          "Respond to your expression of interest",
-          "Send a confirmation email acknowledging your submission",
-          "Send marketing communications (only if you opted in)",
-          "Analyse submission trends to improve our services",
-          "Comply with legal obligations"
+          "回复您的意向申请",
+          "发送确认邮件，确认收到您的申请",
+          "发送营销通讯（仅在您选择加入的情况下）",
+          "分析提交趋势以改善我们的服务",
+          "遵守法律义务"
         ]
       },
       "lawfulBasis": {
@@ -430,8 +430,8 @@
         "title": "第三方服务",
         "description": "我们与以下服务提供商共享您的数据：",
         "items": [
-          "Postmark (Wildbit LLC): Email delivery for confirmation and marketing communications",
-          "Cloudflare: Website hosting, CDN, and security services"
+          "Postmark（Wildbit LLC）：确认和营销通讯的电子邮件投递服务",
+          "Cloudflare：网站托管、CDN和安全服务"
         ],
         "note": "这些提供商根据数据处理协议代表我们处理数据。我们不会出售您的个人数据。"
       },
@@ -439,12 +439,12 @@
         "title": "您的权利",
         "description": "根据适用的隐私法律，您有权：",
         "items": [
-          "Access the personal data we hold about you",
-          "Request correction of inaccurate data",
-          "Request deletion of your data",
-          "Request portability of your data",
-          "Withdraw consent for marketing communications",
-          "Lodge a complaint with the relevant supervisory authority"
+          "访问我们持有的关于您的个人数据",
+          "要求更正不准确的数据",
+          "要求删除您的数据",
+          "要求数据可携性",
+          "撤回营销通讯的同意",
+          "向相关监管机构提出投诉"
         ],
         "contact": "如需行使这些权利，请通过 privacy@production.city 联系我们。"
       },
@@ -457,7 +457,7 @@
         "description": "我们可能不时更新本隐私政策。您提交时记录的同意版本即为您接受的政策版本。"
       },
       "contact": {
-        "title": "Contact Us",
+        "title": "联系我们",
         "description": "如有隐私相关咨询，请联系：privacy@production.city"
       }
     },
@@ -595,18 +595,18 @@
       "detail": {
         "usageLabel": "Usage",
         "specLabel": "Specification",
-        "specDimensions": "Dimensions",
+        "specDimensions": "尺寸",
         "specDimensionsValue": "45 m × 45 m · 147 ft × 147 ft",
-        "specArea": "Floor area",
+        "specArea": "楼层面积",
         "specAreaValue": "2,025 m² · 21,797 ft²",
-        "specHeight": "Height to grid",
+        "specHeight": "至格栅高度",
         "specHeightValue": "15 m · 49 ft",
-        "specSoundproofing": "Sound-proofing",
+        "specSoundproofing": "隔音",
         "specSoundproofingValue": "NRC 1.05 · NC 25",
-        "specLed": "LED volume",
-        "specLedValue": "Flat · Arc · Full-surround",
-        "specGrid": "Grid & catwalk",
-        "specGridValue": "Full-coverage",
+        "specLed": "LED体积",
+        "specLedValue": "平面 · 弧形 · 全环绕",
+        "specGrid": "格栅与猫道",
+        "specGridValue": "全覆盖",
         "statArea": "2,025",
         "statGrid": "15",
         "ctaLink": "Enquire",
@@ -636,21 +636,21 @@
       "specNrc": "NRC 75+",
       "specLed": "平面、弧形、全环绕",
       "detail": {
-        "prose": "Commercials, TVCs, music videos, short-form, and digital work do not need the 45 × 45. They do need proper acoustics, proper height, and the same LED configurations.",
+        "prose": "广告、TVC、MV、短视频和数字内容不需要45×45的场地，但需要合适的声学效果、足够的层高和相同的LED配置。",
         "usageLabel": "Usage",
         "specLabel": "Specification",
-        "specDimensions": "Dimensions",
+        "specDimensions": "尺寸",
         "specDimensionsValue": "10 m × 10 m · 32 ft × 32 ft",
-        "specArea": "Floor area",
+        "specArea": "楼层面积",
         "specAreaValue": "100 m² · 1,076 ft²",
-        "specHeight": "Height to grid",
+        "specHeight": "至格栅高度",
         "specHeightValue": "15 m · 49 ft",
-        "specSoundproofing": "Sound-proofing",
+        "specSoundproofing": "隔音",
         "specSoundproofingValue": "NRC 1.05 · NC 25",
-        "specLed": "LED volume",
-        "specLedValue": "Flat · Arc · Full-surround",
-        "specGrid": "Grid & catwalk",
-        "specGridValue": "Full-coverage",
+        "specLed": "LED体积",
+        "specLedValue": "平面 · 弧形 · 全环绕",
+        "specGrid": "格栅与猫道",
+        "specGridValue": "全覆盖",
         "statArea": "100",
         "statGrid": "15",
         "ctaLink": "Enquire",
@@ -682,18 +682,18 @@
       "detail": {
         "usageLabel": "Usage",
         "specLabel": "Specification",
-        "specTheatre": "Theatre mode",
-        "specTheatreValue": "450 seats",
-        "specCabaret": "Cabaret mode",
-        "specCabaretValue": "300 seats",
-        "specBroadcast": "Live broadcast",
-        "specBroadcastValue": "Ready",
-        "specCameras": "Robotic cameras",
-        "specCamerasValue": "8 integrated positions",
-        "specLed": "LED virtual sets",
-        "specLedValue": "Library + bespoke",
-        "specCompliance": "Compliance",
-        "specComplianceValue": "Meets streaming service requirements",
+        "specTheatre": "剧院模式",
+        "specTheatreValue": "450座",
+        "specCabaret": "卡巴莱模式",
+        "specCabaretValue": "300座",
+        "specBroadcast": "直播",
+        "specBroadcastValue": "就绪",
+        "specCameras": "机器人摄像机",
+        "specCamerasValue": "8个集成位置",
+        "specLed": "LED虚拟场景",
+        "specLedValue": "素材库 + 定制",
+        "specCompliance": "合规",
+        "specComplianceValue": "符合流媒体服务要求",
         "statSeats": "450",
         "statCameras": "8",
         "ctaLink": "Enquire",
@@ -1378,7 +1378,7 @@
     "evidence4": "项目执行所依托的合作关系与社区联络网络。",
     "evidence5": "与新南威尔士州政府相关政策的对齐落实，包括《原住民采购政策》及“缩小差距”承诺。",
     "ctaHeading": "阅读能力声明。",
-    "ctaLink": "Request a copy"
+    "ctaLink": "申请副本"
   },
   "network": {
     "meta": {
@@ -1454,7 +1454,7 @@
     "pullQuoteLabel": "05 — 关于首个园区",
     "pullQuote": "第一个园区正在建设之中。网络的技术标准、研发职能及行政管理均以这个首个园区为基地。成为第一，不是一个品牌宣言——而是一个结构性事实，且其价值将持续复利增长。",
     "cta": "与团队对话。",
-    "ctaLink": "Start a conversation"
+    "ctaLink": "开始对话"
   },
   "companyTeam": {
     "meta": {
@@ -1495,6 +1495,6 @@
     "platformHeading": "运营平台。",
     "platformDesc": "一套复杂的制作与园区管理系统正在设计中，将以园区规模处理排期、人员、租户、账务及广播编排。该系统面向运营方，不对外公开。网站将在租户与合作伙伴门户建立后提供相应入口。",
     "cta": "联系团队。",
-    "ctaLink": "Start a conversation"
+    "ctaLink": "开始对话"
   }
 }
