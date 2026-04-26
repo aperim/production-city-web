@@ -46,10 +46,10 @@ jobs:
         env:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          CF_D1_DATABASE_ID_STAGING: ${{ secrets.CF_D1_DATABASE_ID_STAGING }}
 
       - name: Apply migrations to local DB for seeding
         run: |
+          set -euo pipefail
           for migration in prisma/migrations/*.sql; do
             echo "Applying $migration ..."
             sqlite3 local.db < "$migration"
@@ -59,6 +59,7 @@ jobs:
 
       - name: Seed database (staging only)
         run: |
+          set -euo pipefail
           if [[ "${DEPLOY_ENV}" == "production" ]]; then
             echo "ERROR: Refusing to seed in production context"
             exit 1
@@ -73,6 +74,34 @@ jobs:
           DEPLOY_ENV: staging
           DATABASE_URL: "file:./local.db"
           SEED_ADMIN_EMAIL: ${{ secrets.SEED_ADMIN_EMAIL }}
+
+      - name: Apply seed data to remote D1 staging
+        working-directory: apps/backend
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+        run: |
+          set -euo pipefail
+          # Export INSERT OR REPLACE statements from the seeded local.db in
+          # foreign-key dependency order and apply them to the remote D1
+          # staging database.  INSERT OR REPLACE makes the operation idempotent.
+          {
+            printf "PRAGMA defer_foreign_keys = ON;\n\n"
+            # Keep this list in sync with the tables seeded in prisma/seed-logic.ts.
+            # Add any new seeded tables here in foreign-key dependency order.
+            for TABLE in Role Permission AnnouncementCategory User \
+                         RolePermission UserRole NotificationPreference \
+                         FeatureNotification; do
+              printf "-- %s\n" "$TABLE"
+              sqlite3 ../../local.db ".mode insert $TABLE" \
+                "SELECT * FROM \"$TABLE\";" 2>/dev/null \
+                | sed 's/^INSERT INTO /INSERT OR REPLACE INTO /'
+              printf "\n"
+            done
+          } > ../../seed-remote.sql
+          echo "Seed SQL generated: $(wc -l < ../../seed-remote.sql) lines"
+          pnpm exec wrangler d1 execute DB --remote --env staging \
+            --file ../../seed-remote.sql
 
       - name: Build shared packages
         run: |

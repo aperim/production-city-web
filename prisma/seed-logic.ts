@@ -483,10 +483,10 @@ export async function seedDatabase(
     }
   }
 
-  // 7-8. Dev/test only data
-  const allowedEnvs = eoiAllowedEnvs;
+  // 7-8. Dev/test/staging data (dashboard test users needed on staging for QA)
+  const allowedEnvs = [...eoiAllowedEnvs, "staging"];
   if (nodeEnv && allowedEnvs.includes(nodeEnv)) {
-    // 7. Dashboard test users — one per dashboard role (dev/test only)
+    // 7. Dashboard test users — one per dashboard role (dev/test/staging)
     const DASHBOARD_TEST_USERS: Array<{
       email: string;
       name: string;
