@@ -6,7 +6,7 @@ import { describe, it, expect } from "vitest";
 /**
  * Landing page structure and i18n completeness tests.
  *
- * Validates that all 7 landing pages exist, export correct components,
+ * Validates that all 9 landing pages exist, export correct components,
  * and that all required i18n keys are present in all locale files.
  */
 
@@ -21,6 +21,8 @@ describe("landing page structure", () => {
     { route: "community/page.tsx", component: "pages/community.tsx", name: "Community" },
     { route: "faq/page.tsx", component: "pages/faq.tsx", name: "FAQ" },
     { route: "contact/page.tsx", component: "pages/contact.tsx", name: "Contact" },
+    { route: "privacy/page.tsx", component: "pages/privacy.tsx", name: "Privacy" },
+    { route: "terms/page.tsx", component: "pages/terms.tsx", name: "Terms" },
   ];
 
   for (const page of pages) {
@@ -94,6 +96,12 @@ describe("landing page i18n completeness", () => {
     "community.acknowledgement", "community.innovation",
     "faq.meta", "faq.q1", "faq.a1", "faq.c1",
     "contact.meta", "contact.info", "contact.eoi",
+    "legal.privacy.title", "legal.privacy.dataCollection", "legal.privacy.purpose",
+    "legal.privacy.lawfulBasis", "legal.privacy.retention", "legal.privacy.thirdParties",
+    "legal.privacy.rights", "legal.privacy.jurisdiction", "legal.privacy.changes", "legal.privacy.contact",
+    "legal.terms.title", "legal.terms.usage", "legal.terms.ip",
+    "legal.terms.disclaimer", "legal.terms.forwardLooking", "legal.terms.liability",
+    "legal.terms.jurisdiction", "legal.terms.changes",
   ];
 
   /** Flatten a nested object into dot-notation keys. */
@@ -305,6 +313,8 @@ describe("all page text is externalized via i18n", () => {
     "pages/vision.tsx",
     "pages/community.tsx",
     "pages/contact.tsx",
+    "pages/privacy.tsx",
+    "pages/terms.tsx",
   ];
 
   for (const page of pageFiles) {

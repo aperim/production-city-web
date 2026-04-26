@@ -2,7 +2,7 @@
 /**
  * Unit tests for XML sitemap generation.
  *
- * Verifies: all 7 pages x 10 locales (70 URL entries), hreflang alternates,
+ * Verifies: all 9 pages x 10 locales (90 URL entries), hreflang alternates,
  * x-default pointing to English, absolute URLs with canonical origin.
  *
  * @see Issue #280
@@ -32,7 +32,7 @@ describe("generateSitemap", () => {
     expect(sitemap).toContain('xmlns:xhtml="http://www.w3.org/1999/xhtml"');
   });
 
-  it("includes all 7 pages x 10 locales = 70 URL entries", () => {
+  it("includes all 9 pages x 10 locales = 90 URL entries", () => {
     const urlCount = (sitemap.match(/<url>/g) ?? []).length;
     expect(urlCount).toBe(PAGES.length * SUPPORTED_LOCALES.length);
   });

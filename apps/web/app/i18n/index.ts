@@ -160,3 +160,24 @@ export function t(
     params[name] !== undefined ? String(params[name]) : `{${name}}`,
   );
 }
+
+/**
+ * Get a translated string array by dot-notation key.
+ * Returns [] if the key does not resolve to an array.
+ */
+export function tArray(key: TranslationKey, locale = "en"): string[] {
+  const tree = translations[locale] ?? translations.en!;
+  const parts = key.split(".");
+  let current: unknown = tree;
+
+  for (const part of parts) {
+    if (current === null || current === undefined || typeof current !== "object") {
+      return [];
+    }
+    current = (current as Record<string, unknown>)[part];
+  }
+
+  if (Array.isArray(current)) return current as string[];
+  if (locale !== "en") return tArray(key, "en");
+  return [];
+}
