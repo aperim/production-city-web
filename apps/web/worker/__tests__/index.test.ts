@@ -18,13 +18,16 @@ const WWW_HOST = `www.${CANONICAL_HOST}`;
 
 /**
  * Inline CSP builder mirroring worker/index.ts logic for isolated testing.
+ * Keep in sync with buildCsp() in worker/index.ts (PRO-194).
  */
 function buildCsp(hostname: string): string {
   const isDev = hostname === "localhost" || hostname === "127.0.0.1";
-  const connectSrc = isDev
-    ? "connect-src 'self' ws://localhost:* wss://localhost:*"
-    : "connect-src 'self' wss://api.production.city";
-  return `default-src 'self'; script-src 'self' 'unsafe-inline' https://static.cloudflareinsights.com; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self' https://fonts.gstatic.com; ${connectSrc}`;
+  if (isDev) {
+    return `default-src 'self'; script-src 'self' 'unsafe-inline' https://static.cloudflareinsights.com; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self' https://fonts.gstatic.com; connect-src 'self' ws://localhost:* wss://localhost:*`;
+  }
+  const baseHost = hostname.startsWith("www.") ? hostname.slice(4) : hostname;
+  const apiOrigin = `api.${baseHost}`;
+  return `default-src 'self'; script-src 'self' 'unsafe-inline' https://static.cloudflareinsights.com; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self' https://fonts.gstatic.com; connect-src 'self' https://${apiOrigin} wss://${apiOrigin}`;
 }
 
 /**
@@ -125,10 +128,26 @@ describe("CSP headers — WebSocket directives (#194)", () => {
     expect(csp).toContain("wss://localhost:*");
   });
 
-  it("production CSP allows only wss://api.production.city", () => {
+  it("production CSP allows https:// and wss:// for api.production.city", () => {
     const csp = buildCsp("production.city");
+    expect(csp).toContain("https://api.production.city");
     expect(csp).toContain("wss://api.production.city");
     expect(csp).not.toContain("ws://localhost");
+  });
+
+  it("staging CSP allows https:// and wss:// for api.staging.production.city (PRO-194)", () => {
+    const csp = buildCsp("staging.production.city");
+    expect(csp).toContain("https://api.staging.production.city");
+    expect(csp).toContain("wss://api.staging.production.city");
+    expect(csp).not.toContain("api.production.city");
+    expect(csp).not.toContain("ws://localhost");
+  });
+
+  it("www CSP strips www. prefix so connect-src targets api.production.city not api.www.production.city", () => {
+    const csp = buildCsp("www.production.city");
+    expect(csp).toContain("https://api.production.city");
+    expect(csp).toContain("wss://api.production.city");
+    expect(csp).not.toContain("api.www.production.city");
   });
 
   it("production CSP does not allow unencrypted ws://", () => {

@@ -43,15 +43,19 @@ function getCanonicalOrigin(url: URL): string {
 
 /**
  * Build Content-Security-Policy header with WebSocket and API directives.
- * Dev: allows ws://localhost:* and wss://localhost:*
- * Production: allows wss://api.production.city (WebSocket) and https://api.production.city (API)
+ * Dev (localhost/127.0.0.1): allows ws://localhost:* and wss://localhost:*
+ * All other envs: derives API host from request hostname so staging and
+ * production each allow their own api.* subdomain (PRO-194).
  */
 function buildCsp(hostname: string): string {
   const isDev = hostname === "localhost" || hostname === "127.0.0.1";
-  const connectSrc = isDev
-    ? "connect-src 'self' ws://localhost:* wss://localhost:*"
-    : "connect-src 'self' https://api.production.city wss://api.production.city";
-  return `default-src 'self'; script-src 'self' 'unsafe-inline' https://static.cloudflareinsights.com; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self' https://fonts.gstatic.com; ${connectSrc}`;
+  if (isDev) {
+    return `default-src 'self'; script-src 'self' 'unsafe-inline' https://static.cloudflareinsights.com; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self' https://fonts.gstatic.com; connect-src 'self' ws://localhost:* wss://localhost:*`;
+  }
+  // Strip www. prefix before deriving the API subdomain.
+  const baseHost = hostname.startsWith("www.") ? hostname.slice(4) : hostname;
+  const apiOrigin = `api.${baseHost}`;
+  return `default-src 'self'; script-src 'self' 'unsafe-inline' https://static.cloudflareinsights.com; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self' https://fonts.gstatic.com; connect-src 'self' https://${apiOrigin} wss://${apiOrigin}`;
 }
 
 /** Security headers applied to every response (CSP set dynamically). */
