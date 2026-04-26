@@ -1,0 +1,38 @@
+{
+  "name": "@productioncity/masterplan-viewer",
+  "version": "0.1.0",
+  "type": "module",
+  "description": "Production City masterplan 3D viewer — Three.js interactive campus model.",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/productioncity/holding.git",
+    "directory": "packages/masterplan-viewer"
+  },
+  "license": "UNLICENSED",
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com",
+    "access": "restricted"
+  },
+  "sideEffects": [
+    "./src/styles/viewer.css"
+  ],
+  "exports": {
+    ".": {
+      "import": "./src/index.ts",
+      "types": "./src/index.ts"
+    },
+    "./viewer.css": "./src/styles/viewer.css"
+  },
+  "main": "./src/index.ts",
+  "types": "./src/index.ts",
+  "scripts": {
+    "typecheck": "tsc --noEmit"
+  },
+  "files": [
+    "dist",
+    "!dist/**/*.test.*"
+  ],
+  "dependencies": {
+    "three": "^0.184.0"
+  }
+}

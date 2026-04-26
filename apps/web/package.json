@@ -29,6 +29,7 @@
     "@prisma/adapter-d1": "^7.5.0",
     "@prisma/client": "^7.5.0",
     "@productioncity/holding-ui": "workspace:*",
+    "@productioncity/masterplan-viewer": "workspace:*",
     "react": "^19.2.4",
     "react-dom": "^19.2.4",
     "react-server-dom-webpack": "^19.2.4",
