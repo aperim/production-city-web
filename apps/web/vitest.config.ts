@@ -5,8 +5,11 @@ export default defineConfig({
     environment: "jsdom",
     setupFiles: ["./test-setup.ts"],
     include: ["app/**/*.test.ts", "app/**/*.test.tsx", "worker/**/*.test.ts", "scripts/**/*.test.ts"],
+    env: {
+      NODE_ENV: "test",
+    },
   },
   resolve: {
-    conditions: ["import", "module", "browser", "default"],
+    conditions: ["development", "browser", "module", "import", "default"],
   },
 });
