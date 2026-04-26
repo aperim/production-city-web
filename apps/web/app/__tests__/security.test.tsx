@@ -1,3 +1,4 @@
+// @vitest-environment node
 /**
  * Security-focused tests for auth pages.
  * Verifies: no raw HTML injection, no token storage, referrer policy, etc.
