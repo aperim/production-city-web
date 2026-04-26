@@ -98,6 +98,9 @@ export const MEDIA: Record<string, MediaSource> = {
 
   // First Nations page (landscape — no portraiture)
   "first-nations-hero": media("first-nations-hero", "Desert sunset with silhouetted trees and birds in Witjira, South Australia — deep country", "Mark Direen", "https://www.pexels.com/@mark-direen-622749", "#665963"),
+
+  // Masterplan page — poster image from 3D viewer hero camera angle (to be captured from viewer)
+  "masterplan-poster": media("masterplan-poster", "Production City 6-hectare campus masterplan — aerial perspective showing integrated sound stages, broadcast theatre, and public realm", "Production City", "https://production.city", "#1A1C1E"),
 };
 
 /** Get media source for a content context. Returns undefined if not found. */

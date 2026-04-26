@@ -21,6 +21,10 @@
       "import": "./src/index.ts",
       "types": "./src/index.ts"
     },
+    "./data": {
+      "import": "./src/masterplanData.js",
+      "types": "./src/masterplanData.d.ts"
+    },
     "./viewer.css": "./src/styles/viewer.css"
   },
   "main": "./src/index.ts",

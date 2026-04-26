@@ -324,7 +324,8 @@
     "services": "Services",
     "network": "Network",
     "company": "Company",
-    "firstNations": "Premières Nations"
+    "firstNations": "Premières Nations",
+    "masterplan": "Plan du campus"
   },
   "eoi": {
     "formTitle": "Exprimez votre intérêt",
@@ -560,6 +561,12 @@
       "heading": "Communauté et durabilité",
       "description": "Production City est conçu pour servir la communauté à travers des partenariats éducatifs, des engagements de durabilité et l'innovation intersectorielle dans le sport, la robotique et l'apprentissage automatique.",
       "viewAll": "Explorer les partenariats communautaires"
+    },
+    "masterplanTeaser": {
+      "ctaLabel": "Explorer le campus en 3D →",
+      "eyebrow": "Plan directeur du campus",
+      "heading": "Le campus, en trois dimensions.",
+      "body": "Six plateaux de tournage, un théâtre de diffusion, un pôle créatif, un backlot et un espace public — explorez l'intégralité du site de 6 hectares en modèle 3D interactif."
     }
   },
   "facilities": {
@@ -1504,5 +1511,63 @@
     "platformDesc": "Un système complexe de gestion de production et de site est en conception. Il gérera la planification, les équipes, les locataires, la facturation et l'orchestration de la diffusion à l'échelle du campus. Ce système est destiné aux opérateurs, pas au public. Ce site web établira des liens vers les portails des locataires et des partenaires lorsqu'ils existeront.",
     "cta": "Contacter l'équipe.",
     "ctaLink": "Démarrer une conversation"
+  },
+  "masterplan": {
+    "meta": {
+      "title": "Plan directeur du campus — Production City",
+      "description": "Explorez le plan directeur du campus intégré de 6 hectares de Production City. Treize installations, six plateaux de tournage, théâtre de diffusion et espace public."
+    },
+    "hero": {
+      "heading": "Plan directeur du campus",
+      "tagline": "Un campus de 6 hectares conçu comme un système intégré.",
+      "ariaLabel": "Plan directeur du campus Production City — visionneuse 3D interactive. Cliquez sur un bâtiment pour explorer ses détails."
+    },
+    "stats": {
+      "heading": "Le campus en chiffres",
+      "hectares": "6",
+      "hectaresUnit": "hectares",
+      "sqm": "60 000+",
+      "sqmUnit": "mètres carrés",
+      "facilities": "13",
+      "facilitiesUnit": "installations",
+      "soundStages": "6",
+      "soundStagesUnit": "plateaux de tournage"
+    },
+    "highlights": {
+      "heading": "Les installations",
+      "viewSpec": "Voir les spécifications complètes →",
+      "categories": {
+        "stage": "Plateaux de production",
+        "creative": "Espaces créatifs",
+        "public": "Espace public",
+        "support": "Installations de soutien",
+        "education": "Éducation",
+        "logistics": "Logistique"
+      }
+    },
+    "circulation": {
+      "heading": "Trois systèmes de circulation distincts",
+      "description": "Les visiteurs du public, les équipes de production et la logistique des services circulent sur des itinéraires entièrement indépendants.",
+      "public": "Accès public",
+      "publicDesc": "Route d'arrivée sud. Hall du théâtre, expositions, restauration et place événementielle — tout ouvert au public, en dessous de la porte de production.",
+      "secure": "Accès production",
+      "secureDesc": "Portail nord contrôlé. L'épine dorsale des plateaux relie six plateaux, le hub créatif et la régie sans traverser les zones publiques.",
+      "truck": "Services et logistique",
+      "truckDesc": "Routes de service dédiées à l'ouest et à l'est. Les quais de chargement desservent chaque plateau, le backlot, l'atelier et l'entrepôt de façon indépendante.",
+      "pedestrian": "Circulation piétonne",
+      "pedestrianDesc": "Les passerelles internes relient les halls de plateaux, les bureaux et les installations de soutien sans croiser les voies véhicules."
+    },
+    "panel": {
+      "close": "Fermer le panneau",
+      "viewSpec": "Voir les spécifications complètes →",
+      "noSpec": "Voir toutes les installations →"
+    },
+    "eoi": {
+      "heading": "Manifestez votre intérêt",
+      "context": "Renseignez-vous sur les réservations de production, les visites du campus ou les opportunités de partenariat."
+    },
+    "disclaimer": {
+      "forwardLooking": "Cette page contient des déclarations prospectives sur les plans de développement, les spécifications du campus et les capacités opérationnelles de Production City. Les déclarations relatives aux capacités, dimensions et caractéristiques reflètent les intentions de conception actuelles et sont susceptibles d'être modifiées. Il ne s'agit pas d'un prospectus financier."
+    }
   }
 }

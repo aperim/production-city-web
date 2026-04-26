@@ -442,6 +442,58 @@ function HomePageContent() {
         </section>
       </ScrollRevealSection>
 
+      {/* ═══════════ MASTERPLAN TEASER ═══════════ */}
+      <ScrollRevealSection delay={0}>
+        <section className="bg-(--pc-color-neutral-900) px-(--pc-spacing-6) py-[clamp(48px,7vw,96px)] text-(--pc-color-neutral-100)" aria-labelledby="masterplan-teaser-heading">
+          <div className="mx-auto max-w-[1720px]">
+            <div className="grid grid-cols-1 items-center gap-[clamp(32px,4vw,64px)] lg:grid-cols-2">
+              {/* Left — text + CTA */}
+              <div>
+                <div className="mb-4 border-t border-(--pc-color-neutral-800) pt-8">
+                  <div className="mb-3 font-mono text-[11px] uppercase tracking-[0.18em] text-(--pc-color-neutral-400)">
+                    {t("home.masterplanTeaser.eyebrow")}
+                  </div>
+                  <h2 id="masterplan-teaser-heading" className="m-0 font-serif text-[clamp(28px,3.5vw,48px)] font-normal leading-[1.1] tracking-[-0.01em]">
+                    {t("home.masterplanTeaser.heading")}
+                  </h2>
+                  <p className="mt-4 max-w-[44ch] text-base leading-relaxed text-(--pc-color-neutral-400)">
+                    {t("home.masterplanTeaser.body")}
+                  </p>
+                </div>
+                <a
+                  href={`${prefix}/masterplan`}
+                  className="mt-8 inline-flex items-center gap-2 border border-(--pc-color-neutral-100) px-6 py-3 font-sans text-sm font-medium text-(--pc-color-neutral-100) no-underline transition-opacity duration-200 hover:opacity-65"
+                >
+                  {t("home.masterplanTeaser.ctaLabel")} <span aria-hidden="true">→</span>
+                </a>
+              </div>
+
+              {/* Right — poster image placeholder (replaced by 3D viewer screenshot when available) */}
+              {MEDIA["masterplan-poster"] ? (
+                <div className="overflow-hidden border border-(--pc-color-neutral-800)">
+                  <img
+                    src={MEDIA["masterplan-poster"].darkSrc}
+                    alt={MEDIA["masterplan-poster"].alt}
+                    width={1920}
+                    height={1080}
+                    loading="lazy"
+                    className="h-auto w-full object-cover"
+                    style={{ aspectRatio: "16/9" }}
+                  />
+                </div>
+              ) : (
+                <div
+                  className="flex aspect-video items-center justify-center border border-(--pc-color-neutral-800) bg-(--pc-color-neutral-950) font-mono text-xs text-(--pc-color-neutral-600)"
+                  aria-hidden="true"
+                >
+                  [ 3D MASTERPLAN POSTER — TO BE CAPTURED FROM VIEWER ]
+                </div>
+              )}
+            </div>
+          </div>
+        </section>
+      </ScrollRevealSection>
+
       {/* ═══════════ SECTION 3 — SERVICES LINE ═══════════ */}
       <ScrollRevealSection delay={0}>
         <section className="border-t border-(--pc-color-neutral-800) bg-(--pc-color-neutral-950) px-(--pc-spacing-6) py-[clamp(40px,5vw,80px)] text-(--pc-color-neutral-100)" aria-labelledby="services-heading">

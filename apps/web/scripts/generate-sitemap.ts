@@ -32,6 +32,7 @@ export const PAGES = [
   "/facilities/commercial-sound-stages",
   "/facilities/broadcast-theatre",
   "/facilities/broadcast-control-room",
+  "/masterplan",
   "/services",
   "/creative",
   "/vision",
