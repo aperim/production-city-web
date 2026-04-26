@@ -117,6 +117,7 @@ function FirstNationsPageContent() {
               <div
                 className="aspect-[3/4] border flex flex-col justify-between p-4 text-xs font-mono tracking-widest text-muted-foreground"
                 style={{ borderColor: "var(--ochre, oklch(0.72 0.15 60))" }}
+                role="img"
                 aria-label="Matthew Compton portrait — photograph commissioned with permission"
               >
                 <div className="flex justify-between">

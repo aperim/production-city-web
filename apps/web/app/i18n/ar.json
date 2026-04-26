@@ -571,6 +571,11 @@
       "heading": "المرافق المخططة",
       "intro": "صُممت Production City لاستضافة محفظة شاملة من مرافق الإنتاج، كل منها مبني وفق المواصفات المهنية للبث والسينما."
     },
+    "common": {
+      "detail": {
+        "sectionHeading": "Facility details and technical specifications"
+      }
+    },
     "screenStages": {
       "name": "استوديوهات الشاشة الصوتية",
       "description": "استوديوهات تصوير حديثة مجهزة بأحدث التقنيات.",

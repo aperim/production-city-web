@@ -571,6 +571,11 @@
       "heading": "Instalaciones planificadas",
       "intro": "Production City está diseñado para albergar un portafolio integral de instalaciones de producción, cada una construida según especificaciones profesionales de transmisión y cine."
     },
+    "common": {
+      "detail": {
+        "sectionHeading": "Facility details and technical specifications"
+      }
+    },
     "screenStages": {
       "name": "Estudios de sonido para pantalla",
       "description": "Estudios de sonido de gran formato diseñados para producciones a gran escala con entornos LED configurables.",

@@ -571,6 +571,11 @@
       "heading": "नियोजित सुविधाएं",
       "intro": "Production City पेशेवर ब्रॉडकास्ट और फिल्म विनिर्देशों के अनुसार निर्मित प्रोडक्शन सुविधाओं का एक व्यापक पोर्टफोलियो रखने के लिए डिज़ाइन किया गया है।"
     },
+    "common": {
+      "detail": {
+        "sectionHeading": "Facility details and technical specifications"
+      }
+    },
     "screenStages": {
       "name": "स्क्रीन साउंड स्टेज",
       "description": "नवीनतम तकनीक से सुसज्जित अत्याधुनिक साउंडस्टेज।",

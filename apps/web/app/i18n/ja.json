@@ -571,6 +571,11 @@
       "heading": "計画中の施設",
       "intro": "Production Cityは、プロの放送・映画仕様に基づいて構築された包括的な制作施設ポートフォリオを収容するよう設計されています。"
     },
+    "common": {
+      "detail": {
+        "sectionHeading": "Facility details and technical specifications"
+      }
+    },
     "screenStages": {
       "name": "スクリーンサウンドステージ",
       "description": "最新技術を備えた最先端のサウンドステージ。",

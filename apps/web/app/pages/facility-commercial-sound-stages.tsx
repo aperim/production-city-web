@@ -63,6 +63,7 @@ function FacilityCommercialSoundStagesContent() {
       {/* Main content */}
       <ScrollRevealSection delay={0}>
         <section className="py-10 border-b border-border" aria-labelledby="detail-heading">
+          <h2 id="detail-heading" className="sr-only">{t("facilities.common.detail.sectionHeading")}</h2>
           <div className="grid grid-cols-1 gap-10 lg:grid-cols-2 lg:items-start">
             {/* Prose */}
             <div className="flex flex-col gap-4">

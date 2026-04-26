@@ -571,6 +571,11 @@
       "heading": "Instalações planejadas",
       "intro": "A Production City é projetada para abrigar um portfólio abrangente de instalações de produção, cada uma construída segundo especificações profissionais de transmissão e cinema."
     },
+    "common": {
+      "detail": {
+        "sectionHeading": "Facility details and technical specifications"
+      }
+    },
     "screenStages": {
       "name": "Estúdios de som para cinema",
       "description": "Estúdios de som de grande formato projetados para produções de grande escala com ambientes configuráveis de volume LED.",

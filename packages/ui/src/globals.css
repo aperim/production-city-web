@@ -26,6 +26,9 @@
   --color-accent-foreground: var(--pc-color-neutral-400);
   --color-ring: var(--pc-color-primary-400);
 
+  /* --- Brand accent: ochre — golden amber, dark-mode value passes WCAG 1.4.3 on dark bg --- */
+  --ochre: oklch(0.72 0.15 60);
+
   /* --- Radius --- */
   --radius-sm: var(--pc-spacing-1);
   --radius-md: var(--pc-spacing-2);
@@ -62,6 +65,9 @@
   --color-accent: var(--pc-color-neutral-100);
   --color-accent-foreground: var(--pc-color-neutral-950);
   --color-ring: var(--pc-color-primary-700);
+
+  /* --- ochre: darkened for light mode — ~4.5:1 on light backgrounds (WCAG 1.4.3) --- */
+  --ochre: oklch(0.49 0.12 60);
 }
 
 /* Storybook data-theme="dark" — reinforces :root dark defaults */

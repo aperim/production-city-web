@@ -176,6 +176,7 @@ function CompanyPageContent() {
             <a href="/company/team" className="group flex flex-col gap-4 border border-border p-0 hover:bg-muted/30 transition-colors">
               <div
                 className="aspect-[4/5] border-0 flex flex-col justify-between p-4 text-xs font-mono tracking-widest text-muted-foreground"
+                role="img"
                 aria-label="Troy Kelly — portrait"
               >
                 <div className="flex justify-between"><span>TROY KELLY</span><span>CEO</span></div>
@@ -196,6 +197,7 @@ function CompanyPageContent() {
               <div
                 className="aspect-[4/5] border-0 flex flex-col justify-between p-4 text-xs font-mono tracking-widest text-muted-foreground"
                 style={{ borderLeft: "3px solid var(--ochre, oklch(0.72 0.15 60))" }}
+                role="img"
                 aria-label="Matthew Compton — portrait"
               >
                 <div className="flex justify-between"><span>MATTHEW COMPTON</span><span>COO · MD</span></div>

@@ -163,8 +163,8 @@ function FacilitiesPageContent() {
           >
             <div className="mx-auto max-w-[1720px]">
               <div className="grid grid-cols-1 items-center gap-8 lg:grid-cols-12">
-                {/* Plate placeholder */}
-                <div className={`lg:col-span-6 ${f.imagePosition === "right" ? "lg:order-2 lg:col-start-7" : ""}`}>
+                {/* Plate placeholder — decorative, information conveyed by text + spec grid */}
+                <div className={`lg:col-span-6 ${f.imagePosition === "right" ? "lg:order-2 lg:col-start-7" : ""}`} aria-hidden="true">
                   <div className="relative flex aspect-[4/3] flex-col justify-between border border-(--pc-color-neutral-700) bg-(--pc-color-neutral-950) p-5">
                     <div className="flex justify-between font-mono text-[9px] uppercase tracking-[0.14em] text-(--pc-color-neutral-500)">
                       <span>{f.plate.corner}</span>

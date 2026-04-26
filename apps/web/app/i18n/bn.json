@@ -571,6 +571,11 @@
       "heading": "পরিকল্পিত সুবিধাসমূহ",
       "intro": "Production City পেশাদার ব্রডকাস্ট ও ফিল্ম স্পেসিফিকেশন অনুযায়ী নির্মিত প্রোডাকশন সুবিধাগুলির একটি ব্যাপক পোর্টফোলিও ধারণ করার জন্য ডিজাইন করা হয়েছে।"
     },
+    "common": {
+      "detail": {
+        "sectionHeading": "Facility details and technical specifications"
+      }
+    },
     "screenStages": {
       "name": "স্ক্রিন সাউন্ড স্টেজ",
       "description": "সর্বশেষ প্রযুক্তি সজ্জিত অত্যাধুনিক সাউন্ডস্টেজ।",

@@ -571,6 +571,11 @@
       "heading": "规划中的设施",
       "intro": "Production City 旨在容纳一系列按照专业广播和电影规格建造的制作设施。"
     },
+    "common": {
+      "detail": {
+        "sectionHeading": "Facility details and technical specifications"
+      }
+    },
     "screenStages": {
       "name": "影视摄影棚",
       "description": "配备最新技术的先进隔音摄影棚。",

@@ -98,7 +98,7 @@ export function EOIForm({
 
   if (status === "success") {
     return (
-      <div className={cn("py-8 text-center", className)}>
+      <div className={cn("py-8 text-center", className)} role="status" aria-live="polite">
         <p className="text-sm text-foreground">{labels.success}</p>
       </div>
     );
@@ -227,12 +227,13 @@ export function EOIForm({
       </div>
 
       {status === "error" && (
-        <p className="text-sm text-destructive">{labels.error}</p>
+        <p role="alert" className="text-sm text-destructive">{labels.error}</p>
       )}
 
       <button
         type="submit"
         disabled={!consent || status === "submitting"}
+        aria-disabled={!consent || status === "submitting"}
         className={cn(
           "inline-flex items-center justify-center px-4 py-2 text-sm font-medium",
           "bg-primary text-primary-foreground rounded-md",

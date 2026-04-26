@@ -228,7 +228,7 @@ function HomePageContent() {
                     <div key={p.num} className="flex gap-4">
                       <span className="flex-none font-serif text-2xl text-(--pc-color-neutral-400)">{p.num}</span>
                       <div>
-                        <h4 className="m-0 text-base font-medium text-(--pc-color-neutral-100)">{p.title}</h4>
+                        <h3 className="m-0 text-base font-medium text-(--pc-color-neutral-100)">{p.title}</h3>
                         <p className="mt-1 text-sm leading-relaxed text-(--pc-color-neutral-400)">{p.text}</p>
                       </div>
                     </div>
@@ -488,6 +488,7 @@ function HomePageContent() {
               {/* Region table */}
               <div className="lg:col-start-7 lg:col-span-6">
                 <table className="w-full border-collapse text-sm">
+                  <caption className="sr-only">Global campus network status</caption>
                   <thead>
                     <tr className="border-b border-(--pc-color-neutral-800)">
                       <th className="pb-3 text-left font-mono text-[10px] uppercase tracking-[0.14em] text-(--pc-color-neutral-400)">

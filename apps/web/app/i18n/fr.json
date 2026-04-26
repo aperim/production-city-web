@@ -571,6 +571,11 @@
       "heading": "Installations prévues",
       "intro": "Production City est conçu pour abriter un portefeuille complet d'installations de production, chacune construite selon les normes professionnelles de diffusion et de cinéma."
     },
+    "common": {
+      "detail": {
+        "sectionHeading": "Facility details and technical specifications"
+      }
+    },
     "screenStages": {
       "name": "Plateaux de tournage",
       "description": "Plateaux de tournage grand format conçus pour des productions à grande échelle avec des environnements LED configurables.",

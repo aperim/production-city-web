@@ -621,6 +621,11 @@
       "heading": "Planned Facilities",
       "intro": "Production City is designed to house a comprehensive portfolio of production facilities, each built to professional broadcast and film specifications."
     },
+    "common": {
+      "detail": {
+        "sectionHeading": "Facility details and technical specifications"
+      }
+    },
     "screenStages": {
       "name": "Screen Sound Stages",
       "description": "Large-format sound stages designed for grand-scale productions with configurable LED volume environments.",

@@ -43,17 +43,26 @@ function pad(n: number, w = 2): string {
 export function SignalDiagram({ className }: SignalDiagramProps) {
   const [timecode, setTimecode] = useState("00:00:00:00");
   const [nowLabel, setNowLabel] = useState("— IDEATION");
+  const [reducedMotion, setReducedMotion] = useState(false);
   const rafRef = useRef<number | null>(null);
   const startRef = useRef<number | null>(null);
-  const reducedMotion =
-    typeof window !== "undefined"
-      ? window.matchMedia("(prefers-reduced-motion: reduce)").matches
-      : false;
+
+  useEffect(() => {
+    const mq = window.matchMedia("(prefers-reduced-motion: reduce)");
+    setReducedMotion(mq.matches);
+    const handler = (e: MediaQueryListEvent) => setReducedMotion(e.matches);
+    mq.addEventListener("change", handler);
+    return () => mq.removeEventListener("change", handler);
+  }, []);
 
   useEffect(() => {
     if (reducedMotion) {
       setNowLabel("— DEVELOPMENT → DELIVERY");
       setTimecode("00:00:00:00");
+      if (rafRef.current !== null) {
+        cancelAnimationFrame(rafRef.current);
+        rafRef.current = null;
+      }
       return;
     }
 
@@ -284,7 +293,7 @@ export function SignalDiagram({ className }: SignalDiagramProps) {
       {/* Footer ticker */}
       <figcaption style={footStyle}>
         <span style={{ fontFamily: "var(--mono)", fontSize: 10, letterSpacing: "0.16em", textTransform: "uppercase", color: "var(--muted-ink)" }}>NOW</span>
-        <span style={{ fontFamily: "var(--mono)", fontSize: 10, letterSpacing: "0.16em", textTransform: "uppercase", color: "var(--paper)" }} aria-live="polite" aria-atomic="true">
+        <span style={{ fontFamily: "var(--mono)", fontSize: 10, letterSpacing: "0.16em", textTransform: "uppercase", color: "var(--paper)" }} aria-live="off">
           {nowLabel}
         </span>
         <span style={{ fontFamily: "var(--mono)", fontSize: 10, letterSpacing: "0.16em", textTransform: "uppercase", color: "var(--muted-ink)" }}>SHARED · SPLIT · MERGE · LOOP</span>
