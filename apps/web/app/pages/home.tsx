@@ -52,7 +52,7 @@ const PILLARS = [
   {
     num: "iv",
     title: "Closed-loop canon",
-    text: "Distribution and audience data feed back into the IP strategy. The next cycle of ideation inherits what the last cycle learned — across both formats, not just one.",
+    text: "Distribution and audience data feed back into the IP strategy. The next project inherits what the last one learned, across both formats, not just one.",
   },
 ] as const;
 
@@ -68,25 +68,25 @@ const AUDIENCES = [
   {
     num: "I",
     title: "For producers and studios",
-    text: "Major-studio-grade stages, LED volume, broadcast theatre, and 17 production services — all on one campus, one operator.",
+    text: "Book a stage, a volume, and a full service stack. One operator, one schedule, no vendor chain to manage.",
     href: "#eoi-section",
   },
   {
     num: "II",
     title: "For government",
-    text: "Jobs in construction and operations, a skills pipeline through the education programme, First Nations outcomes designed into the model.",
+    text: "The first campus of a global network. Direct jobs, screen-sector training, local procurement, and First Nations outcomes built into the operating model.",
     href: "#eoi-section",
   },
   {
     num: "III",
     title: "For investors",
-    text: "Infrastructure-grade asset with tenancy revenue, sequenced international rollout, and a single-operator model across every campus.",
+    text: "Revenue from facilities, services, and broadcast under one operator. Campuses open in sequence, each proven before the next is committed.",
     href: "#eoi-section",
   },
   {
     num: "IV",
     title: "For technology partners",
-    text: "A production campus that builds and operates its own technology stack. Integration partners, not vendors.",
+    text: "Test and ship production technology inside a working campus. LED volume, real-time rendering, motion capture, and broadcast under live conditions.",
     href: "#eoi-section",
   },
 ] as const;
