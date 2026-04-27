@@ -1,3 +1,4 @@
+// @vitest-environment node
 /**
  * Unit tests for the web Worker entry point.
  *
@@ -5,14 +6,22 @@
  * without importing the full vinext handler, by testing the redirect logic
  * in isolation.
  *
- * 308 (Permanent Redirect) is used instead of 301 to preserve HTTP method
- * for non-GET requests (browsers treat both as permanent for GET/HEAD).
+ * CSP tests import the real buildCsp() from worker/csp.ts (PRO-399).
+ * A regression guard reads layout.tsx inline scripts and verifies their
+ * hashes appear in the production CSP output.
  *
  * @see Issue #97
+ * @see PRO-399
  */
 
 import { describe, it, expect } from "vitest";
+import { createHash } from "node:crypto";
+import { readFileSync } from "node:fs";
+import { resolve, dirname } from "node:path";
+import { fileURLToPath } from "node:url";
 import { buildCsp, THEME_SCRIPT_HASH } from "../csp.js";
+
+const __dirname = dirname(fileURLToPath(import.meta.url));
 
 const CANONICAL_HOST = "production.city";
 const WWW_HOST = `www.${CANONICAL_HOST}`;
@@ -37,6 +46,45 @@ function applyWwwRedirect(request: Request): Response | null {
   }
   return null;
 }
+
+/**
+ * Compute CSP-compatible SHA-256 hash for an inline script body.
+ */
+function sha256Csp(script: string): string {
+  const hash = createHash("sha256").update(script, "utf8").digest("base64");
+  return `'sha256-${hash}'`;
+}
+
+/**
+ * Extract executable inline script bodies from layout.tsx.
+ * Matches dangerouslySetInnerHTML={{ __html: `...` }} or '...' or "..."
+ * inside <script> tags that are NOT type="application/ld+json".
+ *
+ * Returns only scripts the browser would execute (no JSON-LD data blocks).
+ */
+function extractExecutableInlineScripts(): string[] {
+  const layoutPath = resolve(__dirname, "../../app/layout.tsx");
+  const source = readFileSync(layoutPath, "utf8");
+
+  const scripts: string[] = [];
+  // Split on <script to find each script element
+  const parts = source.split("<script");
+  for (let i = 1; i < parts.length; i++) {
+    const part = parts[i]!;
+    // Skip JSON-LD data blocks — browsers don't execute these
+    if (part.includes('type="application/ld+json"')) continue;
+    // Extract __html value: backtick-delimited or string-delimited
+    const htmlMatch = part.match(/__html:\s*`([^`]*)`/) ??
+      part.match(/__html:\s*"([^"]*)"/) ??
+      part.match(/__html:\s*'([^']*)'/);
+    if (htmlMatch?.[1]) {
+      scripts.push(htmlMatch[1]);
+    }
+  }
+  return scripts;
+}
+
+// ─── www redirect tests ─────────────────────────────────────────────
 
 describe("Web Worker — www redirect (Issue #97)", () => {
   it("redirects www.production.city to production.city with 308", () => {
@@ -92,14 +140,14 @@ describe("Web Worker — www redirect (Issue #97)", () => {
   });
 
   it("redirect target forces https scheme", () => {
-    // Even if the incoming request somehow has http (e.g. from Cloudflare proxy),
-    // the redirect must always go to https.
     const request = new Request("http://www.production.city/page");
     const response = applyWwwRedirect(request);
 
     expect(response!.headers.get("Location")).toMatch(/^https:\/\//);
   });
 });
+
+// ─── CSP tests — real buildCsp from worker/csp.ts ───────────────────
 
 describe("CSP headers — WebSocket directives (#194)", () => {
   it("dev CSP allows ws:// and wss:// on localhost", () => {
@@ -145,7 +193,6 @@ describe("CSP headers — WebSocket directives (#194)", () => {
   it("CSP retains all default directives", () => {
     const csp = buildCsp("production.city");
     expect(csp).toContain("default-src 'self'");
-    expect(csp).toContain(`script-src 'self' ${THEME_SCRIPT_HASH} https://static.cloudflareinsights.com`);
     expect(csp).toContain("style-src 'self' 'unsafe-inline'");
     expect(csp).toContain("img-src 'self' data:");
     expect(csp).toContain("font-src 'self' https://fonts.gstatic.com");
@@ -226,9 +273,60 @@ describe("CSP headers — Cloudflare Web Analytics (#319)", () => {
 
   it("script-src includes cloudflareinsights.com origin", () => {
     const csp = buildCsp("production.city");
-    // Ensure it's in script-src, not another directive
     const scriptSrc = csp.split(";").find((d: string) => d.trim().startsWith("script-src"));
     expect(scriptSrc).toBeDefined();
     expect(scriptSrc).toContain("https://static.cloudflareinsights.com");
+  });
+});
+
+// ─── CSP hash-based script allowlist (PRO-399) ─────────────────────
+
+describe("CSP headers — inline script hash allowlist (PRO-399)", () => {
+  it("production script-src uses THEME_SCRIPT_HASH instead of unsafe-inline", () => {
+    const csp = buildCsp("production.city");
+    const scriptSrc = csp.split(";").find((d: string) => d.trim().startsWith("script-src"))!;
+    expect(scriptSrc).toContain(THEME_SCRIPT_HASH);
+    expect(scriptSrc).not.toContain("'unsafe-inline'");
+  });
+
+  it("dev script-src retains unsafe-inline for hot-reload compatibility", () => {
+    const csp = buildCsp("localhost");
+    const scriptSrc = csp.split(";").find((d: string) => d.trim().startsWith("script-src"))!;
+    expect(scriptSrc).toContain("'unsafe-inline'");
+  });
+
+  it("THEME_SCRIPT_HASH matches the actual theme script in layout.tsx", () => {
+    const scripts = extractExecutableInlineScripts();
+    expect(scripts.length).toBeGreaterThanOrEqual(1);
+
+    const themeScript = scripts[0]!;
+    const computedHash = sha256Csp(themeScript);
+    expect(computedHash).toBe(THEME_SCRIPT_HASH);
+  });
+
+  it("every executable inline script in layout.tsx has its hash in production CSP", () => {
+    const scripts = extractExecutableInlineScripts();
+    const csp = buildCsp("production.city");
+
+    for (const script of scripts) {
+      const hash = sha256Csp(script);
+      expect(csp).toContain(hash);
+    }
+  });
+
+  it("fails if a new inline script is added to layout.tsx without a CSP hash (regression guard)", () => {
+    const scripts = extractExecutableInlineScripts();
+    const csp = buildCsp("production.city");
+    const scriptSrc = csp.split(";").find((d: string) => d.trim().startsWith("script-src"))!;
+
+    const missingHashes: string[] = [];
+    for (const script of scripts) {
+      const hash = sha256Csp(script);
+      if (!scriptSrc.includes(hash)) {
+        missingHashes.push(hash);
+      }
+    }
+
+    expect(missingHashes).toEqual([]);
   });
 });
