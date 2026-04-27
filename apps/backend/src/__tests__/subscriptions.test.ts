@@ -3,7 +3,7 @@
  */
 
 import { describe, it, expect, beforeAll, beforeEach } from "vitest";
-import { env } from "cloudflare:test";
+import { env } from "cloudflare:workers";
 import { app } from "../index.js";
 import { createPrismaClient } from "../lib/prisma.js";
 import { createSession, SESSION_COOKIE_NAME } from "../auth/session.js";
@@ -52,7 +52,7 @@ async function createTestUserWithPerms(email: string, permissions: string[][], p
       create: { email, status: "active", phone: phone ?? null },
     });
 
-    const roleName = `role-${user.id.slice(0, 8)}-${Date.now()}`;
+    const roleName = `role-${crypto.randomUUID()}`;
     const role = await prisma.role.create({
       data: { name: roleName, description: "Test role" },
     });

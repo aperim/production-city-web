@@ -1,5 +1,5 @@
 import { describe, it, expect } from "vitest";
-import { env } from "cloudflare:test";
+import { env } from "cloudflare:workers";
 import { app } from "../index.js";
 
 describe("Backend API", () => {

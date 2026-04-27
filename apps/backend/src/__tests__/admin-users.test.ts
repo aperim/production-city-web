@@ -1,5 +1,5 @@
 import { describe, it, expect, beforeAll } from "vitest";
-import { env } from "cloudflare:test";
+import { env } from "cloudflare:workers";
 import { app } from "../index.js";
 import { createPrismaClient } from "../lib/prisma.js";
 import { createSession, SESSION_COOKIE_NAME } from "../auth/session.js";
@@ -27,7 +27,7 @@ async function createAdmin(
   ];
 
   const role = await prisma.role.create({
-    data: { name: `admin-${user.id.slice(0, 8)}`, description: "Admin" },
+    data: { name: `admin-${crypto.randomUUID()}`, description: "Admin" },
   });
 
   for (const pair of perms) {
@@ -157,7 +157,7 @@ describe("PATCH /v1/admin/users/:id", () => {
 
       // Create a role and assign to target
       const viewerRole = await prisma.role.create({
-        data: { name: `viewer-${target.id.slice(0, 8)}`, description: "Viewer" },
+        data: { name: `viewer-${crypto.randomUUID()}`, description: "Viewer" },
       });
       await prisma.userRole.create({
         data: { userId: target.id, roleId: viewerRole.id },
@@ -295,7 +295,7 @@ describe("Role management", () => {
         data: { email: "lastrole-target@test.com", status: "active" },
       });
       const viewerRole = await prisma.role.create({
-        data: { name: `viewer-${target.id.slice(0, 8)}`, description: "Viewer" },
+        data: { name: `viewer-${crypto.randomUUID()}`, description: "Viewer" },
       });
       await prisma.userRole.create({
         data: { userId: target.id, roleId: viewerRole.id },
@@ -336,7 +336,7 @@ describe("Role management", () => {
 
       // Add a second role so it's not "last role"
       const extraRole = await prisma.role.create({
-        data: { name: `extra-${user.id.slice(0, 8)}`, description: "Extra" },
+        data: { name: `extra-${crypto.randomUUID()}`, description: "Extra" },
       });
       await prisma.userRole.create({
         data: { userId: user.id, roleId: extraRole.id },

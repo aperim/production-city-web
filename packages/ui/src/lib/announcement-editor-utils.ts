@@ -81,10 +81,14 @@ export interface DraftData {
   roleIds: string[];
 }
 
+function getBrowserStorage(): Storage | null {
+  return typeof window === "undefined" ? null : window.localStorage;
+}
+
 /** Save draft to localStorage. */
 export function saveDraftToLocalStorage(key: string, data: DraftData): void {
   try {
-    localStorage.setItem(key, JSON.stringify({ ...data, savedAt: Date.now() }));
+    getBrowserStorage()?.setItem(key, JSON.stringify({ ...data, savedAt: Date.now() }));
   } catch {
     // localStorage full or unavailable
   }
@@ -112,16 +116,17 @@ function isValidDraft(data: unknown): data is DraftData & { savedAt: number } {
 /** Load draft from localStorage. Returns null if not found, expired (>24h), or invalid. */
 export function loadDraftFromLocalStorage(key: string): DraftData | null {
   try {
-    const raw = localStorage.getItem(key);
+    const storage = getBrowserStorage();
+    const raw = storage?.getItem(key);
     if (!raw) return null;
     const data: unknown = JSON.parse(raw);
     if (!isValidDraft(data)) {
-      localStorage.removeItem(key);
+      storage?.removeItem(key);
       return null;
     }
     // Expire after 24 hours
     if (Date.now() - data.savedAt > 24 * 60 * 60 * 1000) {
-      localStorage.removeItem(key);
+      storage?.removeItem(key);
       return null;
     }
     return data;
@@ -133,7 +138,7 @@ export function loadDraftFromLocalStorage(key: string): DraftData | null {
 /** Clear localStorage draft. */
 export function clearDraftFromLocalStorage(key: string): void {
   try {
-    localStorage.removeItem(key);
+    getBrowserStorage()?.removeItem(key);
   } catch {
     // ignore
   }

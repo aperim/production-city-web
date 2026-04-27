@@ -11,7 +11,7 @@
  * - Queue message schema (IDs only, no PII)
  */
 
-import { env } from "cloudflare:test";
+import { env } from "cloudflare:workers";
 import { describe, it, expect, beforeAll, beforeEach } from "vitest";
 import { createPrismaClient } from "../lib/prisma.js";
 import { app } from "../index.js";

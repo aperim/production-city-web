@@ -3,7 +3,7 @@
  * Applies migrations directly via the D1 binding since vitest-pool-workers
  * uses an in-memory D1 instance that doesn't automatically run migrations.
  */
-import { env } from "cloudflare:test";
+import { env } from "cloudflare:workers";
 
 const SCHEMA_STATEMENTS = [
   `CREATE TABLE IF NOT EXISTS "User" ("id" TEXT NOT NULL PRIMARY KEY, "email" TEXT NOT NULL, "name" TEXT, "phone" TEXT, "status" TEXT NOT NULL DEFAULT 'pending_approval', "emailVerified" BOOLEAN NOT NULL DEFAULT false, "createdAt" DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP, "updatedAt" DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP, "lastLoginAt" DATETIME, "deactivatedAt" DATETIME)`,

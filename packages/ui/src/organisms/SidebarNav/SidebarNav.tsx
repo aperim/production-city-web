@@ -93,7 +93,7 @@ function isPhaseVisible(groupId: string, currentPhase: Phase): boolean {
 function loadExpandState(): Record<string, boolean> {
   if (typeof window === 'undefined') return {};
   try {
-    const stored = localStorage.getItem(STORAGE_KEY);
+    const stored = window.localStorage.getItem(STORAGE_KEY);
     if (!stored) return {};
     const parsed = JSON.parse(stored);
     if (typeof parsed === 'object' && parsed !== null) return parsed;
@@ -106,7 +106,7 @@ function loadExpandState(): Record<string, boolean> {
 function saveExpandState(state: Record<string, boolean>) {
   if (typeof window === 'undefined') return;
   try {
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+    window.localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
   } catch {
     // Ignore storage errors
   }

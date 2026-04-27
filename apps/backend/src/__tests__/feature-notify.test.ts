@@ -7,7 +7,7 @@
  */
 
 import { describe, it, expect, beforeAll } from "vitest";
-import { env } from "cloudflare:test";
+import { env } from "cloudflare:workers";
 import { app } from "../index.js";
 import { createPrismaClient } from "../lib/prisma.js";
 import { createSession, SESSION_COOKIE_NAME } from "../auth/session.js";
@@ -28,7 +28,7 @@ async function createAdmin(email: string) {
     });
 
     const role = await prisma.role.create({
-      data: { name: `admin-${user.id.slice(0, 8)}`, description: "Admin" },
+      data: { name: `admin-${crypto.randomUUID()}`, description: "Admin" },
     });
 
     // Grant dashboard:admin permission for dashboard role detection
@@ -65,7 +65,7 @@ async function createGuest(email: string) {
     });
 
     const role = await prisma.role.create({
-      data: { name: `guest-${user.id.slice(0, 8)}`, description: "Guest" },
+      data: { name: `guest-${crypto.randomUUID()}`, description: "Guest" },
     });
 
     const permPairs: [string, string][] = [

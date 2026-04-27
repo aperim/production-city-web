@@ -1,5 +1,5 @@
 import { describe, it, expect, beforeAll } from "vitest";
-import { env } from "cloudflare:test";
+import { env } from "cloudflare:workers";
 import { app } from "../index.js";
 import { createPrismaClient } from "../lib/prisma.js";
 import { createSession, SESSION_COOKIE_NAME } from "../auth/session.js";
@@ -22,7 +22,7 @@ async function createUserWithRole(
     });
 
     const role = await prisma.role.create({
-      data: { name: `${roleName}-inbox-${user.id.slice(0, 8)}`, description: roleName },
+      data: { name: `${roleName}-inbox-${crypto.randomUUID()}`, description: roleName },
     });
 
     for (const [resource, action] of permPairs) {

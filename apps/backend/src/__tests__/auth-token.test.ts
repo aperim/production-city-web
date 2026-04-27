@@ -1,5 +1,5 @@
 import { describe, it, expect, beforeAll } from "vitest";
-import { env } from "cloudflare:test";
+import { env } from "cloudflare:workers";
 import { createPrismaClient } from "../lib/prisma.js";
 import { setupTestDatabase } from "./test-helpers.js";
 

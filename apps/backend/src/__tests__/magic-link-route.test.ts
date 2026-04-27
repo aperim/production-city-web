@@ -5,7 +5,7 @@
  * registered and unregistered emails (except rate-limiting 429).
  */
 import { describe, it, expect, beforeAll } from "vitest";
-import { env } from "cloudflare:test";
+import { env } from "cloudflare:workers";
 import { app } from "../index.js";
 import { createPrismaClient } from "../lib/prisma.js";
 import { setupTestDatabase } from "./test-helpers.js";

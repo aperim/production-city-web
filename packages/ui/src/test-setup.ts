@@ -1,5 +1,5 @@
 import "@testing-library/jest-dom/vitest";
-import { vi } from "vitest";
+import { beforeEach, vi } from "vitest";
 
 // JSDOM does not implement window.matchMedia — provide a spyable stub so tests
 // that call vi.spyOn(window, 'matchMedia') or use matchMedia directly don't crash.
@@ -13,4 +13,30 @@ if (typeof window !== "undefined") Object.defineProperty(window, "matchMedia", {
     removeEventListener: vi.fn(),
     dispatchEvent: vi.fn(),
   })),
+});
+
+const testStorage = new Map<string, string>();
+
+if (typeof window !== "undefined") Object.defineProperty(window, "localStorage", {
+  configurable: true,
+  value: {
+    getItem: (key: string) => testStorage.get(key) ?? null,
+    setItem: (key: string, value: string) => {
+      testStorage.set(key, value);
+    },
+    removeItem: (key: string) => {
+      testStorage.delete(key);
+    },
+    clear: () => {
+      testStorage.clear();
+    },
+    get length() {
+      return testStorage.size;
+    },
+    key: (index: number) => Array.from(testStorage.keys())[index] ?? null,
+  } satisfies Storage,
+});
+
+beforeEach(() => {
+  testStorage.clear();
 });

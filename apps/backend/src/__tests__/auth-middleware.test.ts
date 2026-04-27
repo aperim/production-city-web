@@ -1,5 +1,5 @@
 import { describe, it, expect, beforeAll } from "vitest";
-import { env } from "cloudflare:test";
+import { env } from "cloudflare:workers";
 import { app } from "../index.js";
 import { createPrismaClient } from "../lib/prisma.js";
 import { createSession, SESSION_COOKIE_NAME } from "../auth/session.js";
@@ -21,7 +21,7 @@ async function createAuthenticatedUser(
   });
 
   const role = await prisma.role.create({
-    data: { name: `${roleName}-${user.id.slice(0, 6)}`, description: "Test role" },
+    data: { name: `${roleName}-${crypto.randomUUID()}`, description: "Test role" },
   });
 
   for (const [resource, action] of permissionPairs) {

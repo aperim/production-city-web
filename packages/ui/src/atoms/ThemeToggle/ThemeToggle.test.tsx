@@ -6,7 +6,7 @@ describe("ThemeToggle", () => {
   beforeEach(() => {
     document.documentElement.classList.remove("dark");
     try {
-      localStorage.removeItem("pc-theme");
+      window.localStorage.removeItem("pc-theme");
     } catch {
       // localStorage may not be available in test env
     }
@@ -35,7 +35,11 @@ describe("ThemeToggle", () => {
       setItem: (key: string, value: string) => { store[key] = value; },
       removeItem: (key: string) => { delete store[key]; },
     };
-    Object.defineProperty(window, "localStorage", { value: mockStorage, writable: true });
+    Object.defineProperty(window, "localStorage", {
+      configurable: true,
+      value: mockStorage,
+      writable: true,
+    });
 
     render(<ThemeToggle />);
     const toggle = screen.getByRole("switch");

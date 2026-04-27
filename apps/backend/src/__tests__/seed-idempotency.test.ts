@@ -3,7 +3,7 @@
  */
 
 import { describe, it, expect, beforeAll } from "vitest";
-import { env } from "cloudflare:test";
+import { env } from "cloudflare:workers";
 import { setupTestDatabase } from "./test-helpers.js";
 import { createPrismaClient } from "../lib/prisma.js";
 

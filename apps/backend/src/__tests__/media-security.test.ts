@@ -6,7 +6,7 @@
  */
 
 import { describe, it, expect, beforeAll } from "vitest";
-import { env } from "cloudflare:test";
+import { env } from "cloudflare:workers";
 import { app } from "../index.js";
 import { createPrismaClient } from "../lib/prisma.js";
 import { createSession, SESSION_COOKIE_NAME } from "../auth/session.js";
@@ -26,7 +26,7 @@ async function createMediaAdmin(
   });
 
   const role = await prisma.role.create({
-    data: { name: `sec-admin-${user.id.slice(0, 8)}`, description: "Security Test Admin" },
+    data: { name: `sec-admin-${crypto.randomUUID()}`, description: "Security Test Admin" },
   });
 
   let perm = await prisma.permission.findUnique({

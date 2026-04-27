@@ -7,11 +7,11 @@
  * @see Issue #320
  */
 import { describe, it, expect } from "vitest";
-import { SELF } from "cloudflare:test";
+import { exports as workerExports } from "cloudflare:workers";
 
 describe("CORS headers (#320)", () => {
   it("returns Access-Control-Allow-Credentials: true on preflight", async () => {
-    const response = await SELF.fetch("http://localhost/live", {
+    const response = await workerExports.default.fetch("http://localhost/live", {
       method: "OPTIONS",
       headers: {
         Origin: "http://localhost:4321",
@@ -28,7 +28,7 @@ describe("CORS headers (#320)", () => {
   });
 
   it("returns Access-Control-Allow-Credentials: true on simple GET", async () => {
-    const response = await SELF.fetch("http://localhost/live", {
+    const response = await workerExports.default.fetch("http://localhost/live", {
       method: "GET",
       headers: {
         Origin: "http://localhost:4321",
@@ -45,7 +45,7 @@ describe("CORS headers (#320)", () => {
   });
 
   it("does not return CORS headers for disallowed origins", async () => {
-    const response = await SELF.fetch("http://localhost/live", {
+    const response = await workerExports.default.fetch("http://localhost/live", {
       method: "GET",
       headers: {
         Origin: "https://evil.example.com",
@@ -60,7 +60,7 @@ describe("CORS headers (#320)", () => {
   });
 
   it("does not return credentials header for disallowed origins on preflight", async () => {
-    const response = await SELF.fetch("http://localhost/live", {
+    const response = await workerExports.default.fetch("http://localhost/live", {
       method: "OPTIONS",
       headers: {
         Origin: "https://evil.example.com",

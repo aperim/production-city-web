@@ -29,7 +29,10 @@ const mockStorage = {
 describe("PlannedSection", () => {
   beforeEach(() => {
     for (const k of Object.keys(store)) delete store[k];
-    vi.stubGlobal("localStorage", mockStorage);
+    Object.defineProperty(window, "localStorage", {
+      configurable: true,
+      value: mockStorage,
+    });
   });
 
   it("renders collapsed by default with feature count", () => {
@@ -57,7 +60,7 @@ describe("PlannedSection", () => {
   it("persists collapse state to localStorage", () => {
     render(<PlannedSection {...defaultProps} />);
     fireEvent.click(screen.getByText(/8 planned features/));
-    const stored = localStorage.getItem("pc-planned-expanded-productions");
+    const stored = window.localStorage.getItem("pc-planned-expanded-productions");
     expect(stored).toBe("true");
   });
 });

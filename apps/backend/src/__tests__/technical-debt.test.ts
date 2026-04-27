@@ -9,7 +9,7 @@
  */
 
 import { describe, it, expect, beforeEach } from "vitest";
-import { env } from "cloudflare:test";
+import { env } from "cloudflare:workers";
 import { app } from "../index.js";
 import { t } from "../i18n/index.js";
 import type { TranslationKey } from "../i18n/index.js";

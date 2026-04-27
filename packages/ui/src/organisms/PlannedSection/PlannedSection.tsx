@@ -29,8 +29,9 @@ function getStorageKey(workspaceId: string) {
 }
 
 function readInitialState(workspaceId: string): boolean {
+  if (typeof window === 'undefined') return false;
   try {
-    return localStorage.getItem(getStorageKey(workspaceId)) === 'true';
+    return window.localStorage.getItem(getStorageKey(workspaceId)) === 'true';
   } catch {
     return false;
   }
@@ -55,7 +56,7 @@ export function PlannedSection({
     setExpanded((prev) => {
       const next = !prev;
       try {
-        localStorage.setItem(getStorageKey(workspaceId), String(next));
+        window.localStorage.setItem(getStorageKey(workspaceId), String(next));
       } catch {
         // storage unavailable
       }

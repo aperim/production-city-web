@@ -2,7 +2,7 @@
  * Tests for GET /v1/admin/stats
  */
 import { describe, it, expect, beforeAll } from "vitest";
-import { env } from "cloudflare:test";
+import { env } from "cloudflare:workers";
 import { createPrismaClient } from "../lib/prisma.js";
 import { createSession, SESSION_COOKIE_NAME } from "../auth/session.js";
 import { setupTestDatabase } from "./test-helpers.js";

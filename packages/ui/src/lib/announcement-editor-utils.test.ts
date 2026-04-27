@@ -5,7 +5,7 @@
  * @see Issue #443
  */
 
-import { describe, it, expect, beforeEach, vi, afterEach } from "vitest";
+import { describe, it, expect, beforeEach, afterEach } from "vitest";
 import {
   stripCRLF,
   validatePublish,
@@ -142,18 +142,24 @@ describe("getAutoSaveKey", () => {
 
 describe("localStorage draft management", () => {
   const mockStorage = new Map<string, string>();
+  const originalLocalStorage = Object.getOwnPropertyDescriptor(window, "localStorage");
 
   beforeEach(() => {
     mockStorage.clear();
-    vi.stubGlobal("localStorage", {
+    Object.defineProperty(window, "localStorage", {
+      configurable: true,
+      value: {
       getItem: (key: string) => mockStorage.get(key) ?? null,
       setItem: (key: string, value: string) => mockStorage.set(key, value),
       removeItem: (key: string) => mockStorage.delete(key),
+      },
     });
   });
 
   afterEach(() => {
-    vi.unstubAllGlobals();
+    if (originalLocalStorage) {
+      Object.defineProperty(window, "localStorage", originalLocalStorage);
+    }
   });
 
   const draftData = {

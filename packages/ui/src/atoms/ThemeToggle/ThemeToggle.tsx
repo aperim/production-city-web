@@ -44,7 +44,7 @@ export function ThemeToggle({
     setIsDark(next);
     applyTheme(next);
     try {
-      localStorage.setItem(THEME_STORAGE_KEY, next ? "dark" : "light");
+      window.localStorage.setItem(THEME_STORAGE_KEY, next ? "dark" : "light");
     } catch {
       // localStorage may be unavailable
     }

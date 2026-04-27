@@ -5,7 +5,7 @@
  * Issue #365: Magic link emails never sent because POSTMARK_API_TOKEN is not deployed.
  */
 import { describe, it, expect, beforeAll, vi } from "vitest";
-import { env } from "cloudflare:test";
+import { env } from "cloudflare:workers";
 import { createPrismaClient } from "../../lib/prisma.js";
 import { handleMagicLinkRequest } from "../service.js";
 import { setupTestDatabase } from "../../__tests__/test-helpers.js";
