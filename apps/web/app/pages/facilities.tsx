@@ -22,6 +22,7 @@ import {
   useEoiSubmit,
 } from "../lib/use-landing-layout";
 import { MEDIA } from "../lib/media-config";
+import { FacilitiesStructuredData } from "../lib/structured-data";
 
 export function FacilitiesPage() {
   return (
@@ -116,6 +117,7 @@ function FacilitiesPageContent() {
 
   return (
     <LandingPageTemplate nav={nav} footer={footer}>
+      <FacilitiesStructuredData />
       {/* ═══════════ PAGE HERO ═══════════ */}
       {MEDIA["facilities-hero"] && (
         <MediaHero

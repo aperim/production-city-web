@@ -25,6 +25,7 @@ import {
   useEoiCategories,
   useEoiSubmit,
 } from "../lib/use-landing-layout";
+import { SimpleWebPageStructuredData } from "../lib/structured-data";
 
 /* Lazy-load the viewer to code-split Three.js into a separate chunk */
 const MasterplanViewer = lazy(() =>
@@ -87,7 +88,11 @@ function MasterplanPageContent() {
 
   return (
     <LandingPageTemplate nav={nav} footer={footer}>
-
+      <SimpleWebPageStructuredData
+        name="Campus Masterplan — Production City"
+        description="Explore the Production City campus masterplan: an integrated screen and stage precinct with sound stages, broadcast theatre, studio offices, and shared infrastructure."
+        path="/masterplan"
+      />
       {/* ═══════════ HERO — full-bleed 3D viewer ═══════════ */}
       <section
         className="relative -mx-4 sm:-mx-6 bg-(--pc-color-neutral-950)"

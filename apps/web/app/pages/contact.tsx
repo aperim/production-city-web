@@ -21,6 +21,7 @@ import {
   useEoiSubmit,
 } from "../lib/use-landing-layout";
 import { MEDIA } from "../lib/media-config";
+import { ContactStructuredData } from "../lib/structured-data";
 
 const VALID_CATEGORIES = new Set([
   "general",
@@ -94,6 +95,7 @@ function ContactPageContent() {
 
   return (
     <LandingPageTemplate nav={nav} footer={footer}>
+      <ContactStructuredData />
       {/* Hero */}
       {heroMedia && (
         <MediaHero

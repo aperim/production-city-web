@@ -19,6 +19,7 @@ import {
   useLandingFooter,
 } from "../lib/use-landing-layout";
 import { MEDIA } from "../lib/media-config";
+import { SimpleWebPageStructuredData } from "../lib/structured-data";
 
 export function FirstNationsPage() {
   return (
@@ -57,6 +58,11 @@ function FirstNationsPageContent() {
 
   return (
     <LandingPageTemplate nav={nav} footer={footer}>
+      <SimpleWebPageStructuredData
+        name="First Nations — Production City"
+        description="Production City's approach to First Nations engagement: respectful partnerships, on-Country protocols, and meaningful participation in screen and stage production."
+        path="/first-nations"
+      />
       {/* Hero — Australian country landscape, ochre accent */}
       {MEDIA["first-nations-hero"] && (
         <MediaHero

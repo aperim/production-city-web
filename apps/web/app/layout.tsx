@@ -68,6 +68,47 @@ export default async function RootLayout({
             __html: `(function(){try{var t=localStorage.getItem('pc-theme');if(t==='dark')document.documentElement.classList.add('dark')}catch(e){}})()`,
           }}
         />
+        {/* Organization + WebSite — global structured data, static content, no user input */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Organization",
+              "@id": "https://production.city/#organization",
+              name: "Production City",
+              url: "https://production.city",
+              logo: { "@type": "ImageObject", url: "https://production.city/logo.svg" },
+              description:
+                "Production City is a purpose-built integrated screen and stage campus in Queensland, Australia — combining sound stages, broadcast theatre, studio offices, and shared infrastructure under one operator.",
+              address: { "@type": "PostalAddress", addressCountry: "AU", addressRegion: "Queensland" },
+              contactPoint: [
+                {
+                  "@type": "ContactPoint",
+                  contactType: "customer support",
+                  email: "troy@team.production.city",
+                  telephone: "+61-2-9137-9100",
+                  areaServed: "AU",
+                  availableLanguage: "English",
+                },
+              ],
+              sameAs: ["https://www.linkedin.com/company/productioncity"],
+            }),
+          }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "WebSite",
+              "@id": "https://production.city/#website",
+              name: "Production City",
+              url: "https://production.city",
+              publisher: { "@id": "https://production.city/#organization" },
+            }),
+          }}
+        />
       </head>
       <body>{children}</body>
     </html>

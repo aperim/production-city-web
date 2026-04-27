@@ -21,6 +21,7 @@ import {
   useEoiCategories,
   useEoiSubmit,
 } from "../lib/use-landing-layout";
+import { ServicesStructuredData } from "../lib/structured-data";
 
 export function ServicesPage() {
   return (
@@ -45,6 +46,7 @@ function ServicesPageContent() {
 
   return (
     <LandingPageTemplate nav={nav} footer={footer}>
+      <ServicesStructuredData />
       {/* Hero */}
       {MEDIA["services-hero"] && (
         <MediaHero

@@ -23,6 +23,7 @@ import {
   useEoiCategories,
   useEoiSubmit,
 } from "../lib/use-landing-layout";
+import { HomeStructuredData } from "../lib/structured-data";
 
 export function HomePage() {
   return (
@@ -158,6 +159,7 @@ function HomePageContent() {
 
   return (
     <LandingPageTemplate nav={{ ...nav, transparent: true }} footer={footer}>
+      <HomeStructuredData />
       {/* ═══════════ HERO ═══════════ */}
       <section className="relative flex min-h-dvh flex-col justify-end bg-(--pc-color-neutral-950) px-(--pc-spacing-6) pb-12 text-(--pc-color-neutral-100)" aria-labelledby="hero-heading">
         {/* Hero background image */}

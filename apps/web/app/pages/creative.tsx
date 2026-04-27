@@ -23,6 +23,7 @@ import {
   useEoiSubmit,
 } from "../lib/use-landing-layout";
 import { MEDIA } from "../lib/media-config";
+import { SimpleWebPageStructuredData } from "../lib/structured-data";
 
 export function CreativePage() {
   return (
@@ -44,6 +45,11 @@ function CreativePageContent() {
 
   return (
     <LandingPageTemplate nav={nav} footer={footer}>
+      <SimpleWebPageStructuredData
+        name="Creative Ecosystem — Production City"
+        description="Production City's integrated creative ecosystem: 17 disciplines, purpose-built facilities, and a collaborative campus designed for screen and stage productions."
+        path="/creative"
+      />
       {/* Hero */}
       {heroMedia && (
         <MediaHero

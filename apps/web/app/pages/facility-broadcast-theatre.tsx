@@ -21,6 +21,7 @@ import {
   useEoiSubmit,
 } from "../lib/use-landing-layout";
 import { MEDIA } from "../lib/media-config";
+import { FacilityStructuredData } from "../lib/structured-data";
 
 export function FacilityBroadcastTheatrePage() {
   return (
@@ -49,6 +50,11 @@ function FacilityBroadcastTheatreContent() {
 
   return (
     <LandingPageTemplate nav={nav} footer={footer}>
+      <FacilityStructuredData
+        name="Broadcast Theatre"
+        description="Production City Broadcast Theatre — a large-format, acoustically designed performance and broadcast venue supporting live events, screen productions, and hybrid stage-screen presentations."
+        slug="broadcast-theatre"
+      />
       {/* Hero */}
       {MEDIA["facilities-broadcast-theatre"] && (
         <MediaHero

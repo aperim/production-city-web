@@ -25,6 +25,7 @@ import {
   useEoiSubmit,
 } from "../lib/use-landing-layout";
 import { MEDIA } from "../lib/media-config";
+import { SimpleWebPageStructuredData } from "../lib/structured-data";
 
 export function VisionPage() {
   return (
@@ -46,6 +47,11 @@ function VisionPageContent() {
 
   return (
     <LandingPageTemplate nav={nav} footer={footer}>
+      <SimpleWebPageStructuredData
+        name="Vision & Global Network — Production City"
+        description="Production City's global vision: a Queensland-anchored screen and stage campus networked with international co-production hubs and creative ecosystems."
+        path="/vision"
+      />
       {/* Hero */}
       {heroMedia && (
         <MediaHero

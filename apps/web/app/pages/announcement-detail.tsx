@@ -23,6 +23,7 @@ import {
   createSubscription,
   type PublicAnnouncement,
 } from "../lib/api-client";
+import { AnnouncementDetailStructuredData } from "../lib/structured-data";
 
 interface AnnouncementDetailPageContentProps {
   slug: string;
@@ -129,27 +130,16 @@ function AnnouncementDetailPageContent({ slug }: AnnouncementDetailPageContentPr
     ? subscribedCategories.has(primaryCategory.id)
     : false;
 
-  // SEO structured data — uses announcement metadata only (author-controlled content)
-  const structuredData = JSON.stringify({
-    "@context": "https://schema.org",
-    "@type": "Article",
-    headline: announcement.title,
-    description: announcement.summary,
-    author: {
-      "@type": "Person",
-      name: announcement.author.name ?? "Production City",
-    },
-    datePublished: announcement.publishedAt,
-    dateModified: announcement.lastEditedAt ?? announcement.publishedAt,
-    url: `https://production.city${prefix}/announcements/${announcement.slug}`,
-    publisher: {
-      "@type": "Organization",
-      name: "Production City",
-    },
-  });
-
   return (
     <LandingPageTemplate nav={nav} footer={footer}>
+      <AnnouncementDetailStructuredData
+        title={announcement.title}
+        summary={announcement.summary}
+        authorName={announcement.author.name ?? "Production City"}
+        publishedAt={announcement.publishedAt ?? ""}
+        lastEditedAt={announcement.lastEditedAt}
+        slug={announcement.slug}
+      />
       <div className="mx-auto max-w-3xl px-4 py-12 sm:px-6">
         {/* Back link */}
         <a
@@ -207,8 +197,6 @@ function AnnouncementDetailPageContent({ slug }: AnnouncementDetailPageContentPr
         />
       </div>
 
-      {/* SEO: Article structured data — admin-authored content only */}
-      <script type="application/ld+json">{structuredData}</script>
     </LandingPageTemplate>
   );
 }

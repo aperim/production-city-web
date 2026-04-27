@@ -21,6 +21,7 @@ import {
   useEoiCategories,
   useEoiSubmit,
 } from "../lib/use-landing-layout";
+import { CompanyApproachStructuredData } from "../lib/structured-data";
 
 export function CompanyApproachPage() {
   return (
@@ -40,6 +41,7 @@ function CompanyApproachPageContent() {
 
   return (
     <LandingPageTemplate nav={nav} footer={footer}>
+      <CompanyApproachStructuredData />
       {/* Hero */}
       {MEDIA["company-approach-hero"] && (
         <MediaHero

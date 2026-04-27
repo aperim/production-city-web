@@ -19,6 +19,7 @@ import {
   useEoiCategories,
   useEoiSubmit,
 } from "../lib/use-landing-layout";
+import { CompanyStructuredData } from "../lib/structured-data";
 
 export function CompanyPage() {
   return (
@@ -53,6 +54,7 @@ function CompanyPageContent() {
 
   return (
     <LandingPageTemplate nav={nav} footer={footer}>
+      <CompanyStructuredData />
       {/* Hero */}
       <section className="py-16 border-b border-border" aria-labelledby="page-heading">
         <p className="text-xs font-mono tracking-widest text-muted-foreground uppercase mb-4">

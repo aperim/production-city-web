@@ -21,6 +21,7 @@ import {
   useEoiSubmit,
 } from "../lib/use-landing-layout";
 import { MEDIA } from "../lib/media-config";
+import { FacilityStructuredData } from "../lib/structured-data";
 
 export function FacilityBroadcastControlRoomPage() {
   return (
@@ -48,6 +49,11 @@ function FacilityBroadcastControlRoomContent() {
 
   return (
     <LandingPageTemplate nav={nav} footer={footer}>
+      <FacilityStructuredData
+        name="Broadcast Control Room"
+        description="Production City Broadcast Control Room — a purpose-built nerve centre for live broadcast, remote production, and multi-signal management on the Production City campus."
+        slug="broadcast-control-room"
+      />
       {/* Hero */}
       {MEDIA["facilities-control-room"] && (
         <MediaHero

@@ -21,6 +21,7 @@ import {
   useEoiSubmit,
 } from "../lib/use-landing-layout";
 import { MEDIA } from "../lib/media-config";
+import { FacilityStructuredData } from "../lib/structured-data";
 
 export function FacilityCommercialSoundStagesPage() {
   return (
@@ -49,6 +50,11 @@ function FacilityCommercialSoundStagesContent() {
 
   return (
     <LandingPageTemplate nav={nav} footer={footer}>
+      <FacilityStructuredData
+        name="Commercial Sound Stages"
+        description="Production City Commercial Sound Stages — flexible, column-free sound stages for commercial photography, advertising, and branded content productions."
+        slug="commercial-sound-stages"
+      />
       {/* Hero */}
       {MEDIA["facilities-commercial-stage"] && (
         <MediaHero

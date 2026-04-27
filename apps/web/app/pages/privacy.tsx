@@ -15,6 +15,7 @@ import {
   useLandingNav,
   useLandingFooter,
 } from "../lib/use-landing-layout";
+import { SimpleWebPageStructuredData } from "../lib/structured-data";
 
 export function PrivacyPage() {
   return (
@@ -37,6 +38,11 @@ function PrivacyPageContent() {
 
   return (
     <LandingPageTemplate nav={nav} footer={footer}>
+      <SimpleWebPageStructuredData
+        name="Privacy Policy — Production City"
+        description="Privacy policy for Production City (operated by Aperim Pty Ltd): how we collect, use, and protect your personal information."
+        path="/privacy"
+      />
       <div className="mx-auto max-w-3xl py-12">
         {/* Back link */}
         <a

@@ -24,6 +24,7 @@ import {
   useEoiSubmit,
 } from "../lib/use-landing-layout";
 import { MEDIA } from "../lib/media-config";
+import { SimpleWebPageStructuredData } from "../lib/structured-data";
 
 export function CommunityPage() {
   return (
@@ -45,6 +46,11 @@ function CommunityPageContent() {
 
   return (
     <LandingPageTemplate nav={nav} footer={footer}>
+      <SimpleWebPageStructuredData
+        name="Community & Engagement — Production City"
+        description="Production City's community engagement: education, sustainability, First Nations partnerships, and innovation programs on an integrated screen and stage campus."
+        path="/community"
+      />
       {/* Hero */}
       {heroMedia && (
         <MediaHero

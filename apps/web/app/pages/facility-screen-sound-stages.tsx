@@ -21,6 +21,7 @@ import {
   useEoiSubmit,
 } from "../lib/use-landing-layout";
 import { MEDIA } from "../lib/media-config";
+import { FacilityStructuredData } from "../lib/structured-data";
 
 export function FacilityScreenSoundStagesPage() {
   return (
@@ -49,6 +50,11 @@ function FacilityScreenSoundStagesContent() {
 
   return (
     <LandingPageTemplate nav={nav} footer={footer}>
+      <FacilityStructuredData
+        name="Screen Sound Stages"
+        description="Production City Screen Sound Stages — purpose-built LED-volume and traditional screen stages for film and television production on the Production City campus."
+        slug="screen-sound-stages"
+      />
       {/* Hero */}
       {MEDIA["facilities-screen-stage"] && (
         <MediaHero

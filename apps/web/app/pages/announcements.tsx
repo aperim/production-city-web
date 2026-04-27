@@ -25,6 +25,7 @@ import {
   listCategories,
   type PublicAnnouncement,
 } from "../lib/api-client";
+import { AnnouncementsStructuredData } from "../lib/structured-data";
 
 /** Map API announcement to UI AnnouncementSummary. */
 function toSummary(a: PublicAnnouncement): AnnouncementSummary {
@@ -133,17 +134,9 @@ function AnnouncementsPageContent({ initialCategory }: AnnouncementsPageContentP
     }
   }, [prefix]);
 
-  // SEO structured data — static content, no user input (safe for inline script)
-  const structuredData = JSON.stringify({
-    "@context": "https://schema.org",
-    "@type": "CollectionPage",
-    name: "Updates — Production City",
-    description: "Latest news and updates from Production City",
-    url: `https://production.city${prefix}/announcements`,
-  });
-
   return (
     <LandingPageTemplate nav={nav} footer={footer}>
+      <AnnouncementsStructuredData />
       <div className="mx-auto max-w-6xl px-4 py-12 sm:px-6 lg:px-8">
         {/* Page header */}
         <header className="mb-8">
@@ -168,9 +161,6 @@ function AnnouncementsPageContent({ initialCategory }: AnnouncementsPageContentP
           />
         </div>
       </div>
-
-      {/* SEO: CollectionPage structured data — static content only, no user input */}
-      <script type="application/ld+json">{structuredData}</script>
     </LandingPageTemplate>
   );
 }

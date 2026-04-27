@@ -22,6 +22,7 @@ import {
   useEoiCategories,
   useEoiSubmit,
 } from "../lib/use-landing-layout";
+import { SimpleWebPageStructuredData } from "../lib/structured-data";
 
 export function NetworkPage() {
   return (
@@ -69,6 +70,11 @@ function NetworkPageContent() {
 
   return (
     <LandingPageTemplate nav={nav} footer={footer}>
+      <SimpleWebPageStructuredData
+        name="Global Network — Production City"
+        description="Production City's global network: an integrated screen and stage campus in Queensland connected to international co-production partners and creative hubs."
+        path="/network"
+      />
       {/* Hero */}
       {MEDIA["network-hero"] && (
         <MediaHero

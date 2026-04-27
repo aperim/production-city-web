@@ -14,6 +14,7 @@ import {
   useLandingNav,
   useLandingFooter,
 } from "../lib/use-landing-layout";
+import { SimpleWebPageStructuredData } from "../lib/structured-data";
 
 export function TermsPage() {
   return (
@@ -31,6 +32,11 @@ function TermsPageContent() {
 
   return (
     <LandingPageTemplate nav={nav} footer={footer}>
+      <SimpleWebPageStructuredData
+        name="Terms of Use — Production City"
+        description="Terms of use for Production City (operated by Aperim Pty Ltd): the conditions governing your use of our website and services."
+        path="/terms"
+      />
       <div className="mx-auto max-w-3xl py-12">
         {/* Back link */}
         <a
