@@ -63,6 +63,20 @@ export const NoOverlay: Story = {
   },
 };
 
+export const NoOverlayWithContent: Story = {
+  args: {
+    overlay: "none",
+    subtitle: "Text-shadow safety floor — readable without gradient overlay",
+    ctas: [
+      { label: "Register Interest", href: "/register", variant: "primary" },
+    ],
+    attribution: {
+      photographer: "John Smith",
+      source: "Pexels",
+    },
+  },
+};
+
 export const WithAttribution: Story = {
   args: {
     subtitle: "World-class facilities",

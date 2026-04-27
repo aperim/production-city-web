@@ -139,7 +139,15 @@ export function LandingNavigation({
       )}
       aria-label="Main navigation"
     >
-      <div className="mx-auto flex max-w-[1400px] items-center justify-between px-4 py-3 sm:px-6">
+      {/* Top gradient bar for text readability over hero images in transparent mode */}
+      {isTransparentNow && (
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute inset-x-0 top-0 h-24"
+          style={{ background: "linear-gradient(to bottom, rgba(0,0,0,0.5) 0%, transparent 100%)" }}
+        />
+      )}
+      <div className="relative mx-auto flex max-w-[1400px] items-center justify-between px-4 py-3 sm:px-6">
         {/* Brand with primary color accent */}
         <a href={sanitizeHref(links[0]?.href ?? "/")} className={cn(
           "flex items-center gap-2 text-base font-semibold",

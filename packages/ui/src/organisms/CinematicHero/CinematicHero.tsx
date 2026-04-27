@@ -118,7 +118,10 @@ function CinematicHero({
               "font-bold tracking-tighter",
               overlay === "light" ? "text-neutral-950" : "text-white",
             )}
-            style={{ fontSize: "var(--font-size-display, clamp(3rem, 5vw, 4.5rem))" }}
+            style={{
+              fontSize: "var(--font-size-display, clamp(3rem, 5vw, 4.5rem))",
+              ...(overlay === "none" && { textShadow: "0 2px 8px rgba(0,0,0,0.9), 0 1px 3px rgba(0,0,0,0.7)" }),
+            }}
           >
             {title}
           </h1>
@@ -128,7 +131,10 @@ function CinematicHero({
                 "mt-4",
                 overlay === "light" ? "text-neutral-950/80" : "text-white/80",
               )}
-              style={{ fontSize: "var(--font-size-heading, clamp(1.5rem, 2.5vw, 2.25rem))" }}
+              style={{
+                fontSize: "var(--font-size-heading, clamp(1.5rem, 2.5vw, 2.25rem))",
+                ...(overlay === "none" && { textShadow: "0 2px 6px rgba(0,0,0,0.9), 0 1px 3px rgba(0,0,0,0.7)" }),
+              }}
             >
               {subtitle}
             </p>
@@ -162,10 +168,13 @@ function CinematicHero({
 
       {/* Attribution — bottom-right corner */}
       {attribution && (
-        <div className={cn(
-          "absolute bottom-2 end-3 z-20 text-xs",
-          overlay === "light" ? "text-neutral-950/60" : "text-white/60",
-        )}>
+        <div
+          className={cn(
+            "absolute bottom-2 end-3 z-20 text-xs",
+            overlay === "light" ? "text-neutral-950/70" : "text-white/80",
+          )}
+          style={overlay === "none" ? { textShadow: "0 1px 3px rgba(0,0,0,0.9)" } : undefined}
+        >
           Photo by {attribution.photographer} / {attribution.source}
         </div>
       )}

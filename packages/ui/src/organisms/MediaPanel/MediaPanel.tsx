@@ -56,7 +56,13 @@ function MediaPanel({
           className="h-full w-full object-cover"
         />
         {attribution && (
-          <div className="absolute bottom-2 end-3 text-xs text-white/60">
+          <div
+            className="absolute bottom-0 end-0 start-0 px-3 py-2 text-xs text-white/80"
+            style={{
+              background: "linear-gradient(to top, rgba(0,0,0,0.6) 0%, transparent 100%)",
+              textShadow: "0 1px 2px rgba(0,0,0,0.8)",
+            }}
+          >
             Photo by {attribution.photographer} / {attribution.source}
           </div>
         )}

@@ -90,7 +90,7 @@ function MediaHero({
           className="absolute inset-0 z-10"
           style={{
             background:
-              "linear-gradient(to top, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.3) 50%, transparent 100%)",
+              "linear-gradient(to top, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.4) 50%, transparent 100%)",
           }}
         />
       )}
@@ -98,7 +98,12 @@ function MediaHero({
       {/* Overlay content */}
       {children && (
         <div className="relative z-20 flex h-full items-end p-6 sm:p-8 lg:p-12">
-          <div className="max-w-2xl text-white">{children}</div>
+          <div
+            className="max-w-2xl text-white"
+            style={{ textShadow: "0 1px 3px rgba(0,0,0,0.6)" }}
+          >
+            {children}
+          </div>
         </div>
       )}
 
