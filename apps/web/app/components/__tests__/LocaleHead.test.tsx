@@ -78,6 +78,26 @@ describe("LocaleHead (Issue #278)", () => {
         "https://production.city/zh/",
       );
     });
+
+    it("strips tracking params from canonical URL", () => {
+      const url = buildCanonicalUrl("/facilities", "en", CANONICAL_HOST, "?utm_source=google&utm_medium=cpc");
+      expect(url).toBe("https://production.city/facilities");
+    });
+
+    it("preserves non-tracking params in canonical URL", () => {
+      const url = buildCanonicalUrl("/facilities", "en", CANONICAL_HOST, "?utm_source=google&page=2");
+      expect(url).toBe("https://production.city/facilities?page=2");
+    });
+
+    it("returns base URL when queryString is empty", () => {
+      const url = buildCanonicalUrl("/facilities", "en", CANONICAL_HOST, "");
+      expect(url).toBe("https://production.city/facilities");
+    });
+
+    it("strips tracking params for non-English locales too", () => {
+      const url = buildCanonicalUrl("/facilities", "zh", CANONICAL_HOST, "?fbclid=abc&q=search");
+      expect(url).toBe("https://production.city/zh/facilities?q=search");
+    });
   });
 
   describe("stripTrackingParams()", () => {

@@ -80,14 +80,20 @@ export function buildHreflangLinks(
 }
 
 /**
- * Build canonical URL for a specific locale.
+ * Build canonical URL for a specific locale, stripping any tracking query params.
+ *
+ * @param queryString - Raw query string from the request (e.g. "?utm_source=google&q=search")
  */
 export function buildCanonicalUrl(
   currentPath: string,
   locale: SupportedLocale,
   canonicalHost: string,
+  queryString?: string,
 ): string {
-  return buildLocaleUrl(currentPath, locale, canonicalHost);
+  const base = buildLocaleUrl(currentPath, locale, canonicalHost);
+  if (!queryString) return base;
+  const clean = stripTrackingParams(queryString);
+  return clean ? `${base}${clean}` : base;
 }
 
 /**

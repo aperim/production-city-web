@@ -46,23 +46,39 @@ function getCanonicalOrigin(url: URL): string {
  * Dev (localhost/127.0.0.1): allows ws://localhost:* and wss://localhost:*
  * All other envs: derives API host from request hostname so staging and
  * production each allow their own api.* subdomain (PRO-194).
+ *
+ * Script hash covers the static inline theme-flash prevention script in layout.tsx.
+ * If that script changes, recalculate: echo -n '<script>' | openssl dgst -sha256 -binary | base64
+ * @see PRO-353
  */
+const THEME_SCRIPT_HASH = "'sha256-Ldif8QlNCK0+4XhlJPg3q8xt1zVJEDh3VbMr0vbaiBE='";
+
 function buildCsp(hostname: string): string {
   const isDev = hostname === "localhost" || hostname === "127.0.0.1";
   if (isDev) {
+    // Dev keeps unsafe-inline for hot-reload compatibility
     return `default-src 'self'; script-src 'self' 'unsafe-inline' https://static.cloudflareinsights.com; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self' https://fonts.gstatic.com; connect-src 'self' ws://localhost:* wss://localhost:*`;
   }
   // Strip www. prefix before deriving the API subdomain.
   const baseHost = hostname.startsWith("www.") ? hostname.slice(4) : hostname;
   const apiOrigin = `api.${baseHost}`;
-  return `default-src 'self'; script-src 'self' 'unsafe-inline' https://static.cloudflareinsights.com; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self' https://fonts.gstatic.com; connect-src 'self' https://${apiOrigin} wss://${apiOrigin}`;
+  return `default-src 'self'; script-src 'self' ${THEME_SCRIPT_HASH} https://static.cloudflareinsights.com; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self' https://fonts.gstatic.com; connect-src 'self' https://${apiOrigin} wss://${apiOrigin}`;
 }
 
-/** Security headers applied to every response (CSP set dynamically). */
+/**
+ * Security headers applied to every response (CSP set dynamically).
+ * HSTS is also set here as defence-in-depth; Cloudflare edge enforces it
+ * independently via SSL/TLS → Edge Certificates → HSTS settings (PRO-353).
+ */
 const STATIC_SECURITY_HEADERS: Record<string, string> = {
   "X-Content-Type-Options": "nosniff",
   "X-Frame-Options": "DENY",
   "Referrer-Policy": "strict-origin-when-cross-origin",
+  "Strict-Transport-Security": "max-age=31536000; includeSubDomains; preload",
+  "Cross-Origin-Opener-Policy": "same-origin",
+  "Permissions-Policy":
+    "camera=(), microphone=(), geolocation=(), payment=(), usb=(), " +
+    "magnetometer=(), gyroscope=(), accelerometer=(), ambient-light-sensor=()",
 };
 
 /**
@@ -129,6 +145,7 @@ export default {
     const headers = new Headers(request.headers);
     headers.delete("X-Locale");
     headers.delete("X-Path");
+    headers.delete("X-Query");
 
     // 4. Parse locale prefix.
     const parsed = parseLocalePrefix(url.pathname);
@@ -273,9 +290,10 @@ export default {
       }
     }
 
-    // 6. Set X-Locale and X-Path headers on forwarded request.
+    // 6. Set X-Locale, X-Path, and X-Query headers on forwarded request.
     headers.set("X-Locale", locale);
     headers.set("X-Path", forwardPath);
+    headers.set("X-Query", url.search);
 
     // Build the forwarded request with the stripped path (no locale prefix).
     const forwardUrl = new URL(forwardPath + url.search, url.origin);

@@ -22,10 +22,11 @@ export default async function RootLayout({
   const direction = getDirection(locale);
   const rawPath = headersList.get("X-Path") ?? "/";
   const currentPath = validatePath(rawPath) ? rawPath : "/";
+  const queryString = headersList.get("X-Query") ?? "";
 
   const canonicalHost = "https://production.city";
   const hreflangLinks = buildHreflangLinks(currentPath, canonicalHost);
-  const canonicalUrl = buildCanonicalUrl(currentPath, locale, canonicalHost);
+  const canonicalUrl = buildCanonicalUrl(currentPath, locale, canonicalHost, queryString);
 
   return (
     <html lang={locale} dir={direction}>
@@ -48,6 +49,10 @@ export default async function RootLayout({
           content="Production City™ is coming soon."
         />
         <meta property="og:type" content="website" />
+        <meta name="theme-color" content="#0f172a" />
+        <meta name="msapplication-TileColor" content="#0f172a" />
+        <link rel="manifest" href="/site.webmanifest" />
+        <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
         <link
           rel="icon"
           href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='12' fill='%230f172a'/><text x='50' y='68' font-size='52' text-anchor='middle' fill='white' font-family='system-ui'>P</text></svg>"
