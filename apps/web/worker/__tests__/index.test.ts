@@ -12,23 +12,10 @@
  */
 
 import { describe, it, expect } from "vitest";
+import { buildCsp, THEME_SCRIPT_HASH } from "../csp.js";
 
 const CANONICAL_HOST = "production.city";
 const WWW_HOST = `www.${CANONICAL_HOST}`;
-
-/**
- * Inline CSP builder mirroring worker/index.ts logic for isolated testing.
- * Keep in sync with buildCsp() in worker/index.ts (PRO-194).
- */
-function buildCsp(hostname: string): string {
-  const isDev = hostname === "localhost" || hostname === "127.0.0.1";
-  if (isDev) {
-    return `default-src 'self'; script-src 'self' 'unsafe-inline' https://static.cloudflareinsights.com; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self' https://fonts.gstatic.com; connect-src 'self' ws://localhost:* wss://localhost:*`;
-  }
-  const baseHost = hostname.startsWith("www.") ? hostname.slice(4) : hostname;
-  const apiOrigin = `api.${baseHost}`;
-  return `default-src 'self'; script-src 'self' 'unsafe-inline' https://static.cloudflareinsights.com; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self' https://fonts.gstatic.com; connect-src 'self' https://${apiOrigin} wss://${apiOrigin}`;
-}
 
 /**
  * Inline implementation of the redirect logic to test it in isolation.
@@ -158,7 +145,7 @@ describe("CSP headers — WebSocket directives (#194)", () => {
   it("CSP retains all default directives", () => {
     const csp = buildCsp("production.city");
     expect(csp).toContain("default-src 'self'");
-    expect(csp).toContain("script-src 'self' 'unsafe-inline' https://static.cloudflareinsights.com");
+    expect(csp).toContain(`script-src 'self' ${THEME_SCRIPT_HASH} https://static.cloudflareinsights.com`);
     expect(csp).toContain("style-src 'self' 'unsafe-inline'");
     expect(csp).toContain("img-src 'self' data:");
     expect(csp).toContain("font-src 'self' https://fonts.gstatic.com");
