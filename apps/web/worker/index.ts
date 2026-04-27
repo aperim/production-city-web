@@ -55,7 +55,7 @@ const STATIC_SECURITY_HEADERS: Record<string, string> = {
   "Cross-Origin-Opener-Policy": "same-origin",
   "Permissions-Policy":
     "camera=(), microphone=(), geolocation=(), payment=(), usb=(), " +
-    "magnetometer=(), gyroscope=(), accelerometer=(), ambient-light-sensor=()",
+    "magnetometer=(), gyroscope=(), accelerometer=()",
 };
 
 /**
