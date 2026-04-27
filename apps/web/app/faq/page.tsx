@@ -31,7 +31,7 @@ export default async function Page() {
   const serverLocale = await getServerLocale();
   return (
     <ErrorBoundary>
-      <FAQPage />
+      <FAQPage serverLocale={serverLocale} />
     </ErrorBoundary>
   );
 }
