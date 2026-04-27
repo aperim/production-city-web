@@ -1,14 +1,23 @@
 import "../app.css";
 import { headers } from "vinext/shims/headers";
 import { validateXLocale } from "./i18n/x-locale-validation.js";
-import { getDirection } from "./i18n/index.js";
-import { buildHreflangLinks, buildCanonicalUrl, validatePath } from "./components/LocaleHead.js";
+import { getDirection, getOgLocale } from "./i18n/index.js";
+import { buildHreflangLinks, buildCanonicalUrl, validatePath, getOgLocaleAlternates } from "./components/LocaleHead.js";
+
+const CANONICAL_HOST = "https://production.city";
+const SITE_NAME = "Production City™";
+const OG_IMAGE_URL = `${CANONICAL_HOST}/media/home-hero/light.jpg`;
+const TWITTER_SITE = "@productioncity";
 
 /**
  * Root layout for the Production City web application.
  *
  * Server-resolved locale: reads X-Locale header set by Worker locale middleware
  * and renders <html lang> and dir server-side (Issue #277).
+ *
+ * Locale-aware global OG tags (og:url, og:locale, og:locale:alternate) are
+ * rendered here because they depend on the request locale and cannot be
+ * expressed as static per-page Metadata exports.
  *
  * Security headers are applied at the worker level (worker/index.ts).
  */
@@ -24,9 +33,10 @@ export default async function RootLayout({
   const currentPath = validatePath(rawPath) ? rawPath : "/";
   const queryString = headersList.get("X-Query") ?? "";
 
-  const canonicalHost = "https://production.city";
-  const hreflangLinks = buildHreflangLinks(currentPath, canonicalHost);
-  const canonicalUrl = buildCanonicalUrl(currentPath, locale, canonicalHost, queryString);
+  const hreflangLinks = buildHreflangLinks(currentPath, CANONICAL_HOST);
+  const canonicalUrl = buildCanonicalUrl(currentPath, locale, CANONICAL_HOST, queryString);
+  const ogLocale = getOgLocale(locale);
+  const ogLocaleAlternates = getOgLocaleAlternates(locale);
 
   return (
     <html lang={locale} dir={direction}>
@@ -38,21 +48,28 @@ export default async function RootLayout({
         {hreflangLinks.map((link) => (
           <link key={link.hreflang} rel="alternate" hrefLang={link.hreflang} href={link.href} />
         ))}
-        <title>Production City™ — Coming Soon</title>
-        <meta
-          name="description"
-          content="Production City™ is coming soon."
-        />
-        <meta property="og:title" content="Production City™ — Coming Soon" />
-        <meta
-          property="og:description"
-          content="Production City™ is coming soon."
-        />
-        <meta property="og:type" content="website" />
+
+        {/* ── Open Graph global tags (locale-aware, cannot live in static Metadata exports) ── */}
+        <meta property="og:site_name" content={SITE_NAME} />
+        <meta property="og:url" content={canonicalUrl} />
+        <meta property="og:locale" content={ogLocale} />
+        {ogLocaleAlternates.map((alt) => (
+          <meta key={alt} property="og:locale:alternate" content={alt} />
+        ))}
+        <meta property="og:image" content={OG_IMAGE_URL} />
+        <meta property="og:image:alt" content="Production City™ — A vertically integrated screen and stage campus" />
+
+        {/* ── Twitter Card global fallbacks ── */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:site" content={TWITTER_SITE} />
+        <meta name="twitter:image" content={OG_IMAGE_URL} />
+        <meta name="twitter:image:alt" content="Production City™ — A vertically integrated screen and stage campus" />
+
         <meta name="theme-color" content="#0f172a" />
         <meta name="msapplication-TileColor" content="#0f172a" />
         <link rel="manifest" href="/site.webmanifest" />
         <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+
         <link
           rel="icon"
           href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='12' fill='%230f172a'/><text x='50' y='68' font-size='52' text-anchor='middle' fill='white' font-family='system-ui'>P</text></svg>"

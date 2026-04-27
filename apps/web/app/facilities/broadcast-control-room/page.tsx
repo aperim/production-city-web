@@ -15,6 +15,16 @@ export const metadata: Metadata = {
     title: "Broadcast Control Room — Production City™ Facilities",
     description:
       "A purpose-built broadcast control room supporting live-to-air, OB, and multi-format production workflows at Production City™.",
+    type: "website",
+    siteName: "Production City™",
+    images: [{ url: "https://production.city/media/home-hero/light.jpg", alt: "Production City™ — A vertically integrated screen and stage campus" }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    site: "@productioncity",
+    title: "Broadcast Control Room — Production City™ Facilities",
+    description: "A purpose-built broadcast control room supporting live-to-air, OB, and multi-format production workflows at Production City™.",
+    images: [{ url: "https://production.city/media/home-hero/light.jpg", alt: "Production City™ — A vertically integrated screen and stage campus" }],
   },
 };
 

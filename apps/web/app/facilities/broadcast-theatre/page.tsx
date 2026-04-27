@@ -15,6 +15,16 @@ export const metadata: Metadata = {
     title: "Broadcast Theatre — Production City™ Facilities",
     description:
       "Production City™'s broadcast theatre: a 600-seat live performance and broadcast venue built for simultaneous stage performance and camera capture.",
+    type: "website",
+    siteName: "Production City™",
+    images: [{ url: "https://production.city/media/home-hero/light.jpg", alt: "Production City™ — A vertically integrated screen and stage campus" }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    site: "@productioncity",
+    title: "Broadcast Theatre — Production City™ Facilities",
+    description: "Production City™'s broadcast theatre: a 600-seat live performance and broadcast venue built for simultaneous stage performance and camera capture.",
+    images: [{ url: "https://production.city/media/home-hero/light.jpg", alt: "Production City™ — A vertically integrated screen and stage campus" }],
   },
 };
 

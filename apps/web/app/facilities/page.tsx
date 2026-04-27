@@ -15,6 +15,16 @@ export const metadata: Metadata = {
     title: "Facilities — Production City™",
     description:
       "World-class screen and stage production facilities: LED volumes, broadcast theatres, commercial and screen sound stages.",
+    type: "website",
+    siteName: "Production City™",
+    images: [{ url: "https://production.city/media/home-hero/light.jpg", alt: "Production City™ — A vertically integrated screen and stage campus" }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    site: "@productioncity",
+    title: "Facilities — Production City™",
+    description: "World-class screen and stage production facilities: LED volumes, broadcast theatres, commercial and screen sound stages.",
+    images: [{ url: "https://production.city/media/home-hero/light.jpg", alt: "Production City™ — A vertically integrated screen and stage campus" }],
   },
 };
 

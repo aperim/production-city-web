@@ -15,6 +15,16 @@ export const metadata: Metadata = {
     title: "Production City™ — The Home of Australian Screen & Stage",
     description:
       "Production City™ is Australia's first fully integrated screen and stage production precinct. Apply for early access.",
+    type: "website",
+    siteName: "Production City™",
+    images: [{ url: "https://production.city/media/home-hero/light.jpg", alt: "Production City™ — A vertically integrated screen and stage campus" }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    site: "@productioncity",
+    title: "Production City™ — The Home of Australian Screen & Stage",
+    description: "Production City™ is Australia's first fully integrated screen and stage production precinct. Apply for early access.",
+    images: [{ url: "https://production.city/media/home-hero/light.jpg", alt: "Production City™ — A vertically integrated screen and stage campus" }],
   },
 };
 

@@ -15,6 +15,16 @@ export const metadata: Metadata = {
     title: "Global Network — Production City™",
     description:
       "A global network of vertically integrated studio campuses across five continents. One operator. One standard.",
+    type: "website",
+    siteName: "Production City™",
+    images: [{ url: "https://production.city/media/home-hero/light.jpg", alt: "Production City™ — A vertically integrated screen and stage campus" }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    site: "@productioncity",
+    title: "Global Network — Production City™",
+    description: "A global network of vertically integrated studio campuses across five continents. One operator. One standard.",
+    images: [{ url: "https://production.city/media/home-hero/light.jpg", alt: "Production City™ — A vertically integrated screen and stage campus" }],
   },
 };
 

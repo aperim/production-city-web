@@ -15,6 +15,16 @@ export const metadata: Metadata = {
     title: "Commercial Sound Stages — Production City™ Facilities",
     description:
       "Flexible commercial sound stages at Production City™: 45×45 m at 15 m clearance, full-surround LED, and integrated broadcast infrastructure.",
+    type: "website",
+    siteName: "Production City™",
+    images: [{ url: "https://production.city/media/home-hero/light.jpg", alt: "Production City™ — A vertically integrated screen and stage campus" }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    site: "@productioncity",
+    title: "Commercial Sound Stages — Production City™ Facilities",
+    description: "Flexible commercial sound stages at Production City™: 45×45 m at 15 m clearance, full-surround LED, and integrated broadcast infrastructure.",
+    images: [{ url: "https://production.city/media/home-hero/light.jpg", alt: "Production City™ — A vertically integrated screen and stage campus" }],
   },
 };
 
