@@ -41,19 +41,19 @@ function NetworkPageContent() {
 
   const locations = [
     {
-      name: t("network.sydneyName"),
-      status: t("network.sydneyStatus"),
-      description: t("network.sydneyDesc"),
+      name: t("network.australiaName"),
+      status: t("network.australiaStatus"),
+      description: t("network.australiaDesc"),
     },
     {
-      name: t("network.switzerlandName"),
-      status: t("network.switzerlandStatus"),
-      description: t("network.switzerlandDesc"),
+      name: t("network.europeName"),
+      status: t("network.europeStatus"),
+      description: t("network.europeDesc"),
     },
     {
-      name: t("network.singaporeName"),
-      status: t("network.singaporeStatus"),
-      description: t("network.singaporeDesc"),
+      name: t("network.asiaPacificName"),
+      status: t("network.asiaPacificStatus"),
+      description: t("network.asiaPacificDesc"),
     },
     {
       name: t("network.africaName"),
@@ -61,9 +61,9 @@ function NetworkPageContent() {
       description: t("network.africaDesc"),
     },
     {
-      name: t("network.usaName"),
-      status: t("network.usaStatus"),
-      description: t("network.usaDesc"),
+      name: t("network.northAmericaName"),
+      status: t("network.northAmericaStatus"),
+      description: t("network.northAmericaDesc"),
     },
   ];
 
@@ -107,17 +107,17 @@ function NetworkPageContent() {
         </div>
       </ScrollRevealSection>
 
-      {/* Why sequenced */}
+      {/* Approach */}
       <ScrollRevealSection delay={0}>
-        <section className="py-12 border-b border-border" aria-labelledby="sequence-heading">
+        <section className="py-12 border-b border-border" aria-labelledby="approach-heading">
           <div className="grid grid-cols-1 gap-8 lg:grid-cols-12">
             <div className="lg:col-span-3">
-              <h2 id="sequence-heading" className="text-xl font-semibold text-foreground">
-                {t("network.sequenceHeading")}
+              <h2 id="approach-heading" className="text-xl font-semibold text-foreground">
+                {t("network.approachHeading")}
               </h2>
             </div>
             <p className="lg:col-span-8 text-sm text-muted-foreground leading-relaxed">
-              {t("network.sequenceDesc")}
+              {t("network.approachDesc")}
             </p>
           </div>
         </section>

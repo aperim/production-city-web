@@ -80,7 +80,7 @@ const AUDIENCES = [
   {
     num: "III",
     title: "For investors",
-    text: "Revenue from facilities, services, and broadcast under one operator. Campuses open in sequence, each proven before the next is committed.",
+    text: "Vertically integrated model, global campus network, bankable infrastructure.",
     href: "#eoi-section",
   },
   {
@@ -93,11 +93,11 @@ const AUDIENCES = [
 
 /* ─── Network regions ─── */
 const REGIONS = [
-  { region: "Australia", status: "Sydney — leading candidate", highlight: true },
-  { region: "Europe", status: "Switzerland — currently leading", highlight: true },
-  { region: "Asia-Pacific", status: "Singapore preferred · alternatives under review", highlight: false },
-  { region: "Africa", status: "Under assessment", highlight: false },
-  { region: "United States", status: "Following the first international campuses", highlight: false },
+  { region: "Australia", status: "Campus planned", highlight: true },
+  { region: "Europe", status: "Campus planned", highlight: false },
+  { region: "Asia Pacific", status: "Campus planned", highlight: false },
+  { region: "Africa", status: "Campus planned", highlight: false },
+  { region: "North America", status: "Campus planned", highlight: false },
 ] as const;
 
 /* ─── Services list ─── */
@@ -141,7 +141,7 @@ const HEADINGS = {
   services: "Every discipline from script to delivery. On one campus.",
   firstNations: "Embedded, not added on.",
   firstSite: "First site advantage",
-  network: "Sequenced. Not simultaneous.",
+  network: "Five continents. One standard.",
   audience: "Four doors in.",
   chorus: "We make stories",
   controlRoom: "The nerve centre.",
@@ -185,7 +185,7 @@ function HomePageContent() {
             <span className="inline-block h-2 w-2 rounded-full bg-(--pc-color-secondary-500)" aria-hidden="true" />
             <span>Production City™</span>
             <span style={{ opacity: 0.4 }}>—</span>
-            <span>Sydney · Switzerland · Singapore · Africa</span>
+            <span>Australia · Europe · Asia Pacific · Africa · North America</span>
           </div>
 
           <h1 id="hero-heading" className="m-0 font-serif text-[clamp(56px,9vw,168px)] font-normal leading-[0.95] tracking-[-0.02em]">
@@ -584,7 +584,7 @@ function HomePageContent() {
           <div className="mx-auto max-w-[1720px]">
             <div className="mb-12 border-t border-(--pc-color-neutral-800) pt-8">
               <div className="mb-3 font-mono text-[11px] uppercase tracking-[0.18em] text-(--pc-color-neutral-400)">
-                06 — The sequence
+                06 — The network
               </div>
               <h2 id="network-heading" className="m-0 font-serif text-[clamp(32px,4vw,56px)] font-normal leading-[1.05] tracking-[-0.01em]">
                 {HEADINGS.network}
@@ -702,18 +702,26 @@ function NetworkMap() {
   return (
     <svg viewBox="0 0 500 300" className="block w-full" aria-hidden="true">
       <rect width="500" height="300" fill="var(--pc-color-neutral-900)" />
+      {/* Americas */}
       <path d="M60 90 Q80 70 100 80 Q120 100 110 130 Q105 160 115 190 Q120 220 100 240 Q80 250 70 230 Q55 200 60 170 Z" fill="var(--pc-color-neutral-800)" />
+      {/* Europe / Africa */}
       <path d="M220 70 Q240 60 260 70 Q275 90 270 110 L265 120 Q280 130 275 160 Q270 200 260 240 Q245 260 235 245 Q220 220 225 180 Q215 140 220 110 Z" fill="var(--pc-color-neutral-800)" />
-      <circle cx="243" cy="95" r="4" fill="var(--pc-color-secondary-500)" />
+      {/* Asia */}
       <path d="M310 70 Q340 60 370 75 Q400 90 420 110 Q440 130 430 150 Q410 170 380 165 Q355 175 340 165 Q320 150 315 130 Q305 100 310 80 Z" fill="var(--pc-color-neutral-800)" />
-      <circle cx="395" cy="155" r="3.5" fill="var(--pc-color-secondary-500)" />
+      {/* Australia */}
       <path d="M395 200 Q420 195 440 210 Q455 225 450 240 Q440 255 420 255 Q395 250 385 235 Q385 215 395 200 Z" fill="var(--pc-color-neutral-800)" />
-      <circle cx="445" cy="240" r="6" fill="var(--pc-color-secondary-500)" />
-      <circle cx="445" cy="240" r="12" fill="none" stroke="var(--pc-color-secondary-500)" strokeWidth="1" opacity="0.4" />
-      <g fontFamily="monospace" fontSize="8" fill="var(--pc-color-neutral-500)" letterSpacing="1">
-        <text x="445" y="263" textAnchor="middle">SYDNEY — LEAD</text>
-        <text x="243" y="87" textAnchor="middle">CH</text>
-        <text x="395" y="148" textAnchor="middle">SG</text>
+      {/* Region dots — uniform size, no special highlight */}
+      <circle cx="80" cy="120" r="4" fill="var(--pc-color-secondary-500)" />
+      <circle cx="243" cy="88" r="4" fill="var(--pc-color-secondary-500)" />
+      <circle cx="255" cy="185" r="4" fill="var(--pc-color-secondary-500)" />
+      <circle cx="380" cy="140" r="4" fill="var(--pc-color-secondary-500)" />
+      <circle cx="430" cy="230" r="4" fill="var(--pc-color-secondary-500)" />
+      <g fontFamily="monospace" fontSize="7" fill="var(--pc-color-neutral-500)" letterSpacing="1">
+        <text x="80" y="110" textAnchor="middle">N. AMERICA</text>
+        <text x="243" y="80" textAnchor="middle">EUROPE</text>
+        <text x="255" y="198" textAnchor="middle">AFRICA</text>
+        <text x="380" y="132" textAnchor="middle">ASIA PACIFIC</text>
+        <text x="430" y="250" textAnchor="middle">AUSTRALIA</text>
       </g>
     </svg>
   );

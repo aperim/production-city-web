@@ -1,5 +1,5 @@
 /**
- * Network page — global campus sequence.
+ * Network page — global campus network.
  * Route: /network and /:locale/network
  */
 
@@ -10,11 +10,11 @@ import { NetworkPage } from "../pages/network";
 export const metadata: Metadata = {
   title: "Global Network — Production City™",
   description:
-    "The Production City global campus network: a sequence of production precincts spanning Sydney, London, Toronto, Tokyo, and beyond.",
+    "A global network of vertically integrated studio campuses across five continents. One operator. One standard.",
   openGraph: {
     title: "Global Network — Production City™",
     description:
-      "The Production City global campus network: a sequence of production precincts spanning Sydney, London, Toronto, Tokyo, and beyond.",
+      "A global network of vertically integrated studio campuses across five continents. One operator. One standard.",
   },
 };
 

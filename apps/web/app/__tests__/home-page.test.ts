@@ -45,7 +45,7 @@ describe("Home page — Hero section", () => {
   it("has hero eyebrow with brand and locations", () => {
     const src = readHome();
     expect(src).toContain("Production City™");
-    expect(src).toContain("Sydney · Switzerland · Singapore · Africa");
+    expect(src).toContain("Australia · Europe · Asia Pacific · Africa · North America");
   });
 
   it("has hero CTAs for facilities and EOI", () => {
@@ -132,21 +132,23 @@ describe("Home page — Pull quote section", () => {
 });
 
 describe("Home page — Network section", () => {
-  it("has network sequence section with region table", () => {
+  it("has network section with region table", () => {
     const src = readHome();
-    expect(src).toContain("06 — The sequence");
-    expect(src).toContain("Sequenced. Not simultaneous.");
+    expect(src).toContain("06 — The network");
+    expect(src).toContain("Five continents. One standard.");
   });
 
   it("includes network map component", () => {
     expect(readHome()).toContain("NetworkMap");
   });
 
-  it("lists all regions with status", () => {
+  it("lists all five regions", () => {
     const src = readHome();
     expect(src).toContain("Australia");
-    expect(src).toContain("Switzerland");
-    expect(src).toContain("Singapore");
+    expect(src).toContain("Europe");
+    expect(src).toContain("Asia Pacific");
+    expect(src).toContain("Africa");
+    expect(src).toContain("North America");
   });
 });
 
