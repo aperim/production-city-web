@@ -167,7 +167,7 @@ function AnnouncementDetailPageContent({ slug }: AnnouncementDetailPageContentPr
                   onClick={() => handleSubscribe(primaryCategory.id)}
                   className="rounded-md border border-primary/50 bg-primary/10 px-3 py-1 text-xs font-medium text-primary hover:bg-primary/20 transition-colors duration-150"
                 >
-                  Subscribe
+                  {t("announcements.detail.subscribe")}
                 </button>
               </div>
             )}

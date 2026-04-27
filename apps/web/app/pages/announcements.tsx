@@ -88,11 +88,11 @@ function AnnouncementsPageContent({ initialCategory }: AnnouncementsPageContentP
         setError(result.error.message);
       }
     } catch {
-      setError("Failed to load announcements.");
+      setError(t("announcements.page.loadError"));
     } finally {
       setLoading(false);
     }
-  }, [page, activeCategory]);
+  }, [page, activeCategory, t]);
 
   useEffect(() => {
     fetchAnnouncements();

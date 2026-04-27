@@ -332,7 +332,8 @@
       "title": "动态",
       "description": "Production City 最新消息和动态",
       "empty": "暂无公告。请稍后查看 Production City 团队的最新动态。",
-      "filter_all": "全部"
+      "filter_all": "全部",
+      "loadError": "加载公告失败。"
     },
     "detail": {
       "back": "返回动态",
@@ -342,7 +343,8 @@
       "subscribed_banner": "您已订阅 {categoryName} 动态",
       "subscribe_cta": "获取 {categoryName} 动态通知",
       "not_found": "未找到",
-      "not_found_description": "您查找的页面不存在。"
+      "not_found_description": "您查找的页面不存在。",
+      "subscribe": "订阅"
     },
     "meta": {
       "title": "公告 — Production City",
@@ -888,7 +890,7 @@
     "masterplanTeaser": {
       "eyebrow": "园区总体规划",
       "heading": "三维呈现的园区。",
-"body": "六个摄影棚、一座广播剧场、创意中心、外景地和公共空间——以交互式3D模型探索整个6公顷园区。",
+      "body": "六个摄影棚、一座广播剧场、创意中心、外景地和公共空间——以交互式3D模型探索整个6公顷园区。",
       "ctaLabel": "以三维方式探索园区 →"
     },
     "hero": {
@@ -1151,7 +1153,9 @@
         "statGrid": "15",
         "statGridLabel": "格栅高度（米）",
         "cta": "预订商业舞台。",
-        "ctaLink": "Enquire"
+        "ctaLink": "Enquire",
+        "siblingPrev": "← A · 影视摄影棚",
+        "siblingNext": "C · 广播剧院 →"
       }
     },
     "broadcastTheatre": {
@@ -1958,7 +1962,11 @@
     "pullQuoteLabel": "05 — 关于首个园区",
     "pullQuote": "第一个园区正在建设之中。网络的技术标准、研发职能及行政管理均以这个首个园区为基地。成为第一，不是一个品牌宣言——而是一个结构性事实，且其价值将持续复利增长。",
     "cta": "与团队对话。",
-    "ctaLink": "开始对话"
+    "ctaLink": "开始对话",
+    "ctaFacilities": "参观设施",
+    "ctaNetwork": "全球布局",
+    "leadershipBio1": "创始人兼首席执行官。在舞台与银幕制作、广播及数据中心基础设施领域，以及硅谷机器学习领域拥有丰富经验。",
+    "leadershipBio2": "首席运营官兼执行董事。其权力是实质性的，而非顾问性质。"
   },
   "companyTeam": {
     "meta": {
@@ -1979,7 +1987,21 @@
     "matthewBio2": "他持有悉尼大学工商管理硕士学位（领导力与企业方向）、昆士兰大学商业管理学士学位，并为澳大利亚公司董事协会会员。",
     "matthewBio3": "Matthew 在悉尼大学担任兼职学术人员，同时在西悉尼大学担任副讲师，教授创新与商业领导力，并参与西悉尼大学原住民卓越中心的工作。他现任悉尼大学医学与健康学院原住民文化安全顾问委员会委员。",
     "additionalLabel": "其他高管",
-    "additionalDesc": "物业开发、技术、娱乐制作、项目管理及财务战略等职位的简历将在正式确认后陆续发布。"
+    "additionalDesc": "物业开发、技术、娱乐制作、项目管理及财务战略等职位的简历将在正式确认后陆续发布。",
+    "portraitPlaceholder": "[ PORTRAIT ]",
+    "troyPortraitLabel": "TROY KELLY",
+    "troyPortraitInitials": "T. KELLY",
+    "troyPortraitAriaLabel": "Troy Kelly — 肖像",
+    "roleCeo": "CEO",
+    "roleFounder": "创始人",
+    "roleChiefExecutive": "首席执行官",
+    "troyEmail": "troy@team.production.city",
+    "troyPhone": "AU +61 2 9137 9100 · US +1 650 215 6253",
+    "matthewNation": "Wiradjuri",
+    "matthewPortraitAlt": "Matthew Compton（Wiradjuri人）肖像，Production City执行董事兼首席运营官",
+    "tbc": "TBC",
+    "bioPending": "[ BIO PENDING ]",
+    "executivePendingAriaLabel": "高管 {n} — 简介待发布"
   },
   "companyApproach": {
     "meta": {
@@ -2009,7 +2031,8 @@
     "hero": {
       "heading": "园区总规划图",
       "tagline": "一个专为整合运营而设计的 6 公顷园区。",
-      "ariaLabel": "Production City 园区总规划图 — 互动式三维浏览器。点击建筑物以探索详情。"
+      "ariaLabel": "Production City 园区总规划图 — 互动式三维浏览器。点击建筑物以探索详情。",
+      "eyebrow": "Production City™ — 园区"
     },
     "stats": {
       "heading": "园区数据",
@@ -2058,5 +2081,8 @@
     "disclaimer": {
       "forwardLooking": "本页包含有关 Production City 开发计划、园区规格和运营能力的前瞻性陈述。关于设施容量、尺寸和功能的陈述反映了当前的设计意图，可能会有所变化。这不是财务说明书或投资邀请。"
     }
+  },
+  "brand": {
+    "name": "Production City"
   }
 }

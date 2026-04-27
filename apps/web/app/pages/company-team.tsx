@@ -60,11 +60,11 @@ function CompanyTeamPageContent() {
             <div className="lg:col-span-5">
               <div
                 className="aspect-[3/4] border border-border flex flex-col justify-between p-4 text-xs font-mono tracking-widest text-muted-foreground"
-                aria-label="Troy Kelly — portrait"
+                aria-label={t("companyTeam.troyPortraitAriaLabel")}
               >
-                <div className="flex justify-between"><span>T. KELLY</span><span>CEO</span></div>
-                <span className="text-center">[ PORTRAIT ]</span>
-                <div className="flex justify-between"><span>FOUNDER</span><span>CHIEF EXECUTIVE</span></div>
+                <div className="flex justify-between"><span>{t("companyTeam.troyPortraitInitials")}</span><span>{t("companyTeam.roleCeo")}</span></div>
+                <span className="text-center">{t("companyTeam.portraitPlaceholder")}</span>
+                <div className="flex justify-between"><span>{t("companyTeam.roleFounder")}</span><span>{t("companyTeam.roleChiefExecutive")}</span></div>
               </div>
             </div>
             <div className="lg:col-span-7">
@@ -80,8 +80,8 @@ function CompanyTeamPageContent() {
                 <p className="text-sm text-muted-foreground leading-relaxed">{t("companyTeam.troyBio3")}</p>
               </div>
               <div className="mt-6 text-xs font-mono text-muted-foreground leading-relaxed">
-                <p>troy@team.production.city</p>
-                <p>AU +61 2 9137 9100 · US +1 650 215 6253</p>
+                <p>{t("companyTeam.troyEmail")}</p>
+                <p>{t("companyTeam.troyPhone")}</p>
               </div>
             </div>
           </div>
@@ -99,7 +99,7 @@ function CompanyTeamPageContent() {
               >
                 <img
                   src={MEDIA["team-matthew-compton"]?.darkSrc ?? "/media/team-matthew-compton/dark.jpg"}
-                  alt="Portrait of Matthew Compton, Executive Director and COO of Production City, a Wiradjuri man"
+                  alt={t("companyTeam.matthewPortraitAlt")}
                   width={900}
                   height={1200}
                   loading="lazy"
@@ -142,10 +142,10 @@ function CompanyTeamPageContent() {
               <div
                 key={n}
                 className="aspect-[3/4] border border-border flex flex-col justify-between p-3 text-xs font-mono tracking-widest text-muted-foreground"
-                aria-label={`Executive ${n} — bio pending`}
+                aria-label={t("companyTeam.executivePendingAriaLabel", { n })}
               >
-                <div className="flex justify-between"><span>TBC</span><span>{String(n).padStart(2, "0")}</span></div>
-                <span className="text-center">[ BIO PENDING ]</span>
+                <div className="flex justify-between"><span>{t("companyTeam.tbc")}</span><span>{String(n).padStart(2, "0")}</span></div>
+                <span className="text-center">{t("companyTeam.bioPending")}</span>
                 <div />
               </div>
             ))}

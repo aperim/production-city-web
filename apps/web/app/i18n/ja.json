@@ -332,7 +332,8 @@
       "title": "お知らせ",
       "description": "プロダクションシティの最新ニュースとアップデート",
       "empty": "まだお知らせはありません。プロダクションシティチームからのアップデートをお待ちください。",
-      "filter_all": "すべて"
+      "filter_all": "すべて",
+      "loadError": "お知らせの読み込みに失敗しました。"
     },
     "detail": {
       "back": "お知らせ一覧に戻る",
@@ -342,7 +343,8 @@
       "subscribed_banner": "{categoryName}のアップデートを購読中です",
       "subscribe_cta": "{categoryName}のアップデート通知を受け取る",
       "not_found": "見つかりません",
-      "not_found_description": "お探しのページは存在しません。"
+      "not_found_description": "お探しのページは存在しません。",
+      "subscribe": "購読する"
     },
     "meta": {
       "title": "お知らせ — Production City",
@@ -888,7 +890,7 @@
     "masterplanTeaser": {
       "eyebrow": "キャンパスマスタープラン",
       "heading": "三次元で見るキャンパス。",
-"body": "6つのサウンドステージ、放送劇場、クリエイティブハブ、バックロット、パブリックスペース——インタラクティブな3Dモデルで6ヘクタールの全体サイトを探索してください。",
+      "body": "6つのサウンドステージ、放送劇場、クリエイティブハブ、バックロット、パブリックスペース——インタラクティブな3Dモデルで6ヘクタールの全体サイトを探索してください。",
       "ctaLabel": "キャンパスを3Dで探索する →"
     },
     "hero": {
@@ -1151,7 +1153,9 @@
         "statGrid": "15",
         "statGridLabel": "グリッドまでのメートル数",
         "cta": "コマーシャルステージを予約する。",
-        "ctaLink": "Enquire"
+        "ctaLink": "Enquire",
+        "siblingPrev": "← A · スクリーンステージ",
+        "siblingNext": "C · 放送シアター →"
       }
     },
     "broadcastTheatre": {
@@ -1958,7 +1962,11 @@
     "pullQuoteLabel": "05 — 第1拠点について",
     "pullQuote": "最初のキャンパスは現在建設中です。技術標準、研究開発、ネットワークの経営機能はこの第1拠点を拠点とします。「最初」であることは、ブランディング上の主張ではなく、構造的な意味を持つものであり、そしてそれは積み重なっていきます。",
     "cta": "チームにお問い合わせください。",
-    "ctaLink": "会話を始める"
+    "ctaLink": "会話を始める",
+    "ctaFacilities": "施設を見る",
+    "ctaNetwork": "グローバル展開",
+    "leadershipBio1": "創業者・最高経営責任者。舞台・映像制作、放送・データセンターインフラ、およびシリコンバレーにおける機械学習の分野でキャリアを積む。",
+    "leadershipBio2": "最高運用責任者・マネージングディレクター。その権限は実質的なものであり、諮問的なものではない。"
   },
   "companyTeam": {
     "meta": {
@@ -1979,7 +1987,21 @@
     "matthewBio2": "シドニー大学にてMBA（リーダーシップ・アンド・エンタープライズ）を、クイーンズランド大学にてビジネスマネジメント学士号を取得しており、オーストラリア会社取締役協会の会員でもあります。",
     "matthewBio3": "Matthewはシドニー大学では非常勤研究者として、ウエスタンシドニー大学では准講師として、イノベーションとビジネスリーダーシップを教え、WSUインディジナスセンター・オブ・エクセレンスに貢献しています。シドニー大学医学・健康学部ファーストネーションズ文化的安全諮問グループのメンバーも務めています。",
     "additionalLabel": "その他の経営幹部",
-    "additionalDesc": "不動産開発、テクノロジー、エンターテインメント制作、プロジェクトマネジメント、財務戦略の各ポジションについては、略歴が確認され次第、順次公開します。"
+    "additionalDesc": "不動産開発、テクノロジー、エンターテインメント制作、プロジェクトマネジメント、財務戦略の各ポジションについては、略歴が確認され次第、順次公開します。",
+    "portraitPlaceholder": "[ PORTRAIT ]",
+    "troyPortraitLabel": "TROY KELLY",
+    "troyPortraitInitials": "T. KELLY",
+    "troyPortraitAriaLabel": "Troy Kelly — ポートレート",
+    "roleCeo": "CEO",
+    "roleFounder": "創業者",
+    "roleChiefExecutive": "最高経営責任者",
+    "troyEmail": "troy@team.production.city",
+    "troyPhone": "AU +61 2 9137 9100 · US +1 650 215 6253",
+    "matthewNation": "Wiradjuri",
+    "matthewPortraitAlt": "Matthew Compton（Wiradjuri）のポートレート — Production CityのCOO兼エグゼクティブ・ディレクター",
+    "tbc": "TBC",
+    "bioPending": "[ BIO PENDING ]",
+    "executivePendingAriaLabel": "役員 {n} — 経歴は近日公開"
   },
   "companyApproach": {
     "meta": {
@@ -2009,7 +2031,8 @@
     "hero": {
       "heading": "キャンパスマスタープラン",
       "tagline": "ひとつの統合システムとして設計された6ヘクタールのキャンパス。",
-      "ariaLabel": "Production City キャンパスマスタープラン — インタラクティブ3Dビューワー。建物をクリックして詳細を確認できます。"
+      "ariaLabel": "Production City キャンパスマスタープラン — インタラクティブ3Dビューワー。建物をクリックして詳細を確認できます。",
+      "eyebrow": "Production City™ — キャンパス"
     },
     "stats": {
       "heading": "キャンパスの数字",
@@ -2058,5 +2081,8 @@
     "disclaimer": {
       "forwardLooking": "このページには、Production Cityの開発計画、キャンパス仕様、運営能力に関する将来予測情報が含まれています。施設の収容能力、寸法、特徴に関する記述は現在の設計意図を反映しており、変更される場合があります。これは金融目論見書または投資勧誘ではありません。"
     }
+  },
+  "brand": {
+    "name": "Production City"
   }
 }

@@ -145,7 +145,7 @@ function MasterplanPageContent() {
         >
           <div className="mx-auto max-w-[1720px]">
             <div className="mb-3 font-mono text-[11px] uppercase tracking-[0.18em] text-(--pc-color-neutral-400)">
-              Production City™ — Campus
+              {t("masterplan.hero.eyebrow")}
             </div>
             <h1
               id="masterplan-page-heading"

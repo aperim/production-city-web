@@ -332,7 +332,8 @@
       "title": "Updates",
       "description": "Latest news and updates from Production City",
       "empty": "No announcements yet. Check back soon for updates from the Production City team.",
-      "filter_all": "All"
+      "filter_all": "All",
+      "loadError": "Failed to load announcements."
     },
     "detail": {
       "back": "Back to Updates",
@@ -342,7 +343,8 @@
       "subscribed_banner": "You are subscribed to {categoryName} updates",
       "subscribe_cta": "Get notified about {categoryName} updates",
       "not_found": "Not Found",
-      "not_found_description": "The page you are looking for does not exist."
+      "not_found_description": "The page you are looking for does not exist.",
+      "subscribe": "Subscribe"
     },
     "meta": {
       "title": "Announcements — Production City",
@@ -525,7 +527,9 @@
       "crossBorder": {
         "title": "Cross-border disclosure",
         "description": "Your personal information may be disclosed to service providers located in the United States. Before disclosing personal information to an overseas recipient, we take reasonable steps to ensure the recipient does not breach the APPs in relation to that information, or we rely on an exception under APP 8.2 (such as your informed consent or a binding contractual arrangement that requires the recipient to handle information consistently with the APPs).",
-        "countries": ["United States — Cloudflare (hosting, analytics), Postmark (email), Twilio (SMS), Google (font delivery)"],
+        "countries": [
+          "United States — Cloudflare (hosting, analytics), Postmark (email), Twilio (SMS), Google (font delivery)"
+        ],
         "note": "No other countries. All third-party data processing occurs in the United States as listed above."
       },
       "security": {
@@ -1149,7 +1153,9 @@
         "statGrid": "15",
         "statGridLabel": "Metres to grid",
         "cta": "Book a commercial stage.",
-        "ctaLink": "Enquire"
+        "ctaLink": "Enquire",
+        "siblingPrev": "← A · Screen stages",
+        "siblingNext": "C · Broadcast theatre →"
       }
     },
     "broadcastTheatre": {
@@ -1956,7 +1962,11 @@
     "pullQuoteLabel": "05 — On the first site",
     "pullQuote": "The first campus is being built now. Technical standards, research and development, and the executive functions of the network are based at that first site. Being first is not a branding claim — it is a structural one, and it compounds.",
     "cta": "Speak to the team.",
-    "ctaLink": "Start a conversation"
+    "ctaLink": "Start a conversation",
+    "ctaFacilities": "See the facilities",
+    "ctaNetwork": "The global sequence",
+    "leadershipBio1": "Founder and Chief Executive. Stage and screen production, broadcast and data-centre infrastructure, machine learning in Silicon Valley.",
+    "leadershipBio2": "Chief Operating Officer and Managing Director. His authority is substantive, not advisory."
   },
   "companyTeam": {
     "meta": {
@@ -1977,7 +1987,21 @@
     "matthewBio2": "He holds an MBA (Leadership and Enterprise) from the University of Sydney, a Bachelor of Business Management from the University of Queensland, and is a Member of the Australian Institute of Company Directors.",
     "matthewBio3": "Matthew is a sessional academic at the University of Sydney and an Associate Lecturer at Western Sydney University, where he teaches innovation and business leadership and contributes to the WSU Indigenous Centre of Excellence. He sits on the University of Sydney Faculty of Medicine and Health First Nations Cultural Safety Advisory Group.",
     "additionalLabel": "Additional executives",
-    "additionalDesc": "Property development, technology, entertainment production, project management, and financial strategy roles to be published as bios are confirmed."
+    "additionalDesc": "Property development, technology, entertainment production, project management, and financial strategy roles to be published as bios are confirmed.",
+    "portraitPlaceholder": "[ PORTRAIT ]",
+    "troyPortraitLabel": "TROY KELLY",
+    "troyPortraitInitials": "T. KELLY",
+    "troyPortraitAriaLabel": "Troy Kelly — portrait",
+    "roleCeo": "CEO",
+    "roleFounder": "FOUNDER",
+    "roleChiefExecutive": "CHIEF EXECUTIVE",
+    "troyEmail": "troy@team.production.city",
+    "troyPhone": "AU +61 2 9137 9100 · US +1 650 215 6253",
+    "matthewNation": "Wiradjuri",
+    "matthewPortraitAlt": "Portrait of Matthew Compton, Executive Director and COO of Production City, a Wiradjuri man",
+    "tbc": "TBC",
+    "bioPending": "[ BIO PENDING ]",
+    "executivePendingAriaLabel": "Executive {n} — bio pending"
   },
   "companyApproach": {
     "meta": {
@@ -2007,7 +2031,8 @@
     "hero": {
       "heading": "Campus Masterplan",
       "tagline": "A 6-hectare campus designed as one integrated system.",
-      "ariaLabel": "Production City campus masterplan — interactive 3D viewer. Click a building to explore its details."
+      "ariaLabel": "Production City campus masterplan — interactive 3D viewer. Click a building to explore its details.",
+      "eyebrow": "Production City™ — Campus"
     },
     "stats": {
       "heading": "Campus by the numbers",
@@ -2056,5 +2081,8 @@
     "disclaimer": {
       "forwardLooking": "This page contains forward-looking statements about Production City's development plans, campus specifications, and operational capabilities. Statements about facility capacities, dimensions, and features reflect current design intent and are subject to change. This is not a financial prospectus or investment solicitation."
     }
+  },
+  "brand": {
+    "name": "Production City"
   }
 }

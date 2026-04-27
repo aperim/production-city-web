@@ -78,13 +78,13 @@ function CompanyPageContent() {
             href="/facilities"
             className="inline-flex items-center gap-2 bg-primary text-primary-foreground px-5 py-2.5 text-sm font-medium hover:opacity-90 transition-opacity"
           >
-            See the facilities →
+            {t("company.ctaFacilities")} →
           </a>
           <a
             href="/network"
             className="inline-flex items-center gap-2 border border-border px-5 py-2.5 text-sm text-foreground hover:bg-muted transition-colors"
           >
-            The global sequence →
+            {t("company.ctaNetwork")} →
           </a>
         </div>
       </section>
@@ -186,16 +186,16 @@ function CompanyPageContent() {
               <div
                 className="aspect-[4/5] border-0 flex flex-col justify-between p-4 text-xs font-mono tracking-widest text-muted-foreground"
                 role="img"
-                aria-label="Troy Kelly — portrait"
+                aria-label={t("companyTeam.troyPortraitAriaLabel")}
               >
-                <div className="flex justify-between"><span>TROY KELLY</span><span>CEO</span></div>
-                <span className="text-center">[ PORTRAIT ]</span>
-                <div className="flex justify-between"><span>FOUNDER</span><span>CHIEF EXECUTIVE</span></div>
+                <div className="flex justify-between"><span>{t("companyTeam.troyPortraitLabel")}</span><span>{t("companyTeam.roleCeo")}</span></div>
+                <span className="text-center">{t("companyTeam.portraitPlaceholder")}</span>
+                <div className="flex justify-between"><span>{t("companyTeam.roleFounder")}</span><span>{t("companyTeam.roleChiefExecutive")}</span></div>
               </div>
               <div className="p-4 pb-5">
-                <p className="text-base font-semibold text-foreground">Troy Kelly</p>
+                <p className="text-base font-semibold text-foreground">{t("companyTeam.troyName")}</p>
                 <p className="mt-2 text-sm text-muted-foreground leading-relaxed">
-                  Founder and Chief Executive. Stage and screen production, broadcast and data-centre infrastructure, machine learning in Silicon Valley.
+                  {t("company.leadershipBio1")}
                 </p>
               </div>
             </div>
@@ -208,7 +208,7 @@ function CompanyPageContent() {
               >
                 <img
                   src={MEDIA["team-matthew-compton"]?.darkSrc ?? "/media/team-matthew-compton/dark.jpg"}
-                  alt="Portrait of Matthew Compton, Executive Director and COO of Production City, a Wiradjuri man"
+                  alt={t("companyTeam.matthewPortraitAlt")}
                   width={900}
                   height={1200}
                   loading="lazy"
@@ -217,16 +217,16 @@ function CompanyPageContent() {
               </div>
               <div className="p-4 pb-5">
                 <p className="text-base font-semibold text-foreground">
-                  Matthew Compton{" "}
+                  {t("companyTeam.matthewName")}{" "}
                   <span
                     className="text-xs font-mono"
                     style={{ color: "var(--ochre, oklch(0.72 0.15 60))" }}
                   >
-                    Wiradjuri
+                    {t("companyTeam.matthewNation")}
                   </span>
                 </p>
                 <p className="mt-2 text-sm text-muted-foreground leading-relaxed">
-                  Chief Operating Officer and Managing Director. His authority is substantive, not advisory.
+                  {t("company.leadershipBio2")}
                 </p>
               </div>
             </div>
@@ -284,7 +284,7 @@ function CompanyPageContent() {
 
       {/* CTA */}
       <section className="py-12 border-b border-primary text-center" aria-labelledby="company-cta-heading">
-        <p className="text-xs font-mono tracking-widest text-primary uppercase mb-4">Next</p>
+        <p className="text-xs font-mono tracking-widest text-primary uppercase mb-4">{t("common.next")}</p>
         <h2 id="company-cta-heading" className="text-xl font-semibold text-foreground mb-6">
           {t("company.cta")}
         </h2>

@@ -158,10 +158,10 @@ function FacilityCommercialSoundStagesContent() {
       {/* Sibling navigation */}
       <nav className="py-6 border-b border-border flex flex-wrap gap-6 text-xs font-mono tracking-widest text-muted-foreground uppercase" aria-label="Facility navigation">
         <a href="/facilities/screen-sound-stages" className="border-b border-current pb-1 hover:text-foreground transition-colors">
-          ← A · Screen stages
+          {t("facilities.commercialStages.detail.siblingPrev")}
         </a>
         <a href="/facilities/broadcast-theatre" className="border-b border-current pb-1 hover:text-foreground transition-colors">
-          C · Broadcast theatre →
+          {t("facilities.commercialStages.detail.siblingNext")}
         </a>
       </nav>
 

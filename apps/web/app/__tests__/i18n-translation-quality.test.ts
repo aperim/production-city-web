@@ -230,6 +230,18 @@ describe("i18n no untranslated English leakage", () => {
     /^legal\.terms\.liability\.items\.\d+$/,
     /^legal\.terms\.usage\.items\.\d+$/,
     /^legal\.terms\.disclaimer\.items\.\d+$/,
+    // companyTeam keys that are non-translatable by nature
+    /\.troyEmail$/,           // email address
+    /\.troyPhone$/,           // phone number with country prefixes
+    /\.troyPortraitLabel$/,   // person name (like troyName)
+    /\.troyPortraitInitials$/, // name initials
+    /\.roleCeo$/,             // "CEO" is an international abbreviation
+    /\.tbc$/,                 // "TBC" is used universally
+    /\.bioPending$/,           // decorative placeholder notation
+    /\.portraitPlaceholder$/,  // decorative placeholder notation
+    /\.troyPortraitAriaLabel$/, // person name + "portrait" (same word in French)
+    // masterplan eyebrow: "Campus" is the same Latin-origin word in es/fr/pt
+    /^masterplan\.hero\.eyebrow$/,
   ];
 
   for (const locale of LOCALES.filter((l) => l !== "en")) {

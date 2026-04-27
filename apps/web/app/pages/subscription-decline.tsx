@@ -75,7 +75,7 @@ function SubscriptionDeclinePageContent() {
       <div className="flex min-h-screen items-center justify-center bg-background p-4">
         <div className="w-full max-w-md rounded-lg border border-border bg-card p-8 text-center">
           <div className="mb-6">
-            <p className="text-lg font-semibold text-foreground">Production City</p>
+            <p className="text-lg font-semibold text-foreground">{t("brand.name")}</p>
           </div>
 
           {status === "loading" && (

@@ -332,7 +332,8 @@
       "title": "Actualités",
       "description": "Dernières nouvelles et mises à jour de Production City",
       "empty": "Aucune annonce pour le moment. Revenez bientôt pour les mises à jour de l'équipe Production City.",
-      "filter_all": "Tout"
+      "filter_all": "Tout",
+      "loadError": "Échec du chargement des annonces."
     },
     "detail": {
       "back": "Retour aux Actualités",
@@ -342,7 +343,8 @@
       "subscribed_banner": "Vous êtes abonné aux actualités {categoryName}",
       "subscribe_cta": "Recevez des notifications sur les actualités {categoryName}",
       "not_found": "Non trouvé",
-      "not_found_description": "La page que vous recherchez n'existe pas."
+      "not_found_description": "La page que vous recherchez n'existe pas.",
+      "subscribe": "S’abonner"
     },
     "meta": {
       "title": "Annonces — Production City",
@@ -888,7 +890,7 @@
     "masterplanTeaser": {
       "eyebrow": "Plan directeur du campus",
       "heading": "Le campus, en trois dimensions.",
-"body": "Six plateaux de tournage, un théâtre de diffusion, un pôle créatif, un backlot et un espace public — explorez l'intégralité du site de 6 hectares en modèle 3D interactif.",
+      "body": "Six plateaux de tournage, un théâtre de diffusion, un pôle créatif, un backlot et un espace public — explorez l'intégralité du site de 6 hectares en modèle 3D interactif.",
       "ctaLabel": "Explorer le campus en 3D →"
     },
     "hero": {
@@ -1151,7 +1153,9 @@
         "statGrid": "15",
         "statGridLabel": "Mètres jusqu'à la grille",
         "cta": "Réservez un plateau commercial.",
-        "ctaLink": "Enquire"
+        "ctaLink": "Enquire",
+        "siblingPrev": "← A · Studios d’écran",
+        "siblingNext": "C · Théâtre de diffusion →"
       }
     },
     "broadcastTheatre": {
@@ -1958,7 +1962,11 @@
     "pullQuoteLabel": "05 — Sur le premier site",
     "pullQuote": "Le premier campus est en cours de construction. Les normes techniques, la recherche et le développement, et les fonctions exécutives du réseau sont basés sur ce premier site. Être premier n'est pas une revendication de marque — c'est une revendication structurelle, et elle se capitalise.",
     "cta": "Parler à l'équipe.",
-    "ctaLink": "Démarrer une conversation"
+    "ctaLink": "Démarrer une conversation",
+    "ctaFacilities": "Voir les installations",
+    "ctaNetwork": "La séquence mondiale",
+    "leadershipBio1": "Fondateur et directeur général. Production scénique et audiovisuelle, infrastructure de diffusion et de centres de données, apprentissage automatique dans la Silicon Valley.",
+    "leadershipBio2": "Directeur des opérations et directeur général. Son autorité est substantielle, et non consultative."
   },
   "companyTeam": {
     "meta": {
@@ -1979,7 +1987,21 @@
     "matthewBio2": "Il est titulaire d'un MBA (Leadership et Entreprise) de l'Université de Sydney, d'une Licence en gestion d'entreprise de l'Université du Queensland, et est membre de l'Institut australien des administrateurs de sociétés.",
     "matthewBio3": "Matthew est chargé d'enseignement à l'Université de Sydney et maître de conférences associé à l'Université Western Sydney, où il enseigne l'innovation et le leadership d'entreprise et contribue au WSU Indigenous Centre of Excellence. Il siège au groupe consultatif sur la sécurité culturelle des Premières Nations de la Faculté de médecine et de santé de l'Université de Sydney.",
     "additionalLabel": "Cadres supplémentaires",
-    "additionalDesc": "Les rôles en développement immobilier, technologie, production de divertissement, gestion de projet et stratégie financière seront publiés à mesure que les biographies seront confirmées."
+    "additionalDesc": "Les rôles en développement immobilier, technologie, production de divertissement, gestion de projet et stratégie financière seront publiés à mesure que les biographies seront confirmées.",
+    "portraitPlaceholder": "[ PORTRAIT ]",
+    "troyPortraitLabel": "TROY KELLY",
+    "troyPortraitInitials": "T. KELLY",
+    "troyPortraitAriaLabel": "Troy Kelly — portrait",
+    "roleCeo": "CEO",
+    "roleFounder": "FONDATEUR",
+    "roleChiefExecutive": "DIRECTEUR GÉNÉRAL",
+    "troyEmail": "troy@team.production.city",
+    "troyPhone": "AU +61 2 9137 9100 · US +1 650 215 6253",
+    "matthewNation": "Wiradjuri",
+    "matthewPortraitAlt": "Portrait de Matthew Compton, Directeur Général et COO de Production City, un homme Wiradjuri",
+    "tbc": "TBC",
+    "bioPending": "[ BIO EN ATTENTE ]",
+    "executivePendingAriaLabel": "Dirigeant {n} — bio en attente"
   },
   "companyApproach": {
     "meta": {
@@ -2009,7 +2031,8 @@
     "hero": {
       "heading": "Plan directeur du campus",
       "tagline": "Un campus de 6 hectares conçu comme un système intégré.",
-      "ariaLabel": "Plan directeur du campus Production City — visionneuse 3D interactive. Cliquez sur un bâtiment pour explorer ses détails."
+      "ariaLabel": "Plan directeur du campus Production City — visionneuse 3D interactive. Cliquez sur un bâtiment pour explorer ses détails.",
+      "eyebrow": "Production City™ — Campus"
     },
     "stats": {
       "heading": "Le campus en chiffres",
@@ -2058,5 +2081,8 @@
     "disclaimer": {
       "forwardLooking": "Cette page contient des déclarations prospectives sur les plans de développement, les spécifications du campus et les capacités opérationnelles de Production City. Les déclarations relatives aux capacités, dimensions et caractéristiques reflètent les intentions de conception actuelles et sont susceptibles d'être modifiées. Il ne s'agit pas d'un prospectus financier."
     }
+  },
+  "brand": {
+    "name": "Production City"
   }
 }

@@ -282,7 +282,7 @@ function FirstNationsPageContent() {
           className="text-xs font-mono tracking-widest uppercase mb-4"
           style={{ color: "var(--ochre, oklch(0.72 0.15 60))" }}
         >
-          Next
+          {t("common.next")}
         </p>
         <h2 id="fn-cta-heading" className="text-xl font-semibold text-foreground mb-6">
           {t("firstNations.ctaHeading")}
