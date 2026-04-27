@@ -22,7 +22,7 @@ import {
   useEoiSubmit,
 } from "../lib/use-landing-layout";
 import { MEDIA } from "../lib/media-config";
-import { FacilityStructuredData } from "../lib/structured-data";
+import { FacilityStructuredData, DublinCoreMeta } from "../lib/structured-data";
 
 
 interface FacilityBroadcastControlRoomPageProps {
@@ -59,6 +59,13 @@ function FacilityBroadcastControlRoomContent() {
         name="Broadcast Control Room"
         description="Production City Broadcast Control Room — a purpose-built nerve centre for live broadcast, remote production, and multi-signal management on the Production City campus."
         slug="broadcast-control-room"
+      />
+      <DublinCoreMeta
+        title="Broadcast Control Room — Production City"
+        description="Production City Broadcast Control Room — a purpose-built nerve centre for live broadcast, remote production, and multi-signal management."
+        subject="broadcast control room, live broadcast, remote production, Queensland, Australia"
+        path="/facilities/broadcast-control-room"
+        date="2026-04-27"
       />
       {/* Hero */}
       {MEDIA["facilities-control-room"] && (

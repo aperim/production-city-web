@@ -22,7 +22,7 @@ import {
   useEoiSubmit,
 } from "../lib/use-landing-layout";
 import { MEDIA } from "../lib/media-config";
-import { FacilityStructuredData } from "../lib/structured-data";
+import { FacilityStructuredData, DublinCoreMeta } from "../lib/structured-data";
 
 
 interface FacilityScreenSoundStagesPageProps {
@@ -60,6 +60,13 @@ function FacilityScreenSoundStagesContent() {
         name="Screen Sound Stages"
         description="Production City Screen Sound Stages — purpose-built LED-volume and traditional screen stages for film and television production on the Production City campus."
         slug="screen-sound-stages"
+      />
+      <DublinCoreMeta
+        title="Screen Sound Stages — Production City"
+        description="Production City Screen Sound Stages — purpose-built LED-volume and traditional screen stages for film and television production."
+        subject="screen sound stages, LED volume, film production, television production, Queensland, Australia"
+        path="/facilities/screen-sound-stages"
+        date="2026-04-27"
       />
       {/* Hero */}
       {MEDIA["facilities-screen-stage"] && (

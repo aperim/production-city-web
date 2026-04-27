@@ -5,7 +5,7 @@ import { tArray } from "../i18n/index";
 import type { SupportedLocale } from "../i18n/index.js";
 import { LandingPageTemplate } from "@productioncity/holding-ui";
 import { useLandingNav, useLandingFooter } from "../lib/use-landing-layout";
-import { SimpleWebPageStructuredData } from "../lib/structured-data";
+import { SimpleWebPageStructuredData, DublinCoreMeta } from "../lib/structured-data";
 
 interface TermsPageProps {
   serverLocale?: SupportedLocale;
@@ -40,6 +40,13 @@ function TermsPageContent() {
         name="Terms of Use — Production City"
         description="Terms of use for Production City (operated by Aperim Pty Ltd): the conditions governing your use of our website and services."
         path="/terms"
+      />
+      <DublinCoreMeta
+        title="Terms of Use — Production City"
+        description="Terms of use for Production City: the conditions governing your use of our website and services."
+        subject="terms of use, legal, conditions, website policy"
+        path="/terms"
+        date="2026-04-27"
       />
       <div className="mx-auto max-w-3xl py-12">
         <a

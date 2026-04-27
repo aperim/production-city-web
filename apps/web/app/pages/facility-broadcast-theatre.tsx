@@ -22,7 +22,7 @@ import {
   useEoiSubmit,
 } from "../lib/use-landing-layout";
 import { MEDIA } from "../lib/media-config";
-import { FacilityStructuredData } from "../lib/structured-data";
+import { FacilityStructuredData, DublinCoreMeta } from "../lib/structured-data";
 
 
 interface FacilityBroadcastTheatrePageProps {
@@ -60,6 +60,13 @@ function FacilityBroadcastTheatreContent() {
         name="Broadcast Theatre"
         description="Production City Broadcast Theatre — a large-format, acoustically designed performance and broadcast venue supporting live events, screen productions, and hybrid stage-screen presentations."
         slug="broadcast-theatre"
+      />
+      <DublinCoreMeta
+        title="Broadcast Theatre — Production City"
+        description="Production City Broadcast Theatre — large-format, acoustically designed venue for live events, screen productions, and hybrid stage-screen presentations."
+        subject="broadcast theatre, live events, screen productions, stage, Queensland, Australia"
+        path="/facilities/broadcast-theatre"
+        date="2026-04-27"
       />
       {/* Hero */}
       {MEDIA["facilities-broadcast-theatre"] && (

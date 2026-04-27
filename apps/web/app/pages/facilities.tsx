@@ -23,7 +23,7 @@ import {
   useEoiSubmit,
 } from "../lib/use-landing-layout";
 import { MEDIA } from "../lib/media-config";
-import { FacilitiesStructuredData } from "../lib/structured-data";
+import { FacilitiesStructuredData, DublinCoreMeta } from "../lib/structured-data";
 
 
 interface FacilitiesPageProps {
@@ -118,6 +118,14 @@ function FacilitiesPageContent() {
   return (
     <LandingPageTemplate nav={nav} footer={footer}>
       <FacilitiesStructuredData />
+      <DublinCoreMeta
+        title="Facilities — Production City"
+        description="Production City facilities: commercial sound stages, screen sound stages, broadcast theatre, and broadcast control room — all on one integrated campus."
+        subject="film studio facilities, sound stages, broadcast theatre, screen production, Queensland"
+        type="Collection"
+        path="/facilities"
+        date="2026-04-27"
+      />
       {/* ═══════════ PAGE HERO ═══════════ */}
       {MEDIA["facilities-hero"] && (
         <MediaHero

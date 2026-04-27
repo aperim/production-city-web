@@ -26,7 +26,7 @@ import {
   listCategories,
   type PublicAnnouncement,
 } from "../lib/api-client";
-import { AnnouncementsStructuredData } from "../lib/structured-data";
+import { AnnouncementsStructuredData, DublinCoreMeta } from "../lib/structured-data";
 
 /** Map API announcement to UI AnnouncementSummary. */
 function toSummary(a: PublicAnnouncement): AnnouncementSummary {
@@ -138,6 +138,14 @@ function AnnouncementsPageContent({ initialCategory }: AnnouncementsPageContentP
   return (
     <LandingPageTemplate nav={nav} footer={footer}>
       <AnnouncementsStructuredData />
+      <DublinCoreMeta
+        title="Updates — Production City"
+        description="Latest news and updates from Production City."
+        subject="news, updates, announcements, Production City"
+        type="Collection"
+        path="/announcements"
+        date="2026-04-27"
+      />
       <div className="mx-auto max-w-6xl px-4 py-12 sm:px-6 lg:px-8">
         {/* Page header */}
         <header className="mb-8">

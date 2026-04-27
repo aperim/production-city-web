@@ -5,7 +5,7 @@ import type { SupportedLocale } from "../i18n/index.js";
 import { tArray } from "../i18n/index";
 import { LandingPageTemplate } from "@productioncity/holding-ui";
 import { useLandingNav, useLandingFooter } from "../lib/use-landing-layout";
-import { SimpleWebPageStructuredData } from "../lib/structured-data";
+import { SimpleWebPageStructuredData, DublinCoreMeta } from "../lib/structured-data";
 
 
 interface PrivacyPageProps {
@@ -93,6 +93,13 @@ function PrivacyPageContent() {
         name="Privacy Policy — Production City"
         description="Privacy policy for Production City (operated by Aperim Pty Ltd): how we collect, use, and protect your personal information."
         path="/privacy"
+      />
+      <DublinCoreMeta
+        title="Privacy Policy — Production City"
+        description="Privacy policy for Production City: how we collect, use, and protect your personal information."
+        subject="privacy policy, data protection, personal information, legal"
+        path="/privacy"
+        date="2026-04-27"
       />
       <div className="mx-auto max-w-3xl py-12">
         <a

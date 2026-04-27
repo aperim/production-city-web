@@ -21,6 +21,7 @@ import {
   useLandingFooter,
 } from "../lib/use-landing-layout";
 import { MEDIA } from "../lib/media-config";
+import { DublinCoreMeta } from "../lib/structured-data";
 
 interface FAQEntry {
   question: string;
@@ -172,6 +173,14 @@ function FAQPageContent() {
     <LandingPageTemplate nav={nav} footer={footer}>
       {/* Schema.org structured data */}
       <FAQStructuredData entries={allEntries} />
+      <DublinCoreMeta
+        title="FAQ — Production City"
+        description="Frequently asked questions about Production City — the integrated screen and stage campus in Queensland, Australia."
+        subject="FAQ, questions, screen production, stage production, Queensland, Australia"
+        type="InteractiveResource"
+        path="/faq"
+        date="2026-04-27"
+      />
 
       {/* Hero */}
       {heroMedia && (

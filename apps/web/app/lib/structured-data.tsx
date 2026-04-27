@@ -438,6 +438,72 @@ export function CompanyApproachStructuredData() {
   );
 }
 
+// ─── Dublin Core metadata ─────────────────────────────────────────────────────
+
+export interface DublinCoreMetaProps {
+  /** Page title for DC.title */
+  title: string;
+  /** Page description for DC.description */
+  description?: string;
+  /** Topic keywords for DC.subject (comma-separated) */
+  subject?: string;
+  /**
+   * DCMI type vocabulary term — http://purl.org/dc/terms/type
+   * @default "Text"
+   */
+  type?: "Text" | "Collection" | "InteractiveResource" | "Image" | "Service";
+  /** URL path used to build DC.identifier (e.g. "/facilities") */
+  path: string;
+  /** ISO 8601 last-modified date for DC.date */
+  date?: string;
+  /** Content creator; defaults to "Production City" */
+  creator?: string;
+}
+
+/**
+ * Injects per-page Dublin Core <meta> tags into document.head via DOM.
+ *
+ * Site-wide static DC tags (publisher, rights, format, language) are emitted
+ * server-side by layout.tsx — they are NOT repeated here to avoid duplication.
+ */
+export function DublinCoreMeta({
+  title,
+  description,
+  subject,
+  type = "Text",
+  path,
+  date,
+  creator = "Production City",
+}: DublinCoreMetaProps) {
+  const { locale } = useTranslation();
+  const prefix = locale === "en" ? "" : `/${locale}`;
+  const identifier = `${SITE_URL}${prefix}${path}`;
+
+  useEffect(() => {
+    const entries: [string, string][] = [["DC.title", title], ["DC.creator", creator]];
+    if (subject) entries.push(["DC.subject", subject]);
+    if (description) entries.push(["DC.description", description]);
+    if (date) entries.push(["DC.date", date]);
+    entries.push(["DC.type", type], ["DC.identifier", identifier]);
+
+    const elements = entries.map(([name, content]) => {
+      const meta = document.createElement("meta");
+      meta.name = name;
+      meta.content = content;
+      document.head.appendChild(meta);
+      return meta;
+    });
+
+    return () => {
+      for (const el of elements) el.remove();
+    };
+  }, [title, creator, subject, description, date, type, identifier]);
+
+  return null;
+}
+
+// ─── Announcements ─────────────────────────────────────────────────────────────
+
 /** Announcements list: fix to safe pattern */
 export function AnnouncementsStructuredData() {
   const { locale } = useTranslation();

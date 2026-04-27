@@ -22,7 +22,7 @@ import {
   useEoiSubmit,
 } from "../lib/use-landing-layout";
 import { MEDIA } from "../lib/media-config";
-import { FacilityStructuredData } from "../lib/structured-data";
+import { FacilityStructuredData, DublinCoreMeta } from "../lib/structured-data";
 
 
 interface FacilityCommercialSoundStagesPageProps {
@@ -60,6 +60,13 @@ function FacilityCommercialSoundStagesContent() {
         name="Commercial Sound Stages"
         description="Production City Commercial Sound Stages — flexible, column-free sound stages for commercial photography, advertising, and branded content productions."
         slug="commercial-sound-stages"
+      />
+      <DublinCoreMeta
+        title="Commercial Sound Stages — Production City"
+        description="Production City Commercial Sound Stages — flexible, column-free sound stages for commercial photography, advertising, and branded content."
+        subject="commercial sound stages, film studio, advertising, branded content, Queensland, Australia"
+        path="/facilities/commercial-sound-stages"
+        date="2026-04-27"
       />
       {/* Hero */}
       {MEDIA["facilities-commercial-stage"] && (

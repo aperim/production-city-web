@@ -26,7 +26,7 @@ import {
   useEoiSubmit,
 } from "../lib/use-landing-layout";
 import { MEDIA } from "../lib/media-config";
-import { SimpleWebPageStructuredData } from "../lib/structured-data";
+import { SimpleWebPageStructuredData, DublinCoreMeta } from "../lib/structured-data";
 
 
 interface VisionPageProps {
@@ -57,6 +57,13 @@ function VisionPageContent() {
         name="Vision & Global Network — Production City"
         description="Production City's global vision: a Queensland-anchored screen and stage campus networked with international co-production hubs and creative ecosystems."
         path="/vision"
+      />
+      <DublinCoreMeta
+        title="Vision & Global Network — Production City"
+        description="Production City's global vision: a Queensland-anchored screen and stage campus networked with international co-production hubs and creative ecosystems."
+        subject="vision, global network, co-production, screen industry, Queensland, Australia"
+        path="/vision"
+        date="2026-04-27"
       />
       {/* Hero */}
       {heroMedia && (

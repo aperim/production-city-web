@@ -22,7 +22,7 @@ import {
   useEoiCategories,
   useEoiSubmit,
 } from "../lib/use-landing-layout";
-import { ServicesStructuredData } from "../lib/structured-data";
+import { ServicesStructuredData, DublinCoreMeta } from "../lib/structured-data";
 
 
 interface ServicesPageProps {
@@ -53,6 +53,13 @@ function ServicesPageContent() {
   return (
     <LandingPageTemplate nav={nav} footer={footer}>
       <ServicesStructuredData />
+      <DublinCoreMeta
+        title="Services — Production City"
+        description="Production City services for screen and stage productions: production, post-production, broadcast, live event, and studio services."
+        subject="production services, film services, stage services, broadcast, post-production, Queensland"
+        path="/services"
+        date="2026-04-27"
+      />
       {/* Hero */}
       {MEDIA["services-hero"] && (
         <MediaHero

@@ -15,6 +15,7 @@ import { useEffect, useRef, useState } from "react";
 import { declineSubscription } from "../lib/api-client";
 import { I18nProvider, useTranslation } from "../i18n/context";
 import type { SupportedLocale } from "../i18n/index.js";
+import { DublinCoreMeta } from "../lib/structured-data";
 
 
 interface SubscriptionDeclinePageProps {
@@ -71,6 +72,13 @@ function SubscriptionDeclinePageContent() {
     <>
       {/* SECURITY: Prevent referrer leakage */}
       <meta name="referrer" content="no-referrer" />
+      <DublinCoreMeta
+        title="Decline Subscription — Production City"
+        description="Decline a Production City subscription."
+        type="InteractiveResource"
+        path="/subscriptions/decline"
+        date="2026-04-27"
+      />
 
       <div className="flex min-h-screen items-center justify-center bg-background p-4">
         <div className="w-full max-w-md rounded-lg border border-border bg-card p-8 text-center">

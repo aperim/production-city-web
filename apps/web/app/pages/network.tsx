@@ -23,7 +23,7 @@ import {
   useEoiCategories,
   useEoiSubmit,
 } from "../lib/use-landing-layout";
-import { SimpleWebPageStructuredData } from "../lib/structured-data";
+import { SimpleWebPageStructuredData, DublinCoreMeta } from "../lib/structured-data";
 
 
 interface NetworkPageProps {
@@ -80,6 +80,13 @@ function NetworkPageContent() {
         name="Global Network — Production City"
         description="Production City's global network: an integrated screen and stage campus in Queensland connected to international co-production partners and creative hubs."
         path="/network"
+      />
+      <DublinCoreMeta
+        title="Global Network — Production City"
+        description="Production City's global network: an integrated screen and stage campus in Queensland connected to international co-production partners and creative hubs."
+        subject="global network, co-production, international, screen industry, Queensland, Australia"
+        path="/network"
+        date="2026-04-27"
       />
       {/* Hero */}
       {MEDIA["network-hero"] && (

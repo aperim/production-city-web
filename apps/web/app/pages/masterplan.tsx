@@ -26,7 +26,7 @@ import {
   useEoiCategories,
   useEoiSubmit,
 } from "../lib/use-landing-layout";
-import { SimpleWebPageStructuredData } from "../lib/structured-data";
+import { SimpleWebPageStructuredData, DublinCoreMeta } from "../lib/structured-data";
 
 /* Lazy-load the viewer to code-split Three.js into a separate chunk */
 const MasterplanViewer = lazy(() =>
@@ -98,6 +98,14 @@ function MasterplanPageContent() {
         name="Campus Masterplan — Production City"
         description="Explore the Production City campus masterplan: an integrated screen and stage precinct with sound stages, broadcast theatre, studio offices, and shared infrastructure."
         path="/masterplan"
+      />
+      <DublinCoreMeta
+        title="Campus Masterplan — Production City"
+        description="Explore the Production City campus masterplan: an integrated screen and stage precinct with sound stages, broadcast theatre, studio offices, and shared infrastructure."
+        subject="masterplan, campus, facilities, precinct, Queensland, Australia"
+        type="InteractiveResource"
+        path="/masterplan"
+        date="2026-04-27"
       />
       {/* ═══════════ HERO — full-bleed 3D viewer ═══════════ */}
       <section

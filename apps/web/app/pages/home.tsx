@@ -26,7 +26,7 @@ import {
   useEoiCategories,
   useEoiSubmit,
 } from "../lib/use-landing-layout";
-import { HomeStructuredData } from "../lib/structured-data";
+import { HomeStructuredData, DublinCoreMeta } from "../lib/structured-data";
 
 interface HomePageProps {
   serverLocale?: SupportedLocale;
@@ -100,6 +100,13 @@ function HomePageContent() {
   return (
     <LandingPageTemplate nav={{ ...nav, transparent: true }} footer={footer}>
       <HomeStructuredData />
+      <DublinCoreMeta
+        title="Production City — Integrated Screen & Stage Campus"
+        description="Australia's first purpose-built integrated screen and stage production campus in Queensland, combining sound stages, broadcast theatre, studio offices, and shared infrastructure."
+        subject="film studio, screen production, stage production, Queensland, Australia, integrated campus"
+        path="/"
+        date="2026-04-27"
+      />
       {/* ═══════════ HERO ═══════════ */}
       <section className="relative flex min-h-dvh flex-col justify-end bg-(--pc-color-neutral-950) px-(--pc-spacing-6) pb-12 text-(--pc-color-neutral-100)" aria-labelledby="hero-heading">
         {/* Hero background image */}

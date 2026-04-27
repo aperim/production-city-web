@@ -24,7 +24,7 @@ import {
   createSubscription,
   type PublicAnnouncement,
 } from "../lib/api-client";
-import { AnnouncementDetailStructuredData } from "../lib/structured-data";
+import { AnnouncementDetailStructuredData, DublinCoreMeta } from "../lib/structured-data";
 
 interface AnnouncementDetailPageContentProps {
   slug: string;
@@ -140,6 +140,14 @@ function AnnouncementDetailPageContent({ slug }: AnnouncementDetailPageContentPr
         publishedAt={announcement.publishedAt ?? ""}
         lastEditedAt={announcement.lastEditedAt}
         slug={announcement.slug}
+      />
+      <DublinCoreMeta
+        title={announcement.title}
+        description={announcement.summary}
+        type="Text"
+        path={`/announcements/${announcement.slug}`}
+        date={announcement.lastEditedAt ?? announcement.publishedAt ?? undefined}
+        creator={announcement.author.name ?? "Production City"}
       />
       <div className="mx-auto max-w-3xl px-4 py-12 sm:px-6">
         {/* Back link */}

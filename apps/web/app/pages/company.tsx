@@ -20,7 +20,7 @@ import {
   useEoiCategories,
   useEoiSubmit,
 } from "../lib/use-landing-layout";
-import { CompanyStructuredData } from "../lib/structured-data";
+import { CompanyStructuredData, DublinCoreMeta } from "../lib/structured-data";
 import { MEDIA } from "../lib/media-config";
 
 
@@ -62,6 +62,13 @@ function CompanyPageContent() {
   return (
     <LandingPageTemplate nav={nav} footer={footer}>
       <CompanyStructuredData />
+      <DublinCoreMeta
+        title="Company — Production City"
+        description="About Production City: our operating model, strategy, and the team building Australia's integrated screen and stage campus."
+        subject="company, about, production precinct, screen industry, Queensland, Australia"
+        path="/company"
+        date="2026-04-27"
+      />
       {/* Hero */}
       <section className="py-16 border-b border-border" aria-labelledby="page-heading">
         <p className="text-xs font-mono tracking-widest text-muted-foreground uppercase mb-4">

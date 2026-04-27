@@ -21,6 +21,7 @@ import { useLandingNav, useLandingFooter } from "../lib/use-landing-layout";
 import { LandingPageTemplate } from "@productioncity/holding-ui";
 import { useAuth } from "../lib/auth-context";
 import { ProtectedRoute } from "../lib/route-guard";
+import { DublinCoreMeta } from "../lib/structured-data";
 import {
   listCategories,
   listMySubscriptions,
@@ -145,6 +146,13 @@ function SubscriptionPreferencesContent() {
 
   return (
     <LandingPageTemplate nav={nav} footer={footer}>
+      <DublinCoreMeta
+        title="Subscription Preferences — Production City"
+        description="Manage your Production City subscription preferences."
+        type="InteractiveResource"
+        path="/settings/subscriptions"
+        date="2026-04-27"
+      />
       <div className="mx-auto max-w-2xl px-4 py-12 sm:px-6">
         <header className="mb-8">
           <h1 id="subscription-preferences-heading" className="text-2xl font-bold text-foreground">

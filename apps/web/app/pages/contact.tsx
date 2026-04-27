@@ -22,7 +22,7 @@ import {
   useEoiSubmit,
 } from "../lib/use-landing-layout";
 import { MEDIA } from "../lib/media-config";
-import { ContactStructuredData } from "../lib/structured-data";
+import { ContactStructuredData, DublinCoreMeta } from "../lib/structured-data";
 
 const VALID_CATEGORIES = new Set([
   "general",
@@ -102,6 +102,14 @@ function ContactPageContent() {
   return (
     <LandingPageTemplate nav={nav} footer={footer}>
       <ContactStructuredData />
+      <DublinCoreMeta
+        title="Contact — Production City"
+        description="Get in touch with Production City — enquiries for producers, investors, creatives, partners, education, employment, and general information."
+        subject="contact, enquiry, screen production, Queensland, Australia"
+        type="InteractiveResource"
+        path="/contact"
+        date="2026-04-27"
+      />
       {/* Hero */}
       {heroMedia && (
         <MediaHero

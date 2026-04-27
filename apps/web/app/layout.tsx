@@ -78,6 +78,14 @@ export default async function RootLayout({
         <meta name="twitter:image" content={OG_IMAGE_URL} />
         <meta name="twitter:image:alt" content="Production City™ — A vertically integrated screen and stage campus" />
 
+        {/* ── Dublin Core namespace declarations + site-wide static tags ── */}
+        <link rel="schema.DC" href="http://purl.org/dc/elements/1.1/" />
+        <link rel="schema.DCTERMS" href="http://purl.org/dc/terms/" />
+        <meta name="DC.publisher" content="Production City Pty Ltd" />
+        <meta name="DC.rights" content="© 2026 Production City Pty Ltd. All rights reserved." />
+        <meta name="DC.format" content="text/html" />
+        <meta name="DC.language" content={locale} />
+
         <meta name="theme-color" content="#0f172a" />
         <meta name="msapplication-TileColor" content="#0f172a" />
         <link rel="manifest" href="/site.webmanifest" />
