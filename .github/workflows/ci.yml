@@ -55,6 +55,12 @@ jobs:
       - name: Unit tests
         run: pnpm test
 
+      - name: Build
+        run: pnpm build
+
+      - name: Validate CSP hashes
+        run: node --experimental-transform-types --experimental-detect-module scripts/validate-csp-hashes.ts
+
       - name: Build Storybook
         run: pnpm build-storybook
 

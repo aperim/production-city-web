@@ -114,6 +114,9 @@ jobs:
           pnpm --filter ./apps/backend... build
           pnpm --filter ./apps/workers... build
 
+      - name: Validate CSP hashes
+        run: node --experimental-transform-types --experimental-detect-module scripts/validate-csp-hashes.ts
+
       - name: Upload build artifacts
         uses: actions/upload-artifact@v7
         with:
