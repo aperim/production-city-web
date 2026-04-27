@@ -493,6 +493,10 @@
       "changes": {
         "title": "শর্তাবলীতে পরিবর্তন",
         "description": "আমরা যেকোনো সময় এই শর্তাবলী সংশোধন করার অধিকার সংরক্ষণ করি।"
+      },
+      "contact": {
+        "title": "Contact",
+        "description": "আইনি জিজ্ঞাসার জন্য যোগাযোগ করুন: legal@production.city\n\nAperim Pty Ltd\nABN 46 150 699 737 | ACN 150 699 737\nSuite 108, 9 Hutchinson Street, St Peters NSW 2044, Australia"
       }
     }
   },

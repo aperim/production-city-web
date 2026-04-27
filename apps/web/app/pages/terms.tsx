@@ -44,7 +44,7 @@ function TermsPageContent() {
           {t("legal.terms.title")}
         </h1>
         <p className="mt-2 text-sm text-muted-foreground">
-          {t("legal.terms.effectiveDate", { date: "1 April 2025" })}
+          {t("legal.terms.effectiveDate", { date: "1 April 2026" })}
         </p>
 
         <p className="mt-6 text-base text-foreground">
@@ -112,12 +112,22 @@ function TermsPageContent() {
         </section>
 
         {/* Changes to These Terms */}
-        <section className="mt-10 border-t border-border pt-8" aria-labelledby="terms-changes">
+        <section className="mt-10" aria-labelledby="terms-changes">
           <h2 id="terms-changes" className="text-xl font-semibold text-foreground">
             {t("legal.terms.changes.title")}
           </h2>
           <p className="mt-2 text-sm text-muted-foreground">
             {t("legal.terms.changes.description")}
+          </p>
+        </section>
+
+        {/* Contact */}
+        <section className="mt-10 border-t border-border pt-8" aria-labelledby="terms-contact">
+          <h2 id="terms-contact" className="text-xl font-semibold text-foreground">
+            {t("legal.terms.contact.title")}
+          </h2>
+          <p className="mt-2 whitespace-pre-line text-sm text-muted-foreground">
+            {t("legal.terms.contact.description")}
           </p>
         </section>
       </div>

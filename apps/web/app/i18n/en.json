@@ -489,8 +489,10 @@
         "title": "Third-Party Services",
         "description": "We share your data with the following service providers:",
         "items": [
-          "Postmark (Wildbit LLC): Email delivery for confirmation and marketing communications",
-          "Cloudflare: Website hosting, CDN, and security services"
+          "Postmark (Wildbit LLC, USA): Email delivery for confirmation and marketing communications",
+          "Cloudflare, Inc. (USA): Website hosting, content delivery network, and security services",
+          "Twilio Inc. (USA): SMS communications where applicable",
+          "Google LLC (USA): Web font delivery via Google Fonts"
         ],
         "note": "These providers process data on our behalf under data processing agreements. We do not sell your personal data."
       },
@@ -517,13 +519,13 @@
       },
       "contact": {
         "title": "Contact Us",
-        "description": "For privacy inquiries, contact: privacy@production.city"
+        "description": "For privacy inquiries, contact: privacy@production.city\n\nAperim Pty Ltd\nABN 46 150 699 737 | ACN 150 699 737\nSuite 108, 9 Hutchinson Street, St Peters NSW 2044, Australia"
       }
     },
     "terms": {
       "title": "Terms of Use",
       "effectiveDate": "Effective date: {date}",
-      "intro": "These Terms of Use govern your access to and use of the Production City website operated by Aperim Pty Ltd.",
+      "intro": "These Terms of Use govern your access to and use of the Production City website operated by Aperim Pty Ltd (ABN 46 150 699 737 | ACN 150 699 737) of Suite 108, 9 Hutchinson Street, St Peters NSW 2044, Australia. By accessing this website, you agree to be bound by these terms.",
       "usage": {
         "title": "Use of Website",
         "description": "You may use this website for lawful purposes only. You agree not to use this website in any way that could damage, disable, or impair the website or interfere with any other party's use."
@@ -551,6 +553,10 @@
       "changes": {
         "title": "Changes to These Terms",
         "description": "We reserve the right to modify these terms at any time. Continued use of the website after changes constitutes acceptance of the modified terms."
+      },
+      "contact": {
+        "title": "Contact",
+        "description": "For legal inquiries, contact: legal@production.city\n\nAperim Pty Ltd\nABN 46 150 699 737 | ACN 150 699 737\nSuite 108, 9 Hutchinson Street, St Peters NSW 2044, Australia"
       }
     }
   },

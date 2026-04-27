@@ -103,7 +103,10 @@ export function useLandingFooter(): LandingFooterProps {
       phoneAU: "+61 2 9137 9100",
       phoneUS: "+1 650 215 6253",
     },
-    legalLinks: [],
+    legalLinks: [
+      { label: t("legal.privacyPolicy"), href: `${prefix}/privacy` },
+      { label: t("legal.termsOfUse"), href: `${prefix}/terms` },
+    ],
     languages: LOCALE_META.map((m) => ({
       code: m.code,
       label: m.nativeName,
@@ -115,7 +118,8 @@ export function useLandingFooter(): LandingFooterProps {
 
 /** Build EOI form labels from i18n context. */
 export function useEoiLabels(): EOIFormLabels {
-  const { t } = useTranslation();
+  const { t, locale } = useTranslation();
+  const prefix = locale === "en" ? "" : `/${locale}`;
 
   return {
     name: t("eoi.nameLabel"),
@@ -129,7 +133,7 @@ export function useEoiLabels(): EOIFormLabels {
     submitting: t("eoi.submitting"),
     success: t("eoi.successMessage"),
     error: t("eoi.errorMessage"),
-    privacyUrl: "#",
+    privacyUrl: `${prefix}/privacy`,
   };
 }
 

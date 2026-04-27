@@ -50,7 +50,7 @@ function PrivacyPageContent() {
           {t("legal.privacy.title")}
         </h1>
         <p className="mt-2 text-sm text-muted-foreground">
-          {t("legal.privacy.effectiveDate", { date: "1 April 2025" })}
+          {t("legal.privacy.effectiveDate", { date: "1 April 2026" })}
         </p>
 
         <p className="mt-6 text-base text-foreground">
@@ -178,7 +178,7 @@ function PrivacyPageContent() {
           <h2 id="privacy-contact" className="text-xl font-semibold text-foreground">
             {t("legal.privacy.contact.title")}
           </h2>
-          <p className="mt-2 text-sm text-muted-foreground">
+          <p className="mt-2 whitespace-pre-line text-sm text-muted-foreground">
             {t("legal.privacy.contact.description")}
           </p>
         </section>

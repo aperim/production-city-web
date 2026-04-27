@@ -493,6 +493,10 @@
       "changes": {
         "title": "規約の変更",
         "description": "当社はいつでもこの規約を変更する権利を留保します。変更後のウェブサイトの継続使用は、変更された規約への同意とみなされます。"
+      },
+      "contact": {
+        "title": "Contact",
+        "description": "法的なお問い合わせはこちら: legal@production.city\n\nAperim Pty Ltd\nABN 46 150 699 737 | ACN 150 699 737\nSuite 108, 9 Hutchinson Street, St Peters NSW 2044, Australia"
       }
     }
   },
