@@ -19,7 +19,10 @@ export async function generateMetadata(): Promise<Metadata> {
   return { title, description, openGraph: { title, description } };
 }
 
-export default function Page() {
+export default async function Page() {
+  const headersList = await headers();
+  const serverLocale = validateXLocale(headersList.get("X-Locale"));
+
   return (
     <ErrorBoundary>
       <FAQPage serverLocale={serverLocale} />
