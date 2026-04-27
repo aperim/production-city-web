@@ -17,6 +17,7 @@ import {
   ScrollRevealSection,
 } from "@productioncity/holding-ui";
 import { I18nProvider, useTranslation } from "../i18n/context";
+import type { SupportedLocale } from "../i18n/index.js";
 import {
   useLandingNav,
   useLandingFooter,
@@ -27,9 +28,14 @@ import {
 import { MEDIA } from "../lib/media-config";
 import { SimpleWebPageStructuredData } from "../lib/structured-data";
 
-export function VisionPage() {
+
+interface VisionPageProps {
+  serverLocale?: SupportedLocale;
+}
+
+export function VisionPage({ serverLocale }: VisionPageProps) {
   return (
-    <I18nProvider>
+    <I18nProvider serverLocale={serverLocale}>
       <VisionPageContent />
     </I18nProvider>
   );

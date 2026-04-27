@@ -14,6 +14,7 @@ import {
   EOISection,
 } from "@productioncity/holding-ui";
 import { I18nProvider, useTranslation } from "../i18n/context";
+import type { SupportedLocale } from "../i18n/index.js";
 import { MEDIA } from "../lib/media-config";
 import {
   useLandingNav,
@@ -24,9 +25,14 @@ import {
 } from "../lib/use-landing-layout";
 import { SimpleWebPageStructuredData } from "../lib/structured-data";
 
-export function NetworkPage() {
+
+interface NetworkPageProps {
+  serverLocale?: SupportedLocale;
+}
+
+export function NetworkPage({ serverLocale }: NetworkPageProps) {
   return (
-    <I18nProvider>
+    <I18nProvider serverLocale={serverLocale}>
       <NetworkPageContent />
     </I18nProvider>
   );

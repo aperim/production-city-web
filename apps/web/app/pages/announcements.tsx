@@ -19,6 +19,7 @@ import {
   type AnnouncementVisibility,
 } from "@productioncity/holding-ui";
 import { I18nProvider, useTranslation } from "../i18n/context";
+import type { SupportedLocale } from "../i18n/index.js";
 import { useLandingNav, useLandingFooter } from "../lib/use-landing-layout";
 import {
   listAnnouncements,
@@ -165,9 +166,14 @@ function AnnouncementsPageContent({ initialCategory }: AnnouncementsPageContentP
   );
 }
 
-export function AnnouncementsPage({ initialCategory }: { initialCategory?: string }) {
+interface AnnouncementsPageProps {
+  initialCategory?: string;
+  serverLocale?: SupportedLocale;
+}
+
+export function AnnouncementsPage({ initialCategory, serverLocale }: AnnouncementsPageProps) {
   return (
-    <I18nProvider>
+    <I18nProvider serverLocale={serverLocale}>
       <AnnouncementsPageContent initialCategory={initialCategory} />
     </I18nProvider>
   );

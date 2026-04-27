@@ -15,6 +15,7 @@ import {
 } from "@productioncity/holding-ui";
 import type { TranslationKey } from "../i18n/index";
 import { I18nProvider, useTranslation } from "../i18n/context";
+import type { SupportedLocale } from "../i18n/index.js";
 import {
   useLandingNav,
   useLandingFooter,
@@ -113,9 +114,14 @@ function FAQStructuredData({ entries }: { entries: FAQEntry[] }) {
   return <script ref={scriptRef} type="application/ld+json" />;
 }
 
-export function FAQPage() {
+
+interface FAQPageProps {
+  serverLocale?: SupportedLocale;
+}
+
+export function FAQPage({ serverLocale }: FAQPageProps) {
   return (
-    <I18nProvider>
+    <I18nProvider serverLocale={serverLocale}>
       <FAQPageContent />
     </I18nProvider>
   );

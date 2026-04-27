@@ -15,6 +15,7 @@ import {
   ScrollRevealSection,
 } from "@productioncity/holding-ui";
 import { I18nProvider, useTranslation } from "../i18n/context";
+import type { SupportedLocale } from "../i18n/index.js";
 import {
   useLandingNav,
   useLandingFooter,
@@ -25,9 +26,14 @@ import {
 import { MEDIA } from "../lib/media-config";
 import { SimpleWebPageStructuredData } from "../lib/structured-data";
 
-export function CreativePage() {
+
+interface CreativePageProps {
+  serverLocale?: SupportedLocale;
+}
+
+export function CreativePage({ serverLocale }: CreativePageProps) {
   return (
-    <I18nProvider>
+    <I18nProvider serverLocale={serverLocale}>
       <CreativePageContent />
     </I18nProvider>
   );

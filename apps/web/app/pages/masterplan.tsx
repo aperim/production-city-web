@@ -17,6 +17,7 @@ import {
 import { facilities, accessRouteLegend } from "@productioncity/masterplan-viewer/data";
 import type { Facility } from "@productioncity/masterplan-viewer";
 import { I18nProvider, useTranslation } from "../i18n/context";
+import type { SupportedLocale } from "../i18n/index.js";
 import { MEDIA } from "../lib/media-config";
 import {
   useLandingNav,
@@ -34,9 +35,14 @@ const MasterplanViewer = lazy(() =>
   })),
 );
 
-export function MasterplanPage() {
+
+interface MasterplanPageProps {
+  serverLocale?: SupportedLocale;
+}
+
+export function MasterplanPage({ serverLocale }: MasterplanPageProps) {
   return (
-    <I18nProvider>
+    <I18nProvider serverLocale={serverLocale}>
       <MasterplanPageContent />
     </I18nProvider>
   );

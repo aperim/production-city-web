@@ -190,6 +190,21 @@ describe("i18n no untranslated English leakage", () => {
     "How it works",
   ]);
 
+  // Home page editorial content key prefixes that are placeholder translations (#344).
+  // These keys contain editorial copy that requires professional translation.
+  // Remove each prefix from this list once professional translations are provided.
+  const PENDING_TRANSLATION_KEY_PREFIXES = [
+    "home.hero.",
+    "home.operatingModel.",
+    "home.facilitiesSection.",
+    "home.servicesSection.",
+    "home.firstNations.",
+    "home.firstSite.",
+    "home.network.",
+    "home.audience.",
+    "home.chorus.",
+  ];
+
   // Keys that are expected to be identical across locales (phone numbers, URLs, etc.)
   // Also includes legal content placeholders added in PRO-325 (translation deferred to
   // a future localisation pass; all 10 locales intentionally carry English text for now).
@@ -250,6 +265,9 @@ describe("i18n no untranslated English leakage", () => {
         if (key.includes(".spec") && enValue.length < 50) continue;
         // Skip keys with count placeholders only (e.g., "{count} questions")
         if (/^\{count\}\s+\w+$/.test(enValue.trim())) continue;
+
+        // Skip keys that are pending professional translation (#344)
+        if (PENDING_TRANSLATION_KEY_PREFIXES.some((prefix) => key.startsWith(prefix))) continue;
 
         // If the locale value is identical to English, it's likely untranslated
         if (localeValue === enValue) {

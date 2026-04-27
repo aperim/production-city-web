@@ -14,10 +14,16 @@
 import { useEffect, useRef, useState } from "react";
 import { confirmSubscription } from "../lib/api-client";
 import { I18nProvider, useTranslation } from "../i18n/context";
+import type { SupportedLocale } from "../i18n/index.js";
 
-export function SubscriptionConfirmPage() {
+
+interface SubscriptionConfirmPageProps {
+  serverLocale?: SupportedLocale;
+}
+
+export function SubscriptionConfirmPage({ serverLocale }: SubscriptionConfirmPageProps) {
   return (
-    <I18nProvider>
+    <I18nProvider serverLocale={serverLocale}>
       <SubscriptionConfirmPageContent />
     </I18nProvider>
   );

@@ -14,10 +14,16 @@
 import { useEffect, useRef, useState } from "react";
 import { declineSubscription } from "../lib/api-client";
 import { I18nProvider, useTranslation } from "../i18n/context";
+import type { SupportedLocale } from "../i18n/index.js";
 
-export function SubscriptionDeclinePage() {
+
+interface SubscriptionDeclinePageProps {
+  serverLocale?: SupportedLocale;
+}
+
+export function SubscriptionDeclinePage({ serverLocale }: SubscriptionDeclinePageProps) {
   return (
-    <I18nProvider>
+    <I18nProvider serverLocale={serverLocale}>
       <SubscriptionDeclinePageContent />
     </I18nProvider>
   );

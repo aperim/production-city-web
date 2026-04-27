@@ -6,6 +6,7 @@
 import type { Metadata } from "vinext/shims/metadata";
 import { ErrorBoundary } from "../error-boundary";
 import { FAQPage } from "../pages/faq";
+import { getServerLocale } from "../i18n/get-server-locale.js";
 
 export const metadata: Metadata = {
   title: "FAQ — Production City™",
@@ -26,7 +27,8 @@ export const metadata: Metadata = {
   },
 };
 
-export default function Page() {
+export default async function Page() {
+  const serverLocale = await getServerLocale();
   return (
     <ErrorBoundary>
       <FAQPage />

@@ -13,6 +13,7 @@ import {
   ForwardLookingDisclaimer,
 } from "@productioncity/holding-ui";
 import { I18nProvider, useTranslation } from "../i18n/context";
+import type { SupportedLocale } from "../i18n/index.js";
 import {
   useLandingNav,
   useLandingFooter,
@@ -23,9 +24,14 @@ import {
 import { MEDIA } from "../lib/media-config";
 import { FacilityStructuredData } from "../lib/structured-data";
 
-export function FacilityScreenSoundStagesPage() {
+
+interface FacilityScreenSoundStagesPageProps {
+  serverLocale?: SupportedLocale;
+}
+
+export function FacilityScreenSoundStagesPage({ serverLocale }: FacilityScreenSoundStagesPageProps) {
   return (
-    <I18nProvider>
+    <I18nProvider serverLocale={serverLocale}>
       <FacilityScreenSoundStagesContent />
     </I18nProvider>
   );

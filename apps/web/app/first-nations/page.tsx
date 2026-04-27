@@ -6,6 +6,7 @@
 import type { Metadata } from "vinext/shims/metadata";
 import { ErrorBoundary } from "../error-boundary";
 import { FirstNationsPage } from "../pages/first-nations";
+import { getServerLocale } from "../i18n/get-server-locale.js";
 
 export const metadata: Metadata = {
   title: "First Nations — Production City™",
@@ -28,10 +29,12 @@ export const metadata: Metadata = {
   },
 };
 
-export default function Page() {
+export default async function Page() {
+  const serverLocale = await getServerLocale();
+
   return (
     <ErrorBoundary>
-      <FirstNationsPage />
+      <FirstNationsPage serverLocale={serverLocale} />
     </ErrorBoundary>
   );
 }

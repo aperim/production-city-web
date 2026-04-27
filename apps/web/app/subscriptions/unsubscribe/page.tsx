@@ -5,11 +5,14 @@
 
 import { ErrorBoundary } from "../../error-boundary";
 import { SubscriptionUnsubscribePage } from "../../pages/subscription-unsubscribe";
+import { getServerLocale } from "../../i18n/get-server-locale.js";
 
-export default function Page() {
+export default async function Page() {
+  const serverLocale = await getServerLocale();
+
   return (
     <ErrorBoundary>
-      <SubscriptionUnsubscribePage />
+      <SubscriptionUnsubscribePage serverLocale={serverLocale} />
     </ErrorBoundary>
   );
 }

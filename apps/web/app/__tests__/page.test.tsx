@@ -1,6 +1,10 @@
 import { describe, it, expect, vi } from "vitest";
-import { createElement } from "react";
 import { renderToString } from "react-dom/server";
+
+// Mock vinext server shims
+vi.mock("vinext/shims/headers", () => ({
+  headers: () => Promise.resolve(new Map([["X-Locale", "en"]])),
+}));
 
 // Mock the i18n context to avoid needing a full I18nProvider
 vi.mock("../i18n/context", () => ({
@@ -21,8 +25,9 @@ vi.mock("../lib/api-client", () => ({
 import Page from "../page";
 
 describe("Page", () => {
-  it("renders without crashing", () => {
-    const html = renderToString(createElement(Page));
+  it("renders without crashing", async () => {
+    const result = await Page();
+    const html = renderToString(result);
     expect(html).toContain("Production City");
   });
 });

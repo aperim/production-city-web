@@ -13,6 +13,7 @@ import {
   ForwardLookingDisclaimer,
 } from "@productioncity/holding-ui";
 import { I18nProvider, useTranslation } from "../i18n/context";
+import type { SupportedLocale } from "../i18n/index.js";
 import { MEDIA } from "../lib/media-config";
 import {
   useLandingNav,
@@ -23,9 +24,14 @@ import {
 } from "../lib/use-landing-layout";
 import { ServicesStructuredData } from "../lib/structured-data";
 
-export function ServicesPage() {
+
+interface ServicesPageProps {
+  serverLocale?: SupportedLocale;
+}
+
+export function ServicesPage({ serverLocale }: ServicesPageProps) {
   return (
-    <I18nProvider>
+    <I18nProvider serverLocale={serverLocale}>
       <ServicesPageContent />
     </I18nProvider>
   );

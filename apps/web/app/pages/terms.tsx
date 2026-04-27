@@ -2,13 +2,18 @@
 
 import { I18nProvider, useTranslation } from "../i18n/context";
 import { tArray } from "../i18n/index";
+import type { SupportedLocale } from "../i18n/index.js";
 import { LandingPageTemplate } from "@productioncity/holding-ui";
 import { useLandingNav, useLandingFooter } from "../lib/use-landing-layout";
 import { SimpleWebPageStructuredData } from "../lib/structured-data";
 
-export function TermsPage() {
+interface TermsPageProps {
+  serverLocale?: SupportedLocale;
+}
+
+export function TermsPage({ serverLocale }: TermsPageProps) {
   return (
-    <I18nProvider>
+    <I18nProvider serverLocale={serverLocale}>
       <TermsPageContent />
     </I18nProvider>
   );

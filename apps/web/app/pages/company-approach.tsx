@@ -13,6 +13,7 @@ import {
   EOISection,
 } from "@productioncity/holding-ui";
 import { I18nProvider, useTranslation } from "../i18n/context";
+import type { SupportedLocale } from "../i18n/index.js";
 import { MEDIA } from "../lib/media-config";
 import {
   useLandingNav,
@@ -23,9 +24,14 @@ import {
 } from "../lib/use-landing-layout";
 import { CompanyApproachStructuredData } from "../lib/structured-data";
 
-export function CompanyApproachPage() {
+
+interface CompanyApproachPageProps {
+  serverLocale?: SupportedLocale;
+}
+
+export function CompanyApproachPage({ serverLocale }: CompanyApproachPageProps) {
   return (
-    <I18nProvider>
+    <I18nProvider serverLocale={serverLocale}>
       <CompanyApproachPageContent />
     </I18nProvider>
   );

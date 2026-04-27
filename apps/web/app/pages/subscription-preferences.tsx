@@ -16,6 +16,7 @@ import {
   type SubscriptionChannel,
 } from "@productioncity/holding-ui";
 import { I18nProvider, useTranslation } from "../i18n/context";
+import type { SupportedLocale } from "../i18n/index.js";
 import { useLandingNav, useLandingFooter } from "../lib/use-landing-layout";
 import { LandingPageTemplate } from "@productioncity/holding-ui";
 import { useAuth } from "../lib/auth-context";
@@ -190,10 +191,15 @@ function SubscriptionPreferencesContent() {
   );
 }
 
-export function SubscriptionPreferencesPage() {
+
+interface SubscriptionPreferencesPageProps {
+  serverLocale?: SupportedLocale;
+}
+
+export function SubscriptionPreferencesPage({ serverLocale }: SubscriptionPreferencesPageProps) {
   return (
     <ProtectedRoute loginPath="/login?redirect=/settings/subscriptions">
-      <I18nProvider>
+      <I18nProvider serverLocale={serverLocale}>
         <SubscriptionPreferencesContent />
       </I18nProvider>
     </ProtectedRoute>

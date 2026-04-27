@@ -3,6 +3,8 @@
  * Matches reference/index.html design: hero, operating model,
  * facilities preview, services, First Nations, pull quote,
  * network sequence, audience routing, chorus, acknowledgement, EOI.
+ *
+ * All copy is routed through t() (#344).
  */
 
 "use client";
@@ -15,6 +17,7 @@ import {
   SignalDiagram,
 } from "@productioncity/holding-ui";
 import { I18nProvider, useTranslation } from "../i18n/context";
+import type { SupportedLocale } from "../i18n/index.js";
 import { MEDIA } from "../lib/media-config";
 import {
   useLandingNav,
@@ -25,128 +28,17 @@ import {
 } from "../lib/use-landing-layout";
 import { HomeStructuredData } from "../lib/structured-data";
 
-export function HomePage() {
+interface HomePageProps {
+  serverLocale?: SupportedLocale;
+}
+
+export function HomePage({ serverLocale }: HomePageProps) {
   return (
-    <I18nProvider>
+    <I18nProvider serverLocale={serverLocale}>
       <HomePageContent />
     </I18nProvider>
   );
 }
-
-/* ─── Operating model pillars data ─── */
-const PILLARS = [
-  {
-    num: "i",
-    title: "One IP · two formats",
-    text: "Script, libretto, score, pre-vis and digital assets are authored once, then split into a screen lane and a stage lane that run in parallel rather than in sequence.",
-  },
-  {
-    num: "ii",
-    title: "One operator · one campus",
-    text: "Venue, stack and service teams under a single brand. Tenants sign one contract, coordinate with one counterparty, and draw on whichever combination of capabilities the work requires.",
-  },
-  {
-    num: "iii",
-    title: "Shared pipeline, specialised finishes",
-    text: "Design, build, costume, and digital assets are common. The screen lane takes them into photography, editorial, VFX and sound. The stage lane takes them into rehearsal, tech, opening and tour.",
-  },
-  {
-    num: "iv",
-    title: "Closed-loop canon",
-    text: "Distribution and audience data feed back into the IP strategy. The next project inherits what the last one learned, across both formats, not just one.",
-  },
-] as const;
-
-const STATS = [
-  { value: "1", label: "operator" },
-  { value: "2", label: "lanes, in parallel" },
-  { value: "19", label: "stations from idea to audience" },
-  { value: "1", unit: " loop", label: "analytics → ideation" },
-] as const;
-
-/* ─── Audience routing data ─── */
-const AUDIENCES = [
-  {
-    num: "I",
-    title: "For producers and studios",
-    text: "Book a stage, a volume, and a full service stack. One operator, one schedule, no vendor chain to manage.",
-    href: "#eoi-section",
-  },
-  {
-    num: "II",
-    title: "For government",
-    text: "The first campus of a global network. Direct jobs, screen-sector training, local procurement, and First Nations outcomes built into the operating model.",
-    href: "#eoi-section",
-  },
-  {
-    num: "III",
-    title: "For investors",
-    text: "Vertically integrated model, global campus network, bankable infrastructure.",
-    href: "#eoi-section",
-  },
-  {
-    num: "IV",
-    title: "For technology partners",
-    text: "Test and ship production technology inside a working campus. LED volume, real-time rendering, motion capture, and broadcast under live conditions.",
-    href: "#eoi-section",
-  },
-] as const;
-
-/* ─── Network regions ─── */
-const REGIONS = [
-  { region: "Australia", status: "Campus planned", highlight: true },
-  { region: "Europe", status: "Campus planned", highlight: false },
-  { region: "Asia Pacific", status: "Campus planned", highlight: false },
-  { region: "Africa", status: "Campus planned", highlight: false },
-  { region: "North America", status: "Campus planned", highlight: false },
-] as const;
-
-/* ─── Services list ─── */
-const SERVICES = [
-  "VIRTUAL PRODUCTION", "SET CONSTRUCTION", "PROPS", "COSTUME",
-  "MAKEUP & PROSTHETICS", "SPECIAL EFFECTS", "STUNTS & RIGGING",
-  "MOTION CAPTURE", "AUDIO & MUSIC", "SCRIPT & SCREENPLAY",
-  "GRAPHIC DESIGN", "ANIMATION & MOTION", "3D & CGI",
-  "POST-PRODUCTION", "AR/VR", "BROADCAST COORDINATION",
-] as const;
-
-/* ─── Facilities tiles data ─── */
-const FACILITY_TILES = [
-  {
-    label: "A · SCREEN SOUND STAGES",
-    heading: "Grand-scale screen work. Engineered for it.",
-    specs: "45 m × 45 m · 15 m to grid\nNRC 1.05 · NC 25\nFlat · Arc · Full-surround LED",
-    linkLabel: "A · Screen sound stages",
-  },
-  {
-    label: "B · COMMERCIAL SOUND STAGES",
-    heading: "Small footprint. Full specification.",
-    specs: "10 m × 10 m · 15 m to grid\nNRC 1.05 · NC 25\nWalk-in-ready LED volume",
-    linkLabel: "B · Commercial stages",
-  },
-  {
-    label: "C · BROADCAST THEATRE",
-    heading: "A live theatre wired as a broadcast studio.",
-    specs: "450 theatre · 300 cabaret\n8 robotic camera positions\nAR/VR-ready",
-    linkLabel: "C · Broadcast theatre",
-  },
-] as const;
-
-const [screenTile, commercialTile, theatreTile] = FACILITY_TILES;
-
-/* ─── Section headings as constants (avoids hardcoded JSX strings) ─── */
-const HEADINGS = {
-  hero: "We make stories.",
-  operatingModel: "One operator. One campus. Script to delivery.",
-  facilitiesPreview: "Built together. Not retrofitted.",
-  services: "Every discipline from script to delivery. On one campus.",
-  firstNations: "Embedded, not added on.",
-  firstSite: "First site advantage",
-  network: "Five continents. One standard.",
-  audience: "Four doors in.",
-  chorus: "We make stories",
-  controlRoom: "The nerve centre.",
-} as const;
 
 function HomePageContent() {
   const { t, locale } = useTranslation();
@@ -156,6 +48,54 @@ function HomePageContent() {
   const eoiLabels = useEoiLabels();
   const eoiCategories = useEoiCategories();
   const handleEoiSubmit = useEoiSubmit();
+
+  const pillars = [
+    { num: "i", title: t("home.operatingModel.pillars.realtime.title"), text: t("home.operatingModel.pillars.realtime.text") },
+    { num: "ii", title: t("home.operatingModel.pillars.oneOperator.title"), text: t("home.operatingModel.pillars.oneOperator.text") },
+    { num: "iii", title: t("home.operatingModel.pillars.sharedPipeline.title"), text: t("home.operatingModel.pillars.sharedPipeline.text") },
+    { num: "iv", title: t("home.operatingModel.pillars.closedLoop.title"), text: t("home.operatingModel.pillars.closedLoop.text") },
+  ];
+
+  const stats = [
+    { value: "1", label: t("home.operatingModel.stats.operator") },
+    { value: "2", label: t("home.operatingModel.stats.lanes") },
+    { value: "19", label: t("home.operatingModel.stats.stations") },
+    { value: "1", unit: " loop", label: t("home.operatingModel.stats.loop") },
+  ];
+
+  const audiences = [
+    { num: "I", title: t("home.audience.cards.producers.title"), text: t("home.audience.cards.producers.text"), href: "#eoi-section" },
+    { num: "II", title: t("home.audience.cards.government.title"), text: t("home.audience.cards.government.text"), href: "#eoi-section" },
+    { num: "III", title: t("home.audience.cards.investors.title"), text: t("home.audience.cards.investors.text"), href: "#eoi-section" },
+    { num: "IV", title: t("home.audience.cards.techPartners.title"), text: t("home.audience.cards.techPartners.text"), href: "#eoi-section" },
+  ];
+
+  const regions = [
+    { region: t("home.network.regions.australia.region"), status: t("home.network.regions.australia.status"), highlight: true },
+    { region: t("home.network.regions.europe.region"), status: t("home.network.regions.europe.status"), highlight: true },
+    { region: t("home.network.regions.asiaPacific.region"), status: t("home.network.regions.asiaPacific.status"), highlight: false },
+    { region: t("home.network.regions.africa.region"), status: t("home.network.regions.africa.status"), highlight: false },
+    { region: t("home.network.regions.unitedStates.region"), status: t("home.network.regions.unitedStates.status"), highlight: false },
+  ];
+
+  const serviceKeys = [
+    "home.servicesSection.services.virtualProduction",
+    "home.servicesSection.services.setConstruction",
+    "home.servicesSection.services.props",
+    "home.servicesSection.services.costume",
+    "home.servicesSection.services.makeupProsthetics",
+    "home.servicesSection.services.specialEffects",
+    "home.servicesSection.services.stuntsRigging",
+    "home.servicesSection.services.motionCapture",
+    "home.servicesSection.services.audioMusic",
+    "home.servicesSection.services.scriptScreenplay",
+    "home.servicesSection.services.graphicDesign",
+    "home.servicesSection.services.animationMotion",
+    "home.servicesSection.services.cgi",
+    "home.servicesSection.services.postProduction",
+    "home.servicesSection.services.arVr",
+    "home.servicesSection.services.broadcastCoordination",
+  ] as const;
 
   return (
     <LandingPageTemplate nav={{ ...nav, transparent: true }} footer={footer}>
@@ -187,15 +127,15 @@ function HomePageContent() {
             <span className="inline-block h-2 w-2 rounded-full bg-(--pc-color-secondary-500)" aria-hidden="true" />
             <span>Production City™</span>
             <span style={{ opacity: 0.4 }}>—</span>
-            <span>Australia · Europe · Asia Pacific · Africa · North America</span>
+            <span>{t("home.hero.locations")}</span>
           </div>
 
           <h1 id="hero-heading" className="m-0 font-serif text-[clamp(56px,9vw,168px)] font-normal leading-[0.95] tracking-[-0.02em]">
-            {HEADINGS.hero}
+            {t("home.hero.heading")}
           </h1>
 
           <p className="mt-6 max-w-[42ch] text-[clamp(19px,1.6vw,24px)] leading-[1.45] text-(--pc-color-neutral-300)">
-            A vertically integrated studio campus. Sound stages, LED volume, a broadcast theatre, and the full service stack — built together, in one place.
+            {t("home.hero.subtitle")}
           </p>
 
           <div className="mt-8 flex flex-wrap gap-4">
@@ -203,20 +143,20 @@ function HomePageContent() {
               href={`${prefix}/facilities`}
               className="inline-flex items-center gap-2 border border-(--pc-color-neutral-100) px-6 py-3 font-sans text-sm font-medium text-(--pc-color-neutral-100) no-underline transition-opacity duration-200 hover:opacity-65"
             >
-              See the facilities <span aria-hidden="true">→</span>
+              {t("home.hero.ctaFacilities")} <span aria-hidden="true">→</span>
             </a>
             <a
               href="#eoi-section"
               className="inline-flex items-center gap-2 border border-(--pc-color-neutral-400) px-6 py-3 font-sans text-sm font-medium text-(--pc-color-neutral-300) no-underline transition-opacity duration-200 hover:opacity-65"
             >
-              Register interest <span aria-hidden="true">→</span>
+              {t("home.hero.ctaEoi")} <span aria-hidden="true">→</span>
             </a>
           </div>
         </div>
 
         <div className="mx-auto mt-12 flex w-full max-w-[1720px] items-center justify-between font-mono text-[10px] uppercase tracking-[0.14em] text-(--pc-color-neutral-500)">
-          <span>01 · HOME</span>
-          <span>SCROLL FOR THE CAMPUS ↓</span>
+          <span>{t("home.hero.homeLabel")}</span>
+          <span>{t("home.hero.scrollIndicator")}</span>
         </div>
       </section>
 
@@ -226,10 +166,10 @@ function HomePageContent() {
           <div className="mx-auto max-w-[1720px]">
             <div className="mb-12 border-t border-(--pc-color-neutral-800) pt-8">
               <div className="mb-3 font-mono text-[11px] uppercase tracking-[0.18em] text-(--pc-color-neutral-400)">
-                01 — Operating model
+                {t("home.operatingModel.sectionLabel")}
               </div>
               <h2 id="operating-model-heading" className="m-0 font-serif text-[clamp(32px,4vw,56px)] font-normal leading-[1.05] tracking-[-0.01em]">
-                {HEADINGS.operatingModel}
+                {t("home.operatingModel.heading")}
               </h2>
             </div>
 
@@ -238,16 +178,16 @@ function HomePageContent() {
               <div className="flex flex-col gap-14 lg:sticky lg:top-24 lg:col-span-5 lg:self-start">
                 <div className="text-lg leading-relaxed">
                   <p className="max-w-[64ch]">
-                    Production City is not a stage with vendors bolted on. It is one operator providing the venue, the technology stack, and the full creative service stack under one brand. That reduces coordination risk for tenants and opens multiple revenue streams for the company.
+                    {t("home.operatingModel.body1")}
                   </p>
                   <p className="mt-4 max-w-[64ch]">
-                    The stages, the LED volume, the broadcast theatre, the control room, and the service teams were designed together. Not retrofitted.
+                    {t("home.operatingModel.body2")}
                   </p>
                 </div>
 
                 {/* Operating pillars */}
                 <div className="flex flex-col gap-8">
-                  {PILLARS.map((p) => (
+                  {pillars.map((p) => (
                     <div key={p.num} className="flex gap-4">
                       <span className="flex-none font-serif text-2xl text-(--pc-color-neutral-400)">{p.num}</span>
                       <div>
@@ -260,7 +200,7 @@ function HomePageContent() {
 
                 {/* Stat strip */}
                 <div className="grid grid-cols-2 gap-6 sm:grid-cols-4">
-                  {STATS.map((s) => (
+                  {stats.map((s) => (
                     <div key={s.label}>
                       <div className="font-serif text-[clamp(40px,5vw,64px)] font-normal leading-[0.85] tracking-[-0.03em] text-(--pc-color-neutral-100)">
                         {s.value}
@@ -291,10 +231,10 @@ function HomePageContent() {
           <div className="mx-auto max-w-[1720px]">
             <div className="mb-12 border-t border-(--pc-color-neutral-800) pt-8">
               <div className="mb-3 font-mono text-[11px] uppercase tracking-[0.18em] text-(--pc-color-neutral-400)">
-                02 — Facilities
+                {t("home.facilitiesSection.sectionLabel")}
               </div>
               <h2 id="facilities-preview-heading" className="m-0 font-serif text-[clamp(32px,4vw,56px)] font-normal leading-[1.05] tracking-[-0.01em]">
-                {HEADINGS.facilitiesPreview}
+                {t("home.facilitiesSection.heading")}
               </h2>
             </div>
 
@@ -321,18 +261,18 @@ function HomePageContent() {
                 <div className="flex flex-1 flex-col justify-between p-6">
                   <div>
                     <div className="font-mono text-[10px] uppercase tracking-[0.14em] text-(--pc-color-neutral-400)">
-                      {screenTile.label}
+                      {t("home.facilitiesSection.tiles.screenStages.label")}
                     </div>
                     <h3 className="mt-4 font-serif text-[clamp(22px,3vw,44px)] font-normal leading-[1.15]">
-                      {screenTile.heading}
+                      {t("home.facilitiesSection.tiles.screenStages.heading")}
                     </h3>
                   </div>
                   <div>
                     <div className="whitespace-pre-line font-mono text-xs leading-relaxed text-(--pc-color-neutral-400)">
-                      {FACILITY_TILES[0].specs}
+                      {t("home.facilitiesSection.tiles.screenStages.specs")}
                     </div>
                     <div className="mt-4 flex items-center gap-2 text-sm text-(--pc-color-neutral-300)">
-                      {FACILITY_TILES[0].linkLabel} <span aria-hidden="true">→</span>
+                      {t("home.facilitiesSection.tiles.screenStages.linkLabel")} <span aria-hidden="true">→</span>
                     </div>
                   </div>
                 </div>
@@ -359,18 +299,18 @@ function HomePageContent() {
                 <div className="flex flex-1 flex-col justify-between p-6">
                   <div>
                     <div className="font-mono text-[10px] uppercase tracking-[0.14em] text-(--pc-color-neutral-400)">
-                      {commercialTile.label}
+                      {t("home.facilitiesSection.tiles.commercialStages.label")}
                     </div>
                     <h3 className="mt-3 font-serif text-[clamp(18px,2vw,30px)] font-normal leading-[1.15]">
-                      {commercialTile.heading}
+                      {t("home.facilitiesSection.tiles.commercialStages.heading")}
                     </h3>
                   </div>
                   <div>
                     <div className="mt-4 whitespace-pre-line font-mono text-xs leading-relaxed text-(--pc-color-neutral-400)">
-                      {FACILITY_TILES[1].specs}
+                      {t("home.facilitiesSection.tiles.commercialStages.specs")}
                     </div>
                     <div className="mt-4 flex items-center gap-2 text-sm text-(--pc-color-neutral-300)">
-                      {FACILITY_TILES[1].linkLabel} <span aria-hidden="true">→</span>
+                      {t("home.facilitiesSection.tiles.commercialStages.linkLabel")} <span aria-hidden="true">→</span>
                     </div>
                   </div>
                 </div>
@@ -397,18 +337,18 @@ function HomePageContent() {
                 <div className="flex flex-1 flex-col justify-between p-6">
                   <div>
                     <div className="font-mono text-[10px] uppercase tracking-[0.14em] text-(--pc-color-neutral-400)">
-                      {theatreTile.label}
+                      {t("home.facilitiesSection.tiles.broadcastTheatre.label")}
                     </div>
                     <h3 className="mt-3 font-serif text-[clamp(18px,2vw,30px)] font-normal leading-[1.15]">
-                      {theatreTile.heading}
+                      {t("home.facilitiesSection.tiles.broadcastTheatre.heading")}
                     </h3>
                   </div>
                   <div>
                     <div className="mt-4 whitespace-pre-line font-mono text-xs leading-relaxed text-(--pc-color-neutral-400)">
-                      {FACILITY_TILES[2].specs}
+                      {t("home.facilitiesSection.tiles.broadcastTheatre.specs")}
                     </div>
                     <div className="mt-4 flex items-center gap-2 text-sm text-(--pc-color-neutral-300)">
-                      {FACILITY_TILES[2].linkLabel} <span aria-hidden="true">→</span>
+                      {t("home.facilitiesSection.tiles.broadcastTheatre.linkLabel")} <span aria-hidden="true">→</span>
                     </div>
                   </div>
                 </div>
@@ -422,21 +362,21 @@ function HomePageContent() {
             >
               <div>
                 <div className="font-mono text-[10px] uppercase tracking-[0.14em] text-(--pc-color-neutral-400)">
-                  D · BROADCAST CONTROL ROOM
+                  {t("home.facilitiesSection.controlRoom.label")}
                 </div>
                 <h3 className="mt-3 font-serif text-[clamp(28px,3vw,44px)] font-normal leading-[1.15]">
-                  {HEADINGS.controlRoom}
+                  {t("home.facilitiesSection.controlRoom.heading")}
                 </h3>
                 <p className="mt-3 max-w-[48ch] text-(--pc-color-neutral-400)">
-                  Centralised production management. Live broadcast control. Capable of originating broadcast from any on-campus stage, the theatre, or external sports and event venues globally.
+                  {t("home.facilitiesSection.controlRoom.prose")}
                 </p>
               </div>
               <div className="self-end text-right">
                 <div className="whitespace-pre-line font-mono text-xs leading-relaxed text-(--pc-color-neutral-400)">
-                  {"CENTRAL SYNCHRONISATION\nLIVE ORIGINATION · MULTI-PLATFORM\nBROADCAST FROM ANY STAGE"}
+                  {t("home.facilitiesSection.controlRoom.specs")}
                 </div>
                 <div className="mt-6 flex items-center justify-end gap-2 text-sm text-(--pc-color-neutral-300)">
-                  D · Control room <span aria-hidden="true">→</span>
+                  {t("home.facilitiesSection.controlRoom.linkLabel")} <span aria-hidden="true">→</span>
                 </div>
               </div>
             </a>
@@ -471,7 +411,7 @@ function HomePageContent() {
                 </a>
               </div>
 
-              {/* Right — poster image placeholder (replaced by 3D viewer screenshot when available) */}
+              {/* Right — poster image placeholder */}
               {MEDIA["masterplan-poster"] ? (
                 <div className="overflow-hidden border border-(--pc-color-neutral-800)">
                   <img
@@ -495,15 +435,15 @@ function HomePageContent() {
         <section className="border-t border-(--pc-color-neutral-800) bg-(--pc-color-neutral-950) px-(--pc-spacing-6) py-[clamp(40px,5vw,80px)] text-(--pc-color-neutral-100)" aria-labelledby="services-heading">
           <div className="mx-auto grid max-w-[1720px] gap-8">
             <div className="font-mono text-[11px] uppercase tracking-[0.18em] text-(--pc-color-secondary-500)">
-              03 — Services
+              {t("home.servicesSection.sectionLabel")}
             </div>
             <h2 id="services-heading" className="m-0 max-w-[20ch] font-serif text-[clamp(32px,4vw,56px)] font-normal leading-[1.05] tracking-[-0.01em]">
-              {HEADINGS.services}
+              {t("home.servicesSection.heading")}
             </h2>
             <p className="flex flex-wrap gap-x-1 font-mono text-[11px] uppercase tracking-[0.1em] text-(--pc-color-neutral-400)">
-              {SERVICES.map((s, i) => (
-                <span key={s}>
-                  {s}{i < SERVICES.length - 1 && <span className="mx-1 opacity-40">·</span>}
+              {serviceKeys.map((k, i) => (
+                <span key={k}>
+                  {t(k)}{i < serviceKeys.length - 1 && <span className="mx-1 opacity-40">·</span>}
                 </span>
               ))}
             </p>
@@ -517,10 +457,10 @@ function HomePageContent() {
           <div className="mx-auto max-w-[1720px]">
             <div className="mb-12 border-t border-(--pc-color-neutral-300) pt-8">
               <div className="mb-3 font-mono text-[11px] uppercase tracking-[0.18em] text-(--pc-color-neutral-500)">
-                04 — First Nations approach
+                {t("home.firstNations.sectionLabel")}
               </div>
               <h2 id="first-nations-heading" className="m-0 font-serif text-[clamp(32px,4vw,56px)] font-normal leading-[1.05] tracking-[-0.01em]">
-                {HEADINGS.firstNations}
+                {t("home.firstNations.heading")}
               </h2>
             </div>
 
@@ -541,10 +481,10 @@ function HomePageContent() {
               {/* First Nations text */}
               <div className="lg:col-start-7 lg:col-span-6">
                 <p className="font-serif text-[clamp(22px,2vw,28px)] leading-[1.4]" style={{ maxWidth: "30ch" }}>
-                  Aboriginal and Torres Strait Islander ways of Knowing, Being, and Doing shape this company&apos;s governance, its intellectual property and data practice, its workforce, and the stories its facilities are built to serve.
+                  {t("home.firstNations.prose")}
                 </p>
                 <p className="mt-8 text-(--pc-color-neutral-600)">
-                  Matthew Compton, our Chief Operating Officer, is a proud Wiradjuri man. His authority is substantive, not advisory.
+                  {t("home.firstNations.proseMatthew")}
                 </p>
               </div>
             </div>
@@ -555,17 +495,17 @@ function HomePageContent() {
       {/* ═══════════ SECTION 5 — FIRST SITE ADVANTAGE ═══════════ */}
       <ScrollRevealSection delay={0}>
         <section className="bg-(--pc-color-neutral-100) px-(--pc-spacing-6) py-[clamp(56px,8vw,128px)] text-(--pc-color-neutral-900)" aria-labelledby="first-site-heading">
-          <h2 id="first-site-heading" className="sr-only">{HEADINGS.firstSite}</h2>
+          <h2 id="first-site-heading" className="sr-only">{t("home.firstSite.sectionLabel")}</h2>
           <div className="mx-auto grid max-w-[1720px] grid-cols-1 gap-8 lg:grid-cols-12">
             <div className="lg:col-span-2">
               <div className="font-mono text-[10px] uppercase tracking-[0.14em] text-(--pc-color-neutral-500)">
-                05 — FIRST SITE ADVANTAGE
+                {t("home.firstSite.sectionLabel")}
               </div>
             </div>
             <blockquote className="m-0 font-serif text-[clamp(24px,3vw,40px)] font-normal leading-[1.2] tracking-[-0.01em] lg:col-start-3 lg:col-span-10">
-              The first Production City is being built in Sydney. Technical and architectural standards are set here, then replicated elsewhere. Head-of-network employment, research, and executive functions are based here.{" "}
+              {t("home.firstSite.quote")}{" "}
               <span className="text-(--pc-color-secondary-500)">
-                Hosting the first site is not hosting a branch — it is hosting the origin.
+                {t("home.firstSite.quoteHighlight")}
               </span>
             </blockquote>
           </div>
@@ -578,10 +518,10 @@ function HomePageContent() {
           <div className="mx-auto max-w-[1720px]">
             <div className="mb-12 border-t border-(--pc-color-neutral-800) pt-8">
               <div className="mb-3 font-mono text-[11px] uppercase tracking-[0.18em] text-(--pc-color-neutral-400)">
-                06 — The network
+                {t("home.network.sectionLabel")}
               </div>
               <h2 id="network-heading" className="m-0 font-serif text-[clamp(32px,4vw,56px)] font-normal leading-[1.05] tracking-[-0.01em]">
-                {HEADINGS.network}
+                {t("home.network.heading")}
               </h2>
             </div>
 
@@ -594,19 +534,19 @@ function HomePageContent() {
               {/* Region table */}
               <div className="lg:col-start-7 lg:col-span-6">
                 <table className="w-full border-collapse text-sm">
-                  <caption className="sr-only">Global campus network status</caption>
+                  <caption className="sr-only">{t("home.network.tableCaption")}</caption>
                   <thead>
                     <tr className="border-b border-(--pc-color-neutral-800)">
                       <th className="pb-3 text-left font-mono text-[10px] uppercase tracking-[0.14em] text-(--pc-color-neutral-400)">
-                        Region
+                        {t("home.network.tableHeaderRegion")}
                       </th>
                       <th className="pb-3 text-left font-mono text-[10px] uppercase tracking-[0.14em] text-(--pc-color-neutral-400)">
-                        Status
+                        {t("home.network.tableHeaderStatus")}
                       </th>
                     </tr>
                   </thead>
                   <tbody>
-                    {REGIONS.map((r) => (
+                    {regions.map((r) => (
                       <tr key={r.region} className="border-b border-(--pc-color-neutral-800)">
                         <td className="py-3 text-(--pc-color-neutral-100)">{r.region}</td>
                         <td className={`py-3 ${r.highlight ? "text-(--pc-color-neutral-100)" : "text-(--pc-color-neutral-500)"}`}>
@@ -628,15 +568,15 @@ function HomePageContent() {
           <div className="mx-auto max-w-[1720px]">
             <div className="mb-12 border-t border-(--pc-color-neutral-300) pt-8">
               <div className="mb-3 font-mono text-[11px] uppercase tracking-[0.18em] text-(--pc-color-neutral-500)">
-                07 — Who we work with
+                {t("home.audience.sectionLabel")}
               </div>
               <h2 id="audience-heading" className="m-0 font-serif text-[clamp(32px,4vw,56px)] font-normal leading-[1.05] tracking-[-0.01em]">
-                {HEADINGS.audience}
+                {t("home.audience.heading")}
               </h2>
             </div>
 
             <div className="grid grid-cols-1 gap-[clamp(16px,2vw,32px)] sm:grid-cols-2">
-              {AUDIENCES.map((a) => (
+              {audiences.map((a) => (
                 <a
                   key={a.num}
                   href={a.href}
@@ -648,7 +588,7 @@ function HomePageContent() {
                     <p className="mt-2 text-sm text-(--pc-color-neutral-600)">{a.text}</p>
                   </div>
                   <div className="mt-6 text-sm text-(--pc-color-neutral-500)">
-                    Enter <span aria-hidden="true">→</span>
+                    {t("home.audience.enter")} <span aria-hidden="true">→</span>
                   </div>
                 </a>
               ))}
@@ -659,9 +599,9 @@ function HomePageContent() {
 
       {/* ═══════════ CHORUS ═══════════ */}
       <section className="bg-(--pc-color-neutral-950) px-(--pc-spacing-6) py-[clamp(80px,12vw,200px)] text-center" aria-labelledby="chorus-heading">
-        <h2 id="chorus-heading" className="sr-only">{HEADINGS.chorus}</h2>
+        <h2 id="chorus-heading" className="sr-only">{t("home.chorus.text")}</h2>
         <div className="font-serif text-[clamp(48px,8vw,120px)] font-normal leading-[0.95] tracking-[-0.02em] text-(--pc-color-neutral-100)">
-          We make stories
+          {t("home.chorus.text")}
         </div>
       </section>
 
@@ -690,7 +630,6 @@ function HomePageContent() {
   );
 }
 
-/* ─── IP Lifecycle Diagram (simplified SVG) ─── */
 /* ─── Network Map (minimal SVG) ─── */
 function NetworkMap() {
   return (

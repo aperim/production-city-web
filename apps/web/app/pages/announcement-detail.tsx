@@ -15,6 +15,7 @@ import {
   type ContentBlock,
 } from "@productioncity/holding-ui";
 import { I18nProvider, useTranslation } from "../i18n/context";
+import type { SupportedLocale } from "../i18n/index.js";
 import { useLandingNav, useLandingFooter } from "../lib/use-landing-layout";
 import { useAuth } from "../lib/auth-context";
 import {
@@ -201,9 +202,14 @@ function AnnouncementDetailPageContent({ slug }: AnnouncementDetailPageContentPr
   );
 }
 
-export function AnnouncementDetailPage({ slug }: { slug: string }) {
+interface AnnouncementDetailPageProps {
+  slug: string;
+  serverLocale?: SupportedLocale;
+}
+
+export function AnnouncementDetailPage({ slug, serverLocale }: AnnouncementDetailPageProps) {
   return (
-    <I18nProvider>
+    <I18nProvider serverLocale={serverLocale}>
       <AnnouncementDetailPageContent slug={slug} />
     </I18nProvider>
   );

@@ -6,6 +6,7 @@
 import type { Metadata } from "vinext/shims/metadata";
 import { ErrorBoundary } from "../error-boundary";
 import { PrivacyPage } from "../pages/privacy";
+import { getServerLocale } from "../i18n/get-server-locale.js";
 
 export const metadata: Metadata = {
   title: "Privacy Policy — Production City™",
@@ -26,10 +27,11 @@ export const metadata: Metadata = {
   },
 };
 
-export default function Page() {
+export default async function Page() {
+  const serverLocale = await getServerLocale();
   return (
     <ErrorBoundary>
-      <PrivacyPage />
+      <PrivacyPage serverLocale={serverLocale} />
     </ErrorBoundary>
   );
 }

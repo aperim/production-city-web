@@ -6,6 +6,7 @@
 import type { Metadata } from "vinext/shims/metadata";
 import { ErrorBoundary } from "../../error-boundary";
 import { FacilityCommercialSoundStagesPage } from "../../pages/facility-commercial-sound-stages";
+import { getServerLocale } from "../../i18n/get-server-locale.js";
 
 export const metadata: Metadata = {
   title: "Commercial Sound Stages — Production City™ Facilities",
@@ -28,10 +29,12 @@ export const metadata: Metadata = {
   },
 };
 
-export default function Page() {
+export default async function Page() {
+  const serverLocale = await getServerLocale();
+
   return (
     <ErrorBoundary>
-      <FacilityCommercialSoundStagesPage />
+      <FacilityCommercialSoundStagesPage serverLocale={serverLocale} />
     </ErrorBoundary>
   );
 }

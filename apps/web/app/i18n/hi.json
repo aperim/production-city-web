@@ -876,8 +876,166 @@
     "masterplanTeaser": {
       "eyebrow": "कैंपस मास्टरप्लान",
       "heading": "कैंपस, तीन आयामों में।",
-      "body": "छह साउंड स्टेज, एक ब्रॉडकास्ट थिएटर, क्रिएटिव हब, बैकलॉट और पब्लिक स्पेस — पूरे 6 हेक्टेयर साइट को इंटरैक्टिव 3D मॉडल में एक्सप्लोर करें।",
+"body": "छह साउंड स्टेज, एक ब्रॉडकास्ट थिएटर, क्रिएटिव हब, बैकलॉट और पब्लिक स्पेस — पूरे 6 हेक्टेयर साइट को इंटरैक्टिव 3D मॉडल में एक्सप्लोर करें।",
       "ctaLabel": "कैंपस को 3D में एक्सप्लोर करें →"
+    },
+    "hero": {
+      "heading": "We make stories.",
+      "subtitle": "A vertically integrated studio campus. Sound stages, LED volume, a broadcast theatre, and the full service stack — built together, in one place.",
+      "locations": "Sydney · Switzerland · Singapore · Africa",
+      "ctaFacilities": "See the facilities",
+      "ctaEoi": "Register interest",
+      "homeLabel": "01 · HOME",
+      "scrollIndicator": "SCROLL FOR THE CAMPUS ↓"
+    },
+    "operatingModel": {
+      "sectionLabel": "01 — Operating model",
+      "heading": "One operator. One campus. Script to delivery.",
+      "body1": "Production City is not a stage with vendors bolted on. It is one operator providing the venue, the technology stack, and the full creative service stack under one brand. That reduces coordination risk for tenants and opens multiple revenue streams for the company.",
+      "body2": "The stages, the LED volume, the broadcast theatre, the control room, and the service teams were designed together. Not retrofitted.",
+      "pillars": {
+        "realtime": {
+          "title": "One IP · two formats",
+          "text": "Script, libretto, score, pre-vis and digital assets are authored once, then split into a screen lane and a stage lane that run in parallel rather than in sequence."
+        },
+        "oneOperator": {
+          "title": "One operator · one campus",
+          "text": "Venue, stack and service teams under a single brand. Tenants sign one contract, coordinate with one counterparty, and draw on whichever combination of capabilities the work requires."
+        },
+        "sharedPipeline": {
+          "title": "Shared pipeline, specialised finishes",
+          "text": "Design, build, costume, and digital assets are common. The screen lane takes them into photography, editorial, VFX and sound. The stage lane takes them into rehearsal, tech, opening and tour."
+        },
+        "closedLoop": {
+          "title": "Closed-loop canon",
+          "text": "Distribution and audience data feed back into the IP strategy. The next project inherits what the last one learned, across both formats, not just one."
+        }
+      },
+      "stats": {
+        "operator": "operator",
+        "lanes": "lanes, in parallel",
+        "stations": "stations from idea to audience",
+        "loop": "analytics → ideation"
+      }
+    },
+    "facilitiesSection": {
+      "sectionLabel": "02 — Facilities",
+      "heading": "Built together. Not retrofitted.",
+      "tiles": {
+        "screenStages": {
+          "label": "A · SCREEN SOUND STAGES",
+          "heading": "Grand-scale screen work. Engineered for it.",
+          "specs": "45 m × 45 m · 15 m to grid\nNRC 1.05 · NC 25\nFlat · Arc · Full-surround LED",
+          "linkLabel": "A · Screen sound stages"
+        },
+        "commercialStages": {
+          "label": "B · COMMERCIAL SOUND STAGES",
+          "heading": "Small footprint. Full specification.",
+          "specs": "10 m × 10 m · 15 m to grid\nNRC 1.05 · NC 25\nWalk-in-ready LED volume",
+          "linkLabel": "B · Commercial stages"
+        },
+        "broadcastTheatre": {
+          "label": "C · BROADCAST THEATRE",
+          "heading": "A live theatre wired as a broadcast studio.",
+          "specs": "450 theatre · 300 cabaret\n8 robotic camera positions\nAR/VR-ready",
+          "linkLabel": "C · Broadcast theatre"
+        }
+      },
+      "controlRoom": {
+        "label": "D · BROADCAST CONTROL ROOM",
+        "heading": "The nerve centre.",
+        "prose": "Centralised production management. Live broadcast control. Capable of originating broadcast from any on-campus stage, the theatre, or external sports and event venues globally.",
+        "specs": "CENTRAL SYNCHRONISATION\nLIVE ORIGINATION · MULTI-PLATFORM\nBROADCAST FROM ANY STAGE",
+        "linkLabel": "D · Control room"
+      }
+    },
+    "servicesSection": {
+      "sectionLabel": "03 — Services",
+      "heading": "Every discipline from script to delivery. On one campus.",
+      "services": {
+        "virtualProduction": "VIRTUAL PRODUCTION",
+        "setConstruction": "SET CONSTRUCTION",
+        "props": "PROPS",
+        "costume": "COSTUME",
+        "makeupProsthetics": "MAKEUP & PROSTHETICS",
+        "specialEffects": "SPECIAL EFFECTS",
+        "stuntsRigging": "STUNTS & RIGGING",
+        "motionCapture": "MOTION CAPTURE",
+        "audioMusic": "AUDIO & MUSIC",
+        "scriptScreenplay": "SCRIPT & SCREENPLAY",
+        "graphicDesign": "GRAPHIC DESIGN",
+        "animationMotion": "ANIMATION & MOTION",
+        "cgi": "3D & CGI",
+        "postProduction": "POST-PRODUCTION",
+        "arVr": "AR/VR",
+        "broadcastCoordination": "BROADCAST COORDINATION"
+      }
+    },
+    "firstNations": {
+      "sectionLabel": "04 — First Nations approach",
+      "heading": "Embedded, not added on.",
+      "prose": "Aboriginal and Torres Strait Islander ways of Knowing, Being, and Doing shape this company's governance, its intellectual property and data practice, its workforce, and the stories its facilities are built to serve.",
+      "proseMatthew": "Matthew Compton, our Chief Operating Officer, is a proud Wiradjuri man. His authority is substantive, not advisory."
+    },
+    "firstSite": {
+      "sectionLabel": "05 — FIRST SITE ADVANTAGE",
+      "quote": "The first Production City is being built in Sydney. Technical and architectural standards are set here, then replicated elsewhere. Head-of-network employment, research, and executive functions are based here.",
+      "quoteHighlight": "Hosting the first site is not hosting a branch — it is hosting the origin."
+    },
+    "network": {
+      "sectionLabel": "06 — The sequence",
+      "heading": "Sequenced. Not simultaneous.",
+      "tableCaption": "Global campus network status",
+      "tableHeaderRegion": "Region",
+      "tableHeaderStatus": "Status",
+      "regions": {
+        "australia": {
+          "region": "Australia",
+          "status": "Sydney — leading candidate"
+        },
+        "europe": {
+          "region": "Europe",
+          "status": "Switzerland — currently leading"
+        },
+        "asiaPacific": {
+          "region": "Asia-Pacific",
+          "status": "Singapore preferred · alternatives under review"
+        },
+        "africa": {
+          "region": "Africa",
+          "status": "Under assessment"
+        },
+        "unitedStates": {
+          "region": "United States",
+          "status": "Following the first international campuses"
+        }
+      }
+    },
+    "audience": {
+      "sectionLabel": "07 — Who we work with",
+      "heading": "Four doors in.",
+      "enter": "Enter",
+      "cards": {
+        "producers": {
+          "title": "For producers and studios",
+          "text": "Book a stage, a volume, and a full service stack. One operator, one schedule, no vendor chain to manage."
+        },
+        "government": {
+          "title": "For government",
+          "text": "The first campus of a global network. Direct jobs, screen-sector training, local procurement, and First Nations outcomes built into the operating model."
+        },
+        "investors": {
+          "title": "For investors",
+          "text": "Revenue from facilities, services, and broadcast under one operator. Campuses open in sequence, each proven before the next is committed."
+        },
+        "techPartners": {
+          "title": "For technology partners",
+          "text": "Test and ship production technology inside a working campus. LED volume, real-time rendering, motion capture, and broadcast under live conditions."
+        }
+      }
+    },
+    "chorus": {
+      "text": "We make stories"
     }
   },
   "facilities": {

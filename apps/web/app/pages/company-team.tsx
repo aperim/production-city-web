@@ -11,6 +11,7 @@ import {
   ForwardLookingDisclaimer,
 } from "@productioncity/holding-ui";
 import { I18nProvider, useTranslation } from "../i18n/context";
+import type { SupportedLocale } from "../i18n/index.js";
 import {
   useLandingNav,
   useLandingFooter,
@@ -18,9 +19,14 @@ import {
 import { CompanyTeamStructuredData } from "../lib/structured-data";
 import { MEDIA } from "../lib/media-config";
 
-export function CompanyTeamPage() {
+
+interface CompanyTeamPageProps {
+  serverLocale?: SupportedLocale;
+}
+
+export function CompanyTeamPage({ serverLocale }: CompanyTeamPageProps) {
   return (
-    <I18nProvider>
+    <I18nProvider serverLocale={serverLocale}>
       <CompanyTeamPageContent />
     </I18nProvider>
   );

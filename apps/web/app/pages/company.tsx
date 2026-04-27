@@ -12,6 +12,7 @@ import {
   EOISection,
 } from "@productioncity/holding-ui";
 import { I18nProvider, useTranslation } from "../i18n/context";
+import type { SupportedLocale } from "../i18n/index.js";
 import {
   useLandingNav,
   useLandingFooter,
@@ -22,9 +23,14 @@ import {
 import { CompanyStructuredData } from "../lib/structured-data";
 import { MEDIA } from "../lib/media-config";
 
-export function CompanyPage() {
+
+interface CompanyPageProps {
+  serverLocale?: SupportedLocale;
+}
+
+export function CompanyPage({ serverLocale }: CompanyPageProps) {
   return (
-    <I18nProvider>
+    <I18nProvider serverLocale={serverLocale}>
       <CompanyPageContent />
     </I18nProvider>
   );

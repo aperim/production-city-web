@@ -15,10 +15,16 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import { unsubscribeByToken } from "../lib/api-client";
 import { I18nProvider, useTranslation } from "../i18n/context";
+import type { SupportedLocale } from "../i18n/index.js";
 
-export function SubscriptionUnsubscribePage() {
+
+interface SubscriptionUnsubscribePageProps {
+  serverLocale?: SupportedLocale;
+}
+
+export function SubscriptionUnsubscribePage({ serverLocale }: SubscriptionUnsubscribePageProps) {
   return (
-    <I18nProvider>
+    <I18nProvider serverLocale={serverLocale}>
       <SubscriptionUnsubscribePageContent />
     </I18nProvider>
   );

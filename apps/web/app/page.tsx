@@ -4,6 +4,8 @@
  */
 
 import type { Metadata } from "vinext/shims/metadata";
+import { headers } from "vinext/shims/headers";
+import { validateXLocale } from "./i18n/x-locale-validation.js";
 import { ErrorBoundary } from "./error-boundary";
 import { HomePage } from "./pages/home";
 
@@ -28,10 +30,13 @@ export const metadata: Metadata = {
   },
 };
 
-export default function Page() {
+export default async function Page() {
+  const headersList = await headers();
+  const serverLocale = validateXLocale(headersList.get("X-Locale"));
+
   return (
     <ErrorBoundary>
-      <HomePage />
+      <HomePage serverLocale={serverLocale} />
     </ErrorBoundary>
   );
 }

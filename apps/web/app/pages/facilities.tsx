@@ -14,6 +14,7 @@ import {
   MediaHero,
 } from "@productioncity/holding-ui";
 import { I18nProvider, useTranslation } from "../i18n/context";
+import type { SupportedLocale } from "../i18n/index.js";
 import {
   useLandingNav,
   useLandingFooter,
@@ -24,9 +25,14 @@ import {
 import { MEDIA } from "../lib/media-config";
 import { FacilitiesStructuredData } from "../lib/structured-data";
 
-export function FacilitiesPage() {
+
+interface FacilitiesPageProps {
+  serverLocale?: SupportedLocale;
+}
+
+export function FacilitiesPage({ serverLocale }: FacilitiesPageProps) {
   return (
-    <I18nProvider>
+    <I18nProvider serverLocale={serverLocale}>
       <FacilitiesPageContent />
     </I18nProvider>
   );

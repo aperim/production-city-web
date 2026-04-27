@@ -1,14 +1,20 @@
 "use client";
 
 import { I18nProvider, useTranslation } from "../i18n/context";
+import type { SupportedLocale } from "../i18n/index.js";
 import { tArray } from "../i18n/index";
 import { LandingPageTemplate } from "@productioncity/holding-ui";
 import { useLandingNav, useLandingFooter } from "../lib/use-landing-layout";
 import { SimpleWebPageStructuredData } from "../lib/structured-data";
 
-export function PrivacyPage() {
+
+interface PrivacyPageProps {
+  serverLocale?: SupportedLocale;
+}
+
+export function PrivacyPage({ serverLocale }: PrivacyPageProps) {
   return (
-    <I18nProvider>
+    <I18nProvider serverLocale={serverLocale}>
       <PrivacyPageContent />
     </I18nProvider>
   );

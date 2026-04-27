@@ -13,6 +13,7 @@ import {
   EOISection,
 } from "@productioncity/holding-ui";
 import { I18nProvider, useTranslation } from "../i18n/context";
+import type { SupportedLocale } from "../i18n/index.js";
 import {
   useLandingNav,
   useLandingFooter,
@@ -60,9 +61,14 @@ function useDefaultCategory(): string {
   return category;
 }
 
-export function ContactPage() {
+
+interface ContactPageProps {
+  serverLocale?: SupportedLocale;
+}
+
+export function ContactPage({ serverLocale }: ContactPageProps) {
   return (
-    <I18nProvider>
+    <I18nProvider serverLocale={serverLocale}>
       <ContactPageContent />
     </I18nProvider>
   );

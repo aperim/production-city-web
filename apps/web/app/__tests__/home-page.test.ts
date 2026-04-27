@@ -4,11 +4,14 @@ import { resolve } from "node:path";
 import { describe, it, expect } from "vitest";
 
 /**
- * Home page (#92) — structural TDD tests.
+ * Home page (#92, #344) — structural TDD tests.
  *
  * Validates that the rewritten home page matches the reference design
  * (reference/index.html) with editorial sections, IP lifecycle diagram,
  * facilities tiles, audience routing, and retained EOI/acknowledgement.
+ *
+ * String content checks use t() key assertions rather than hardcoded
+ * English strings since all copy is now internationalised (#344).
  */
 
 const HOME_PATH = resolve(import.meta.dirname, "..", "pages", "home.tsx");
@@ -36,141 +39,182 @@ describe("Home page — component imports", () => {
 });
 
 describe("Home page — Hero section", () => {
-  it("has a full-viewport hero with display headline", () => {
+  it("has a full-viewport hero with display headline via t()", () => {
     const src = readHome();
     expect(src).toContain("min-h-dvh");
-    expect(src).toContain("We make stories.");
+    expect(src).toContain("home.hero.heading");
   });
 
-  it("has hero eyebrow with brand and locations", () => {
+  it("has hero eyebrow with brand name (non-translatable)", () => {
     const src = readHome();
     expect(src).toContain("Production City™");
-    expect(src).toContain("Australia · Europe · Asia Pacific · Africa · North America");
   });
 
-  it("has hero CTAs for facilities and EOI", () => {
+  it("has hero CTAs for facilities and EOI via t()", () => {
     const src = readHome();
-    expect(src).toContain("See the facilities");
-    expect(src).toContain("Register interest");
+    expect(src).toContain("home.hero.ctaFacilities");
+    expect(src).toContain("home.hero.ctaEoi");
     expect(src).toContain("#eoi-section");
+  });
+
+  it("has location strip via t()", () => {
+    const src = readHome();
+    expect(src).toContain("home.hero.locations");
+  });
+
+  it("has hero subtitle via t()", () => {
+    expect(readHome()).toContain("home.hero.subtitle");
+  });
+
+  it("has scroll indicator via t()", () => {
+    expect(readHome()).toContain("home.hero.scrollIndicator");
   });
 });
 
 describe("Home page — Operating model section", () => {
-  it("has operating model section with heading", () => {
+  it("has operating model section with heading via t()", () => {
     const src = readHome();
-    expect(src).toContain("01 — Operating model");
-    expect(src).toContain("One operator. One campus. Script to delivery.");
+    expect(src).toContain("home.operatingModel.sectionLabel");
+    expect(src).toContain("home.operatingModel.heading");
   });
 
-  it("includes four operating pillars", () => {
+  it("includes four operating pillars via t()", () => {
     const src = readHome();
-    expect(src).toContain("One IP · two formats");
-    expect(src).toContain("One operator · one campus");
-    expect(src).toContain("Shared pipeline, specialised finishes");
-    expect(src).toContain("Closed-loop canon");
+    expect(src).toContain("home.operatingModel.pillars.realtime.title");
+    expect(src).toContain("home.operatingModel.pillars.oneOperator.title");
+    expect(src).toContain("home.operatingModel.pillars.sharedPipeline.title");
+    expect(src).toContain("home.operatingModel.pillars.closedLoop.title");
   });
 
-  it("includes stat strip with key metrics", () => {
+  it("includes stat strip via t()", () => {
     const src = readHome();
-    expect(src).toContain("operator");
-    expect(src).toContain("lanes, in parallel");
-    expect(src).toContain("stations from idea to audience");
+    expect(src).toContain("home.operatingModel.stats.operator");
+    expect(src).toContain("home.operatingModel.stats.lanes");
+    expect(src).toContain("home.operatingModel.stats.stations");
+    expect(src).toContain("home.operatingModel.stats.loop");
   });
 
   it("includes signal diagram component", () => {
     const src = readHome();
     expect(src).toContain("SignalDiagram");
   });
+
+  it("has body paragraphs via t()", () => {
+    const src = readHome();
+    expect(src).toContain("home.operatingModel.body1");
+    expect(src).toContain("home.operatingModel.body2");
+  });
 });
 
 describe("Home page — Facilities preview section", () => {
-  it("has facilities section with tile grid", () => {
+  it("has facilities section label via t()", () => {
     const src = readHome();
-    expect(src).toContain("02 — Facilities");
-    expect(src).toContain("Built together. Not retrofitted.");
+    expect(src).toContain("home.facilitiesSection.sectionLabel");
+    expect(src).toContain("home.facilitiesSection.heading");
   });
 
-  it("includes all four facility types", () => {
+  it("includes all four facility types via t()", () => {
     const src = readHome();
-    expect(src).toContain("SCREEN SOUND STAGES");
-    expect(src).toContain("COMMERCIAL SOUND STAGES");
-    expect(src).toContain("BROADCAST THEATRE");
-    expect(src).toContain("BROADCAST CONTROL ROOM");
+    expect(src).toContain("home.facilitiesSection.tiles.screenStages.label");
+    expect(src).toContain("home.facilitiesSection.tiles.commercialStages.label");
+    expect(src).toContain("home.facilitiesSection.tiles.broadcastTheatre.label");
+    expect(src).toContain("home.facilitiesSection.controlRoom.label");
   });
 });
 
 describe("Home page — Services section", () => {
-  it("has services section listing disciplines", () => {
+  it("has services section label via t()", () => {
     const src = readHome();
-    expect(src).toContain("03 — Services");
-    expect(src).toContain("VIRTUAL PRODUCTION");
-    expect(src).toContain("POST-PRODUCTION");
+    expect(src).toContain("home.servicesSection.sectionLabel");
+    expect(src).toContain("home.servicesSection.heading");
+  });
+
+  it("includes service names via t()", () => {
+    const src = readHome();
+    expect(src).toContain("home.servicesSection.services.virtualProduction");
+    expect(src).toContain("home.servicesSection.services.postProduction");
   });
 });
 
 describe("Home page — First Nations section", () => {
-  it("has First Nations approach section", () => {
+  it("has First Nations approach section via t()", () => {
     const src = readHome();
-    expect(src).toContain("04 — First Nations approach");
-    expect(src).toContain("Embedded, not added on.");
+    expect(src).toContain("home.firstNations.sectionLabel");
+    expect(src).toContain("home.firstNations.heading");
   });
 
-  it("references Matthew Compton and Wiradjuri heritage", () => {
+  it("references Matthew Compton (non-translatable proper noun)", () => {
     const src = readHome();
     expect(src).toContain("Matthew Compton");
     expect(src).toContain("Wiradjuri");
   });
+
+  it("has First Nations prose via t()", () => {
+    const src = readHome();
+    expect(src).toContain("home.firstNations.prose");
+    expect(src).toContain("home.firstNations.proseMatthew");
+  });
 });
 
 describe("Home page — Pull quote section", () => {
-  it("has first-site-advantage pull quote", () => {
+  it("has first-site-advantage pull quote via t()", () => {
     const src = readHome();
-    expect(src).toContain("05 — FIRST SITE ADVANTAGE");
-    expect(src).toContain("Hosting the first site is not hosting a branch");
+    expect(src).toContain("home.firstSite.sectionLabel");
+    expect(src).toContain("home.firstSite.quote");
+    expect(src).toContain("home.firstSite.quoteHighlight");
   });
 });
 
 describe("Home page — Network section", () => {
-  it("has network section with region table", () => {
+  it("has network sequence section with region table via t()", () => {
     const src = readHome();
-    expect(src).toContain("06 — The network");
-    expect(src).toContain("Five continents. One standard.");
+    expect(src).toContain("home.network.sectionLabel");
+    expect(src).toContain("home.network.heading");
   });
 
   it("includes network map component", () => {
     expect(readHome()).toContain("NetworkMap");
   });
 
-  it("lists all five regions", () => {
+  it("lists regions via t()", () => {
     const src = readHome();
-    expect(src).toContain("Australia");
-    expect(src).toContain("Europe");
-    expect(src).toContain("Asia Pacific");
-    expect(src).toContain("Africa");
-    expect(src).toContain("North America");
+    expect(src).toContain("home.network.regions.australia.region");
+    expect(src).toContain("home.network.regions.europe.region");
+    expect(src).toContain("home.network.regions.asiaPacific.region");
+    expect(src).toContain("home.network.regions.africa.region");
+    expect(src).toContain("home.network.regions.unitedStates.region");
+  });
+
+  it("has table column headers via t()", () => {
+    const src = readHome();
+    expect(src).toContain("home.network.tableHeaderRegion");
+    expect(src).toContain("home.network.tableHeaderStatus");
   });
 });
 
 describe("Home page — Audience routing section", () => {
-  it("has audience routing section", () => {
+  it("has audience routing section via t()", () => {
     const src = readHome();
-    expect(src).toContain("07 — Who we work with");
-    expect(src).toContain("Four doors in.");
+    expect(src).toContain("home.audience.sectionLabel");
+    expect(src).toContain("home.audience.heading");
   });
 
-  it("includes four audience cards", () => {
+  it("includes four audience cards via t()", () => {
     const src = readHome();
-    expect(src).toContain("For producers and studios");
-    expect(src).toContain("For government");
-    expect(src).toContain("For investors");
-    expect(src).toContain("For technology partners");
+    expect(src).toContain("home.audience.cards.producers.title");
+    expect(src).toContain("home.audience.cards.government.title");
+    expect(src).toContain("home.audience.cards.investors.title");
+    expect(src).toContain("home.audience.cards.techPartners.title");
+  });
+
+  it("audience enter CTA via t()", () => {
+    expect(readHome()).toContain("home.audience.enter");
   });
 });
 
 describe("Home page — Chorus section", () => {
-  it("has chorus/closing statement", () => {
-    expect(readHome()).toContain("We make stories");
+  it("has chorus via t()", () => {
+    expect(readHome()).toContain("home.chorus.text");
   });
 });
 
@@ -206,6 +250,11 @@ describe("Home page — Infrastructure", () => {
     expect(readHome()).toContain("I18nProvider");
   });
 
+  it("accepts and forwards serverLocale prop to I18nProvider", () => {
+    const src = readHome();
+    expect(src).toContain("serverLocale");
+  });
+
   it("uses useTranslation hook for remaining i18n text", () => {
     expect(readHome()).toContain("useTranslation");
   });
@@ -214,5 +263,24 @@ describe("Home page — Infrastructure", () => {
     const src = readHome();
     const count = (src.match(/<ScrollRevealSection/g) || []).length;
     expect(count).toBeGreaterThanOrEqual(5);
+  });
+
+  it("does not use hardcoded English heading strings as const values", () => {
+    const src = readHome();
+    expect(src).not.toContain('"We make stories."');
+    expect(src).not.toContain('"One operator. One campus. Script to delivery."');
+    expect(src).not.toContain('"Built together. Not retrofitted."');
+    expect(src).not.toContain('"Four doors in."');
+    expect(src).not.toContain('"Sequenced. Not simultaneous."');
+    expect(src).not.toContain('"Embedded, not added on."');
+  });
+});
+
+describe("Home page — serverLocale wiring", () => {
+  const PAGE_PATH = resolve(import.meta.dirname, "..", "page.tsx");
+
+  it("root page.tsx passes serverLocale to HomePage", () => {
+    const src = readFileSync(PAGE_PATH, "utf-8");
+    expect(src).toContain("serverLocale");
   });
 });
