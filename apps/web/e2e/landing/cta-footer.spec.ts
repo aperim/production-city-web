@@ -189,7 +189,7 @@ test.describe("Footer — contact information", () => {
 });
 
 // ─── Footer legal links ───────────────────────────────────────────────────────
-// Privacy and Terms pages removed from footer until pages exist (PRO-253 / PRO-260).
+// Legal footer link tests are in legal.spec.ts (PRO-325).
 
 // ─── Hamburger menu close and Escape key ─────────────────────────────────────
 

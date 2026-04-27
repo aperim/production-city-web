@@ -106,6 +106,7 @@ export function useLandingFooter(): LandingFooterProps {
     legalLinks: [
       { label: t("legal.privacyPolicy"), href: `${prefix}/privacy` },
       { label: t("legal.termsOfUse"), href: `${prefix}/terms` },
+      { label: t("legal.cookiePolicy"), href: `${prefix}/cookies` },
     ],
     languages: LOCALE_META.map((m) => ({
       code: m.code,

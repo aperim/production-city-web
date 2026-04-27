@@ -168,6 +168,8 @@
       "saving": "保存中...",
       "saved": "保存済み",
       "error": "プロフィールの更新に失敗しました",
+      "emptyNameError": "名前を空にすることはできません",
+      "genericError": "エラーが発生しました",
       "sessions": {
         "title": "アクティブセッション",
         "currentSession": "現在のセッション",
@@ -185,9 +187,7 @@
         "onDevice": "の",
         "revoking": "取り消し中…",
         "revokeError": "セッションの取り消しに失敗しました"
-      },
-      "emptyNameError": "名前を空にすることはできません",
-      "genericError": "エラーが発生しました"
+      }
     },
     "announcements": {
       "title": "お知らせ",
@@ -317,15 +317,73 @@
     "facilities": "施設",
     "creative": "クリエイティブ",
     "vision": "ビジョン",
-    "contact": "お問い合わせ",
     "community": "コミュニティ",
     "faq": "よくある質問",
+    "contact": "お問い合わせ",
     "updates": "お知らせ",
     "services": "Services",
+    "firstNations": "先住民族",
     "network": "Network",
     "company": "Company",
-    "firstNations": "先住民族",
     "masterplan": "マスタープラン"
+  },
+  "announcements": {
+    "page": {
+      "title": "お知らせ",
+      "description": "プロダクションシティの最新ニュースとアップデート",
+      "empty": "まだお知らせはありません。プロダクションシティチームからのアップデートをお待ちください。",
+      "filter_all": "すべて"
+    },
+    "detail": {
+      "back": "お知らせ一覧に戻る",
+      "updated": "{date}に更新",
+      "share": "共有",
+      "share_copied": "リンクがコピーされました",
+      "subscribed_banner": "{categoryName}のアップデートを購読中です",
+      "subscribe_cta": "{categoryName}のアップデート通知を受け取る",
+      "not_found": "見つかりません",
+      "not_found_description": "お探しのページは存在しません。"
+    }
+  },
+  "subscriptions": {
+    "confirm": {
+      "title": "購読確認完了",
+      "success": "{channel}による{categoryName}の購読が確認されました。",
+      "error": "無効または期限切れの確認リンクです。",
+      "failedTitle": "確認に失敗しました",
+      "viewUpdates": "更新を見る"
+    },
+    "decline": {
+      "title": "購読辞退",
+      "success": "購読リクエストを辞退しました。",
+      "error": "無効または期限切れのリンクです。",
+      "failedTitle": "確認に失敗しました",
+      "viewUpdates": "更新を見る"
+    },
+    "unsubscribe": {
+      "title": "購読解除",
+      "confirm": "{channel}による{categoryName}のアップデートの購読を解除しますか？",
+      "button": "購読解除を確認",
+      "success": "購読が解除されました。",
+      "error": "無効または期限切れのリンクです。",
+      "successTitle": "購読解除済み",
+      "errorTitle": "エラー",
+      "confirmMessage": "これらの更新の購読を解除してもよろしいですか？",
+      "managePreferences": "通知設定を管理"
+    },
+    "preferences": {
+      "title": "通知設定",
+      "description": "受け取りたいアップデートとその方法を選択してください。",
+      "email": "メール",
+      "sms": "SMS",
+      "pending": "確認待ち",
+      "confirmed": "アクティブ",
+      "resend": "確認メールを再送",
+      "no_phone": "SMS通知を受け取るには電話番号を追加してください",
+      "subscribe_all": "すべて購読",
+      "confirm_unsubscribe": "{channel}による{categoryName}の購読を解除してもよろしいですか？",
+      "digest_coming_soon": "週間ダイジェスト — 近日公開"
+    }
   },
   "eoi": {
     "formTitle": "関心を表明する",
@@ -342,6 +400,7 @@
     "categoryPartner": "パートナー",
     "categoryInvestor": "投資家",
     "categoryEducation": "教育",
+    "categoryEmployment": "採用",
     "consentLabel": "{privacyPolicy}を読み、同意しました",
     "privacyPolicyLink": "プライバシーポリシー",
     "marketingOptInLabel": "Production Cityに関する最新情報を受け取りたい",
@@ -351,7 +410,6 @@
     "successMessage": "ご関心の表明を受け取りました。ご連絡いたします。",
     "errorMessage": "エラーが発生しました。もう一度お試しください。",
     "rateLimited": "送信が多すぎます。後でもう一度お試しください。",
-    "categoryEmployment": "採用",
     "employment": {
       "title": "採用",
       "description": "Production Cityの求人に応募する。",
@@ -388,34 +446,56 @@
   "legal": {
     "privacyPolicy": "プライバシーポリシー",
     "termsOfUse": "利用規約",
+    "cookiePolicy": "Cookie Policy",
     "lastUpdated": "最終更新日：{date}",
     "backToHome": "ホームに戻る",
     "privacy": {
       "title": "プライバシーポリシー",
       "effectiveDate": "発効日: {date}",
-      "intro": "Aperim Pty Ltd（「当社」）はProduction Cityプラットフォームを運営しています。このプライバシーポリシーは、当社ウェブサイトの訪問または関心の表明の提出時に、お客様の情報をどのように収集、使用、開示、保護するかを説明します。",
+      "about": {
+        "title": "About this policy",
+        "description": "This privacy policy explains how Aperim Pty Ltd (\"we\", \"us\", \"our\") collects, holds, uses, and discloses personal information in connection with the Production City website at production.city and any related services.",
+        "obligations": "We are bound by the Australian Privacy Act 1988 (Cth) (\"Privacy Act\") and the Australian Privacy Principles (\"APPs\"). This policy is intended to satisfy our obligations under APP 1 to manage personal information in an open and transparent way.",
+        "contact": "If you have questions about this policy or how we handle your personal information, contact us at privacy@production.city."
+      },
       "dataCollection": {
         "title": "収集する情報",
         "description": "関心の表明を提出する際、以下を収集します：",
         "items": [
-          "お客様のお名前とメールアドレス",
-          "お客様が選択した関心カテゴリ",
-          "お客様が任意で提供するメッセージ",
-          "カテゴリ固有の情報（例：会社名、ポートフォリオURL）",
-          "技術データ：IPアドレス、ブラウザの種類、参照ページ、UTMキャンペーンパラメータ",
-          "同意記録：承認したプライバシーポリシーのバージョン、タイムスタンプ、マーケティング設定"
-        ]
+          "Identity information — your name and email address, provided when you submit an expression of interest or create an account.",
+          "Submission content — the category of interest you select, any optional message you provide, and category-specific information such as a company name or portfolio URL.",
+          "Contact information — your phone number in E.164 format, if you choose to subscribe to SMS notifications.",
+          "Technical information — your IP address, browser type and version, referring page URL, and UTM campaign parameters, collected automatically when you visit the site.",
+          "Consent records — the version of this privacy policy you accepted, the timestamp of acceptance, and your marketing communication preference.",
+          "Session information — a hashed session token, your IP address, and user agent string, collected when you log in.",
+          "Audit information — records of actions you take within the platform, including the action type, timestamp, IP address, and user agent, stored for security and compliance purposes."
+        ],
+        "sensitive": "We do not collect sensitive information as defined in the Privacy Act (such as health information, racial or ethnic origin, or political opinions) unless you voluntarily include it in a free-text message field."
+      },
+      "howWeCollect": {
+        "title": "How we collect personal information",
+        "items": [
+          "directly from you, when you submit an expression of interest, create an account, subscribe to notifications, or contact us;",
+          "automatically, through server logs and the Cloudflare Web Analytics service when you visit our website; and",
+          "from third-party services, such as Postmark delivery status notifications and Twilio SMS status callbacks."
+        ],
+        "note": "Where reasonably practicable, we collect personal information directly from you. We do not purchase personal information from third-party data brokers."
       },
       "purpose": {
         "title": "情報の利用方法",
         "description": "収集した情報を以下の目的で使用します：",
         "items": [
-          "お客様の関心表明に回答する",
-          "提出の確認メールを送信する",
-          "マーケティング通信を送信する（オプトインした場合のみ）",
-          "サービス改善のために提出動向を分析する",
-          "法的義務を遵守する"
-        ]
+          "to respond to your expression of interest and communicate with you about Production City;",
+          "to send you a confirmation email acknowledging your submission;",
+          "to send marketing communications, only where you have given explicit opt-in consent;",
+          "to send SMS notifications about categories you have subscribed to, only with your confirmed consent;",
+          "to authenticate your identity and maintain your session when you log in;",
+          "to analyse submission trends and website usage to improve our services;",
+          "to maintain audit logs for security, fraud prevention, and regulatory compliance;",
+          "to manage email and SMS suppression lists to honour your unsubscribe requests and comply with the Spam Act 2003 (Cth) and the Do Not Call Register Act 2006 (Cth);",
+          "to comply with applicable laws, regulations, and legal processes."
+        ],
+        "note": "We will not use or disclose your personal information for a purpose other than the purpose of collection, a related purpose you would reasonably expect, or a purpose to which you have consented, unless required or authorised by law (APP 6)."
       },
       "lawfulBasis": {
         "title": "処理の法的根拠",
@@ -423,31 +503,100 @@
         "legitimateInterest": "正当な利益：運用メール（送信確認）は、お客様が要求したサービスを提供するという正当な利益に基づいて送信されます。",
         "marketing": "マーケティング：マーケティング通信はお客様の明示的な同意がある場合にのみ送信され、いつでも同意を撤回できます。"
       },
-      "retention": {
-        "title": "データ保持",
-        "description": "関心の表明データは最後の連絡から最大24ヶ月間保持されます。この期間後、データは匿名化または削除されます。いつでも早期削除を要求できます。"
+      "marketing": {
+        "title": "Direct marketing",
+        "description": "We will only send you marketing communications (by email or SMS) if you have explicitly opted in (APP 7). You can withdraw your consent and unsubscribe at any time by:",
+        "items": [
+          "clicking the unsubscribe link in any marketing email;",
+          "replying STOP to any SMS message;",
+          "contacting us at privacy@production.city."
+        ],
+        "spam": "We will process your unsubscribe request promptly. Every marketing email includes a working unsubscribe mechanism as required by the Spam Act 2003."
       },
       "thirdParties": {
         "title": "サードパーティサービス",
         "description": "以下のサービスプロバイダーとデータを共有します：",
-        "items": [
-          "Postmark（Wildbit LLC）：確認およびマーケティング通信のメール配信",
-          "Cloudflare：ウェブサイトホスティング、CDN、セキュリティサービス"
-        ],
         "note": "これらのプロバイダーはデータ処理契約に基づき当社に代わってデータを処理します。個人データの販売は行いません。"
+      },
+      "crossBorder": {
+        "title": "Cross-border disclosure",
+        "description": "Your personal information may be disclosed to service providers located in the United States. Before disclosing personal information to an overseas recipient, we take reasonable steps to ensure the recipient does not breach the APPs in relation to that information, or we rely on an exception under APP 8.2 (such as your informed consent or a binding contractual arrangement that requires the recipient to handle information consistently with the APPs).",
+        "countries": [
+          "United States — Cloudflare (hosting, analytics), Postmark (email), Twilio (SMS), Google (font delivery)"
+        ],
+        "note": "No other countries. All third-party data processing occurs in the United States as listed above."
+      },
+      "security": {
+        "title": "Data quality and security",
+        "description": "We take reasonable steps to ensure the personal information we collect, use, and disclose is accurate, up-to-date, complete, and relevant (APP 10), and to protect personal information from misuse, interference, loss, and unauthorised access, modification, or disclosure (APP 11). Our security measures include:",
+        "items": [
+          "encryption in transit (TLS/HTTPS on all connections);",
+          "hashing of session tokens using SHA-256 before storage;",
+          "hashing of magic link tokens and verification codes before storage;",
+          "HttpOnly, Secure, and SameSite cookie attributes on authentication cookies;",
+          "Content Security Policy headers restricting script and resource loading;",
+          "automated session cleanup after 30 days of inactivity;",
+          "automatic expiry of magic links (15 minutes for login, 7 days for invitations);",
+          "email and SMS suppression lists to prevent delivery to addresses that have bounced or reported spam;",
+          "audit logging of significant account actions."
+        ],
+        "note": "We review our security practices periodically. No system is completely secure, and we cannot guarantee absolute security of your information."
+      },
+      "retention": {
+        "title": "データ保持",
+        "description": "関心の表明データは最後の連絡から最大24ヶ月間保持されます。この期間後、データは匿名化または削除されます。いつでも早期削除を要求できます。"
+      },
+      "cookiesSection": {
+        "title": "Cookies and tracking technologies",
+        "description": "Our website uses cookies and local storage to support authentication and language preferences. We use Cloudflare Web Analytics for traffic analysis — this service does not use cookies and does not collect personal information.",
+        "analytics": "We do not use any other third-party tracking cookies, advertising cookies, or cross-site tracking technologies.",
+        "link": "For full details, see our Cookie Policy."
+      },
+      "children": {
+        "title": "Children's privacy",
+        "description": "Our website and services are not directed at children under the age of 16. We do not knowingly collect personal information from children under 16. If we become aware that we have collected personal information from a child under 16 without parental consent, we will take reasonable steps to delete that information promptly.",
+        "contact": "If you are a parent or guardian and believe your child has provided us with personal information, please contact us at privacy@production.city."
+      },
+      "anonymity": {
+        "title": "Anonymity and pseudonymity",
+        "description": "Where it is lawful and practicable, you may deal with us without identifying yourself or by using a pseudonym (APP 2). However, if you do not provide the personal information we request, we may not be able to respond to your expression of interest or provide you with access to certain features."
       },
       "rights": {
         "title": "お客様の権利",
         "description": "適用されるプライバシー法に基づき、以下の権利があります：",
         "items": [
-          "当社が保有するお客様の個人データへのアクセス",
-          "不正確なデータの訂正を要求する",
-          "お客様のデータの削除を要求する",
-          "お客様のデータの移植性を要求する",
-          "マーケティング通信への同意を撤回する",
-          "関連する監督機関に苦情を申し立てる"
+          "request access to the personal information we hold about you;",
+          "request correction of any information that is inaccurate, out-of-date, incomplete, irrelevant, or misleading;",
+          "request deletion of your personal information (subject to any legal obligations that require us to retain it)."
         ],
-        "contact": "これらの権利を行使するには、privacy@production.cityまでご連絡ください。"
+        "contact": "これらの権利を行使するには、privacy@production.cityまでご連絡ください。",
+        "note": "If we refuse to provide access or correct information, we will give you written reasons and inform you of the complaint mechanisms available to you."
+      },
+      "ndb": {
+        "title": "Notifiable data breaches",
+        "description": "If we become aware of a data breach that is likely to result in serious harm to any individual whose personal information is involved, we will:",
+        "items": [
+          "take reasonable steps to contain the breach and mitigate harm;",
+          "assess the breach to determine whether it is an eligible data breach under Part IIIC of the Privacy Act;",
+          "if the breach is eligible, notify the affected individuals and the Office of the Australian Information Commissioner (OAIC) as soon as practicable;",
+          "keep a record of the breach regardless of whether notification is required."
+        ]
+      },
+      "complaints": {
+        "title": "Complaints",
+        "description": "If you believe we have breached the APPs or handled your personal information improperly, you may lodge a complaint by contacting us at privacy@production.city. We will:",
+        "steps": [
+          "acknowledge your complaint within 7 days;",
+          "investigate the complaint and provide a response within 30 days;",
+          "take reasonable steps to resolve the matter."
+        ],
+        "oaic": {
+          "description": "If you are not satisfied with our response, you may lodge a complaint with the Office of the Australian Information Commissioner (OAIC):",
+          "website": "www.oaic.gov.au",
+          "phone": "1300 363 992",
+          "email": "enquiries@oaic.gov.au",
+          "post": "GPO Box 5218, Sydney NSW 2001"
+        }
       },
       "jurisdiction": {
         "title": "準拠法",
@@ -466,29 +615,128 @@
       "title": "利用規約",
       "effectiveDate": "発効日: {date}",
       "intro": "この利用規約は、Aperim Pty Ltdが運営するProduction Cityウェブサイトへのアクセスと利用を規定します。",
+      "about": {
+        "title": "About these terms",
+        "description": "These Terms of Use (\"Terms\") govern your access to and use of the Production City website at production.city (\"Website\") operated by Aperim Pty Ltd (\"we\", \"us\", \"our\").",
+        "agreement": "By accessing or using the Website, you agree to be bound by these Terms. If you do not agree to these Terms, you must not use the Website.",
+        "updates": "We may update these Terms from time to time. The current version will always be available on this page with the effective date shown above. Your continued use of the Website after changes are posted constitutes acceptance of the updated Terms."
+      },
       "usage": {
         "title": "ウェブサイトの利用",
-        "description": "本ウェブサイトは合法的な目的にのみ使用できます。ウェブサイトに損害を与えたり、他者の利用を妨害する方法での使用に同意しないものとします。"
+        "description": "本ウェブサイトは合法的な目的にのみ使用できます。ウェブサイトに損害を与えたり、他者の利用を妨害する方法での使用に同意しないものとします。",
+        "items": [
+          "use the Website in any way that breaches any applicable law or regulation;",
+          "use the Website in any way that is fraudulent or has any fraudulent purpose or effect;",
+          "use the Website to transmit or procure the sending of unsolicited or unauthorised advertising, promotional material, or spam;",
+          "use the Website to knowingly transmit any data or material that contains viruses, trojans, worms, time-bombs, keystroke loggers, spyware, adware, or any other harmful programs or code;",
+          "attempt to gain unauthorised access to the Website, the servers on which the Website is hosted, or any server, computer, or database connected to the Website;",
+          "use any automated means, including bots, scrapers, or spiders, to access or interact with the Website without our prior written consent;",
+          "interfere with or disrupt the Website or any other party's use and enjoyment of the Website;",
+          "reproduce, duplicate, copy, or redistribute any content from the Website without our express permission."
+        ],
+        "reserve": "We reserve the right to restrict or suspend your access to the Website if we reasonably believe you have breached these Terms."
       },
       "ip": {
         "title": "知的財産",
-        "description": "Production City™はAperim Pty Ltdの商標です。本ウェブサイト上のすべてのコンテンツ、デザイン、技術はAperim Pty Ltdまたはそのライセンサーの財産であり、知的財産法により保護されています。"
+        "description": "Production City™はAperim Pty Ltdの商標です。本ウェブサイト上のすべてのコンテンツ、デザイン、技術はAperim Pty Ltdまたはそのライセンサーの財産であり、知的財産法により保護されています。",
+        "restriction": "You must not reproduce, modify, distribute, display, perform, or create derivative works from any content on this Website without our prior written consent, except as permitted by law (including fair dealing provisions under Part III Division 3 of the Copyright Act 1968).",
+        "licence": "Nothing in these Terms grants you any right, title, or interest in the Website or its content, other than a limited, non-exclusive, non-transferable licence to access and use the Website for personal, non-commercial purposes in accordance with these Terms."
+      },
+      "userAccounts": {
+        "title": "User accounts",
+        "items": [
+          "you are responsible for maintaining the confidentiality of your login credentials;",
+          "you are responsible for all activities that occur under your account;",
+          "you must notify us immediately at privacy@production.city if you become aware of any unauthorised use of your account;",
+          "we may suspend or terminate your account if we reasonably believe it has been compromised or if you have breached these Terms."
+        ],
+        "magicLinks": "Authentication is handled through magic links sent to your registered email address. We do not store passwords."
+      },
+      "submissions": {
+        "title": "Expressions of interest and submissions",
+        "items": [
+          "you warrant that the information you provide is accurate and not misleading;",
+          "you acknowledge that submitting an expression of interest does not create a binding agreement, contract, or commitment between you and us;",
+          "you consent to us using your submission in accordance with our Privacy Policy."
+        ]
       },
       "disclaimer": {
         "title": "免責事項",
+        "prelaunch": "Production City is in pre-launch development. All information, features, services, timelines, pricing, and projections described on this Website are subject to change without notice.",
+        "items": [
+          "a binding offer, invitation to treat, or commitment to deliver any particular service, feature, or capability;",
+          "financial, investment, legal, or professional advice;",
+          "a guarantee of availability, performance, or suitability for any particular purpose."
+        ],
         "description": "Production Cityはローンチ前の開発段階にあります。すべての情報、機能、スケジュール、予測は予告なく変更される場合があります。本ウェブサイト上のいかなる内容も、拘束力のある提案、可用性の保証、または特定のサービスや機能の提供に関する約束を構成するものではありません。"
       },
       "forwardLooking": {
         "title": "将来の見通しに関する記述",
-        "description": "本ウェブサイトにはProduction Cityの計画、目標、予想される開発に関する将来の見通しに関する記述が含まれている場合があります。これらの記述には、実際の結果が大きく異なる原因となりうるリスクと不確実性が伴います。"
+        "description": "本ウェブサイトにはProduction Cityの計画、目標、予想される開発に関する将来の見通しに関する記述が含まれている場合があります。これらの記述には、実際の結果が大きく異なる原因となりうるリスクと不確実性が伴います。",
+        "note": "Forward-looking statements are based on current expectations and assumptions and are not guarantees of future performance. We do not undertake any obligation to update forward-looking statements to reflect events or circumstances after the date they are made."
+      },
+      "consumerLaw": {
+        "title": "Australian Consumer Law",
+        "description": "Nothing in these Terms is intended to exclude, restrict, or modify any consumer guarantee or right that applies under the Competition and Consumer Act 2010 (Cth), Schedule 2 (Australian Consumer Law) (\"ACL\"), or any other applicable consumer protection law, where to do so would be unlawful. If the ACL applies to your use of the Website or any service we provide:",
+        "items": [
+          "our goods and services come with guarantees that cannot be excluded under the ACL, including guarantees as to acceptable quality, fitness for purpose, and due care and skill;",
+          "you are entitled to a replacement or refund for a major failure and compensation for any other reasonably foreseeable loss or damage;",
+          "you are also entitled to have goods repaired or replaced if the goods fail to be of acceptable quality and the failure does not amount to a major failure."
+        ]
       },
       "liability": {
         "title": "責任の制限",
-        "description": "法律で許容される最大限の範囲で、Aperim Pty Ltdは本ウェブサイトの使用から生じる間接的、付随的、特別、結果的損害について責任を負いません。"
+        "description": "法律で許容される最大限の範囲で、Aperim Pty Ltdは本ウェブサイトの使用から生じる間接的、付随的、特別、結果的損害について責任を負いません。",
+        "items": [
+          "we exclude all liability for any loss, damage, cost, or expense (whether direct, indirect, incidental, special, consequential, or punitive) arising from or in connection with your use of, or inability to use, the Website;",
+          "our total aggregate liability to you for all claims arising under or in connection with these Terms is limited to AUD $100;",
+          "we are not liable for any loss or damage arising from circumstances beyond our reasonable control, including but not limited to internet failures, equipment failures, electrical power failures, strikes, labour disputes, riots, insurrections, civil disturbances, shortages of labour or materials, fires, floods, storms, explosions, acts of God, war, governmental actions, or orders of domestic or foreign courts or tribunals."
+        ],
+        "note": "This limitation of liability applies to the fullest extent permitted by law. Where liability cannot be excluded (including under the ACL), it is limited to the extent permitted by law."
+      },
+      "indemnity": {
+        "title": "Indemnity",
+        "description": "You agree to indemnify, defend, and hold harmless Aperim Pty Ltd, its officers, directors, employees, agents, and affiliates from and against any and all claims, liabilities, damages, losses, costs, and expenses (including reasonable legal fees) arising out of or in connection with:",
+        "items": [
+          "your use of the Website in breach of these Terms;",
+          "your violation of any applicable law or regulation;",
+          "any content or information you submit through the Website that infringes the intellectual property or other rights of a third party."
+        ],
+        "note": "This indemnity is a continuing obligation, separate and independent from your other obligations under these Terms, and survives termination of these Terms."
+      },
+      "thirdPartyLinks": {
+        "title": "Third-party links",
+        "description": "The Website may contain links to third-party websites or services that are not owned or controlled by us. We are not responsible for the content, privacy policies, or practices of any third-party websites. You access third-party websites at your own risk and should review their terms and policies before engaging with them."
+      },
+      "disputeResolution": {
+        "title": "Dispute resolution",
+        "description": "If a dispute arises in connection with these Terms or your use of the Website:",
+        "steps": [
+          "Negotiation — The parties must first attempt to resolve the dispute by good-faith negotiation. Either party may give written notice of the dispute to the other party.",
+          "Mediation — If the dispute is not resolved within 30 days of the notice, either party may refer the dispute to mediation administered by the Australian Disputes Centre (ADC) in accordance with the ADC Mediation Guidelines. The mediation will be held in Sydney, New South Wales.",
+          "Litigation — If the dispute is not resolved by mediation within 60 days of referral (or such longer period as agreed by the parties), either party may commence legal proceedings."
+        ],
+        "note": "Nothing in this section prevents either party from seeking urgent interlocutory or injunctive relief from a court of competent jurisdiction."
       },
       "jurisdiction": {
         "title": "準拠法",
         "description": "この規約はオーストラリア・ニューサウスウェールズ州の法律に準拠します。紛争はニューサウスウェールズ州の裁判所の専属管轄に従います。"
+      },
+      "severability": {
+        "title": "Severability",
+        "description": "If any provision of these Terms is found to be invalid, illegal, or unenforceable by a court of competent jurisdiction, the remaining provisions will continue in full force and effect. The invalid, illegal, or unenforceable provision will be deemed modified to the minimum extent necessary to make it valid, legal, and enforceable, while preserving its original intent as closely as possible."
+      },
+      "waiver": {
+        "title": "Waiver",
+        "description": "A failure or delay by us in exercising any right, power, or remedy under these Terms does not operate as a waiver of that right, power, or remedy. A single or partial exercise of a right, power, or remedy does not preclude any other or further exercise of that or any other right, power, or remedy."
+      },
+      "assignment": {
+        "title": "Assignment",
+        "description": "You may not assign or transfer any of your rights or obligations under these Terms without our prior written consent. We may assign our rights and obligations under these Terms without your consent."
+      },
+      "entireAgreement": {
+        "title": "Entire agreement",
+        "description": "These Terms, together with our Privacy Policy and Cookie Policy, constitute the entire agreement between you and Aperim Pty Ltd regarding your use of the Website and supersede all prior agreements, understandings, and representations, whether written or oral."
       },
       "changes": {
         "title": "規約の変更",
@@ -498,6 +746,65 @@
         "title": "Contact",
         "description": "法的なお問い合わせはこちら: legal@production.city\n\nAperim Pty Ltd\nABN 46 150 699 737 | ACN 150 699 737\nSuite 108, 9 Hutchinson Street, St Peters NSW 2044, Australia"
       }
+    },
+    "cookies": {
+      "title": "Cookie Policy",
+      "effectiveDate": "Effective date: {date}",
+      "about": {
+        "title": "About this policy",
+        "description": "This Cookie Policy explains how Aperim Pty Ltd (\"we\", \"us\", \"our\") uses cookies, local storage, and similar technologies on the Production City website at production.city (\"Website\").",
+        "link": "This policy should be read alongside our Privacy Policy, which explains how we collect, use, and protect your personal information."
+      },
+      "whatAreCookies": {
+        "title": "What are cookies",
+        "description": "Cookies are small text files placed on your device by a website. They are widely used to make websites work efficiently and to provide information to website operators. Cookies can be \"session\" cookies (deleted when you close your browser) or \"persistent\" cookies (retained on your device until they expire or you delete them).",
+        "localStorage": "Local storage is a browser feature that allows websites to store data on your device. Unlike cookies, local storage data is not sent to the server with each request."
+      },
+      "cookiesWeUse": {
+        "title": "Cookies we use",
+        "description": "We use a small number of cookies, all of which are functional. We do not use advertising, tracking, or analytics cookies.",
+        "essentialTitle": "Essential cookies",
+        "essentialDescription": "These cookies are necessary for the Website to function. You cannot opt out of essential cookies because the Website would not work without them.",
+        "functionalTitle": "Functional cookies",
+        "functionalDescription": "These cookies improve your experience by remembering your preferences. They are not required for the Website to function but provide useful features."
+      },
+      "localStorage": {
+        "title": "Local storage",
+        "description": "We use browser local storage to remember your language preference.",
+        "note": "Local storage data stays on your device and is not transmitted to our servers with each page request."
+      },
+      "analytics": {
+        "title": "Analytics",
+        "description": "We use Cloudflare Web Analytics for aggregated website traffic analysis. This service does not use cookies, does not collect personal information, does not track individual visitors across websites, and processes anonymised, aggregated traffic data only.",
+        "note": "Cloudflare Web Analytics is loaded via a script from static.cloudflareinsights.com and operates in a way that preserves visitor privacy."
+      },
+      "thirdParty": {
+        "title": "Third-party cookies and external resources",
+        "description": "We do not embed third-party cookies on the Website. We do not use social media plugins, advertising trackers, or third-party analytics services that set cookies.",
+        "fonts": "Our Website loads web font files (Noto Sans for Arabic, Devanagari, and Bengali script support) directly from Google's font delivery network at fonts.gstatic.com. Google does not set cookies through this font delivery mechanism. However, when your browser requests font files, Google receives your IP address and browser user-agent string. Google's handling of this data is governed by Google's Privacy Policy at policies.google.com/privacy.",
+        "analytics": "The only other third-party domain from which scripts are loaded is static.cloudflareinsights.com (Cloudflare Web Analytics), which does not set cookies."
+      },
+      "managing": {
+        "title": "Managing cookies and local storage",
+        "description": "You can manage cookies through your browser settings. Most browsers allow you to view what cookies are set, delete individual or all cookies, block cookies from specific or all websites, and block third-party cookies.",
+        "browsers": "Instructions for managing cookies in common browsers:",
+        "browserList": [
+          "Chrome: Settings, then Privacy and Security, then Cookies and other site data",
+          "Firefox: Settings, then Privacy and Security, then Cookies and Site Data",
+          "Safari: Preferences, then Privacy, then Manage Website Data",
+          "Edge: Settings, then Cookies and site permissions, then Manage and delete cookies and site data"
+        ],
+        "sessionNote": "If you block essential cookies (__Secure-session), you will not be able to log in or maintain an authenticated session on the Website.",
+        "localStorageNote": "To clear local storage data, use your browser's developer tools or clear all site data through your browser's privacy settings. If you clear the pc-locale local storage item, the Website will default to English and will not remember your language preference between visits."
+      },
+      "changes": {
+        "title": "Changes to this policy",
+        "description": "We may update this Cookie Policy from time to time to reflect changes in the cookies we use or for other operational, legal, or regulatory reasons. When we make changes, we will update the effective date at the top of this page."
+      },
+      "contact": {
+        "title": "Contact",
+        "description": "For questions about our use of cookies, contact:\n\nAperim Pty Ltd\nEmail: privacy@production.city\n\nSuite 108, 9 Hutchinson Street, St Peters NSW 2044"
+      }
     }
   },
   "footer": {
@@ -506,14 +813,14 @@
     "copyright": "© {year} Aperim Pty Ltd. 全著作権所有。",
     "disclaimer": "Production City™はAperim Pty Ltdの商標です。",
     "explore": "探索する",
+    "resources": "リソース",
     "company": "会社情報",
     "acknowledgement": "Production Cityはオーストラリア全土の伝統的な土地の所有者を認め、土地、水、コミュニティへの継続的なつながりを認識します。アボリジニおよびトレス海峡諸島民の文化と過去・現在の長老に敬意を表します。",
-    "resources": "リソース",
+    "acknowledgementHeading": "国の承認",
     "brand": {
       "tagline": "物語をつくる"
     },
-    "contactHeading": "お問い合わせ",
-    "acknowledgementHeading": "国の承認"
+    "contactHeading": "お問い合わせ"
   },
   "languageSwitcher": {
     "label": "言語",
@@ -567,10 +874,10 @@
       "viewAll": "コミュニティパートナーシップを探索"
     },
     "masterplanTeaser": {
-      "ctaLabel": "キャンパスを3Dで探索する →",
       "eyebrow": "キャンパスマスタープラン",
       "heading": "三次元で見るキャンパス。",
-      "body": "6つのサウンドステージ、放送劇場、クリエイティブハブ、バックロット、パブリックスペース——インタラクティブな3Dモデルで6ヘクタールの全体サイトを探索してください。"
+      "body": "6つのサウンドステージ、放送劇場、クリエイティブハブ、バックロット、パブリックスペース——インタラクティブな3Dモデルで6ヘクタールの全体サイトを探索してください。",
+      "ctaLabel": "キャンパスを3Dで探索する →"
     }
   },
   "facilities": {
@@ -604,7 +911,16 @@
       "specNrc": "騒音低減係数",
       "specLed": "LEDウォールサイズ",
       "detail": {
+        "eyebrow": "施設 · A — スクリーン・サウンドステージ",
+        "heading": "大規模なスクリーン制作。そのために設計されています。",
+        "lead": "2,025 m²のステージフロア。グリッドまで15 m。NRC 1.05。フルサラウンドLEDボリューム対応済み。",
+        "prose": "長編映画。エピソード。ライブテレビ。大規模なプロダクションの場合、ステージは最初からそのために構築される必要があります。",
+        "prose2": "各スクリーン・サウンドステージは45 m × 45 m、グリッドまで15 m、全面グリッドとキャットウォーク付きです。防音はNRC 1.05 / NC 25です。LEDボリュームはフラット、アーク、またはフルサラウンドとして設定可能です。",
+        "prose3": "これらのステージは、主要スタジオおよびストリーマープロダクションの技術仕様に基づいて設計されました。最初のサイトとして、ここで標準が設定されます。",
         "usageLabel": "Usage",
+        "usage1": "長編映画制作",
+        "usage2": "エピソードテレビ",
+        "usage3": "ライブテレビ放送",
         "specLabel": "Specification",
         "specDimensions": "寸法",
         "specDimensionsValue": "45 m × 45 m · 147 ft × 147 ft",
@@ -619,20 +935,11 @@
         "specGrid": "グリッド＆キャットウォーク",
         "specGridValue": "全面カバー",
         "statArea": "2,025",
-        "statGrid": "15",
-        "ctaLink": "Enquire",
-        "eyebrow": "施設 · A — スクリーン・サウンドステージ",
-        "heading": "大規模なスクリーン制作。そのために設計されています。",
-        "lead": "2,025 m²のステージフロア。グリッドまで15 m。NRC 1.05。フルサラウンドLEDボリューム対応済み。",
-        "prose": "長編映画。エピソード。ライブテレビ。大規模なプロダクションの場合、ステージは最初からそのために構築される必要があります。",
-        "prose2": "各スクリーン・サウンドステージは45 m × 45 m、グリッドまで15 m、全面グリッドとキャットウォーク付きです。防音はNRC 1.05 / NC 25です。LEDボリュームはフラット、アーク、またはフルサラウンドとして設定可能です。",
-        "prose3": "これらのステージは、主要スタジオおよびストリーマープロダクションの技術仕様に基づいて設計されました。最初のサイトとして、ここで標準が設定されます。",
-        "usage1": "長編映画制作",
-        "usage2": "エピソードテレビ",
-        "usage3": "ライブテレビ放送",
         "statAreaLabel": "平方メートル",
+        "statGrid": "15",
         "statGridLabel": "グリッドまでのメートル数",
-        "cta": "スクリーンステージを予約する。"
+        "cta": "スクリーンステージを予約する。",
+        "ctaLink": "Enquire"
       }
     },
     "commercialStages": {
@@ -647,8 +954,15 @@
       "specNrc": "NRC 1.05、NC 25",
       "specLed": "フラット、アーク、フルサラウンド",
       "detail": {
+        "eyebrow": "施設 · B — コマーシャル・サウンドステージ",
+        "heading": "小さなフットプリント。フル仕様。",
+        "lead": "100 m²のステージ。同じグリッドまで15 m。同じ防音。すぐに使えるLEDボリューム。",
         "prose": "コマーシャル、TVC、ミュージックビデオ、ショートフォーム、デジタルコンテンツには45×45のスペースは不要です。ただし、適切な音響、十分な高さ、そして同じLED構成が必要です。",
+        "prose2": "それがこのステージです。月曜日に入る。撮影する。金曜日までに撤収する。ボリューム設定はスクリーンステージと共有されているため、一方で開発したルックをもう一方に移すことができます。",
         "usageLabel": "Usage",
+        "usage1": "テレビCMとインフォマーシャル",
+        "usage2": "ミュージックビデオ制作",
+        "usage3": "小規模デジタルコンテンツ",
         "specLabel": "Specification",
         "specDimensions": "寸法",
         "specDimensionsValue": "10 m × 10 m · 32 ft × 32 ft",
@@ -663,18 +977,11 @@
         "specGrid": "グリッド＆キャットウォーク",
         "specGridValue": "全面カバー",
         "statArea": "100",
-        "statGrid": "15",
-        "ctaLink": "Enquire",
-        "eyebrow": "施設 · B — コマーシャル・サウンドステージ",
-        "heading": "小さなフットプリント。フル仕様。",
-        "lead": "100 m²のステージ。同じグリッドまで15 m。同じ防音。すぐに使えるLEDボリューム。",
-        "prose2": "それがこのステージです。月曜日に入る。撮影する。金曜日までに撤収する。ボリューム設定はスクリーンステージと共有されているため、一方で開発したルックをもう一方に移すことができます。",
-        "usage1": "テレビCMとインフォマーシャル",
-        "usage2": "ミュージックビデオ制作",
-        "usage3": "小規模デジタルコンテンツ",
         "statAreaLabel": "平方メートル",
+        "statGrid": "15",
         "statGridLabel": "グリッドまでのメートル数",
-        "cta": "コマーシャルステージを予約する。"
+        "cta": "コマーシャルステージを予約する。",
+        "ctaLink": "Enquire"
       }
     },
     "broadcastTheatre": {
@@ -691,7 +998,15 @@
       "specCameras": "ロボットカメラ8台",
       "specBroadcast": "ライブ放送対応",
       "detail": {
+        "eyebrow": "施設 · C — ブロードキャスト・シアター",
+        "heading": "放送スタジオとして配線されたライブシアター。",
+        "lead": "シアターモードで450席。キャバレーで300席。8つの完全統合ロボットカメラポジション。ARとVR対応。放送パートナー準拠。",
+        "prose": "ブロードキャスト・シアターは、放送ギャラリーを周囲に備えたマルチモーダルのライブ会場です。",
+        "prose2": "ロボットカメラ、LEDバーチャルセットライブラリー、ストリーミングコンプライアンスが室内に組み込まれています。ここでの公演は、会場内の観客と自宅の視聴者の両方に同時に届けることができ、別途放送設備を用意する必要はありません。",
         "usageLabel": "Usage",
+        "usage1": "ライブパフォーマンスとイベント",
+        "usage2": "ライブ放送",
+        "usage3": "AR/VRショーケース体験",
         "specLabel": "Specification",
         "specTheatre": "シアターモード",
         "specTheatreValue": "450席",
@@ -706,19 +1021,11 @@
         "specCompliance": "コンプライアンス",
         "specComplianceValue": "ストリーミングサービス要件を満たす",
         "statSeats": "450",
-        "statCameras": "8",
-        "ctaLink": "Enquire",
-        "eyebrow": "施設 · C — ブロードキャスト・シアター",
-        "heading": "放送スタジオとして配線されたライブシアター。",
-        "lead": "シアターモードで450席。キャバレーで300席。8つの完全統合ロボットカメラポジション。ARとVR対応。放送パートナー準拠。",
-        "prose": "ブロードキャスト・シアターは、放送ギャラリーを周囲に備えたマルチモーダルのライブ会場です。",
-        "prose2": "ロボットカメラ、LEDバーチャルセットライブラリー、ストリーミングコンプライアンスが室内に組み込まれています。ここでの公演は、会場内の観客と自宅の視聴者の両方に同時に届けることができ、別途放送設備を用意する必要はありません。",
-        "usage1": "ライブパフォーマンスとイベント",
-        "usage2": "ライブ放送",
-        "usage3": "AR/VRショーケース体験",
         "statSeatsLabel": "シアター座席数",
+        "statCameras": "8",
         "statCamerasLabel": "ロボットカメラ",
-        "cta": "ライブ放送またはイベントについて相談する。"
+        "cta": "ライブ放送またはイベントについて相談する。",
+        "ctaLink": "Enquire"
       }
     },
     "controlRoom": {
@@ -730,19 +1037,19 @@
       "specManagement": "集中型制作管理",
       "specSync": "マルチプラットフォーム同期機能",
       "detail": {
-        "capabilityLabel": "Capability",
-        "ctaLink": "Enquire",
         "eyebrow": "施設 · D — ブロードキャスト・コントロールルーム",
         "heading": "神経中枢。",
         "lead": "集中プロダクション管理、ライブ放送制御、高度な同期——ステージ、シアター、世界中の外部会場をサポート。",
         "prose": "コントロールルームはキャンパスの唯一の放送バックボーンです。サイト上のすべてのライブ制作を管理・同期します。",
         "prose2": "世界中の外部スポーツ・イベント会場からの放送の起点となるように設計されています。Production Cityの放送およびデータセンターの実績がここに集約されています。コントロールルームは重要放送インフラと同様の方法でエンジニアリングされています。",
+        "capabilityLabel": "Capability",
         "cap1": "集中プロダクション管理",
         "cap2": "ライブ放送制御",
         "cap3": "マルチプラットフォームおよびマルチロケーション放送の高度な同期",
         "cap4": "キャンパス内ステージおよびシアターからの起点",
         "cap5": "世界中の外部スポーツ・イベント会場からの起点",
-        "cta": "ライブ起点について相談する。"
+        "cta": "ライブ起点について相談する。",
+        "ctaLink": "Enquire"
       }
     },
     "ancillary": {
@@ -1043,12 +1350,16 @@
     },
     "heading": "よくある質問",
     "searchPlaceholder": "質問を検索...",
+    "categoriesLabel": "質問カテゴリ",
     "allCategories": "すべて",
     "categoryFacilities": "施設",
     "categoryServices": "サービス",
     "categoryGlobal": "グローバル",
     "categoryCommunity": "コミュニティ",
     "categoryEngagement": "エンゲージメント",
+    "resultCountSingular": "{count} 件の結果",
+    "resultCountPlural": "{count} 件の結果",
+    "questionCount": "{count} 件の質問",
     "noResults": "該当する質問が見つかりません。",
     "questionsHeading": "質問と回答",
     "q1": "スクリーンサウンドステージの大きさは？",
@@ -1111,14 +1422,10 @@
     "q20": "施設レンタル以外にどのような関わり方がありますか？",
     "a20": "技術パートナーシップ、教育・研究コラボレーション、撮影方法・技術の共同開発、協力的なビジネスモデル。",
     "c20": "エンゲージメント",
-    "categoriesLabel": "質問カテゴリ",
     "searchLabel": "よくある質問を検索",
     "cantFindHeading": "お探しの情報が見つかりませんか？",
     "cantFindDescription": "Production Cityに関するご質問はチームがお手伝いします。",
-    "cantFindCta": "お問い合わせ",
-    "resultCountSingular": "{count} 件の結果",
-    "resultCountPlural": "{count} 件の結果",
-    "questionCount": "{count} 件の質問"
+    "cantFindCta": "お問い合わせ"
   },
   "contact": {
     "meta": {
@@ -1226,64 +1533,6 @@
     "failed": "メールを配信できませんでした",
     "pending": "送信中...",
     "unknown": "ステータス不明"
-  },
-  "announcements": {
-    "page": {
-      "title": "お知らせ",
-      "description": "プロダクションシティの最新ニュースとアップデート",
-      "empty": "まだお知らせはありません。プロダクションシティチームからのアップデートをお待ちください。",
-      "filter_all": "すべて"
-    },
-    "detail": {
-      "back": "お知らせ一覧に戻る",
-      "updated": "{date}に更新",
-      "share": "共有",
-      "share_copied": "リンクがコピーされました",
-      "subscribed_banner": "{categoryName}のアップデートを購読中です",
-      "subscribe_cta": "{categoryName}のアップデート通知を受け取る",
-      "not_found": "見つかりません",
-      "not_found_description": "お探しのページは存在しません。"
-    }
-  },
-  "subscriptions": {
-    "confirm": {
-      "title": "購読確認完了",
-      "success": "{channel}による{categoryName}の購読が確認されました。",
-      "error": "無効または期限切れの確認リンクです。",
-      "failedTitle": "確認に失敗しました",
-      "viewUpdates": "更新を見る"
-    },
-    "decline": {
-      "title": "購読辞退",
-      "success": "購読リクエストを辞退しました。",
-      "error": "無効または期限切れのリンクです。",
-      "failedTitle": "確認に失敗しました",
-      "viewUpdates": "更新を見る"
-    },
-    "unsubscribe": {
-      "title": "購読解除",
-      "confirm": "{channel}による{categoryName}のアップデートの購読を解除しますか？",
-      "button": "購読解除を確認",
-      "success": "購読が解除されました。",
-      "error": "無効または期限切れのリンクです。",
-      "successTitle": "購読解除済み",
-      "errorTitle": "エラー",
-      "confirmMessage": "これらの更新の購読を解除してもよろしいですか？",
-      "managePreferences": "通知設定を管理"
-    },
-    "preferences": {
-      "title": "通知設定",
-      "description": "受け取りたいアップデートとその方法を選択してください。",
-      "email": "メール",
-      "sms": "SMS",
-      "pending": "確認待ち",
-      "confirmed": "アクティブ",
-      "resend": "確認メールを再送",
-      "no_phone": "SMS通知を受け取るには電話番号を追加してください",
-      "subscribe_all": "すべて購読",
-      "confirm_unsubscribe": "{channel}による{categoryName}の購読を解除してもよろしいですか？",
-      "digest_coming_soon": "週間ダイジェスト — 近日公開"
-    }
   },
   "dashboard": {
     "sidebar": {

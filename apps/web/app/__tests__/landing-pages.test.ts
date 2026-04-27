@@ -23,6 +23,7 @@ describe("landing page structure", () => {
     { route: "contact/page.tsx", component: "pages/contact.tsx", name: "Contact" },
     { route: "privacy/page.tsx", component: "pages/privacy.tsx", name: "Privacy" },
     { route: "terms/page.tsx", component: "pages/terms.tsx", name: "Terms" },
+    { route: "cookies/page.tsx", component: "pages/cookies.tsx", name: "Cookies" },
   ];
 
   for (const page of pages) {
@@ -102,6 +103,8 @@ describe("landing page i18n completeness", () => {
     "legal.terms.title", "legal.terms.usage", "legal.terms.ip",
     "legal.terms.disclaimer", "legal.terms.forwardLooking", "legal.terms.liability",
     "legal.terms.jurisdiction", "legal.terms.changes",
+    "legal.cookies.title", "legal.cookies.about", "legal.cookies.cookiesWeUse",
+    "legal.cookies.managing", "legal.cookies.changes", "legal.cookies.contact",
   ];
 
   /** Flatten a nested object into dot-notation keys. */

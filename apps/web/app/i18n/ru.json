@@ -168,6 +168,8 @@
       "saving": "Сохранение...",
       "saved": "Сохранено",
       "error": "Не удалось обновить профиль",
+      "emptyNameError": "Имя не может быть пустым",
+      "genericError": "Произошла ошибка",
       "sessions": {
         "title": "Активные сессии",
         "currentSession": "Текущая сессия",
@@ -185,9 +187,7 @@
         "onDevice": "на",
         "revoking": "Отзыв…",
         "revokeError": "Не удалось отозвать сессию"
-      },
-      "emptyNameError": "Имя не может быть пустым",
-      "genericError": "Произошла ошибка"
+      }
     },
     "announcements": {
       "title": "Объявления",
@@ -317,15 +317,73 @@
     "facilities": "Объекты",
     "creative": "Творчество",
     "vision": "Видение",
-    "contact": "Контакты",
     "community": "Сообщество",
     "faq": "Вопросы и ответы",
+    "contact": "Контакты",
     "updates": "Обновления",
     "services": "Services",
+    "firstNations": "Коренные народы",
     "network": "Network",
     "company": "Company",
-    "firstNations": "Коренные народы",
     "masterplan": "Мастер-план"
+  },
+  "announcements": {
+    "page": {
+      "title": "Обновления",
+      "description": "Последние новости и обновления от Production City",
+      "empty": "Пока нет объявлений. Загляните позже за обновлениями от команды Production City.",
+      "filter_all": "Все"
+    },
+    "detail": {
+      "back": "Назад к обновлениям",
+      "updated": "Обновлено {date}",
+      "share": "Поделиться",
+      "share_copied": "Ссылка скопирована",
+      "subscribed_banner": "Вы подписаны на обновления {categoryName}",
+      "subscribe_cta": "Получайте уведомления об обновлениях {categoryName}",
+      "not_found": "Не найдено",
+      "not_found_description": "Страница, которую вы ищете, не существует."
+    }
+  },
+  "subscriptions": {
+    "confirm": {
+      "title": "Подписка подтверждена",
+      "success": "Ваша подписка на {categoryName} через {channel} подтверждена.",
+      "error": "Недействительная или просроченная ссылка подтверждения.",
+      "failedTitle": "Ошибка подтверждения",
+      "viewUpdates": "Просмотреть обновления"
+    },
+    "decline": {
+      "title": "Подписка отклонена",
+      "success": "Вы отклонили запрос на подписку.",
+      "error": "Недействительная или просроченная ссылка.",
+      "failedTitle": "Ошибка подтверждения",
+      "viewUpdates": "Просмотреть обновления"
+    },
+    "unsubscribe": {
+      "title": "Отписаться",
+      "confirm": "Отписаться от обновлений {categoryName} через {channel}?",
+      "button": "Подтвердить отписку",
+      "success": "Вы отписаны.",
+      "error": "Недействительная или просроченная ссылка.",
+      "successTitle": "Отписка выполнена",
+      "errorTitle": "Ошибка",
+      "confirmMessage": "Вы уверены, что хотите отписаться от этих обновлений?",
+      "managePreferences": "Управление настройками"
+    },
+    "preferences": {
+      "title": "Настройки уведомлений",
+      "description": "Выберите какие обновления и каким способом вы хотите получать.",
+      "email": "Эл. почта",
+      "sms": "СМС",
+      "pending": "Ожидание подтверждения",
+      "confirmed": "Активна",
+      "resend": "Отправить подтверждение повторно",
+      "no_phone": "Добавьте номер телефона для получения SMS-обновлений",
+      "subscribe_all": "Подписаться на все",
+      "confirm_unsubscribe": "Вы уверены что хотите отписаться от {categoryName} через {channel}?",
+      "digest_coming_soon": "Еженедельный дайджест — Скоро"
+    }
   },
   "eoi": {
     "formTitle": "Выразите свой интерес",
@@ -342,6 +400,7 @@
     "categoryPartner": "Партнёр",
     "categoryInvestor": "Инвестор",
     "categoryEducation": "Образование",
+    "categoryEmployment": "Трудоустройство",
     "consentLabel": "Я прочитал(а) и принимаю {privacyPolicy}",
     "privacyPolicyLink": "Политику конфиденциальности",
     "marketingOptInLabel": "Я хочу получать обновления о Production City",
@@ -351,7 +410,6 @@
     "successMessage": "Мы получили ваш запрос и свяжемся с вами.",
     "errorMessage": "Что-то пошло не так. Попробуйте снова.",
     "rateLimited": "Слишком много отправок. Попробуйте позже.",
-    "categoryEmployment": "Трудоустройство",
     "employment": {
       "title": "Трудоустройство",
       "description": "Подайте заявку на вакансии в Production City.",
@@ -388,34 +446,56 @@
   "legal": {
     "privacyPolicy": "Политика конфиденциальности",
     "termsOfUse": "Условия использования",
+    "cookiePolicy": "Cookie Policy",
     "lastUpdated": "Последнее обновление: {date}",
     "backToHome": "Вернуться на главную",
     "privacy": {
       "title": "Политика конфиденциальности",
       "effectiveDate": "Дата вступления в силу: {date}",
-      "intro": "Aperim Pty Ltd управляет платформой Production City. Настоящая политика конфиденциальности объясняет, как мы собираем, используем, раскрываем и защищаем вашу информацию при посещении нашего веб-сайта или подаче заявки о заинтересованности.",
+      "about": {
+        "title": "About this policy",
+        "description": "This privacy policy explains how Aperim Pty Ltd (\"we\", \"us\", \"our\") collects, holds, uses, and discloses personal information in connection with the Production City website at production.city and any related services.",
+        "obligations": "We are bound by the Australian Privacy Act 1988 (Cth) (\"Privacy Act\") and the Australian Privacy Principles (\"APPs\"). This policy is intended to satisfy our obligations under APP 1 to manage personal information in an open and transparent way.",
+        "contact": "If you have questions about this policy or how we handle your personal information, contact us at privacy@production.city."
+      },
       "dataCollection": {
         "title": "Информация, которую мы собираем",
         "description": "При подаче заявки о заинтересованности мы собираем:",
         "items": [
-          "Ваше имя и адрес электронной почты",
-          "Ваша выбранная категория интересов",
-          "Любое необязательное сообщение, которое вы предоставите",
-          "Информация, специфичная для категории (например, название компании, URL портфолио)",
-          "Технические данные: IP-адрес, тип браузера, страница перехода, параметры UTM-кампании",
-          "Записи о согласии: принятая версия политики конфиденциальности, временная метка, маркетинговые предпочтения"
-        ]
+          "Identity information — your name and email address, provided when you submit an expression of interest or create an account.",
+          "Submission content — the category of interest you select, any optional message you provide, and category-specific information such as a company name or portfolio URL.",
+          "Contact information — your phone number in E.164 format, if you choose to subscribe to SMS notifications.",
+          "Technical information — your IP address, browser type and version, referring page URL, and UTM campaign parameters, collected automatically when you visit the site.",
+          "Consent records — the version of this privacy policy you accepted, the timestamp of acceptance, and your marketing communication preference.",
+          "Session information — a hashed session token, your IP address, and user agent string, collected when you log in.",
+          "Audit information — records of actions you take within the platform, including the action type, timestamp, IP address, and user agent, stored for security and compliance purposes."
+        ],
+        "sensitive": "We do not collect sensitive information as defined in the Privacy Act (such as health information, racial or ethnic origin, or political opinions) unless you voluntarily include it in a free-text message field."
+      },
+      "howWeCollect": {
+        "title": "How we collect personal information",
+        "items": [
+          "directly from you, when you submit an expression of interest, create an account, subscribe to notifications, or contact us;",
+          "automatically, through server logs and the Cloudflare Web Analytics service when you visit our website; and",
+          "from third-party services, such as Postmark delivery status notifications and Twilio SMS status callbacks."
+        ],
+        "note": "Where reasonably practicable, we collect personal information directly from you. We do not purchase personal information from third-party data brokers."
       },
       "purpose": {
         "title": "Как мы используем вашу информацию",
         "description": "Мы используем собранную информацию для:",
         "items": [
-          "Ответить на вашу заявку о заинтересованности",
-          "Отправить подтверждающее письмо о получении вашей заявки",
-          "Отправлять маркетинговые рассылки (только если вы дали согласие)",
-          "Анализировать тенденции заявок для улучшения наших услуг",
-          "Соблюдать правовые обязательства"
-        ]
+          "to respond to your expression of interest and communicate with you about Production City;",
+          "to send you a confirmation email acknowledging your submission;",
+          "to send marketing communications, only where you have given explicit opt-in consent;",
+          "to send SMS notifications about categories you have subscribed to, only with your confirmed consent;",
+          "to authenticate your identity and maintain your session when you log in;",
+          "to analyse submission trends and website usage to improve our services;",
+          "to maintain audit logs for security, fraud prevention, and regulatory compliance;",
+          "to manage email and SMS suppression lists to honour your unsubscribe requests and comply with the Spam Act 2003 (Cth) and the Do Not Call Register Act 2006 (Cth);",
+          "to comply with applicable laws, regulations, and legal processes."
+        ],
+        "note": "We will not use or disclose your personal information for a purpose other than the purpose of collection, a related purpose you would reasonably expect, or a purpose to which you have consented, unless required or authorised by law (APP 6)."
       },
       "lawfulBasis": {
         "title": "Правовое основание обработки",
@@ -423,31 +503,100 @@
         "legitimateInterest": "Законный интерес: мы отправляем операционные электронные письма на основании нашего законного интереса.",
         "marketing": "Маркетинг: маркетинговые сообщения отправляются только с вашего явного согласия."
       },
-      "retention": {
-        "title": "Хранение данных",
-        "description": "Мы храним данные заявок о заинтересованности до 24 месяцев после последнего контакта."
+      "marketing": {
+        "title": "Direct marketing",
+        "description": "We will only send you marketing communications (by email or SMS) if you have explicitly opted in (APP 7). You can withdraw your consent and unsubscribe at any time by:",
+        "items": [
+          "clicking the unsubscribe link in any marketing email;",
+          "replying STOP to any SMS message;",
+          "contacting us at privacy@production.city."
+        ],
+        "spam": "We will process your unsubscribe request promptly. Every marketing email includes a working unsubscribe mechanism as required by the Spam Act 2003."
       },
       "thirdParties": {
         "title": "Сторонние сервисы",
         "description": "Мы передаём ваши данные следующим поставщикам услуг:",
-        "items": [
-          "Postmark (Wildbit LLC): доставка электронной почты для подтверждений и маркетинговых рассылок",
-          "Cloudflare: хостинг сайта, CDN и сервисы безопасности"
-        ],
         "note": "Эти поставщики обрабатывают данные от нашего имени. Мы не продаём ваши персональные данные."
+      },
+      "crossBorder": {
+        "title": "Cross-border disclosure",
+        "description": "Your personal information may be disclosed to service providers located in the United States. Before disclosing personal information to an overseas recipient, we take reasonable steps to ensure the recipient does not breach the APPs in relation to that information, or we rely on an exception under APP 8.2 (such as your informed consent or a binding contractual arrangement that requires the recipient to handle information consistently with the APPs).",
+        "countries": [
+          "United States — Cloudflare (hosting, analytics), Postmark (email), Twilio (SMS), Google (font delivery)"
+        ],
+        "note": "No other countries. All third-party data processing occurs in the United States as listed above."
+      },
+      "security": {
+        "title": "Data quality and security",
+        "description": "We take reasonable steps to ensure the personal information we collect, use, and disclose is accurate, up-to-date, complete, and relevant (APP 10), and to protect personal information from misuse, interference, loss, and unauthorised access, modification, or disclosure (APP 11). Our security measures include:",
+        "items": [
+          "encryption in transit (TLS/HTTPS on all connections);",
+          "hashing of session tokens using SHA-256 before storage;",
+          "hashing of magic link tokens and verification codes before storage;",
+          "HttpOnly, Secure, and SameSite cookie attributes on authentication cookies;",
+          "Content Security Policy headers restricting script and resource loading;",
+          "automated session cleanup after 30 days of inactivity;",
+          "automatic expiry of magic links (15 minutes for login, 7 days for invitations);",
+          "email and SMS suppression lists to prevent delivery to addresses that have bounced or reported spam;",
+          "audit logging of significant account actions."
+        ],
+        "note": "We review our security practices periodically. No system is completely secure, and we cannot guarantee absolute security of your information."
+      },
+      "retention": {
+        "title": "Хранение данных",
+        "description": "Мы храним данные заявок о заинтересованности до 24 месяцев после последнего контакта."
+      },
+      "cookiesSection": {
+        "title": "Cookies and tracking technologies",
+        "description": "Our website uses cookies and local storage to support authentication and language preferences. We use Cloudflare Web Analytics for traffic analysis — this service does not use cookies and does not collect personal information.",
+        "analytics": "We do not use any other third-party tracking cookies, advertising cookies, or cross-site tracking technologies.",
+        "link": "For full details, see our Cookie Policy."
+      },
+      "children": {
+        "title": "Children's privacy",
+        "description": "Our website and services are not directed at children under the age of 16. We do not knowingly collect personal information from children under 16. If we become aware that we have collected personal information from a child under 16 without parental consent, we will take reasonable steps to delete that information promptly.",
+        "contact": "If you are a parent or guardian and believe your child has provided us with personal information, please contact us at privacy@production.city."
+      },
+      "anonymity": {
+        "title": "Anonymity and pseudonymity",
+        "description": "Where it is lawful and practicable, you may deal with us without identifying yourself or by using a pseudonym (APP 2). However, if you do not provide the personal information we request, we may not be able to respond to your expression of interest or provide you with access to certain features."
       },
       "rights": {
         "title": "Ваши права",
         "description": "В соответствии с применимым законодательством о конфиденциальности вы имеете право:",
         "items": [
-          "Получить доступ к вашим персональным данным, которые мы храним",
-          "Запросить исправление неточных данных",
-          "Запросить удаление ваших данных",
-          "Запросить переносимость ваших данных",
-          "Отозвать согласие на маркетинговые рассылки",
-          "Подать жалобу в соответствующий надзорный орган"
+          "request access to the personal information we hold about you;",
+          "request correction of any information that is inaccurate, out-of-date, incomplete, irrelevant, or misleading;",
+          "request deletion of your personal information (subject to any legal obligations that require us to retain it)."
         ],
-        "contact": "Для реализации этих прав свяжитесь с нами по адресу privacy@production.city."
+        "contact": "Для реализации этих прав свяжитесь с нами по адресу privacy@production.city.",
+        "note": "If we refuse to provide access or correct information, we will give you written reasons and inform you of the complaint mechanisms available to you."
+      },
+      "ndb": {
+        "title": "Notifiable data breaches",
+        "description": "If we become aware of a data breach that is likely to result in serious harm to any individual whose personal information is involved, we will:",
+        "items": [
+          "take reasonable steps to contain the breach and mitigate harm;",
+          "assess the breach to determine whether it is an eligible data breach under Part IIIC of the Privacy Act;",
+          "if the breach is eligible, notify the affected individuals and the Office of the Australian Information Commissioner (OAIC) as soon as practicable;",
+          "keep a record of the breach regardless of whether notification is required."
+        ]
+      },
+      "complaints": {
+        "title": "Complaints",
+        "description": "If you believe we have breached the APPs or handled your personal information improperly, you may lodge a complaint by contacting us at privacy@production.city. We will:",
+        "steps": [
+          "acknowledge your complaint within 7 days;",
+          "investigate the complaint and provide a response within 30 days;",
+          "take reasonable steps to resolve the matter."
+        ],
+        "oaic": {
+          "description": "If you are not satisfied with our response, you may lodge a complaint with the Office of the Australian Information Commissioner (OAIC):",
+          "website": "www.oaic.gov.au",
+          "phone": "1300 363 992",
+          "email": "enquiries@oaic.gov.au",
+          "post": "GPO Box 5218, Sydney NSW 2001"
+        }
       },
       "jurisdiction": {
         "title": "Применимое право",
@@ -466,29 +615,128 @@
       "title": "Условия использования",
       "effectiveDate": "Дата вступления в силу: {date}",
       "intro": "Добро пожаловать на веб-сайт Production City. Используя этот веб-сайт, вы соглашаетесь соблюдать следующие условия.",
+      "about": {
+        "title": "About these terms",
+        "description": "These Terms of Use (\"Terms\") govern your access to and use of the Production City website at production.city (\"Website\") operated by Aperim Pty Ltd (\"we\", \"us\", \"our\").",
+        "agreement": "By accessing or using the Website, you agree to be bound by these Terms. If you do not agree to these Terms, you must not use the Website.",
+        "updates": "We may update these Terms from time to time. The current version will always be available on this page with the effective date shown above. Your continued use of the Website after changes are posted constitutes acceptance of the updated Terms."
+      },
       "usage": {
         "title": "Использование веб-сайта",
-        "description": "Этот веб-сайт предназначен только для информационных целей."
+        "description": "Этот веб-сайт предназначен только для информационных целей.",
+        "items": [
+          "use the Website in any way that breaches any applicable law or regulation;",
+          "use the Website in any way that is fraudulent or has any fraudulent purpose or effect;",
+          "use the Website to transmit or procure the sending of unsolicited or unauthorised advertising, promotional material, or spam;",
+          "use the Website to knowingly transmit any data or material that contains viruses, trojans, worms, time-bombs, keystroke loggers, spyware, adware, or any other harmful programs or code;",
+          "attempt to gain unauthorised access to the Website, the servers on which the Website is hosted, or any server, computer, or database connected to the Website;",
+          "use any automated means, including bots, scrapers, or spiders, to access or interact with the Website without our prior written consent;",
+          "interfere with or disrupt the Website or any other party's use and enjoyment of the Website;",
+          "reproduce, duplicate, copy, or redistribute any content from the Website without our express permission."
+        ],
+        "reserve": "We reserve the right to restrict or suspend your access to the Website if we reasonably believe you have breached these Terms."
       },
       "ip": {
         "title": "Интеллектуальная собственность",
-        "description": "Всё содержимое этого веб-сайта является собственностью Aperim Pty Ltd или её лицензиаров."
+        "description": "Всё содержимое этого веб-сайта является собственностью Aperim Pty Ltd или её лицензиаров.",
+        "restriction": "You must not reproduce, modify, distribute, display, perform, or create derivative works from any content on this Website without our prior written consent, except as permitted by law (including fair dealing provisions under Part III Division 3 of the Copyright Act 1968).",
+        "licence": "Nothing in these Terms grants you any right, title, or interest in the Website or its content, other than a limited, non-exclusive, non-transferable licence to access and use the Website for personal, non-commercial purposes in accordance with these Terms."
+      },
+      "userAccounts": {
+        "title": "User accounts",
+        "items": [
+          "you are responsible for maintaining the confidentiality of your login credentials;",
+          "you are responsible for all activities that occur under your account;",
+          "you must notify us immediately at privacy@production.city if you become aware of any unauthorised use of your account;",
+          "we may suspend or terminate your account if we reasonably believe it has been compromised or if you have breached these Terms."
+        ],
+        "magicLinks": "Authentication is handled through magic links sent to your registered email address. We do not store passwords."
+      },
+      "submissions": {
+        "title": "Expressions of interest and submissions",
+        "items": [
+          "you warrant that the information you provide is accurate and not misleading;",
+          "you acknowledge that submitting an expression of interest does not create a binding agreement, contract, or commitment between you and us;",
+          "you consent to us using your submission in accordance with our Privacy Policy."
+        ]
       },
       "disclaimer": {
         "title": "Disclaimer",
+        "prelaunch": "Production City is in pre-launch development. All information, features, services, timelines, pricing, and projections described on this Website are subject to change without notice.",
+        "items": [
+          "a binding offer, invitation to treat, or commitment to deliver any particular service, feature, or capability;",
+          "financial, investment, legal, or professional advice;",
+          "a guarantee of availability, performance, or suitability for any particular purpose."
+        ],
         "description": "Этот веб-сайт предоставляется без каких-либо гарантий."
       },
       "forwardLooking": {
         "title": "Прогнозные заявления",
-        "description": "Этот веб-сайт содержит прогнозные заявления о проекте Production City."
+        "description": "Этот веб-сайт содержит прогнозные заявления о проекте Production City.",
+        "note": "Forward-looking statements are based on current expectations and assumptions and are not guarantees of future performance. We do not undertake any obligation to update forward-looking statements to reflect events or circumstances after the date they are made."
+      },
+      "consumerLaw": {
+        "title": "Australian Consumer Law",
+        "description": "Nothing in these Terms is intended to exclude, restrict, or modify any consumer guarantee or right that applies under the Competition and Consumer Act 2010 (Cth), Schedule 2 (Australian Consumer Law) (\"ACL\"), or any other applicable consumer protection law, where to do so would be unlawful. If the ACL applies to your use of the Website or any service we provide:",
+        "items": [
+          "our goods and services come with guarantees that cannot be excluded under the ACL, including guarantees as to acceptable quality, fitness for purpose, and due care and skill;",
+          "you are entitled to a replacement or refund for a major failure and compensation for any other reasonably foreseeable loss or damage;",
+          "you are also entitled to have goods repaired or replaced if the goods fail to be of acceptable quality and the failure does not amount to a major failure."
+        ]
       },
       "liability": {
         "title": "Ограничение ответственности",
-        "description": "Aperim Pty Ltd не несёт ответственности за любой ущерб, возникший в результате использования этого веб-сайта."
+        "description": "Aperim Pty Ltd не несёт ответственности за любой ущерб, возникший в результате использования этого веб-сайта.",
+        "items": [
+          "we exclude all liability for any loss, damage, cost, or expense (whether direct, indirect, incidental, special, consequential, or punitive) arising from or in connection with your use of, or inability to use, the Website;",
+          "our total aggregate liability to you for all claims arising under or in connection with these Terms is limited to AUD $100;",
+          "we are not liable for any loss or damage arising from circumstances beyond our reasonable control, including but not limited to internet failures, equipment failures, electrical power failures, strikes, labour disputes, riots, insurrections, civil disturbances, shortages of labour or materials, fires, floods, storms, explosions, acts of God, war, governmental actions, or orders of domestic or foreign courts or tribunals."
+        ],
+        "note": "This limitation of liability applies to the fullest extent permitted by law. Where liability cannot be excluded (including under the ACL), it is limited to the extent permitted by law."
+      },
+      "indemnity": {
+        "title": "Indemnity",
+        "description": "You agree to indemnify, defend, and hold harmless Aperim Pty Ltd, its officers, directors, employees, agents, and affiliates from and against any and all claims, liabilities, damages, losses, costs, and expenses (including reasonable legal fees) arising out of or in connection with:",
+        "items": [
+          "your use of the Website in breach of these Terms;",
+          "your violation of any applicable law or regulation;",
+          "any content or information you submit through the Website that infringes the intellectual property or other rights of a third party."
+        ],
+        "note": "This indemnity is a continuing obligation, separate and independent from your other obligations under these Terms, and survives termination of these Terms."
+      },
+      "thirdPartyLinks": {
+        "title": "Third-party links",
+        "description": "The Website may contain links to third-party websites or services that are not owned or controlled by us. We are not responsible for the content, privacy policies, or practices of any third-party websites. You access third-party websites at your own risk and should review their terms and policies before engaging with them."
+      },
+      "disputeResolution": {
+        "title": "Dispute resolution",
+        "description": "If a dispute arises in connection with these Terms or your use of the Website:",
+        "steps": [
+          "Negotiation — The parties must first attempt to resolve the dispute by good-faith negotiation. Either party may give written notice of the dispute to the other party.",
+          "Mediation — If the dispute is not resolved within 30 days of the notice, either party may refer the dispute to mediation administered by the Australian Disputes Centre (ADC) in accordance with the ADC Mediation Guidelines. The mediation will be held in Sydney, New South Wales.",
+          "Litigation — If the dispute is not resolved by mediation within 60 days of referral (or such longer period as agreed by the parties), either party may commence legal proceedings."
+        ],
+        "note": "Nothing in this section prevents either party from seeking urgent interlocutory or injunctive relief from a court of competent jurisdiction."
       },
       "jurisdiction": {
         "title": "Юрисдикция",
         "description": "Настоящие условия регулируются законодательством штата Новый Южный Уэльс, Австралия."
+      },
+      "severability": {
+        "title": "Severability",
+        "description": "If any provision of these Terms is found to be invalid, illegal, or unenforceable by a court of competent jurisdiction, the remaining provisions will continue in full force and effect. The invalid, illegal, or unenforceable provision will be deemed modified to the minimum extent necessary to make it valid, legal, and enforceable, while preserving its original intent as closely as possible."
+      },
+      "waiver": {
+        "title": "Waiver",
+        "description": "A failure or delay by us in exercising any right, power, or remedy under these Terms does not operate as a waiver of that right, power, or remedy. A single or partial exercise of a right, power, or remedy does not preclude any other or further exercise of that or any other right, power, or remedy."
+      },
+      "assignment": {
+        "title": "Assignment",
+        "description": "You may not assign or transfer any of your rights or obligations under these Terms without our prior written consent. We may assign our rights and obligations under these Terms without your consent."
+      },
+      "entireAgreement": {
+        "title": "Entire agreement",
+        "description": "These Terms, together with our Privacy Policy and Cookie Policy, constitute the entire agreement between you and Aperim Pty Ltd regarding your use of the Website and supersede all prior agreements, understandings, and representations, whether written or oral."
       },
       "changes": {
         "title": "Изменение условий",
@@ -498,6 +746,65 @@
         "title": "Contact",
         "description": "По юридическим вопросам обращайтесь: legal@production.city\n\nAperim Pty Ltd\nABN 46 150 699 737 | ACN 150 699 737\nSuite 108, 9 Hutchinson Street, St Peters NSW 2044, Australia"
       }
+    },
+    "cookies": {
+      "title": "Cookie Policy",
+      "effectiveDate": "Effective date: {date}",
+      "about": {
+        "title": "About this policy",
+        "description": "This Cookie Policy explains how Aperim Pty Ltd (\"we\", \"us\", \"our\") uses cookies, local storage, and similar technologies on the Production City website at production.city (\"Website\").",
+        "link": "This policy should be read alongside our Privacy Policy, which explains how we collect, use, and protect your personal information."
+      },
+      "whatAreCookies": {
+        "title": "What are cookies",
+        "description": "Cookies are small text files placed on your device by a website. They are widely used to make websites work efficiently and to provide information to website operators. Cookies can be \"session\" cookies (deleted when you close your browser) or \"persistent\" cookies (retained on your device until they expire or you delete them).",
+        "localStorage": "Local storage is a browser feature that allows websites to store data on your device. Unlike cookies, local storage data is not sent to the server with each request."
+      },
+      "cookiesWeUse": {
+        "title": "Cookies we use",
+        "description": "We use a small number of cookies, all of which are functional. We do not use advertising, tracking, or analytics cookies.",
+        "essentialTitle": "Essential cookies",
+        "essentialDescription": "These cookies are necessary for the Website to function. You cannot opt out of essential cookies because the Website would not work without them.",
+        "functionalTitle": "Functional cookies",
+        "functionalDescription": "These cookies improve your experience by remembering your preferences. They are not required for the Website to function but provide useful features."
+      },
+      "localStorage": {
+        "title": "Local storage",
+        "description": "We use browser local storage to remember your language preference.",
+        "note": "Local storage data stays on your device and is not transmitted to our servers with each page request."
+      },
+      "analytics": {
+        "title": "Analytics",
+        "description": "We use Cloudflare Web Analytics for aggregated website traffic analysis. This service does not use cookies, does not collect personal information, does not track individual visitors across websites, and processes anonymised, aggregated traffic data only.",
+        "note": "Cloudflare Web Analytics is loaded via a script from static.cloudflareinsights.com and operates in a way that preserves visitor privacy."
+      },
+      "thirdParty": {
+        "title": "Third-party cookies and external resources",
+        "description": "We do not embed third-party cookies on the Website. We do not use social media plugins, advertising trackers, or third-party analytics services that set cookies.",
+        "fonts": "Our Website loads web font files (Noto Sans for Arabic, Devanagari, and Bengali script support) directly from Google's font delivery network at fonts.gstatic.com. Google does not set cookies through this font delivery mechanism. However, when your browser requests font files, Google receives your IP address and browser user-agent string. Google's handling of this data is governed by Google's Privacy Policy at policies.google.com/privacy.",
+        "analytics": "The only other third-party domain from which scripts are loaded is static.cloudflareinsights.com (Cloudflare Web Analytics), which does not set cookies."
+      },
+      "managing": {
+        "title": "Managing cookies and local storage",
+        "description": "You can manage cookies through your browser settings. Most browsers allow you to view what cookies are set, delete individual or all cookies, block cookies from specific or all websites, and block third-party cookies.",
+        "browsers": "Instructions for managing cookies in common browsers:",
+        "browserList": [
+          "Chrome: Settings, then Privacy and Security, then Cookies and other site data",
+          "Firefox: Settings, then Privacy and Security, then Cookies and Site Data",
+          "Safari: Preferences, then Privacy, then Manage Website Data",
+          "Edge: Settings, then Cookies and site permissions, then Manage and delete cookies and site data"
+        ],
+        "sessionNote": "If you block essential cookies (__Secure-session), you will not be able to log in or maintain an authenticated session on the Website.",
+        "localStorageNote": "To clear local storage data, use your browser's developer tools or clear all site data through your browser's privacy settings. If you clear the pc-locale local storage item, the Website will default to English and will not remember your language preference between visits."
+      },
+      "changes": {
+        "title": "Changes to this policy",
+        "description": "We may update this Cookie Policy from time to time to reflect changes in the cookies we use or for other operational, legal, or regulatory reasons. When we make changes, we will update the effective date at the top of this page."
+      },
+      "contact": {
+        "title": "Contact",
+        "description": "For questions about our use of cookies, contact:\n\nAperim Pty Ltd\nEmail: privacy@production.city\n\nSuite 108, 9 Hutchinson Street, St Peters NSW 2044"
+      }
     }
   },
   "footer": {
@@ -506,14 +813,14 @@
     "copyright": "© {year} Aperim Pty Ltd. Все права защищены.",
     "disclaimer": "Production City™ — товарный знак Aperim Pty Ltd.",
     "explore": "Разделы",
+    "resources": "Ресурсы",
     "company": "Компания",
     "acknowledgement": "Production City признаёт традиционных хранителей земель по всей Австралии и их непрерывную связь с землями, водами и общинами. Мы выражаем уважение культурам аборигенов и жителей островов Торресова пролива и их старейшинам — прошлым и нынешним.",
-    "resources": "Ресурсы",
+    "acknowledgementHeading": "Признание страны",
     "brand": {
       "tagline": "Мы создаём истории"
     },
-    "contactHeading": "Контакты",
-    "acknowledgementHeading": "Признание страны"
+    "contactHeading": "Контакты"
   },
   "languageSwitcher": {
     "label": "Язык",
@@ -567,10 +874,10 @@
       "viewAll": "Узнать о партнёрстве"
     },
     "masterplanTeaser": {
-      "ctaLabel": "Изучить кампус в 3D →",
       "eyebrow": "Генеральный план кампуса",
       "heading": "Кампус в трёх измерениях.",
-      "body": "Шесть звуковых студий, театр вещания, креативный хаб, бэклот и общественное пространство — исследуйте весь участок площадью 6 гектаров в интерактивной 3D-модели."
+      "body": "Шесть звуковых студий, театр вещания, креативный хаб, бэклот и общественное пространство — исследуйте весь участок площадью 6 гектаров в интерактивной 3D-модели.",
+      "ctaLabel": "Изучить кампус в 3D →"
     }
   },
   "facilities": {
@@ -604,7 +911,16 @@
       "specNrc": "Коэффициент шумоподавления",
       "specLed": "Размер LED-экрана",
       "detail": {
+        "eyebrow": "Объекты · A — Звуковые павильоны для экрана",
+        "heading": "Съёмка крупного формата. Создано для этого.",
+        "lead": "2 025 м² пола павильона. 15 м до колосников. NRC 1.05. Готов полносферический объём LED.",
+        "prose": "Полнометражный фильм. Сериал. Прямой эфир. Когда производство крупного формата, павильон должен быть построен для этого с нуля.",
+        "prose2": "Каждый звуковой павильон для экрана — 45 м × 45 м, 15 м до колосников, полное покрытие колосников и обходных галерей. Звукоизоляция NRC 1.05 / NC 25. Объём LED настраивается: плоский, дуговой или полносферический.",
+        "prose3": "Эти павильоны спроектированы по техническим требованиям крупных студий и стриминговых платформ. Как первый объект, стандарты устанавливаются здесь.",
         "usageLabel": "Usage",
+        "usage1": "Производство полнометражных фильмов",
+        "usage2": "Телевизионные сериалы",
+        "usage3": "Прямое телевизионное вещание",
         "specLabel": "Specification",
         "specDimensions": "Размеры",
         "specDimensionsValue": "45 m × 45 m · 147 ft × 147 ft",
@@ -619,20 +935,11 @@
         "specGrid": "Грид и рабочий мостик",
         "specGridValue": "Полное покрытие",
         "statArea": "2,025",
-        "statGrid": "15",
-        "ctaLink": "Enquire",
-        "eyebrow": "Объекты · A — Звуковые павильоны для экрана",
-        "heading": "Съёмка крупного формата. Создано для этого.",
-        "lead": "2 025 м² пола павильона. 15 м до колосников. NRC 1.05. Готов полносферический объём LED.",
-        "prose": "Полнометражный фильм. Сериал. Прямой эфир. Когда производство крупного формата, павильон должен быть построен для этого с нуля.",
-        "prose2": "Каждый звуковой павильон для экрана — 45 м × 45 м, 15 м до колосников, полное покрытие колосников и обходных галерей. Звукоизоляция NRC 1.05 / NC 25. Объём LED настраивается: плоский, дуговой или полносферический.",
-        "prose3": "Эти павильоны спроектированы по техническим требованиям крупных студий и стриминговых платформ. Как первый объект, стандарты устанавливаются здесь.",
-        "usage1": "Производство полнометражных фильмов",
-        "usage2": "Телевизионные сериалы",
-        "usage3": "Прямое телевизионное вещание",
         "statAreaLabel": "Квадратные метры",
+        "statGrid": "15",
         "statGridLabel": "Метры до колосников",
-        "cta": "Забронируйте экранный павильон."
+        "cta": "Забронируйте экранный павильон.",
+        "ctaLink": "Enquire"
       }
     },
     "commercialStages": {
@@ -647,8 +954,15 @@
       "specNrc": "NRC 75+",
       "specLed": "Плоский, дуговой, полное окружение",
       "detail": {
+        "eyebrow": "Объекты · B — Коммерческие звуковые павильоны",
+        "heading": "Малая площадь. Полные характеристики.",
+        "lead": "100 м² павильона. Те же 15 м до колосников. Та же звукоизоляция. Объём LED готов к работе.",
         "prose": "Рекламные ролики, TVC, клипы, короткий и цифровой контент не требуют площадки 45 × 45. Им нужна правильная акустика, достаточная высота потолков и те же конфигурации LED.",
+        "prose2": "Именно таковы эти павильоны. Приходите в понедельник. Снимайте. Освобождайте в пятницу. Конфигурации объёма совместимы с экранными павильонами, поэтому образ, разработанный на одном, можно перенести на другой.",
         "usageLabel": "Usage",
+        "usage1": "Телерекламы и инфомерсиалы",
+        "usage2": "Производство музыкальных клипов",
+        "usage3": "Цифровой контент малого масштаба",
         "specLabel": "Specification",
         "specDimensions": "Размеры",
         "specDimensionsValue": "10 m × 10 m · 32 ft × 32 ft",
@@ -663,18 +977,11 @@
         "specGrid": "Грид и рабочий мостик",
         "specGridValue": "Полное покрытие",
         "statArea": "100",
-        "statGrid": "15",
-        "ctaLink": "Enquire",
-        "eyebrow": "Объекты · B — Коммерческие звуковые павильоны",
-        "heading": "Малая площадь. Полные характеристики.",
-        "lead": "100 м² павильона. Те же 15 м до колосников. Та же звукоизоляция. Объём LED готов к работе.",
-        "prose2": "Именно таковы эти павильоны. Приходите в понедельник. Снимайте. Освобождайте в пятницу. Конфигурации объёма совместимы с экранными павильонами, поэтому образ, разработанный на одном, можно перенести на другой.",
-        "usage1": "Телерекламы и инфомерсиалы",
-        "usage2": "Производство музыкальных клипов",
-        "usage3": "Цифровой контент малого масштаба",
         "statAreaLabel": "Квадратные метры",
+        "statGrid": "15",
         "statGridLabel": "Метры до колосников",
-        "cta": "Забронируйте коммерческий павильон."
+        "cta": "Забронируйте коммерческий павильон.",
+        "ctaLink": "Enquire"
       }
     },
     "broadcastTheatre": {
@@ -691,7 +998,15 @@
       "specCameras": "8 роботизированных камер",
       "specBroadcast": "Готов к прямой трансляции",
       "detail": {
+        "eyebrow": "Объекты · C — Вещательный театр",
+        "heading": "Живой театр, оборудованный как вещательная студия.",
+        "lead": "450 в режиме театра. 300 в режиме кабаре. Восемь полностью интегрированных позиций роботизированных камер. AR и VR готовы. Соответствует требованиям партнёров по вещанию.",
+        "prose": "Вещательный театр — это многофункциональная площадка для живых выступлений с интегрированной вещательной галереей.",
+        "prose2": "Роботизированные камеры, библиотека виртуальных декораций LED и соответствие требованиям стриминга встроены в зал. Каждое выступление может одновременно достигать зрителей в зале и дома, без отдельной вещательной установки.",
         "usageLabel": "Usage",
+        "usage1": "Живые выступления и мероприятия",
+        "usage2": "Прямое вещание",
+        "usage3": "Демонстрация возможностей AR/VR",
         "specLabel": "Specification",
         "specTheatre": "Режим театра",
         "specTheatreValue": "450 мест",
@@ -706,19 +1021,11 @@
         "specCompliance": "Соответствие требованиям",
         "specComplianceValue": "Соответствует требованиям стриминговых сервисов",
         "statSeats": "450",
-        "statCameras": "8",
-        "ctaLink": "Enquire",
-        "eyebrow": "Объекты · C — Вещательный театр",
-        "heading": "Живой театр, оборудованный как вещательная студия.",
-        "lead": "450 в режиме театра. 300 в режиме кабаре. Восемь полностью интегрированных позиций роботизированных камер. AR и VR готовы. Соответствует требованиям партнёров по вещанию.",
-        "prose": "Вещательный театр — это многофункциональная площадка для живых выступлений с интегрированной вещательной галереей.",
-        "prose2": "Роботизированные камеры, библиотека виртуальных декораций LED и соответствие требованиям стриминга встроены в зал. Каждое выступление может одновременно достигать зрителей в зале и дома, без отдельной вещательной установки.",
-        "usage1": "Живые выступления и мероприятия",
-        "usage2": "Прямое вещание",
-        "usage3": "Демонстрация возможностей AR/VR",
         "statSeatsLabel": "Театральные места",
+        "statCameras": "8",
         "statCamerasLabel": "Роботизированные камеры",
-        "cta": "Обсудить прямую трансляцию или мероприятие."
+        "cta": "Обсудить прямую трансляцию или мероприятие.",
+        "ctaLink": "Enquire"
       }
     },
     "controlRoom": {
@@ -730,19 +1037,19 @@
       "specManagement": "Централизованное управление производством",
       "specSync": "Мультиплатформенная синхронизация",
       "detail": {
-        "capabilityLabel": "Capability",
-        "ctaLink": "Enquire",
         "eyebrow": "Объекты · D — Вещательная аппаратная",
         "heading": "Нервный центр.",
         "lead": "Централизованное управление производством, контроль прямого вещания, расширенная синхронизация — обеспечение павильонов, театра и внешних площадок по всему миру.",
         "prose": "Аппаратная — единый вещательный хребет кампуса. Она управляет и синхронизирует каждое прямое производство на месте.",
         "prose2": "Она предназначена для организации вещания с внешних спортивных и мероприятийных площадок в любой точке мира. Здесь сосредоточен опыт Production City в вещании и дата-центрах. Аппаратная спроектирована по стандартам критической вещательной инфраструктуры.",
+        "capabilityLabel": "Capability",
         "cap1": "Централизованное управление производством",
         "cap2": "Контроль прямого вещания",
         "cap3": "Расширенная синхронизация для многоплатформенных и многолокальных трансляций",
         "cap4": "Исходящий сигнал с павильонов и театра кампуса",
         "cap5": "Исходящий сигнал с внешних спортивных и мероприятийных площадок по всему миру",
-        "cta": "Обсудить прямое вещание."
+        "cta": "Обсудить прямое вещание.",
+        "ctaLink": "Enquire"
       }
     },
     "ancillary": {
@@ -1043,12 +1350,16 @@
     },
     "heading": "Часто задаваемые вопросы",
     "searchPlaceholder": "Поиск вопросов...",
+    "categoriesLabel": "Категории FAQ",
     "allCategories": "Все",
     "categoryFacilities": "Объекты",
     "categoryServices": "Услуги",
     "categoryGlobal": "Глобальные",
     "categoryCommunity": "Сообщество",
     "categoryEngagement": "Вовлечение",
+    "resultCountSingular": "{count} результат найден",
+    "resultCountPlural": "{count} результатов найдено",
+    "questionCount": "{count} вопросов",
     "noResults": "Подходящих вопросов не найдено.",
     "questionsHeading": "Вопросы и Ответы",
     "q1": "Какие объекты предложит Production City?",
@@ -1111,14 +1422,10 @@
     "q20": "Какие формы сотрудничества помимо аренды возможны?",
     "a20": "Технологические партнёрства, образовательное сотрудничество, совместная разработка методов съёмки и совместные бизнес-модели.",
     "c20": "Вовлечение",
-    "categoriesLabel": "Категории FAQ",
     "searchLabel": "Поиск по вопросам",
     "cantFindHeading": "Не нашли ответ?",
     "cantFindDescription": "Наша команда поможет с любыми вопросами о Production City.",
-    "cantFindCta": "Связаться с нами",
-    "resultCountSingular": "{count} результат найден",
-    "resultCountPlural": "{count} результатов найдено",
-    "questionCount": "{count} вопросов"
+    "cantFindCta": "Связаться с нами"
   },
   "contact": {
     "meta": {
@@ -1226,64 +1533,6 @@
     "failed": "Письмо не удалось доставить",
     "pending": "Отправка...",
     "unknown": "Статус неизвестен"
-  },
-  "announcements": {
-    "page": {
-      "title": "Обновления",
-      "description": "Последние новости и обновления от Production City",
-      "empty": "Пока нет объявлений. Загляните позже за обновлениями от команды Production City.",
-      "filter_all": "Все"
-    },
-    "detail": {
-      "back": "Назад к обновлениям",
-      "updated": "Обновлено {date}",
-      "share": "Поделиться",
-      "share_copied": "Ссылка скопирована",
-      "subscribed_banner": "Вы подписаны на обновления {categoryName}",
-      "subscribe_cta": "Получайте уведомления об обновлениях {categoryName}",
-      "not_found": "Не найдено",
-      "not_found_description": "Страница, которую вы ищете, не существует."
-    }
-  },
-  "subscriptions": {
-    "confirm": {
-      "title": "Подписка подтверждена",
-      "success": "Ваша подписка на {categoryName} через {channel} подтверждена.",
-      "error": "Недействительная или просроченная ссылка подтверждения.",
-      "failedTitle": "Ошибка подтверждения",
-      "viewUpdates": "Просмотреть обновления"
-    },
-    "decline": {
-      "title": "Подписка отклонена",
-      "success": "Вы отклонили запрос на подписку.",
-      "error": "Недействительная или просроченная ссылка.",
-      "failedTitle": "Ошибка подтверждения",
-      "viewUpdates": "Просмотреть обновления"
-    },
-    "unsubscribe": {
-      "title": "Отписаться",
-      "confirm": "Отписаться от обновлений {categoryName} через {channel}?",
-      "button": "Подтвердить отписку",
-      "success": "Вы отписаны.",
-      "error": "Недействительная или просроченная ссылка.",
-      "successTitle": "Отписка выполнена",
-      "errorTitle": "Ошибка",
-      "confirmMessage": "Вы уверены, что хотите отписаться от этих обновлений?",
-      "managePreferences": "Управление настройками"
-    },
-    "preferences": {
-      "title": "Настройки уведомлений",
-      "description": "Выберите какие обновления и каким способом вы хотите получать.",
-      "email": "Эл. почта",
-      "sms": "СМС",
-      "pending": "Ожидание подтверждения",
-      "confirmed": "Активна",
-      "resend": "Отправить подтверждение повторно",
-      "no_phone": "Добавьте номер телефона для получения SMS-обновлений",
-      "subscribe_all": "Подписаться на все",
-      "confirm_unsubscribe": "Вы уверены что хотите отписаться от {categoryName} через {channel}?",
-      "digest_coming_soon": "Еженедельный дайджест — Скоро"
-    }
   },
   "dashboard": {
     "sidebar": {

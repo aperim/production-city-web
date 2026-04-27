@@ -45,6 +45,7 @@ export const PAGES = [
   "/contact",
   "/privacy",
   "/terms",
+  "/cookies",
 ] as const;
 
 /**

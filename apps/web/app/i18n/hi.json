@@ -168,6 +168,8 @@
       "saving": "सहेजा जा रहा है...",
       "saved": "सहेजा गया",
       "error": "प्रोफ़ाइल अपडेट करने में विफल",
+      "emptyNameError": "नाम खाली नहीं हो सकता",
+      "genericError": "एक त्रुटि हुई",
       "sessions": {
         "title": "सक्रिय सत्र",
         "currentSession": "वर्तमान सत्र",
@@ -185,9 +187,7 @@
         "onDevice": "पर",
         "revoking": "रद्द किया जा रहा है…",
         "revokeError": "सत्र रद्द करने में विफल"
-      },
-      "emptyNameError": "नाम खाली नहीं हो सकता",
-      "genericError": "एक त्रुटि हुई"
+      }
     },
     "announcements": {
       "title": "घोषणाएं",
@@ -317,15 +317,73 @@
     "facilities": "सुविधाएं",
     "creative": "क्रिएटिव",
     "vision": "दृष्टिकोण",
-    "contact": "संपर्क करें",
     "community": "समुदाय",
     "faq": "अक्सर पूछे जाने वाले प्रश्न",
+    "contact": "संपर्क करें",
     "updates": "अपडेट",
     "services": "Services",
+    "firstNations": "प्रथम राष्ट्र",
     "network": "Network",
     "company": "Company",
-    "firstNations": "प्रथम राष्ट्र",
     "masterplan": "Masterplan"
+  },
+  "announcements": {
+    "page": {
+      "title": "अपडेट",
+      "description": "प्रोडक्शन सिटी से नवीनतम समाचार और अपडेट",
+      "empty": "अभी तक कोई घोषणा नहीं है। प्रोडक्शन सिटी टीम से अपडेट के लिए जल्द ही वापस आएं।",
+      "filter_all": "सभी"
+    },
+    "detail": {
+      "back": "अपडेट पर वापस जाएं",
+      "updated": "{date} को अपडेट किया गया",
+      "share": "शेयर करें",
+      "share_copied": "लिंक कॉपी हो गया",
+      "subscribed_banner": "आप {categoryName} अपडेट की सदस्यता ले चुके हैं",
+      "subscribe_cta": "{categoryName} अपडेट के बारे में सूचना प्राप्त करें",
+      "not_found": "नहीं मिला",
+      "not_found_description": "आप जो पृष्ठ खोज रहे हैं वह मौजूद नहीं है।"
+    }
+  },
+  "subscriptions": {
+    "confirm": {
+      "title": "सदस्यता पुष्टि",
+      "success": "{channel} के माध्यम से {categoryName} की आपकी सदस्यता पुष्टि हो गई है।",
+      "error": "अमान्य या समाप्त पुष्टि लिंक।",
+      "failedTitle": "पुष्टि विफल",
+      "viewUpdates": "अपडेट देखें"
+    },
+    "decline": {
+      "title": "सदस्यता अस्वीकृत",
+      "success": "आपने सदस्यता अनुरोध अस्वीकार कर दिया है।",
+      "error": "अमान्य या समाप्त लिंक।",
+      "failedTitle": "पुष्टि विफल",
+      "viewUpdates": "अपडेट देखें"
+    },
+    "unsubscribe": {
+      "title": "सदस्यता रद्द करें",
+      "confirm": "{channel} के माध्यम से {categoryName} अपडेट से सदस्यता रद्द करें?",
+      "button": "सदस्यता रद्द पुष्टि करें",
+      "success": "आपकी सदस्यता रद्द कर दी गई है।",
+      "error": "अमान्य या समाप्त लिंक।",
+      "successTitle": "सदस्यता रद्द",
+      "errorTitle": "त्रुटि",
+      "confirmMessage": "क्या आप वाकई इन अपडेट की सदस्यता रद्द करना चाहते हैं?",
+      "managePreferences": "प्राथमिकताएं प्रबंधित करें"
+    },
+    "preferences": {
+      "title": "अधिसूचना प्राथमिकताएं",
+      "description": "चुनें कि आप कौन से अपडेट प्राप्त करना चाहते हैं और कैसे।",
+      "email": "ईमेल",
+      "sms": "एसएमएस",
+      "pending": "पुष्टि लंबित",
+      "confirmed": "सक्रिय",
+      "resend": "पुष्टि पुनः भेजें",
+      "no_phone": "एसएमएस अपडेट प्राप्त करने के लिए फोन नंबर जोड़ें",
+      "subscribe_all": "सभी की सदस्यता लें",
+      "confirm_unsubscribe": "क्या आप वाकई {channel} के माध्यम से {categoryName} से सदस्यता रद्द करना चाहते हैं?",
+      "digest_coming_soon": "साप्ताहिक सारांश — जल्द आ रहा है"
+    }
   },
   "eoi": {
     "formTitle": "अपनी रुचि व्यक्त करें",
@@ -342,6 +400,7 @@
     "categoryPartner": "साझेदार",
     "categoryInvestor": "निवेशक",
     "categoryEducation": "शिक्षा",
+    "categoryEmployment": "रोज़गार",
     "consentLabel": "मैंने {privacyPolicy} पढ़ी और स्वीकार की है",
     "privacyPolicyLink": "गोपनीयता नीति",
     "marketingOptInLabel": "मैं Production City के बारे में अपडेट प्राप्त करना चाहता/चाहती हूँ",
@@ -351,7 +410,6 @@
     "successMessage": "हमें आपकी रुचि प्राप्त हुई है और हम संपर्क करेंगे।",
     "errorMessage": "कुछ गलत हो गया। कृपया पुनः प्रयास करें।",
     "rateLimited": "बहुत अधिक सबमिशन। कृपया बाद में पुनः प्रयास करें।",
-    "categoryEmployment": "रोज़गार",
     "employment": {
       "title": "रोजगार",
       "description": "Production City में नौकरी के अवसरों के लिए आवेदन करें।",
@@ -388,34 +446,56 @@
   "legal": {
     "privacyPolicy": "गोपनीयता नीति",
     "termsOfUse": "उपयोग की शर्तें",
+    "cookiePolicy": "Cookie Policy",
     "lastUpdated": "अंतिम अपडेट: {date}",
     "backToHome": "होम पर वापस जाएँ",
     "privacy": {
       "title": "गोपनीयता नीति",
       "effectiveDate": "प्रभावी तिथि: {date}",
-      "intro": "Aperim Pty Ltd Production City प्लेटफ़ॉर्म का संचालन करता है। यह गोपनीयता नीति बताती है कि जब आप हमारी वेबसाइट पर जाते हैं या रुचि की अभिव्यक्ति प्रस्तुत करते हैं तो हम आपकी जानकारी कैसे एकत्र, उपयोग, प्रकट और सुरक्षित करते हैं।",
+      "about": {
+        "title": "About this policy",
+        "description": "This privacy policy explains how Aperim Pty Ltd (\"we\", \"us\", \"our\") collects, holds, uses, and discloses personal information in connection with the Production City website at production.city and any related services.",
+        "obligations": "We are bound by the Australian Privacy Act 1988 (Cth) (\"Privacy Act\") and the Australian Privacy Principles (\"APPs\"). This policy is intended to satisfy our obligations under APP 1 to manage personal information in an open and transparent way.",
+        "contact": "If you have questions about this policy or how we handle your personal information, contact us at privacy@production.city."
+      },
       "dataCollection": {
         "title": "हम कौन सी जानकारी एकत्र करते हैं",
         "description": "जब आप रुचि की अभिव्यक्ति प्रस्तुत करते हैं, तो हम एकत्र करते हैं:",
         "items": [
-          "आपका नाम और ईमेल पता",
-          "आपकी चुनी हुई रुचि की श्रेणी",
-          "आपके द्वारा प्रदान किया गया कोई भी वैकल्पिक संदेश",
-          "श्रेणी-विशिष्ट जानकारी (जैसे, कंपनी का नाम, पोर्टफोलियो URL)",
-          "तकनीकी डेटा: IP पता, ब्राउज़र प्रकार, रेफरिंग पेज, UTM अभियान पैरामीटर",
-          "सहमति रिकॉर्ड: स्वीकृत गोपनीयता नीति संस्करण, टाइमस्टैम्प, मार्केटिंग प्राथमिकता"
-        ]
+          "Identity information — your name and email address, provided when you submit an expression of interest or create an account.",
+          "Submission content — the category of interest you select, any optional message you provide, and category-specific information such as a company name or portfolio URL.",
+          "Contact information — your phone number in E.164 format, if you choose to subscribe to SMS notifications.",
+          "Technical information — your IP address, browser type and version, referring page URL, and UTM campaign parameters, collected automatically when you visit the site.",
+          "Consent records — the version of this privacy policy you accepted, the timestamp of acceptance, and your marketing communication preference.",
+          "Session information — a hashed session token, your IP address, and user agent string, collected when you log in.",
+          "Audit information — records of actions you take within the platform, including the action type, timestamp, IP address, and user agent, stored for security and compliance purposes."
+        ],
+        "sensitive": "We do not collect sensitive information as defined in the Privacy Act (such as health information, racial or ethnic origin, or political opinions) unless you voluntarily include it in a free-text message field."
+      },
+      "howWeCollect": {
+        "title": "How we collect personal information",
+        "items": [
+          "directly from you, when you submit an expression of interest, create an account, subscribe to notifications, or contact us;",
+          "automatically, through server logs and the Cloudflare Web Analytics service when you visit our website; and",
+          "from third-party services, such as Postmark delivery status notifications and Twilio SMS status callbacks."
+        ],
+        "note": "Where reasonably practicable, we collect personal information directly from you. We do not purchase personal information from third-party data brokers."
       },
       "purpose": {
         "title": "हम आपकी जानकारी का उपयोग कैसे करते हैं",
         "description": "हम एकत्र की गई जानकारी का उपयोग इसके लिए करते हैं:",
         "items": [
-          "आपकी रुचि की अभिव्यक्ति का जवाब देना",
-          "आपकी सबमिशन की पुष्टि करने वाला एक पुष्टिकरण ईमेल भेजना",
-          "मार्केटिंग संचार भेजना (केवल यदि आपने ऑप्ट इन किया हो)",
-          "हमारी सेवाओं को बेहतर बनाने के लिए सबमिशन रुझानों का विश्लेषण करना",
-          "कानूनी दायित्वों का पालन करना"
-        ]
+          "to respond to your expression of interest and communicate with you about Production City;",
+          "to send you a confirmation email acknowledging your submission;",
+          "to send marketing communications, only where you have given explicit opt-in consent;",
+          "to send SMS notifications about categories you have subscribed to, only with your confirmed consent;",
+          "to authenticate your identity and maintain your session when you log in;",
+          "to analyse submission trends and website usage to improve our services;",
+          "to maintain audit logs for security, fraud prevention, and regulatory compliance;",
+          "to manage email and SMS suppression lists to honour your unsubscribe requests and comply with the Spam Act 2003 (Cth) and the Do Not Call Register Act 2006 (Cth);",
+          "to comply with applicable laws, regulations, and legal processes."
+        ],
+        "note": "We will not use or disclose your personal information for a purpose other than the purpose of collection, a related purpose you would reasonably expect, or a purpose to which you have consented, unless required or authorised by law (APP 6)."
       },
       "lawfulBasis": {
         "title": "प्रसंस्करण का वैध आधार",
@@ -423,31 +503,100 @@
         "legitimateInterest": "वैध हित: हम आपके द्वारा अनुरोधित सेवा प्रदान करने में हमारे वैध हित के आधार पर परिचालन ईमेल भेजते हैं।",
         "marketing": "विपणन: विपणन संचार केवल आपकी स्पष्ट सहमति से भेजे जाते हैं और आप किसी भी समय सहमति वापस ले सकते हैं।"
       },
-      "retention": {
-        "title": "डेटा प्रतिधारण",
-        "description": "हम अंतिम संपर्क बिंदु के बाद 24 महीने तक रुचि की अभिव्यक्ति डेटा को बनाए रखते हैं। इस अवधि के बाद, डेटा को अनामित या हटा दिया जाता है।"
+      "marketing": {
+        "title": "Direct marketing",
+        "description": "We will only send you marketing communications (by email or SMS) if you have explicitly opted in (APP 7). You can withdraw your consent and unsubscribe at any time by:",
+        "items": [
+          "clicking the unsubscribe link in any marketing email;",
+          "replying STOP to any SMS message;",
+          "contacting us at privacy@production.city."
+        ],
+        "spam": "We will process your unsubscribe request promptly. Every marketing email includes a working unsubscribe mechanism as required by the Spam Act 2003."
       },
       "thirdParties": {
         "title": "तृतीय-पक्ष सेवाएँ",
         "description": "हम निम्नलिखित सेवा प्रदाताओं के साथ आपका डेटा साझा करते हैं:",
-        "items": [
-          "Postmark (Wildbit LLC): पुष्टिकरण और मार्केटिंग संचार के लिए ईमेल डिलीवरी",
-          "Cloudflare: वेबसाइट होस्टिंग, CDN और सुरक्षा सेवाएं"
-        ],
         "note": "ये प्रदाता डेटा प्रसंस्करण समझौतों के तहत हमारी ओर से डेटा संसाधित करते हैं। हम आपका व्यक्तिगत डेटा नहीं बेचते।"
+      },
+      "crossBorder": {
+        "title": "Cross-border disclosure",
+        "description": "Your personal information may be disclosed to service providers located in the United States. Before disclosing personal information to an overseas recipient, we take reasonable steps to ensure the recipient does not breach the APPs in relation to that information, or we rely on an exception under APP 8.2 (such as your informed consent or a binding contractual arrangement that requires the recipient to handle information consistently with the APPs).",
+        "countries": [
+          "United States — Cloudflare (hosting, analytics), Postmark (email), Twilio (SMS), Google (font delivery)"
+        ],
+        "note": "No other countries. All third-party data processing occurs in the United States as listed above."
+      },
+      "security": {
+        "title": "Data quality and security",
+        "description": "We take reasonable steps to ensure the personal information we collect, use, and disclose is accurate, up-to-date, complete, and relevant (APP 10), and to protect personal information from misuse, interference, loss, and unauthorised access, modification, or disclosure (APP 11). Our security measures include:",
+        "items": [
+          "encryption in transit (TLS/HTTPS on all connections);",
+          "hashing of session tokens using SHA-256 before storage;",
+          "hashing of magic link tokens and verification codes before storage;",
+          "HttpOnly, Secure, and SameSite cookie attributes on authentication cookies;",
+          "Content Security Policy headers restricting script and resource loading;",
+          "automated session cleanup after 30 days of inactivity;",
+          "automatic expiry of magic links (15 minutes for login, 7 days for invitations);",
+          "email and SMS suppression lists to prevent delivery to addresses that have bounced or reported spam;",
+          "audit logging of significant account actions."
+        ],
+        "note": "We review our security practices periodically. No system is completely secure, and we cannot guarantee absolute security of your information."
+      },
+      "retention": {
+        "title": "डेटा प्रतिधारण",
+        "description": "हम अंतिम संपर्क बिंदु के बाद 24 महीने तक रुचि की अभिव्यक्ति डेटा को बनाए रखते हैं। इस अवधि के बाद, डेटा को अनामित या हटा दिया जाता है।"
+      },
+      "cookiesSection": {
+        "title": "Cookies and tracking technologies",
+        "description": "Our website uses cookies and local storage to support authentication and language preferences. We use Cloudflare Web Analytics for traffic analysis — this service does not use cookies and does not collect personal information.",
+        "analytics": "We do not use any other third-party tracking cookies, advertising cookies, or cross-site tracking technologies.",
+        "link": "For full details, see our Cookie Policy."
+      },
+      "children": {
+        "title": "Children's privacy",
+        "description": "Our website and services are not directed at children under the age of 16. We do not knowingly collect personal information from children under 16. If we become aware that we have collected personal information from a child under 16 without parental consent, we will take reasonable steps to delete that information promptly.",
+        "contact": "If you are a parent or guardian and believe your child has provided us with personal information, please contact us at privacy@production.city."
+      },
+      "anonymity": {
+        "title": "Anonymity and pseudonymity",
+        "description": "Where it is lawful and practicable, you may deal with us without identifying yourself or by using a pseudonym (APP 2). However, if you do not provide the personal information we request, we may not be able to respond to your expression of interest or provide you with access to certain features."
       },
       "rights": {
         "title": "आपके अधिकार",
         "description": "लागू गोपनीयता कानून के तहत, आपके पास निम्नलिखित अधिकार हैं:",
         "items": [
-          "हमारे पास आपके बारे में रखे गए व्यक्तिगत डेटा तक पहुंच",
-          "गलत डेटा के सुधार का अनुरोध करना",
-          "आपके डेटा को हटाने का अनुरोध करना",
-          "आपके डेटा की पोर्टेबिलिटी का अनुरोध करना",
-          "मार्केटिंग संचार के लिए सहमति वापस लेना",
-          "संबंधित पर्यवेक्षी प्राधिकरण के पास शिकायत दर्ज करना"
+          "request access to the personal information we hold about you;",
+          "request correction of any information that is inaccurate, out-of-date, incomplete, irrelevant, or misleading;",
+          "request deletion of your personal information (subject to any legal obligations that require us to retain it)."
         ],
-        "contact": "इन अधिकारों का प्रयोग करने के लिए, privacy@production.city पर हमसे संपर्क करें।"
+        "contact": "इन अधिकारों का प्रयोग करने के लिए, privacy@production.city पर हमसे संपर्क करें।",
+        "note": "If we refuse to provide access or correct information, we will give you written reasons and inform you of the complaint mechanisms available to you."
+      },
+      "ndb": {
+        "title": "Notifiable data breaches",
+        "description": "If we become aware of a data breach that is likely to result in serious harm to any individual whose personal information is involved, we will:",
+        "items": [
+          "take reasonable steps to contain the breach and mitigate harm;",
+          "assess the breach to determine whether it is an eligible data breach under Part IIIC of the Privacy Act;",
+          "if the breach is eligible, notify the affected individuals and the Office of the Australian Information Commissioner (OAIC) as soon as practicable;",
+          "keep a record of the breach regardless of whether notification is required."
+        ]
+      },
+      "complaints": {
+        "title": "Complaints",
+        "description": "If you believe we have breached the APPs or handled your personal information improperly, you may lodge a complaint by contacting us at privacy@production.city. We will:",
+        "steps": [
+          "acknowledge your complaint within 7 days;",
+          "investigate the complaint and provide a response within 30 days;",
+          "take reasonable steps to resolve the matter."
+        ],
+        "oaic": {
+          "description": "If you are not satisfied with our response, you may lodge a complaint with the Office of the Australian Information Commissioner (OAIC):",
+          "website": "www.oaic.gov.au",
+          "phone": "1300 363 992",
+          "email": "enquiries@oaic.gov.au",
+          "post": "GPO Box 5218, Sydney NSW 2001"
+        }
       },
       "jurisdiction": {
         "title": "शासी कानून",
@@ -466,29 +615,128 @@
       "title": "उपयोग की शर्तें",
       "effectiveDate": "प्रभावी तिथि: {date}",
       "intro": "Production City वेबसाइट पर आपका स्वागत है। इस वेबसाइट का उपयोग करके, आप निम्नलिखित नियमों और शर्तों का पालन करने के लिए सहमत होते हैं।",
+      "about": {
+        "title": "About these terms",
+        "description": "These Terms of Use (\"Terms\") govern your access to and use of the Production City website at production.city (\"Website\") operated by Aperim Pty Ltd (\"we\", \"us\", \"our\").",
+        "agreement": "By accessing or using the Website, you agree to be bound by these Terms. If you do not agree to these Terms, you must not use the Website.",
+        "updates": "We may update these Terms from time to time. The current version will always be available on this page with the effective date shown above. Your continued use of the Website after changes are posted constitutes acceptance of the updated Terms."
+      },
       "usage": {
         "title": "वेबसाइट का उपयोग",
-        "description": "यह वेबसाइट केवल सूचनात्मक उद्देश्यों के लिए है।"
+        "description": "यह वेबसाइट केवल सूचनात्मक उद्देश्यों के लिए है।",
+        "items": [
+          "use the Website in any way that breaches any applicable law or regulation;",
+          "use the Website in any way that is fraudulent or has any fraudulent purpose or effect;",
+          "use the Website to transmit or procure the sending of unsolicited or unauthorised advertising, promotional material, or spam;",
+          "use the Website to knowingly transmit any data or material that contains viruses, trojans, worms, time-bombs, keystroke loggers, spyware, adware, or any other harmful programs or code;",
+          "attempt to gain unauthorised access to the Website, the servers on which the Website is hosted, or any server, computer, or database connected to the Website;",
+          "use any automated means, including bots, scrapers, or spiders, to access or interact with the Website without our prior written consent;",
+          "interfere with or disrupt the Website or any other party's use and enjoyment of the Website;",
+          "reproduce, duplicate, copy, or redistribute any content from the Website without our express permission."
+        ],
+        "reserve": "We reserve the right to restrict or suspend your access to the Website if we reasonably believe you have breached these Terms."
       },
       "ip": {
         "title": "बौद्धिक संपदा",
-        "description": "इस वेबसाइट पर सभी सामग्री Aperim Pty Ltd या उसके लाइसेंसधारकों की संपत्ति है।"
+        "description": "इस वेबसाइट पर सभी सामग्री Aperim Pty Ltd या उसके लाइसेंसधारकों की संपत्ति है।",
+        "restriction": "You must not reproduce, modify, distribute, display, perform, or create derivative works from any content on this Website without our prior written consent, except as permitted by law (including fair dealing provisions under Part III Division 3 of the Copyright Act 1968).",
+        "licence": "Nothing in these Terms grants you any right, title, or interest in the Website or its content, other than a limited, non-exclusive, non-transferable licence to access and use the Website for personal, non-commercial purposes in accordance with these Terms."
+      },
+      "userAccounts": {
+        "title": "User accounts",
+        "items": [
+          "you are responsible for maintaining the confidentiality of your login credentials;",
+          "you are responsible for all activities that occur under your account;",
+          "you must notify us immediately at privacy@production.city if you become aware of any unauthorised use of your account;",
+          "we may suspend or terminate your account if we reasonably believe it has been compromised or if you have breached these Terms."
+        ],
+        "magicLinks": "Authentication is handled through magic links sent to your registered email address. We do not store passwords."
+      },
+      "submissions": {
+        "title": "Expressions of interest and submissions",
+        "items": [
+          "you warrant that the information you provide is accurate and not misleading;",
+          "you acknowledge that submitting an expression of interest does not create a binding agreement, contract, or commitment between you and us;",
+          "you consent to us using your submission in accordance with our Privacy Policy."
+        ]
       },
       "disclaimer": {
         "title": "Disclaimer",
+        "prelaunch": "Production City is in pre-launch development. All information, features, services, timelines, pricing, and projections described on this Website are subject to change without notice.",
+        "items": [
+          "a binding offer, invitation to treat, or commitment to deliver any particular service, feature, or capability;",
+          "financial, investment, legal, or professional advice;",
+          "a guarantee of availability, performance, or suitability for any particular purpose."
+        ],
         "description": "यह वेबसाइट बिना किसी वारंटी के प्रदान की जाती है।"
       },
       "forwardLooking": {
         "title": "भविष्योन्मुखी बयान",
-        "description": "इस वेबसाइट में Production City परियोजना के बारे में भविष्योन्मुखी बयान हैं।"
+        "description": "इस वेबसाइट में Production City परियोजना के बारे में भविष्योन्मुखी बयान हैं।",
+        "note": "Forward-looking statements are based on current expectations and assumptions and are not guarantees of future performance. We do not undertake any obligation to update forward-looking statements to reflect events or circumstances after the date they are made."
+      },
+      "consumerLaw": {
+        "title": "Australian Consumer Law",
+        "description": "Nothing in these Terms is intended to exclude, restrict, or modify any consumer guarantee or right that applies under the Competition and Consumer Act 2010 (Cth), Schedule 2 (Australian Consumer Law) (\"ACL\"), or any other applicable consumer protection law, where to do so would be unlawful. If the ACL applies to your use of the Website or any service we provide:",
+        "items": [
+          "our goods and services come with guarantees that cannot be excluded under the ACL, including guarantees as to acceptable quality, fitness for purpose, and due care and skill;",
+          "you are entitled to a replacement or refund for a major failure and compensation for any other reasonably foreseeable loss or damage;",
+          "you are also entitled to have goods repaired or replaced if the goods fail to be of acceptable quality and the failure does not amount to a major failure."
+        ]
       },
       "liability": {
         "title": "दायित्व की सीमा",
-        "description": "कानून द्वारा अनुमत अधिकतम सीमा तक, Aperim Pty Ltd इस वेबसाइट के उपयोग से उत्पन्न किसी भी नुकसान के लिए उत्तरदायी नहीं होगा।"
+        "description": "कानून द्वारा अनुमत अधिकतम सीमा तक, Aperim Pty Ltd इस वेबसाइट के उपयोग से उत्पन्न किसी भी नुकसान के लिए उत्तरदायी नहीं होगा।",
+        "items": [
+          "we exclude all liability for any loss, damage, cost, or expense (whether direct, indirect, incidental, special, consequential, or punitive) arising from or in connection with your use of, or inability to use, the Website;",
+          "our total aggregate liability to you for all claims arising under or in connection with these Terms is limited to AUD $100;",
+          "we are not liable for any loss or damage arising from circumstances beyond our reasonable control, including but not limited to internet failures, equipment failures, electrical power failures, strikes, labour disputes, riots, insurrections, civil disturbances, shortages of labour or materials, fires, floods, storms, explosions, acts of God, war, governmental actions, or orders of domestic or foreign courts or tribunals."
+        ],
+        "note": "This limitation of liability applies to the fullest extent permitted by law. Where liability cannot be excluded (including under the ACL), it is limited to the extent permitted by law."
+      },
+      "indemnity": {
+        "title": "Indemnity",
+        "description": "You agree to indemnify, defend, and hold harmless Aperim Pty Ltd, its officers, directors, employees, agents, and affiliates from and against any and all claims, liabilities, damages, losses, costs, and expenses (including reasonable legal fees) arising out of or in connection with:",
+        "items": [
+          "your use of the Website in breach of these Terms;",
+          "your violation of any applicable law or regulation;",
+          "any content or information you submit through the Website that infringes the intellectual property or other rights of a third party."
+        ],
+        "note": "This indemnity is a continuing obligation, separate and independent from your other obligations under these Terms, and survives termination of these Terms."
+      },
+      "thirdPartyLinks": {
+        "title": "Third-party links",
+        "description": "The Website may contain links to third-party websites or services that are not owned or controlled by us. We are not responsible for the content, privacy policies, or practices of any third-party websites. You access third-party websites at your own risk and should review their terms and policies before engaging with them."
+      },
+      "disputeResolution": {
+        "title": "Dispute resolution",
+        "description": "If a dispute arises in connection with these Terms or your use of the Website:",
+        "steps": [
+          "Negotiation — The parties must first attempt to resolve the dispute by good-faith negotiation. Either party may give written notice of the dispute to the other party.",
+          "Mediation — If the dispute is not resolved within 30 days of the notice, either party may refer the dispute to mediation administered by the Australian Disputes Centre (ADC) in accordance with the ADC Mediation Guidelines. The mediation will be held in Sydney, New South Wales.",
+          "Litigation — If the dispute is not resolved by mediation within 60 days of referral (or such longer period as agreed by the parties), either party may commence legal proceedings."
+        ],
+        "note": "Nothing in this section prevents either party from seeking urgent interlocutory or injunctive relief from a court of competent jurisdiction."
       },
       "jurisdiction": {
         "title": "क्षेत्राधिकार",
         "description": "ये शर्तें ऑस्ट्रेलिया के न्यू साउथ वेल्स के कानूनों द्वारा शासित हैं।"
+      },
+      "severability": {
+        "title": "Severability",
+        "description": "If any provision of these Terms is found to be invalid, illegal, or unenforceable by a court of competent jurisdiction, the remaining provisions will continue in full force and effect. The invalid, illegal, or unenforceable provision will be deemed modified to the minimum extent necessary to make it valid, legal, and enforceable, while preserving its original intent as closely as possible."
+      },
+      "waiver": {
+        "title": "Waiver",
+        "description": "A failure or delay by us in exercising any right, power, or remedy under these Terms does not operate as a waiver of that right, power, or remedy. A single or partial exercise of a right, power, or remedy does not preclude any other or further exercise of that or any other right, power, or remedy."
+      },
+      "assignment": {
+        "title": "Assignment",
+        "description": "You may not assign or transfer any of your rights or obligations under these Terms without our prior written consent. We may assign our rights and obligations under these Terms without your consent."
+      },
+      "entireAgreement": {
+        "title": "Entire agreement",
+        "description": "These Terms, together with our Privacy Policy and Cookie Policy, constitute the entire agreement between you and Aperim Pty Ltd regarding your use of the Website and supersede all prior agreements, understandings, and representations, whether written or oral."
       },
       "changes": {
         "title": "शर्तों में परिवर्तन",
@@ -498,6 +746,65 @@
         "title": "Contact",
         "description": "कानूनी पूछताछ के लिए संपर्क करें: legal@production.city\n\nAperim Pty Ltd\nABN 46 150 699 737 | ACN 150 699 737\nSuite 108, 9 Hutchinson Street, St Peters NSW 2044, Australia"
       }
+    },
+    "cookies": {
+      "title": "Cookie Policy",
+      "effectiveDate": "Effective date: {date}",
+      "about": {
+        "title": "About this policy",
+        "description": "This Cookie Policy explains how Aperim Pty Ltd (\"we\", \"us\", \"our\") uses cookies, local storage, and similar technologies on the Production City website at production.city (\"Website\").",
+        "link": "This policy should be read alongside our Privacy Policy, which explains how we collect, use, and protect your personal information."
+      },
+      "whatAreCookies": {
+        "title": "What are cookies",
+        "description": "Cookies are small text files placed on your device by a website. They are widely used to make websites work efficiently and to provide information to website operators. Cookies can be \"session\" cookies (deleted when you close your browser) or \"persistent\" cookies (retained on your device until they expire or you delete them).",
+        "localStorage": "Local storage is a browser feature that allows websites to store data on your device. Unlike cookies, local storage data is not sent to the server with each request."
+      },
+      "cookiesWeUse": {
+        "title": "Cookies we use",
+        "description": "We use a small number of cookies, all of which are functional. We do not use advertising, tracking, or analytics cookies.",
+        "essentialTitle": "Essential cookies",
+        "essentialDescription": "These cookies are necessary for the Website to function. You cannot opt out of essential cookies because the Website would not work without them.",
+        "functionalTitle": "Functional cookies",
+        "functionalDescription": "These cookies improve your experience by remembering your preferences. They are not required for the Website to function but provide useful features."
+      },
+      "localStorage": {
+        "title": "Local storage",
+        "description": "We use browser local storage to remember your language preference.",
+        "note": "Local storage data stays on your device and is not transmitted to our servers with each page request."
+      },
+      "analytics": {
+        "title": "Analytics",
+        "description": "We use Cloudflare Web Analytics for aggregated website traffic analysis. This service does not use cookies, does not collect personal information, does not track individual visitors across websites, and processes anonymised, aggregated traffic data only.",
+        "note": "Cloudflare Web Analytics is loaded via a script from static.cloudflareinsights.com and operates in a way that preserves visitor privacy."
+      },
+      "thirdParty": {
+        "title": "Third-party cookies and external resources",
+        "description": "We do not embed third-party cookies on the Website. We do not use social media plugins, advertising trackers, or third-party analytics services that set cookies.",
+        "fonts": "Our Website loads web font files (Noto Sans for Arabic, Devanagari, and Bengali script support) directly from Google's font delivery network at fonts.gstatic.com. Google does not set cookies through this font delivery mechanism. However, when your browser requests font files, Google receives your IP address and browser user-agent string. Google's handling of this data is governed by Google's Privacy Policy at policies.google.com/privacy.",
+        "analytics": "The only other third-party domain from which scripts are loaded is static.cloudflareinsights.com (Cloudflare Web Analytics), which does not set cookies."
+      },
+      "managing": {
+        "title": "Managing cookies and local storage",
+        "description": "You can manage cookies through your browser settings. Most browsers allow you to view what cookies are set, delete individual or all cookies, block cookies from specific or all websites, and block third-party cookies.",
+        "browsers": "Instructions for managing cookies in common browsers:",
+        "browserList": [
+          "Chrome: Settings, then Privacy and Security, then Cookies and other site data",
+          "Firefox: Settings, then Privacy and Security, then Cookies and Site Data",
+          "Safari: Preferences, then Privacy, then Manage Website Data",
+          "Edge: Settings, then Cookies and site permissions, then Manage and delete cookies and site data"
+        ],
+        "sessionNote": "If you block essential cookies (__Secure-session), you will not be able to log in or maintain an authenticated session on the Website.",
+        "localStorageNote": "To clear local storage data, use your browser's developer tools or clear all site data through your browser's privacy settings. If you clear the pc-locale local storage item, the Website will default to English and will not remember your language preference between visits."
+      },
+      "changes": {
+        "title": "Changes to this policy",
+        "description": "We may update this Cookie Policy from time to time to reflect changes in the cookies we use or for other operational, legal, or regulatory reasons. When we make changes, we will update the effective date at the top of this page."
+      },
+      "contact": {
+        "title": "Contact",
+        "description": "For questions about our use of cookies, contact:\n\nAperim Pty Ltd\nEmail: privacy@production.city\n\nSuite 108, 9 Hutchinson Street, St Peters NSW 2044"
+      }
     }
   },
   "footer": {
@@ -506,14 +813,14 @@
     "copyright": "© {year} Aperim Pty Ltd. सर्वाधिकार सुरक्षित।",
     "disclaimer": "Production City™ Aperim Pty Ltd का ट्रेडमार्क है।",
     "explore": "अन्वेषण करें",
+    "resources": "संसाधन",
     "company": "कंपनी",
     "acknowledgement": "Production City ऑस्ट्रेलिया भर में पारंपरिक स्वामियों को मान्यता देता है और भूमि, जल और समुदाय से उनके निरंतर संबंध को स्वीकार करता है। यह अबॉरिजिनल और टोरेस स्ट्रेट आइलैंडर संस्कृतियों और उनके बुजुर्गों — अतीत और वर्तमान — को सम्मान देता है।",
-    "resources": "संसाधन",
+    "acknowledgementHeading": "देश की स्वीकृति",
     "brand": {
       "tagline": "हम कहानियां बनाते हैं"
     },
-    "contactHeading": "संपर्क",
-    "acknowledgementHeading": "देश की स्वीकृति"
+    "contactHeading": "संपर्क"
   },
   "languageSwitcher": {
     "label": "भाषा",
@@ -567,10 +874,10 @@
       "viewAll": "समुदाय साझेदारी देखें"
     },
     "masterplanTeaser": {
-      "ctaLabel": "कैंपस को 3D में एक्सप्लोर करें →",
       "eyebrow": "कैंपस मास्टरप्लान",
       "heading": "कैंपस, तीन आयामों में।",
-      "body": "छह साउंड स्टेज, एक ब्रॉडकास्ट थिएटर, क्रिएटिव हब, बैकलॉट और पब्लिक स्पेस — पूरे 6 हेक्टेयर साइट को इंटरैक्टिव 3D मॉडल में एक्सप्लोर करें।"
+      "body": "छह साउंड स्टेज, एक ब्रॉडकास्ट थिएटर, क्रिएटिव हब, बैकलॉट और पब्लिक स्पेस — पूरे 6 हेक्टेयर साइट को इंटरैक्टिव 3D मॉडल में एक्सप्लोर करें।",
+      "ctaLabel": "कैंपस को 3D में एक्सप्लोर करें →"
     }
   },
   "facilities": {
@@ -604,7 +911,16 @@
       "specNrc": "शोर कमी गुणांक",
       "specLed": "LED वॉल आकार",
       "detail": {
+        "eyebrow": "सुविधाएँ · A — स्क्रीन साउंड स्टेज",
+        "heading": "बड़े पैमाने पर स्क्रीन का काम। इसी के लिए इंजीनियर किया गया।",
+        "lead": "2,025 m² स्टेज फ्लोर। 15 m ग्रिड तक। NRC 1.05। फुल-सराउंड LED वॉल्यूम तैयार।",
+        "prose": "फीचर फिल्म। एपिसोडिक। लाइव टेलीविजन। जब प्रोडक्शन बड़े पैमाने का हो, तो स्टेज को शुरू से ही उसके लिए बनाया जाना चाहिए।",
+        "prose2": "हर स्क्रीन साउंड स्टेज 45 m × 45 m, 15 m ग्रिड तक, फुल-कवरेज ग्रिड और कैटवॉक है। साउंडप्रूफिंग NRC 1.05 / NC 25 है। LED वॉल्यूम फ्लैट, आर्क या फुल-सराउंड रूप में कॉन्फ़िगर करने योग्य है।",
+        "prose3": "इन स्टेज को प्रमुख स्टूडियो और स्ट्रीमर प्रोडक्शन की तकनीकी विशिष्टताओं के आधार पर डिज़ाइन किया गया था। पहले स्थल के रूप में, मानक यहीं निर्धारित होते हैं।",
         "usageLabel": "Usage",
+        "usage1": "फीचर फिल्म प्रोडक्शन",
+        "usage2": "एपिसोडिक टेलीविजन",
+        "usage3": "लाइव टेलीविजन प्रसारण",
         "specLabel": "Specification",
         "specDimensions": "आयाम",
         "specDimensionsValue": "45 m × 45 m · 147 ft × 147 ft",
@@ -619,20 +935,11 @@
         "specGrid": "ग्रिड और कैटवॉक",
         "specGridValue": "पूर्ण कवरेज",
         "statArea": "2,025",
-        "statGrid": "15",
-        "ctaLink": "Enquire",
-        "eyebrow": "सुविधाएँ · A — स्क्रीन साउंड स्टेज",
-        "heading": "बड़े पैमाने पर स्क्रीन का काम। इसी के लिए इंजीनियर किया गया।",
-        "lead": "2,025 m² स्टेज फ्लोर। 15 m ग्रिड तक। NRC 1.05। फुल-सराउंड LED वॉल्यूम तैयार।",
-        "prose": "फीचर फिल्म। एपिसोडिक। लाइव टेलीविजन। जब प्रोडक्शन बड़े पैमाने का हो, तो स्टेज को शुरू से ही उसके लिए बनाया जाना चाहिए।",
-        "prose2": "हर स्क्रीन साउंड स्टेज 45 m × 45 m, 15 m ग्रिड तक, फुल-कवरेज ग्रिड और कैटवॉक है। साउंडप्रूफिंग NRC 1.05 / NC 25 है। LED वॉल्यूम फ्लैट, आर्क या फुल-सराउंड रूप में कॉन्फ़िगर करने योग्य है।",
-        "prose3": "इन स्टेज को प्रमुख स्टूडियो और स्ट्रीमर प्रोडक्शन की तकनीकी विशिष्टताओं के आधार पर डिज़ाइन किया गया था। पहले स्थल के रूप में, मानक यहीं निर्धारित होते हैं।",
-        "usage1": "फीचर फिल्म प्रोडक्शन",
-        "usage2": "एपिसोडिक टेलीविजन",
-        "usage3": "लाइव टेलीविजन प्रसारण",
         "statAreaLabel": "वर्ग मीटर",
+        "statGrid": "15",
         "statGridLabel": "ग्रिड तक मीटर",
-        "cta": "एक स्क्रीन स्टेज बुक करें।"
+        "cta": "एक स्क्रीन स्टेज बुक करें।",
+        "ctaLink": "Enquire"
       }
     },
     "commercialStages": {
@@ -647,8 +954,15 @@
       "specNrc": "NRC 75+",
       "specLed": "फ्लैट, आर्क, फुल-सराउंड",
       "detail": {
+        "eyebrow": "सुविधाएँ · B — कमर्शियल साउंड स्टेज",
+        "heading": "छोटा स्थान। पूर्ण विशिष्टता।",
+        "lead": "100 m² स्टेज। वही 15 m ग्रिड तक। वही साउंडप्रूफिंग। वॉक-इन-रेडी LED वॉल्यूम।",
         "prose": "विज्ञापन, TVC, म्यूजिक वीडियो, शॉर्ट-फॉर्म और डिजिटल कार्य के लिए 45 × 45 की जरूरत नहीं है। लेकिन इन्हें सही ध्वनिकी, उचित ऊंचाई और समान LED कॉन्फिगरेशन की जरूरत है।",
+        "prose2": "यही ये स्टेज हैं। सोमवार को आएँ। शूट करें। शुक्रवार तक खाली करें। वॉल्यूम कॉन्फ़िगरेशन स्क्रीन स्टेज के साथ साझा हैं, इसलिए एक पर विकसित लुक को दूसरे पर ले जाया जा सकता है।",
         "usageLabel": "Usage",
+        "usage1": "टीवी विज्ञापन और इन्फोमर्शियल",
+        "usage2": "म्यूजिक वीडियो प्रोडक्शन",
+        "usage3": "छोटे पैमाने की डिजिटल सामग्री",
         "specLabel": "Specification",
         "specDimensions": "आयाम",
         "specDimensionsValue": "10 m × 10 m · 32 ft × 32 ft",
@@ -663,18 +977,11 @@
         "specGrid": "ग्रिड और कैटवॉक",
         "specGridValue": "पूर्ण कवरेज",
         "statArea": "100",
-        "statGrid": "15",
-        "ctaLink": "Enquire",
-        "eyebrow": "सुविधाएँ · B — कमर्शियल साउंड स्टेज",
-        "heading": "छोटा स्थान। पूर्ण विशिष्टता।",
-        "lead": "100 m² स्टेज। वही 15 m ग्रिड तक। वही साउंडप्रूफिंग। वॉक-इन-रेडी LED वॉल्यूम।",
-        "prose2": "यही ये स्टेज हैं। सोमवार को आएँ। शूट करें। शुक्रवार तक खाली करें। वॉल्यूम कॉन्फ़िगरेशन स्क्रीन स्टेज के साथ साझा हैं, इसलिए एक पर विकसित लुक को दूसरे पर ले जाया जा सकता है।",
-        "usage1": "टीवी विज्ञापन और इन्फोमर्शियल",
-        "usage2": "म्यूजिक वीडियो प्रोडक्शन",
-        "usage3": "छोटे पैमाने की डिजिटल सामग्री",
         "statAreaLabel": "वर्ग मीटर",
+        "statGrid": "15",
         "statGridLabel": "ग्रिड तक मीटर",
-        "cta": "एक कमर्शियल स्टेज बुक करें।"
+        "cta": "एक कमर्शियल स्टेज बुक करें।",
+        "ctaLink": "Enquire"
       }
     },
     "broadcastTheatre": {
@@ -691,7 +998,15 @@
       "specCameras": "8 रोबोटिक कैमरा स्थितियां",
       "specBroadcast": "लाइव ब्रॉडकास्ट तैयार",
       "detail": {
+        "eyebrow": "सुविधाएँ · C — ब्रॉडकास्ट थिएटर",
+        "heading": "एक लाइव थिएटर जो ब्रॉडकास्ट स्टूडियो के रूप में तैयार है।",
+        "lead": "थिएटर मोड में 450 सीटें। कैबरे में 300। आठ पूरी तरह एकीकृत रोबोटिक कैमरा पोजीशन। AR और VR तैयार। ब्रॉडकास्ट-पार्टनर अनुपालक।",
+        "prose": "ब्रॉडकास्ट थिएटर एक बहु-मोडल लाइव स्थल है जिसके चारों ओर एक ब्रॉडकास्ट गैलरी है।",
+        "prose2": "रोबोटिक कैमरे, एक LED वर्चुअल सेट लाइब्रेरी और स्ट्रीमिंग अनुपालन कमरे में निर्मित हैं। यहाँ का हर प्रदर्शन एक साथ सीटों पर बैठे दर्शकों और घर पर दर्शकों तक पहुँच सकता है, बिना किसी अलग ब्रॉडकास्ट सेटअप के।",
         "usageLabel": "Usage",
+        "usage1": "लाइव प्रदर्शन और कार्यक्रम",
+        "usage2": "लाइव ब्रॉडकास्ट",
+        "usage3": "AR/VR शोकेस अनुभव",
         "specLabel": "Specification",
         "specTheatre": "थिएटर मोड",
         "specTheatreValue": "450 सीटें",
@@ -706,19 +1021,11 @@
         "specCompliance": "अनुपालन",
         "specComplianceValue": "स्ट्रीमिंग सेवा आवश्यकताओं को पूरा करता है",
         "statSeats": "450",
-        "statCameras": "8",
-        "ctaLink": "Enquire",
-        "eyebrow": "सुविधाएँ · C — ब्रॉडकास्ट थिएटर",
-        "heading": "एक लाइव थिएटर जो ब्रॉडकास्ट स्टूडियो के रूप में तैयार है।",
-        "lead": "थिएटर मोड में 450 सीटें। कैबरे में 300। आठ पूरी तरह एकीकृत रोबोटिक कैमरा पोजीशन। AR और VR तैयार। ब्रॉडकास्ट-पार्टनर अनुपालक।",
-        "prose": "ब्रॉडकास्ट थिएटर एक बहु-मोडल लाइव स्थल है जिसके चारों ओर एक ब्रॉडकास्ट गैलरी है।",
-        "prose2": "रोबोटिक कैमरे, एक LED वर्चुअल सेट लाइब्रेरी और स्ट्रीमिंग अनुपालन कमरे में निर्मित हैं। यहाँ का हर प्रदर्शन एक साथ सीटों पर बैठे दर्शकों और घर पर दर्शकों तक पहुँच सकता है, बिना किसी अलग ब्रॉडकास्ट सेटअप के।",
-        "usage1": "लाइव प्रदर्शन और कार्यक्रम",
-        "usage2": "लाइव ब्रॉडकास्ट",
-        "usage3": "AR/VR शोकेस अनुभव",
         "statSeatsLabel": "थिएटर सीटें",
+        "statCameras": "8",
         "statCamerasLabel": "रोबोटिक कैमरे",
-        "cta": "लाइव ब्रॉडकास्ट या कार्यक्रम पर चर्चा करें।"
+        "cta": "लाइव ब्रॉडकास्ट या कार्यक्रम पर चर्चा करें।",
+        "ctaLink": "Enquire"
       }
     },
     "controlRoom": {
@@ -730,19 +1037,19 @@
       "specManagement": "केंद्रीकृत प्रोडक्शन प्रबंधन",
       "specSync": "मल्टी-प्लेटफॉर्म सिंक क्षमता",
       "detail": {
-        "capabilityLabel": "Capability",
-        "ctaLink": "Enquire",
         "eyebrow": "सुविधाएँ · D — ब्रॉडकास्ट कंट्रोल रूम",
         "heading": "तंत्रिका केंद्र।",
         "lead": "केंद्रीय प्रोडक्शन प्रबंधन, लाइव ब्रॉडकास्ट नियंत्रण, उन्नत सिंक्रोनाइजेशन — स्टेज, थिएटर और वैश्विक बाहरी स्थलों को सहायता।",
         "prose": "कंट्रोल रूम परिसर की एकमात्र ब्रॉडकास्ट रीढ़ है। यह साइट पर हर लाइव प्रोडक्शन को प्रबंधित और सिंक्रोनाइज़ करता है।",
         "prose2": "यह दुनिया में कहीं भी बाहरी खेल और आयोजन स्थलों से ब्रॉडकास्ट उत्पन्न करने के लिए डिज़ाइन किया गया है। Production City की ब्रॉडकास्ट और डेटा-सेंटर विरासत यहाँ स्थित है। कंट्रोल रूम को उसी तरह इंजीनियर किया गया है जैसे महत्वपूर्ण ब्रॉडकास्ट अवसंरचना।",
+        "capabilityLabel": "Capability",
         "cap1": "केंद्रीकृत प्रोडक्शन प्रबंधन",
         "cap2": "लाइव ब्रॉडकास्ट नियंत्रण",
         "cap3": "मल्टी-प्लेटफ़ॉर्म और मल्टी-लोकेशन प्रसारण में उन्नत सिंक्रोनाइजेशन",
         "cap4": "परिसर के स्टेज और थिएटर से प्रसारण उत्पत्ति",
         "cap5": "वैश्विक बाहरी खेल और आयोजन स्थलों से प्रसारण उत्पत्ति",
-        "cta": "लाइव प्रसारण उत्पत्ति पर चर्चा करें।"
+        "cta": "लाइव प्रसारण उत्पत्ति पर चर्चा करें।",
+        "ctaLink": "Enquire"
       }
     },
     "ancillary": {
@@ -1043,12 +1350,16 @@
     },
     "heading": "अक्सर पूछे जाने वाले प्रश्न",
     "searchPlaceholder": "प्रश्न खोजें...",
+    "categoriesLabel": "FAQ श्रेणियां",
     "allCategories": "सभी",
     "categoryFacilities": "सुविधाएं",
     "categoryServices": "सेवाएं",
     "categoryGlobal": "वैश्विक",
     "categoryCommunity": "समुदाय",
     "categoryEngagement": "जुड़ाव",
+    "resultCountSingular": "{count} परिणाम मिला",
+    "resultCountPlural": "{count} परिणाम मिले",
+    "questionCount": "{count} प्रश्न",
     "noResults": "कोई मेल खाने वाले प्रश्न नहीं मिले।",
     "questionsHeading": "प्रश्न और उत्तर",
     "q1": "Production City किस प्रकार की सुविधाएं प्रदान करेगा?",
@@ -1111,14 +1422,10 @@
     "q20": "सुविधा किराये के अलावा किस प्रकार के जुड़ाव संभव होंगे?",
     "a20": "तकनीकी साझेदारी, शिक्षा और अनुसंधान सहयोग, फिल्मांकन विधियों और तकनीकों का संयुक्त विकास, और सहयोगी व्यापार मॉडल।",
     "c20": "जुड़ाव",
-    "categoriesLabel": "FAQ श्रेणियां",
     "searchLabel": "अक्सर पूछे जाने वाले प्रश्न खोजें",
     "cantFindHeading": "जो खोज रहे हैं वह नहीं मिल रहा?",
     "cantFindDescription": "हमारी टीम Production City के बारे में किसी भी प्रश्न में आपकी सहायता के लिए यहां है।",
-    "cantFindCta": "हमसे संपर्क करें",
-    "resultCountSingular": "{count} परिणाम मिला",
-    "resultCountPlural": "{count} परिणाम मिले",
-    "questionCount": "{count} प्रश्न"
+    "cantFindCta": "हमसे संपर्क करें"
   },
   "contact": {
     "meta": {
@@ -1226,64 +1533,6 @@
     "failed": "ईमेल वितरित नहीं हो सका",
     "pending": "भेजा जा रहा है...",
     "unknown": "स्थिति अज्ञात"
-  },
-  "announcements": {
-    "page": {
-      "title": "अपडेट",
-      "description": "प्रोडक्शन सिटी से नवीनतम समाचार और अपडेट",
-      "empty": "अभी तक कोई घोषणा नहीं है। प्रोडक्शन सिटी टीम से अपडेट के लिए जल्द ही वापस आएं।",
-      "filter_all": "सभी"
-    },
-    "detail": {
-      "back": "अपडेट पर वापस जाएं",
-      "updated": "{date} को अपडेट किया गया",
-      "share": "शेयर करें",
-      "share_copied": "लिंक कॉपी हो गया",
-      "subscribed_banner": "आप {categoryName} अपडेट की सदस्यता ले चुके हैं",
-      "subscribe_cta": "{categoryName} अपडेट के बारे में सूचना प्राप्त करें",
-      "not_found": "नहीं मिला",
-      "not_found_description": "आप जो पृष्ठ खोज रहे हैं वह मौजूद नहीं है।"
-    }
-  },
-  "subscriptions": {
-    "confirm": {
-      "title": "सदस्यता पुष्टि",
-      "success": "{channel} के माध्यम से {categoryName} की आपकी सदस्यता पुष्टि हो गई है।",
-      "error": "अमान्य या समाप्त पुष्टि लिंक।",
-      "failedTitle": "पुष्टि विफल",
-      "viewUpdates": "अपडेट देखें"
-    },
-    "decline": {
-      "title": "सदस्यता अस्वीकृत",
-      "success": "आपने सदस्यता अनुरोध अस्वीकार कर दिया है।",
-      "error": "अमान्य या समाप्त लिंक।",
-      "failedTitle": "पुष्टि विफल",
-      "viewUpdates": "अपडेट देखें"
-    },
-    "unsubscribe": {
-      "title": "सदस्यता रद्द करें",
-      "confirm": "{channel} के माध्यम से {categoryName} अपडेट से सदस्यता रद्द करें?",
-      "button": "सदस्यता रद्द पुष्टि करें",
-      "success": "आपकी सदस्यता रद्द कर दी गई है।",
-      "error": "अमान्य या समाप्त लिंक।",
-      "successTitle": "सदस्यता रद्द",
-      "errorTitle": "त्रुटि",
-      "confirmMessage": "क्या आप वाकई इन अपडेट की सदस्यता रद्द करना चाहते हैं?",
-      "managePreferences": "प्राथमिकताएं प्रबंधित करें"
-    },
-    "preferences": {
-      "title": "अधिसूचना प्राथमिकताएं",
-      "description": "चुनें कि आप कौन से अपडेट प्राप्त करना चाहते हैं और कैसे।",
-      "email": "ईमेल",
-      "sms": "एसएमएस",
-      "pending": "पुष्टि लंबित",
-      "confirmed": "सक्रिय",
-      "resend": "पुष्टि पुनः भेजें",
-      "no_phone": "एसएमएस अपडेट प्राप्त करने के लिए फोन नंबर जोड़ें",
-      "subscribe_all": "सभी की सदस्यता लें",
-      "confirm_unsubscribe": "क्या आप वाकई {channel} के माध्यम से {categoryName} से सदस्यता रद्द करना चाहते हैं?",
-      "digest_coming_soon": "साप्ताहिक सारांश — जल्द आ रहा है"
-    }
   },
   "dashboard": {
     "sidebar": {

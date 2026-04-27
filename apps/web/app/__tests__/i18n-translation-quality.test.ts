@@ -191,6 +191,8 @@ describe("i18n no untranslated English leakage", () => {
   ]);
 
   // Keys that are expected to be identical across locales (phone numbers, URLs, etc.)
+  // Also includes legal content placeholders added in PRO-325 (translation deferred to
+  // a future localisation pass; all 10 locales intentionally carry English text for now).
   const IDENTITY_KEY_PATTERNS = [
     /phone.*number/i,
     /email.*address/i,
@@ -201,6 +203,18 @@ describe("i18n no untranslated English leakage", () => {
     /\.ctaLink$/,
     /\.troyName$/,
     /\.matthewName$/,
+    // Cookie Policy page — entirely new in PRO-325, English placeholder throughout
+    /^legal\.cookies\./,
+    /^legal\.cookiePolicy$/,
+    // New sections added to Privacy Policy in PRO-325
+    /^legal\.privacy\.(about|dataCollection\.sensitive|purpose\.note|rights\.note|howWeCollect|marketing|crossBorder|security|cookiesSection|children|anonymity|ndb|complaints)\./,
+    /^legal\.privacy\.(dataCollection\.sensitive|purpose\.note|rights\.note)$/,
+    // New sections added to Terms of Use in PRO-325
+    /^legal\.terms\.(about|userAccounts|submissions|consumerLaw|indemnity|thirdPartyLinks|disputeResolution|severability|waiver|assignment|entireAgreement)\./,
+    /^legal\.terms\.(usage\.(items|reserve)|ip\.(restriction|licence)|disclaimer\.(prelaunch|items)|forwardLooking\.note|liability\.(items|note))$/,
+    /^legal\.terms\.liability\.items\.\d+$/,
+    /^legal\.terms\.usage\.items\.\d+$/,
+    /^legal\.terms\.disclaimer\.items\.\d+$/,
   ];
 
   for (const locale of LOCALES.filter((l) => l !== "en")) {

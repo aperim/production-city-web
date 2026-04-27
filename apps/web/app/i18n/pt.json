@@ -168,6 +168,8 @@
       "saving": "Salvando...",
       "saved": "Salvo",
       "error": "Falha ao atualizar perfil",
+      "emptyNameError": "O nome não pode estar vazio",
+      "genericError": "Ocorreu um erro",
       "sessions": {
         "title": "Sessões ativas",
         "currentSession": "Sessão atual",
@@ -185,9 +187,7 @@
         "onDevice": "em",
         "revoking": "Revogando…",
         "revokeError": "Falha ao revogar sessão"
-      },
-      "emptyNameError": "O nome não pode estar vazio",
-      "genericError": "Ocorreu um erro"
+      }
     },
     "announcements": {
       "title": "Comunicados",
@@ -317,15 +317,73 @@
     "facilities": "Instalações",
     "creative": "Criativo",
     "vision": "Visão",
-    "contact": "Contato",
     "community": "Comunidade",
     "faq": "Perguntas Frequentes",
+    "contact": "Contato",
     "updates": "Novidades",
     "services": "Services",
+    "firstNations": "Primeiras Nações",
     "network": "Network",
     "company": "Company",
-    "firstNations": "Primeiras Nações",
     "masterplan": "Planta do campus"
+  },
+  "announcements": {
+    "page": {
+      "title": "Novidades",
+      "description": "Últimas notícias e atualizações da Production City",
+      "empty": "Ainda não há anúncios. Volte em breve para atualizações da equipe Production City.",
+      "filter_all": "Tudo"
+    },
+    "detail": {
+      "back": "Voltar para Novidades",
+      "updated": "Atualizado em {date}",
+      "share": "Compartilhar",
+      "share_copied": "Link copiado",
+      "subscribed_banner": "Você está inscrito nas atualizações de {categoryName}",
+      "subscribe_cta": "Receba notificações sobre atualizações de {categoryName}",
+      "not_found": "Não encontrado",
+      "not_found_description": "A página que você procura não existe."
+    }
+  },
+  "subscriptions": {
+    "confirm": {
+      "title": "Inscrição confirmada",
+      "success": "Sua inscrição em {categoryName} via {channel} foi confirmada.",
+      "error": "Link de confirmação inválido ou expirado.",
+      "failedTitle": "Falha na confirmação",
+      "viewUpdates": "Ver atualizações"
+    },
+    "decline": {
+      "title": "Inscrição recusada",
+      "success": "Você recusou a solicitação de inscrição.",
+      "error": "Link inválido ou expirado.",
+      "failedTitle": "Falha na confirmação",
+      "viewUpdates": "Ver atualizações"
+    },
+    "unsubscribe": {
+      "title": "Cancelar inscrição",
+      "confirm": "Cancelar inscrição das atualizações de {categoryName} via {channel}?",
+      "button": "Confirmar cancelamento",
+      "success": "Sua inscrição foi cancelada.",
+      "error": "Link inválido ou expirado.",
+      "successTitle": "Inscrição cancelada",
+      "errorTitle": "Erro",
+      "confirmMessage": "Tem certeza de que deseja cancelar sua inscrição nessas atualizações?",
+      "managePreferences": "Gerenciar preferências"
+    },
+    "preferences": {
+      "title": "Preferências de notificação",
+      "description": "Escolha quais atualizações deseja receber e como.",
+      "email": "E-mail",
+      "sms": "SMS",
+      "pending": "Confirmação pendente",
+      "confirmed": "Ativo",
+      "resend": "Reenviar confirmação",
+      "no_phone": "Adicione um número de telefone para receber atualizações por SMS",
+      "subscribe_all": "Inscrever-se em tudo",
+      "confirm_unsubscribe": "Tem certeza de que deseja cancelar a inscrição de {categoryName} via {channel}?",
+      "digest_coming_soon": "Resumo semanal — Em breve"
+    }
   },
   "eoi": {
     "formTitle": "Expresse seu interesse",
@@ -342,6 +400,7 @@
     "categoryPartner": "Parceiro",
     "categoryInvestor": "Investidor",
     "categoryEducation": "Educação",
+    "categoryEmployment": "Emprego",
     "consentLabel": "Li e concordo com a {privacyPolicy}",
     "privacyPolicyLink": "Política de Privacidade",
     "marketingOptInLabel": "Desejo receber atualizações sobre o Production City",
@@ -351,7 +410,6 @@
     "successMessage": "Recebemos sua expressão de interesse e entraremos em contato.",
     "errorMessage": "Algo deu errado. Tente novamente.",
     "rateLimited": "Muitos envios. Tente novamente mais tarde.",
-    "categoryEmployment": "Emprego",
     "employment": {
       "title": "Interesse profissional",
       "description": "Conte-nos sobre você e a função que lhe interessa.",
@@ -388,34 +446,56 @@
   "legal": {
     "privacyPolicy": "Política de Privacidade",
     "termsOfUse": "Termos de Uso",
+    "cookiePolicy": "Cookie Policy",
     "lastUpdated": "Última atualização: {date}",
     "backToHome": "Voltar ao início",
     "privacy": {
       "title": "Política de Privacidade",
       "effectiveDate": "Data de vigência: {date}",
-      "intro": "A Aperim Pty Ltd (\"nós\", \"nos\", \"nosso\") opera a plataforma Production City. Esta Política de Privacidade explica como coletamos, usamos, divulgamos e protegemos suas informações quando você visita nosso site ou envia uma expressão de interesse.",
+      "about": {
+        "title": "About this policy",
+        "description": "This privacy policy explains how Aperim Pty Ltd (\"we\", \"us\", \"our\") collects, holds, uses, and discloses personal information in connection with the Production City website at production.city and any related services.",
+        "obligations": "We are bound by the Australian Privacy Act 1988 (Cth) (\"Privacy Act\") and the Australian Privacy Principles (\"APPs\"). This policy is intended to satisfy our obligations under APP 1 to manage personal information in an open and transparent way.",
+        "contact": "If you have questions about this policy or how we handle your personal information, contact us at privacy@production.city."
+      },
       "dataCollection": {
         "title": "Informações que coletamos",
         "description": "Quando você envia uma expressão de interesse, coletamos:",
         "items": [
-          "O seu nome e endereço de e-mail",
-          "A sua categoria de interesse selecionada",
-          "Qualquer mensagem opcional que forneça",
-          "Informações específicas da categoria (ex.: nome da empresa, URL do portfólio)",
-          "Dados técnicos: endereço IP, tipo de browser, página de referência, parâmetros de campanha UTM",
-          "Registos de consentimento: versão da política de privacidade aceite, data e hora, preferência de marketing"
-        ]
+          "Identity information — your name and email address, provided when you submit an expression of interest or create an account.",
+          "Submission content — the category of interest you select, any optional message you provide, and category-specific information such as a company name or portfolio URL.",
+          "Contact information — your phone number in E.164 format, if you choose to subscribe to SMS notifications.",
+          "Technical information — your IP address, browser type and version, referring page URL, and UTM campaign parameters, collected automatically when you visit the site.",
+          "Consent records — the version of this privacy policy you accepted, the timestamp of acceptance, and your marketing communication preference.",
+          "Session information — a hashed session token, your IP address, and user agent string, collected when you log in.",
+          "Audit information — records of actions you take within the platform, including the action type, timestamp, IP address, and user agent, stored for security and compliance purposes."
+        ],
+        "sensitive": "We do not collect sensitive information as defined in the Privacy Act (such as health information, racial or ethnic origin, or political opinions) unless you voluntarily include it in a free-text message field."
+      },
+      "howWeCollect": {
+        "title": "How we collect personal information",
+        "items": [
+          "directly from you, when you submit an expression of interest, create an account, subscribe to notifications, or contact us;",
+          "automatically, through server logs and the Cloudflare Web Analytics service when you visit our website; and",
+          "from third-party services, such as Postmark delivery status notifications and Twilio SMS status callbacks."
+        ],
+        "note": "Where reasonably practicable, we collect personal information directly from you. We do not purchase personal information from third-party data brokers."
       },
       "purpose": {
         "title": "Como usamos suas informações",
         "description": "Usamos as informações coletadas para:",
         "items": [
-          "Responder à sua expressão de interesse",
-          "Enviar um e-mail de confirmação a reconhecer a sua submissão",
-          "Enviar comunicações de marketing (apenas se tiver optado por recebê-las)",
-          "Analisar tendências de submissões para melhorar os nossos serviços",
-          "Cumprir obrigações legais"
-        ]
+          "to respond to your expression of interest and communicate with you about Production City;",
+          "to send you a confirmation email acknowledging your submission;",
+          "to send marketing communications, only where you have given explicit opt-in consent;",
+          "to send SMS notifications about categories you have subscribed to, only with your confirmed consent;",
+          "to authenticate your identity and maintain your session when you log in;",
+          "to analyse submission trends and website usage to improve our services;",
+          "to maintain audit logs for security, fraud prevention, and regulatory compliance;",
+          "to manage email and SMS suppression lists to honour your unsubscribe requests and comply with the Spam Act 2003 (Cth) and the Do Not Call Register Act 2006 (Cth);",
+          "to comply with applicable laws, regulations, and legal processes."
+        ],
+        "note": "We will not use or disclose your personal information for a purpose other than the purpose of collection, a related purpose you would reasonably expect, or a purpose to which you have consented, unless required or authorised by law (APP 6)."
       },
       "lawfulBasis": {
         "title": "Base legal para processamento",
@@ -423,31 +503,100 @@
         "legitimateInterest": "Interesse legítimo: Enviamos e-mails operacionais (confirmação de envio) com base no nosso interesse legítimo em fornecer o serviço solicitado.",
         "marketing": "Marketing: Comunicações de marketing são enviadas apenas com seu consentimento explícito e você pode retirar o consentimento a qualquer momento."
       },
-      "retention": {
-        "title": "Retenção de dados",
-        "description": "Retemos os dados de expressão de interesse por até 24 meses após o último ponto de contato. Após esse período, os dados são anonimizados ou excluídos. Você pode solicitar a exclusão antecipada a qualquer momento."
+      "marketing": {
+        "title": "Direct marketing",
+        "description": "We will only send you marketing communications (by email or SMS) if you have explicitly opted in (APP 7). You can withdraw your consent and unsubscribe at any time by:",
+        "items": [
+          "clicking the unsubscribe link in any marketing email;",
+          "replying STOP to any SMS message;",
+          "contacting us at privacy@production.city."
+        ],
+        "spam": "We will process your unsubscribe request promptly. Every marketing email includes a working unsubscribe mechanism as required by the Spam Act 2003."
       },
       "thirdParties": {
         "title": "Serviços de terceiros",
         "description": "Compartilhamos seus dados com os seguintes prestadores de serviços:",
-        "items": [
-          "Postmark (Wildbit LLC): entrega de e-mail para confirmações e comunicações de marketing",
-          "Cloudflare: alojamento de website, CDN e serviços de segurança"
-        ],
         "note": "Esses prestadores processam dados em nosso nome sob acordos de processamento de dados. Não vendemos seus dados pessoais."
+      },
+      "crossBorder": {
+        "title": "Cross-border disclosure",
+        "description": "Your personal information may be disclosed to service providers located in the United States. Before disclosing personal information to an overseas recipient, we take reasonable steps to ensure the recipient does not breach the APPs in relation to that information, or we rely on an exception under APP 8.2 (such as your informed consent or a binding contractual arrangement that requires the recipient to handle information consistently with the APPs).",
+        "countries": [
+          "United States — Cloudflare (hosting, analytics), Postmark (email), Twilio (SMS), Google (font delivery)"
+        ],
+        "note": "No other countries. All third-party data processing occurs in the United States as listed above."
+      },
+      "security": {
+        "title": "Data quality and security",
+        "description": "We take reasonable steps to ensure the personal information we collect, use, and disclose is accurate, up-to-date, complete, and relevant (APP 10), and to protect personal information from misuse, interference, loss, and unauthorised access, modification, or disclosure (APP 11). Our security measures include:",
+        "items": [
+          "encryption in transit (TLS/HTTPS on all connections);",
+          "hashing of session tokens using SHA-256 before storage;",
+          "hashing of magic link tokens and verification codes before storage;",
+          "HttpOnly, Secure, and SameSite cookie attributes on authentication cookies;",
+          "Content Security Policy headers restricting script and resource loading;",
+          "automated session cleanup after 30 days of inactivity;",
+          "automatic expiry of magic links (15 minutes for login, 7 days for invitations);",
+          "email and SMS suppression lists to prevent delivery to addresses that have bounced or reported spam;",
+          "audit logging of significant account actions."
+        ],
+        "note": "We review our security practices periodically. No system is completely secure, and we cannot guarantee absolute security of your information."
+      },
+      "retention": {
+        "title": "Retenção de dados",
+        "description": "Retemos os dados de expressão de interesse por até 24 meses após o último ponto de contato. Após esse período, os dados são anonimizados ou excluídos. Você pode solicitar a exclusão antecipada a qualquer momento."
+      },
+      "cookiesSection": {
+        "title": "Cookies and tracking technologies",
+        "description": "Our website uses cookies and local storage to support authentication and language preferences. We use Cloudflare Web Analytics for traffic analysis — this service does not use cookies and does not collect personal information.",
+        "analytics": "We do not use any other third-party tracking cookies, advertising cookies, or cross-site tracking technologies.",
+        "link": "For full details, see our Cookie Policy."
+      },
+      "children": {
+        "title": "Children's privacy",
+        "description": "Our website and services are not directed at children under the age of 16. We do not knowingly collect personal information from children under 16. If we become aware that we have collected personal information from a child under 16 without parental consent, we will take reasonable steps to delete that information promptly.",
+        "contact": "If you are a parent or guardian and believe your child has provided us with personal information, please contact us at privacy@production.city."
+      },
+      "anonymity": {
+        "title": "Anonymity and pseudonymity",
+        "description": "Where it is lawful and practicable, you may deal with us without identifying yourself or by using a pseudonym (APP 2). However, if you do not provide the personal information we request, we may not be able to respond to your expression of interest or provide you with access to certain features."
       },
       "rights": {
         "title": "Seus direitos",
         "description": "De acordo com a legislação de privacidade aplicável, você tem o direito de:",
         "items": [
-          "Aceder aos dados pessoais que detemos sobre si",
-          "Solicitar a correção de dados incorretos",
-          "Solicitar a eliminação dos seus dados",
-          "Solicitar a portabilidade dos seus dados",
-          "Retirar o consentimento para comunicações de marketing",
-          "Apresentar uma reclamação junto da autoridade supervisora relevante"
+          "request access to the personal information we hold about you;",
+          "request correction of any information that is inaccurate, out-of-date, incomplete, irrelevant, or misleading;",
+          "request deletion of your personal information (subject to any legal obligations that require us to retain it)."
         ],
-        "contact": "Para exercer esses direitos, entre em contato conosco em privacy@production.city."
+        "contact": "Para exercer esses direitos, entre em contato conosco em privacy@production.city.",
+        "note": "If we refuse to provide access or correct information, we will give you written reasons and inform you of the complaint mechanisms available to you."
+      },
+      "ndb": {
+        "title": "Notifiable data breaches",
+        "description": "If we become aware of a data breach that is likely to result in serious harm to any individual whose personal information is involved, we will:",
+        "items": [
+          "take reasonable steps to contain the breach and mitigate harm;",
+          "assess the breach to determine whether it is an eligible data breach under Part IIIC of the Privacy Act;",
+          "if the breach is eligible, notify the affected individuals and the Office of the Australian Information Commissioner (OAIC) as soon as practicable;",
+          "keep a record of the breach regardless of whether notification is required."
+        ]
+      },
+      "complaints": {
+        "title": "Complaints",
+        "description": "If you believe we have breached the APPs or handled your personal information improperly, you may lodge a complaint by contacting us at privacy@production.city. We will:",
+        "steps": [
+          "acknowledge your complaint within 7 days;",
+          "investigate the complaint and provide a response within 30 days;",
+          "take reasonable steps to resolve the matter."
+        ],
+        "oaic": {
+          "description": "If you are not satisfied with our response, you may lodge a complaint with the Office of the Australian Information Commissioner (OAIC):",
+          "website": "www.oaic.gov.au",
+          "phone": "1300 363 992",
+          "email": "enquiries@oaic.gov.au",
+          "post": "GPO Box 5218, Sydney NSW 2001"
+        }
       },
       "jurisdiction": {
         "title": "Legislação aplicável",
@@ -466,29 +615,128 @@
       "title": "Termos de uso",
       "effectiveDate": "Data de vigência: {date}",
       "intro": "Estes Termos de Uso regem seu acesso e uso do site da Production City operado pela Aperim Pty Ltd.",
+      "about": {
+        "title": "About these terms",
+        "description": "These Terms of Use (\"Terms\") govern your access to and use of the Production City website at production.city (\"Website\") operated by Aperim Pty Ltd (\"we\", \"us\", \"our\").",
+        "agreement": "By accessing or using the Website, you agree to be bound by these Terms. If you do not agree to these Terms, you must not use the Website.",
+        "updates": "We may update these Terms from time to time. The current version will always be available on this page with the effective date shown above. Your continued use of the Website after changes are posted constitutes acceptance of the updated Terms."
+      },
       "usage": {
         "title": "Uso do site",
-        "description": "Você pode usar este site apenas para fins lícitos. Você concorda em não usar este site de forma que possa danificar, desabilitar ou prejudicar o site ou interferir no uso de terceiros."
+        "description": "Você pode usar este site apenas para fins lícitos. Você concorda em não usar este site de forma que possa danificar, desabilitar ou prejudicar o site ou interferir no uso de terceiros.",
+        "items": [
+          "use the Website in any way that breaches any applicable law or regulation;",
+          "use the Website in any way that is fraudulent or has any fraudulent purpose or effect;",
+          "use the Website to transmit or procure the sending of unsolicited or unauthorised advertising, promotional material, or spam;",
+          "use the Website to knowingly transmit any data or material that contains viruses, trojans, worms, time-bombs, keystroke loggers, spyware, adware, or any other harmful programs or code;",
+          "attempt to gain unauthorised access to the Website, the servers on which the Website is hosted, or any server, computer, or database connected to the Website;",
+          "use any automated means, including bots, scrapers, or spiders, to access or interact with the Website without our prior written consent;",
+          "interfere with or disrupt the Website or any other party's use and enjoyment of the Website;",
+          "reproduce, duplicate, copy, or redistribute any content from the Website without our express permission."
+        ],
+        "reserve": "We reserve the right to restrict or suspend your access to the Website if we reasonably believe you have breached these Terms."
       },
       "ip": {
         "title": "Propriedade intelectual",
-        "description": "Production City™ é uma marca registrada da Aperim Pty Ltd. O conteúdo, design e tecnologia neste site são propriedade da Aperim Pty Ltd ou de seus licenciadores e são protegidos por leis de propriedade intelectual."
+        "description": "Production City™ é uma marca registrada da Aperim Pty Ltd. O conteúdo, design e tecnologia neste site são propriedade da Aperim Pty Ltd ou de seus licenciadores e são protegidos por leis de propriedade intelectual.",
+        "restriction": "You must not reproduce, modify, distribute, display, perform, or create derivative works from any content on this Website without our prior written consent, except as permitted by law (including fair dealing provisions under Part III Division 3 of the Copyright Act 1968).",
+        "licence": "Nothing in these Terms grants you any right, title, or interest in the Website or its content, other than a limited, non-exclusive, non-transferable licence to access and use the Website for personal, non-commercial purposes in accordance with these Terms."
+      },
+      "userAccounts": {
+        "title": "User accounts",
+        "items": [
+          "you are responsible for maintaining the confidentiality of your login credentials;",
+          "you are responsible for all activities that occur under your account;",
+          "you must notify us immediately at privacy@production.city if you become aware of any unauthorised use of your account;",
+          "we may suspend or terminate your account if we reasonably believe it has been compromised or if you have breached these Terms."
+        ],
+        "magicLinks": "Authentication is handled through magic links sent to your registered email address. We do not store passwords."
+      },
+      "submissions": {
+        "title": "Expressions of interest and submissions",
+        "items": [
+          "you warrant that the information you provide is accurate and not misleading;",
+          "you acknowledge that submitting an expression of interest does not create a binding agreement, contract, or commitment between you and us;",
+          "you consent to us using your submission in accordance with our Privacy Policy."
+        ]
       },
       "disclaimer": {
         "title": "Aviso legal",
+        "prelaunch": "Production City is in pre-launch development. All information, features, services, timelines, pricing, and projections described on this Website are subject to change without notice.",
+        "items": [
+          "a binding offer, invitation to treat, or commitment to deliver any particular service, feature, or capability;",
+          "financial, investment, legal, or professional advice;",
+          "a guarantee of availability, performance, or suitability for any particular purpose."
+        ],
         "description": "A Production City está em fase de pré-lançamento. Todas as informações, recursos, cronogramas e projeções estão sujeitos a alterações sem aviso prévio. Nada neste site constitui uma oferta vinculante, garantia de disponibilidade ou compromisso de entrega de qualquer serviço ou recurso específico."
       },
       "forwardLooking": {
         "title": "Declarações prospectivas",
-        "description": "Este site pode conter declarações prospectivas sobre os planos, objetivos e desenvolvimento esperado da Production City. Estas declarações envolvem riscos conhecidos e desconhecidos, incertezas e outros fatores que podem fazer com que os resultados reais difiram materialmente daqueles expressos ou implícitos."
+        "description": "Este site pode conter declarações prospectivas sobre os planos, objetivos e desenvolvimento esperado da Production City. Estas declarações envolvem riscos conhecidos e desconhecidos, incertezas e outros fatores que podem fazer com que os resultados reais difiram materialmente daqueles expressos ou implícitos.",
+        "note": "Forward-looking statements are based on current expectations and assumptions and are not guarantees of future performance. We do not undertake any obligation to update forward-looking statements to reflect events or circumstances after the date they are made."
+      },
+      "consumerLaw": {
+        "title": "Australian Consumer Law",
+        "description": "Nothing in these Terms is intended to exclude, restrict, or modify any consumer guarantee or right that applies under the Competition and Consumer Act 2010 (Cth), Schedule 2 (Australian Consumer Law) (\"ACL\"), or any other applicable consumer protection law, where to do so would be unlawful. If the ACL applies to your use of the Website or any service we provide:",
+        "items": [
+          "our goods and services come with guarantees that cannot be excluded under the ACL, including guarantees as to acceptable quality, fitness for purpose, and due care and skill;",
+          "you are entitled to a replacement or refund for a major failure and compensation for any other reasonably foreseeable loss or damage;",
+          "you are also entitled to have goods repaired or replaced if the goods fail to be of acceptable quality and the failure does not amount to a major failure."
+        ]
       },
       "liability": {
         "title": "Limitação de responsabilidade",
-        "description": "Na máxima extensão permitida por lei, a Aperim Pty Ltd não será responsável por quaisquer danos indiretos, incidentais, especiais, consequenciais ou punitivos decorrentes do uso deste site."
+        "description": "Na máxima extensão permitida por lei, a Aperim Pty Ltd não será responsável por quaisquer danos indiretos, incidentais, especiais, consequenciais ou punitivos decorrentes do uso deste site.",
+        "items": [
+          "we exclude all liability for any loss, damage, cost, or expense (whether direct, indirect, incidental, special, consequential, or punitive) arising from or in connection with your use of, or inability to use, the Website;",
+          "our total aggregate liability to you for all claims arising under or in connection with these Terms is limited to AUD $100;",
+          "we are not liable for any loss or damage arising from circumstances beyond our reasonable control, including but not limited to internet failures, equipment failures, electrical power failures, strikes, labour disputes, riots, insurrections, civil disturbances, shortages of labour or materials, fires, floods, storms, explosions, acts of God, war, governmental actions, or orders of domestic or foreign courts or tribunals."
+        ],
+        "note": "This limitation of liability applies to the fullest extent permitted by law. Where liability cannot be excluded (including under the ACL), it is limited to the extent permitted by law."
+      },
+      "indemnity": {
+        "title": "Indemnity",
+        "description": "You agree to indemnify, defend, and hold harmless Aperim Pty Ltd, its officers, directors, employees, agents, and affiliates from and against any and all claims, liabilities, damages, losses, costs, and expenses (including reasonable legal fees) arising out of or in connection with:",
+        "items": [
+          "your use of the Website in breach of these Terms;",
+          "your violation of any applicable law or regulation;",
+          "any content or information you submit through the Website that infringes the intellectual property or other rights of a third party."
+        ],
+        "note": "This indemnity is a continuing obligation, separate and independent from your other obligations under these Terms, and survives termination of these Terms."
+      },
+      "thirdPartyLinks": {
+        "title": "Third-party links",
+        "description": "The Website may contain links to third-party websites or services that are not owned or controlled by us. We are not responsible for the content, privacy policies, or practices of any third-party websites. You access third-party websites at your own risk and should review their terms and policies before engaging with them."
+      },
+      "disputeResolution": {
+        "title": "Dispute resolution",
+        "description": "If a dispute arises in connection with these Terms or your use of the Website:",
+        "steps": [
+          "Negotiation — The parties must first attempt to resolve the dispute by good-faith negotiation. Either party may give written notice of the dispute to the other party.",
+          "Mediation — If the dispute is not resolved within 30 days of the notice, either party may refer the dispute to mediation administered by the Australian Disputes Centre (ADC) in accordance with the ADC Mediation Guidelines. The mediation will be held in Sydney, New South Wales.",
+          "Litigation — If the dispute is not resolved by mediation within 60 days of referral (or such longer period as agreed by the parties), either party may commence legal proceedings."
+        ],
+        "note": "Nothing in this section prevents either party from seeking urgent interlocutory or injunctive relief from a court of competent jurisdiction."
       },
       "jurisdiction": {
         "title": "Legislação aplicável",
         "description": "Estes termos são regidos pelas leis de Nova Gales do Sul, Austrália. Quaisquer disputas serão submetidas à jurisdição exclusiva dos tribunais de Nova Gales do Sul."
+      },
+      "severability": {
+        "title": "Severability",
+        "description": "If any provision of these Terms is found to be invalid, illegal, or unenforceable by a court of competent jurisdiction, the remaining provisions will continue in full force and effect. The invalid, illegal, or unenforceable provision will be deemed modified to the minimum extent necessary to make it valid, legal, and enforceable, while preserving its original intent as closely as possible."
+      },
+      "waiver": {
+        "title": "Waiver",
+        "description": "A failure or delay by us in exercising any right, power, or remedy under these Terms does not operate as a waiver of that right, power, or remedy. A single or partial exercise of a right, power, or remedy does not preclude any other or further exercise of that or any other right, power, or remedy."
+      },
+      "assignment": {
+        "title": "Assignment",
+        "description": "You may not assign or transfer any of your rights or obligations under these Terms without our prior written consent. We may assign our rights and obligations under these Terms without your consent."
+      },
+      "entireAgreement": {
+        "title": "Entire agreement",
+        "description": "These Terms, together with our Privacy Policy and Cookie Policy, constitute the entire agreement between you and Aperim Pty Ltd regarding your use of the Website and supersede all prior agreements, understandings, and representations, whether written or oral."
       },
       "changes": {
         "title": "Alterações nestes termos",
@@ -498,6 +746,65 @@
         "title": "Contact",
         "description": "Para consultas jurídicas, contacte: legal@production.city\n\nAperim Pty Ltd\nABN 46 150 699 737 | ACN 150 699 737\nSuite 108, 9 Hutchinson Street, St Peters NSW 2044, Australia"
       }
+    },
+    "cookies": {
+      "title": "Cookie Policy",
+      "effectiveDate": "Effective date: {date}",
+      "about": {
+        "title": "About this policy",
+        "description": "This Cookie Policy explains how Aperim Pty Ltd (\"we\", \"us\", \"our\") uses cookies, local storage, and similar technologies on the Production City website at production.city (\"Website\").",
+        "link": "This policy should be read alongside our Privacy Policy, which explains how we collect, use, and protect your personal information."
+      },
+      "whatAreCookies": {
+        "title": "What are cookies",
+        "description": "Cookies are small text files placed on your device by a website. They are widely used to make websites work efficiently and to provide information to website operators. Cookies can be \"session\" cookies (deleted when you close your browser) or \"persistent\" cookies (retained on your device until they expire or you delete them).",
+        "localStorage": "Local storage is a browser feature that allows websites to store data on your device. Unlike cookies, local storage data is not sent to the server with each request."
+      },
+      "cookiesWeUse": {
+        "title": "Cookies we use",
+        "description": "We use a small number of cookies, all of which are functional. We do not use advertising, tracking, or analytics cookies.",
+        "essentialTitle": "Essential cookies",
+        "essentialDescription": "These cookies are necessary for the Website to function. You cannot opt out of essential cookies because the Website would not work without them.",
+        "functionalTitle": "Functional cookies",
+        "functionalDescription": "These cookies improve your experience by remembering your preferences. They are not required for the Website to function but provide useful features."
+      },
+      "localStorage": {
+        "title": "Local storage",
+        "description": "We use browser local storage to remember your language preference.",
+        "note": "Local storage data stays on your device and is not transmitted to our servers with each page request."
+      },
+      "analytics": {
+        "title": "Analytics",
+        "description": "We use Cloudflare Web Analytics for aggregated website traffic analysis. This service does not use cookies, does not collect personal information, does not track individual visitors across websites, and processes anonymised, aggregated traffic data only.",
+        "note": "Cloudflare Web Analytics is loaded via a script from static.cloudflareinsights.com and operates in a way that preserves visitor privacy."
+      },
+      "thirdParty": {
+        "title": "Third-party cookies and external resources",
+        "description": "We do not embed third-party cookies on the Website. We do not use social media plugins, advertising trackers, or third-party analytics services that set cookies.",
+        "fonts": "Our Website loads web font files (Noto Sans for Arabic, Devanagari, and Bengali script support) directly from Google's font delivery network at fonts.gstatic.com. Google does not set cookies through this font delivery mechanism. However, when your browser requests font files, Google receives your IP address and browser user-agent string. Google's handling of this data is governed by Google's Privacy Policy at policies.google.com/privacy.",
+        "analytics": "The only other third-party domain from which scripts are loaded is static.cloudflareinsights.com (Cloudflare Web Analytics), which does not set cookies."
+      },
+      "managing": {
+        "title": "Managing cookies and local storage",
+        "description": "You can manage cookies through your browser settings. Most browsers allow you to view what cookies are set, delete individual or all cookies, block cookies from specific or all websites, and block third-party cookies.",
+        "browsers": "Instructions for managing cookies in common browsers:",
+        "browserList": [
+          "Chrome: Settings, then Privacy and Security, then Cookies and other site data",
+          "Firefox: Settings, then Privacy and Security, then Cookies and Site Data",
+          "Safari: Preferences, then Privacy, then Manage Website Data",
+          "Edge: Settings, then Cookies and site permissions, then Manage and delete cookies and site data"
+        ],
+        "sessionNote": "If you block essential cookies (__Secure-session), you will not be able to log in or maintain an authenticated session on the Website.",
+        "localStorageNote": "To clear local storage data, use your browser's developer tools or clear all site data through your browser's privacy settings. If you clear the pc-locale local storage item, the Website will default to English and will not remember your language preference between visits."
+      },
+      "changes": {
+        "title": "Changes to this policy",
+        "description": "We may update this Cookie Policy from time to time to reflect changes in the cookies we use or for other operational, legal, or regulatory reasons. When we make changes, we will update the effective date at the top of this page."
+      },
+      "contact": {
+        "title": "Contact",
+        "description": "For questions about our use of cookies, contact:\n\nAperim Pty Ltd\nEmail: privacy@production.city\n\nSuite 108, 9 Hutchinson Street, St Peters NSW 2044"
+      }
     }
   },
   "footer": {
@@ -506,14 +813,14 @@
     "copyright": "© {year} Aperim Pty Ltd. Todos os direitos reservados.",
     "disclaimer": "Production City™ é uma marca registrada da Aperim Pty Ltd.",
     "explore": "Explorar",
+    "resources": "Recursos",
     "company": "Empresa",
     "acknowledgement": "A Production City reconhece os Proprietários Tradicionais do Território em toda a Austrália e reconhece sua conexão contínua com terras, águas e comunidade. Presta seus respeitos às culturas aborígines e das Ilhas do Estreito de Torres e aos seus Anciãos do passado e do presente.",
-    "resources": "Recursos",
+    "acknowledgementHeading": "Reconhecimento do País",
     "brand": {
       "tagline": "Nós fazemos histórias"
     },
-    "contactHeading": "Contato",
-    "acknowledgementHeading": "Reconhecimento do País"
+    "contactHeading": "Contato"
   },
   "languageSwitcher": {
     "label": "Idioma",
@@ -567,10 +874,10 @@
       "viewAll": "Explore parcerias comunitárias"
     },
     "masterplanTeaser": {
-      "ctaLabel": "Explorar o campus em 3D →",
       "eyebrow": "Plano diretor do campus",
       "heading": "O campus, em três dimensões.",
-      "body": "Seis estúdios de som, um teatro de transmissão, centro criativo, backlot e espaço público — explore o site completo de 6 hectares como um modelo 3D interativo."
+      "body": "Seis estúdios de som, um teatro de transmissão, centro criativo, backlot e espaço público — explore o site completo de 6 hectares como um modelo 3D interativo.",
+      "ctaLabel": "Explorar o campus em 3D →"
     }
   },
   "facilities": {
@@ -604,7 +911,16 @@
       "specNrc": "Coeficiente de redução de ruído",
       "specLed": "Tamanho da parede LED",
       "detail": {
+        "eyebrow": "Instalações · A — Estúdios de som para ecrã",
+        "heading": "Produção para ecrã em grande escala. Concebida para isso.",
+        "lead": "2.025 m² de chão de palco. 15 m até à grelha. NRC 1.05. Volume LED envolvente total disponível.",
+        "prose": "Longa-metragem. Série. Televisão ao vivo. Quando a produção é de grande formato, o palco tem de ser construído para isso desde o início.",
+        "prose2": "Cada estúdio de som para ecrã mede 45 m × 45 m, 15 m até à grelha, com grelha e passarela de cobertura total. O isolamento acústico é NRC 1.05 / NC 25. O volume LED é configurável em plano, arco ou envolvente total.",
+        "prose3": "Estes palcos foram concebidos de acordo com as especificações técnicas dos principais estúdios e produções de plataformas de streaming. Como primeiro local, os padrões são definidos aqui.",
         "usageLabel": "Usage",
+        "usage1": "Produção de longas-metragens",
+        "usage2": "Televisão episódica",
+        "usage3": "Transmissão televisiva ao vivo",
         "specLabel": "Specification",
         "specDimensions": "Dimensões",
         "specDimensionsValue": "45 m × 45 m · 147 ft × 147 ft",
@@ -619,20 +935,11 @@
         "specGrid": "Grelha e passarela",
         "specGridValue": "Cobertura total",
         "statArea": "2,025",
-        "statGrid": "15",
-        "ctaLink": "Enquire",
-        "eyebrow": "Instalações · A — Estúdios de som para ecrã",
-        "heading": "Produção para ecrã em grande escala. Concebida para isso.",
-        "lead": "2.025 m² de chão de palco. 15 m até à grelha. NRC 1.05. Volume LED envolvente total disponível.",
-        "prose": "Longa-metragem. Série. Televisão ao vivo. Quando a produção é de grande formato, o palco tem de ser construído para isso desde o início.",
-        "prose2": "Cada estúdio de som para ecrã mede 45 m × 45 m, 15 m até à grelha, com grelha e passarela de cobertura total. O isolamento acústico é NRC 1.05 / NC 25. O volume LED é configurável em plano, arco ou envolvente total.",
-        "prose3": "Estes palcos foram concebidos de acordo com as especificações técnicas dos principais estúdios e produções de plataformas de streaming. Como primeiro local, os padrões são definidos aqui.",
-        "usage1": "Produção de longas-metragens",
-        "usage2": "Televisão episódica",
-        "usage3": "Transmissão televisiva ao vivo",
         "statAreaLabel": "Metros quadrados",
+        "statGrid": "15",
         "statGridLabel": "Metros até à grelha",
-        "cta": "Reserve um palco para ecrã."
+        "cta": "Reserve um palco para ecrã.",
+        "ctaLink": "Enquire"
       }
     },
     "commercialStages": {
@@ -647,8 +954,15 @@
       "specNrc": "NRC 75+",
       "specLed": "Flat, Arc, Full-Surround",
       "detail": {
+        "eyebrow": "Instalações · B — Estúdios de som comerciais",
+        "heading": "Espaço reduzido. Especificações completas.",
+        "lead": "100 m² de palco. Os mesmos 15 m até à grelha. O mesmo isolamento acústico. Volume LED pronto a usar.",
         "prose": "Os anúncios publicitários, TVC, videoclips, conteúdo curto e digital não precisam do espaço de 45 × 45. Mas precisam de acústica adequada, altura suficiente e as mesmas configurações LED.",
+        "prose2": "É isso que estes palcos são. Entre na segunda-feira. Filme. Termine na sexta-feira. As configurações de volume são partilhadas com os palcos de ecrã, por isso um look desenvolvido num pode ser transferido para o outro.",
         "usageLabel": "Usage",
+        "usage1": "Anúncios de TV e infomerciais",
+        "usage2": "Produção de videoclipes",
+        "usage3": "Conteúdo digital de pequena escala",
         "specLabel": "Specification",
         "specDimensions": "Dimensões",
         "specDimensionsValue": "10 m × 10 m · 32 ft × 32 ft",
@@ -663,18 +977,11 @@
         "specGrid": "Grelha e passarela",
         "specGridValue": "Cobertura total",
         "statArea": "100",
-        "statGrid": "15",
-        "ctaLink": "Enquire",
-        "eyebrow": "Instalações · B — Estúdios de som comerciais",
-        "heading": "Espaço reduzido. Especificações completas.",
-        "lead": "100 m² de palco. Os mesmos 15 m até à grelha. O mesmo isolamento acústico. Volume LED pronto a usar.",
-        "prose2": "É isso que estes palcos são. Entre na segunda-feira. Filme. Termine na sexta-feira. As configurações de volume são partilhadas com os palcos de ecrã, por isso um look desenvolvido num pode ser transferido para o outro.",
-        "usage1": "Anúncios de TV e infomerciais",
-        "usage2": "Produção de videoclipes",
-        "usage3": "Conteúdo digital de pequena escala",
         "statAreaLabel": "Metros quadrados",
+        "statGrid": "15",
         "statGridLabel": "Metros até à grelha",
-        "cta": "Reserve um palco comercial."
+        "cta": "Reserve um palco comercial.",
+        "ctaLink": "Enquire"
       }
     },
     "broadcastTheatre": {
@@ -691,7 +998,15 @@
       "specCameras": "8 robotic camera positions",
       "specBroadcast": "Live broadcast ready",
       "detail": {
+        "eyebrow": "Instalações · C — Teatro de transmissão",
+        "heading": "Um teatro ao vivo equipado como estúdio de transmissão.",
+        "lead": "450 em modo teatro. 300 em cabaré. Oito posições de câmera robótica totalmente integradas. AR e VR disponíveis. Conforme com os requisitos dos parceiros de transmissão.",
+        "prose": "O teatro de transmissão é um local multimodal de espetáculos ao vivo com uma galeria de transmissão integrada.",
+        "prose2": "As câmeras robóticas, uma biblioteca de cenários virtuais LED e a conformidade com streaming estão integradas na sala. Cada espetáculo pode chegar simultaneamente ao público presente e aos espectadores em casa, sem necessidade de uma configuração de transmissão separada.",
         "usageLabel": "Usage",
+        "usage1": "Espetáculos e eventos ao vivo",
+        "usage2": "Transmissão ao vivo",
+        "usage3": "Experiências de apresentação AR/VR",
         "specLabel": "Specification",
         "specTheatre": "Modo teatro",
         "specTheatreValue": "450 lugares",
@@ -706,19 +1021,11 @@
         "specCompliance": "Conformidade",
         "specComplianceValue": "Cumpre os requisitos dos serviços de streaming",
         "statSeats": "450",
-        "statCameras": "8",
-        "ctaLink": "Enquire",
-        "eyebrow": "Instalações · C — Teatro de transmissão",
-        "heading": "Um teatro ao vivo equipado como estúdio de transmissão.",
-        "lead": "450 em modo teatro. 300 em cabaré. Oito posições de câmera robótica totalmente integradas. AR e VR disponíveis. Conforme com os requisitos dos parceiros de transmissão.",
-        "prose": "O teatro de transmissão é um local multimodal de espetáculos ao vivo com uma galeria de transmissão integrada.",
-        "prose2": "As câmeras robóticas, uma biblioteca de cenários virtuais LED e a conformidade com streaming estão integradas na sala. Cada espetáculo pode chegar simultaneamente ao público presente e aos espectadores em casa, sem necessidade de uma configuração de transmissão separada.",
-        "usage1": "Espetáculos e eventos ao vivo",
-        "usage2": "Transmissão ao vivo",
-        "usage3": "Experiências de apresentação AR/VR",
         "statSeatsLabel": "Lugares de teatro",
+        "statCameras": "8",
         "statCamerasLabel": "Câmeras robóticas",
-        "cta": "Discutir uma transmissão ao vivo ou evento."
+        "cta": "Discutir uma transmissão ao vivo ou evento.",
+        "ctaLink": "Enquire"
       }
     },
     "controlRoom": {
@@ -730,19 +1037,19 @@
       "specManagement": "Centralised production management",
       "specSync": "Multi-platform sync capability",
       "detail": {
-        "capabilityLabel": "Capability",
-        "ctaLink": "Enquire",
         "eyebrow": "Instalações · D — Sala de controlo de transmissão",
         "heading": "O centro nevrálgico.",
         "lead": "Gestão centralizada de produção, controlo de transmissão ao vivo, sincronização avançada — alimentando palcos, o teatro e locais externos a nível global.",
         "prose": "A sala de controlo é a única espinha dorsal de transmissão do campus. Gere e sincroniza cada produção ao vivo no local.",
         "prose2": "Foi concebida para originar transmissões a partir de locais desportivos e de eventos externos em qualquer parte do mundo. O legado de transmissão e de centro de dados da Production City reside aqui. A sala de controlo é concebida da mesma forma que a infraestrutura crítica de transmissão.",
+        "capabilityLabel": "Capability",
         "cap1": "Gestão centralizada de produção",
         "cap2": "Controlo de transmissão ao vivo",
         "cap3": "Sincronização avançada para transmissões multiplataforma e multilocalização",
         "cap4": "Origem a partir de palcos e do teatro do campus",
         "cap5": "Origem a partir de locais desportivos e de eventos externos a nível global",
-        "cta": "Discutir uma origem ao vivo."
+        "cta": "Discutir uma origem ao vivo.",
+        "ctaLink": "Enquire"
       }
     },
     "ancillary": {
@@ -1043,12 +1350,16 @@
     },
     "heading": "Perguntas frequentes",
     "searchPlaceholder": "Pesquisar perguntas...",
+    "categoriesLabel": "Categorias de FAQ",
     "allCategories": "Todas",
     "categoryFacilities": "Instalações",
     "categoryServices": "Serviços",
     "categoryGlobal": "Global",
     "categoryCommunity": "Comunidade",
     "categoryEngagement": "Engajamento",
+    "resultCountSingular": "{count} resultado encontrado",
+    "resultCountPlural": "{count} resultados encontrados",
+    "questionCount": "{count} perguntas",
     "noResults": "Nenhuma pergunta corresponde à sua pesquisa.",
     "questionsHeading": "Perguntas e Respostas",
     "q1": "Que tipos de instalações a Production City oferecerá?",
@@ -1111,14 +1422,10 @@
     "q20": "Que tipos de engajamentos além do aluguel de instalações serão possíveis?",
     "a20": "Parcerias tecnológicas, colaborações em educação e pesquisa, desenvolvimento conjunto de métodos e técnicas de filmagem e modelos de negócios colaborativos.",
     "c20": "Engajamento",
-    "categoriesLabel": "Categorias de FAQ",
     "searchLabel": "Pesquisar perguntas frequentes",
     "cantFindHeading": "Não encontrou o que procura?",
     "cantFindDescription": "Nossa equipe está aqui para ajudar com quaisquer perguntas sobre a Production City.",
-    "cantFindCta": "Entre em contato",
-    "resultCountSingular": "{count} resultado encontrado",
-    "resultCountPlural": "{count} resultados encontrados",
-    "questionCount": "{count} perguntas"
+    "cantFindCta": "Entre em contato"
   },
   "contact": {
     "meta": {
@@ -1226,64 +1533,6 @@
     "failed": "O e-mail nao pode ser entregue",
     "pending": "Enviando...",
     "unknown": "Status desconhecido"
-  },
-  "announcements": {
-    "page": {
-      "title": "Novidades",
-      "description": "Últimas notícias e atualizações da Production City",
-      "empty": "Ainda não há anúncios. Volte em breve para atualizações da equipe Production City.",
-      "filter_all": "Tudo"
-    },
-    "detail": {
-      "back": "Voltar para Novidades",
-      "updated": "Atualizado em {date}",
-      "share": "Compartilhar",
-      "share_copied": "Link copiado",
-      "subscribed_banner": "Você está inscrito nas atualizações de {categoryName}",
-      "subscribe_cta": "Receba notificações sobre atualizações de {categoryName}",
-      "not_found": "Não encontrado",
-      "not_found_description": "A página que você procura não existe."
-    }
-  },
-  "subscriptions": {
-    "confirm": {
-      "title": "Inscrição confirmada",
-      "success": "Sua inscrição em {categoryName} via {channel} foi confirmada.",
-      "error": "Link de confirmação inválido ou expirado.",
-      "failedTitle": "Falha na confirmação",
-      "viewUpdates": "Ver atualizações"
-    },
-    "decline": {
-      "title": "Inscrição recusada",
-      "success": "Você recusou a solicitação de inscrição.",
-      "error": "Link inválido ou expirado.",
-      "failedTitle": "Falha na confirmação",
-      "viewUpdates": "Ver atualizações"
-    },
-    "unsubscribe": {
-      "title": "Cancelar inscrição",
-      "confirm": "Cancelar inscrição das atualizações de {categoryName} via {channel}?",
-      "button": "Confirmar cancelamento",
-      "success": "Sua inscrição foi cancelada.",
-      "error": "Link inválido ou expirado.",
-      "successTitle": "Inscrição cancelada",
-      "errorTitle": "Erro",
-      "confirmMessage": "Tem certeza de que deseja cancelar sua inscrição nessas atualizações?",
-      "managePreferences": "Gerenciar preferências"
-    },
-    "preferences": {
-      "title": "Preferências de notificação",
-      "description": "Escolha quais atualizações deseja receber e como.",
-      "email": "E-mail",
-      "sms": "SMS",
-      "pending": "Confirmação pendente",
-      "confirmed": "Ativo",
-      "resend": "Reenviar confirmação",
-      "no_phone": "Adicione um número de telefone para receber atualizações por SMS",
-      "subscribe_all": "Inscrever-se em tudo",
-      "confirm_unsubscribe": "Tem certeza de que deseja cancelar a inscrição de {categoryName} via {channel}?",
-      "digest_coming_soon": "Resumo semanal — Em breve"
-    }
   },
   "dashboard": {
     "sidebar": {
