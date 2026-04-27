@@ -525,24 +525,16 @@ function HomePageContent() {
             </div>
 
             <div className="grid grid-cols-1 items-start gap-8 lg:grid-cols-12">
-              {/* Portrait placeholder */}
               <div className="lg:col-span-5">
-                <div
-                  className="flex aspect-[3/4] flex-col justify-between border-l-[3px] border-[#B45A2A] bg-(--pc-color-neutral-200) p-6"
-                  role="img"
-                  aria-label="Photography to be commissioned — portrait of Matthew Compton, Wiradjuri, COO"
-                >
-                  <div className="flex justify-between font-mono text-[9px] uppercase tracking-[0.14em] text-(--pc-color-neutral-500)">
-                    <span>PORTRAIT · MATTHEW COMPTON</span>
-                    <span>CONSENTED</span>
-                  </div>
-                  <div className="text-center font-mono text-xs uppercase tracking-[0.1em] text-(--pc-color-neutral-400)">
-                    [ PHOTOGRAPHY TO BE COMMISSIONED. NO APPROPRIATED MOTIFS. ]
-                  </div>
-                  <div className="flex justify-between font-mono text-[9px] uppercase tracking-[0.14em] text-(--pc-color-neutral-500)">
-                    <span>WIRADJURI</span>
-                    <span>COO · MD</span>
-                  </div>
+                <div className="aspect-[3/4] overflow-hidden border-l-[3px] border-[#B45A2A]">
+                  <img
+                    src={MEDIA["team-matthew-compton"]?.darkSrc ?? "/media/team-matthew-compton/dark.jpg"}
+                    alt="Portrait of Matthew Compton, Executive Director and COO of Production City, a Wiradjuri man"
+                    width={900}
+                    height={1200}
+                    loading="lazy"
+                    className="h-full w-full object-cover"
+                  />
                 </div>
               </div>
 

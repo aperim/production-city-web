@@ -16,6 +16,7 @@ import {
   useLandingFooter,
 } from "../lib/use-landing-layout";
 import { CompanyTeamStructuredData } from "../lib/structured-data";
+import { MEDIA } from "../lib/media-config";
 
 export function CompanyTeamPage() {
   return (
@@ -87,13 +88,17 @@ function CompanyTeamPageContent() {
           <div className="grid grid-cols-1 gap-10 lg:grid-cols-12 lg:items-start">
             <div className="lg:col-span-5">
               <div
-                className="aspect-[3/4] flex flex-col justify-between p-4 text-xs font-mono tracking-widest text-muted-foreground border"
+                className="aspect-[3/4] overflow-hidden border"
                 style={{ borderLeft: "3px solid var(--ochre, oklch(0.72 0.15 60))", borderColor: "var(--border)" }}
-                aria-label="Matthew Compton — portrait commissioned with permission"
               >
-                <div className="flex justify-between"><span>M. COMPTON</span><span>COO · MD</span></div>
-                <span className="text-center">[ PORTRAIT · CONSENTED ]</span>
-                <div className="flex justify-between"><span>WIRADJURI</span><span>MD</span></div>
+                <img
+                  src={MEDIA["team-matthew-compton"]?.darkSrc ?? "/media/team-matthew-compton/dark.jpg"}
+                  alt="Portrait of Matthew Compton, Executive Director and COO of Production City, a Wiradjuri man"
+                  width={900}
+                  height={1200}
+                  loading="lazy"
+                  className="h-full w-full object-cover"
+                />
               </div>
             </div>
             <div className="lg:col-span-7">

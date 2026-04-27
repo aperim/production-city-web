@@ -132,22 +132,18 @@ function FirstNationsPageContent() {
           </div>
           <div className="grid grid-cols-1 gap-8 lg:grid-cols-12">
             <div className="lg:col-span-5">
-              {/* Portrait placeholder */}
               <div
-                className="aspect-[3/4] border flex flex-col justify-between p-4 text-xs font-mono tracking-widest text-muted-foreground"
+                className="aspect-[3/4] overflow-hidden border"
                 style={{ borderColor: "var(--ochre, oklch(0.72 0.15 60))" }}
-                role="img"
-                aria-label="Matthew Compton portrait — photograph commissioned with permission"
               >
-                <div className="flex justify-between">
-                  <span>PORTRAIT · M. COMPTON</span>
-                  <span>CONSENTED</span>
-                </div>
-                <span className="uppercase text-center">[ Photography commissioned with permission ]</span>
-                <div className="flex justify-between">
-                  <span>WIRADJURI</span>
-                  <span>COO · MD</span>
-                </div>
+                <img
+                  src={MEDIA["team-matthew-compton"]?.darkSrc ?? "/media/team-matthew-compton/dark.jpg"}
+                  alt="Portrait of Matthew Compton, Executive Director and COO of Production City, a Wiradjuri man"
+                  width={900}
+                  height={1200}
+                  loading="lazy"
+                  className="h-full w-full object-cover"
+                />
               </div>
             </div>
             <div className="lg:col-span-7 flex flex-col gap-3">

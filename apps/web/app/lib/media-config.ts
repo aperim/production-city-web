@@ -101,6 +101,18 @@ export const MEDIA: Record<string, MediaSource> = {
 
   // Masterplan page — poster image from 3D viewer hero camera angle (to be captured from viewer)
   "masterplan-poster": media("masterplan-poster", "Production City 6-hectare campus masterplan — aerial perspective showing integrated sound stages, broadcast theatre, and public realm", "Production City", "https://production.city", "#1A1C1E"),
+
+  // Team — commissioned portraits
+  "team-matthew-compton": {
+    lightSrc: "/media/team-matthew-compton/light.jpg",
+    darkSrc: "/media/team-matthew-compton/dark.jpg",
+    alt: "Portrait of Matthew Compton, Executive Director and COO of Production City, a Wiradjuri man",
+    photographer: "MuruD Photography",
+    source: "Commissioned",
+    width: 900,
+    height: 1200,
+    averageColor: "#6B5A4E",
+  },
 };
 
 /** Get media source for a content context. Returns undefined if not found. */

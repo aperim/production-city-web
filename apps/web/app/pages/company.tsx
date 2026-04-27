@@ -20,6 +20,7 @@ import {
   useEoiSubmit,
 } from "../lib/use-landing-layout";
 import { CompanyStructuredData } from "../lib/structured-data";
+import { MEDIA } from "../lib/media-config";
 
 export function CompanyPage() {
   return (
@@ -196,14 +197,17 @@ function CompanyPageContent() {
             {/* Matthew Compton */}
             <div className="flex flex-col gap-4 border border-border p-0">
               <div
-                className="aspect-[4/5] border-0 flex flex-col justify-between p-4 text-xs font-mono tracking-widest text-muted-foreground"
+                className="aspect-[4/5] overflow-hidden"
                 style={{ borderLeft: "3px solid var(--ochre, oklch(0.72 0.15 60))" }}
-                role="img"
-                aria-label="Matthew Compton — portrait"
               >
-                <div className="flex justify-between"><span>MATTHEW COMPTON</span><span>COO · MD</span></div>
-                <span className="text-center">[ PORTRAIT · CONSENTED ]</span>
-                <div className="flex justify-between"><span>WIRADJURI</span><span>MD</span></div>
+                <img
+                  src={MEDIA["team-matthew-compton"]?.darkSrc ?? "/media/team-matthew-compton/dark.jpg"}
+                  alt="Portrait of Matthew Compton, Executive Director and COO of Production City, a Wiradjuri man"
+                  width={900}
+                  height={1200}
+                  loading="lazy"
+                  className="h-full w-full object-cover"
+                />
               </div>
               <div className="p-4 pb-5">
                 <p className="text-base font-semibold text-foreground">
