@@ -7,27 +7,18 @@ import type { Metadata } from "vinext/shims/metadata";
 import { ErrorBoundary } from "../../error-boundary";
 import { FacilityCommercialSoundStagesPage } from "../../pages/facility-commercial-sound-stages";
 import { getServerLocale } from "../../i18n/get-server-locale.js";
+import { headers } from "vinext/shims/headers";
+import { validateXLocale } from "../../i18n/x-locale-validation.js";
+import { t, loadLocale } from "../../i18n/index.js";
 
-export const metadata: Metadata = {
-  title: "Commercial Sound Stages — Production City™ Facilities",
-  description:
-    "Flexible commercial sound stages at Production City™: 45×45 m at 15 m clearance, full-surround LED, and integrated broadcast infrastructure.",
-  openGraph: {
-    title: "Commercial Sound Stages — Production City™ Facilities",
-    description:
-      "Flexible commercial sound stages at Production City™: 45×45 m at 15 m clearance, full-surround LED, and integrated broadcast infrastructure.",
-    type: "website",
-    siteName: "Production City™",
-    images: [{ url: "https://production.city/media/home-hero/light.jpg", alt: "Production City™ — A vertically integrated screen and stage campus" }],
-  },
-  twitter: {
-    card: "summary_large_image",
-    site: "@productioncity",
-    title: "Commercial Sound Stages — Production City™ Facilities",
-    description: "Flexible commercial sound stages at Production City™: 45×45 m at 15 m clearance, full-surround LED, and integrated broadcast infrastructure.",
-    images: [{ url: "https://production.city/media/home-hero/light.jpg", alt: "Production City™ — A vertically integrated screen and stage campus" }],
-  },
-};
+export async function generateMetadata(): Promise<Metadata> {
+  const headersList = await headers();
+  const locale = validateXLocale(headersList.get("X-Locale"));
+  await loadLocale(locale);
+  const title = t("facilities.commercialStages.name", undefined, locale);
+  const description = t("facilities.commercialStages.description", undefined, locale);
+  return { title, description, openGraph: { title, description } };
+}
 
 export default async function Page() {
   const serverLocale = await getServerLocale();

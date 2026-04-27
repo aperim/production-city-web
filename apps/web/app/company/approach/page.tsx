@@ -7,27 +7,18 @@ import type { Metadata } from "vinext/shims/metadata";
 import { ErrorBoundary } from "../../error-boundary";
 import { CompanyApproachPage } from "../../pages/company-approach";
 import { getServerLocale } from "../../i18n/get-server-locale.js";
+import { headers } from "vinext/shims/headers";
+import { validateXLocale } from "../../i18n/x-locale-validation.js";
+import { t, loadLocale } from "../../i18n/index.js";
 
-export const metadata: Metadata = {
-  title: "Our Approach — Production City™",
-  description:
-    "How Production City™ integrates screen and stage under one roof: the production platform, partnership model, and long-term operating thesis.",
-  openGraph: {
-    title: "Our Approach — Production City™",
-    description:
-      "How Production City™ integrates screen and stage under one roof: the production platform, partnership model, and long-term operating thesis.",
-    type: "website",
-    siteName: "Production City™",
-    images: [{ url: "https://production.city/media/home-hero/light.jpg", alt: "Production City™ — A vertically integrated screen and stage campus" }],
-  },
-  twitter: {
-    card: "summary_large_image",
-    site: "@productioncity",
-    title: "Our Approach — Production City™",
-    description: "How Production City™ integrates screen and stage under one roof: the production platform, partnership model, and long-term operating thesis.",
-    images: [{ url: "https://production.city/media/home-hero/light.jpg", alt: "Production City™ — A vertically integrated screen and stage campus" }],
-  },
-};
+export async function generateMetadata(): Promise<Metadata> {
+  const headersList = await headers();
+  const locale = validateXLocale(headersList.get("X-Locale"));
+  await loadLocale(locale);
+  const title = t("companyApproach.meta.title", undefined, locale);
+  const description = t("companyApproach.meta.description", undefined, locale);
+  return { title, description, openGraph: { title, description } };
+}
 
 export default async function Page() {
   const serverLocale = await getServerLocale();

@@ -7,27 +7,18 @@ import type { Metadata } from "vinext/shims/metadata";
 import { ErrorBoundary } from "../error-boundary";
 import { FirstNationsPage } from "../pages/first-nations";
 import { getServerLocale } from "../i18n/get-server-locale.js";
+import { headers } from "vinext/shims/headers";
+import { validateXLocale } from "../i18n/x-locale-validation.js";
+import { t, loadLocale } from "../i18n/index.js";
 
-export const metadata: Metadata = {
-  title: "First Nations — Production City™",
-  description:
-    "Production City™ is built in partnership with First Nations peoples. Our approach to Indigenous engagement, co-production, and cultural respect.",
-  openGraph: {
-    title: "First Nations — Production City™",
-    description:
-      "Production City™ is built in partnership with First Nations peoples. Our approach to Indigenous engagement, co-production, and cultural respect.",
-    type: "website",
-    siteName: "Production City™",
-    images: [{ url: "https://production.city/media/home-hero/light.jpg", alt: "Production City™ — A vertically integrated screen and stage campus" }],
-  },
-  twitter: {
-    card: "summary_large_image",
-    site: "@productioncity",
-    title: "First Nations — Production City™",
-    description: "Production City™ is built in partnership with First Nations peoples. Our approach to Indigenous engagement, co-production, and cultural respect.",
-    images: [{ url: "https://production.city/media/home-hero/light.jpg", alt: "Production City™ — A vertically integrated screen and stage campus" }],
-  },
-};
+export async function generateMetadata(): Promise<Metadata> {
+  const headersList = await headers();
+  const locale = validateXLocale(headersList.get("X-Locale"));
+  await loadLocale(locale);
+  const title = t("firstNations.meta.title", undefined, locale);
+  const description = t("firstNations.meta.description", undefined, locale);
+  return { title, description, openGraph: { title, description } };
+}
 
 export default async function Page() {
   const serverLocale = await getServerLocale();

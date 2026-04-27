@@ -7,25 +7,18 @@ import type { Metadata } from "vinext/shims/metadata";
 import { ErrorBoundary } from "../error-boundary";
 import { VisionPage } from "../pages/vision";
 import { getServerLocale } from "../i18n/get-server-locale.js";
+import { headers } from "vinext/shims/headers";
+import { validateXLocale } from "../i18n/x-locale-validation.js";
+import { t, loadLocale } from "../i18n/index.js";
 
-export const metadata: Metadata = {
-  title: "Vision — Production City™",
-  description: "The Production City™ vision: a global network of vertically integrated screen and stage campuses, starting in Sydney.",
-  openGraph: {
-    title: "Vision — Production City™",
-    description: "The Production City™ vision: a global network of vertically integrated screen and stage campuses, starting in Sydney.",
-    type: "website",
-    siteName: "Production City™",
-    images: [{ url: "https://production.city/media/home-hero/light.jpg", alt: "Production City™ — A vertically integrated screen and stage campus" }],
-  },
-  twitter: {
-    card: "summary_large_image",
-    site: "@productioncity",
-    title: "Vision — Production City™",
-    description: "The Production City™ vision: a global network of vertically integrated screen and stage campuses, starting in Sydney.",
-    images: [{ url: "https://production.city/media/home-hero/light.jpg", alt: "Production City™ — A vertically integrated screen and stage campus" }],
-  },
-};
+export async function generateMetadata(): Promise<Metadata> {
+  const headersList = await headers();
+  const locale = validateXLocale(headersList.get("X-Locale"));
+  await loadLocale(locale);
+  const title = t("vision.meta.title", undefined, locale);
+  const description = t("vision.meta.description", undefined, locale);
+  return { title, description, openGraph: { title, description } };
+}
 
 export default async function Page() {
   const serverLocale = await getServerLocale();

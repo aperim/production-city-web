@@ -343,6 +343,10 @@
       "subscribe_cta": "获取 {categoryName} 动态通知",
       "not_found": "未找到",
       "not_found_description": "您查找的页面不存在。"
+    },
+    "meta": {
+      "title": "公告 — Production City",
+      "description": "了解 Production City 的最新消息和动态。"
     }
   },
   "subscriptions": {
@@ -609,6 +613,10 @@
       "contact": {
         "title": "联系我们",
         "description": "如有隐私相关咨询，请联系：privacy@production.city"
+      },
+      "meta": {
+        "title": "隐私政策 — Production City",
+        "description": "了解 Production City 如何收集、使用和保护您的个人信息。"
       }
     },
     "terms": {
@@ -745,6 +753,10 @@
       "contact": {
         "title": "Contact",
         "description": "如有法律咨询，请联系：legal@production.city\n\nAperim Pty Ltd\nABN 46 150 699 737 | ACN 150 699 737\nSuite 108, 9 Hutchinson Street, St Peters NSW 2044, Australia"
+      },
+      "meta": {
+        "title": "使用条款 — Production City",
+        "description": "阅读管理您使用 Production City 平台和服务的条款和条件。"
       }
     },
     "cookies": {

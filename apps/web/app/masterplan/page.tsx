@@ -7,25 +7,18 @@ import type { Metadata } from "vinext/shims/metadata";
 import { ErrorBoundary } from "../error-boundary";
 import { MasterplanPage } from "../pages/masterplan";
 import { getServerLocale } from "../i18n/get-server-locale.js";
+import { headers } from "vinext/shims/headers";
+import { validateXLocale } from "../i18n/x-locale-validation.js";
+import { t, loadLocale } from "../i18n/index.js";
 
-export const metadata: Metadata = {
-  title: "Campus Masterplan — Production City™",
-  description: "Explore the Production City™ campus masterplan: an interactive 3D view of the integrated screen and stage precinct.",
-  openGraph: {
-    title: "Campus Masterplan — Production City™",
-    description: "Explore the Production City™ campus masterplan: an interactive 3D view of the integrated screen and stage precinct.",
-    type: "website",
-    siteName: "Production City™",
-    images: [{ url: "https://production.city/media/home-hero/light.jpg", alt: "Production City™ — A vertically integrated screen and stage campus" }],
-  },
-  twitter: {
-    card: "summary_large_image",
-    site: "@productioncity",
-    title: "Campus Masterplan — Production City™",
-    description: "Explore the Production City™ campus masterplan: an interactive 3D view of the integrated screen and stage precinct.",
-    images: [{ url: "https://production.city/media/home-hero/light.jpg", alt: "Production City™ — A vertically integrated screen and stage campus" }],
-  },
-};
+export async function generateMetadata(): Promise<Metadata> {
+  const headersList = await headers();
+  const locale = validateXLocale(headersList.get("X-Locale"));
+  await loadLocale(locale);
+  const title = t("masterplan.meta.title", undefined, locale);
+  const description = t("masterplan.meta.description", undefined, locale);
+  return { title, description, openGraph: { title, description } };
+}
 
 export default async function Page() {
   const serverLocale = await getServerLocale();

@@ -343,6 +343,10 @@
       "subscribe_cta": "{categoryName}のアップデート通知を受け取る",
       "not_found": "見つかりません",
       "not_found_description": "お探しのページは存在しません。"
+    },
+    "meta": {
+      "title": "お知らせ — Production City",
+      "description": "Production Cityの最新ニュースとアップデートをお届けします。"
     }
   },
   "subscriptions": {
@@ -609,6 +613,10 @@
       "contact": {
         "title": "お問い合わせ",
         "description": "プライバシーに関するお問い合わせ先: privacy@production.city"
+      },
+      "meta": {
+        "title": "プライバシーポリシー — Production City",
+        "description": "Production Cityがお客様の個人情報をどのように収集・使用・保護するかについてご説明します。"
       }
     },
     "terms": {
@@ -745,6 +753,10 @@
       "contact": {
         "title": "Contact",
         "description": "法的なお問い合わせはこちら: legal@production.city\n\nAperim Pty Ltd\nABN 46 150 699 737 | ACN 150 699 737\nSuite 108, 9 Hutchinson Street, St Peters NSW 2044, Australia"
+      },
+      "meta": {
+        "title": "利用規約 — Production City",
+        "description": "Production Cityのプラットフォームおよびサービスの利用を規定する利用規約をお読みください。"
       }
     },
     "cookies": {

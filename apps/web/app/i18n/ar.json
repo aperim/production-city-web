@@ -343,6 +343,10 @@
       "subscribe_cta": "احصل على إشعارات حول تحديثات {categoryName}",
       "not_found": "غير موجود",
       "not_found_description": "الصفحة التي تبحث عنها غير موجودة."
+    },
+    "meta": {
+      "title": "الإعلانات — Production City",
+      "description": "ابقَ على اطلاع بأحدث الأخبار والتحديثات من Production City."
     }
   },
   "subscriptions": {
@@ -609,6 +613,10 @@
       "contact": {
         "title": "اتصل بنا",
         "description": "لاستفسارات الخصوصية، اتصل بـ: privacy@production.city"
+      },
+      "meta": {
+        "title": "سياسة الخصوصية — Production City",
+        "description": "تعرف على كيفية قيام Production City بجمع معلوماتك الشخصية واستخدامها وحمايتها."
       }
     },
     "terms": {
@@ -745,6 +753,10 @@
       "contact": {
         "title": "Contact",
         "description": "للاستفسارات القانونية، تواصل: legal@production.city\n\nAperim Pty Ltd\nABN 46 150 699 737 | ACN 150 699 737\nSuite 108, 9 Hutchinson Street, St Peters NSW 2044, Australia"
+      },
+      "meta": {
+        "title": "شروط الاستخدام — Production City",
+        "description": "اقرأ الشروط والأحكام التي تحكم استخدامك لمنصة Production City وخدماتها."
       }
     },
     "cookies": {

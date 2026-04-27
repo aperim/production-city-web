@@ -97,10 +97,12 @@ describe("landing page i18n completeness", () => {
     "community.acknowledgement", "community.innovation",
     "faq.meta", "faq.q1", "faq.a1", "faq.c1",
     "contact.meta", "contact.info", "contact.eoi",
-    "legal.privacy.title", "legal.privacy.dataCollection", "legal.privacy.purpose",
+    "masterplan.meta",
+    "announcements.meta",
+    "legal.privacy.meta", "legal.privacy.title", "legal.privacy.dataCollection", "legal.privacy.purpose",
     "legal.privacy.lawfulBasis", "legal.privacy.retention", "legal.privacy.thirdParties",
     "legal.privacy.rights", "legal.privacy.jurisdiction", "legal.privacy.changes", "legal.privacy.contact",
-    "legal.terms.title", "legal.terms.usage", "legal.terms.ip",
+    "legal.terms.meta", "legal.terms.title", "legal.terms.usage", "legal.terms.ip",
     "legal.terms.disclaimer", "legal.terms.forwardLooking", "legal.terms.liability",
     "legal.terms.jurisdiction", "legal.terms.changes",
     "legal.cookies.title", "legal.cookies.about", "legal.cookies.cookiesWeUse",
@@ -286,6 +288,44 @@ describe("landing page component-specific content", () => {
     expect(content).toContain("mailto:");
     expect(content).toContain("tel:");
   });
+});
+
+describe("page metadata exports", () => {
+  const metadataRoutes = [
+    { route: "page.tsx", name: "Home" },
+    { route: "facilities/page.tsx", name: "Facilities" },
+    { route: "creative/page.tsx", name: "Creative" },
+    { route: "vision/page.tsx", name: "Vision" },
+    { route: "community/page.tsx", name: "Community" },
+    { route: "faq/page.tsx", name: "FAQ" },
+    { route: "contact/page.tsx", name: "Contact" },
+    { route: "privacy/page.tsx", name: "Privacy" },
+    { route: "terms/page.tsx", name: "Terms" },
+    { route: "masterplan/page.tsx", name: "Masterplan" },
+    { route: "announcements/page.tsx", name: "Announcements" },
+    { route: "network/page.tsx", name: "Network" },
+    { route: "services/page.tsx", name: "Services" },
+    { route: "first-nations/page.tsx", name: "First Nations" },
+    { route: "company/page.tsx", name: "Company" },
+    { route: "company/approach/page.tsx", name: "Company Approach" },
+    { route: "company/team/page.tsx", name: "Company Team" },
+    { route: "facilities/screen-sound-stages/page.tsx", name: "Screen Sound Stages" },
+    { route: "facilities/commercial-sound-stages/page.tsx", name: "Commercial Sound Stages" },
+    { route: "facilities/broadcast-theatre/page.tsx", name: "Broadcast Theatre" },
+    { route: "facilities/broadcast-control-room/page.tsx", name: "Broadcast Control Room" },
+  ];
+
+  for (const { route, name } of metadataRoutes) {
+    it(`${name} route exports generateMetadata`, () => {
+      const content = readFileSync(resolve(APP_ROOT, route), "utf-8");
+      expect(content).toContain("generateMetadata");
+    });
+
+    it(`${name} route does not fall back to hardcoded "Coming Soon" text`, () => {
+      const content = readFileSync(resolve(APP_ROOT, route), "utf-8");
+      expect(content).not.toContain("Coming Soon");
+    });
+  }
 });
 
 describe("shared landing layout hooks", () => {

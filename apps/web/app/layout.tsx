@@ -1,4 +1,5 @@
 import "../app.css";
+import type { Metadata } from "vinext/shims/metadata";
 import { headers } from "vinext/shims/headers";
 import { validateXLocale } from "./i18n/x-locale-validation.js";
 import { getDirection, getOgLocale } from "./i18n/index.js";
@@ -8,6 +9,18 @@ const CANONICAL_HOST = "https://production.city";
 const SITE_NAME = "Production City™";
 const OG_IMAGE_URL = `${CANONICAL_HOST}/media/home-hero/light.jpg`;
 const TWITTER_SITE = "@productioncity";
+
+export const metadata: Metadata = {
+  title: {
+    default: "Production City™",
+    template: "%s — Production City™",
+  },
+  description: "Production City™ is Australia's first fully integrated screen and stage production precinct.",
+  openGraph: {
+    siteName: "Production City™",
+    type: "website",
+  },
+};
 
 /**
  * Root layout for the Production City web application.

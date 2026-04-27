@@ -343,6 +343,10 @@
       "subscribe_cta": "Получайте уведомления об обновлениях {categoryName}",
       "not_found": "Не найдено",
       "not_found_description": "Страница, которую вы ищете, не существует."
+    },
+    "meta": {
+      "title": "Объявления — Production City",
+      "description": "Следите за последними новостями и обновлениями Production City."
     }
   },
   "subscriptions": {
@@ -609,6 +613,10 @@
       "contact": {
         "title": "Свяжитесь с нами",
         "description": "По вопросам конфиденциальности обращайтесь: privacy@production.city"
+      },
+      "meta": {
+        "title": "Политика конфиденциальности — Production City",
+        "description": "Узнайте, как Production City собирает, использует и защищает вашу личную информацию."
       }
     },
     "terms": {
@@ -745,6 +753,10 @@
       "contact": {
         "title": "Contact",
         "description": "По юридическим вопросам обращайтесь: legal@production.city\n\nAperim Pty Ltd\nABN 46 150 699 737 | ACN 150 699 737\nSuite 108, 9 Hutchinson Street, St Peters NSW 2044, Australia"
+      },
+      "meta": {
+        "title": "Условия использования — Production City",
+        "description": "Ознакомьтесь с условиями, регулирующими использование платформы и услуг Production City."
       }
     },
     "cookies": {

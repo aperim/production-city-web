@@ -343,6 +343,10 @@
       "subscribe_cta": "Get notified about {categoryName} updates",
       "not_found": "Not Found",
       "not_found_description": "The page you are looking for does not exist."
+    },
+    "meta": {
+      "title": "Announcements — Production City",
+      "description": "Stay informed with the latest news and updates from Production City."
     }
   },
   "subscriptions": {
@@ -607,6 +611,10 @@
       "contact": {
         "title": "Contact",
         "description": "For privacy inquiries or to exercise your rights under this policy:\n\nPrivacy Officer\nAperim Pty Ltd\nEmail: privacy@production.city\n\nSuite 108, 9 Hutchinson Street, St Peters NSW 2044"
+      },
+      "meta": {
+        "title": "Privacy Policy — Production City",
+        "description": "Learn how Production City collects, uses, and protects your personal information."
       }
     },
     "terms": {
@@ -743,6 +751,10 @@
       "contact": {
         "title": "Contact",
         "description": "For legal inquiries, contact:\n\nAperim Pty Ltd\nEmail: legal@production.city\n\nSuite 108, 9 Hutchinson Street, St Peters NSW 2044"
+      },
+      "meta": {
+        "title": "Terms of Use — Production City",
+        "description": "Read the terms and conditions governing your use of Production City's platform and services."
       }
     },
     "cookies": {
