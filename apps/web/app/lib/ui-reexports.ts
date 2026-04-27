@@ -63,6 +63,8 @@ export { CinematicHero } from "../../../../packages/ui/src/organisms/CinematicHe
 export type { CinematicHeroProps } from "../../../../packages/ui/src/organisms/CinematicHero/CinematicHero";
 export { ScrollRevealSection } from "../../../../packages/ui/src/organisms/ScrollRevealSection/ScrollRevealSection";
 export type { ScrollRevealSectionProps } from "../../../../packages/ui/src/organisms/ScrollRevealSection/ScrollRevealSection";
+export { MasterplanViewer } from "../../../../packages/ui/src/organisms/MasterplanViewer/MasterplanViewer";
+export type { MasterplanViewerProps } from "../../../../packages/ui/src/organisms/MasterplanViewer/MasterplanViewer";
 export { SignalDiagram } from "../../../../packages/ui/src/organisms/SignalDiagram/SignalDiagram";
 export type { SignalDiagramProps } from "../../../../packages/ui/src/organisms/SignalDiagram/SignalDiagram";
 export { MediaPanel } from "../../../../packages/ui/src/organisms/MediaPanel/MediaPanel";
