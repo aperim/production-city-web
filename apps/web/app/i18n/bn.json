@@ -1249,6 +1249,72 @@
     },
     "disclaimer": {
       "forwardLooking": "এই পৃষ্ঠায় Production City-এর পরিকল্পিত সুবিধা ও সক্ষমতা সম্পর্কে ভবিষ্যৎমুখী বিবৃতি রয়েছে। এই বিবৃতিতে জ্ঞাত ও অজ্ঞাত ঝুঁকি, অনিশ্চয়তা এবং অন্যান্য বিষয় রয়েছে যা প্রকৃত ফলাফলকে উল্লেখযোগ্যভাবে ভিন্ন করতে পারে। সুবিধার স্পেসিফিকেশন ডিজাইন লক্ষ্য এবং পরিবর্তনসাপেক্ষ।"
+    },
+    "page": {
+      "hero": {
+        "eyebrow": "সুবিধা — 01/04",
+        "heading": "একসাথে নির্মিত। পরে জোড়া লাগানো নয়।",
+        "description": "স্টেজ, ভলিউম, থিয়েটার এবং কন্ট্রোল রুম একটি সিস্টেম হিসেবে ডিজাইন করা হয়েছিল। নিচের স্পেসিফিকেশনগুলোই আসল স্পেসিফিকেশন।"
+      },
+      "cta": "স্পেসিফিকেশন পড়ুন",
+      "screenStages": {
+        "label": "A · স্ক্রিন সাউন্ড স্টেজ",
+        "heading": "বড় পর্দার কাজ।",
+        "description": "ফিচার ফিল্ম। এপিসোডিক টেলিভিশন। লাইভ ব্রডকাস্ট। প্রতিটি স্টেজ ৪৫ মি × ৪৫ মি, গ্রিড পর্যন্ত ১৫ মি, পূর্ণ কভারেজ ক্যাটওয়াক। প্রধান স্টুডিও এবং স্ট্রিমার প্রোডাকশনের প্রযুক্তিগত বৈশিষ্ট্য অনুযায়ী ডিজাইন।",
+        "spec": {
+          "floorAreaLabel": "Floor area",
+          "floorAreaValue": "2,025 m² · 21,797 ft²",
+          "toGridLabel": "To grid",
+          "toGridValue": "15 m · 49 ft",
+          "acousticsLabel": "Acoustics",
+          "acousticsValue": "NRC 1.05 · NC 25",
+          "ledLabel": "LED volume",
+          "ledValue": "Flat · Arc · Full-surround"
+        }
+      },
+      "commercialStages": {
+        "label": "B · কমার্শিয়াল সাউন্ড স্টেজ",
+        "heading": "ছোট জায়গা। সম্পূর্ণ স্পেসিফিকেশন।",
+        "description": "বিজ্ঞাপন, টিভিসি, মিউজিক ভিডিও, শর্ট-ফর্ম এবং ডিজিটাল। একই ১৫ মি গ্রিড। একই অ্যাকুস্টিক্স। ওয়াক-ইন-রেডি এলইডি কনফিগারেশন।",
+        "spec": {
+          "floorAreaLabel": "Floor area",
+          "floorAreaValue": "100 m² · 1,076 ft²",
+          "toGridLabel": "To grid",
+          "toGridValue": "15 m · 49 ft",
+          "acousticsLabel": "Acoustics",
+          "acousticsValue": "NRC 1.05 · NC 25",
+          "ledLabel": "LED volume",
+          "ledValue": "Flat · Arc · Full-surround"
+        }
+      },
+      "broadcastTheatre": {
+        "label": "C · ব্রডকাস্ট থিয়েটার",
+        "heading": "ব্রডকাস্টের জন্য তৈরি থিয়েটার।",
+        "description": "ব্রডকাস্ট গ্যালারি সহ মাল্টি-মোডাল লাইভ ভেন্যু। রোবোটিক ক্যামেরা, AR/VR-প্রস্তুত, ব্রডকাস্ট-পার্টনার সামঞ্জস্যপূর্ণ।",
+        "spec": {
+          "theatreLabel": "Theatre",
+          "theatreValue": "450 seats",
+          "cabaretLabel": "Cabaret",
+          "cabaretValue": "300 seats",
+          "camerasLabel": "Robotic cameras",
+          "camerasValue": "8 integrated positions",
+          "virtualSetsLabel": "Virtual sets",
+          "virtualSetsValue": "Library + bespoke"
+        }
+      },
+      "controlRoom": {
+        "label": "D · ব্রডকাস্ট কন্ট্রোল রুম",
+        "description": "কেন্দ্রীয় সিঙ্ক্রোনাইজেশন। ক্যাম্পাস স্টেজ, থিয়েটার এবং বিশ্বজুড়ে বাহ্যিক খেলাধুলা ও ইভেন্ট ভেন্যু জুড়ে লাইভ ব্রডকাস্ট নিয়ন্ত্রণ।",
+        "bullet1": "কেন্দ্রীভূত প্রোডাকশন ম্যানেজমেন্ট",
+        "bullet2": "লাইভ ব্রডকাস্ট নিয়ন্ত্রণ",
+        "bullet3": "উন্নত সিঙ্ক্রোনাইজেশন",
+        "bullet4": "মাল্টি-প্ল্যাটফর্ম · মাল্টি-লোকেশন",
+        "cta": "সক্ষমতা পড়ুন"
+      },
+      "services": {
+        "eyebrow": "সমন্বিত সেবা",
+        "heading": "প্রতিটি সুবিধা একই ক্যাম্পাসে সম্পূর্ণ ক্রিয়েটিভ সার্ভিস স্ট্যাক দ্বারা সমর্থিত।"
+      }
     }
   },
   "creative": {

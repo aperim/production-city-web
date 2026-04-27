@@ -168,10 +168,21 @@ describe("landing page component-specific content", () => {
     expect(content).toContain("ForwardLookingDisclaimer");
   });
 
-  it("Facilities page displays facility specs with real values", () => {
+  it("Facilities page spec values exist in en.json translation keys", () => {
+    const enJson = JSON.parse(readFileSync(resolve(APP_ROOT, "i18n/en.json"), "utf-8")) as Record<string, unknown>;
+    const page = (enJson as Record<string, Record<string, unknown>>)["facilities"]?.["page"] as Record<string, unknown> | undefined;
+    expect(page).toBeDefined();
+    const screenStages = page?.["screenStages"] as Record<string, unknown> | undefined;
+    const spec = screenStages?.["spec"] as Record<string, unknown> | undefined;
+    expect(spec?.["floorAreaValue"]).toContain("2,025 m²");
+    expect(spec?.["acousticsValue"]).toContain("NRC 1.05");
+  });
+
+  it("Facilities page uses t() for all facility content", () => {
     const content = readFileSync(resolve(APP_ROOT, "pages/facilities.tsx"), "utf-8");
-    expect(content).toContain("2,025 m²");
-    expect(content).toContain("NRC 1.05");
+    expect(content).toContain('t("facilities.page.hero.heading")');
+    expect(content).toContain('t("facilities.page.screenStages.label")');
+    expect(content).toContain('t("facilities.page.controlRoom.label")');
   });
 
   it("Creative page uses ServiceGrid", () => {

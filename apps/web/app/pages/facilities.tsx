@@ -52,66 +52,6 @@ interface FacilityData {
   bgClass: string;
 }
 
-const FACILITY_HEADINGS = {
-  hero: "Built together. Not retrofitted.",
-  controlRoom: "The nerve centre.",
-  services: "Every facility is supported by the full creative service stack, on the same campus.",
-} as const;
-
-const FACILITIES: FacilityData[] = [
-  {
-    id: "screen-stages",
-    slug: "screen-sound-stages",
-    label: "A · SCREEN SOUND STAGES",
-    heading: "Grand-scale screen work.",
-    description: "Feature film. Episodic television. Live broadcast. Each stage is 45 m × 45 m, 15 m to grid, full-coverage catwalk. Designed against the technical specifications of major-studio and streamer productions.",
-    mediaKey: "facilities-screen-stage",
-    specs: [
-      { label: "Floor area", value: "2,025 m² · 21,797 ft²" },
-      { label: "To grid", value: "15 m · 49 ft" },
-      { label: "Acoustics", value: "NRC 1.05 · NC 25" },
-      { label: "LED volume", value: "Flat · Arc · Full-surround" },
-    ],
-    ctaLabel: "Read the spec",
-    imagePosition: "left",
-    bgClass: "bg-(--pc-color-neutral-900)",
-  },
-  {
-    id: "commercial-stages",
-    slug: "commercial-sound-stages",
-    label: "B · COMMERCIAL SOUND STAGES",
-    heading: "Small footprint. Full specification.",
-    description: "Commercials, TVCs, music videos, short-form, and digital. Same 15 m to grid. Same acoustics. Walk-in-ready LED configurations.",
-    mediaKey: "facilities-commercial-stage",
-    specs: [
-      { label: "Floor area", value: "100 m² · 1,076 ft²" },
-      { label: "To grid", value: "15 m · 49 ft" },
-      { label: "Acoustics", value: "NRC 1.05 · NC 25" },
-      { label: "LED volume", value: "Flat · Arc · Full-surround" },
-    ],
-    ctaLabel: "Read the spec",
-    imagePosition: "right",
-    bgClass: "bg-(--pc-color-neutral-950)",
-  },
-  {
-    id: "broadcast-theatre",
-    slug: "broadcast-theatre",
-    label: "C · BROADCAST THEATRE",
-    heading: "Theatre wired for broadcast.",
-    description: "Multi-modal live venue with a broadcast gallery wrapped around it. Robotic cameras, AR/VR-ready, broadcast-partner compliant.",
-    mediaKey: "facilities-broadcast-theatre",
-    specs: [
-      { label: "Theatre", value: "450 seats" },
-      { label: "Cabaret", value: "300 seats" },
-      { label: "Robotic cameras", value: "8 integrated positions" },
-      { label: "Virtual sets", value: "Library + bespoke" },
-    ],
-    ctaLabel: "Read the spec",
-    imagePosition: "left",
-    bgClass: "bg-(--pc-color-neutral-900)",
-  },
-];
-
 function FacilitiesPageContent() {
   const { t, locale } = useTranslation();
   const nav = useLandingNav();
@@ -120,6 +60,60 @@ function FacilitiesPageContent() {
   const eoiLabels = useEoiLabels();
   const eoiCategories = useEoiCategories();
   const handleEoiSubmit = useEoiSubmit();
+
+  const facilities: FacilityData[] = [
+    {
+      id: "screen-stages",
+      slug: "screen-sound-stages",
+      label: t("facilities.page.screenStages.label"),
+      heading: t("facilities.page.screenStages.heading"),
+      description: t("facilities.page.screenStages.description"),
+      mediaKey: "facilities-screen-stage",
+      specs: [
+        { label: t("facilities.page.screenStages.spec.floorAreaLabel"), value: t("facilities.page.screenStages.spec.floorAreaValue") },
+        { label: t("facilities.page.screenStages.spec.toGridLabel"), value: t("facilities.page.screenStages.spec.toGridValue") },
+        { label: t("facilities.page.screenStages.spec.acousticsLabel"), value: t("facilities.page.screenStages.spec.acousticsValue") },
+        { label: t("facilities.page.screenStages.spec.ledLabel"), value: t("facilities.page.screenStages.spec.ledValue") },
+      ],
+      ctaLabel: t("facilities.page.cta"),
+      imagePosition: "left",
+      bgClass: "bg-(--pc-color-neutral-900)",
+    },
+    {
+      id: "commercial-stages",
+      slug: "commercial-sound-stages",
+      label: t("facilities.page.commercialStages.label"),
+      heading: t("facilities.page.commercialStages.heading"),
+      description: t("facilities.page.commercialStages.description"),
+      mediaKey: "facilities-commercial-stage",
+      specs: [
+        { label: t("facilities.page.commercialStages.spec.floorAreaLabel"), value: t("facilities.page.commercialStages.spec.floorAreaValue") },
+        { label: t("facilities.page.commercialStages.spec.toGridLabel"), value: t("facilities.page.commercialStages.spec.toGridValue") },
+        { label: t("facilities.page.commercialStages.spec.acousticsLabel"), value: t("facilities.page.commercialStages.spec.acousticsValue") },
+        { label: t("facilities.page.commercialStages.spec.ledLabel"), value: t("facilities.page.commercialStages.spec.ledValue") },
+      ],
+      ctaLabel: t("facilities.page.cta"),
+      imagePosition: "right",
+      bgClass: "bg-(--pc-color-neutral-950)",
+    },
+    {
+      id: "broadcast-theatre",
+      slug: "broadcast-theatre",
+      label: t("facilities.page.broadcastTheatre.label"),
+      heading: t("facilities.page.broadcastTheatre.heading"),
+      description: t("facilities.page.broadcastTheatre.description"),
+      mediaKey: "facilities-broadcast-theatre",
+      specs: [
+        { label: t("facilities.page.broadcastTheatre.spec.theatreLabel"), value: t("facilities.page.broadcastTheatre.spec.theatreValue") },
+        { label: t("facilities.page.broadcastTheatre.spec.cabaretLabel"), value: t("facilities.page.broadcastTheatre.spec.cabaretValue") },
+        { label: t("facilities.page.broadcastTheatre.spec.camerasLabel"), value: t("facilities.page.broadcastTheatre.spec.camerasValue") },
+        { label: t("facilities.page.broadcastTheatre.spec.virtualSetsLabel"), value: t("facilities.page.broadcastTheatre.spec.virtualSetsValue") },
+      ],
+      ctaLabel: t("facilities.page.cta"),
+      imagePosition: "left",
+      bgClass: "bg-(--pc-color-neutral-900)",
+    },
+  ];
 
   return (
     <LandingPageTemplate nav={nav} footer={footer}>
@@ -140,20 +134,20 @@ function FacilitiesPageContent() {
         >
           <div className="pb-8">
             <p className="font-mono text-[11px] uppercase tracking-[0.18em] text-white/60">
-              Facilities — 01/04
+              {t("facilities.page.hero.eyebrow")}
             </p>
             <h1 id="facilities-heading" className="mt-4 font-serif text-[clamp(40px,6vw,96px)] font-normal leading-[1.0] tracking-[-0.015em] text-white">
-              {FACILITY_HEADINGS.hero}
+              {t("facilities.page.hero.heading")}
             </h1>
             <p className="mt-6 max-w-[42ch] text-[clamp(17px,1.4vw,22px)] leading-[1.45] text-white/80">
-              The stages, the volume, the theatre, and the control room were designed as one system. Specifications below are the specifications.
+              {t("facilities.page.hero.description")}
             </p>
           </div>
         </MediaHero>
       )}
 
       {/* ═══════════ FACILITY SECTIONS A, B, C ═══════════ */}
-      {FACILITIES.map((f) => {
+      {facilities.map((f) => {
         const facilityMedia = MEDIA[f.mediaKey];
         return (
         <ScrollRevealSection key={f.id} delay={100}>
@@ -229,26 +223,26 @@ function FacilitiesPageContent() {
               {/* Text */}
               <div className="lg:col-span-5">
                 <div className="font-mono text-[10px] uppercase tracking-[0.14em] text-(--pc-color-neutral-400)">
-                  D · BROADCAST CONTROL ROOM
+                  {t("facilities.page.controlRoom.label")}
                 </div>
                 <h2 id="control-room-heading" className="mt-4 font-serif text-[clamp(32px,4vw,56px)] font-normal leading-[1.05] tracking-[-0.01em]">
-                  {FACILITY_HEADINGS.controlRoom}
+                  {t("facilities.controlRoom.detail.heading")}
                 </h2>
                 <p className="mt-4 max-w-[44ch] text-(--pc-color-neutral-300)">
-                  Central synchronisation. Live broadcast control across on-campus stages, the theatre, and external sports and event venues globally.
+                  {t("facilities.page.controlRoom.description")}
                 </p>
                 <ul className="mt-8 list-none space-y-2 p-0 font-mono text-xs tracking-[0.08em]">
-                  <li>→ CENTRALISED PRODUCTION MANAGEMENT</li>
-                  <li>→ LIVE BROADCAST CONTROL</li>
-                  <li>→ ADVANCED SYNCHRONISATION</li>
-                  <li>→ MULTI-PLATFORM · MULTI-LOCATION</li>
+                  <li>→ {t("facilities.page.controlRoom.bullet1")}</li>
+                  <li>→ {t("facilities.page.controlRoom.bullet2")}</li>
+                  <li>→ {t("facilities.page.controlRoom.bullet3")}</li>
+                  <li>→ {t("facilities.page.controlRoom.bullet4")}</li>
                 </ul>
                 <div className="mt-8">
                   <a
                     href={`${prefix}/facilities#control-room`}
                     className="inline-flex items-center gap-2 border border-(--pc-color-neutral-100) px-6 py-3 text-sm text-(--pc-color-neutral-100) no-underline transition-opacity duration-200 hover:opacity-65"
                   >
-                    Read the capability <span aria-hidden="true">→</span>
+                    {t("facilities.page.controlRoom.cta")} <span aria-hidden="true">→</span>
                   </a>
                 </div>
               </div>
@@ -277,10 +271,10 @@ function FacilitiesPageContent() {
         <section className="bg-(--pc-color-neutral-50) px-(--pc-spacing-6) py-[clamp(56px,8vw,128px)] text-(--pc-color-neutral-900)" aria-labelledby="services-lead-heading">
           <div className="mx-auto grid max-w-[1720px] gap-6">
             <div className="font-mono text-[11px] uppercase tracking-[0.18em] text-(--pc-color-neutral-500)">
-              Integrated services
+              {t("facilities.page.services.eyebrow")}
             </div>
             <h2 id="services-lead-heading" className="m-0 max-w-[24ch] font-serif text-[clamp(32px,4vw,56px)] font-normal leading-[1.05] tracking-[-0.01em]">
-              {FACILITY_HEADINGS.services}
+              {t("facilities.page.services.heading")}
             </h2>
           </div>
         </section>

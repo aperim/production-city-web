@@ -1249,6 +1249,72 @@
     },
     "disclaimer": {
       "forwardLooking": "Esta página contém declarações prospectivas sobre as instalações e capacidades planejadas da Production City. Estas declarações envolvem riscos conhecidos e desconhecidos, incertezas e outros fatores que podem fazer com que os resultados reais difiram materialmente. As especificações das instalações descrevem metas de projeto e estão sujeitas a alterações."
+    },
+    "page": {
+      "hero": {
+        "eyebrow": "Instalações — 01/04",
+        "heading": "Construído em conjunto. Não adaptado depois.",
+        "description": "Os estúdios, o volume, o teatro e a sala de controlo foram concebidos como um sistema único. As especificações abaixo são as especificações."
+      },
+      "cta": "Ler a especificação",
+      "screenStages": {
+        "label": "A · ESTÚDIOS SONOROS PARA ECRÃ",
+        "heading": "Produção para ecrã em grande escala.",
+        "description": "Longa-metragem. Televisão episódica. Transmissão em direto. Cada estúdio tem 45 m × 45 m, 15 m até à grelha, passagem de acesso completa. Concebido de acordo com as especificações técnicas das grandes produções de estúdio e plataformas de streaming.",
+        "spec": {
+          "floorAreaLabel": "Floor area",
+          "floorAreaValue": "2,025 m² · 21,797 ft²",
+          "toGridLabel": "To grid",
+          "toGridValue": "15 m · 49 ft",
+          "acousticsLabel": "Acoustics",
+          "acousticsValue": "NRC 1.05 · NC 25",
+          "ledLabel": "LED volume",
+          "ledValue": "Flat · Arc · Full-surround"
+        }
+      },
+      "commercialStages": {
+        "label": "B · ESTÚDIOS SONOROS COMERCIAIS",
+        "heading": "Espaço reduzido. Especificação completa.",
+        "description": "Anúncios, TVCs, videoclips, conteúdo curto e digital. A mesma grelha a 15 m. A mesma acústica. Configurações LED prontas a usar.",
+        "spec": {
+          "floorAreaLabel": "Floor area",
+          "floorAreaValue": "100 m² · 1,076 ft²",
+          "toGridLabel": "To grid",
+          "toGridValue": "15 m · 49 ft",
+          "acousticsLabel": "Acoustics",
+          "acousticsValue": "NRC 1.05 · NC 25",
+          "ledLabel": "LED volume",
+          "ledValue": "Flat · Arc · Full-surround"
+        }
+      },
+      "broadcastTheatre": {
+        "label": "C · TEATRO DE TRANSMISSÃO",
+        "heading": "Teatro preparado para transmissão.",
+        "description": "Sala multimodal ao vivo com galeria de transmissão integrada. Câmaras robóticas, preparado para AR/VR, compatível com as normas dos parceiros de transmissão.",
+        "spec": {
+          "theatreLabel": "Theatre",
+          "theatreValue": "450 seats",
+          "cabaretLabel": "Cabaret",
+          "cabaretValue": "300 seats",
+          "camerasLabel": "Robotic cameras",
+          "camerasValue": "8 integrated positions",
+          "virtualSetsLabel": "Virtual sets",
+          "virtualSetsValue": "Library + bespoke"
+        }
+      },
+      "controlRoom": {
+        "label": "D · SALA DE CONTROLO DE TRANSMISSÃO",
+        "description": "Sincronização central. Controlo de transmissão em direto nos estúdios do campus, no teatro e em locais externos de desporto e eventos em todo o mundo.",
+        "bullet1": "GESTÃO DE PRODUÇÃO CENTRALIZADA",
+        "bullet2": "CONTROLO DE TRANSMISSÃO EM DIRETO",
+        "bullet3": "SINCRONIZAÇÃO AVANÇADA",
+        "bullet4": "MULTIPLATAFORMA · MÚLTIPLAS LOCALIZAÇÕES",
+        "cta": "Ler as capacidades"
+      },
+      "services": {
+        "eyebrow": "Serviços integrados",
+        "heading": "Cada instalação é suportada pela pilha completa de serviços criativos, no mesmo campus."
+      }
     }
   },
   "creative": {

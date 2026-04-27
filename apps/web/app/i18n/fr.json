@@ -1249,6 +1249,72 @@
     },
     "disclaimer": {
       "forwardLooking": "Cette page contient des déclarations prospectives sur les installations et capacités prévues de Production City. Les spécifications décrivent des objectifs de conception et sont susceptibles de modification."
+    },
+    "page": {
+      "hero": {
+        "eyebrow": "Installations — 01/04",
+        "heading": "Conçu ensemble. Pas adapté après coup.",
+        "description": "Les plateaux, le volume, le théâtre et la régie ont été conçus comme un seul système. Les spécifications ci-dessous sont les spécifications."
+      },
+      "cta": "Lire la fiche technique",
+      "screenStages": {
+        "label": "A · PLATEAUX SONORES POUR L'ÉCRAN",
+        "heading": "Production cinématographique à grande échelle.",
+        "description": "Long métrage. Télévision épisodique. Diffusion en direct. Chaque plateau mesure 45 m × 45 m, 15 m jusqu'à la grille, passerelle à couverture complète. Conçu selon les spécifications techniques des grandes productions de studios et de plateformes.",
+        "spec": {
+          "floorAreaLabel": "Floor area",
+          "floorAreaValue": "2,025 m² · 21,797 ft²",
+          "toGridLabel": "To grid",
+          "toGridValue": "15 m · 49 ft",
+          "acousticsLabel": "Acoustics",
+          "acousticsValue": "NRC 1.05 · NC 25",
+          "ledLabel": "LED volume",
+          "ledValue": "Flat · Arc · Full-surround"
+        }
+      },
+      "commercialStages": {
+        "label": "B · PLATEAUX SONORES COMMERCIAUX",
+        "heading": "Petite surface. Spécification complète.",
+        "description": "Publicités, spots TV, clips musicaux, formats courts et digital. Même grille à 15 m. Même acoustique. Configurations LED prêtes à l'emploi.",
+        "spec": {
+          "floorAreaLabel": "Floor area",
+          "floorAreaValue": "100 m² · 1,076 ft²",
+          "toGridLabel": "To grid",
+          "toGridValue": "15 m · 49 ft",
+          "acousticsLabel": "Acoustics",
+          "acousticsValue": "NRC 1.05 · NC 25",
+          "ledLabel": "LED volume",
+          "ledValue": "Flat · Arc · Full-surround"
+        }
+      },
+      "broadcastTheatre": {
+        "label": "C · THÉÂTRE DE DIFFUSION",
+        "heading": "Théâtre câblé pour la diffusion.",
+        "description": "Salle polyvalente en direct avec galerie de diffusion intégrée. Caméras robotisées, compatible AR/VR, conforme aux normes des partenaires de diffusion.",
+        "spec": {
+          "theatreLabel": "Theatre",
+          "theatreValue": "450 seats",
+          "cabaretLabel": "Cabaret",
+          "cabaretValue": "300 seats",
+          "camerasLabel": "Robotic cameras",
+          "camerasValue": "8 integrated positions",
+          "virtualSetsLabel": "Virtual sets",
+          "virtualSetsValue": "Library + bespoke"
+        }
+      },
+      "controlRoom": {
+        "label": "D · RÉGIE DE DIFFUSION",
+        "description": "Synchronisation centrale. Contrôle de diffusion en direct sur les plateaux du campus, le théâtre et les sites externes de sports et d'événements dans le monde entier.",
+        "bullet1": "GESTION DE PRODUCTION CENTRALISÉE",
+        "bullet2": "CONTRÔLE DE DIFFUSION EN DIRECT",
+        "bullet3": "SYNCHRONISATION AVANCÉE",
+        "bullet4": "MULTIPLATEFORME · MULTILOCALISATION",
+        "cta": "Lire les capacités"
+      },
+      "services": {
+        "eyebrow": "Services intégrés",
+        "heading": "Chaque installation est soutenue par l'ensemble du stack de services créatifs, sur le même campus."
+      }
     }
   },
   "creative": {

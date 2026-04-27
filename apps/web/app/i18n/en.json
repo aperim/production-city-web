@@ -1247,6 +1247,72 @@
     },
     "disclaimer": {
       "forwardLooking": "This page contains forward-looking statements about Production City's planned facilities and capabilities. These statements involve known and unknown risks, uncertainties, and other factors that may cause actual results to differ materially. Facility specifications describe design targets and are subject to change."
+    },
+    "page": {
+      "hero": {
+        "eyebrow": "Facilities — 01/04",
+        "heading": "Built together. Not retrofitted.",
+        "description": "The stages, the volume, the theatre, and the control room were designed as one system. Specifications below are the specifications."
+      },
+      "cta": "Read the spec",
+      "screenStages": {
+        "label": "A · SCREEN SOUND STAGES",
+        "heading": "Grand-scale screen work.",
+        "description": "Feature film. Episodic television. Live broadcast. Each stage is 45 m × 45 m, 15 m to grid, full-coverage catwalk. Designed against the technical specifications of major-studio and streamer productions.",
+        "spec": {
+          "floorAreaLabel": "Floor area",
+          "floorAreaValue": "2,025 m² · 21,797 ft²",
+          "toGridLabel": "To grid",
+          "toGridValue": "15 m · 49 ft",
+          "acousticsLabel": "Acoustics",
+          "acousticsValue": "NRC 1.05 · NC 25",
+          "ledLabel": "LED volume",
+          "ledValue": "Flat · Arc · Full-surround"
+        }
+      },
+      "commercialStages": {
+        "label": "B · COMMERCIAL SOUND STAGES",
+        "heading": "Small footprint. Full specification.",
+        "description": "Commercials, TVCs, music videos, short-form, and digital. Same 15 m to grid. Same acoustics. Walk-in-ready LED configurations.",
+        "spec": {
+          "floorAreaLabel": "Floor area",
+          "floorAreaValue": "100 m² · 1,076 ft²",
+          "toGridLabel": "To grid",
+          "toGridValue": "15 m · 49 ft",
+          "acousticsLabel": "Acoustics",
+          "acousticsValue": "NRC 1.05 · NC 25",
+          "ledLabel": "LED volume",
+          "ledValue": "Flat · Arc · Full-surround"
+        }
+      },
+      "broadcastTheatre": {
+        "label": "C · BROADCAST THEATRE",
+        "heading": "Theatre wired for broadcast.",
+        "description": "Multi-modal live venue with a broadcast gallery wrapped around it. Robotic cameras, AR/VR-ready, broadcast-partner compliant.",
+        "spec": {
+          "theatreLabel": "Theatre",
+          "theatreValue": "450 seats",
+          "cabaretLabel": "Cabaret",
+          "cabaretValue": "300 seats",
+          "camerasLabel": "Robotic cameras",
+          "camerasValue": "8 integrated positions",
+          "virtualSetsLabel": "Virtual sets",
+          "virtualSetsValue": "Library + bespoke"
+        }
+      },
+      "controlRoom": {
+        "label": "D · BROADCAST CONTROL ROOM",
+        "description": "Central synchronisation. Live broadcast control across on-campus stages, the theatre, and external sports and event venues globally.",
+        "bullet1": "CENTRALISED PRODUCTION MANAGEMENT",
+        "bullet2": "LIVE BROADCAST CONTROL",
+        "bullet3": "ADVANCED SYNCHRONISATION",
+        "bullet4": "MULTI-PLATFORM · MULTI-LOCATION",
+        "cta": "Read the capability"
+      },
+      "services": {
+        "eyebrow": "Integrated services",
+        "heading": "Every facility is supported by the full creative service stack, on the same campus."
+      }
     }
   },
   "creative": {

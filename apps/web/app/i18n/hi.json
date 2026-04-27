@@ -1249,6 +1249,72 @@
     },
     "disclaimer": {
       "forwardLooking": "इस पृष्ठ में Production City की नियोजित सुविधाओं और क्षमताओं के बारे में भविष्योन्मुखी कथन हैं। इन कथनों में ज्ञात और अज्ञात जोखिम, अनिश्चितताएं और अन्य कारक शामिल हैं जो वास्तविक परिणामों को भौतिक रूप से भिन्न कर सकते हैं। सुविधा विनिर्देश डिज़ाइन लक्ष्य हैं और परिवर्तन के अधीन हैं।"
+    },
+    "page": {
+      "hero": {
+        "eyebrow": "सुविधाएं — 01/04",
+        "heading": "एक साथ बनाया। बाद में नहीं जोड़ा।",
+        "description": "स्टेज, वॉल्यूम, थिएटर और कंट्रोल रूम को एक सिस्टम के रूप में डिज़ाइन किया गया था। नीचे दी गई विशेषताएं ही वास्तविक विशेषताएं हैं।"
+      },
+      "cta": "विशेषताएं पढ़ें",
+      "screenStages": {
+        "label": "A · स्क्रीन साउंड स्टेज",
+        "heading": "बड़े पैमाने पर स्क्रीन का काम।",
+        "description": "फीचर फिल्म। एपिसोडिक टेलीविजन। लाइव ब्रॉडकास्ट। प्रत्येक स्टेज 45 मी × 45 मी, ग्रिड तक 15 मी, पूर्ण-कवरेज कैटवॉक। प्रमुख स्टूडियो और स्ट्रीमर प्रोडक्शन की तकनीकी विशेषताओं के अनुसार डिज़ाइन किया गया।",
+        "spec": {
+          "floorAreaLabel": "Floor area",
+          "floorAreaValue": "2,025 m² · 21,797 ft²",
+          "toGridLabel": "To grid",
+          "toGridValue": "15 m · 49 ft",
+          "acousticsLabel": "Acoustics",
+          "acousticsValue": "NRC 1.05 · NC 25",
+          "ledLabel": "LED volume",
+          "ledValue": "Flat · Arc · Full-surround"
+        }
+      },
+      "commercialStages": {
+        "label": "B · कमर्शियल साउंड स्टेज",
+        "heading": "छोटा क्षेत्र। पूरी विशेषता।",
+        "description": "विज्ञापन, टीवीसी, म्यूज़िक वीडियो, शॉर्ट-फॉर्म और डिजिटल। ग्रिड तक वही 15 मी। वही ध्वनिकी। वॉक-इन-रेडी LED कॉन्फ़िगरेशन।",
+        "spec": {
+          "floorAreaLabel": "Floor area",
+          "floorAreaValue": "100 m² · 1,076 ft²",
+          "toGridLabel": "To grid",
+          "toGridValue": "15 m · 49 ft",
+          "acousticsLabel": "Acoustics",
+          "acousticsValue": "NRC 1.05 · NC 25",
+          "ledLabel": "LED volume",
+          "ledValue": "Flat · Arc · Full-surround"
+        }
+      },
+      "broadcastTheatre": {
+        "label": "C · ब्रॉडकास्ट थिएटर",
+        "heading": "ब्रॉडकास्ट के लिए जुड़ा थिएटर।",
+        "description": "एक ब्रॉडकास्ट गैलरी के साथ मल्टी-मोडल लाइव वेन्यू। रोबोटिक कैमरे, AR/VR-तैयार, ब्रॉडकास्ट-पार्टनर अनुपालक।",
+        "spec": {
+          "theatreLabel": "Theatre",
+          "theatreValue": "450 seats",
+          "cabaretLabel": "Cabaret",
+          "cabaretValue": "300 seats",
+          "camerasLabel": "Robotic cameras",
+          "camerasValue": "8 integrated positions",
+          "virtualSetsLabel": "Virtual sets",
+          "virtualSetsValue": "Library + bespoke"
+        }
+      },
+      "controlRoom": {
+        "label": "D · ब्रॉडकास्ट कंट्रोल रूम",
+        "description": "केंद्रीय सिंक्रनाइज़ेशन। कैंपस स्टेज, थिएटर और दुनिया भर के बाहरी खेल और इवेंट वेन्यू पर लाइव ब्रॉडकास्ट नियंत्रण।",
+        "bullet1": "केंद्रीकृत प्रोडक्शन प्रबंधन",
+        "bullet2": "लाइव ब्रॉडकास्ट नियंत्रण",
+        "bullet3": "उन्नत सिंक्रनाइज़ेशन",
+        "bullet4": "मल्टी-प्लेटफॉर्म · मल्टी-लोकेशन",
+        "cta": "क्षमताएं पढ़ें"
+      },
+      "services": {
+        "eyebrow": "एकीकृत सेवाएं",
+        "heading": "हर सुविधा को उसी कैंपस में पूर्ण क्रिएटिव सर्विस स्टैक द्वारा समर्थित किया जाता है।"
+      }
     }
   },
   "creative": {

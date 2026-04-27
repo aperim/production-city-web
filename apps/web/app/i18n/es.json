@@ -1249,6 +1249,72 @@
     },
     "disclaimer": {
       "forwardLooking": "Esta página contiene declaraciones prospectivas sobre las instalaciones y capacidades planificadas de Production City. Las especificaciones describen objetivos de diseño y están sujetas a cambios."
+    },
+    "page": {
+      "hero": {
+        "eyebrow": "Instalaciones — 01/04",
+        "heading": "Construido juntos. No adaptado a posteriori.",
+        "description": "Los escenarios, el volumen, el teatro y la sala de control fueron diseñados como un sistema único. Las especificaciones a continuación son las especificaciones."
+      },
+      "cta": "Ver la especificación",
+      "screenStages": {
+        "label": "A · ESCENARIOS SONOROS PARA PANTALLA",
+        "heading": "Producción en pantalla a gran escala.",
+        "description": "Largometrajes. Televisión episódica. Transmisión en vivo. Cada escenario mide 45 m × 45 m, 15 m hasta la parrilla, pasarela de cobertura completa. Diseñado según las especificaciones técnicas de los principales estudios y plataformas de streaming.",
+        "spec": {
+          "floorAreaLabel": "Floor area",
+          "floorAreaValue": "2,025 m² · 21,797 ft²",
+          "toGridLabel": "To grid",
+          "toGridValue": "15 m · 49 ft",
+          "acousticsLabel": "Acoustics",
+          "acousticsValue": "NRC 1.05 · NC 25",
+          "ledLabel": "LED volume",
+          "ledValue": "Flat · Arc · Full-surround"
+        }
+      },
+      "commercialStages": {
+        "label": "B · ESCENARIOS SONOROS COMERCIALES",
+        "heading": "Espacio reducido. Especificación completa.",
+        "description": "Publicidad, anuncios de televisión, videoclips, contenido breve y digital. La misma parrilla de 15 m. La misma acústica. Configuraciones LED listas para usar.",
+        "spec": {
+          "floorAreaLabel": "Floor area",
+          "floorAreaValue": "100 m² · 1,076 ft²",
+          "toGridLabel": "To grid",
+          "toGridValue": "15 m · 49 ft",
+          "acousticsLabel": "Acoustics",
+          "acousticsValue": "NRC 1.05 · NC 25",
+          "ledLabel": "LED volume",
+          "ledValue": "Flat · Arc · Full-surround"
+        }
+      },
+      "broadcastTheatre": {
+        "label": "C · TEATRO DE TRANSMISIÓN",
+        "heading": "Teatro conectado para transmisión.",
+        "description": "Sala multimodal en vivo con galería de transmisión integrada. Cámaras robóticas, compatible con AR/VR, conforme con estándares de socios de transmisión.",
+        "spec": {
+          "theatreLabel": "Theatre",
+          "theatreValue": "450 seats",
+          "cabaretLabel": "Cabaret",
+          "cabaretValue": "300 seats",
+          "camerasLabel": "Robotic cameras",
+          "camerasValue": "8 integrated positions",
+          "virtualSetsLabel": "Virtual sets",
+          "virtualSetsValue": "Library + bespoke"
+        }
+      },
+      "controlRoom": {
+        "label": "D · SALA DE CONTROL DE TRANSMISIÓN",
+        "description": "Sincronización central. Control de transmisión en vivo en escenarios del campus, el teatro y sedes externas de deportes y eventos en todo el mundo.",
+        "bullet1": "GESTIÓN DE PRODUCCIÓN CENTRALIZADA",
+        "bullet2": "CONTROL DE TRANSMISIÓN EN VIVO",
+        "bullet3": "SINCRONIZACIÓN AVANZADA",
+        "bullet4": "MULTIPLATAFORMA · MÚLTIPLES UBICACIONES",
+        "cta": "Leer las capacidades"
+      },
+      "services": {
+        "eyebrow": "Servicios integrados",
+        "heading": "Cada instalación está respaldada por el stack completo de servicios creativos, en el mismo campus."
+      }
     }
   },
   "creative": {

@@ -1249,6 +1249,72 @@
     },
     "disclaimer": {
       "forwardLooking": "本页包含关于 Production City 规划设施和能力的前瞻性声明。这些声明涉及已知和未知的风险、不确定性和其他因素，可能导致实际结果与预期存在重大差异。设施规格为设计目标，可能变更。"
+    },
+    "page": {
+      "hero": {
+        "eyebrow": "设施 — 01/04",
+        "heading": "共同建造。非事后改装。",
+        "description": "舞台、LED体积、剧院和控制室作为一个系统设计。以下规格即为实际规格。"
+      },
+      "cta": "阅读规格说明",
+      "screenStages": {
+        "label": "A · 影视声学舞台",
+        "heading": "大型影视制作。",
+        "description": "故事片。电视剧。直播。每个舞台45 m × 45 m，格栅高度15 m，全覆盖走道。按照主要制片厂和流媒体制作的技术规格设计。",
+        "spec": {
+          "floorAreaLabel": "Floor area",
+          "floorAreaValue": "2,025 m² · 21,797 ft²",
+          "toGridLabel": "To grid",
+          "toGridValue": "15 m · 49 ft",
+          "acousticsLabel": "Acoustics",
+          "acousticsValue": "NRC 1.05 · NC 25",
+          "ledLabel": "LED volume",
+          "ledValue": "Flat · Arc · Full-surround"
+        }
+      },
+      "commercialStages": {
+        "label": "B · 商业声学舞台",
+        "heading": "小空间。完整规格。",
+        "description": "广告、电视广告、MV、短视频及数字内容。同样的格栅高度15 m。同样的声学标准。即插即用的LED配置。",
+        "spec": {
+          "floorAreaLabel": "Floor area",
+          "floorAreaValue": "100 m² · 1,076 ft²",
+          "toGridLabel": "To grid",
+          "toGridValue": "15 m · 49 ft",
+          "acousticsLabel": "Acoustics",
+          "acousticsValue": "NRC 1.05 · NC 25",
+          "ledLabel": "LED volume",
+          "ledValue": "Flat · Arc · Full-surround"
+        }
+      },
+      "broadcastTheatre": {
+        "label": "C · 广播剧院",
+        "heading": "专为广播而设的剧院。",
+        "description": "配备广播画廊的多功能现场场馆。机器人摄像机，AR/VR就绪，符合广播合作伙伴标准。",
+        "spec": {
+          "theatreLabel": "Theatre",
+          "theatreValue": "450 seats",
+          "cabaretLabel": "Cabaret",
+          "cabaretValue": "300 seats",
+          "camerasLabel": "Robotic cameras",
+          "camerasValue": "8 integrated positions",
+          "virtualSetsLabel": "Virtual sets",
+          "virtualSetsValue": "Library + bespoke"
+        }
+      },
+      "controlRoom": {
+        "label": "D · 广播控制室",
+        "description": "中央同步。跨校园舞台、剧院及全球外部体育和活动场馆的直播控制。",
+        "bullet1": "集中制作管理",
+        "bullet2": "直播控制",
+        "bullet3": "高级同步",
+        "bullet4": "多平台 · 多地点",
+        "cta": "阅读能力说明"
+      },
+      "services": {
+        "eyebrow": "综合服务",
+        "heading": "每个设施都由完整的创意服务体系支持，在同一园区。"
+      }
     }
   },
   "creative": {

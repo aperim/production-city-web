@@ -1249,6 +1249,72 @@
     },
     "disclaimer": {
       "forwardLooking": "このページにはProduction Cityの計画中の施設と能力に関する将来の見通しに関する記述が含まれています。これらの記述にはリスクと不確実性が伴い、実際の結果が大きく異なる場合があります。施設仕様は設計目標を示しており、変更される場合があります。"
+    },
+    "page": {
+      "hero": {
+        "eyebrow": "施設 — 01/04",
+        "heading": "共に建設。後付けではない。",
+        "description": "ステージ、ボリューム、シアター、コントロールルームは一体のシステムとして設計されました。以下の仕様が実際の仕様です。"
+      },
+      "cta": "仕様を読む",
+      "screenStages": {
+        "label": "A · スクリーンサウンドステージ",
+        "heading": "大規模なスクリーン制作。",
+        "description": "長編映画。連続テレビドラマ。生放送。各ステージは45 m × 45 m、グリッドまで15 m、完全カバーキャットウォーク。主要スタジオやストリーマー制作の技術仕様に基づいて設計。",
+        "spec": {
+          "floorAreaLabel": "Floor area",
+          "floorAreaValue": "2,025 m² · 21,797 ft²",
+          "toGridLabel": "To grid",
+          "toGridValue": "15 m · 49 ft",
+          "acousticsLabel": "Acoustics",
+          "acousticsValue": "NRC 1.05 · NC 25",
+          "ledLabel": "LED volume",
+          "ledValue": "Flat · Arc · Full-surround"
+        }
+      },
+      "commercialStages": {
+        "label": "B · コマーシャルサウンドステージ",
+        "heading": "小さなスペース。完全な仕様。",
+        "description": "コマーシャル、TVC、ミュージックビデオ、短尺コンテンツ、デジタル。同じグリッドまで15 m。同じ音響。すぐに使えるLED設定。",
+        "spec": {
+          "floorAreaLabel": "Floor area",
+          "floorAreaValue": "100 m² · 1,076 ft²",
+          "toGridLabel": "To grid",
+          "toGridValue": "15 m · 49 ft",
+          "acousticsLabel": "Acoustics",
+          "acousticsValue": "NRC 1.05 · NC 25",
+          "ledLabel": "LED volume",
+          "ledValue": "Flat · Arc · Full-surround"
+        }
+      },
+      "broadcastTheatre": {
+        "label": "C · 放送シアター",
+        "heading": "放送用に配線されたシアター。",
+        "description": "放送ギャラリーを備えたマルチモーダルライブ会場。ロボットカメラ、AR/VR対応、放送パートナー準拠。",
+        "spec": {
+          "theatreLabel": "Theatre",
+          "theatreValue": "450 seats",
+          "cabaretLabel": "Cabaret",
+          "cabaretValue": "300 seats",
+          "camerasLabel": "Robotic cameras",
+          "camerasValue": "8 integrated positions",
+          "virtualSetsLabel": "Virtual sets",
+          "virtualSetsValue": "Library + bespoke"
+        }
+      },
+      "controlRoom": {
+        "label": "D · 放送コントロールルーム",
+        "description": "中央同期。キャンパス内ステージ、シアター、世界各地の外部スポーツ・イベント会場にわたるライブ放送制御。",
+        "bullet1": "集中制作管理",
+        "bullet2": "ライブ放送コントロール",
+        "bullet3": "高度な同期",
+        "bullet4": "マルチプラットフォーム・マルチロケーション",
+        "cta": "能力を読む"
+      },
+      "services": {
+        "eyebrow": "統合サービス",
+        "heading": "すべての施設は、同じキャンパス内の完全なクリエイティブサービススタックによってサポートされています。"
+      }
     }
   },
   "creative": {

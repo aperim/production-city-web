@@ -1249,6 +1249,72 @@
     },
     "disclaimer": {
       "forwardLooking": "تحتوي هذه الصفحة على بيانات تطلعية حول مرافق وقدرات Production City المخططة. تنطوي هذه البيانات على مخاطر وشكوك قد تؤدي إلى اختلاف النتائج الفعلية. مواصفات المرافق تصف أهداف التصميم وقابلة للتغيير."
+    },
+    "page": {
+      "hero": {
+        "eyebrow": "المرافق — 01/04",
+        "heading": "بُني معاً. لم يُكيَّف لاحقاً.",
+        "description": "صُمِّمت الاستوديوهات والحجم والمسرح وغرفة التحكم كنظام واحد متكامل. المواصفات أدناه هي المواصفات الفعلية."
+      },
+      "cta": "اقرأ المواصفات",
+      "screenStages": {
+        "label": "A · استوديوهات صوتية للشاشة",
+        "heading": "إنتاج شاشة على نطاق واسع.",
+        "description": "الأفلام الروائية. التلفزيون المسلسل. البث المباشر. كل استوديو 45 م × 45 م، ارتفاع 15 م حتى الشبكة، ممشى كامل التغطية. مصمم وفق المواصفات التقنية لإنتاجات الاستوديوهات الكبرى ومنصات البث.",
+        "spec": {
+          "floorAreaLabel": "Floor area",
+          "floorAreaValue": "2,025 m² · 21,797 ft²",
+          "toGridLabel": "To grid",
+          "toGridValue": "15 m · 49 ft",
+          "acousticsLabel": "Acoustics",
+          "acousticsValue": "NRC 1.05 · NC 25",
+          "ledLabel": "LED volume",
+          "ledValue": "Flat · Arc · Full-surround"
+        }
+      },
+      "commercialStages": {
+        "label": "B · استوديوهات صوتية تجارية",
+        "heading": "مساحة صغيرة. مواصفات كاملة.",
+        "description": "الإعلانات التجارية وإعلانات التلفزيون ومقاطع الموسيقى والمحتوى القصير والرقمي. نفس الارتفاع 15 م حتى الشبكة. نفس الصوتيات. تهيئات LED جاهزة للاستخدام.",
+        "spec": {
+          "floorAreaLabel": "Floor area",
+          "floorAreaValue": "100 m² · 1,076 ft²",
+          "toGridLabel": "To grid",
+          "toGridValue": "15 m · 49 ft",
+          "acousticsLabel": "Acoustics",
+          "acousticsValue": "NRC 1.05 · NC 25",
+          "ledLabel": "LED volume",
+          "ledValue": "Flat · Arc · Full-surround"
+        }
+      },
+      "broadcastTheatre": {
+        "label": "C · مسرح البث",
+        "heading": "مسرح مجهز للبث.",
+        "description": "مكان للعروض الحية متعدد الأوضاع مع معرض بث محيط. كاميرات روبوتية، جاهزة للواقع المعزز والافتراضي، متوافقة مع معايير شركاء البث.",
+        "spec": {
+          "theatreLabel": "Theatre",
+          "theatreValue": "450 seats",
+          "cabaretLabel": "Cabaret",
+          "cabaretValue": "300 seats",
+          "camerasLabel": "Robotic cameras",
+          "camerasValue": "8 integrated positions",
+          "virtualSetsLabel": "Virtual sets",
+          "virtualSetsValue": "Library + bespoke"
+        }
+      },
+      "controlRoom": {
+        "label": "D · غرفة تحكم البث",
+        "description": "مزامنة مركزية. التحكم في البث المباشر عبر استوديوهات الحرم الجامعي والمسرح والأماكن الخارجية للرياضة والفعاليات حول العالم.",
+        "bullet1": "إدارة الإنتاج المركزية",
+        "bullet2": "التحكم في البث المباشر",
+        "bullet3": "المزامنة المتقدمة",
+        "bullet4": "متعدد المنصات · متعدد المواقع",
+        "cta": "اقرأ القدرات"
+      },
+      "services": {
+        "eyebrow": "خدمات متكاملة",
+        "heading": "كل مرفق مدعوم بمجموعة الخدمات الإبداعية الكاملة، على نفس الحرم الجامعي."
+      }
     }
   },
   "creative": {
