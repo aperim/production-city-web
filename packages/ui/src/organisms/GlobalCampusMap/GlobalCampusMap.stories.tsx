@@ -2,9 +2,9 @@ import type { Meta, StoryObj } from "@storybook/react-vite";
 import { GlobalCampusMap } from "./GlobalCampusMap";
 
 const locations = [
-  { name: "Sydney, Australia", status: "Primary", description: "Main creative campus with full production capabilities." },
-  { name: "Singapore", status: "Planned", description: "Asia-Pacific hub for regional content creation." },
-  { name: "Hawaii, USA", status: "Planned", description: "Pacific hub for nature and adventure content." },
+  { name: "Australia", status: "Primary", description: "Main creative campus with full production capabilities." },
+  { name: "Asia Pacific", status: "Planned", description: "Asia-Pacific hub for regional content creation." },
+  { name: "North America", status: "Planned", description: "Pacific hub for nature and adventure content." },
   { name: "Europe", status: "Planned", description: "European base for international co-productions." },
   { name: "USA (Mainland)", status: "Planned", description: "North American gateway for studio partnerships." },
 ];

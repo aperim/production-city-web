@@ -1541,9 +1541,9 @@
             },
             {
               "id": "gov_policy.international.hawaii",
-              "label": "Hawaii",
+              "label": "North America",
               "path": "/dashboard/government/international/hawaii",
-              "description": "Hawaii Film Office, state tax credit program (Act 88), county incentives, permitting",
+              "description": "North American film jurisdictions — state and territory incentives, permits, union requirements (SAG-AFTRA, IATSE)",
               "status": "planned",
               "phase": "expansion",
               "priority": "p3",

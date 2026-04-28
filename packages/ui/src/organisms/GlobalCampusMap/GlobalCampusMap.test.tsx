@@ -3,9 +3,9 @@ import { describe, expect, it } from "vitest";
 import { GlobalCampusMap } from "./GlobalCampusMap";
 
 const locations = [
-  { name: "Sydney", status: "Primary", description: "Main campus" },
-  { name: "Singapore", status: "Planned", description: "Asia-Pacific hub" },
-  { name: "Hawaii", status: "Planned", description: "Pacific hub" },
+  { name: "Australia", status: "Primary", description: "Main campus" },
+  { name: "Asia Pacific", status: "Planned", description: "Asia-Pacific hub" },
+  { name: "North America", status: "Planned", description: "Pacific hub" },
 ];
 
 describe("GlobalCampusMap", () => {
@@ -16,9 +16,9 @@ describe("GlobalCampusMap", () => {
 
   it("renders all locations", () => {
     render(<GlobalCampusMap heading="Locations" locations={locations} />);
-    expect(screen.getByText("Sydney")).toBeInTheDocument();
-    expect(screen.getByText("Singapore")).toBeInTheDocument();
-    expect(screen.getByText("Hawaii")).toBeInTheDocument();
+    expect(screen.getByText("Australia")).toBeInTheDocument();
+    expect(screen.getByText("Asia Pacific")).toBeInTheDocument();
+    expect(screen.getByText("North America")).toBeInTheDocument();
   });
 
   it("renders location statuses", () => {
