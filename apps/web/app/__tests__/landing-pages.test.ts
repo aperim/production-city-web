@@ -282,11 +282,6 @@ describe("landing page component-specific content", () => {
     expect(content).toContain("Engagement");
   });
 
-  it("Contact page includes Acknowledgement of Country", () => {
-    const content = readFileSync(resolve(APP_ROOT, "pages/contact.tsx"), "utf-8");
-    expect(content).toContain("acknowledgement");
-  });
-
   it("Contact page supports URL category param", () => {
     const content = readFileSync(resolve(APP_ROOT, "pages/contact.tsx"), "utf-8");
     expect(content).toContain("category");

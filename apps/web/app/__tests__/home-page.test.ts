@@ -29,10 +29,6 @@ describe("Home page — component imports", () => {
     expect(readHome()).toContain("EOISection");
   });
 
-  it("imports AcknowledgementOfCountry from the UI package", () => {
-    expect(readHome()).toContain("AcknowledgementOfCountry");
-  });
-
   it("imports LandingPageTemplate from the UI package", () => {
     expect(readHome()).toContain("LandingPageTemplate");
   });
@@ -122,20 +118,6 @@ describe("Home page — Facilities preview section", () => {
   });
 });
 
-describe("Home page — Services section", () => {
-  it("has services section label via t()", () => {
-    const src = readHome();
-    expect(src).toContain("home.servicesSection.sectionLabel");
-    expect(src).toContain("home.servicesSection.heading");
-  });
-
-  it("includes service names via t()", () => {
-    const src = readHome();
-    expect(src).toContain("home.servicesSection.services.virtualProduction");
-    expect(src).toContain("home.servicesSection.services.postProduction");
-  });
-});
-
 describe("Home page — First Nations section", () => {
   it("has First Nations approach section via t()", () => {
     const src = readHome();
@@ -143,16 +125,14 @@ describe("Home page — First Nations section", () => {
     expect(src).toContain("home.firstNations.heading");
   });
 
-  it("references Matthew Compton (non-translatable proper noun)", () => {
-    const src = readHome();
-    expect(src).toContain("Matthew Compton");
-    expect(src).toContain("Wiradjuri");
-  });
-
   it("has First Nations prose via t()", () => {
     const src = readHome();
     expect(src).toContain("home.firstNations.prose");
     expect(src).toContain("home.firstNations.proseMatthew");
+  });
+
+  it("links to /first-nations page", () => {
+    expect(readHome()).toContain("/first-nations");
   });
 });
 
@@ -162,33 +142,6 @@ describe("Home page — Pull quote section", () => {
     expect(src).toContain("home.firstSite.sectionLabel");
     expect(src).toContain("home.firstSite.quote");
     expect(src).toContain("home.firstSite.quoteHighlight");
-  });
-});
-
-describe("Home page — Network section", () => {
-  it("has network sequence section with region table via t()", () => {
-    const src = readHome();
-    expect(src).toContain("home.network.sectionLabel");
-    expect(src).toContain("home.network.heading");
-  });
-
-  it("includes network map component", () => {
-    expect(readHome()).toContain("NetworkMap");
-  });
-
-  it("lists regions via t()", () => {
-    const src = readHome();
-    expect(src).toContain("home.network.regions.australia.region");
-    expect(src).toContain("home.network.regions.europe.region");
-    expect(src).toContain("home.network.regions.asiaPacific.region");
-    expect(src).toContain("home.network.regions.africa.region");
-    expect(src).toContain("home.network.regions.unitedStates.region");
-  });
-
-  it("has table column headers via t()", () => {
-    const src = readHome();
-    expect(src).toContain("home.network.tableHeaderRegion");
-    expect(src).toContain("home.network.tableHeaderStatus");
   });
 });
 
@@ -210,17 +163,18 @@ describe("Home page — Audience routing section", () => {
   it("audience enter CTA via t()", () => {
     expect(readHome()).toContain("home.audience.enter");
   });
+
+  it("audience cards link to /contact?category= paths", () => {
+    const src = readHome();
+    expect(src).toContain("/contact?category=producer");
+    expect(src).toContain("/contact?category=investor");
+    expect(src).toContain("/contact?category=partner");
+  });
 });
 
 describe("Home page — Chorus section", () => {
   it("has chorus via t()", () => {
     expect(readHome()).toContain("home.chorus.text");
-  });
-});
-
-describe("Home page — Acknowledgement of Country", () => {
-  it("uses AcknowledgementOfCountry shared component", () => {
-    expect(readHome()).toContain("<AcknowledgementOfCountry");
   });
 });
 

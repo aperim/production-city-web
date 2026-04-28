@@ -10,7 +10,6 @@
 "use client";
 
 import {
-  AcknowledgementOfCountry,
   LandingPageTemplate,
   EOISection,
   GlobeHero,
@@ -75,38 +74,11 @@ function HomePageContent() {
   ];
 
   const audiences = [
-    { num: "I", title: t("home.audience.cards.producers.title"), text: t("home.audience.cards.producers.text"), href: "#eoi-section" },
-    { num: "II", title: t("home.audience.cards.government.title"), text: t("home.audience.cards.government.text"), href: "#eoi-section" },
-    { num: "III", title: t("home.audience.cards.investors.title"), text: t("home.audience.cards.investors.text"), href: "#eoi-section" },
-    { num: "IV", title: t("home.audience.cards.techPartners.title"), text: t("home.audience.cards.techPartners.text"), href: "#eoi-section" },
+    { num: "I", title: t("home.audience.cards.producers.title"), text: t("home.audience.cards.producers.text"), href: `${prefix}/contact?category=producer` },
+    { num: "II", title: t("home.audience.cards.government.title"), text: t("home.audience.cards.government.text"), href: `${prefix}/contact?category=partner` },
+    { num: "III", title: t("home.audience.cards.investors.title"), text: t("home.audience.cards.investors.text"), href: `${prefix}/contact?category=investor` },
+    { num: "IV", title: t("home.audience.cards.techPartners.title"), text: t("home.audience.cards.techPartners.text"), href: `${prefix}/contact?category=partner` },
   ];
-
-  const regions = [
-    { region: t("home.network.regions.australia.region"), status: t("home.network.regions.australia.status"), highlight: true },
-    { region: t("home.network.regions.europe.region"), status: t("home.network.regions.europe.status"), highlight: true },
-    { region: t("home.network.regions.asiaPacific.region"), status: t("home.network.regions.asiaPacific.status"), highlight: false },
-    { region: t("home.network.regions.africa.region"), status: t("home.network.regions.africa.status"), highlight: false },
-    { region: t("home.network.regions.unitedStates.region"), status: t("home.network.regions.unitedStates.status"), highlight: false },
-  ];
-
-  const serviceKeys = [
-    "home.servicesSection.services.virtualProduction",
-    "home.servicesSection.services.setConstruction",
-    "home.servicesSection.services.props",
-    "home.servicesSection.services.costume",
-    "home.servicesSection.services.makeupProsthetics",
-    "home.servicesSection.services.specialEffects",
-    "home.servicesSection.services.stuntsRigging",
-    "home.servicesSection.services.motionCapture",
-    "home.servicesSection.services.audioMusic",
-    "home.servicesSection.services.scriptScreenplay",
-    "home.servicesSection.services.graphicDesign",
-    "home.servicesSection.services.animationMotion",
-    "home.servicesSection.services.cgi",
-    "home.servicesSection.services.postProduction",
-    "home.servicesSection.services.arVr",
-    "home.servicesSection.services.broadcastCoordination",
-  ] as const;
 
   return (
     <LandingPageTemplate nav={{ ...nav, transparent: true }} footer={footer}>
@@ -438,28 +410,7 @@ function HomePageContent() {
         </section>
       </ScrollRevealSection>
 
-      {/* ═══════════ SECTION 3 — SERVICES LINE ═══════════ */}
-      <ScrollRevealSection delay={0}>
-        <section className="border-t border-(--pc-color-neutral-800) bg-(--pc-color-neutral-950) px-(--pc-spacing-6) py-[clamp(40px,5vw,80px)] text-(--pc-color-neutral-100)" aria-labelledby="services-heading">
-          <div className="mx-auto grid max-w-[1720px] gap-8">
-            <div className="font-mono text-[11px] uppercase tracking-[0.18em] text-(--pc-color-secondary-500)">
-              {t("home.servicesSection.sectionLabel")}
-            </div>
-            <h2 id="services-heading" className="m-0 max-w-[20ch] font-serif text-[clamp(32px,4vw,56px)] font-normal leading-[1.05] tracking-[-0.01em]">
-              {t("home.servicesSection.heading")}
-            </h2>
-            <p className="flex flex-wrap gap-x-1 font-mono text-[11px] uppercase tracking-[0.1em] text-(--pc-color-neutral-400)">
-              {serviceKeys.map((k, i) => (
-                <span key={k}>
-                  {t(k)}{i < serviceKeys.length - 1 && <span className="mx-1 opacity-40">·</span>}
-                </span>
-              ))}
-            </p>
-          </div>
-        </section>
-      </ScrollRevealSection>
-
-      {/* ═══════════ SECTION 4 — FIRST NATIONS ═══════════ */}
+      {/* ═══════════ SECTION 3 — FIRST NATIONS ═══════════ */}
       <ScrollRevealSection delay={100}>
         <section className="bg-(--pc-color-neutral-50) px-(--pc-spacing-6) py-[clamp(56px,8vw,128px)] text-(--pc-color-neutral-900)" aria-labelledby="first-nations-heading">
           <div className="mx-auto max-w-[1720px]">
@@ -472,28 +423,21 @@ function HomePageContent() {
               </h2>
             </div>
 
-            <div className="grid grid-cols-1 items-start gap-8 lg:grid-cols-12">
-              <div className="lg:col-span-5">
-                <div className="aspect-[3/4] overflow-hidden border-l-[3px] border-[#B45A2A]">
-                  <img
-                    src={MEDIA["team-matthew-compton"]?.darkSrc ?? "/media/team-matthew-compton/dark.jpg"}
-                    alt="Portrait of Matthew Compton, Executive Director and COO of Production City, a Wiradjuri man"
-                    width={900}
-                    height={1200}
-                    loading="lazy"
-                    className="h-full w-full object-cover"
-                  />
-                </div>
-              </div>
-
-              {/* First Nations text */}
-              <div className="lg:col-start-7 lg:col-span-6">
-                <p className="font-serif text-[clamp(22px,2vw,28px)] leading-[1.4]" style={{ maxWidth: "30ch" }}>
-                  {t("home.firstNations.prose")}
-                </p>
-                <p className="mt-8 text-(--pc-color-neutral-600)">
+            <div className="grid grid-cols-1 gap-8 lg:grid-cols-12">
+              <blockquote className="m-0 font-serif text-[clamp(22px,2.5vw,34px)] font-normal leading-[1.3] tracking-[-0.01em] lg:col-span-8">
+                <p>{t("home.firstNations.prose")}</p>
+                <footer className="mt-6 font-sans text-sm text-(--pc-color-neutral-600) not-italic">
                   {t("home.firstNations.proseMatthew")}
-                </p>
+                </footer>
+              </blockquote>
+
+              <div className="flex items-end lg:col-start-11 lg:col-span-2">
+                <a
+                  href={`${prefix}/first-nations`}
+                  className="inline-flex items-center gap-2 border border-(--pc-color-neutral-400) px-5 py-2.5 font-sans text-sm font-medium text-(--pc-color-neutral-700) no-underline transition-opacity duration-200 hover:opacity-65"
+                >
+                  {t("home.firstNations.sectionLabel")} <span aria-hidden="true">→</span>
+                </a>
               </div>
             </div>
           </div>
@@ -520,57 +464,7 @@ function HomePageContent() {
         </section>
       </ScrollRevealSection>
 
-      {/* ═══════════ SECTION 6 — NETWORK SEQUENCE ═══════════ */}
-      <ScrollRevealSection delay={100}>
-        <section className="bg-(--pc-color-neutral-900) px-(--pc-spacing-6) py-[clamp(56px,8vw,128px)] text-(--pc-color-neutral-100)" aria-labelledby="network-heading">
-          <div className="mx-auto max-w-[1720px]">
-            <div className="mb-12 border-t border-(--pc-color-neutral-800) pt-8">
-              <div className="mb-3 font-mono text-[11px] uppercase tracking-[0.18em] text-(--pc-color-neutral-400)">
-                {t("home.network.sectionLabel")}
-              </div>
-              <h2 id="network-heading" className="m-0 font-serif text-[clamp(32px,4vw,56px)] font-normal leading-[1.05] tracking-[-0.01em]">
-                {t("home.network.heading")}
-              </h2>
-            </div>
-
-            <div className="grid grid-cols-1 items-start gap-8 lg:grid-cols-12">
-              {/* Mini world map */}
-              <div className="lg:col-span-5">
-                <NetworkMap />
-              </div>
-
-              {/* Region table */}
-              <div className="lg:col-start-7 lg:col-span-6">
-                <table className="w-full border-collapse text-sm">
-                  <caption className="sr-only">{t("home.network.tableCaption")}</caption>
-                  <thead>
-                    <tr className="border-b border-(--pc-color-neutral-800)">
-                      <th className="pb-3 text-left font-mono text-[10px] uppercase tracking-[0.14em] text-(--pc-color-neutral-400)">
-                        {t("home.network.tableHeaderRegion")}
-                      </th>
-                      <th className="pb-3 text-left font-mono text-[10px] uppercase tracking-[0.14em] text-(--pc-color-neutral-400)">
-                        {t("home.network.tableHeaderStatus")}
-                      </th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {regions.map((r) => (
-                      <tr key={r.region} className="border-b border-(--pc-color-neutral-800)">
-                        <td className="py-3 text-(--pc-color-neutral-100)">{r.region}</td>
-                        <td className={`py-3 ${r.highlight ? "text-(--pc-color-neutral-100)" : "text-(--pc-color-neutral-500)"}`}>
-                          {r.status}
-                        </td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
-              </div>
-            </div>
-          </div>
-        </section>
-      </ScrollRevealSection>
-
-      {/* ═══════════ SECTION 7 — AUDIENCE ROUTING ═══════════ */}
+      {/* ═══════════ SECTION 4 — AUDIENCE ROUTING ═══════════ */}
       <ScrollRevealSection delay={100}>
         <section className="bg-(--pc-color-neutral-50) px-(--pc-spacing-6) py-[clamp(56px,8vw,128px)] text-(--pc-color-neutral-900)" aria-labelledby="audience-heading">
           <div className="mx-auto max-w-[1720px]">
@@ -613,14 +507,6 @@ function HomePageContent() {
         </div>
       </section>
 
-      {/* ═══════════ ACKNOWLEDGEMENT OF COUNTRY ═══════════ */}
-      <ScrollRevealSection direction="fade">
-        <AcknowledgementOfCountry
-          heading={t("home.acknowledgement.heading")}
-          text={t("footer.acknowledgement")}
-        />
-      </ScrollRevealSection>
-
       {/* ═══════════ EOI ═══════════ */}
       <ScrollRevealSection delay={100}>
         <div id="eoi-section">
@@ -638,32 +524,3 @@ function HomePageContent() {
   );
 }
 
-/* ─── Network Map (minimal SVG) ─── */
-function NetworkMap() {
-  return (
-    <svg viewBox="0 0 500 300" className="block w-full" aria-hidden="true">
-      <rect width="500" height="300" fill="var(--pc-color-neutral-900)" />
-      {/* Americas */}
-      <path d="M60 90 Q80 70 100 80 Q120 100 110 130 Q105 160 115 190 Q120 220 100 240 Q80 250 70 230 Q55 200 60 170 Z" fill="var(--pc-color-neutral-800)" />
-      {/* Europe / Africa */}
-      <path d="M220 70 Q240 60 260 70 Q275 90 270 110 L265 120 Q280 130 275 160 Q270 200 260 240 Q245 260 235 245 Q220 220 225 180 Q215 140 220 110 Z" fill="var(--pc-color-neutral-800)" />
-      {/* Asia */}
-      <path d="M310 70 Q340 60 370 75 Q400 90 420 110 Q440 130 430 150 Q410 170 380 165 Q355 175 340 165 Q320 150 315 130 Q305 100 310 80 Z" fill="var(--pc-color-neutral-800)" />
-      {/* Australia */}
-      <path d="M395 200 Q420 195 440 210 Q455 225 450 240 Q440 255 420 255 Q395 250 385 235 Q385 215 395 200 Z" fill="var(--pc-color-neutral-800)" />
-      {/* Region dots — uniform size, no special highlight */}
-      <circle cx="80" cy="120" r="4" fill="var(--pc-color-secondary-500)" />
-      <circle cx="243" cy="88" r="4" fill="var(--pc-color-secondary-500)" />
-      <circle cx="255" cy="185" r="4" fill="var(--pc-color-secondary-500)" />
-      <circle cx="380" cy="140" r="4" fill="var(--pc-color-secondary-500)" />
-      <circle cx="430" cy="230" r="4" fill="var(--pc-color-secondary-500)" />
-      <g fontFamily="monospace" fontSize="7" fill="var(--pc-color-neutral-500)" letterSpacing="1">
-        <text x="80" y="110" textAnchor="middle">N. AMERICA</text>
-        <text x="243" y="80" textAnchor="middle">EUROPE</text>
-        <text x="255" y="198" textAnchor="middle">AFRICA</text>
-        <text x="380" y="132" textAnchor="middle">ASIA PACIFIC</text>
-        <text x="430" y="250" textAnchor="middle">AUSTRALIA</text>
-      </g>
-    </svg>
-  );
-}

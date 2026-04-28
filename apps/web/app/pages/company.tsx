@@ -87,12 +87,6 @@ function CompanyPageContent() {
           >
             {t("company.ctaFacilities")} →
           </a>
-          <a
-            href="/network"
-            className="inline-flex items-center gap-2 border border-border px-5 py-2.5 text-sm text-foreground hover:bg-muted transition-colors"
-          >
-            {t("company.ctaNetwork")} →
-          </a>
         </div>
       </section>
 

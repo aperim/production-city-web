@@ -127,13 +127,13 @@ function VisionPageContent() {
           )}
           <div>
             <h2 id="australia-heading" className="text-xl font-semibold text-foreground">
-              {t("vision.global.australia")}
+              {t("vision.global.sydney")}
             </h2>
             <p className="mt-1 text-xs text-muted-foreground">
-              {t("vision.global.australiaStatus")}
+              {t("vision.global.sydneyStatus")}
             </p>
             <p className="mt-3 text-sm text-muted-foreground">
-              {t("vision.global.australiaDesc")}
+              {t("vision.global.sydneyDesc")}
             </p>
           </div>
         </div>
@@ -176,19 +176,19 @@ function VisionPageContent() {
           heading={t("vision.global.heading")}
           locations={[
             {
-              name: t("vision.global.australia"),
-              status: t("vision.global.australiaStatus"),
-              description: t("vision.global.australiaDesc"),
+              name: t("vision.global.sydney"),
+              status: t("vision.global.sydneyStatus"),
+              description: t("vision.global.sydneyDesc"),
             },
             {
-              name: t("vision.global.asiaPacific"),
-              status: t("vision.global.asiaPacificStatus"),
-              description: t("vision.global.asiaPacificDesc"),
+              name: t("vision.global.singapore"),
+              status: t("vision.global.singaporeStatus"),
+              description: t("vision.global.singaporeDesc"),
             },
             {
-              name: t("vision.global.northAmerica"),
-              status: t("vision.global.northAmericaStatus"),
-              description: t("vision.global.northAmericaDesc"),
+              name: t("vision.global.hawaii"),
+              status: t("vision.global.hawaiiStatus"),
+              description: t("vision.global.hawaiiDesc"),
             },
             {
               name: t("vision.global.europe"),

@@ -22,7 +22,7 @@ import {
   useEoiCategories,
   useEoiSubmit,
 } from "../lib/use-landing-layout";
-import { CompanyApproachStructuredData, DublinCoreMeta } from "../lib/structured-data";
+import { NoIndexMeta } from "../lib/structured-data";
 
 
 interface CompanyApproachPageProps {
@@ -47,14 +47,7 @@ function CompanyApproachPageContent() {
 
   return (
     <LandingPageTemplate nav={nav} footer={footer}>
-      <CompanyApproachStructuredData />
-      <DublinCoreMeta
-        title="Approach — Production City"
-        description="Production City's operating model and approach: vertically integrated screen and stage production, IP strategy, and campus investment thesis."
-        subject="operating model, investment, screen production, stage production, IP strategy"
-        path="/company/approach"
-        date="2026-04-27"
-      />
+      <NoIndexMeta />
       {/* Hero */}
       {MEDIA["company-approach-hero"] && (
         <MediaHero

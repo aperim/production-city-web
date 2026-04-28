@@ -392,6 +392,26 @@ export interface DublinCoreMetaProps {
 }
 
 /**
+// ─── No-index helper ──────────────────────────────────────────────────────────
+
+/**
+ * Injects <meta name="robots" content="noindex, nofollow"> for pages
+ * intentionally hidden from search engines and navigation.
+ */
+export function NoIndexMeta() {
+  useEffect(() => {
+    const meta = document.createElement("meta");
+    meta.name = "robots";
+    meta.content = "noindex, nofollow";
+    document.head.appendChild(meta);
+    return () => { meta.remove(); };
+  }, []);
+  return null;
+}
+
+// ─── Dublin Core ───────────────────────────────────────────────────────────────
+
+/**
  * Injects per-page Dublin Core <meta> tags into document.head via DOM.
  *
  * Site-wide static DC tags (publisher, rights, format, language) are emitted

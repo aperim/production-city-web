@@ -16,7 +16,7 @@ import {
   useLandingNav,
   useLandingFooter,
 } from "../lib/use-landing-layout";
-import { CompanyTeamStructuredData, DublinCoreMeta } from "../lib/structured-data";
+import { NoIndexMeta } from "../lib/structured-data";
 import { MEDIA } from "../lib/media-config";
 
 
@@ -39,14 +39,7 @@ function CompanyTeamPageContent() {
 
   return (
     <LandingPageTemplate nav={nav} footer={footer}>
-      <CompanyTeamStructuredData />
-      <DublinCoreMeta
-        title="Team — Production City"
-        description="Meet the team building Australia's integrated screen and stage campus."
-        subject="team, leadership, executive, Production City"
-        path="/company/team"
-        date="2026-04-27"
-      />
+      <NoIndexMeta />
       {/* Hero */}
       <section className="py-16 border-b border-border" aria-labelledby="page-heading">
         <p className="text-xs font-mono tracking-widest text-muted-foreground uppercase mb-4">

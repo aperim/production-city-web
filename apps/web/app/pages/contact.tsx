@@ -245,16 +245,6 @@ function ContactPageContent() {
         </div>
       </section>
 
-      {/* Acknowledgement of Country */}
-      <section className="border-t border-border py-8" aria-labelledby="contact-acknowledgement-heading">
-        <h2 id="contact-acknowledgement-heading" className="text-sm font-semibold text-foreground">
-          {t("contact.acknowledgement.heading")}
-        </h2>
-        <p className="mt-2 text-sm text-muted-foreground">
-          {t("footer.acknowledgement")}
-        </p>
-      </section>
-
       {/* EOI Form — dynamic based on persona selection */}
       <div id="eoi-section" aria-live="polite">
         <EOISection
