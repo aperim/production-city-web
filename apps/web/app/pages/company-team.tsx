@@ -43,7 +43,7 @@ function CompanyTeamPageContent() {
       <DublinCoreMeta
         title="Team — Production City"
         description="Meet the team building Australia's integrated screen and stage campus."
-        subject="team, leadership, executive, Production City, Queensland"
+        subject="team, leadership, executive, Production City"
         path="/company/team"
         date="2026-04-27"
       />

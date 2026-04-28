@@ -65,7 +65,7 @@ function CompanyPageContent() {
       <DublinCoreMeta
         title="Company — Production City"
         description="About Production City: our operating model, strategy, and the team building Australia's integrated screen and stage campus."
-        subject="company, about, production precinct, screen industry, Queensland, Australia"
+        subject="company, about, production precinct, screen industry, Australia"
         path="/company"
         date="2026-04-27"
       />

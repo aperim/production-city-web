@@ -64,7 +64,7 @@ function FacilityScreenSoundStagesContent() {
       <DublinCoreMeta
         title="Screen Sound Stages — Production City"
         description="Production City Screen Sound Stages — purpose-built LED-volume and traditional screen stages for film and television production."
-        subject="screen sound stages, LED volume, film production, television production, Queensland, Australia"
+        subject="screen sound stages, LED volume, film production, television production, Australia"
         path="/facilities/screen-sound-stages"
         date="2026-04-27"
       />

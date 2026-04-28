@@ -64,7 +64,7 @@ function FacilityBroadcastTheatreContent() {
       <DublinCoreMeta
         title="Broadcast Theatre — Production City"
         description="Production City Broadcast Theatre — large-format, acoustically designed venue for live events, screen productions, and hybrid stage-screen presentations."
-        subject="broadcast theatre, live events, screen productions, stage, Queensland, Australia"
+        subject="broadcast theatre, live events, screen productions, stage, Australia"
         path="/facilities/broadcast-theatre"
         date="2026-04-27"
       />

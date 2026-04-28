@@ -113,8 +113,8 @@ function HomePageContent() {
       <HomeStructuredData />
       <DublinCoreMeta
         title="Production City — Integrated Screen & Stage Campus"
-        description="Australia's first purpose-built integrated screen and stage production campus in Queensland, combining sound stages, broadcast theatre, studio offices, and shared infrastructure."
-        subject="film studio, screen production, stage production, Queensland, Australia, integrated campus"
+        description="Australia's first purpose-built integrated screen and stage production campus, combining sound stages, broadcast theatre, studio offices, and shared infrastructure."
+        subject="film studio, screen production, stage production, Australia, integrated campus"
         path="/"
         date="2026-04-27"
       />

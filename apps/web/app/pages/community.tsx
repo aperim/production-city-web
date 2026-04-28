@@ -60,7 +60,7 @@ function CommunityPageContent() {
       <DublinCoreMeta
         title="Community & Engagement — Production City"
         description="Production City's community engagement: education, sustainability, First Nations partnerships, and innovation programs on an integrated screen and stage campus."
-        subject="community, education, sustainability, First Nations, innovation, Queensland, Australia"
+        subject="community, education, sustainability, First Nations, innovation, Australia"
         path="/community"
         date="2026-04-27"
       />

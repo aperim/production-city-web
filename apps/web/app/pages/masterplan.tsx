@@ -102,7 +102,7 @@ function MasterplanPageContent() {
       <DublinCoreMeta
         title="Campus Masterplan — Production City"
         description="Explore the Production City campus masterplan: an integrated screen and stage precinct with sound stages, broadcast theatre, studio offices, and shared infrastructure."
-        subject="masterplan, campus, facilities, precinct, Queensland, Australia"
+        subject="masterplan, campus, facilities, precinct, Australia"
         type="InteractiveResource"
         path="/masterplan"
         date="2026-04-27"

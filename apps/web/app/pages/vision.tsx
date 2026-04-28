@@ -1,6 +1,6 @@
 /**
  * Vision & Global Network page — global vision, market position, stakeholders.
- * Hero with media, statement block, Sydney + Global sections,
+ * Hero with media, statement block, Australia + Global sections,
  * GlobalCampusMap, StakeholderGrid, split CTAs, forward-looking disclaimer.
  * All text from i18n.
  */
@@ -55,13 +55,13 @@ function VisionPageContent() {
     <LandingPageTemplate nav={nav} footer={footer}>
       <SimpleWebPageStructuredData
         name="Vision & Global Network — Production City"
-        description="Production City's global vision: a Queensland-anchored screen and stage campus networked with international co-production hubs and creative ecosystems."
+        description="Production City's global vision: an Australia-anchored screen and stage campus networked with international co-production hubs and creative ecosystems."
         path="/vision"
       />
       <DublinCoreMeta
         title="Vision & Global Network — Production City"
-        description="Production City's global vision: a Queensland-anchored screen and stage campus networked with international co-production hubs and creative ecosystems."
-        subject="vision, global network, co-production, screen industry, Queensland, Australia"
+        description="Production City's global vision: an Australia-anchored screen and stage campus networked with international co-production hubs and creative ecosystems."
+        subject="vision, global network, co-production, screen industry, Australia"
         path="/vision"
         date="2026-04-27"
       />
@@ -112,11 +112,11 @@ function VisionPageContent() {
       <ScrollRevealSection delay={100}>
       <section className="py-10 border-t border-border" aria-labelledby="australia-heading">
         <div className="grid grid-cols-1 gap-8 lg:grid-cols-2 lg:items-start">
-          {MEDIA["vision-queensland"] && (
+          {MEDIA["vision-australia"] && (
             <div className="overflow-hidden rounded-sm">
               <img
-                src={MEDIA["vision-queensland"].lightSrc}
-                alt={MEDIA["vision-queensland"].alt}
+                src={MEDIA["vision-australia"].lightSrc}
+                alt={MEDIA["vision-australia"].alt}
                 width={1920}
                 height={1080}
                 loading="lazy"

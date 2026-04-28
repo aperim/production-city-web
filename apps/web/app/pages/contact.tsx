@@ -105,7 +105,7 @@ function ContactPageContent() {
       <DublinCoreMeta
         title="Contact — Production City"
         description="Get in touch with Production City — enquiries for producers, investors, creatives, partners, education, employment, and general information."
-        subject="contact, enquiry, screen production, Queensland, Australia"
+        subject="contact, enquiry, screen production, Australia"
         type="InteractiveResource"
         path="/contact"
         date="2026-04-27"

@@ -63,7 +63,7 @@ function FacilityBroadcastControlRoomContent() {
       <DublinCoreMeta
         title="Broadcast Control Room — Production City"
         description="Production City Broadcast Control Room — a purpose-built nerve centre for live broadcast, remote production, and multi-signal management."
-        subject="broadcast control room, live broadcast, remote production, Queensland, Australia"
+        subject="broadcast control room, live broadcast, remote production, Australia"
         path="/facilities/broadcast-control-room"
         date="2026-04-27"
       />

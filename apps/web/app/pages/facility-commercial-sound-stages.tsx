@@ -64,7 +64,7 @@ function FacilityCommercialSoundStagesContent() {
       <DublinCoreMeta
         title="Commercial Sound Stages — Production City"
         description="Production City Commercial Sound Stages — flexible, column-free sound stages for commercial photography, advertising, and branded content."
-        subject="commercial sound stages, film studio, advertising, branded content, Queensland, Australia"
+        subject="commercial sound stages, film studio, advertising, branded content, Australia"
         path="/facilities/commercial-sound-stages"
         date="2026-04-27"
       />

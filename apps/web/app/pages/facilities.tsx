@@ -121,7 +121,7 @@ function FacilitiesPageContent() {
       <DublinCoreMeta
         title="Facilities — Production City"
         description="Production City facilities: commercial sound stages, screen sound stages, broadcast theatre, and broadcast control room — all on one integrated campus."
-        subject="film studio facilities, sound stages, broadcast theatre, screen production, Queensland"
+        subject="film studio facilities, sound stages, broadcast theatre, screen production"
         type="Collection"
         path="/facilities"
         date="2026-04-27"

@@ -16,7 +16,7 @@ export const FINANCE_SAMPLE_DATA = {
       { id: '1', reference: 'INV-2026-001', description: 'Sound Stage 3 rental — Project Aurora', amount: '$45,000', status: 'Paid', dueDate: '2026-03-15' },
       { id: '2', reference: 'INV-2026-002', description: 'LED Volume setup — Harbour Nights', amount: '$28,500', status: 'Pending', dueDate: '2026-03-30' },
       { id: '3', reference: 'PO-2026-014', description: 'Lighting equipment hire', amount: '$12,200', status: 'Approved', dueDate: '2026-04-01' },
-      { id: '4', reference: 'INV-2026-003', description: 'Post-production services — Queensland Stories', amount: '$67,800', status: 'Overdue', dueDate: '2026-03-01' },
+      { id: '4', reference: 'INV-2026-003', description: 'Post-production services — Australian Stories', amount: '$67,800', status: 'Overdue', dueDate: '2026-03-01' },
       { id: '5', reference: 'BUD-2026-Q2', description: 'Q2 2026 operating budget', amount: '$1,250,000', status: 'Draft', dueDate: '2026-04-15' },
     ],
   },

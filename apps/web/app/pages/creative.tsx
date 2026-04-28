@@ -59,7 +59,7 @@ function CreativePageContent() {
       <DublinCoreMeta
         title="Creative Ecosystem — Production City"
         description="Production City's integrated creative ecosystem: 17 disciplines, purpose-built facilities, and a collaborative campus designed for screen and stage productions."
-        subject="creative, film, stage production, disciplines, campus, Queensland, Australia"
+        subject="creative, film, stage production, disciplines, campus, Australia"
         path="/creative"
         date="2026-04-27"
       />

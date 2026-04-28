@@ -51,7 +51,7 @@ function CompanyApproachPageContent() {
       <DublinCoreMeta
         title="Approach — Production City"
         description="Production City's operating model and approach: vertically integrated screen and stage production, IP strategy, and campus investment thesis."
-        subject="operating model, investment, screen production, stage production, IP strategy, Queensland"
+        subject="operating model, investment, screen production, stage production, IP strategy"
         path="/company/approach"
         date="2026-04-27"
       />

@@ -56,7 +56,7 @@ function ServicesPageContent() {
       <DublinCoreMeta
         title="Services — Production City"
         description="Production City services for screen and stage productions: production, post-production, broadcast, live event, and studio services."
-        subject="production services, film services, stage services, broadcast, post-production, Queensland"
+        subject="production services, film services, stage services, broadcast, post-production"
         path="/services"
         date="2026-04-27"
       />

@@ -28,7 +28,7 @@ export const PEOPLE_SAMPLE_DATA = {
     ],
     cards: [
       { id: 'c1', laneId: 'assigned', title: 'Jane Smith', subtitle: 'Project Aurora' },
-      { id: 'c2', laneId: 'assigned', title: 'Bob Johnson', subtitle: 'Queensland Stories' },
+      { id: 'c2', laneId: 'assigned', title: 'Bob Johnson', subtitle: 'Australian Stories' },
       { id: 'c3', laneId: 'assigned', title: 'Maria Chen', subtitle: 'Reef Runners' },
       { id: 'c4', laneId: 'on-leave', title: 'Tom Williams', subtitle: 'Returns Apr 1' },
       { id: 'c5', laneId: 'available', title: 'Sarah Lee', subtitle: 'VFX Supervisor' },

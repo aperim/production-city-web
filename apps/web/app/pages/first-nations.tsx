@@ -72,7 +72,7 @@ function FirstNationsPageContent() {
       <DublinCoreMeta
         title="First Nations — Production City"
         description="Production City's approach to First Nations engagement: respectful partnerships, on-Country protocols, and meaningful participation in screen and stage production."
-        subject="First Nations, Indigenous, Aboriginal, Torres Strait Islander, screen production, Queensland"
+        subject="First Nations, Indigenous, Aboriginal, Torres Strait Islander, screen production"
         path="/first-nations"
         date="2026-04-27"
       />

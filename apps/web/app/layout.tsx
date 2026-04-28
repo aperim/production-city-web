@@ -129,8 +129,8 @@ export default async function RootLayout({
               url: "https://production.city",
               logo: { "@type": "ImageObject", url: "https://production.city/logo.svg" },
               description:
-                "Production City is a purpose-built integrated screen and stage campus in Queensland, Australia — combining sound stages, broadcast theatre, studio offices, and shared infrastructure under one operator.",
-              address: { "@type": "PostalAddress", addressCountry: "AU", addressRegion: "Queensland" },
+                "Production City is a purpose-built integrated screen and stage campus in Australia — combining sound stages, broadcast theatre, studio offices, and shared infrastructure under one operator.",
+              address: { "@type": "PostalAddress", addressCountry: "AU" },
               contactPoint: [
                 {
                   "@type": "ContactPoint",

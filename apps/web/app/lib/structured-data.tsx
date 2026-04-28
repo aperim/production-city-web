@@ -47,11 +47,10 @@ export function organizationSchema() {
       url: `${SITE_URL}/logo.svg`,
     },
     description:
-      "Production City is a purpose-built integrated screen and stage campus in Queensland, Australia — combining sound stages, broadcast theatre, studio offices, and shared infrastructure under one operator.",
+      "Production City is a purpose-built integrated screen and stage campus in Australia — combining sound stages, broadcast theatre, studio offices, and shared infrastructure under one operator.",
     address: {
       "@type": "PostalAddress",
       addressCountry: "AU",
-      addressRegion: "Queensland",
     },
     contactPoint: [
       {
@@ -141,7 +140,7 @@ export function HomeStructuredData() {
         schema={webPageSchema({
           name: "Production City — Integrated Screen & Stage Campus",
           description:
-            "Purpose-built integrated screen and stage campus in Queensland, combining sound stages, broadcast theatre, studio offices, and shared infrastructure.",
+            "Purpose-built integrated screen and stage campus in Australia, combining sound stages, broadcast theatre, studio offices, and shared infrastructure.",
           url,
           locale,
         })}
@@ -308,7 +307,6 @@ export function FacilityStructuredData({
           address: {
             "@type": "PostalAddress",
             addressCountry: "AU",
-            addressRegion: "Queensland",
           },
           parentOrganization: { "@id": `${SITE_URL}/#organization` },
         },
