@@ -282,6 +282,9 @@ describe("landing page component-specific content", () => {
     expect(content).toContain("Engagement");
   });
 
+  // Inline Acknowledgement of Country removed from contact page (PRO-500) — shared footer renders it on every page
+
+
   it("Contact page supports URL category param", () => {
     const content = readFileSync(resolve(APP_ROOT, "pages/contact.tsx"), "utf-8");
     expect(content).toContain("category");

@@ -118,6 +118,9 @@ describe("Home page — Facilities preview section", () => {
   });
 });
 
+// Services section removed (PRO-500): dead-end list with no CTA to /services.
+
+
 describe("Home page — First Nations section", () => {
   it("has First Nations approach section via t()", () => {
     const src = readHome();
@@ -125,10 +128,11 @@ describe("Home page — First Nations section", () => {
     expect(src).toContain("home.firstNations.heading");
   });
 
-  it("has First Nations prose via t()", () => {
+  it("has First Nations pull-quote and commitment link via t()", () => {
     const src = readHome();
     expect(src).toContain("home.firstNations.prose");
-    expect(src).toContain("home.firstNations.proseMatthew");
+    expect(src).toContain("home.firstNations.readCommitment");
+    expect(src).toContain("/first-nations");
   });
 
   it("links to /first-nations page", () => {
@@ -144,6 +148,9 @@ describe("Home page — Pull quote section", () => {
     expect(src).toContain("home.firstSite.quoteHighlight");
   });
 });
+
+// Network section removed (PRO-500): hidden /network page content embedded in home.
+
 
 describe("Home page — Audience routing section", () => {
   it("has audience routing section via t()", () => {
@@ -177,6 +184,9 @@ describe("Home page — Chorus section", () => {
     expect(readHome()).toContain("home.chorus.text");
   });
 });
+
+// Acknowledgement of Country removed from home main (PRO-500): shared footer renders it on every page.
+
 
 describe("Home page — EOI section", () => {
   it("includes EOISection component", () => {

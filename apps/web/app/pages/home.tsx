@@ -75,7 +75,7 @@ function HomePageContent() {
 
   const audiences = [
     { num: "I", title: t("home.audience.cards.producers.title"), text: t("home.audience.cards.producers.text"), href: `${prefix}/contact?category=producer` },
-    { num: "II", title: t("home.audience.cards.government.title"), text: t("home.audience.cards.government.text"), href: `${prefix}/contact?category=partner` },
+    { num: "II", title: t("home.audience.cards.government.title"), text: t("home.audience.cards.government.text"), href: `${prefix}/contact?category=government` },
     { num: "III", title: t("home.audience.cards.investors.title"), text: t("home.audience.cards.investors.text"), href: `${prefix}/contact?category=investor` },
     { num: "IV", title: t("home.audience.cards.techPartners.title"), text: t("home.audience.cards.techPartners.text"), href: `${prefix}/contact?category=partner` },
   ];
@@ -410,36 +410,25 @@ function HomePageContent() {
         </section>
       </ScrollRevealSection>
 
-      {/* ═══════════ SECTION 3 — FIRST NATIONS ═══════════ */}
+      {/* ═══════════ SECTION 4 — FIRST NATIONS ═══════════ */}
       <ScrollRevealSection delay={100}>
         <section className="bg-(--pc-color-neutral-50) px-(--pc-spacing-6) py-[clamp(56px,8vw,128px)] text-(--pc-color-neutral-900)" aria-labelledby="first-nations-heading">
           <div className="mx-auto max-w-[1720px]">
-            <div className="mb-12 border-t border-(--pc-color-neutral-300) pt-8">
+            <div className="mb-8 border-t border-(--pc-color-neutral-300) pt-8">
               <div className="mb-3 font-mono text-[11px] uppercase tracking-[0.18em] text-(--pc-color-neutral-500)">
                 {t("home.firstNations.sectionLabel")}
               </div>
-              <h2 id="first-nations-heading" className="m-0 font-serif text-[clamp(32px,4vw,56px)] font-normal leading-[1.05] tracking-[-0.01em]">
-                {t("home.firstNations.heading")}
-              </h2>
             </div>
-
-            <div className="grid grid-cols-1 gap-8 lg:grid-cols-12">
-              <blockquote className="m-0 font-serif text-[clamp(22px,2.5vw,34px)] font-normal leading-[1.3] tracking-[-0.01em] lg:col-span-8">
-                <p>{t("home.firstNations.prose")}</p>
-                <footer className="mt-6 font-sans text-sm text-(--pc-color-neutral-600) not-italic">
-                  {t("home.firstNations.proseMatthew")}
-                </footer>
-              </blockquote>
-
-              <div className="flex items-end lg:col-start-11 lg:col-span-2">
-                <a
-                  href={`${prefix}/first-nations`}
-                  className="inline-flex items-center gap-2 border border-(--pc-color-neutral-400) px-5 py-2.5 font-sans text-sm font-medium text-(--pc-color-neutral-700) no-underline transition-opacity duration-200 hover:opacity-65"
-                >
-                  {t("home.firstNations.sectionLabel")} <span aria-hidden="true">→</span>
-                </a>
-              </div>
-            </div>
+            <blockquote className="m-0 font-serif text-[clamp(24px,3vw,40px)] font-normal leading-[1.2] tracking-[-0.01em] max-w-[36ch]">
+              <h2 id="first-nations-heading" className="sr-only">{t("home.firstNations.heading")}</h2>
+              {t("home.firstNations.prose")}
+            </blockquote>
+            <a
+              href={`${prefix}/first-nations`}
+              className="mt-8 inline-flex items-center gap-2 font-sans text-sm text-(--pc-color-neutral-600) no-underline transition-opacity duration-200 hover:opacity-65"
+            >
+              {t("home.firstNations.readCommitment")} <span aria-hidden="true">→</span>
+            </a>
           </div>
         </section>
       </ScrollRevealSection>
@@ -464,7 +453,7 @@ function HomePageContent() {
         </section>
       </ScrollRevealSection>
 
-      {/* ═══════════ SECTION 4 — AUDIENCE ROUTING ═══════════ */}
+      {/* ═══════════ SECTION 7 — AUDIENCE ROUTING ═══════════ */}
       <ScrollRevealSection delay={100}>
         <section className="bg-(--pc-color-neutral-50) px-(--pc-spacing-6) py-[clamp(56px,8vw,128px)] text-(--pc-color-neutral-900)" aria-labelledby="audience-heading">
           <div className="mx-auto max-w-[1720px]">

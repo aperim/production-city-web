@@ -18,11 +18,11 @@ test.describe("Home page content", () => {
     await expect(page.locator("#eoi-section")).toBeVisible();
   });
 
-  test("displays Acknowledgement of Country", async ({ page }) => {
+  test("Acknowledgement of Country renders in footer", async ({ page }) => {
     await page.goto("/");
-    // Scoped to main to avoid matching footer duplicate
+    // Section removed from home main — rendered once by the shared footer
     await expect(
-      page.getByRole("main").getByText(/Traditional Owners/i),
+      page.locator("footer").getByText(/Traditional Owners/i),
     ).toBeVisible();
   });
 });
@@ -165,11 +165,11 @@ test.describe("Contact page content", () => {
     await expect(page.locator('a[href="tel:+16502156253"]')).toBeVisible();
   });
 
-  test("displays Acknowledgement of Country", async ({ page }) => {
+  test("Acknowledgement of Country renders in footer", async ({ page }) => {
     await page.goto("/contact");
-    // Scoped to main to avoid footer duplicate
+    // Section removed from contact main — rendered once by the shared footer
     await expect(
-      page.getByRole("main").getByText(/Traditional Owners/i),
+      page.locator("footer").getByText(/Traditional Owners/i),
     ).toBeVisible();
   });
 
