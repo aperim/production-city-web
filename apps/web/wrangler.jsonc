@@ -23,7 +23,9 @@
   "env": {
     "preview": {
       "name": "holding-web-preview",
-      // HUBSPOT_PORTAL_ID must be set via `wrangler secret put HUBSPOT_PORTAL_ID --env preview`
+      "vars": {
+        "HUBSPOT_PORTAL_ID": "443097706"
+      },
       "d1_databases": [
         {
           "binding": "DB",
@@ -35,8 +37,10 @@
     },
     "staging": {
       "name": "holding-web-staging",
-      // HUBSPOT_PORTAL_ID must be set via `wrangler secret put HUBSPOT_PORTAL_ID --env staging`
       // Issue PRO-165: Route staging.production.city/* to this Worker (requires DNS CNAME — see PRO-165)
+      "vars": {
+        "HUBSPOT_PORTAL_ID": "443097706"
+      },
       "routes": [
         { "pattern": "staging.production.city/*", "zone_name": "production.city" }
       ],
@@ -51,8 +55,10 @@
     },
     "production": {
       "name": "holding-web-production",
-      // HUBSPOT_PORTAL_ID must be set via `wrangler secret put HUBSPOT_PORTAL_ID --env production`
       // Issue #97: Route canonical domain and www (www redirects to canonical in the Worker)
+      "vars": {
+        "HUBSPOT_PORTAL_ID": "443097706"
+      },
       "routes": [
         { "pattern": "production.city/*", "zone_name": "production.city" },
         { "pattern": "www.production.city/*", "zone_name": "production.city" }
