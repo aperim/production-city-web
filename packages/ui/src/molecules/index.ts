@@ -178,3 +178,11 @@ export { SectionHead } from "./SectionHead/SectionHead";
 export type { SectionHeadProps } from "./SectionHead/SectionHead";
 export { PullQuote } from "./PullQuote/PullQuote";
 export type { PullQuoteProps } from "./PullQuote/PullQuote";
+
+// Issue #516: Position Paper — New Storybook Components
+export { CaseStudyCard } from "./CaseStudyCard/CaseStudyCard";
+export type { CaseStudyCardProps, CaseStudyQuote, CaseStudyStat } from "./CaseStudyCard/CaseStudyCard";
+export { ComparisonGrid } from "./ComparisonGrid/ComparisonGrid";
+export type { ComparisonGridProps, ComparisonRow } from "./ComparisonGrid/ComparisonGrid";
+export { FailureModeCard } from "./FailureModeCard/FailureModeCard";
+export type { FailureModeCardProps, FailureModeItem } from "./FailureModeCard/FailureModeCard";
