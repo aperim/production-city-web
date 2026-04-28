@@ -22,6 +22,7 @@
 import { createHash } from "node:crypto";
 import { readdir, readFile } from "node:fs/promises";
 import { join, relative, resolve } from "node:path";
+import { pathToFileURL } from "node:url";
 
 const REPO_ROOT = resolve(new URL(".", import.meta.url).pathname, "..");
 const DIST_DIR = process.argv[2]
@@ -69,6 +70,20 @@ function sha256Hash(content: string): string {
 
 // ── CSP extraction from worker source ────────────────────────────────────────
 
+async function extractFromBuildCspModule(): Promise<{ src: string; sourceFile: string } | null> {
+  const cspModulePath = join(REPO_ROOT, "apps/web/worker/csp.ts");
+  try {
+    const mod = await import(pathToFileURL(cspModulePath).href);
+    if (typeof mod.buildCsp !== "function") return null;
+    const prodCsp = mod.buildCsp("production.city") as string;
+    const scriptSrcMatch = prodCsp.match(/script-src\s+([^;]+)/);
+    if (!scriptSrcMatch) return null;
+    return { src: scriptSrcMatch[1]!.trim(), sourceFile: cspModulePath };
+  } catch {
+    return null;
+  }
+}
+
 /**
  * Extracts the production script-src value from buildCsp() in the worker.
  *
@@ -79,6 +94,9 @@ function sha256Hash(content: string): string {
  * (buildCsp in index.ts) and the extracted module (csp.ts).
  */
 async function extractProductionScriptSrc(): Promise<{ src: string; sourceFile: string } | null> {
+  const moduleResult = await extractFromBuildCspModule();
+  if (moduleResult) return moduleResult;
+
   for (const candidate of WORKER_CANDIDATE_PATHS) {
     let content: string;
     try {

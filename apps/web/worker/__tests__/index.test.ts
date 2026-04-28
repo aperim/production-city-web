@@ -317,3 +317,42 @@ describe("CSP headers — inline script allowlist (PRO-412 hotfix)", () => {
     expect(computedHash).toBe(THEME_SCRIPT_HASH);
   });
 });
+
+describe("CSP headers — HubSpot tracking (PRO-423)", () => {
+  it("production script-src includes all HubSpot script origins", () => {
+    const csp = buildCsp("production.city");
+    const scriptSrc = csp.split(";").find((d: string) => d.trim().startsWith("script-src"));
+    expect(scriptSrc).toContain("https://js.hs-scripts.com");
+    expect(scriptSrc).toContain("https://js.hsforms.net");
+    expect(scriptSrc).toContain("https://js.hscollectedforms.net");
+    expect(scriptSrc).toContain("https://js.usemessages.com");
+  });
+
+  it("production connect-src includes HubSpot tracking origins", () => {
+    const csp = buildCsp("production.city");
+    const connectSrc = csp.split(";").find((d: string) => d.trim().startsWith("connect-src"));
+    expect(connectSrc).toContain("https://track.hubspot.com");
+    expect(connectSrc).toContain("https://forms.hubspot.com");
+    expect(connectSrc).toContain("https://api.hubapi.com");
+  });
+
+  it("production img-src includes HubSpot pixel origins", () => {
+    const csp = buildCsp("production.city");
+    const imgSrc = csp.split(";").find((d: string) => d.trim().startsWith("img-src"));
+    expect(imgSrc).toContain("https://track.hubspot.com");
+    expect(imgSrc).toContain("https://forms.hubspot.com");
+  });
+
+  it("production frame-src includes HubSpot app origin", () => {
+    const csp = buildCsp("production.city");
+    const frameSrc = csp.split(";").find((d: string) => d.trim().startsWith("frame-src"));
+    expect(frameSrc).toContain("https://app.hubspot.com");
+  });
+
+  it("dev CSP also includes HubSpot origins", () => {
+    const csp = buildCsp("localhost");
+    expect(csp).toContain("https://js.hs-scripts.com");
+    expect(csp).toContain("https://track.hubspot.com");
+    expect(csp).toContain("https://app.hubspot.com");
+  });
+});

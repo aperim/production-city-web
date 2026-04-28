@@ -24,6 +24,12 @@ import {
 import { handleLegacyRedirect } from "./legacy-redirects.js";
 import { buildCsp } from "./csp.js";
 
+/** Cloudflare Worker environment bindings for apps/web. */
+interface Env {
+  /** HubSpot portal ID — set as a secret in preview/staging/production. Empty in dev to disable tracking. */
+  HUBSPOT_PORTAL_ID?: string;
+}
+
 /** Canonical production hostname. */
 const CANONICAL_HOST = "production.city";
 
@@ -92,7 +98,7 @@ function applySecurityHeaders(response: Response, hostname: string, pathname?: s
 }
 
 export default {
-  async fetch(request: Request, env: unknown, ctx: ExecutionContext): Promise<Response> {
+  async fetch(request: Request, env: Env, ctx: ExecutionContext): Promise<Response> {
     const url = new URL(request.url);
 
     // 1. www → canonical redirect (Issue #97).
@@ -123,6 +129,7 @@ export default {
     headers.delete("X-Locale");
     headers.delete("X-Path");
     headers.delete("X-Query");
+    headers.delete("X-HubSpot-Portal-Id");
 
     // 4. Parse locale prefix.
     const parsed = parseLocalePrefix(url.pathname);
@@ -267,10 +274,14 @@ export default {
       }
     }
 
-    // 6. Set X-Locale, X-Path, and X-Query headers on forwarded request.
+    // 6. Set trusted internal headers on forwarded request.
     headers.set("X-Locale", locale);
     headers.set("X-Path", forwardPath);
     headers.set("X-Query", url.search);
+    const hubspotPortalId = env.HUBSPOT_PORTAL_ID ?? "";
+    if (hubspotPortalId) {
+      headers.set("X-HubSpot-Portal-Id", hubspotPortalId);
+    }
 
     // Build the forwarded request with the stripped path (no locale prefix).
     const forwardUrl = new URL(forwardPath + url.search, url.origin);
@@ -310,4 +321,4 @@ export default {
 
     return newResponse;
   },
-} satisfies ExportedHandler;
+} satisfies ExportedHandler<Env>;

@@ -14,10 +14,16 @@
     }
   ],
 
+  // Dev vars — set empty so the HubSpot script is a no-op locally
+  "vars": {
+    "HUBSPOT_PORTAL_ID": ""
+  },
+
   // Multi-environment configuration
   "env": {
     "preview": {
       "name": "holding-web-preview",
+      // HUBSPOT_PORTAL_ID must be set via `wrangler secret put HUBSPOT_PORTAL_ID --env preview`
       "d1_databases": [
         {
           "binding": "DB",
@@ -29,6 +35,7 @@
     },
     "staging": {
       "name": "holding-web-staging",
+      // HUBSPOT_PORTAL_ID must be set via `wrangler secret put HUBSPOT_PORTAL_ID --env staging`
       // Issue PRO-165: Route staging.production.city/* to this Worker (requires DNS CNAME — see PRO-165)
       "routes": [
         { "pattern": "staging.production.city/*", "zone_name": "production.city" }
@@ -44,6 +51,7 @@
     },
     "production": {
       "name": "holding-web-production",
+      // HUBSPOT_PORTAL_ID must be set via `wrangler secret put HUBSPOT_PORTAL_ID --env production`
       // Issue #97: Route canonical domain and www (www redirects to canonical in the Worker)
       "routes": [
         { "pattern": "production.city/*", "zone_name": "production.city" },

@@ -45,6 +45,9 @@ export default async function RootLayout({
   const rawPath = headersList.get("X-Path") ?? "/";
   const currentPath = validatePath(rawPath) ? rawPath : "/";
   const queryString = headersList.get("X-Query") ?? "";
+  // Numeric HubSpot portal IDs only — guards against unexpected header values.
+  const rawPortalId = headersList.get("X-HubSpot-Portal-Id") ?? "";
+  const hubspotPortalId = /^\d+$/.test(rawPortalId) ? rawPortalId : "";
 
   const hreflangLinks = buildHreflangLinks(currentPath, CANONICAL_HOST);
   const canonicalUrl = buildCanonicalUrl(currentPath, locale, CANONICAL_HOST, queryString);
@@ -106,6 +109,14 @@ export default async function RootLayout({
             __html: `(function(){try{var t=localStorage.getItem('pc-theme');if(t==='dark')document.documentElement.classList.add('dark')}catch(e){}})()`,
           }}
         />
+        {hubspotPortalId && (
+          <script
+            id="hs-script-loader"
+            async
+            defer
+            src={`//js.hs-scripts.com/${hubspotPortalId}.js`}
+          />
+        )}
         {/* Organization + WebSite — global structured data, static content, no user input */}
         <script
           type="application/ld+json"
