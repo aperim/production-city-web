@@ -126,11 +126,11 @@ function HomePageContent() {
           <div
             className="absolute inset-0"
             style={{
-              background: "linear-gradient(to top, rgba(0,0,0,0.92) 0%, rgba(0,0,0,0.55) 50%, rgba(0,0,0,0.35) 100%)",
+              background: "linear-gradient(to top, rgba(0,0,0,0.78) 0%, rgba(0,0,0,0.35) 40%, rgba(0,0,0,0.12) 100%)",
             }}
           />
         </div>
-        <div className="mx-auto w-full max-w-[1720px]">
+        <div className="relative z-10 mx-auto w-full max-w-[1720px]">
           <div className="mb-6 flex items-center gap-2 font-mono text-[11px] uppercase tracking-[0.18em] text-(--pc-color-neutral-400)">
             <span className="inline-block h-2 w-2 rounded-full bg-(--pc-color-secondary-500)" aria-hidden="true" />
             <span>Production City™</span>
@@ -162,7 +162,7 @@ function HomePageContent() {
           </div>
         </div>
 
-        <div className="mx-auto mt-12 flex w-full max-w-[1720px] items-center justify-between font-mono text-[10px] uppercase tracking-[0.14em] text-(--pc-color-neutral-500)">
+        <div className="relative z-10 mx-auto mt-12 flex w-full max-w-[1720px] items-center justify-between font-mono text-[10px] uppercase tracking-[0.14em] text-(--pc-color-neutral-500)">
           <span>{t("home.hero.homeLabel")}</span>
           <span>{t("home.hero.scrollIndicator")}</span>
         </div>
