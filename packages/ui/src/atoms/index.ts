@@ -112,3 +112,7 @@ export type { AttentionDotProps, AttentionPriority } from "./AttentionDot/Attent
 // Issue #91: Landing page component audit
 export { NetworkStatusChip } from "./NetworkStatusChip/NetworkStatusChip";
 export type { NetworkStatusChipProps, NetworkStatus } from "./NetworkStatusChip/NetworkStatusChip";
+
+// Issue #516: Position Paper — New Storybook Components
+export { StatCallout, statCalloutVariants } from "./StatCallout/StatCallout";
+export type { StatCalloutProps } from "./StatCallout/StatCallout";
