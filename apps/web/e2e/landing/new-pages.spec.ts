@@ -1,5 +1,5 @@
 /**
- * E2E smoke tests: 10 new landing pages from PRO-93.
+ * E2E smoke tests: public landing pages from PRO-93 (hidden pages excluded per PRO-486).
  * Validates each route returns 200, renders an h1, and displays its primary heading.
  */
 
@@ -12,19 +12,9 @@ const NEW_PAGES = [
     heading: /From script to delivery/i,
   },
   {
-    path: "/network",
-    name: "Network",
-    heading: /One origin/i,
-  },
-  {
     path: "/company",
     name: "Company",
     heading: /A first site, not a branch/i,
-  },
-  {
-    path: "/company/approach",
-    name: "Company — Approach",
-    heading: /Built together/i,
   },
   {
     path: "/first-nations",
@@ -87,12 +77,22 @@ test.describe("New landing pages — navigation and footer", () => {
   }
 });
 
-test.describe("Hidden pages — redirects (PRO-261)", () => {
-  test("/company/team redirects to /company", async ({ page }) => {
-    const response = await page.goto("/company/team");
-    expect(response).not.toBeNull();
-    expect(response!.status()).toBe(200);
-    expect(page.url()).toContain("/company");
-    expect(page.url()).not.toContain("/company/team");
-  });
+test.describe("Hidden pages — redirects to home (PRO-486)", () => {
+  const HIDDEN_PATHS = [
+    "/company/team",
+    "/vision",
+    "/network",
+    "/community",
+    "/company/approach",
+    "/creative",
+  ] as const;
+
+  for (const hiddenPath of HIDDEN_PATHS) {
+    test(`${hiddenPath} redirects to home`, async ({ page }) => {
+      const response = await page.goto(hiddenPath);
+      expect(response).not.toBeNull();
+      expect(response!.status()).toBe(200);
+      expect(page.url()).toMatch(/\/$/);
+    });
+  }
 });

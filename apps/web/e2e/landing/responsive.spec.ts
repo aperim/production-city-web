@@ -73,7 +73,7 @@ test.describe("Responsive — RTL layout at 375px (Arabic)", () => {
   const RTL_PATHS = [
     { path: "/ar/", name: "Arabic Home" },
     { path: "/ar/facilities", name: "Arabic Facilities" },
-    { path: "/ar/community", name: "Arabic Community" },
+    { path: "/ar/faq", name: "Arabic FAQ" },
   ] as const;
 
   for (const lp of RTL_PATHS) {

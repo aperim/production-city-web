@@ -36,8 +36,8 @@ test.describe("Landing page navigation", () => {
 
     // Check key nav links exist
     await expect(nav.getByRole("link", { name: /facilities/i })).toBeVisible();
-    await expect(nav.getByRole("link", { name: /creative/i })).toBeVisible();
-    await expect(nav.getByRole("link", { name: /vision/i })).toBeVisible();
+    await expect(nav.getByRole("link", { name: /services/i })).toBeVisible();
+    await expect(nav.getByRole("link", { name: /company/i })).toBeVisible();
   });
 
   test("navigation between pages works", async ({ page }) => {

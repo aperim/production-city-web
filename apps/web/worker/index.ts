@@ -22,6 +22,7 @@ import {
   sanitizeInvalidLocale,
 } from "./locale-middleware.js";
 import { handleLegacyRedirect } from "./legacy-redirects.js";
+import { handleHiddenPageRedirect } from "./hidden-page-redirects.js";
 import { buildCsp } from "./csp.js";
 
 /** Cloudflare Worker environment bindings for apps/web. */
@@ -260,19 +261,10 @@ export default {
       }
     }
 
-    // 5. Hidden page redirects — temporarily redirect pages with incomplete content (PRO-261).
-    if (forwardPath === "/company/team" || forwardPath === "/company/team/") {
-      const target = locale === "en" ? "/company" : `/${locale}/company`;
-      try {
-        const redirectUrl = buildRedirectUrl(target, canonicalOrigin);
-        return applySecurityHeaders(
-          new Response(null, { status: 302, headers: { Location: redirectUrl, "Cache-Control": "no-cache" } }),
-          url.hostname,
-        );
-      } catch {
-        return applySecurityHeaders(Response.redirect(canonicalOrigin + "/", 302), url.hostname);
-      }
-    }
+    // 5. Hidden-page redirects (PRO-486): redirect to home for pages hidden from nav/sitemap.
+    // Supersedes the narrow PRO-261 /company/team redirect.
+    const hiddenRedirect = handleHiddenPageRedirect(forwardPath, url);
+    if (hiddenRedirect) return applySecurityHeaders(hiddenRedirect, url.hostname);
 
     // 6. Set trusted internal headers on forwarded request.
     headers.set("X-Locale", locale);

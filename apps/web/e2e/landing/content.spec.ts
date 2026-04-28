@@ -35,46 +35,6 @@ test.describe("Facilities page content", () => {
   });
 });
 
-test.describe("Creative page content", () => {
-  test("displays ecosystem and services", async ({ page }) => {
-    await page.goto("/creative");
-    await expect(page.locator("h1")).toBeVisible();
-  });
-});
-
-test.describe("Vision page content", () => {
-  test("displays vision heading and mission", async ({ page }) => {
-    await page.goto("/vision");
-    await expect(page.locator("h1")).toBeVisible();
-  });
-
-  test("displays forward-looking disclaimer", async ({ page }) => {
-    await page.goto("/vision");
-    await expect(
-      page.getByText(/forward-looking statements/i),
-    ).toBeVisible();
-  });
-});
-
-test.describe("Community page content", () => {
-  test("displays community heading", async ({ page }) => {
-    await page.goto("/community");
-    await expect(page.locator("h1")).toBeVisible();
-  });
-
-  test("displays education and sustainability sections", async ({ page }) => {
-    await page.goto("/community");
-    await expect(page.getByText(/Education/i).first()).toBeVisible();
-    await expect(page.getByText(/Sustainability/i).first()).toBeVisible();
-  });
-
-  test("displays forward-looking disclaimer", async ({ page }) => {
-    await page.goto("/community");
-    await expect(
-      page.getByText(/forward-looking statements/i),
-    ).toBeVisible();
-  });
-});
 
 test.describe("FAQ page content", () => {
   test("displays FAQ heading", async ({ page }) => {

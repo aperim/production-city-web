@@ -30,18 +30,25 @@ test.describe("sitemap", () => {
     expect(body).toContain('hreflang="x-default"');
   });
 
-  test("sitemap contains entries for all pages", async ({ page }) => {
+  test("sitemap contains entries for all public pages", async ({ page }) => {
     const response = await page.goto("/sitemap.xml");
     const body = await response?.text();
     expect(body).toBeDefined();
 
-    // Check that key pages are present
+    // Check that visible pages are present
     expect(body).toContain("/facilities");
-    expect(body).toContain("/creative");
-    expect(body).toContain("/vision");
-    expect(body).toContain("/community");
+    expect(body).toContain("/services");
+    expect(body).toContain("/company");
     expect(body).toContain("/faq");
     expect(body).toContain("/contact");
+
+    // Hidden pages must not appear in sitemap (PRO-486)
+    expect(body).not.toContain("/creative");
+    expect(body).not.toContain("/vision");
+    expect(body).not.toContain("/network");
+    expect(body).not.toContain("/community");
+    expect(body).not.toContain("/company/approach");
+    expect(body).not.toContain("/company/team");
   });
 
   test("representative sample: homepage URLs for all locales are present (Finding #25)", async ({ page }) => {
@@ -59,12 +66,12 @@ test.describe("sitemap", () => {
     }
   });
 
-  test("representative sample: all pages present for one non-English locale (Finding #25)", async ({ page }) => {
+  test("representative sample: all public pages present for one non-English locale (Finding #25)", async ({ page }) => {
     const response = await page.goto("/sitemap.xml");
     const body = await response?.text();
     expect(body).toBeDefined();
 
-    const pages = ["/facilities", "/creative", "/vision", "/community", "/faq", "/contact"];
+    const pages = ["/facilities", "/services", "/company", "/faq", "/contact"];
     for (const pagePath of pages) {
       expect(body).toContain(`https://production.city/zh${pagePath}</loc>`);
     }

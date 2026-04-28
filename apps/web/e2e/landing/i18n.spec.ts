@@ -15,7 +15,7 @@ import { test, expect } from "@playwright/test";
 
 const SUPPORTED_LOCALES = ["en", "zh", "hi", "es", "ar", "fr", "bn", "pt", "ru", "ja"] as const;
 
-const PAGES = ["/", "/facilities", "/creative", "/vision", "/community", "/faq", "/contact"] as const;
+const PAGES = ["/", "/facilities", "/faq", "/contact"] as const;
 
 /**
  * Build the locale-prefixed URL. English has no prefix.
@@ -285,9 +285,7 @@ test.describe("i18n — full locale rendering verification", () => {
 
 const NEW_PAGES_PATHS = [
   "/services",
-  "/network",
   "/company",
-  "/company/approach",
   "/first-nations",
   "/facilities/broadcast-control-room",
   "/facilities/broadcast-theatre",
