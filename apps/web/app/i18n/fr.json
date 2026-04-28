@@ -858,7 +858,7 @@
       "heading": "Qu'est-ce que Production City ?",
       "claim1": "Fusionne tradition et innovation pour la narration sur écran, sur scène et expérientielle.",
       "claim2": "Offre des plateaux de tournage ultramodernes, un théâtre de diffusion unique, des régies et des services de production intégrés.",
-      "claim3": "Prévoit de créer un réseau mondial de campus interconnectés, à partir du Queensland.",
+      "claim3": "Construction d'un réseau mondial de campus, en commençant par l'Australie.",
       "claim4": "Conçu pour réduire les risques liés à l'adoption de nouvelles technologies en les ancrant dans des pratiques éprouvées."
     },
     "facilitiesPreview": {
@@ -872,7 +872,7 @@
     },
     "visionTeaser": {
       "heading": "Une vision mondiale",
-      "description": "Production City prévoit de créer un réseau mondial de campus interconnectés, à partir du Queensland, Australie, s'étendant à Singapour, Hawaï, l'Europe et les États-Unis.",
+      "description": "L'Australie est le premier campus. L'Europe, l'Asie-Pacifique, l'Afrique et l'Amérique du Nord suivent — un seul opérateur, une seule pile technologique, une seule marque.",
       "viewAll": "Découvrir notre vision"
     },
     "acknowledgement": {
@@ -896,7 +896,7 @@
     "hero": {
       "heading": "Nous faisons des histoires.",
       "subtitle": "Un campus de studios verticalement intégré. Studios son, volume LED, théâtre de diffusion et la suite de services complète — construits ensemble, en un seul endroit.",
-      "locations": "Sydney · Suisse · Singapour · Afrique",
+      "locations": "Australie · Europe · Asie-Pacifique · Afrique",
       "ctaFacilities": "Voir les installations",
       "ctaEoi": "Exprimer son intérêt",
       "homeLabel": "01 · HOME",
@@ -994,7 +994,7 @@
     },
     "firstSite": {
       "sectionLabel": "05 — AVANTAGE DU PREMIER SITE",
-      "quote": "Le premier Production City est en construction à Sydney. Les standards techniques et architecturaux sont définis ici, puis répliqués ailleurs. L'emploi en tête de réseau, la recherche et les fonctions exécutives sont basés ici.",
+      "quote": "Le premier Production City est en cours de construction en Australie. Les normes techniques et architecturales y sont définies, puis exportées vers chaque campus ultérieur.",
       "quoteHighlight": "Accueillir le premier site, ce n'est pas accueillir une succursale — c'est accueillir l'origine."
     },
     "network": {
@@ -1006,15 +1006,15 @@
       "regions": {
         "australia": {
           "region": "Australie",
-          "status": "Sydney — candidat en tête"
+          "status": "Australie — campus principal"
         },
         "europe": {
           "region": "Europe",
-          "status": "Suisse — actuellement en tête"
+          "status": "Europe — région en évaluation"
         },
         "asiaPacific": {
           "region": "Asie-Pacifique",
-          "status": "Singapour préféré · alternatives à l'étude"
+          "status": "Asie-Pacifique — région préférée en révision"
         },
         "africa": {
           "region": "Afrique",
@@ -1408,7 +1408,7 @@
   "vision": {
     "meta": {
       "title": "Vision et réseau mondial — Production City",
-      "description": "Découvrez la vision de Production City pour un réseau mondial de campus de production interconnectés, à partir de Sydney, Australie."
+      "description": "Découvrez la vision de Production City : un réseau mondial de campus de production interconnectés, commençant en Australie et s'étendant à l'Europe, à l'Asie-Pacifique, à l'Afrique et à l'Amérique du Nord."
     },
     "mission": {
       "heading": "Vision et mission",
@@ -1429,22 +1429,19 @@
     },
     "global": {
       "heading": "Réseau mondial de campus",
-      "operatingModel": "Campus interconnectés sous une marque unifiée, avec des standards de service cohérents et un soutien aux productions simultanées multi-sites.",
-      "sydney": "Sydney, Australie",
-      "sydneyStatus": "Site de lancement (prévu)",
-      "sydneyDesc": "Le premier campus de Production City, débutant à Sydney.",
-      "singapore": "Singapour",
-      "singaporeStatus": "Expansion future (prévue)",
-      "singaporeDesc": "Expansion prévue pour servir le marché Asie-Pacifique.",
-      "hawaii": "Hawaï",
-      "hawaiiStatus": "Expansion future (prévue)",
-      "hawaiiDesc": "Expansion prévue reliant le Pacifique.",
+      "operatingModel": "Chaque campus fonctionne sous la même marque, la même pile technologique et le même modèle de propriété. Un déploiement progressif depuis l'Australie vers le reste du monde.",
       "europe": "Europe",
       "europeStatus": "Expansion future (prévue)",
-      "europeDesc": "Expansion prévue pour servir le marché européen.",
-      "usa": "États-Unis continental",
-      "usaStatus": "Expansion future (prévue)",
-      "usaDesc": "Expansion prévue pour servir le marché nord-américain."
+      "europeDesc": "Évaluation en cours. Site retenu pour sa stabilité réglementaire, sa main-d'œuvre multilingue et sa proximité avec les industries créatives.",
+      "australia": "Australie",
+      "australiaStatus": "Lieu de lancement (prévu)",
+      "australiaDesc": "Premier campus. Les normes techniques, la R&D et les fonctions exécutives y sont définies.",
+      "asiaPacific": "Asie-Pacifique",
+      "asiaPacificStatus": "Expansion future (prévue)",
+      "asiaPacificDesc": "Région préférée d'Asie-Pacifique. Évaluation en cours.",
+      "northAmerica": "Amérique du Nord",
+      "northAmericaStatus": "Expansion future (prévue)",
+      "northAmericaDesc": "Région pont du Pacifique. Connecte les écosystèmes de production d'Asie-Pacifique et d'Amérique du Nord."
     },
     "market": {
       "heading": "Position sur le marché",
@@ -1607,7 +1604,7 @@
     "a1": "Production City prévoit d'offrir des plateaux de tournage, des plateaux commerciaux, une régie de diffusion, un théâtre de diffusion multifonctionnel et des espaces de R&D et collaborations éducatives.",
     "c1": "Installations",
     "q2": "Les services de Production City seront-ils disponibles à l'international ?",
-    "a2": "Oui. Production City prévoit de s'étendre à Singapour, Hawaï, en Europe et aux États-Unis continentaux avec des installations et services cohérents.",
+    "a2": "Oui. Production City prévoit de s'étendre à l'Asie-Pacifique, l'Amérique du Nord, l'Europe et l'Afrique avec des normes techniques cohérentes et une entité opérationnelle unique pour tous les campus.",
     "c2": "International",
     "q3": "Quels services de production virtuelle Production City fournira-t-il ?",
     "a3": "Production City offrira des services complets de la prévisualisation à la post-production, plus modélisation 3D, CGI, capture de mouvement et VR/AR.",
@@ -1896,23 +1893,23 @@
     },
     "eyebrow": "Réseau",
     "heading": "Cinq continents. Un seul standard.",
-    "lead": "Australie, Europe, Asie-Pacifique, Afrique et Amérique du Nord. Un seul opérateur, un seul standard, reproduit campus par campus.",
+    "lead": "L'Australie est en tête. L'Europe suit. L'Asie-Pacifique et l'Amérique du Nord étendent le réseau — un seul opérateur, un seul campus, de manière séquentielle.",
     "mapLabel": "Réseau mondial de campus",
     "australiaName": "Australie",
-    "australiaStatus": "Campus prévu",
-    "australiaDesc": "Campus en planification active.",
+    "australiaStatus": "Principal",
+    "australiaDesc": "Premier campus. Les normes techniques, la R&D et les fonctions exécutives sont basées ici.",
     "europeName": "Europe",
-    "europeStatus": "Campus prévu",
-    "europeDesc": "Campus en planification active.",
+    "europeStatus": "Leader européen",
+    "europeDesc": "Candidat leader actuel pour le campus européen. Évaluation en cours.",
     "asiaPacificName": "Asie-Pacifique",
-    "asiaPacificStatus": "Campus prévu",
-    "asiaPacificDesc": "Campus en planification active.",
+    "asiaPacificStatus": "Région préférée",
+    "asiaPacificDesc": "Région préférée pour le campus Asie-Pacifique. Évaluation en cours.",
     "africaName": "Afrique",
     "africaStatus": "Campus prévu",
     "africaDesc": "Campus en planification active.",
     "northAmericaName": "Amérique du Nord",
-    "northAmericaStatus": "Campus prévu",
-    "northAmericaDesc": "Campus en planification active.",
+    "northAmericaStatus": "Suit",
+    "northAmericaDesc": "Les sites d'Amérique du Nord seront engagés une fois les premiers campus internationaux établis.",
     "approachHeading": "Un seul réseau.",
     "approachDesc": "Chaque campus est construit selon les mêmes spécifications techniques, sous la même marque, le même stack technologique et le même modèle de propriété. Les locataires et partenaires traitent avec une seule entité, quel que soit le campus.",
     "operatorHeading": "Un seul opérateur.",

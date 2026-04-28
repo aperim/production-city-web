@@ -858,7 +858,7 @@
       "heading": "什么是 Production City？",
       "claim1": "融合传统与创新，服务于影视、舞台及沉浸式叙事。",
       "claim2": "提供最先进的摄影棚、首创的广播剧院、控制室和集成制作服务。",
-      "claim3": "计划从昆士兰开始，建立全球互联校区网络。",
+      "claim3": "正在建设全球校区网络，从澳大利亚起步。",
       "claim4": "通过将新制作技术植根于成熟实践来降低采用风险。"
     },
     "facilitiesPreview": {
@@ -872,7 +872,7 @@
     },
     "visionTeaser": {
       "heading": "全球愿景",
-      "description": "Production City 计划建立全球互联校区网络，从澳大利亚昆士兰开始，延伸至新加坡、夏威夷、欧洲和美国本土。",
+      "description": "澳大利亚是第一个校区。欧洲、亚太地区、非洲和北美洲相继跟进——同一运营商，同一技术架构，同一品牌。",
       "viewAll": "了解我们的愿景"
     },
     "acknowledgement": {
@@ -896,7 +896,7 @@
     "hero": {
       "heading": "我们创造故事。",
       "subtitle": "垂直整合的制片园区。摄影棚、LED体积屏、广播剧院与完整服务体系——一体化建造，集中于一地。",
-      "locations": "悉尼 · 瑞士 · 新加坡 · 非洲",
+      "locations": "澳大利亚 · 欧洲 · 亚太地区 · 非洲",
       "ctaFacilities": "查看设施",
       "ctaEoi": "登记意向",
       "homeLabel": "01 · HOME",
@@ -994,7 +994,7 @@
     },
     "firstSite": {
       "sectionLabel": "05 — 首站优势",
-      "quote": "第一座 Production City 正在悉尼建设。技术与建筑标准在此确立，然后复制至其他地方。网络的核心就业岗位、研究职能与管理职能均设于此处。",
+      "quote": "首个制作城市正在澳大利亚建设中。技术和建筑标准在此确立，随后推广至每个后续校区。",
       "quoteHighlight": "承接首站，不是承接分支——而是承接原点。"
     },
     "network": {
@@ -1006,15 +1006,15 @@
       "regions": {
         "australia": {
           "region": "澳大利亚",
-          "status": "悉尼——首选候选地"
+          "status": "澳大利亚——主校区"
         },
         "europe": {
           "region": "欧洲",
-          "status": "瑞士——目前领先"
+          "status": "欧洲——评估中的地区"
         },
         "asiaPacific": {
           "region": "亚太地区",
-          "status": "新加坡优选 · 其他选项评估中"
+          "status": "亚太地区——正在审查的首选地区"
         },
         "africa": {
           "region": "非洲",
@@ -1408,7 +1408,7 @@
   "vision": {
     "meta": {
       "title": "愿景与全球网络 — Production City",
-      "description": "了解 Production City 的愿景——从澳大利亚昆士兰开始的全球互联制作校区网络。"
+      "description": "探索制作城市的愿景——一个从澳大利亚起步并扩展至欧洲、亚太地区、非洲和北美洲的互联制作校区全球网络。"
     },
     "mission": {
       "heading": "愿景与使命",
@@ -1429,22 +1429,19 @@
     },
     "global": {
       "heading": "全球校区网络",
-      "operatingModel": "在统一的 Production City 品牌下的互联校区，旨在提供一致的服务标准并支持同步多地点制作。",
-      "sydney": "悉尼，澳大利亚",
-      "sydneyStatus": "启动地点（规划中）",
-      "sydneyDesc": "第一个 Production City 校区，从悉尼开始。",
-      "singapore": "新加坡",
-      "singaporeStatus": "未来扩展（规划中）",
-      "singaporeDesc": "为亚太市场规划的扩展。",
-      "hawaii": "夏威夷",
-      "hawaiiStatus": "未来扩展（规划中）",
-      "hawaiiDesc": "连接太平洋的规划扩展。",
+      "operatingModel": "每个校区采用相同的品牌、相同的技术架构和相同的所有权模式。从澳大利亚逐步向全球推进。",
       "europe": "欧洲",
       "europeStatus": "未来扩展（规划中）",
-      "europeDesc": "为欧洲市场规划的扩展。",
-      "usa": "美国本土",
-      "usaStatus": "未来扩展（规划中）",
-      "usaDesc": "为北美市场规划的扩展。"
+      "europeDesc": "评估进行中。地点因监管稳定性、多语言劳动力及与创意产业的邻近性而入选。",
+      "australia": "澳大利亚",
+      "australiaStatus": "启动地点（规划中）",
+      "australiaDesc": "首个校区。技术标准、研发和行政职能均设于此。",
+      "asiaPacific": "亚太地区",
+      "asiaPacificStatus": "未来扩展（规划中）",
+      "asiaPacificDesc": "首选的亚太地区。评估正在进行中。",
+      "northAmerica": "北美洲",
+      "northAmericaStatus": "未来扩展（规划中）",
+      "northAmericaDesc": "太平洋桥梁区域。连接亚太和北美制作生态系统。"
     },
     "market": {
       "heading": "市场定位",
@@ -1607,7 +1604,7 @@
     "a1": "Production City 计划提供影视摄影棚、商业摄影棚、广播控制室、多功能广播剧院以及研发和教育合作空间。",
     "c1": "设施",
     "q2": "Production City 的服务是否适用于国际地点？",
-    "a2": "是的。Production City 计划扩展至新加坡、夏威夷、欧洲和美国本土，在所有校区提供一致的设施和服务。",
+    "a2": "是的。制作城市计划扩展至亚太地区、北美洲、欧洲和非洲，在所有校区保持一致的技术标准和统一的运营实体。",
     "c2": "全球",
     "q3": "Production City 将提供哪些虚拟制作服务？",
     "a3": "Production City 将提供从前期可视化和概念到后期剪辑和特效的全面服务，包括 3D 建模、CGI、动作捕捉和 VR/AR。",
@@ -1896,7 +1893,7 @@
     },
     "eyebrow": "全球网络",
     "heading": "五大洲。一个标准。",
-    "lead": "澳大利亚、欧洲、亚太地区、非洲和北美洲。一个运营商、一个标准，逐个园区复制。",
+    "lead": "澳大利亚为首。欧洲紧随其后。亚太地区和北美洲扩展网络——同一运营商，同一校区，按序推进。",
     "mapLabel": "全球园区网络",
     "africaName": "非洲",
     "africaStatus": "园区已规划",
@@ -1906,17 +1903,17 @@
     "cta": "开始对话。",
     "ctaLink": "Contact",
     "australiaName": "澳大利亚",
-    "australiaStatus": "园区已规划",
-    "australiaDesc": "园区正在积极规划中。",
+    "australiaStatus": "主校区",
+    "australiaDesc": "首个校区。技术标准、研发和行政职能均设于此。",
     "europeName": "欧洲",
-    "europeStatus": "园区已规划",
-    "europeDesc": "园区正在积极规划中。",
+    "europeStatus": "欧洲优选",
+    "europeDesc": "欧洲校区目前的领先候选地点。评估正在进行中。",
     "asiaPacificName": "亚太地区",
-    "asiaPacificStatus": "园区已规划",
-    "asiaPacificDesc": "园区正在积极规划中。",
+    "asiaPacificStatus": "首选地区",
+    "asiaPacificDesc": "亚太校区的首选地区。评估正在进行中。",
     "northAmericaName": "北美洲",
-    "northAmericaStatus": "园区已规划",
-    "northAmericaDesc": "园区正在积极规划中。",
+    "northAmericaStatus": "后续推进",
+    "northAmericaDesc": "首批国际校区建立后，北美洲校区将正式落地。",
     "approachHeading": "一个网络。",
     "approachDesc": "每个园区按照相同的技术规格、相同的品牌、相同的技术栈和相同的所有权模式建设。租户和合作伙伴无论在哪个园区，都只需与一个实体打交道。"
   },
