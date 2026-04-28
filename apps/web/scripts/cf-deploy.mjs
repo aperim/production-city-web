@@ -25,6 +25,9 @@ const ENV_CONFIG = {
     routes: [
       { pattern: 'staging.production.city/*', zone_name: 'production.city' },
     ],
+    vars: {
+      HUBSPOT_PORTAL_ID: '443097706',
+    },
   },
   production: {
     name: 'holding-web-production',
@@ -33,6 +36,9 @@ const ENV_CONFIG = {
       { pattern: 'production.city/*', zone_name: 'production.city' },
       { pattern: 'www.production.city/*', zone_name: 'production.city' },
     ],
+    vars: {
+      HUBSPOT_PORTAL_ID: '443097706',
+    },
   },
 };
 
@@ -42,7 +48,7 @@ if (!Object.hasOwn(ENV_CONFIG, env ?? '')) {
   process.exit(1);
 }
 
-const { name, d1DatabaseId, routes } = ENV_CONFIG[env];
+const { name, d1DatabaseId, routes, vars: envVars = {} } = ENV_CONFIG[env];
 const appDir = resolve(__dirname, '..');
 const wranglerJsonPath = resolve(appDir, 'dist', 'server', 'wrangler.json');
 
@@ -73,8 +79,12 @@ if (routes.length > 0) {
 } else {
   delete config.routes;
 }
+if (Object.keys(envVars).length > 0) {
+  config.vars = { ...config.vars, ...envVars };
+}
 writeFileSync(wranglerJsonPath, JSON.stringify(config, null, 2) + '\n');
-console.log(`[cf-deploy] Patched: name=${name}, d1_databases[DB].database_id=${d1DatabaseId}, routes=${routes.length}`);
+const varsStr = Object.entries(envVars).map(([k, v]) => `${k}=${v}`).join(', ');
+console.log(`[cf-deploy] Patched: name=${name}, d1_databases[DB].database_id=${d1DatabaseId}, routes=${routes.length}${varsStr ? `, vars: ${varsStr}` : ''}`);
 
 // Step 3: Deploy using the patched config (no --env flag — config is already environment-specific)
 console.log(`[cf-deploy] Deploying ${name}…`);
