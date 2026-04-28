@@ -7,6 +7,9 @@ main = "src/index.ts"
 [vars]
 # HUBSPOT_ACCESS_TOKEN must be set via `wrangler secret put HUBSPOT_ACCESS_TOKEN --env <env>`
 HUBSPOT_ACCESS_TOKEN = ""
+# HubSpot form tracking (empty in dev — set via wrangler secret put in production)
+HUBSPOT_PORTAL_ID = ""
+HUBSPOT_FORM_GUID = ""
 
 # D1 database binding for cleanup operations
 [[d1_databases]]

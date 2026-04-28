@@ -4,8 +4,13 @@ import { validateQueueMessage } from "./validate.js";
 import { runAllCleanups } from "./cleanup.js";
 import { processDeliveryJob } from "./delivery-handler.js";
 import type { AnnouncementDeliveryPayload, DeliveryEnv } from "./delivery-handler.js";
-import { processHubspotContactSync } from "./hubspot-handler.js";
-import type { HubspotContactSyncPayload, HubspotSyncEnv } from "./hubspot-handler.js";
+import { processHubspotContactSync, processHubSpotFormSubmit } from "./hubspot-handler.js";
+import type {
+  HubspotContactSyncPayload,
+  HubspotSyncEnv,
+  HubSpotFormSubmitPayload,
+  HubSpotFormEnv,
+} from "./hubspot-handler.js";
 
 export type Env = {
   DB: D1Database;
@@ -188,6 +193,23 @@ export default {
             _env as unknown as HubspotSyncEnv,
             validation.data.payload as HubspotContactSyncPayload,
           );
+        } else if (validation.data.type === "hubspot_form_submit") {
+          const hubspotEnv = _env as HubSpotFormEnv;
+          const [{ PrismaClient: PC }, { PrismaD1: PD }] = await Promise.all([
+            import("@prisma/client"),
+            import("@prisma/adapter-d1"),
+          ]);
+          const adapter = new PD(hubspotEnv.DB);
+          const prisma = new PC({ adapter });
+          try {
+            await processHubSpotFormSubmit(
+              prisma,
+              hubspotEnv,
+              validation.data.payload as HubSpotFormSubmitPayload,
+            );
+          } finally {
+            await prisma.$disconnect().catch(() => {});
+          }
         }
         message.ack();
       } catch (err) {

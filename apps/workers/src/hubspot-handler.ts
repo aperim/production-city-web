@@ -1,3 +1,4 @@
+import type { PrismaClient } from "@prisma/client";
 import { buildGelfMessage, toGelfJson, Level } from "@productioncity/holding-logging";
 
 export interface HubspotSyncEnv {
@@ -16,6 +17,35 @@ export interface HubspotContactSyncPayload {
   locale: string;
   marketingOptIn: boolean;
   consentVersion: string;
+}
+
+export interface HubSpotFormSubmitPayload {
+  eoiId: string;
+  hutk?: string;
+  ipAddress?: string;
+}
+
+export interface HubSpotFormEnv {
+  DB: D1Database;
+  HUBSPOT_PORTAL_ID?: string;
+  HUBSPOT_FORM_GUID?: string;
+  [key: string]: unknown;
+}
+
+interface HubSpotField {
+  objectTypeId: string;
+  name: string;
+  value: string;
+}
+
+interface HubSpotSubmission {
+  fields: HubSpotField[];
+  context: {
+    hutk?: string;
+    ipAddress?: string;
+    pageUri?: string;
+    pageName?: string;
+  };
 }
 
 const HUBSPOT_API_BASE = "https://api.hubapi.com";
@@ -112,7 +142,6 @@ async function upsertContact(
   }
 
   if (createRes.status === 409) {
-    // Contact already exists — find by email and update
     const contactId = await findContactByEmail(accessToken, payload.email);
     await updateContact(accessToken, contactId, properties);
     return contactId;
@@ -148,12 +177,6 @@ async function recordGdprConsent(
   }
 }
 
-/**
- * Process a hubspot_contact_sync queue job.
- *
- * Upserts the EOI submitter as a HubSpot contact, then records GDPR consent.
- * Missing access token is acked without retry (config issue, not transient).
- */
 export async function processHubspotContactSync(
   env: HubspotSyncEnv,
   payload: HubspotContactSyncPayload,
@@ -174,7 +197,6 @@ export async function processHubspotContactSync(
 
   const contactId = await upsertContact(env.HUBSPOT_ACCESS_TOKEN, payload);
 
-  // GDPR consent is non-critical: log failure but don't retry the whole sync
   try {
     await recordGdprConsent(env.HUBSPOT_ACCESS_TOKEN, contactId, payload.consentVersion);
   } catch (err) {
@@ -204,4 +226,108 @@ export async function processHubspotContactSync(
   );
 
   return { processed: true };
+}
+
+/**
+ * Process a hubspot_form_submit queue job.
+ *
+ * Fetches EOI data from DB and submits to the HubSpot Forms API.
+ * Throws on API error so the queue consumer retries.
+ */
+export async function processHubSpotFormSubmit(
+  prisma: PrismaClient,
+  env: HubSpotFormEnv,
+  payload: HubSpotFormSubmitPayload,
+): Promise<{ submitted: boolean; reason?: string }> {
+  const portalId = env.HUBSPOT_PORTAL_ID;
+  const formGuid = env.HUBSPOT_FORM_GUID;
+
+  if (!portalId || !formGuid) {
+    return { submitted: false, reason: "not_configured" };
+  }
+
+  const eoi = await prisma.expressionOfInterest.findUnique({
+    where: { id: payload.eoiId },
+    select: {
+      id: true,
+      name: true,
+      email: true,
+      category: true,
+      message: true,
+      sourcePage: true,
+      utmSource: true,
+    },
+  });
+
+  if (!eoi) {
+    return { submitted: false, reason: "eoi_not_found" };
+  }
+
+  const { firstname, lastname } = splitName(eoi.name);
+  const fields: HubSpotField[] = [
+    { objectTypeId: "0-1", name: "email", value: eoi.email },
+    { objectTypeId: "0-1", name: "firstname", value: firstname },
+  ];
+
+  if (lastname) {
+    fields.push({ objectTypeId: "0-1", name: "lastname", value: lastname });
+  }
+
+  fields.push({ objectTypeId: "0-1", name: "eoi_category", value: eoi.category });
+
+  if (eoi.message) {
+    fields.push({ objectTypeId: "0-1", name: "message", value: eoi.message });
+  }
+
+  if (eoi.utmSource) {
+    fields.push({ objectTypeId: "0-1", name: "hs_analytics_source", value: eoi.utmSource });
+  }
+
+  const submission: HubSpotSubmission = {
+    fields,
+    context: {
+      ...(payload.hutk ? { hutk: payload.hutk } : {}),
+      ...(payload.ipAddress ? { ipAddress: payload.ipAddress } : {}),
+      ...(eoi.sourcePage ? { pageUri: eoi.sourcePage, pageName: "Production City" } : {}),
+    },
+  };
+
+  const url = `https://api.hsforms.com/submissions/v3/integration/submit/${portalId}/${formGuid}`;
+  const response = await fetch(url, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(submission),
+  });
+
+  if (!response.ok) {
+    const errorBody = await response.text().catch(() => "");
+    console.error(
+      toGelfJson(
+        buildGelfMessage("holding-workers", {
+          short_message: "hubspot.form.submit.error",
+          level: Level.ERROR,
+          service: "holding-workers",
+          extra: {
+            eoi_id: eoi.id,
+            status: response.status,
+            error: errorBody.slice(0, 200),
+          },
+        }),
+      ),
+    );
+    throw new Error(`HubSpot API error: ${response.status}`);
+  }
+
+  console.log(
+    toGelfJson(
+      buildGelfMessage("holding-workers", {
+        short_message: "hubspot.form.submit.ok",
+        level: Level.INFO,
+        service: "holding-workers",
+        extra: { eoi_id: eoi.id },
+      }),
+    ),
+  );
+
+  return { submitted: true };
 }

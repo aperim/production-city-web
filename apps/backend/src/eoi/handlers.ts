@@ -24,7 +24,7 @@ type Bindings = {
   DB: D1Database;
   ALLOWED_ORIGIN: string;
   POSTMARK_API_TOKEN: string;
-  JOBS_QUEUE: Queue;
+  JOBS_QUEUE?: Queue;
 };
 
 export const eoiApp = new OpenAPIHono<{ Bindings: Bindings }>();
@@ -298,6 +298,38 @@ eoiApp.openapi(submitEoiRoute, async (c) => {
           }),
         ),
       );
+    }
+
+    // Enqueue HubSpot form tracking (fire-and-forget — must not delay response)
+    if (c.env.JOBS_QUEUE) {
+      const cookieHeader = c.req.header("cookie") ?? "";
+      const hutkMatch = /(?:^|;\s*)hubspotutk=([^;]*)/.exec(cookieHeader);
+      const hutk = hutkMatch?.[1] || undefined;
+      const ipAddress = c.req.header("cf-connecting-ip") ?? undefined;
+
+      c.env.JOBS_QUEUE.send({
+        type: "hubspot_form_submit",
+        version: "1.0.0",
+        idempotencyKey: eoi.id,
+        correlationId: eoi.id,
+        payload: {
+          eoiId: eoi.id,
+          ...(hutk ? { hutk } : {}),
+          ...(ipAddress ? { ipAddress } : {}),
+        },
+      }).catch((err: unknown) => {
+        console.error(
+          toGelfJson(
+            buildGelfMessage("holding-backend", {
+              short_message: "eoi.hubspot.enqueue.failed",
+              level: Level.ERROR,
+              service: "holding-backend",
+              full_message: String(err),
+              extra: { eoi_id: eoi.id },
+            }),
+          ),
+        );
+      });
     }
 
     // Log structured event
