@@ -2024,6 +2024,16 @@
     "cta": "Contact the team.",
     "ctaLink": "Start a conversation"
   },
+  "globe": {
+    "label": {
+      "australia": "AUSTRALIA",
+      "asiaPacific": "ASIA PACIFIC",
+      "europe": "EUROPE",
+      "africa": "AFRICA",
+      "northAmerica": "N. AMERICA",
+      "oceania": "OCEANIA"
+    }
+  },
   "masterplan": {
     "meta": {
       "title": "Campus Masterplan — Production City",

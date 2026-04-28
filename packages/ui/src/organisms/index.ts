@@ -236,3 +236,7 @@ export type {
   Facility,
   MasterplanQuality,
 } from './MasterplanViewer/MasterplanViewer';
+
+// Issue PRO-427: GlobeHero — interactive globe background for the landing page hero
+export { GlobeHero } from './GlobeHero/GlobeHero';
+export type { GlobeHeroProps, GlobeHeroLabels } from './GlobeHero/GlobeHero';

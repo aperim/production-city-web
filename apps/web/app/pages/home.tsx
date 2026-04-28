@@ -13,6 +13,7 @@ import {
   AcknowledgementOfCountry,
   LandingPageTemplate,
   EOISection,
+  GlobeHero,
   ScrollRevealSection,
   SignalDiagram,
 } from "@productioncity/holding-ui";
@@ -46,6 +47,16 @@ function HomePageContent() {
   const footer = useLandingFooter();
   const prefix = locale === "en" ? "" : `/${locale}`;
   const eoiLabels = useEoiLabels();
+
+  const globeLabels = {
+    "australia-sydney": t("globe.label.australia"),
+    "asia-pacific-singapore": t("globe.label.asiaPacific"),
+    "europe-switzerland": t("globe.label.europe"),
+    "africa-cape-town": t("globe.label.africa"),
+    "north-america-toronto": t("globe.label.northAmerica"),
+    "north-america-los-angeles": t("globe.label.northAmerica"),
+    oceania: t("globe.label.oceania"),
+  };
   const eoiCategories = useEoiCategories();
   const handleEoiSubmit = useEoiSubmit();
 
@@ -109,26 +120,16 @@ function HomePageContent() {
       />
       {/* ═══════════ HERO ═══════════ */}
       <section className="relative flex min-h-dvh flex-col justify-end bg-(--pc-color-neutral-950) px-(--pc-spacing-6) pb-12 text-(--pc-color-neutral-100)" aria-labelledby="hero-heading">
-        {/* Hero background image */}
-        {MEDIA["home-hero"] && (
-          <div className="absolute inset-0 overflow-hidden" aria-hidden="true">
-            <img
-              src={MEDIA["home-hero"].lightSrc}
-              alt=""
-              width={1920}
-              height={1080}
-              loading="eager"
-              className="h-full w-full object-cover opacity-40"
-              style={{ objectPosition: "center 40%" }}
-            />
-            <div
-              className="absolute inset-0"
-              style={{
-                background: "linear-gradient(to top, rgba(0,0,0,0.92) 0%, rgba(0,0,0,0.55) 50%, rgba(0,0,0,0.35) 100%)",
-              }}
-            />
-          </div>
-        )}
+        {/* Globe hero background */}
+        <div className="absolute inset-0 overflow-hidden" aria-hidden="true">
+          <GlobeHero labels={globeLabels} className="h-full w-full" />
+          <div
+            className="absolute inset-0"
+            style={{
+              background: "linear-gradient(to top, rgba(0,0,0,0.92) 0%, rgba(0,0,0,0.55) 50%, rgba(0,0,0,0.35) 100%)",
+            }}
+          />
+        </div>
         <div className="mx-auto w-full max-w-[1720px]">
           <div className="mb-6 flex items-center gap-2 font-mono text-[11px] uppercase tracking-[0.18em] text-(--pc-color-neutral-400)">
             <span className="inline-block h-2 w-2 rounded-full bg-(--pc-color-secondary-500)" aria-hidden="true" />

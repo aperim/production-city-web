@@ -139,6 +139,9 @@ export * from "../../../../packages/ui/src/hooks";
 export { cn } from "../../../../packages/ui/src/lib/utils";
 export * from "../../../../packages/ui/src/lib/i18n-constants";
 export * from "../../../../packages/ui/src/lib/i18n-format";
+// Issue PRO-427: GlobeHero organism
+export { GlobeHero } from "../../../../packages/ui/src/organisms/GlobeHero/GlobeHero";
+export type { GlobeHeroProps, GlobeHeroLabels } from "../../../../packages/ui/src/organisms/GlobeHero/GlobeHero";
 // Issue #292: Announcement System Types
 export type {
   ContentBlockType,

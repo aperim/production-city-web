@@ -2085,5 +2085,15 @@
   },
   "brand": {
     "name": "Production City"
+  },
+  "globe": {
+    "label": {
+      "australia": "أستراليا",
+      "asiaPacific": "آسيا والمحيط الهادئ",
+      "europe": "أوروبا",
+      "africa": "أفريقيا",
+      "northAmerica": "أمريكا الشمالية",
+      "oceania": "أوقيانوسيا"
+    }
   }
 }
