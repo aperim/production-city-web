@@ -858,7 +858,7 @@
       "heading": "什么是 Production City？",
       "claim1": "融合传统与创新，服务于影视、舞台及沉浸式叙事。",
       "claim2": "提供最先进的摄影棚、首创的广播剧院、控制室和集成制作服务。",
-      "claim3": "在五大洲建设全球园区网络。",
+      "claim3": "计划从昆士兰开始，建立全球互联校区网络。",
       "claim4": "通过将新制作技术植根于成熟实践来降低采用风险。"
     },
     "facilitiesPreview": {
@@ -872,7 +872,7 @@
     },
     "visionTeaser": {
       "heading": "全球愿景",
-      "description": "五大洲。一个运营商、一个标准，逐个园区复制。",
+      "description": "Production City 计划建立全球互联校区网络，从澳大利亚昆士兰开始，延伸至新加坡、夏威夷、欧洲和美国本土。",
       "viewAll": "了解我们的愿景"
     },
     "acknowledgement": {
@@ -894,162 +894,163 @@
       "ctaLabel": "以三维方式探索园区 →"
     },
     "hero": {
-      "heading": "We make stories.",
-      "subtitle": "A vertically integrated studio campus. Sound stages, LED volume, a broadcast theatre, and the full service stack — built together, in one place.",
-      "locations": "Sydney · Switzerland · Singapore · Africa",
-      "ctaFacilities": "See the facilities",
-      "ctaEoi": "Register interest",
+      "heading": "我们创造故事。",
+      "subtitle": "垂直整合的制片园区。摄影棚、LED体积屏、广播剧院与完整服务体系——一体化建造，集中于一地。",
+      "locations": "悉尼 · 瑞士 · 新加坡 · 非洲",
+      "ctaFacilities": "查看设施",
+      "ctaEoi": "登记意向",
       "homeLabel": "01 · HOME",
       "scrollIndicator": "SCROLL FOR THE CAMPUS ↓"
     },
     "operatingModel": {
-      "sectionLabel": "01 — Operating model",
-      "heading": "One operator. One campus. Script to delivery.",
-      "body1": "Production City is not a stage with vendors bolted on. It is one operator providing the venue, the technology stack, and the full creative service stack under one brand. That reduces coordination risk for tenants and opens multiple revenue streams for the company.",
-      "body2": "The stages, the LED volume, the broadcast theatre, the control room, and the service teams were designed together. Not retrofitted.",
+      "sectionLabel": "01 — 运营模式",
+      "heading": "一个运营商。一个园区。从剧本到交付。",
+      "body1": "Production City 不是一个外挂供应商的摄影棚，而是由一个运营商在同一品牌下提供场地、技术体系与完整创意服务。这降低了租户的协调风险，并为公司开辟了多元收入来源。",
+      "body2": "摄影棚、LED体积屏、广播剧院、控制室与服务团队，是共同设计的，而非事后拼接。",
       "pillars": {
         "realtime": {
-          "title": "One IP · two formats",
-          "text": "Script, libretto, score, pre-vis and digital assets are authored once, then split into a screen lane and a stage lane that run in parallel rather than in sequence."
+          "title": "一套IP · 两种格式",
+          "text": "剧本、台词、乐谱、预可视化与数字资产一次创作完成，随即分流至影视线与舞台线，两者并行推进而非依次进行。"
         },
         "oneOperator": {
-          "title": "One operator · one campus",
-          "text": "Venue, stack and service teams under a single brand. Tenants sign one contract, coordinate with one counterparty, and draw on whichever combination of capabilities the work requires."
+          "title": "一个运营商 · 一个园区",
+          "text": "场地、技术体系与服务团队统一于一个品牌之下。租户签一份合同、与一个对接方协调，并按项目所需自由调用各类能力。"
         },
         "sharedPipeline": {
-          "title": "Shared pipeline, specialised finishes",
-          "text": "Design, build, costume, and digital assets are common. The screen lane takes them into photography, editorial, VFX and sound. The stage lane takes them into rehearsal, tech, opening and tour."
+          "title": "共享流程，专业收尾",
+          "text": "设计、建造、服装与数字资产共用。影视线将其引入摄制、剪辑、视效与声音；舞台线将其引入排练、技术、开幕与巡演。"
         },
         "closedLoop": {
-          "title": "Closed-loop canon",
-          "text": "Distribution and audience data feed back into the IP strategy. The next project inherits what the last one learned, across both formats, not just one."
+          "title": "闭环内容体系",
+          "text": "发行与受众数据反哺IP战略。下一个项目继承上一个项目在两种格式中积累的经验，而非仅限于其中一种。"
         }
       },
       "stats": {
-        "operator": "operator",
-        "lanes": "lanes, in parallel",
-        "stations": "stations from idea to audience",
-        "loop": "analytics → ideation"
+        "operator": "运营商",
+        "lanes": "并行线路",
+        "stations": "从创意到受众的环节",
+        "loop": "数据分析 → 创意构思"
       }
     },
     "facilitiesSection": {
-      "sectionLabel": "02 — Facilities",
-      "heading": "Built together. Not retrofitted.",
+      "sectionLabel": "02 — 设施",
+      "heading": "一体化建造，而非事后拼接。",
       "tiles": {
         "screenStages": {
-          "label": "A · SCREEN SOUND STAGES",
-          "heading": "Grand-scale screen work. Engineered for it.",
+          "label": "A · 影视摄音棚",
+          "heading": "大型影视制作。专为此而生。",
           "specs": "45 m × 45 m · 15 m to grid\nNRC 1.05 · NC 25\nFlat · Arc · Full-surround LED",
-          "linkLabel": "A · Screen sound stages"
+          "linkLabel": "A · 影视摄音棚"
         },
         "commercialStages": {
-          "label": "B · COMMERCIAL SOUND STAGES",
-          "heading": "Small footprint. Full specification.",
+          "label": "B · 商业摄音棚",
+          "heading": "小占地面积。完整技术规格。",
           "specs": "10 m × 10 m · 15 m to grid\nNRC 1.05 · NC 25\nWalk-in-ready LED volume",
-          "linkLabel": "B · Commercial stages"
+          "linkLabel": "B · 商业摄音棚"
         },
         "broadcastTheatre": {
-          "label": "C · BROADCAST THEATRE",
-          "heading": "A live theatre wired as a broadcast studio.",
+          "label": "C · 广播剧院",
+          "heading": "兼具现场剧院功能的广播制作场馆。",
           "specs": "450 theatre · 300 cabaret\n8 robotic camera positions\nAR/VR-ready",
-          "linkLabel": "C · Broadcast theatre"
+          "linkLabel": "C · 广播剧院"
         }
       },
       "controlRoom": {
-        "label": "D · BROADCAST CONTROL ROOM",
-        "heading": "The nerve centre.",
-        "prose": "Centralised production management. Live broadcast control. Capable of originating broadcast from any on-campus stage, the theatre, or external sports and event venues globally.",
+        "label": "D · 广播控制室",
+        "heading": "神经中枢。",
+        "prose": "集中式制作管理。直播信号控制。可从园区内任一摄音棚、剧院或全球外部体育与活动场馆发起广播。",
         "specs": "CENTRAL SYNCHRONISATION\nLIVE ORIGINATION · MULTI-PLATFORM\nBROADCAST FROM ANY STAGE",
-        "linkLabel": "D · Control room"
+        "linkLabel": "D · 控制室"
       }
     },
     "servicesSection": {
-      "sectionLabel": "03 — Services",
-      "heading": "Every discipline from script to delivery. On one campus.",
+      "sectionLabel": "03 — 服务",
+      "heading": "从剧本到交付，每个专业环节。集中于一个园区。",
       "services": {
-        "virtualProduction": "VIRTUAL PRODUCTION",
-        "setConstruction": "SET CONSTRUCTION",
-        "props": "PROPS",
-        "costume": "COSTUME",
-        "makeupProsthetics": "MAKEUP & PROSTHETICS",
-        "specialEffects": "SPECIAL EFFECTS",
-        "stuntsRigging": "STUNTS & RIGGING",
-        "motionCapture": "MOTION CAPTURE",
-        "audioMusic": "AUDIO & MUSIC",
-        "scriptScreenplay": "SCRIPT & SCREENPLAY",
-        "graphicDesign": "GRAPHIC DESIGN",
-        "animationMotion": "ANIMATION & MOTION",
-        "cgi": "3D & CGI",
-        "postProduction": "POST-PRODUCTION",
+        "virtualProduction": "虚拟制作",
+        "setConstruction": "场景搭建",
+        "props": "道具",
+        "costume": "服装",
+        "makeupProsthetics": "化妆与特效化妆",
+        "specialEffects": "特殊效果",
+        "stuntsRigging": "特技与吊威亚",
+        "motionCapture": "动作捕捉",
+        "audioMusic": "音频与音乐",
+        "scriptScreenplay": "剧本与编剧",
+        "graphicDesign": "平面设计",
+        "animationMotion": "动画与动态影像",
+        "cgi": "三维与CGI",
+        "postProduction": "后期制作",
         "arVr": "AR/VR",
-        "broadcastCoordination": "BROADCAST COORDINATION"
+        "broadcastCoordination": "广播协调"
       }
     },
     "firstNations": {
-      "sectionLabel": "04 — First Nations approach",
-      "heading": "Embedded, not added on.",
-      "prose": "Aboriginal and Torres Strait Islander ways of Knowing, Being, and Doing shape this company's governance, its intellectual property and data practice, its workforce, and the stories its facilities are built to serve.",
-      "proseMatthew": "Matthew Compton, our Chief Operating Officer, is a proud Wiradjuri man. His authority is substantive, not advisory."
+      "sectionLabel": "04 — First Nations 理念",
+      "heading": "内嵌其中，而非附加其上。",
+      "prose": "原住民及托雷斯海峡岛民的知识方式、存在方式与行动方式，深刻塑造了这家公司的治理架构、知识产权与数据实践、员工队伍，以及本设施所服务的故事。",
+      "proseMatthew": "我们的首席运营官 Matthew Compton 是一位自豪的 Wiradjuri 人。他的权威是实质性的，而非顾问性的。",
+      "matthewAlt": "Matthew Compton的肖像，Production City执行董事兼首席运营官，Wiradjuri人"
     },
     "firstSite": {
-      "sectionLabel": "05 — FIRST SITE ADVANTAGE",
-      "quote": "The first Production City is being built in Sydney. Technical and architectural standards are set here, then replicated elsewhere. Head-of-network employment, research, and executive functions are based here.",
-      "quoteHighlight": "Hosting the first site is not hosting a branch — it is hosting the origin."
+      "sectionLabel": "05 — 首站优势",
+      "quote": "第一座 Production City 正在悉尼建设。技术与建筑标准在此确立，然后复制至其他地方。网络的核心就业岗位、研究职能与管理职能均设于此处。",
+      "quoteHighlight": "承接首站，不是承接分支——而是承接原点。"
     },
     "network": {
-      "sectionLabel": "06 — The sequence",
-      "heading": "Sequenced. Not simultaneous.",
-      "tableCaption": "Global campus network status",
-      "tableHeaderRegion": "Region",
-      "tableHeaderStatus": "Status",
+      "sectionLabel": "06 — 序列",
+      "heading": "有序推进。而非同步启动。",
+      "tableCaption": "全球园区网络状态",
+      "tableHeaderRegion": "地区",
+      "tableHeaderStatus": "状态",
       "regions": {
         "australia": {
-          "region": "Australia",
-          "status": "Sydney — leading candidate"
+          "region": "澳大利亚",
+          "status": "悉尼——首选候选地"
         },
         "europe": {
-          "region": "Europe",
-          "status": "Switzerland — currently leading"
+          "region": "欧洲",
+          "status": "瑞士——目前领先"
         },
         "asiaPacific": {
-          "region": "Asia-Pacific",
-          "status": "Singapore preferred · alternatives under review"
+          "region": "亚太地区",
+          "status": "新加坡优选 · 其他选项评估中"
         },
         "africa": {
-          "region": "Africa",
-          "status": "Under assessment"
+          "region": "非洲",
+          "status": "评估中"
         },
         "unitedStates": {
-          "region": "United States",
-          "status": "Following the first international campuses"
+          "region": "美国",
+          "status": "待首批国际园区落地后推进"
         }
       }
     },
     "audience": {
-      "sectionLabel": "07 — Who we work with",
-      "heading": "Four doors in.",
+      "sectionLabel": "07 — 合作对象",
+      "heading": "四扇入口。",
       "enter": "Enter",
       "cards": {
         "producers": {
-          "title": "For producers and studios",
-          "text": "Book a stage, a volume, and a full service stack. One operator, one schedule, no vendor chain to manage."
+          "title": "面向制片人与制片公司",
+          "text": "预订摄音棚、LED体积屏与完整服务体系。一个运营商，一份档期，无需管理供应商链条。"
         },
         "government": {
-          "title": "For government",
-          "text": "The first campus of a global network. Direct jobs, screen-sector training, local procurement, and First Nations outcomes built into the operating model."
+          "title": "面向政府",
+          "text": "全球网络的首个园区。直接就业岗位、影视产业培训、本地采购以及First Nations成果，均内嵌于运营模式之中。"
         },
         "investors": {
-          "title": "For investors",
-          "text": "Revenue from facilities, services, and broadcast under one operator. Campuses open in sequence, each proven before the next is committed."
+          "title": "面向投资者",
+          "text": "设施、服务与广播收入统一于一个运营商旗下。园区按序开放，每座经过验证后再推进下一座。"
         },
         "techPartners": {
-          "title": "For technology partners",
-          "text": "Test and ship production technology inside a working campus. LED volume, real-time rendering, motion capture, and broadcast under live conditions."
+          "title": "面向技术合作伙伴",
+          "text": "在运营中的园区内测试并推广制作技术。LED体积屏、实时渲染、动作捕捉与广播，均在实际工作条件下运行。"
         }
       }
     },
     "chorus": {
-      "text": "We make stories"
+      "text": "我们创造故事"
     }
   },
   "facilities": {

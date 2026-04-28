@@ -858,7 +858,7 @@
       "heading": "ما هي Production City؟",
       "claim1": "تجمع بين التقليد والابتكار لرواية القصص عبر الشاشة والمسرح والتجارب الحية.",
       "claim2": "تقدم استوديوهات صوت حديثة، ومسرح بث من نوعه الأول، وغرف تحكم، وخدمات إنتاج متكاملة.",
-      "claim3": "بناء شبكة عالمية من الحُرم الجامعية عبر خمس قارات.",
+      "claim3": "تخطط لإنشاء شبكة عالمية من الحُرم الجامعية المترابطة، بدءاً من كوينزلاند.",
       "claim4": "مصممة لتقليل مخاطر تبني تقنيات الإنتاج الجديدة من خلال تأسيسها في الممارسات الراسخة."
     },
     "facilitiesPreview": {
@@ -872,7 +872,7 @@
     },
     "visionTeaser": {
       "heading": "رؤية عالمية",
-      "description": "خمس قارات. مشغّل واحد، معيار واحد، يُستنسخ حرماً بعد حرم.",
+      "description": "تخطط Production City لإنشاء شبكة عالمية من الحُرم المترابطة، بدءاً من كوينزلاند، أستراليا، وامتداداً إلى سنغافورة وهاواي وأوروبا والولايات المتحدة.",
       "viewAll": "تعرف على رؤيتنا"
     },
     "acknowledgement": {
@@ -894,162 +894,163 @@
       "ctaLabel": "استكشف الحرم ثلاثي الأبعاد →"
     },
     "hero": {
-      "heading": "We make stories.",
-      "subtitle": "A vertically integrated studio campus. Sound stages, LED volume, a broadcast theatre, and the full service stack — built together, in one place.",
-      "locations": "Sydney · Switzerland · Singapore · Africa",
-      "ctaFacilities": "See the facilities",
-      "ctaEoi": "Register interest",
+      "heading": "نصنع القصص.",
+      "subtitle": "حرم استوديو متكامل رأسياً. استوديوهات صوتية، وحجم LED، ومسرح للبث، ومجموعة الخدمات الكاملة — مبنية معاً، في مكان واحد.",
+      "locations": "سيدني · سويسرا · سنغافورة · أفريقيا",
+      "ctaFacilities": "اطّلع على المرافق",
+      "ctaEoi": "سجّل اهتمامك",
       "homeLabel": "01 · HOME",
-      "scrollIndicator": "SCROLL FOR THE CAMPUS ↓"
+      "scrollIndicator": "↓ SCROLL FOR THE CAMPUS"
     },
     "operatingModel": {
-      "sectionLabel": "01 — Operating model",
-      "heading": "One operator. One campus. Script to delivery.",
-      "body1": "Production City is not a stage with vendors bolted on. It is one operator providing the venue, the technology stack, and the full creative service stack under one brand. That reduces coordination risk for tenants and opens multiple revenue streams for the company.",
-      "body2": "The stages, the LED volume, the broadcast theatre, the control room, and the service teams were designed together. Not retrofitted.",
+      "sectionLabel": "01 — نموذج التشغيل",
+      "heading": "مشغّل واحد. حرم واحد. من النص إلى التسليم.",
+      "body1": "Production City ليست مجرد استوديو أُضيف إليه موردون. إنها مشغّل واحد يقدّم المكان والبنية التقنية وحزمة الخدمات الإبداعية الكاملة تحت علامة تجارية واحدة. يُقلّل ذلك مخاطر التنسيق للمستأجرين ويفتح مصادر إيرادات متعددة للشركة.",
+      "body2": "الاستوديوهات وحجم LED والمسرح الإذاعي وغرفة التحكم وفِرق الخدمة — صُمِّمت معاً. لم تُضَف لاحقاً.",
       "pillars": {
         "realtime": {
-          "title": "One IP · two formats",
-          "text": "Script, libretto, score, pre-vis and digital assets are authored once, then split into a screen lane and a stage lane that run in parallel rather than in sequence."
+          "title": "ملكية فكرية واحدة · صيغتان",
+          "text": "يُؤلَّف النص والليبريتو والبارتيتور والتصوّر المسبق والأصول الرقمية مرة واحدة، ثم تُقسَّم إلى مسار شاشة ومسار خشبة مسرح يسيران بالتوازي لا بالتسلسل."
         },
         "oneOperator": {
-          "title": "One operator · one campus",
-          "text": "Venue, stack and service teams under a single brand. Tenants sign one contract, coordinate with one counterparty, and draw on whichever combination of capabilities the work requires."
+          "title": "مشغّل واحد · حرم واحد",
+          "text": "المكان والبنية التقنية وفِرق الخدمة تحت علامة تجارية واحدة. يوقّع المستأجرون عقداً واحداً، ويتنسّقون مع طرف واحد، ويستفيدون من أي مزيج من القدرات يتطلّبه العمل."
         },
         "sharedPipeline": {
-          "title": "Shared pipeline, specialised finishes",
-          "text": "Design, build, costume, and digital assets are common. The screen lane takes them into photography, editorial, VFX and sound. The stage lane takes them into rehearsal, tech, opening and tour."
+          "title": "خط إنتاج مشترك، إنهاء متخصص",
+          "text": "التصميم والبناء والأزياء والأصول الرقمية مشتركة. يأخذها مسار الشاشة نحو التصوير والمونتاج والمؤثرات البصرية والصوت. يأخذها مسار المسرح نحو البروفات والجانب التقني والافتتاح والجولة."
         },
         "closedLoop": {
-          "title": "Closed-loop canon",
-          "text": "Distribution and audience data feed back into the IP strategy. The next project inherits what the last one learned, across both formats, not just one."
+          "title": "نظام حلقة مغلقة",
+          "text": "تُغذّي بيانات التوزيع والجمهور استراتيجية الملكية الفكرية. يرث المشروع التالي ما تعلّمه السابق عبر كلا الصيغتين، لا في صيغة واحدة فحسب."
         }
       },
       "stats": {
-        "operator": "operator",
-        "lanes": "lanes, in parallel",
-        "stations": "stations from idea to audience",
-        "loop": "analytics → ideation"
+        "operator": "مشغّل",
+        "lanes": "مسارات، بالتوازي",
+        "stations": "محطة من الفكرة إلى الجمهور",
+        "loop": "التحليلات ← الإبداع"
       }
     },
     "facilitiesSection": {
-      "sectionLabel": "02 — Facilities",
-      "heading": "Built together. Not retrofitted.",
+      "sectionLabel": "02 — المرافق",
+      "heading": "مبني معاً. لم يُجمَّع لاحقاً.",
       "tiles": {
         "screenStages": {
-          "label": "A · SCREEN SOUND STAGES",
-          "heading": "Grand-scale screen work. Engineered for it.",
+          "label": "A · استوديوهات الشاشة الصوتية",
+          "heading": "إنتاج شاشة بمقياس ضخم. مُصمَّم لهذا الغرض.",
           "specs": "45 m × 45 m · 15 m to grid\nNRC 1.05 · NC 25\nFlat · Arc · Full-surround LED",
-          "linkLabel": "A · Screen sound stages"
+          "linkLabel": "A · استوديوهات الشاشة الصوتية"
         },
         "commercialStages": {
-          "label": "B · COMMERCIAL SOUND STAGES",
-          "heading": "Small footprint. Full specification.",
+          "label": "B · الاستوديوهات التجارية الصوتية",
+          "heading": "مساحة صغيرة. مواصفات كاملة.",
           "specs": "10 m × 10 m · 15 m to grid\nNRC 1.05 · NC 25\nWalk-in-ready LED volume",
-          "linkLabel": "B · Commercial stages"
+          "linkLabel": "B · الاستوديوهات التجارية"
         },
         "broadcastTheatre": {
-          "label": "C · BROADCAST THEATRE",
-          "heading": "A live theatre wired as a broadcast studio.",
+          "label": "C · مسرح البث",
+          "heading": "مسرح حي مجهَّز كاستوديو بث.",
           "specs": "450 theatre · 300 cabaret\n8 robotic camera positions\nAR/VR-ready",
-          "linkLabel": "C · Broadcast theatre"
+          "linkLabel": "C · مسرح البث"
         }
       },
       "controlRoom": {
-        "label": "D · BROADCAST CONTROL ROOM",
-        "heading": "The nerve centre.",
-        "prose": "Centralised production management. Live broadcast control. Capable of originating broadcast from any on-campus stage, the theatre, or external sports and event venues globally.",
+        "label": "D · غرفة تحكم البث",
+        "heading": "المركز العصبي.",
+        "prose": "إدارة إنتاج مركزية. تحكم في البث المباشر. قادرة على بثّ الإشارة من أي استوديو داخل الحرم أو المسرح أو أماكن الرياضة والفعاليات الخارجية حول العالم.",
         "specs": "CENTRAL SYNCHRONISATION\nLIVE ORIGINATION · MULTI-PLATFORM\nBROADCAST FROM ANY STAGE",
-        "linkLabel": "D · Control room"
+        "linkLabel": "D · غرفة التحكم"
       }
     },
     "servicesSection": {
-      "sectionLabel": "03 — Services",
-      "heading": "Every discipline from script to delivery. On one campus.",
+      "sectionLabel": "03 — الخدمات",
+      "heading": "كل تخصص من النص إلى التسليم. في حرم واحد.",
       "services": {
-        "virtualProduction": "VIRTUAL PRODUCTION",
-        "setConstruction": "SET CONSTRUCTION",
-        "props": "PROPS",
-        "costume": "COSTUME",
-        "makeupProsthetics": "MAKEUP & PROSTHETICS",
-        "specialEffects": "SPECIAL EFFECTS",
-        "stuntsRigging": "STUNTS & RIGGING",
-        "motionCapture": "MOTION CAPTURE",
-        "audioMusic": "AUDIO & MUSIC",
-        "scriptScreenplay": "SCRIPT & SCREENPLAY",
-        "graphicDesign": "GRAPHIC DESIGN",
-        "animationMotion": "ANIMATION & MOTION",
-        "cgi": "3D & CGI",
-        "postProduction": "POST-PRODUCTION",
-        "arVr": "AR/VR",
-        "broadcastCoordination": "BROADCAST COORDINATION"
+        "virtualProduction": "الإنتاج الافتراضي",
+        "setConstruction": "بناء الديكور",
+        "props": "الإكسسوارات",
+        "costume": "الأزياء",
+        "makeupProsthetics": "المكياج والتعويضات",
+        "specialEffects": "المؤثرات الخاصة",
+        "stuntsRigging": "الحركات الخطرة والتعليق",
+        "motionCapture": "تتبّع الحركة",
+        "audioMusic": "الصوت والموسيقى",
+        "scriptScreenplay": "النص والسيناريو",
+        "graphicDesign": "التصميم الجرافيكي",
+        "animationMotion": "الرسوم المتحركة وموشن جرافيك",
+        "cgi": "ثلاثي الأبعاد والحوسبة الرسومية",
+        "postProduction": "ما بعد الإنتاج",
+        "arVr": "الواقع المعزز والافتراضي",
+        "broadcastCoordination": "تنسيق البث"
       }
     },
     "firstNations": {
-      "sectionLabel": "04 — First Nations approach",
-      "heading": "Embedded, not added on.",
-      "prose": "Aboriginal and Torres Strait Islander ways of Knowing, Being, and Doing shape this company's governance, its intellectual property and data practice, its workforce, and the stories its facilities are built to serve.",
-      "proseMatthew": "Matthew Compton, our Chief Operating Officer, is a proud Wiradjuri man. His authority is substantive, not advisory."
+      "sectionLabel": "04 — نهج الشعوب الأصلية",
+      "heading": "متجذّر في البنية، لا مضافٌ إليها.",
+      "prose": "تُشكّل طرق المعرفة والوجود والعمل لدى شعوب الأبوريجينال وجزر مضيق توريس حوكمة هذه الشركة وممارساتها في الملكية الفكرية والبيانات وقوتها العاملة والقصص التي بُنيت مرافقها لخدمتها.",
+      "proseMatthew": "Matthew Compton، رئيسنا التنفيذي للعمليات، رجل Wiradjuri فخور. سلطته فعلية لا استشارية.",
+      "matthewAlt": "صورة ماثيو كومبتون، المدير التنفيذي ورئيس العمليات في Production City، رجل من شعب Wiradjuri"
     },
     "firstSite": {
-      "sectionLabel": "05 — FIRST SITE ADVANTAGE",
-      "quote": "The first Production City is being built in Sydney. Technical and architectural standards are set here, then replicated elsewhere. Head-of-network employment, research, and executive functions are based here.",
-      "quoteHighlight": "Hosting the first site is not hosting a branch — it is hosting the origin."
+      "sectionLabel": "05 — ميزة الموقع الأول",
+      "quote": "يُشيَّد أول Production City في سيدني. تُحدَّد المعايير التقنية والمعمارية هنا، ثم تُكرَّر في مكان آخر. وظائف قيادة الشبكة والبحث والوظائف التنفيذية مقرّها هنا.",
+      "quoteHighlight": "استضافة الموقع الأول ليست استضافة فرع — إنها استضافة المنشأ."
     },
     "network": {
-      "sectionLabel": "06 — The sequence",
-      "heading": "Sequenced. Not simultaneous.",
-      "tableCaption": "Global campus network status",
-      "tableHeaderRegion": "Region",
-      "tableHeaderStatus": "Status",
+      "sectionLabel": "06 — التسلسل",
+      "heading": "متسلسل. لا متزامن.",
+      "tableCaption": "حالة شبكة الحرم العالمية",
+      "tableHeaderRegion": "المنطقة",
+      "tableHeaderStatus": "الحالة",
       "regions": {
         "australia": {
-          "region": "Australia",
-          "status": "Sydney — leading candidate"
+          "region": "أستراليا",
+          "status": "سيدني — المرشح الرائد"
         },
         "europe": {
-          "region": "Europe",
-          "status": "Switzerland — currently leading"
+          "region": "أوروبا",
+          "status": "سويسرا — في الصدارة حالياً"
         },
         "asiaPacific": {
-          "region": "Asia-Pacific",
-          "status": "Singapore preferred · alternatives under review"
+          "region": "آسيا والمحيط الهادئ",
+          "status": "سنغافورة مفضَّلة · بدائل قيد الدراسة"
         },
         "africa": {
-          "region": "Africa",
-          "status": "Under assessment"
+          "region": "أفريقيا",
+          "status": "قيد التقييم"
         },
         "unitedStates": {
-          "region": "United States",
-          "status": "Following the first international campuses"
+          "region": "الولايات المتحدة",
+          "status": "يأتي بعد أول الحرمين الدوليين"
         }
       }
     },
     "audience": {
-      "sectionLabel": "07 — Who we work with",
-      "heading": "Four doors in.",
+      "sectionLabel": "07 — مع من نعمل",
+      "heading": "أربعة أبواب للدخول.",
       "enter": "Enter",
       "cards": {
         "producers": {
-          "title": "For producers and studios",
-          "text": "Book a stage, a volume, and a full service stack. One operator, one schedule, no vendor chain to manage."
+          "title": "للمنتجين والاستوديوهات",
+          "text": "احجز استوديو وحجم LED وحزمة خدمات كاملة. مشغّل واحد، جدول زمني واحد، لا سلسلة موردين تحتاج إلى إدارتها."
         },
         "government": {
-          "title": "For government",
-          "text": "The first campus of a global network. Direct jobs, screen-sector training, local procurement, and First Nations outcomes built into the operating model."
+          "title": "للحكومات",
+          "text": "أول حرم في شبكة عالمية. وظائف مباشرة، وتدريب في قطاع الإنتاج، ومشتريات محلية، ونتائج للشعوب الأصلية مدرجة في نموذج التشغيل."
         },
         "investors": {
-          "title": "For investors",
-          "text": "Revenue from facilities, services, and broadcast under one operator. Campuses open in sequence, each proven before the next is committed."
+          "title": "للمستثمرين",
+          "text": "إيرادات من المرافق والخدمات والبث تحت مشغّل واحد. تفتح الحرمات بالتسلسل، كل واحد يُثبَت قبل الالتزام بالتالي."
         },
         "techPartners": {
-          "title": "For technology partners",
-          "text": "Test and ship production technology inside a working campus. LED volume, real-time rendering, motion capture, and broadcast under live conditions."
+          "title": "لشركاء التكنولوجيا",
+          "text": "اختبر تقنية الإنتاج وانشرها داخل حرم عامل. حجم LED، والتصيير الفوري، وتتبّع الحركة، والبث في ظروف حية."
         }
       }
     },
     "chorus": {
-      "text": "We make stories"
+      "text": "نصنع القصص"
     }
   },
   "facilities": {

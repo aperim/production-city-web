@@ -858,7 +858,7 @@
       "heading": "Production City কী?",
       "claim1": "পর্দা, মঞ্চ ও অভিজ্ঞতামূলক গল্প বলার জন্য ঐতিহ্য ও উদ্ভাবনের সংমিশ্রণ ঘটায়।",
       "claim2": "অত্যাধুনিক সাউন্ড স্টেজ, অনন্য ব্রডকাস্ট থিয়েটার, কন্ট্রোল রুম এবং সমন্বিত প্রোডাকশন সেবা প্রদান করে।",
-      "claim3": "পাঁচটি মহাদেশ জুড়ে একটি বৈশ্বিক ক্যাম্পাস নেটওয়ার্ক তৈরি করা হচ্ছে।",
+      "claim3": "কুইন্সল্যান্ড থেকে শুরু করে আন্তঃসংযুক্ত বৈশ্বিক ক্যাম্পাসের নেটওয়ার্ক তৈরির পরিকল্পনা।",
       "claim4": "প্রতিষ্ঠিত পদ্ধতিতে নতুন প্রোডাকশন প্রযুক্তি সংযুক্ত করে ঝুঁকি কমাতে ডিজাইন করা হয়েছে।"
     },
     "facilitiesPreview": {
@@ -872,7 +872,7 @@
     },
     "visionTeaser": {
       "heading": "একটি বৈশ্বিক দৃষ্টিভঙ্গি",
-      "description": "পাঁচটি মহাদেশ। একটি পরিচালক, একটি মানদণ্ড, ক্যাম্পাসের পর ক্যাম্পাস অনুলিপি করা হচ্ছে।",
+      "description": "Production City কুইন্সল্যান্ড, অস্ট্রেলিয়া থেকে শুরু করে সিঙ্গাপুর, হাওয়াই, ইউরোপ ও মূল মার্কিন ভূখণ্ড জুড়ে আন্তঃসংযুক্ত বৈশ্বিক ক্যাম্পাসের নেটওয়ার্ক তৈরির পরিকল্পনা করছে।",
       "viewAll": "আমাদের দৃষ্টিভঙ্গি সম্পর্কে জানুন"
     },
     "acknowledgement": {
@@ -894,162 +894,163 @@
       "ctaLabel": "৩ডিতে ক্যাম্পাস অন্বেষণ করুন →"
     },
     "hero": {
-      "heading": "We make stories.",
-      "subtitle": "A vertically integrated studio campus. Sound stages, LED volume, a broadcast theatre, and the full service stack — built together, in one place.",
-      "locations": "Sydney · Switzerland · Singapore · Africa",
-      "ctaFacilities": "See the facilities",
-      "ctaEoi": "Register interest",
+      "heading": "আমরা গল্প তৈরি করি।",
+      "subtitle": "একটি উল্লম্বভাবে সমন্বিত স্টুডিও ক্যাম্পাস। সাউন্ড স্টেজ, LED ভলিউম, একটি ব্রডকাস্ট থিয়েটার এবং সম্পূর্ণ সার্ভিস স্ট্যাক — একসাথে নির্মিত, এক জায়গায়।",
+      "locations": "সিডনি · সুইজারল্যান্ড · সিঙ্গাপুর · আফ্রিকা",
+      "ctaFacilities": "সুবিধাগুলি দেখুন",
+      "ctaEoi": "আগ্রহ নথিভুক্ত করুন",
       "homeLabel": "01 · HOME",
       "scrollIndicator": "SCROLL FOR THE CAMPUS ↓"
     },
     "operatingModel": {
-      "sectionLabel": "01 — Operating model",
-      "heading": "One operator. One campus. Script to delivery.",
-      "body1": "Production City is not a stage with vendors bolted on. It is one operator providing the venue, the technology stack, and the full creative service stack under one brand. That reduces coordination risk for tenants and opens multiple revenue streams for the company.",
-      "body2": "The stages, the LED volume, the broadcast theatre, the control room, and the service teams were designed together. Not retrofitted.",
+      "sectionLabel": "01 — পরিচালন মডেল",
+      "heading": "একজন পরিচালক। একটি ক্যাম্পাস। স্ক্রিপ্ট থেকে ডেলিভারি পর্যন্ত।",
+      "body1": "Production City কোনো ভেন্ডর যুক্ত করা স্টেজ নয়। এটি একটি পরিচালক যিনি একটি ব্র্যান্ডের অধীনে ভেন্যু, প্রযুক্তি স্ট্যাক এবং সম্পূর্ণ সৃজনশীল সেবা স্ট্যাক সরবরাহ করেন। এটি ভাড়াটেদের সমন্বয় ঝুঁকি হ্রাস করে এবং কোম্পানির জন্য একাধিক রাজস্ব প্রবাহ খুলে দেয়।",
+      "body2": "স্টেজ, LED ভলিউম, ব্রডকাস্ট থিয়েটার, কন্ট্রোল রুম এবং সার্ভিস টিম একসাথে ডিজাইন করা হয়েছে। পরবর্তীতে যোগ করা হয়নি।",
       "pillars": {
         "realtime": {
-          "title": "One IP · two formats",
-          "text": "Script, libretto, score, pre-vis and digital assets are authored once, then split into a screen lane and a stage lane that run in parallel rather than in sequence."
+          "title": "একটি IP · দুটি ফরম্যাট",
+          "text": "স্ক্রিপ্ট, লিব্রেটো, স্কোর, প্রি-ভিজ এবং ডিজিটাল অ্যাসেট একবার তৈরি করা হয়, তারপর একটি স্ক্রিন লেন এবং একটি স্টেজ লেনে বিভক্ত হয় যা পর্যায়ক্রমে নয়, বরং সমান্তরালে চলে।"
         },
         "oneOperator": {
-          "title": "One operator · one campus",
-          "text": "Venue, stack and service teams under a single brand. Tenants sign one contract, coordinate with one counterparty, and draw on whichever combination of capabilities the work requires."
+          "title": "একজন পরিচালক · একটি ক্যাম্পাস",
+          "text": "ভেন্যু, স্ট্যাক এবং সার্ভিস টিম একটি ব্র্যান্ডের অধীনে। ভাড়াটেরা একটি চুক্তিতে স্বাক্ষর করেন, একজন প্রতিপক্ষের সাথে সমন্বয় করেন এবং কাজের প্রয়োজন অনুযায়ী যেকোনো সমন্বয়ের ক্ষমতা ব্যবহার করতে পারেন।"
         },
         "sharedPipeline": {
-          "title": "Shared pipeline, specialised finishes",
-          "text": "Design, build, costume, and digital assets are common. The screen lane takes them into photography, editorial, VFX and sound. The stage lane takes them into rehearsal, tech, opening and tour."
+          "title": "শেয়ার্ড পাইপলাইন, বিশেষায়িত ফিনিশ",
+          "text": "ডিজাইন, নির্মাণ, পোশাক এবং ডিজিটাল অ্যাসেট সাধারণ। স্ক্রিন লেন এগুলোকে ফটোগ্রাফি, এডিটোরিয়াল, VFX এবং সাউন্ডে নিয়ে যায়। স্টেজ লেন এগুলোকে রিহার্সাল, টেক, ওপেনিং এবং ট্যুরে নিয়ে যায়।"
         },
         "closedLoop": {
-          "title": "Closed-loop canon",
-          "text": "Distribution and audience data feed back into the IP strategy. The next project inherits what the last one learned, across both formats, not just one."
+          "title": "ক্লোজড-লুপ ক্যানন",
+          "text": "বিতরণ ও দর্শক ডেটা IP কৌশলে ফিরে যায়। পরবর্তী প্রকল্প আগেরটি থেকে শেখা বিষয়গুলি উভয় ফরম্যাটে উত্তরাধিকার সূত্রে পায়, শুধু একটিতে নয়।"
         }
       },
       "stats": {
-        "operator": "operator",
-        "lanes": "lanes, in parallel",
-        "stations": "stations from idea to audience",
-        "loop": "analytics → ideation"
+        "operator": "পরিচালক",
+        "lanes": "লেন, সমান্তরালে",
+        "stations": "ধারণা থেকে দর্শক পর্যন্ত স্টেশন",
+        "loop": "বিশ্লেষণ → ধারণা উদ্ভাবন"
       }
     },
     "facilitiesSection": {
-      "sectionLabel": "02 — Facilities",
-      "heading": "Built together. Not retrofitted.",
+      "sectionLabel": "02 — সুবিধাসমূহ",
+      "heading": "একসাথে নির্মিত। পরবর্তীতে যোগ করা হয়নি।",
       "tiles": {
         "screenStages": {
-          "label": "A · SCREEN SOUND STAGES",
-          "heading": "Grand-scale screen work. Engineered for it.",
+          "label": "A · স্ক্রিন সাউন্ড স্টেজ",
+          "heading": "বড় আকারের স্ক্রিন কাজ। এর জন্য ইঞ্জিনিয়ার করা হয়েছে।",
           "specs": "45 m × 45 m · 15 m to grid\nNRC 1.05 · NC 25\nFlat · Arc · Full-surround LED",
-          "linkLabel": "A · Screen sound stages"
+          "linkLabel": "A · স্ক্রিন সাউন্ড স্টেজ"
         },
         "commercialStages": {
-          "label": "B · COMMERCIAL SOUND STAGES",
-          "heading": "Small footprint. Full specification.",
+          "label": "B · কমার্শিয়াল সাউন্ড স্টেজ",
+          "heading": "ছোট ফুটপ্রিন্ট। সম্পূর্ণ স্পেসিফিকেশন।",
           "specs": "10 m × 10 m · 15 m to grid\nNRC 1.05 · NC 25\nWalk-in-ready LED volume",
-          "linkLabel": "B · Commercial stages"
+          "linkLabel": "B · কমার্শিয়াল স্টেজ"
         },
         "broadcastTheatre": {
-          "label": "C · BROADCAST THEATRE",
-          "heading": "A live theatre wired as a broadcast studio.",
+          "label": "C · ব্রডকাস্ট থিয়েটার",
+          "heading": "একটি লাইভ থিয়েটার যা ব্রডকাস্ট স্টুডিও হিসেবে ওয়্যার্ড।",
           "specs": "450 theatre · 300 cabaret\n8 robotic camera positions\nAR/VR-ready",
-          "linkLabel": "C · Broadcast theatre"
+          "linkLabel": "C · ব্রডকাস্ট থিয়েটার"
         }
       },
       "controlRoom": {
-        "label": "D · BROADCAST CONTROL ROOM",
-        "heading": "The nerve centre.",
-        "prose": "Centralised production management. Live broadcast control. Capable of originating broadcast from any on-campus stage, the theatre, or external sports and event venues globally.",
+        "label": "D · ব্রডকাস্ট কন্ট্রোল রুম",
+        "heading": "স্নায়ু কেন্দ্র।",
+        "prose": "কেন্দ্রীভূত প্রোডাকশন ম্যানেজমেন্ট। লাইভ ব্রডকাস্ট নিয়ন্ত্রণ। ক্যাম্পাসের যেকোনো স্টেজ, থিয়েটার, বা বিশ্বের যেকোনো বাহ্যিক স্পোর্টস ও ইভেন্ট ভেন্যু থেকে ব্রডকাস্ট শুরু করতে সক্ষম।",
         "specs": "CENTRAL SYNCHRONISATION\nLIVE ORIGINATION · MULTI-PLATFORM\nBROADCAST FROM ANY STAGE",
-        "linkLabel": "D · Control room"
+        "linkLabel": "D · কন্ট্রোল রুম"
       }
     },
     "servicesSection": {
-      "sectionLabel": "03 — Services",
-      "heading": "Every discipline from script to delivery. On one campus.",
+      "sectionLabel": "03 — সেবাসমূহ",
+      "heading": "স্ক্রিপ্ট থেকে ডেলিভারি পর্যন্ত প্রতিটি শাখা। একটি ক্যাম্পাসে।",
       "services": {
-        "virtualProduction": "VIRTUAL PRODUCTION",
-        "setConstruction": "SET CONSTRUCTION",
-        "props": "PROPS",
-        "costume": "COSTUME",
-        "makeupProsthetics": "MAKEUP & PROSTHETICS",
-        "specialEffects": "SPECIAL EFFECTS",
-        "stuntsRigging": "STUNTS & RIGGING",
-        "motionCapture": "MOTION CAPTURE",
-        "audioMusic": "AUDIO & MUSIC",
-        "scriptScreenplay": "SCRIPT & SCREENPLAY",
-        "graphicDesign": "GRAPHIC DESIGN",
-        "animationMotion": "ANIMATION & MOTION",
-        "cgi": "3D & CGI",
-        "postProduction": "POST-PRODUCTION",
+        "virtualProduction": "ভার্চুয়াল প্রোডাকশন",
+        "setConstruction": "সেট নির্মাণ",
+        "props": "প্রপস",
+        "costume": "পোশাক",
+        "makeupProsthetics": "মেকআপ ও প্রোস্থেটিক্স",
+        "specialEffects": "বিশেষ প্রভাব",
+        "stuntsRigging": "স্টান্ট ও রিগিং",
+        "motionCapture": "মোশন ক্যাপচার",
+        "audioMusic": "অডিও ও সঙ্গীত",
+        "scriptScreenplay": "স্ক্রিপ্ট ও স্ক্রিনপ্লে",
+        "graphicDesign": "গ্রাফিক ডিজাইন",
+        "animationMotion": "অ্যানিমেশন ও মোশন",
+        "cgi": "থ্রিডি ও CGI",
+        "postProduction": "পোস্ট-প্রোডাকশন",
         "arVr": "AR/VR",
-        "broadcastCoordination": "BROADCAST COORDINATION"
+        "broadcastCoordination": "ব্রডকাস্ট সমন্বয়"
       }
     },
     "firstNations": {
-      "sectionLabel": "04 — First Nations approach",
-      "heading": "Embedded, not added on.",
-      "prose": "Aboriginal and Torres Strait Islander ways of Knowing, Being, and Doing shape this company's governance, its intellectual property and data practice, its workforce, and the stories its facilities are built to serve.",
-      "proseMatthew": "Matthew Compton, our Chief Operating Officer, is a proud Wiradjuri man. His authority is substantive, not advisory."
+      "sectionLabel": "04 — First Nations পদ্ধতি",
+      "heading": "অন্তর্নিহিত, পরবর্তীতে যোগ করা নয়।",
+      "prose": "Aboriginal ও Torres Strait Islander জানার, থাকার এবং করার পদ্ধতিগুলি এই কোম্পানির গভর্নেন্স, বৌদ্ধিক সম্পত্তি ও ডেটা অনুশীলন, কর্মশক্তি এবং এই সুবিধাগুলি যে গল্পগুলি সেবা করতে নির্মিত তাদের গঠন দেয়।",
+      "proseMatthew": "আমাদের প্রধান পরিচালন কর্মকর্তা Matthew Compton একজন গর্বিত Wiradjuri মানুষ। তার কর্তৃত্ব সত্যিকারের, পরামর্শমূলক নয়।",
+      "matthewAlt": "Matthew Compton-এর প্রতিকৃতি, Production City-এর নির্বাহী পরিচালক এবং COO, একজন Wiradjuri ব্যক্তি"
     },
     "firstSite": {
-      "sectionLabel": "05 — FIRST SITE ADVANTAGE",
-      "quote": "The first Production City is being built in Sydney. Technical and architectural standards are set here, then replicated elsewhere. Head-of-network employment, research, and executive functions are based here.",
-      "quoteHighlight": "Hosting the first site is not hosting a branch — it is hosting the origin."
+      "sectionLabel": "05 — প্রথম সাইটের সুবিধা",
+      "quote": "প্রথম Production City সিডনিতে নির্মিত হচ্ছে। প্রযুক্তিগত ও স্থাপত্য মান এখানে নির্ধারিত হয়, তারপর অন্যত্র প্রতিলিপি হয়। নেটওয়ার্কের প্রধান কর্মসংস্থান, গবেষণা এবং নির্বাহী কার্যক্রম এখানে অবস্থিত।",
+      "quoteHighlight": "প্রথম সাইট হোস্ট করা একটি শাখা হোস্ট করা নয় — এটি উৎস হোস্ট করা।"
     },
     "network": {
-      "sectionLabel": "06 — The sequence",
-      "heading": "Sequenced. Not simultaneous.",
-      "tableCaption": "Global campus network status",
-      "tableHeaderRegion": "Region",
-      "tableHeaderStatus": "Status",
+      "sectionLabel": "06 — ক্রম",
+      "heading": "ক্রমানুসারে। একসাথে নয়।",
+      "tableCaption": "বৈশ্বিক ক্যাম্পাস নেটওয়ার্কের অবস্থা",
+      "tableHeaderRegion": "অঞ্চল",
+      "tableHeaderStatus": "অবস্থা",
       "regions": {
         "australia": {
-          "region": "Australia",
-          "status": "Sydney — leading candidate"
+          "region": "অস্ট্রেলিয়া",
+          "status": "সিডনি — প্রধান প্রার্থী"
         },
         "europe": {
-          "region": "Europe",
-          "status": "Switzerland — currently leading"
+          "region": "ইউরোপ",
+          "status": "সুইজারল্যান্ড — বর্তমানে এগিয়ে"
         },
         "asiaPacific": {
-          "region": "Asia-Pacific",
-          "status": "Singapore preferred · alternatives under review"
+          "region": "এশিয়া-প্রশান্ত মহাসাগরীয়",
+          "status": "সিঙ্গাপুর পছন্দের · বিকল্প পর্যালোচনাধীন"
         },
         "africa": {
-          "region": "Africa",
-          "status": "Under assessment"
+          "region": "আফ্রিকা",
+          "status": "মূল্যায়নাধীন"
         },
         "unitedStates": {
-          "region": "United States",
-          "status": "Following the first international campuses"
+          "region": "মার্কিন যুক্তরাষ্ট্র",
+          "status": "প্রথম আন্তর্জাতিক ক্যাম্পাসের পরে"
         }
       }
     },
     "audience": {
-      "sectionLabel": "07 — Who we work with",
-      "heading": "Four doors in.",
+      "sectionLabel": "07 — আমরা কার সাথে কাজ করি",
+      "heading": "চারটি প্রবেশদ্বার।",
       "enter": "Enter",
       "cards": {
         "producers": {
-          "title": "For producers and studios",
-          "text": "Book a stage, a volume, and a full service stack. One operator, one schedule, no vendor chain to manage."
+          "title": "প্রযোজক ও স্টুডিওর জন্য",
+          "text": "একটি স্টেজ, একটি ভলিউম এবং সম্পূর্ণ সার্ভিস স্ট্যাক বুক করুন। একজন পরিচালক, একটি সময়সূচি, কোনো ভেন্ডর চেইন পরিচালনা করতে হবে না।"
         },
         "government": {
-          "title": "For government",
-          "text": "The first campus of a global network. Direct jobs, screen-sector training, local procurement, and First Nations outcomes built into the operating model."
+          "title": "সরকারের জন্য",
+          "text": "একটি বৈশ্বিক নেটওয়ার্কের প্রথম ক্যাম্পাস। সরাসরি কর্মসংস্থান, স্ক্রিন-সেক্টর প্রশিক্ষণ, স্থানীয় ক্রয় এবং First Nations ফলাফল পরিচালন মডেলে অন্তর্নির্মিত।"
         },
         "investors": {
-          "title": "For investors",
-          "text": "Revenue from facilities, services, and broadcast under one operator. Campuses open in sequence, each proven before the next is committed."
+          "title": "বিনিয়োগকারীদের জন্য",
+          "text": "একজন পরিচালকের অধীনে সুবিধা, সেবা এবং ব্রডকাস্ট থেকে রাজস্ব। ক্যাম্পাসগুলি ক্রমানুসারে খোলে, প্রতিটি পরবর্তীটির প্রতিশ্রুতি দেওয়ার আগে প্রমাণিত।"
         },
         "techPartners": {
-          "title": "For technology partners",
-          "text": "Test and ship production technology inside a working campus. LED volume, real-time rendering, motion capture, and broadcast under live conditions."
+          "title": "প্রযুক্তি অংশীদারদের জন্য",
+          "text": "একটি কার্যকর ক্যাম্পাসে প্রোডাকশন প্রযুক্তি পরীক্ষা করুন এবং শিপ করুন। LED ভলিউম, রিয়েল-টাইম রেন্ডারিং, মোশন ক্যাপচার এবং লাইভ অবস্থায় ব্রডকাস্ট।"
         }
       }
     },
     "chorus": {
-      "text": "We make stories"
+      "text": "আমরা গল্প তৈরি করি"
     }
   },
   "facilities": {

@@ -858,7 +858,7 @@
       "heading": "Production Cityとは？",
       "claim1": "映画、舞台、体験型ストーリーテリングのために伝統と革新を融合します。",
       "claim2": "最先端のサウンドステージ、初の放送シアター、コントロールルーム、統合制作サービスを提供します。",
-      "claim3": "5大陸にまたがるグローバルキャンパスネットワークを構築中。",
+      "claim3": "クイーンズランドを起点に、相互接続されたグローバルキャンパスネットワークの構築を計画しています。",
       "claim4": "確立された手法に基づくことで、新しい制作技術の導入リスクを軽減するよう設計されています。"
     },
     "facilitiesPreview": {
@@ -872,7 +872,7 @@
     },
     "visionTeaser": {
       "heading": "グローバルビジョン",
-      "description": "5大陸。1つのオペレーター、1つの基準で、キャンパスごとに展開。",
+      "description": "Production Cityは、オーストラリア・クイーンズランドを起点に、シンガポール、ハワイ、ヨーロッパ、米国本土へと展開するグローバルキャンパスネットワークの構築を計画しています。",
       "viewAll": "ビジョンについて詳しく"
     },
     "acknowledgement": {
@@ -894,162 +894,163 @@
       "ctaLabel": "キャンパスを3Dで探索する →"
     },
     "hero": {
-      "heading": "We make stories.",
-      "subtitle": "A vertically integrated studio campus. Sound stages, LED volume, a broadcast theatre, and the full service stack — built together, in one place.",
-      "locations": "Sydney · Switzerland · Singapore · Africa",
-      "ctaFacilities": "See the facilities",
-      "ctaEoi": "Register interest",
+      "heading": "私たちは物語を作る。",
+      "subtitle": "垂直統合型スタジオキャンパス。サウンドステージ、LEDボリューム、放送シアター、そして完全なサービススタック——ひとつの場所に、ひとつのシステムとして構築。",
+      "locations": "シドニー · スイス · シンガポール · アフリカ",
+      "ctaFacilities": "施設を見る",
+      "ctaEoi": "関心を登録する",
       "homeLabel": "01 · HOME",
       "scrollIndicator": "SCROLL FOR THE CAMPUS ↓"
     },
     "operatingModel": {
-      "sectionLabel": "01 — Operating model",
-      "heading": "One operator. One campus. Script to delivery.",
-      "body1": "Production City is not a stage with vendors bolted on. It is one operator providing the venue, the technology stack, and the full creative service stack under one brand. That reduces coordination risk for tenants and opens multiple revenue streams for the company.",
-      "body2": "The stages, the LED volume, the broadcast theatre, the control room, and the service teams were designed together. Not retrofitted.",
+      "sectionLabel": "01 — 運営モデル",
+      "heading": "一事業者。一キャンパス。脚本から納品まで。",
+      "body1": "Production City は、後からベンダーを接続したステージではありません。一つのブランドのもとで、会場・テクノロジースタック・クリエイティブサービス全体を提供する単一事業者です。これによりテナントの調整リスクが低減され、企業には複数の収益源が生まれます。",
+      "body2": "ステージ、LEDボリューム、放送シアター、コントロールルーム、サービスチームは共に設計されました。後から組み合わせたのではありません。",
       "pillars": {
         "realtime": {
-          "title": "One IP · two formats",
-          "text": "Script, libretto, score, pre-vis and digital assets are authored once, then split into a screen lane and a stage lane that run in parallel rather than in sequence."
+          "title": "ひとつのIP · ふたつの形式",
+          "text": "脚本、台本、楽譜、プリビズ、デジタルアセットは一度制作され、その後スクリーンラインとステージラインに分岐して、順次ではなく並行して進められます。"
         },
         "oneOperator": {
-          "title": "One operator · one campus",
-          "text": "Venue, stack and service teams under a single brand. Tenants sign one contract, coordinate with one counterparty, and draw on whichever combination of capabilities the work requires."
+          "title": "一事業者 · 一キャンパス",
+          "text": "会場、スタック、サービスチームを一ブランドのもとに統合。テナントは一つの契約を結び、一つの窓口と調整し、作品に必要な能力の組み合わせを自由に活用できます。"
         },
         "sharedPipeline": {
-          "title": "Shared pipeline, specialised finishes",
-          "text": "Design, build, costume, and digital assets are common. The screen lane takes them into photography, editorial, VFX and sound. The stage lane takes them into rehearsal, tech, opening and tour."
+          "title": "共有パイプライン、専門的仕上げ",
+          "text": "デザイン、建築、衣装、デジタルアセットは共通。スクリーンラインはそれらを撮影・編集・VFX・サウンドへ。ステージラインはリハーサル・技術・開幕・ツアーへとつなぎます。"
         },
         "closedLoop": {
-          "title": "Closed-loop canon",
-          "text": "Distribution and audience data feed back into the IP strategy. The next project inherits what the last one learned, across both formats, not just one."
+          "title": "クローズドループのカノン",
+          "text": "配信とオーディエンスのデータがIPストラテジーに還元されます。次のプロジェクトは前のプロジェクトが学んだことを、両方の形式で受け継ぎます。"
         }
       },
       "stats": {
-        "operator": "operator",
-        "lanes": "lanes, in parallel",
-        "stations": "stations from idea to audience",
-        "loop": "analytics → ideation"
+        "operator": "事業者",
+        "lanes": "ライン、並行稼働",
+        "stations": "アイデアからオーディエンスまでのステーション",
+        "loop": "アナリティクス → アイデア創出"
       }
     },
     "facilitiesSection": {
-      "sectionLabel": "02 — Facilities",
-      "heading": "Built together. Not retrofitted.",
+      "sectionLabel": "02 — 施設",
+      "heading": "共に構築。後から接続せず。",
       "tiles": {
         "screenStages": {
-          "label": "A · SCREEN SOUND STAGES",
-          "heading": "Grand-scale screen work. Engineered for it.",
+          "label": "A · スクリーン・サウンドステージ",
+          "heading": "大規模スクリーン制作。そのために設計。",
           "specs": "45 m × 45 m · 15 m to grid\nNRC 1.05 · NC 25\nFlat · Arc · Full-surround LED",
-          "linkLabel": "A · Screen sound stages"
+          "linkLabel": "A · スクリーン・サウンドステージ"
         },
         "commercialStages": {
-          "label": "B · COMMERCIAL SOUND STAGES",
-          "heading": "Small footprint. Full specification.",
+          "label": "B · コマーシャル・サウンドステージ",
+          "heading": "小さなフットプリント。フル仕様。",
           "specs": "10 m × 10 m · 15 m to grid\nNRC 1.05 · NC 25\nWalk-in-ready LED volume",
-          "linkLabel": "B · Commercial stages"
+          "linkLabel": "B · コマーシャルステージ"
         },
         "broadcastTheatre": {
-          "label": "C · BROADCAST THEATRE",
-          "heading": "A live theatre wired as a broadcast studio.",
+          "label": "C · 放送シアター",
+          "heading": "放送スタジオとして配線されたライブシアター。",
           "specs": "450 theatre · 300 cabaret\n8 robotic camera positions\nAR/VR-ready",
-          "linkLabel": "C · Broadcast theatre"
+          "linkLabel": "C · 放送シアター"
         }
       },
       "controlRoom": {
-        "label": "D · BROADCAST CONTROL ROOM",
-        "heading": "The nerve centre.",
-        "prose": "Centralised production management. Live broadcast control. Capable of originating broadcast from any on-campus stage, the theatre, or external sports and event venues globally.",
+        "label": "D · 放送コントロールルーム",
+        "heading": "神経中枢。",
+        "prose": "集中型プロダクション管理。ライブ放送制御。キャンパス内のあらゆるステージ、シアター、または世界中の外部スポーツ・イベント会場から放送を発信できます。",
         "specs": "CENTRAL SYNCHRONISATION\nLIVE ORIGINATION · MULTI-PLATFORM\nBROADCAST FROM ANY STAGE",
-        "linkLabel": "D · Control room"
+        "linkLabel": "D · コントロールルーム"
       }
     },
     "servicesSection": {
-      "sectionLabel": "03 — Services",
-      "heading": "Every discipline from script to delivery. On one campus.",
+      "sectionLabel": "03 — サービス",
+      "heading": "脚本から納品まで、あらゆる専門領域。ひとつのキャンパスで。",
       "services": {
-        "virtualProduction": "VIRTUAL PRODUCTION",
-        "setConstruction": "SET CONSTRUCTION",
-        "props": "PROPS",
-        "costume": "COSTUME",
-        "makeupProsthetics": "MAKEUP & PROSTHETICS",
-        "specialEffects": "SPECIAL EFFECTS",
-        "stuntsRigging": "STUNTS & RIGGING",
-        "motionCapture": "MOTION CAPTURE",
-        "audioMusic": "AUDIO & MUSIC",
-        "scriptScreenplay": "SCRIPT & SCREENPLAY",
-        "graphicDesign": "GRAPHIC DESIGN",
-        "animationMotion": "ANIMATION & MOTION",
-        "cgi": "3D & CGI",
-        "postProduction": "POST-PRODUCTION",
+        "virtualProduction": "バーチャルプロダクション",
+        "setConstruction": "セット建設",
+        "props": "小道具",
+        "costume": "衣装",
+        "makeupProsthetics": "メイクアップ・特殊造形",
+        "specialEffects": "特殊効果",
+        "stuntsRigging": "スタント・リギング",
+        "motionCapture": "モーションキャプチャー",
+        "audioMusic": "音響・音楽",
+        "scriptScreenplay": "脚本・シナリオ",
+        "graphicDesign": "グラフィックデザイン",
+        "animationMotion": "アニメーション・モーションデザイン",
+        "cgi": "3D・CGI",
+        "postProduction": "ポストプロダクション",
         "arVr": "AR/VR",
-        "broadcastCoordination": "BROADCAST COORDINATION"
+        "broadcastCoordination": "放送コーディネーション"
       }
     },
     "firstNations": {
-      "sectionLabel": "04 — First Nations approach",
-      "heading": "Embedded, not added on.",
-      "prose": "Aboriginal and Torres Strait Islander ways of Knowing, Being, and Doing shape this company's governance, its intellectual property and data practice, its workforce, and the stories its facilities are built to serve.",
-      "proseMatthew": "Matthew Compton, our Chief Operating Officer, is a proud Wiradjuri man. His authority is substantive, not advisory."
+      "sectionLabel": "04 — 先住民族へのアプローチ",
+      "heading": "組み込まれている。後から加えたのではない。",
+      "prose": "Aboriginal および Torres Strait Islander の知の在り方、存在の在り方、行動の在り方が、この企業のガバナンス、知的財産とデータの慣行、人材、そびこの施設が奉仕すべき物語を形成しています。",
+      "proseMatthew": "COOのMatthew Comptonは、誇り高きWiradjuriの人物です。彼の権限は実質的なものであり、諮問的なものではありません。",
+      "matthewAlt": "Production CityのエグゼクティブディレクターおよびCOO、Wiradjuriの人Matthew Comptonの肖像"
     },
     "firstSite": {
-      "sectionLabel": "05 — FIRST SITE ADVANTAGE",
-      "quote": "The first Production City is being built in Sydney. Technical and architectural standards are set here, then replicated elsewhere. Head-of-network employment, research, and executive functions are based here.",
-      "quoteHighlight": "Hosting the first site is not hosting a branch — it is hosting the origin."
+      "sectionLabel": "05 — 第一拠点の優位性",
+      "quote": "最初のProduction Cityはシドニーで建設されています。技術・建築的標準はここで定められ、その後他の場所で複製されます。ネットワーク中枢の雇用・研究・経営機能はここに置かれます。",
+      "quoteHighlight": "最初の拠点を擁することは、支店を擁することではありません——起点を擁することです。"
     },
     "network": {
-      "sectionLabel": "06 — The sequence",
-      "heading": "Sequenced. Not simultaneous.",
-      "tableCaption": "Global campus network status",
-      "tableHeaderRegion": "Region",
-      "tableHeaderStatus": "Status",
+      "sectionLabel": "06 — シーケンス",
+      "heading": "順序立てて。同時にではなく。",
+      "tableCaption": "グローバルキャンパスネットワークの状況",
+      "tableHeaderRegion": "地域",
+      "tableHeaderStatus": "ステータス",
       "regions": {
         "australia": {
-          "region": "Australia",
-          "status": "Sydney — leading candidate"
+          "region": "オーストラリア",
+          "status": "シドニー — 有力候補"
         },
         "europe": {
-          "region": "Europe",
-          "status": "Switzerland — currently leading"
+          "region": "ヨーロッパ",
+          "status": "スイス — 現在首位"
         },
         "asiaPacific": {
-          "region": "Asia-Pacific",
-          "status": "Singapore preferred · alternatives under review"
+          "region": "アジア太平洋",
+          "status": "シンガポール優先 · 代替案を検討中"
         },
         "africa": {
-          "region": "Africa",
-          "status": "Under assessment"
+          "region": "アフリカ",
+          "status": "評価中"
         },
         "unitedStates": {
-          "region": "United States",
-          "status": "Following the first international campuses"
+          "region": "アメリカ合衆国",
+          "status": "最初の国際キャンパスの後"
         }
       }
     },
     "audience": {
-      "sectionLabel": "07 — Who we work with",
-      "heading": "Four doors in.",
+      "sectionLabel": "07 — 私たちが共に働く人々",
+      "heading": "四つの入口。",
       "enter": "Enter",
       "cards": {
         "producers": {
-          "title": "For producers and studios",
-          "text": "Book a stage, a volume, and a full service stack. One operator, one schedule, no vendor chain to manage."
+          "title": "プロデューサー・スタジオの方へ",
+          "text": "ステージ、ボリューム、フルサービススタックを予約。一事業者、一スケジュール、管理すべきベンダーチェーンなし。"
         },
         "government": {
-          "title": "For government",
-          "text": "The first campus of a global network. Direct jobs, screen-sector training, local procurement, and First Nations outcomes built into the operating model."
+          "title": "行政機関の方へ",
+          "text": "グローバルネットワークの最初のキャンパス。直接雇用、映像産業訓練、地域調達、および先住民への成果が運営モデルに組み込まれています。"
         },
         "investors": {
-          "title": "For investors",
-          "text": "Revenue from facilities, services, and broadcast under one operator. Campuses open in sequence, each proven before the next is committed."
+          "title": "投資家の方へ",
+          "text": "施設・サービス・放送からの収益が一事業者のもとに。キャンパスは順次開設され、各拠点は次の拠点にコミットする前に実証されます。"
         },
         "techPartners": {
-          "title": "For technology partners",
-          "text": "Test and ship production technology inside a working campus. LED volume, real-time rendering, motion capture, and broadcast under live conditions."
+          "title": "テクノロジーパートナーの方へ",
+          "text": "稼働中のキャンパス内でプロダクションテクノロジーをテストし、導入。LEDボリューム、リアルタイムレンダリング、モーションキャプチャー、放送をライブ環境で活用。"
         }
       }
     },
     "chorus": {
-      "text": "We make stories"
+      "text": "私たちは物語を作る"
     }
   },
   "facilities": {

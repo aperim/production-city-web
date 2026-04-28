@@ -188,22 +188,13 @@ describe("i18n no untranslated English leakage", () => {
     "Matthew Compton (Wiradjuri).",
     // Short UI label
     "How it works",
+    // Industry term — same spelling in French, Spanish, Portuguese, etc.
+    "POST-PRODUCTION",
   ]);
 
-  // Home page editorial content key prefixes that are placeholder translations (#344).
-  // These keys contain editorial copy that requires professional translation.
-  // Remove each prefix from this list once professional translations are provided.
-  const PENDING_TRANSLATION_KEY_PREFIXES = [
-    "home.hero.",
-    "home.operatingModel.",
-    "home.facilitiesSection.",
-    "home.servicesSection.",
-    "home.firstNations.",
-    "home.firstSite.",
-    "home.network.",
-    "home.audience.",
-    "home.chorus.",
-  ];
+  // Home page editorial content key prefixes that are placeholder translations.
+  // Empty: real translations were added in #348 for all 9 non-English locales.
+  const PENDING_TRANSLATION_KEY_PREFIXES: string[] = [];
 
   // Keys that are expected to be identical across locales (phone numbers, URLs, etc.)
   // Also includes legal content placeholders added in PRO-325 (translation deferred to
@@ -242,6 +233,8 @@ describe("i18n no untranslated English leakage", () => {
     /\.troyPortraitAriaLabel$/, // person name + "portrait" (same word in French)
     // masterplan eyebrow: "Campus" is the same Latin-origin word in es/fr/pt
     /^masterplan\.hero\.eyebrow$/,
+    // Numbered section labels (e.g. "03 — Services") — the word may be the same in some locales
+    /\.sectionLabel$/,
   ];
 
   for (const locale of LOCALES.filter((l) => l !== "en")) {
@@ -273,8 +266,11 @@ describe("i18n no untranslated English leakage", () => {
         if (enValue.trim().length < 20 && /^[A-Z][a-z]+s?$/.test(enValue.trim())) continue;
         // Skip meta titles that contain brand name (e.g., "FAQ — Production City")
         if (key.endsWith(".meta.title") || key.endsWith(".meta.description")) continue;
-        // Skip technical facility spec descriptions (short technical terms)
-        if (key.includes(".spec") && enValue.length < 50) continue;
+        // Skip technical facility spec descriptions (dimensions, acoustic ratings, etc.)
+        // These are universal technical specifications that are the same across all locales.
+        if (key.includes(".spec")) continue;
+        // Skip scroll indicator — stylistic English UI label, intentionally not translated.
+        if (key.endsWith(".scrollIndicator")) continue;
         // Skip keys with count placeholders only (e.g., "{count} questions")
         if (/^\{count\}\s+\w+$/.test(enValue.trim())) continue;
 

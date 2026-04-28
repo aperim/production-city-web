@@ -858,7 +858,7 @@
       "heading": "O que é a Production City?",
       "claim1": "Une tradição e inovação para narrativas de tela, palco e experienciais.",
       "claim2": "Oferece estúdios de som de última geração, um teatro de transmissão inédito, salas de controle e serviços integrados de produção.",
-      "claim3": "Construindo uma rede global de campi em cinco continentes.",
+      "claim3": "Planeja criar uma rede global de campi interconectados, começando em Queensland.",
       "claim4": "Projetada para reduzir o risco na adoção de novas tecnologias de produção, fundamentando-as em práticas estabelecidas."
     },
     "facilitiesPreview": {
@@ -872,7 +872,7 @@
     },
     "visionTeaser": {
       "heading": "Uma visão global",
-      "description": "Cinco continentes. Um operador, um padrão, replicado campus a campus.",
+      "description": "A Production City planeja criar uma rede global de campi interconectados, começando em Queensland, Austrália, e estendendo-se a Singapura, Havaí, Europa e EUA continental.",
       "viewAll": "Conheça nossa visão"
     },
     "acknowledgement": {
@@ -894,162 +894,163 @@
       "ctaLabel": "Explorar o campus em 3D →"
     },
     "hero": {
-      "heading": "We make stories.",
-      "subtitle": "A vertically integrated studio campus. Sound stages, LED volume, a broadcast theatre, and the full service stack — built together, in one place.",
-      "locations": "Sydney · Switzerland · Singapore · Africa",
-      "ctaFacilities": "See the facilities",
-      "ctaEoi": "Register interest",
+      "heading": "Fazemos histórias.",
+      "subtitle": "Um campus de estúdio verticalmente integrado. Estúdios de som, volume LED, um teatro de transmissão e o stack completo de serviços — construído junto, em um só lugar.",
+      "locations": "Sydney · Suíça · Singapura · África",
+      "ctaFacilities": "Ver as instalações",
+      "ctaEoi": "Registrar interesse",
       "homeLabel": "01 · HOME",
       "scrollIndicator": "SCROLL FOR THE CAMPUS ↓"
     },
     "operatingModel": {
-      "sectionLabel": "01 — Operating model",
-      "heading": "One operator. One campus. Script to delivery.",
-      "body1": "Production City is not a stage with vendors bolted on. It is one operator providing the venue, the technology stack, and the full creative service stack under one brand. That reduces coordination risk for tenants and opens multiple revenue streams for the company.",
-      "body2": "The stages, the LED volume, the broadcast theatre, the control room, and the service teams were designed together. Not retrofitted.",
+      "sectionLabel": "01 — Modelo operacional",
+      "heading": "Um operador. Um campus. Do roteiro à entrega.",
+      "body1": "Production City não é um estúdio com fornecedores adicionados. É um único operador que fornece o espaço, o stack tecnológico e o stack completo de serviços criativos sob uma única marca. Isso reduz o risco de coordenação para os locatários e abre múltiplas fontes de receita para a empresa.",
+      "body2": "Os estúdios, o volume LED, o teatro de transmissão, a sala de controle e as equipes de serviço foram projetados juntos. Não adaptados depois.",
       "pillars": {
         "realtime": {
-          "title": "One IP · two formats",
-          "text": "Script, libretto, score, pre-vis and digital assets are authored once, then split into a screen lane and a stage lane that run in parallel rather than in sequence."
+          "title": "Uma IP · dois formatos",
+          "text": "Roteiro, libreto, partitura, pré-visualização e ativos digitais são criados uma vez e depois divididos em uma via de tela e uma via de palco que correm em paralelo, não em sequência."
         },
         "oneOperator": {
-          "title": "One operator · one campus",
-          "text": "Venue, stack and service teams under a single brand. Tenants sign one contract, coordinate with one counterparty, and draw on whichever combination of capabilities the work requires."
+          "title": "Um operador · um campus",
+          "text": "Espaço, stack e equipes de serviço sob uma única marca. Os locatários assinam um contrato, coordenam com uma única contraparte e utilizam qualquer combinação de capacidades que o trabalho exige."
         },
         "sharedPipeline": {
-          "title": "Shared pipeline, specialised finishes",
-          "text": "Design, build, costume, and digital assets are common. The screen lane takes them into photography, editorial, VFX and sound. The stage lane takes them into rehearsal, tech, opening and tour."
+          "title": "Pipeline compartilhado, acabamentos especializados",
+          "text": "Design, construção, figurino e ativos digitais são comuns. A via de tela os leva para fotografia, edição, VFX e som. A via de palco os leva para ensaio, técnica, estreia e turnê."
         },
         "closedLoop": {
-          "title": "Closed-loop canon",
-          "text": "Distribution and audience data feed back into the IP strategy. The next project inherits what the last one learned, across both formats, not just one."
+          "title": "Cânone em ciclo fechado",
+          "text": "Os dados de distribuição e audiência retroalimentam a estratégia de propriedade intelectual. O próximo projeto herda o que o anterior aprendeu, em ambos os formatos, não apenas em um."
         }
       },
       "stats": {
-        "operator": "operator",
-        "lanes": "lanes, in parallel",
-        "stations": "stations from idea to audience",
-        "loop": "analytics → ideation"
+        "operator": "operador",
+        "lanes": "vias, em paralelo",
+        "stations": "estações da ideia ao público",
+        "loop": "análise → ideação"
       }
     },
     "facilitiesSection": {
-      "sectionLabel": "02 — Facilities",
-      "heading": "Built together. Not retrofitted.",
+      "sectionLabel": "02 — Instalações",
+      "heading": "Construído junto. Não adaptado depois.",
       "tiles": {
         "screenStages": {
-          "label": "A · SCREEN SOUND STAGES",
-          "heading": "Grand-scale screen work. Engineered for it.",
+          "label": "A · ESTÚDIOS DE SOM PARA TELA",
+          "heading": "Produção para tela em grande escala. Projetado para isso.",
           "specs": "45 m × 45 m · 15 m to grid\nNRC 1.05 · NC 25\nFlat · Arc · Full-surround LED",
-          "linkLabel": "A · Screen sound stages"
+          "linkLabel": "A · Estúdios de som para tela"
         },
         "commercialStages": {
-          "label": "B · COMMERCIAL SOUND STAGES",
-          "heading": "Small footprint. Full specification.",
+          "label": "B · ESTÚDIOS DE SOM COMERCIAIS",
+          "heading": "Espaço reduzido. Especificação completa.",
           "specs": "10 m × 10 m · 15 m to grid\nNRC 1.05 · NC 25\nWalk-in-ready LED volume",
-          "linkLabel": "B · Commercial stages"
+          "linkLabel": "B · Estúdios comerciais"
         },
         "broadcastTheatre": {
-          "label": "C · BROADCAST THEATRE",
-          "heading": "A live theatre wired as a broadcast studio.",
+          "label": "C · TEATRO DE TRANSMISSÃO",
+          "heading": "Um teatro ao vivo cabeado como estúdio de transmissão.",
           "specs": "450 theatre · 300 cabaret\n8 robotic camera positions\nAR/VR-ready",
-          "linkLabel": "C · Broadcast theatre"
+          "linkLabel": "C · Teatro de transmissão"
         }
       },
       "controlRoom": {
-        "label": "D · BROADCAST CONTROL ROOM",
-        "heading": "The nerve centre.",
-        "prose": "Centralised production management. Live broadcast control. Capable of originating broadcast from any on-campus stage, the theatre, or external sports and event venues globally.",
+        "label": "D · SALA DE CONTROLE DE TRANSMISSÃO",
+        "heading": "O centro nervoso.",
+        "prose": "Gestão centralizada de produção. Controle de transmissão ao vivo. Capaz de originar transmissões de qualquer estúdio do campus, do teatro ou de locais externos de esportes e eventos ao redor do mundo.",
         "specs": "CENTRAL SYNCHRONISATION\nLIVE ORIGINATION · MULTI-PLATFORM\nBROADCAST FROM ANY STAGE",
-        "linkLabel": "D · Control room"
+        "linkLabel": "D · Sala de controle"
       }
     },
     "servicesSection": {
-      "sectionLabel": "03 — Services",
-      "heading": "Every discipline from script to delivery. On one campus.",
+      "sectionLabel": "03 — Serviços",
+      "heading": "Cada disciplina do roteiro à entrega. Em um único campus.",
       "services": {
-        "virtualProduction": "VIRTUAL PRODUCTION",
-        "setConstruction": "SET CONSTRUCTION",
-        "props": "PROPS",
-        "costume": "COSTUME",
-        "makeupProsthetics": "MAKEUP & PROSTHETICS",
-        "specialEffects": "SPECIAL EFFECTS",
-        "stuntsRigging": "STUNTS & RIGGING",
-        "motionCapture": "MOTION CAPTURE",
-        "audioMusic": "AUDIO & MUSIC",
-        "scriptScreenplay": "SCRIPT & SCREENPLAY",
-        "graphicDesign": "GRAPHIC DESIGN",
-        "animationMotion": "ANIMATION & MOTION",
-        "cgi": "3D & CGI",
-        "postProduction": "POST-PRODUCTION",
-        "arVr": "AR/VR",
-        "broadcastCoordination": "BROADCAST COORDINATION"
+        "virtualProduction": "PRODUÇÃO VIRTUAL",
+        "setConstruction": "CONSTRUÇÃO DE CENÁRIOS",
+        "props": "ADEREÇOS",
+        "costume": "FIGURINO",
+        "makeupProsthetics": "MAQUIAGEM E PRÓTESES",
+        "specialEffects": "EFEITOS ESPECIAIS",
+        "stuntsRigging": "DUBLÊS E RIGGING",
+        "motionCapture": "CAPTURA DE MOVIMENTO",
+        "audioMusic": "ÁUDIO E MÚSICA",
+        "scriptScreenplay": "ROTEIRO E SCREENPLAY",
+        "graphicDesign": "DESIGN GRÁFICO",
+        "animationMotion": "ANIMAÇÃO E MOTION DESIGN",
+        "cgi": "3D E CGI",
+        "postProduction": "PÓS-PRODUÇÃO",
+        "arVr": "RA/RV",
+        "broadcastCoordination": "COORDENAÇÃO DE TRANSMISSÃO"
       }
     },
     "firstNations": {
-      "sectionLabel": "04 — First Nations approach",
-      "heading": "Embedded, not added on.",
-      "prose": "Aboriginal and Torres Strait Islander ways of Knowing, Being, and Doing shape this company's governance, its intellectual property and data practice, its workforce, and the stories its facilities are built to serve.",
-      "proseMatthew": "Matthew Compton, our Chief Operating Officer, is a proud Wiradjuri man. His authority is substantive, not advisory."
+      "sectionLabel": "04 — Abordagem dos Primeiros Povos",
+      "heading": "Incorporado, não adicionado.",
+      "prose": "As formas de Saber, Ser e Fazer dos povos Aborígenes e das Ilhas do Estreito de Torres moldam a governança desta empresa, suas práticas de propriedade intelectual e dados, sua força de trabalho e as histórias que suas instalações foram construídas para servir.",
+      "proseMatthew": "Matthew Compton, nosso Diretor de Operações, é um orgulhoso homem Wiradjuri. Sua autoridade é substantiva, não consultiva.",
+      "matthewAlt": "Retrato de Matthew Compton, Diretor Executivo e COO da Production City, um homem Wiradjuri"
     },
     "firstSite": {
-      "sectionLabel": "05 — FIRST SITE ADVANTAGE",
-      "quote": "The first Production City is being built in Sydney. Technical and architectural standards are set here, then replicated elsewhere. Head-of-network employment, research, and executive functions are based here.",
-      "quoteHighlight": "Hosting the first site is not hosting a branch — it is hosting the origin."
+      "sectionLabel": "05 — VANTAGEM DO PRIMEIRO SITE",
+      "quote": "O primeiro Production City está sendo construído em Sydney. Os padrões técnicos e arquitetônicos são definidos aqui e depois replicados em outros lugares. O emprego na cabeça da rede, a pesquisa e as funções executivas estão sediados aqui.",
+      "quoteHighlight": "Hospedar o primeiro site não é hospedar uma filial — é hospedar a origem."
     },
     "network": {
-      "sectionLabel": "06 — The sequence",
-      "heading": "Sequenced. Not simultaneous.",
-      "tableCaption": "Global campus network status",
-      "tableHeaderRegion": "Region",
+      "sectionLabel": "06 — A sequência",
+      "heading": "Sequenciado. Não simultâneo.",
+      "tableCaption": "Status da rede global de campus",
+      "tableHeaderRegion": "Região",
       "tableHeaderStatus": "Status",
       "regions": {
         "australia": {
-          "region": "Australia",
-          "status": "Sydney — leading candidate"
+          "region": "Austrália",
+          "status": "Sydney — candidato principal"
         },
         "europe": {
-          "region": "Europe",
-          "status": "Switzerland — currently leading"
+          "region": "Europa",
+          "status": "Suíça — atualmente em primeiro"
         },
         "asiaPacific": {
-          "region": "Asia-Pacific",
-          "status": "Singapore preferred · alternatives under review"
+          "region": "Ásia-Pacífico",
+          "status": "Singapura preferida · alternativas em avaliação"
         },
         "africa": {
-          "region": "Africa",
-          "status": "Under assessment"
+          "region": "África",
+          "status": "Em avaliação"
         },
         "unitedStates": {
-          "region": "United States",
-          "status": "Following the first international campuses"
+          "region": "Estados Unidos",
+          "status": "Após os primeiros campus internacionais"
         }
       }
     },
     "audience": {
-      "sectionLabel": "07 — Who we work with",
-      "heading": "Four doors in.",
+      "sectionLabel": "07 — Com quem trabalhamos",
+      "heading": "Quatro portas de entrada.",
       "enter": "Enter",
       "cards": {
         "producers": {
-          "title": "For producers and studios",
-          "text": "Book a stage, a volume, and a full service stack. One operator, one schedule, no vendor chain to manage."
+          "title": "Para produtores e estúdios",
+          "text": "Reserve um estúdio, um volume e um stack completo de serviços. Um operador, uma agenda, sem cadeia de fornecedores para gerenciar."
         },
         "government": {
-          "title": "For government",
-          "text": "The first campus of a global network. Direct jobs, screen-sector training, local procurement, and First Nations outcomes built into the operating model."
+          "title": "Para o governo",
+          "text": "O primeiro campus de uma rede global. Empregos diretos, treinamento no setor audiovisual, compras locais e resultados para os Primeiros Povos integrados ao modelo operacional."
         },
         "investors": {
-          "title": "For investors",
-          "text": "Revenue from facilities, services, and broadcast under one operator. Campuses open in sequence, each proven before the next is committed."
+          "title": "Para investidores",
+          "text": "Receita de instalações, serviços e transmissão sob um único operador. Os campus abrem em sequência, cada um comprovado antes do compromisso com o próximo."
         },
         "techPartners": {
-          "title": "For technology partners",
-          "text": "Test and ship production technology inside a working campus. LED volume, real-time rendering, motion capture, and broadcast under live conditions."
+          "title": "Para parceiros tecnológicos",
+          "text": "Teste e implante tecnologia de produção dentro de um campus em operação. Volume LED, renderização em tempo real, captura de movimento e transmissão em condições reais."
         }
       }
     },
     "chorus": {
-      "text": "We make stories"
+      "text": "Fazemos histórias"
     }
   },
   "facilities": {
