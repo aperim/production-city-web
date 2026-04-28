@@ -235,6 +235,8 @@ describe("i18n no untranslated English leakage", () => {
     /^masterplan\.hero\.eyebrow$/,
     // Numbered section labels (e.g. "03 — Services") — the word may be the same in some locales
     /\.sectionLabel$/,
+    // Position paper — EOI industry/technical document, English placeholder throughout (#518)
+    /^positionPaper\./,
   ];
 
   for (const locale of LOCALES.filter((l) => l !== "en")) {

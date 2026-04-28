@@ -102,6 +102,45 @@ export const MEDIA: Record<string, MediaSource> = {
   // Masterplan page — poster image from 3D viewer hero camera angle (to be captured from viewer)
   "masterplan-poster": media("masterplan-poster", "Production City 6-hectare campus masterplan — aerial perspective showing integrated sound stages, broadcast theatre, and public realm", "Production City", "https://production.city", "#1A1C1E"),
 
+  // Position paper page
+  "position-paper-hero": media("position-paper-hero", "Dramatic silhouette of a cinematographer holding equipment on a dimly lit film set", "Kyle Loftus", "https://www.pexels.com/@kyleloftusstudios", "#302318"),
+  "position-paper-australia": {
+    lightSrc: "/media/position-paper-australia/dark.jpg",
+    darkSrc: "/media/position-paper-australia/dark.jpg",
+    alt: "Scenic nighttime view of Sydney Opera House and city skyline under Harbour Bridge",
+    photographer: "Julia Sakelli",
+    photographerUrl: "https://www.pexels.com/@juliasakelli",
+    source: "Pexels",
+    sourceUrl: "https://www.pexels.com",
+    width: 4788,
+    height: 3171,
+    averageColor: "#1C181A",
+  },
+  "position-paper-case-study": {
+    lightSrc: "/media/position-paper-case-study/dark.jpg",
+    darkSrc: "/media/position-paper-case-study/dark.jpg",
+    alt: "Behind the scenes of a movie set in a stylish indoor setting with clapperboard ready for action",
+    photographer: "Ron Lach",
+    photographerUrl: "https://www.pexels.com/@ron-lach",
+    source: "Pexels",
+    sourceUrl: "https://www.pexels.com",
+    width: 6240,
+    height: 4160,
+    averageColor: "#552928",
+  },
+  "position-paper-technology": {
+    lightSrc: "/media/position-paper-technology/dark.jpg",
+    darkSrc: "/media/position-paper-technology/dark.jpg",
+    alt: "High-end video camera rig set up in indoor auditorium with focus on film production",
+    photographer: "Caleb Oquendo",
+    photographerUrl: "https://www.pexels.com/@caleboquendo",
+    source: "Pexels",
+    sourceUrl: "https://www.pexels.com",
+    width: 5885,
+    height: 3923,
+    averageColor: "#342A29",
+  },
+
   // Team — commissioned portraits
   "team-matthew-compton": {
     lightSrc: "/media/team-matthew-compton/light.jpg",

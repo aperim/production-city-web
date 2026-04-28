@@ -24,6 +24,7 @@ describe("landing page structure", () => {
     { route: "privacy/page.tsx", component: "pages/privacy.tsx", name: "Privacy" },
     { route: "terms/page.tsx", component: "pages/terms.tsx", name: "Terms" },
     { route: "cookies/page.tsx", component: "pages/cookies.tsx", name: "Cookies" },
+    { route: "position-paper/page.tsx", component: "pages/position-paper.tsx", name: "Position Paper" },
   ];
 
   for (const page of pages) {
@@ -58,7 +59,7 @@ describe("landing page structure", () => {
 });
 
 describe("landing page EOI integration", () => {
-  const pagesWithEoi = ["pages/home.tsx", "pages/facilities.tsx", "pages/creative.tsx", "pages/vision.tsx", "pages/community.tsx", "pages/contact.tsx"];
+  const pagesWithEoi = ["pages/home.tsx", "pages/facilities.tsx", "pages/creative.tsx", "pages/vision.tsx", "pages/community.tsx", "pages/contact.tsx", "pages/position-paper.tsx"];
 
   for (const page of pagesWithEoi) {
     it(`${page} includes EOISection`, () => {
@@ -107,6 +108,11 @@ describe("landing page i18n completeness", () => {
     "legal.terms.jurisdiction", "legal.terms.changes",
     "legal.cookies.title", "legal.cookies.about", "legal.cookies.cookiesWeUse",
     "legal.cookies.managing", "legal.cookies.changes", "legal.cookies.contact",
+    "positionPaper.meta", "positionPaper.hero", "positionPaper.thesis",
+    "positionPaper.market", "positionPaper.australia", "positionPaper.docklands",
+    "positionPaper.failureModes", "positionPaper.talent", "positionPaper.comparison",
+    "positionPaper.caseStudies", "positionPaper.model", "positionPaper.conclusion",
+    "positionPaper.evaluation", "positionPaper.eoi", "positionPaper.disclaimer",
   ];
 
   /** Flatten a nested object into dot-notation keys. */
@@ -297,6 +303,42 @@ describe("landing page component-specific content", () => {
     expect(content).toContain("mailto:");
     expect(content).toContain("tel:");
   });
+
+  it("Position Paper page uses FailureModeCard", () => {
+    const content = readFileSync(resolve(APP_ROOT, "pages/position-paper.tsx"), "utf-8");
+    expect(content).toContain("FailureModeCard");
+  });
+
+  it("Position Paper page uses ComparisonGrid", () => {
+    const content = readFileSync(resolve(APP_ROOT, "pages/position-paper.tsx"), "utf-8");
+    expect(content).toContain("ComparisonGrid");
+  });
+
+  it("Position Paper page uses CaseStudyCard", () => {
+    const content = readFileSync(resolve(APP_ROOT, "pages/position-paper.tsx"), "utf-8");
+    expect(content).toContain("CaseStudyCard");
+  });
+
+  it("Position Paper page uses ForwardLookingDisclaimer", () => {
+    const content = readFileSync(resolve(APP_ROOT, "pages/position-paper.tsx"), "utf-8");
+    expect(content).toContain("ForwardLookingDisclaimer");
+  });
+
+  it("Position Paper page uses StatCallout for market stats", () => {
+    const content = readFileSync(resolve(APP_ROOT, "pages/position-paper.tsx"), "utf-8");
+    expect(content).toContain("StatCallout");
+  });
+
+  it("Position Paper page uses DublinCoreMeta with type Text", () => {
+    const content = readFileSync(resolve(APP_ROOT, "pages/position-paper.tsx"), "utf-8");
+    expect(content).toContain("DublinCoreMeta");
+    expect(content).toContain('type="Text"');
+  });
+
+  it("Position Paper page sets defaultCategory to investor", () => {
+    const content = readFileSync(resolve(APP_ROOT, "pages/position-paper.tsx"), "utf-8");
+    expect(content).toContain('defaultCategory="investor"');
+  });
 });
 
 describe("page metadata exports", () => {
@@ -322,6 +364,7 @@ describe("page metadata exports", () => {
     { route: "facilities/commercial-sound-stages/page.tsx", name: "Commercial Sound Stages" },
     { route: "facilities/broadcast-theatre/page.tsx", name: "Broadcast Theatre" },
     { route: "facilities/broadcast-control-room/page.tsx", name: "Broadcast Control Room" },
+    { route: "position-paper/page.tsx", name: "Position Paper" },
   ];
 
   for (const { route, name } of metadataRoutes) {

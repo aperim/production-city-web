@@ -325,7 +325,8 @@
     "firstNations": "Коренные народы",
     "network": "Network",
     "company": "Company",
-    "masterplan": "Мастер-план"
+    "masterplan": "Мастер-план",
+    "positionPaper": "Позиционный документ"
   },
   "announcements": {
     "page": {
@@ -2095,6 +2096,185 @@
       "africa": "АФРИКА",
       "northAmerica": "СЕВ. АМЕРИКА",
       "oceania": "ОКЕАНИЯ"
+    }
+  },
+  "positionPaper": {
+    "meta": {
+      "title": "Position Paper — The Vertically Integrated Virtual Production Model",
+      "description": "Production City's position paper on why facility-only VP models fail and why vertical integration across soundstages, VP volumes, broadcast, post-production, education, and R&D is the only sustainable model."
+    },
+    "hero": {
+      "eyebrow": "POSITION PAPER",
+      "heading": "The Vertically Integrated Virtual Production Model",
+      "subtitle": "Why facility-only models fail — and what works for Sydney"
+    },
+    "thesis": {
+      "statement": "Production City's proposal is not a stage for hire. It is a permanent production ecosystem — soundstages, VP volumes, broadcast infrastructure, post-production, research and development, and workforce education under a single operational framework."
+    },
+    "market": {
+      "eyebrow": "MARKET OPPORTUNITY",
+      "heading": "A market set to quadruple",
+      "body": "The global virtual production market is projected to nearly quadruple in a decade. The catalyst was ILM's LED volume deployment for The Mandalorian from 2019 — not a stage rental arrangement, but an end-to-end integrated production service. By 2023, 40% of surveyed production professionals were already using VP technology on current projects.",
+      "stat1Value": "3.83",
+      "stat1Prefix": "$",
+      "stat1Suffix": "B",
+      "stat1Label": "Global VP market (2025)",
+      "stat1Context": "USD, Fortune Business Insights",
+      "stat2Value": "14.1%",
+      "stat2Label": "Compound annual growth rate",
+      "stat2Context": "2026–2034 projection",
+      "stat3Value": "12.54",
+      "stat3Prefix": "$",
+      "stat3Suffix": "B",
+      "stat3Label": "Projected market by 2034",
+      "stat3Context": "USD, nearly 4× current value"
+    },
+    "australia": {
+      "eyebrow": "AUSTRALIA'S OPPORTUNITY",
+      "heading": "A $1.3 billion screen economy with no VP infrastructure",
+      "body": "Despite Australia's strong screen production economy, its share of global virtual production activity is underdeveloped. Sydney holds UNESCO City of Film status. NSW hosts more than half of the nation's screen production businesses and post-production facilities. Yet the absence of a VP-integrated studio means productions choosing LED volume workflows are routinely directed to other jurisdictions.",
+      "stat1Value": "AUD 1.3B",
+      "stat1Label": "NSW screen sector contribution (2024/25) — a state record",
+      "stat2Value": "51%",
+      "stat2Label": "NSW share of Australian screen production businesses",
+      "stat3Value": "50%+",
+      "stat3Label": "NSW share of Australian post-production facilities",
+      "stat4Value": "2016",
+      "stat4Label": "Sydney's UNESCO City of Film designation — one of 21 globally"
+    },
+    "docklands": {
+      "eyebrow": "CASE STUDY",
+      "heading": "The world's largest LED volume — without a tenant",
+      "para1": "In March 2023, NantStudios opened what was claimed to be the world's largest permanent LED volume at Docklands Studios Melbourne: six thousand panels, twelve metres high and eighty-eight metres wide. Total cost: approximately AUD 60 million, with AUD 12.5 million from the Victorian Government. The facility was built around a single anchor production — Metropolis, a USD 188 million Apple TV+ series.",
+      "para2": "Three months later, that production was cancelled. What followed was swift and painful.",
+      "stat1Value": "AUD 41.6M",
+      "stat1Label": "Victorian location incentives not disbursed",
+      "stat2Value": "AUD 83.8M",
+      "stat2Label": "Federal incentives foregone",
+      "stat3Value": "AUD 621M",
+      "stat3Label": "Projected direct spending that never materialised",
+      "stat4Value": "700",
+      "stat4Label": "Cast, crew, and local business positions lost",
+      "quoteText": "\"[We were] originally meant to film in September but because of the strike that had been moved to January 2024. I've said no to other jobs in between, so it's pretty devastating.\"",
+      "quoteAttribution": "Crew member, IF Magazine (2023)",
+      "closing": "A volume without an integrated production service is only as strong as its most recently confirmed booking. That is not infrastructure — it is speculation."
+    },
+    "failureModes": {
+      "eyebrow": "FAILURE ANALYSIS",
+      "heading": "Five structural failure modes",
+      "item1Title": "Single-tenant dependency",
+      "item1Desc": "A facility built around one anchor production loses its revenue base when that production is delayed or cancelled.",
+      "item2Title": "Capital-to-revenue mismatch",
+      "item2Desc": "LED volume builds cost AUD 2–20 million. Daily rental rates cannot service the investment without sustained utilisation above 55–65%.",
+      "item3Title": "No service wrapper",
+      "item3Desc": "Producers need VP supervision, real-time content creation, virtual art department services, and post-production integration. A bare stage provides none of this.",
+      "item4Title": "Talent vacuum",
+      "item4Desc": "Without permanent in-house crews, facilities depend on scarce freelance operators who may not be available when needed.",
+      "item5Title": "Technology obsolescence",
+      "item5Desc": "LED panel specifications advance rapidly. Facilities require expensive upgrades within three to five years without a service model to justify the reinvestment."
+    },
+    "talent": {
+      "eyebrow": "WORKFORCE",
+      "heading": "An interdisciplinary craft with no employment destination",
+      "para1": "Virtual production requires practitioners who move across disciplines that have historically been separate: real-time rendering, LED wall calibration, motion capture, camera tracking, colour science, and visual effects integration. It is not one skill — it is a convergence.",
+      "para2": "The core VP technical skills are the same skills Australia's games industry competes for. Games studios offer permanent employment at AUD 120,000–150,000 per annum with full benefits. The VP sector offers short-term contracts of four to twelve weeks. The economics are straightforward.",
+      "para3": "There is no published census of VP-capable Australian technicians. Production City's own industry assessment suggests 200 to 500 individuals nationally hold meaningful operational VP experience — a fraction of what a facility at SGFS scale demands.",
+      "quote1Text": "\"We need creative technologists with both an eye on the technology and understanding of scripted production.\"",
+      "quote1Attribution": "Addy Ghani, VP of Virtual Production, Disguise",
+      "quote2Text": "\"New skills and new teams need to be formed within production to oversee the deployment and operation of the Unreal scenes, LED, tracking, and much more.\"",
+      "quote2Attribution": "Adam Callaway, Global Lead of Virtual Production Technology, Brompton Technology",
+      "statValue": "200–500",
+      "statLabel": "Estimated VP-capable Australian technicians — insufficient for SGFS scale"
+    },
+    "comparison": {
+      "eyebrow": "THE SOLUTION",
+      "heading": "What vertical integration means in practice",
+      "leftHeading": "Standalone Facility",
+      "rightHeading": "Vertically Integrated",
+      "row1Label": "Pre-production",
+      "row1Left": "Producers source externally",
+      "row1Right": "On-site virtual previsualization, technical scouting, virtual art department",
+      "row2Label": "Real-time content creation",
+      "row2Left": "Hired per production",
+      "row2Right": "Permanent in-house Unreal Engine team",
+      "row3Label": "VP volume operations",
+      "row3Left": "Hardware rented; crew assembled per show",
+      "row3Right": "Permanent facility team with continuous practice",
+      "row4Label": "Soundstage production",
+      "row4Left": "Not available",
+      "row4Right": "Adjacent stages; overflow and complementary capacity",
+      "row5Label": "Broadcast / live production",
+      "row5Left": "Not available",
+      "row5Right": "Integrated broadcast infrastructure; independent revenue stream",
+      "row6Label": "Post-production",
+      "row6Left": "Productions go elsewhere",
+      "row6Right": "On-site editing, colour, VFX, audio; PDV Offset captured in NSW",
+      "row7Label": "Education and training",
+      "row7Left": "Not available",
+      "row7Right": "Accredited programmes; apprenticeship pathways; institutional partnerships",
+      "row8Label": "R&D and innovation",
+      "row8Left": "Not available",
+      "row8Right": "Technology development; vendor partnerships"
+    },
+    "caseStudies": {
+      "eyebrow": "PROOF POINTS",
+      "heading": "Three models that work",
+      "ilmTitle": "ILM StageCraft",
+      "ilmStat": "LED volumes in 4 cities",
+      "ilmStatLabel": "Manhattan Beach, London, Vancouver, Sydney",
+      "ilmBody": "ILM built a technology platform and service organisation, not a rental stage. Every StageCraft engagement comes with ILM's integrated team, proprietary Helios render engine, a permanent Virtual Art Department, on-set VFX supervision, and direct handoff into post-production. ILM also launched its Jedi Academy training programme to address the workforce constraint.",
+      "ilmQuoteText": "\"With StageCraft, we have built an end-to-end virtual production service for key creatives. Directors, production designers, cinematographers, producers and visual effects supervisors can creatively collaborate, each bringing their collective expertise to the virtual aspects of production.\"",
+      "ilmQuoteAttribution": "Janet Lewin, SVP and General Manager, ILM",
+      "nepTitle": "NEP Virtual Studios",
+      "nepStat": "3 acquisitions to build integration",
+      "nepStatLabel": "Lux Machina + Halon + Prysm Collective",
+      "nepBody": "NEP built vertical integration through acquisition rather than organic growth. Led by Cliff Plumer (former CEO of Digital Domain, former CTO of Lucasfilm/ILM), the strategy was direct: hardware without talent and service integration is insufficient. Production City reaches the same conclusion through design rather than acquisition.",
+      "nepQuoteText": "\"One of the biggest hurdles to accelerating growth in the virtual production sector is that demand, both for stages and the hardware required to build them, is far exceeding supply.\"",
+      "nepQuoteAttribution": "Cliff Plumer, former CEO Digital Domain, NEP Virtual Studios",
+      "vrTitle": "Village Roadshow Studios",
+      "vrStat": "Diversified revenue model",
+      "vrStatLabel": "Year-round cash flow",
+      "vrBody": "Australia's most successful studio facility shows what diversified revenue can do. Village Roadshow Studios on the Gold Coast operates soundstages alongside Warner Bros. Movie World, generating year-round cash flow independent of production cycles. Paired with a close partnership with Screen Queensland, the campus attracted Thor: Love and Thunder, Elvis, and Aquaman — productions that chose the Gold Coast because NSW could not match the full production ecosystem."
+    },
+    "model": {
+      "eyebrow": "OUR ANSWER",
+      "heading": "A permanent production ecosystem",
+      "component1Title": "Soundstages",
+      "component1Desc": "Purpose-built to international standards. Minimum two large-format stages (1,500+ sqm each), acoustic isolation to NC-25, integrated flying grids.",
+      "component2Title": "Virtual Production Volumes",
+      "component2Desc": "Feature/episodic LED volume (20m × 12m arc, 6m ceiling) with Mo-Sys tracking and Unreal Engine 5. Multi-purpose volume for pre-vis and education.",
+      "component3Title": "Broadcast Infrastructure",
+      "component3Desc": "SDI/IP broadcast-grade signal distribution, satellite and fibre uplink, multi-camera control rooms. An independent revenue stream.",
+      "component4Title": "Post-Production",
+      "component4Desc": "On-site editing, Dolby Atmos mix theatre, calibrated HDR colour grading, VFX pipeline. Captures PDV Offset benefits in NSW.",
+      "component5Title": "Education & Training",
+      "component5Desc": "Accredited programmes with tertiary partners, industry short courses, VP certification, apprenticeship pathways. The workforce pipeline.",
+      "component6Title": "Research & Innovation",
+      "component6Desc": "Technology partnerships with hardware vendors, games developers, streaming platforms, and government research bodies."
+    },
+    "conclusion": {
+      "eyebrow": "FINDINGS",
+      "heading": "Four findings",
+      "card1": "The facility-only model does not work. The Docklands experience is Australia's own evidence. The UK's forty-plus VP stages with insufficient trained operators confirm the same pattern at scale.",
+      "card2": "The integrated model does work. ILM, NEP Virtual Studios, and Village Roadshow all demonstrate, through operational evidence, that integration across the production stack is the structure that produces sustainable VP infrastructure.",
+      "card3": "Australia's VP talent gap requires a structural solution, not another training programme. Training produces graduates. What Australia lacks is an employment destination with enough continuous production throughput to retain those graduates.",
+      "card4": "NSW's AUD 380 million policy investment warrants an integrated response — a model that captures local employment, skills development, post-production value, and long-term capability that outlasts any single production cycle."
+    },
+    "evaluation": {
+      "eyebrow": "EVALUATION CRITERIA",
+      "heading": "Five questions every respondent must answer",
+      "criterion1": "Does the proposed model integrate production, post, VP, broadcast, education, and R&D — or does it propose a stage with optional additions?",
+      "criterion2": "Does the respondent have a specific plan for building a permanent VP workforce, not just recruiting existing talent?",
+      "criterion3": "Is the business model diversified across revenue streams, or dependent on stage hire?",
+      "criterion4": "Is education genuinely integrated, with accredited programmes and direct industry pathways?",
+      "criterion5": "Does the respondent have the technical depth to operate, maintain, and evolve VP technology independently?"
+    },
+    "eoi": {
+      "heading": "Register Your Interest",
+      "context": "Enquire about Production City's EOI submission, partnership opportunities, or investment in Australia's first vertically integrated virtual production ecosystem."
+    },
+    "disclaimer": {
+      "forwardLooking": "This position paper contains forward-looking statements about Production City's proposed development, operational model, and market analysis. Statements about projected market size, facility specifications, and competitive positioning reflect current analysis and are subject to change. Market projections are sourced from third-party research and are not guarantees of future performance. This document is prepared in connection with the NSW Government Sydney Global Film Studio Expression of Interest and is not a financial prospectus or investment solicitation."
     }
   }
 }

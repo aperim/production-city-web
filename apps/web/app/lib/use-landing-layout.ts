@@ -81,6 +81,7 @@ export function useLandingFooter(): LandingFooterProps {
           { label: t("nav.firstNations"), href: `${prefix}/first-nations` },
           { label: t("nav.faq"), href: `${prefix}/faq` },
           { label: t("nav.contact"), href: `${prefix}/contact` },
+          { label: t("nav.positionPaper"), href: `${prefix}/position-paper` },
         ],
       },
     ],
