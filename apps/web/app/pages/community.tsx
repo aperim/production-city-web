@@ -25,7 +25,7 @@ import {
   useEoiSubmit,
 } from "../lib/use-landing-layout";
 import { MEDIA } from "../lib/media-config";
-import { SimpleWebPageStructuredData, DublinCoreMeta } from "../lib/structured-data";
+import { NoIndexMeta } from "../lib/structured-data";
 
 
 interface CommunityPageProps {
@@ -52,18 +52,7 @@ function CommunityPageContent() {
 
   return (
     <LandingPageTemplate nav={nav} footer={footer}>
-      <SimpleWebPageStructuredData
-        name="Community & Engagement — Production City"
-        description="Production City's community engagement: education, sustainability, First Nations partnerships, and innovation programs on an integrated screen and stage campus."
-        path="/community"
-      />
-      <DublinCoreMeta
-        title="Community & Engagement — Production City"
-        description="Production City's community engagement: education, sustainability, First Nations partnerships, and innovation programs on an integrated screen and stage campus."
-        subject="community, education, sustainability, First Nations, innovation, Australia"
-        path="/community"
-        date="2026-04-27"
-      />
+      <NoIndexMeta />
       {/* Hero */}
       {heroMedia && (
         <MediaHero

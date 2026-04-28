@@ -26,7 +26,7 @@ import {
   useEoiSubmit,
 } from "../lib/use-landing-layout";
 import { MEDIA } from "../lib/media-config";
-import { SimpleWebPageStructuredData, DublinCoreMeta } from "../lib/structured-data";
+import { NoIndexMeta } from "../lib/structured-data";
 
 
 interface VisionPageProps {
@@ -53,18 +53,7 @@ function VisionPageContent() {
 
   return (
     <LandingPageTemplate nav={nav} footer={footer}>
-      <SimpleWebPageStructuredData
-        name="Vision & Global Network — Production City"
-        description="Production City's global vision: an Australia-anchored screen and stage campus networked with international co-production hubs and creative ecosystems."
-        path="/vision"
-      />
-      <DublinCoreMeta
-        title="Vision & Global Network — Production City"
-        description="Production City's global vision: an Australia-anchored screen and stage campus networked with international co-production hubs and creative ecosystems."
-        subject="vision, global network, co-production, screen industry, Australia"
-        path="/vision"
-        date="2026-04-27"
-      />
+      <NoIndexMeta />
       {/* Hero */}
       {heroMedia && (
         <MediaHero

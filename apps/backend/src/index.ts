@@ -15,6 +15,7 @@ type Bindings = {
   HMAC_SECRET: string;
   POSTMARK_API_TOKEN: string;
   WEBSOCKET_SERVER: DurableObjectNamespace;
+  HUBSPOT_QUEUE?: Queue;
 };
 
 export const app = new OpenAPIHono<{ Bindings: Bindings }>();

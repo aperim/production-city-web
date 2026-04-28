@@ -57,6 +57,6 @@ export const FiveItems: Story = {
 
 export const SingleItem: Story = {
   args: {
-    items: [THREE_ITEMS[0]],
+    items: [THREE_ITEMS[0]!],
   },
 };

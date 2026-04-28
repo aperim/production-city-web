@@ -1,6 +1,6 @@
 /**
  * E2E tests: Landing page navigation and routing.
- * Validates all 17 pages load, nav links work, active-page indicators,
+ * Validates public pages load, nav links work, active-page indicators,
  * and basic 404 behaviour for unknown routes.
  *
  * @see PRO-190

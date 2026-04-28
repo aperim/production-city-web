@@ -24,3 +24,21 @@ export type QueueMessage<T = unknown> = Omit<
 > & {
   payload: T;
 };
+
+/** Payload for hubspot_contact_sync queue messages. */
+export interface HubSpotContactSyncPayload {
+  eoiId: string;
+  name: string;
+  email: string;
+  company: string | null;
+  category: string;
+  message: string | null;
+  sourcePage: string;
+  locale: string;
+  marketingOptIn: boolean;
+  consentVersion: string;
+  /** HubSpot tracking cookie (hubspotutk) captured from the original request. */
+  hutk?: string;
+  /** Visitor IP address captured from the original request. */
+  ipAddress?: string;
+}

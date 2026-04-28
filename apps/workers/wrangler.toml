@@ -31,6 +31,13 @@ dead_letter_queue = "holding-jobs-dlq"
 
 [env.preview]
 name = "holding-workers-preview"
+[env.preview.vars]
+# HUBSPOT_ACCESS_TOKEN must be set via: wrangler secret put HUBSPOT_ACCESS_TOKEN --env preview
+HUBSPOT_ACCESS_TOKEN = ""
+# HUBSPOT_PORTAL_ID must be set via: wrangler secret put HUBSPOT_PORTAL_ID --env preview
+HUBSPOT_PORTAL_ID = ""
+# HUBSPOT_FORM_GUID must be set via: wrangler secret put HUBSPOT_FORM_GUID --env preview
+HUBSPOT_FORM_GUID = ""
 [[env.preview.d1_databases]]
 binding = "DB"
 database_name = "holding-preview"
@@ -45,6 +52,13 @@ dead_letter_queue = "holding-jobs-dlq-preview"
 
 [env.staging]
 name = "holding-workers-staging"
+[env.staging.vars]
+# HUBSPOT_ACCESS_TOKEN must be set via: wrangler secret put HUBSPOT_ACCESS_TOKEN --env staging
+HUBSPOT_ACCESS_TOKEN = ""
+# HUBSPOT_PORTAL_ID must be set via: wrangler secret put HUBSPOT_PORTAL_ID --env staging
+HUBSPOT_PORTAL_ID = ""
+# HUBSPOT_FORM_GUID must be set via: wrangler secret put HUBSPOT_FORM_GUID --env staging
+HUBSPOT_FORM_GUID = ""
 [[env.staging.d1_databases]]
 binding = "DB"
 database_name = "holding-staging"
@@ -59,6 +73,13 @@ dead_letter_queue = "holding-jobs-dlq-staging"
 
 [env.production]
 name = "holding-workers-production"
+[env.production.vars]
+# HUBSPOT_ACCESS_TOKEN must be set via: wrangler secret put HUBSPOT_ACCESS_TOKEN --env production
+HUBSPOT_ACCESS_TOKEN = ""
+# HUBSPOT_PORTAL_ID must be set via: wrangler secret put HUBSPOT_PORTAL_ID --env production
+HUBSPOT_PORTAL_ID = ""
+# HUBSPOT_FORM_GUID must be set via: wrangler secret put HUBSPOT_FORM_GUID --env production
+HUBSPOT_FORM_GUID = ""
 [[env.production.d1_databases]]
 binding = "DB"
 database_name = "holding-production"

@@ -23,7 +23,7 @@ import {
   useEoiCategories,
   useEoiSubmit,
 } from "../lib/use-landing-layout";
-import { SimpleWebPageStructuredData, DublinCoreMeta } from "../lib/structured-data";
+import { NoIndexMeta } from "../lib/structured-data";
 
 
 interface NetworkPageProps {
@@ -76,18 +76,7 @@ function NetworkPageContent() {
 
   return (
     <LandingPageTemplate nav={nav} footer={footer}>
-      <SimpleWebPageStructuredData
-        name="Global Network — Production City"
-        description="Production City's global network: an integrated screen and stage campus in Australia connected to international co-production partners and creative hubs."
-        path="/network"
-      />
-      <DublinCoreMeta
-        title="Global Network — Production City"
-        description="Production City's global network: an integrated screen and stage campus in Australia connected to international co-production partners and creative hubs."
-        subject="global network, co-production, international, screen industry, Australia"
-        path="/network"
-        date="2026-04-27"
-      />
+      <NoIndexMeta />
       {/* Hero */}
       {MEDIA["network-hero"] && (
         <MediaHero
