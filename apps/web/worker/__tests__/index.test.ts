@@ -157,6 +157,16 @@ describe("CSP headers — WebSocket directives (#194)", () => {
     expect(csp).not.toContain("wss://api.production.city");
   });
 
+  it("dev CSP includes 'unsafe-eval' for Vite HMR (PRO-401)", () => {
+    const csp = buildCsp("localhost");
+    expect(csp).toContain("'unsafe-eval'");
+    // Production/staging must NOT have unsafe-eval
+    const prodCsp = buildCsp("production.city");
+    expect(prodCsp).not.toContain("'unsafe-eval'");
+    const stagingCsp = buildCsp("staging.production.city");
+    expect(stagingCsp).not.toContain("'unsafe-eval'");
+  });
+
   it("dev CSP allows ws:// on 127.0.0.1", () => {
     const csp = buildCsp("127.0.0.1");
     expect(csp).toContain("ws://localhost:*");

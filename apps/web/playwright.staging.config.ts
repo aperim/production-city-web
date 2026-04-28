@@ -20,6 +20,7 @@ export default defineConfig({
   testMatch: [
     "**/staging-smoke.spec.ts",
     "**/staging-env-isolation.spec.ts",
+    "**/csp-violations.spec.ts",
   ],
   timeout: 60_000,
   expect: { timeout: 15_000 },

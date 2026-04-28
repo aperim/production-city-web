@@ -22,7 +22,7 @@ export const THEME_SCRIPT_HASH =
 export function buildCsp(hostname: string): string {
   const isDev = hostname === "localhost" || hostname === "127.0.0.1";
   if (isDev) {
-    return `default-src 'self'; script-src 'self' 'unsafe-inline' https://static.cloudflareinsights.com; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self' https://fonts.gstatic.com; connect-src 'self' ws://localhost:* wss://localhost:*`;
+    return `default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://static.cloudflareinsights.com; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self' https://fonts.gstatic.com; connect-src 'self' ws://localhost:* wss://localhost:*`;
   }
   const baseHost = hostname.startsWith("www.") ? hostname.slice(4) : hostname;
   const apiOrigin = `api.${baseHost}`;
