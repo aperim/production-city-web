@@ -28,6 +28,10 @@ database_name = "holding-dev"
 database_id = "local-dev"
 migrations_dir = "../../prisma/migrations"
 
+[[queues.producers]]
+binding = "JOBS_QUEUE"
+queue = "holding-jobs"
+
 [env.preview]
 name = "holding-backend-preview"
 [env.preview.vars]
@@ -42,6 +46,9 @@ binding = "DB"
 database_name = "holding-preview"
 database_id = "61f78701-4ff5-4808-8d05-c1be66d984ec"
 migrations_dir = "../../prisma/migrations"
+[[env.preview.queues.producers]]
+binding = "JOBS_QUEUE"
+queue = "holding-jobs-preview"
 
 [env.staging]
 name = "holding-backend-staging"
@@ -61,6 +68,9 @@ binding = "DB"
 database_name = "holding-staging"
 database_id = "527c2f52-144b-422f-aa16-46e5b86cdd9f"
 migrations_dir = "../../prisma/migrations"
+[[env.staging.queues.producers]]
+binding = "JOBS_QUEUE"
+queue = "holding-jobs-staging"
 
 [env.production]
 name = "holding-backend-production"
@@ -82,3 +92,6 @@ binding = "DB"
 database_name = "holding-production"
 database_id = "2b77f155-690e-4368-800d-ee52e7796d81"
 migrations_dir = "../../prisma/migrations"
+[[env.production.queues.producers]]
+binding = "JOBS_QUEUE"
+queue = "holding-jobs-production"

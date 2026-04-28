@@ -24,6 +24,7 @@ type Bindings = {
   DB: D1Database;
   ALLOWED_ORIGIN: string;
   POSTMARK_API_TOKEN: string;
+  JOBS_QUEUE: Queue;
 };
 
 export const eoiApp = new OpenAPIHono<{ Bindings: Bindings }>();
@@ -215,6 +216,47 @@ eoiApp.openapi(submitEoiRoute, async (c) => {
         marketingOptIn: data.marketingOptIn,
       },
     });
+
+    // Enqueue HubSpot contact sync (non-blocking — EOI response returns immediately)
+    if (c.env.JOBS_QUEUE) {
+      // company lives in metadata; field name varies by category
+      const meta = data.metadata as Record<string, unknown> | undefined;
+      const company =
+        typeof meta?.company === "string" ? meta.company :
+        typeof meta?.organisation === "string" ? meta.organisation :
+        null;
+
+      c.env.JOBS_QUEUE.send({
+        type: "hubspot_contact_sync",
+        version: "1",
+        idempotencyKey: eoi.id,
+        correlationId: eoi.id,
+        payload: {
+          eoiId: eoi.id,
+          name: data.name,
+          email: data.email,
+          company,
+          category: data.category,
+          message: data.message ?? null,
+          sourcePage: data.sourcePage ?? null,
+          locale,
+          marketingOptIn: data.marketingOptIn,
+          consentVersion: data.consentVersion,
+        },
+      }).catch((err: unknown) => {
+        console.error(
+          toGelfJson(
+            buildGelfMessage("holding-backend", {
+              short_message: "eoi.hubspot.enqueue.failed",
+              level: Level.ERROR,
+              service: "holding-backend",
+              full_message: String(err),
+              extra: { eoi_id: eoi.id },
+            }),
+          ),
+        );
+      });
+    }
 
     // Send confirmation email (don't fail submission if email fails)
     try {

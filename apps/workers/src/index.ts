@@ -4,6 +4,8 @@ import { validateQueueMessage } from "./validate.js";
 import { runAllCleanups } from "./cleanup.js";
 import { processDeliveryJob } from "./delivery-handler.js";
 import type { AnnouncementDeliveryPayload, DeliveryEnv } from "./delivery-handler.js";
+import { processHubspotContactSync } from "./hubspot-handler.js";
+import type { HubspotContactSyncPayload, HubspotSyncEnv } from "./hubspot-handler.js";
 
 export type Env = {
   DB: D1Database;
@@ -181,6 +183,11 @@ export default {
           } finally {
             await prisma.$disconnect().catch(() => {});
           }
+        } else if (validation.data.type === "hubspot_contact_sync") {
+          await processHubspotContactSync(
+            _env as unknown as HubspotSyncEnv,
+            validation.data.payload as HubspotContactSyncPayload,
+          );
         }
         message.ack();
       } catch (err) {
