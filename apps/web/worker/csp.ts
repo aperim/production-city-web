@@ -26,5 +26,5 @@ export function buildCsp(hostname: string): string {
   }
   const baseHost = hostname.startsWith("www.") ? hostname.slice(4) : hostname;
   const apiOrigin = `api.${baseHost}`;
-  return `default-src 'self'; script-src 'self' ${THEME_SCRIPT_HASH} https://static.cloudflareinsights.com; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self' https://fonts.gstatic.com; connect-src 'self' https://${apiOrigin} wss://${apiOrigin}`;
+  return `default-src 'self'; script-src 'self' 'unsafe-inline' https://static.cloudflareinsights.com; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self' https://fonts.gstatic.com; connect-src 'self' https://${apiOrigin} wss://${apiOrigin}`;
 }

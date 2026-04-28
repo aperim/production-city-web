@@ -281,18 +281,21 @@ describe("CSP headers — Cloudflare Web Analytics (#319)", () => {
 
 // ─── CSP hash-based script allowlist (PRO-399) ─────────────────────
 
-describe("CSP headers — inline script hash allowlist (PRO-399)", () => {
-  it("production script-src uses THEME_SCRIPT_HASH instead of unsafe-inline", () => {
+describe("CSP headers — inline script allowlist (PRO-412 hotfix)", () => {
+  it("production script-src uses unsafe-inline (hotfix until nonce-based CSP)", () => {
     const csp = buildCsp("production.city");
     const scriptSrc = csp.split(";").find((d: string) => d.trim().startsWith("script-src"))!;
-    expect(scriptSrc).toContain(THEME_SCRIPT_HASH);
-    expect(scriptSrc).not.toContain("'unsafe-inline'");
+    expect(scriptSrc).toContain("'unsafe-inline'");
   });
 
   it("dev script-src retains unsafe-inline for hot-reload compatibility", () => {
     const csp = buildCsp("localhost");
     const scriptSrc = csp.split(";").find((d: string) => d.trim().startsWith("script-src"))!;
     expect(scriptSrc).toContain("'unsafe-inline'");
+  });
+
+  it("THEME_SCRIPT_HASH is still exported for future nonce migration", () => {
+    expect(THEME_SCRIPT_HASH).toMatch(/^'sha256-.+'$/);
   });
 
   it("THEME_SCRIPT_HASH matches the actual theme script in layout.tsx", () => {
@@ -302,31 +305,5 @@ describe("CSP headers — inline script hash allowlist (PRO-399)", () => {
     const themeScript = scripts[0]!;
     const computedHash = sha256Csp(themeScript);
     expect(computedHash).toBe(THEME_SCRIPT_HASH);
-  });
-
-  it("every executable inline script in layout.tsx has its hash in production CSP", () => {
-    const scripts = extractExecutableInlineScripts();
-    const csp = buildCsp("production.city");
-
-    for (const script of scripts) {
-      const hash = sha256Csp(script);
-      expect(csp).toContain(hash);
-    }
-  });
-
-  it("fails if a new inline script is added to layout.tsx without a CSP hash (regression guard)", () => {
-    const scripts = extractExecutableInlineScripts();
-    const csp = buildCsp("production.city");
-    const scriptSrc = csp.split(";").find((d: string) => d.trim().startsWith("script-src"))!;
-
-    const missingHashes: string[] = [];
-    for (const script of scripts) {
-      const hash = sha256Csp(script);
-      if (!scriptSrc.includes(hash)) {
-        missingHashes.push(hash);
-      }
-    }
-
-    expect(missingHashes).toEqual([]);
   });
 });
