@@ -525,6 +525,10 @@
         "description": "我们与以下服务提供商共享您的数据：",
         "note": "这些提供商根据数据处理协议代表我们处理数据。我们不会出售您的个人数据。"
       },
+      "internationalTransfers": {
+        "title": "International Data Transfers",
+        "description": "Production City uses third-party service providers that may process personal data outside Australia, including Postmark (United States), HubSpot (United States), and Cloudflare (global network). These transfers are governed by Standard Contractual Clauses and Data Processing Agreements with each provider."
+      },
       "crossBorder": {
         "title": "Cross-border disclosure",
         "description": "Your personal information may be disclosed to service providers located in the United States. Before disclosing personal information to an overseas recipient, we take reasonable steps to ensure the recipient does not breach the APPs in relation to that information, or we rely on an exception under APP 8.2 (such as your informed consent or a binding contractual arrangement that requires the recipient to handle information consistently with the APPs).",
@@ -607,7 +611,7 @@
       },
       "jurisdiction": {
         "title": "适用法律",
-        "description": "本隐私政策受澳大利亚新南威尔士州法律及1988年《澳大利亚隐私法》管辖。"
+        "description": "This privacy policy is governed by the laws of New South Wales, Australia, and the Australian Privacy Act 1988 (Cth) and the Australian Privacy Principles. For EU/EEA residents, the relevant supervisory authority is the data protection authority in your country of residence."
       },
       "changes": {
         "title": "政策变更",
@@ -684,7 +688,7 @@
           "financial, investment, legal, or professional advice;",
           "a guarantee of availability, performance, or suitability for any particular purpose."
         ],
-        "description": "本网站按“原样”提供，不作任何明示或暗示的保证。我们不保证网站不间断、无错误或无有害组件。"
+        "description": "The content on this Website is provided for general informational purposes only. While we endeavour to keep the information up to date and correct, we make no representations or warranties of any kind, express or implied, about the completeness, accuracy, reliability, suitability, or availability of the Website or the information, products, services, or related graphics contained on the Website. Nothing in these terms excludes, restricts or modifies any right or remedy, or any guarantee, warranty or other term or condition, implied or imposed by any legislation which cannot lawfully be excluded or limited."
       },
       "forwardLooking": {
         "title": "前瞻性声明",
@@ -1260,7 +1264,7 @@
       "feet": "英尺"
     },
     "disclaimer": {
-      "forwardLooking": "本页包含关于 Production City 规划设施和能力的前瞻性声明。这些声明涉及已知和未知的风险、不确定性和其他因素，可能导致实际结果与预期存在重大差异。设施规格为设计目标，可能变更。"
+      "forwardLooking": "本页包含关于 Production City 规划设施和能力的前瞻性声明。这些声明涉及已知和未知的风险、不确定性和其他因素，可能导致实际结果与预期存在重大差异。设施规格为设计目标，可能变更。 This is not a financial prospectus or investment solicitation."
     },
     "page": {
       "hero": {
@@ -1409,7 +1413,7 @@
       "context": "作为创意专业人士注册您的兴趣。"
     },
     "disclaimer": {
-      "forwardLooking": "本页包含关于 Production City 规划的创意生态系统和服务的前瞻性声明。这些声明涉及已知和未知的风险、不确定性和其他因素，可能导致实际结果存在重大差异。"
+      "forwardLooking": "本页包含关于 Production City 规划的创意生态系统和服务的前瞻性声明。这些声明涉及已知和未知的风险、不确定性和其他因素，可能导致实际结果存在重大差异。 This is not a financial prospectus or investment solicitation."
     }
   },
   "vision": {
@@ -1580,7 +1584,7 @@
       "context": "注册您的兴趣，了解教育、合作和社区机会。"
     },
     "disclaimer": {
-      "forwardLooking": "本页包含关于 Production City 社区参与、教育和可持续发展计划的前瞻性声明。"
+      "forwardLooking": "本页包含关于 Production City 社区参与、教育和可持续发展计划的前瞻性声明。 This is not a financial prospectus or investment solicitation."
     },
     "acknowledgement": {
       "heading": "土地致敬",
@@ -1886,15 +1890,18 @@
     "creativeLabel": "园区支持的创意工作",
     "creativeHeading": "以制作级规模再现传统土地。由社区主导触达受众。",
     "creativeDesc": "虚拟制作与LED体量空间使以制作级规模呈现传统土地景观成为可能，且无需对其造成任何干扰。直播、AR与VR则为触达更广泛受众开辟了新路径。园区的建立，旨在帮助原住民故事讲述者以自己掌控的方式，将作品推送至国内外受众。",
-    "evidenceLabel": "我们如何证明这一点",
-    "evidenceHeading": "可查可核。",
+    "evidenceLabel": "How this is structured",
+    "evidenceHeading": "How we build accountability.",
     "evidence1": "董事会与高管治理安排，包括首席运营官的职责范围与决策权。",
     "evidence2": "知识产权与数据溯源框架，包含针对原住民素材的专项协议。",
-    "evidence3": "在就业、采购及培训方面的目标设定与报告承诺。",
-    "evidence4": "项目执行所依托的合作关系与社区联络网络。",
-    "evidence5": "与新南威尔士州政府相关政策的对齐落实，包括《原住民采购政策》及“缩小差距”承诺。",
+    "evidence3": "Published targets for employment, procurement, and training, with reporting commitments from operations commencement.",
+    "evidence4": "Partnership and community relationships through which the programme will be delivered.",
+    "evidence5": "Designed alignment with relevant NSW Government policy, including the Aboriginal Procurement Policy and Closing the Gap commitments.",
     "ctaHeading": "阅读能力声明。",
-    "ctaLink": "申请副本"
+    "ctaLink": "申请副本",
+    "disclaimer": {
+      "forwardLooking": "This page contains forward-looking statements about Production City's governance, intellectual property, and data governance commitments, workforce and procurement targets, and community partnerships. These statements involve known and unknown risks, uncertainties, and other factors that may cause actual results to differ materially. This is not a financial prospectus or investment solicitation."
+    }
   },
   "network": {
     "meta": {
@@ -1968,13 +1975,16 @@
     "partner4Desc": "由原住民所有的企业、社区组织及传统土地所有者群体组成，其深度参与塑造了园区的人才队伍、采购实践、文化安全机制与创意工作。",
     "partnersNote": "已具名合作伙伴在商业保密允许的范围内予以披露。早期阶段的合作洽谈在协议签署前仍受商业保密条款约束。",
     "pullQuoteLabel": "05 — 关于首个园区",
-    "pullQuote": "第一个园区正在建设之中。网络的技术标准、研发职能及行政管理均以这个首个园区为基地。成为第一，不是一个品牌宣言——而是一个结构性事实，且其价值将持续复利增长。",
+    "pullQuote": "The first campus is in active development. Technical standards, research and development, and the executive functions of the network are based at that first site. Being first is not a branding claim — it is a structural one, and it compounds.",
     "cta": "与团队对话。",
     "ctaLink": "开始对话",
     "ctaFacilities": "参观设施",
     "ctaNetwork": "全球布局",
     "leadershipBio1": "创始人兼首席执行官。在舞台与银幕制作、广播及数据中心基础设施领域，以及硅谷机器学习领域拥有丰富经验。",
-    "leadershipBio2": "首席运营官兼执行董事。其权力是实质性的，而非顾问性质。"
+    "leadershipBio2": "首席运营官兼执行董事。其权力是实质性的，而非顾问性质。",
+    "disclaimer": {
+      "forwardLooking": "This page contains forward-looking statements about Production City's operating model, international expansion plans, partner engagements, and organisational structure. These statements involve known and unknown risks, uncertainties, and other factors that may cause actual results to differ materially. This is not a financial prospectus or investment solicitation."
+    }
   },
   "companyTeam": {
     "meta": {

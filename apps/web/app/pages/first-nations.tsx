@@ -303,7 +303,7 @@ function FirstNationsPageContent() {
         </a>
       </section>
 
-      <ForwardLookingDisclaimer text={t("facilities.disclaimer.forwardLooking")} />
+      <ForwardLookingDisclaimer text={t("firstNations.disclaimer.forwardLooking")} />
     </LandingPageTemplate>
   );
 }

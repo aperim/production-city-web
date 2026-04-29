@@ -525,6 +525,10 @@
         "description": "نشارك بياناتك مع مقدمي الخدمات التالين:",
         "note": "يعالج هؤلاء المزودون البيانات نيابة عنا بموجب اتفاقيات معالجة البيانات. لا نبيع بياناتك الشخصية."
       },
+      "internationalTransfers": {
+        "title": "International Data Transfers",
+        "description": "Production City uses third-party service providers that may process personal data outside Australia, including Postmark (United States), HubSpot (United States), and Cloudflare (global network). These transfers are governed by Standard Contractual Clauses and Data Processing Agreements with each provider."
+      },
       "crossBorder": {
         "title": "Cross-border disclosure",
         "description": "Your personal information may be disclosed to service providers located in the United States. Before disclosing personal information to an overseas recipient, we take reasonable steps to ensure the recipient does not breach the APPs in relation to that information, or we rely on an exception under APP 8.2 (such as your informed consent or a binding contractual arrangement that requires the recipient to handle information consistently with the APPs).",
@@ -607,7 +611,7 @@
       },
       "jurisdiction": {
         "title": "القانون الحاكم",
-        "description": "تخضع سياسة الخصوصية هذه لقوانين نيو ساوث ويلز، أستراليا، وقانون الخصوصية الأسترالي 1988."
+        "description": "This privacy policy is governed by the laws of New South Wales, Australia, and the Australian Privacy Act 1988 (Cth) and the Australian Privacy Principles. For EU/EEA residents, the relevant supervisory authority is the data protection authority in your country of residence."
       },
       "changes": {
         "title": "التغييرات على هذه السياسة",
@@ -684,7 +688,7 @@
           "financial, investment, legal, or professional advice;",
           "a guarantee of availability, performance, or suitability for any particular purpose."
         ],
-        "description": "Production City في مرحلة التطوير قبل الإطلاق. جميع المعلومات والميزات والجداول الزمنية والتوقعات عرضة للتغيير دون إشعار. لا يشكل أي شيء على هذا الموقع عرضاً ملزماً أو ضماناً للتوفر أو التزاماً بتقديم أي خدمة أو ميزة معينة."
+        "description": "The content on this Website is provided for general informational purposes only. While we endeavour to keep the information up to date and correct, we make no representations or warranties of any kind, express or implied, about the completeness, accuracy, reliability, suitability, or availability of the Website or the information, products, services, or related graphics contained on the Website. Nothing in these terms excludes, restricts or modifies any right or remedy, or any guarantee, warranty or other term or condition, implied or imposed by any legislation which cannot lawfully be excluded or limited."
       },
       "forwardLooking": {
         "title": "البيانات التطلعية",
@@ -1260,7 +1264,7 @@
       "feet": "قدم"
     },
     "disclaimer": {
-      "forwardLooking": "تحتوي هذه الصفحة على بيانات تطلعية حول مرافق وقدرات Production City المخططة. تنطوي هذه البيانات على مخاطر وشكوك قد تؤدي إلى اختلاف النتائج الفعلية. مواصفات المرافق تصف أهداف التصميم وقابلة للتغيير."
+      "forwardLooking": "تحتوي هذه الصفحة على بيانات تطلعية حول مرافق وقدرات Production City المخططة. تنطوي هذه البيانات على مخاطر وشكوك قد تؤدي إلى اختلاف النتائج الفعلية. مواصفات المرافق تصف أهداف التصميم وقابلة للتغيير. This is not a financial prospectus or investment solicitation."
     },
     "page": {
       "hero": {
@@ -1409,7 +1413,7 @@
       "context": "سجل اهتمامك كمحترف إبداعي."
     },
     "disclaimer": {
-      "forwardLooking": "تحتوي هذه الصفحة على بيانات تطلعية حول النظام الإبداعي والخدمات المخططة في Production City. تنطوي هذه البيانات على مخاطر وشكوك قد تؤدي إلى اختلاف النتائج الفعلية."
+      "forwardLooking": "تحتوي هذه الصفحة على بيانات تطلعية حول النظام الإبداعي والخدمات المخططة في Production City. تنطوي هذه البيانات على مخاطر وشكوك قد تؤدي إلى اختلاف النتائج الفعلية. This is not a financial prospectus or investment solicitation."
     }
   },
   "vision": {
@@ -1580,7 +1584,7 @@
       "context": "سجل اهتمامك للتعرف على فرص التعليم والشراكة والمجتمع."
     },
     "disclaimer": {
-      "forwardLooking": "تحتوي هذه الصفحة على بيانات تطلعية حول خطط Production City للمشاركة المجتمعية والتعليم والاستدامة. تنطوي هذه البيانات على مخاطر وشكوك قد تؤدي إلى اختلاف النتائج الفعلية."
+      "forwardLooking": "تحتوي هذه الصفحة على بيانات تطلعية حول خطط Production City للمشاركة المجتمعية والتعليم والاستدامة. تنطوي هذه البيانات على مخاطر وشكوك قد تؤدي إلى اختلاف النتائج الفعلية. This is not a financial prospectus or investment solicitation."
     },
     "acknowledgement": {
       "heading": "الاعتراف بالأرض",
@@ -1886,15 +1890,18 @@
     "creativeLabel": "العمل الإبداعي الذي يدعمه الحرم",
     "creativeHeading": "الأرض بمقياس الإنتاج. جماهير على شروط تتحكم فيها المجتمعات.",
     "creativeDesc": "يُتيح الإنتاج الافتراضي وأحجام LED تصوير الأرض بمقياس الإنتاج دون المساس بها. يفتح البث المباشر والواقع المعزز والواقع الافتراضي مسارات جديدة نحو الجماهير. بُني الحرم لمساعدة رواة القصص من الشعوب الأصلية على الوصول إلى الجماهير المحلية والدولية بشروطهم الخاصة.",
-    "evidenceLabel": "كيف نُثبت ذلك",
-    "evidenceHeading": "قابل للتحقق.",
+    "evidenceLabel": "How this is structured",
+    "evidenceHeading": "How we build accountability.",
     "evidence1": "ترتيبات الحوكمة على مستوى مجلس الإدارة والإدارة التنفيذية، بما فيها محفظة المدير التنفيذي للعمليات وصلاحيات اتخاذ القرار.",
     "evidence2": "إطار عمل مصدر الملكية الفكرية والبيانات، بما في ذلك البروتوكولات الخاصة بمواد الشعوب الأصلية.",
-    "evidence3": "الأهداف والتزامات الإبلاغ بشأن التوظيف والمشتريات والتدريب.",
-    "evidence4": "الشراكات والعلاقات المجتمعية التي يُنفَّذ البرنامج من خلالها.",
-    "evidence5": "التوافق مع سياسة حكومة نيو ساوث ويلز ذات الصلة، بما فيها سياسة المشتريات من السكان الأصليين والتزامات برنامج Closing the Gap.",
+    "evidence3": "Published targets for employment, procurement, and training, with reporting commitments from operations commencement.",
+    "evidence4": "Partnership and community relationships through which the programme will be delivered.",
+    "evidence5": "Designed alignment with relevant NSW Government policy, including the Aboriginal Procurement Policy and Closing the Gap commitments.",
     "ctaHeading": "اقرأ بيان القدرات.",
-    "ctaLink": "طلب نسخة"
+    "ctaLink": "طلب نسخة",
+    "disclaimer": {
+      "forwardLooking": "This page contains forward-looking statements about Production City's governance, intellectual property, and data governance commitments, workforce and procurement targets, and community partnerships. These statements involve known and unknown risks, uncertainties, and other factors that may cause actual results to differ materially. This is not a financial prospectus or investment solicitation."
+    }
   },
   "network": {
     "meta": {
@@ -1968,13 +1975,16 @@
     "partner4Desc": "مشاريع مملوكة للشعوب الأصلية ومنظمات مجتمعية ومجموعات من الملّاك التقليديين تُشكّل مشاركتهم القوى العاملة والمشتريات والسلامة الثقافية والعمل الإبداعي في الحرم.",
     "partnersNote": "يُكشف عن أسماء الشركاء بقدر ما تسمح السرية التجارية. تبقى الاتفاقيات في مراحلها الأولى خاضعة لشروط تجارية إلى حين توقيعها.",
     "pullQuoteLabel": "05 — عن الموقع الأول",
-    "pullQuote": "الحرم الأول قيد الإنشاء الآن. المعايير التقنية والبحث والتطوير والوظائف التنفيذية للشبكة مقرها في هذا الموقع الأول. أن تكون الأول ليس ادعاءً تسويقياً — بل هو ادعاء هيكلي يتراكم بمرور الوقت.",
+    "pullQuote": "The first campus is in active development. Technical standards, research and development, and the executive functions of the network are based at that first site. Being first is not a branding claim — it is a structural one, and it compounds.",
     "cta": "تحدث مع الفريق.",
     "ctaLink": "ابدأ محادثة",
     "ctaFacilities": "اطلع على المنشآت",
     "ctaNetwork": "التسلسل العالمي",
     "leadershipBio1": "المؤسس والرئيس التنفيذي. إنتاج مسرحي وسينمائي، بنية تحتية للبث ومراكز البيانات، والتعلم الآلي في وادي السيليكون.",
-    "leadershipBio2": "المدير التنفيذي للعمليات والمدير العام. سلطته جوهرية، لا استشارية."
+    "leadershipBio2": "المدير التنفيذي للعمليات والمدير العام. سلطته جوهرية، لا استشارية.",
+    "disclaimer": {
+      "forwardLooking": "This page contains forward-looking statements about Production City's operating model, international expansion plans, partner engagements, and organisational structure. These statements involve known and unknown risks, uncertainties, and other factors that may cause actual results to differ materially. This is not a financial prospectus or investment solicitation."
+    }
   },
   "companyTeam": {
     "meta": {

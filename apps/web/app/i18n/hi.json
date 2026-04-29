@@ -525,6 +525,10 @@
         "description": "हम निम्नलिखित सेवा प्रदाताओं के साथ आपका डेटा साझा करते हैं:",
         "note": "ये प्रदाता डेटा प्रसंस्करण समझौतों के तहत हमारी ओर से डेटा संसाधित करते हैं। हम आपका व्यक्तिगत डेटा नहीं बेचते।"
       },
+      "internationalTransfers": {
+        "title": "International Data Transfers",
+        "description": "Production City uses third-party service providers that may process personal data outside Australia, including Postmark (United States), HubSpot (United States), and Cloudflare (global network). These transfers are governed by Standard Contractual Clauses and Data Processing Agreements with each provider."
+      },
       "crossBorder": {
         "title": "Cross-border disclosure",
         "description": "Your personal information may be disclosed to service providers located in the United States. Before disclosing personal information to an overseas recipient, we take reasonable steps to ensure the recipient does not breach the APPs in relation to that information, or we rely on an exception under APP 8.2 (such as your informed consent or a binding contractual arrangement that requires the recipient to handle information consistently with the APPs).",
@@ -607,7 +611,7 @@
       },
       "jurisdiction": {
         "title": "शासी कानून",
-        "description": "यह गोपनीयता नीति ऑस्ट्रेलिया के न्यू साउथ वेल्स के कानूनों और ऑस्ट्रेलियाई गोपनीयता अधिनियम 1988 द्वारा शासित है।"
+        "description": "This privacy policy is governed by the laws of New South Wales, Australia, and the Australian Privacy Act 1988 (Cth) and the Australian Privacy Principles. For EU/EEA residents, the relevant supervisory authority is the data protection authority in your country of residence."
       },
       "changes": {
         "title": "नीति में परिवर्तन",
@@ -684,7 +688,7 @@
           "financial, investment, legal, or professional advice;",
           "a guarantee of availability, performance, or suitability for any particular purpose."
         ],
-        "description": "यह वेबसाइट बिना किसी वारंटी के प्रदान की जाती है।"
+        "description": "The content on this Website is provided for general informational purposes only. While we endeavour to keep the information up to date and correct, we make no representations or warranties of any kind, express or implied, about the completeness, accuracy, reliability, suitability, or availability of the Website or the information, products, services, or related graphics contained on the Website. Nothing in these terms excludes, restricts or modifies any right or remedy, or any guarantee, warranty or other term or condition, implied or imposed by any legislation which cannot lawfully be excluded or limited."
       },
       "forwardLooking": {
         "title": "भविष्योन्मुखी बयान",
@@ -1260,7 +1264,7 @@
       "feet": "फ़ुट"
     },
     "disclaimer": {
-      "forwardLooking": "इस पृष्ठ में Production City की नियोजित सुविधाओं और क्षमताओं के बारे में भविष्योन्मुखी कथन हैं। इन कथनों में ज्ञात और अज्ञात जोखिम, अनिश्चितताएं और अन्य कारक शामिल हैं जो वास्तविक परिणामों को भौतिक रूप से भिन्न कर सकते हैं। सुविधा विनिर्देश डिज़ाइन लक्ष्य हैं और परिवर्तन के अधीन हैं।"
+      "forwardLooking": "इस पृष्ठ में Production City की नियोजित सुविधाओं और क्षमताओं के बारे में भविष्योन्मुखी कथन हैं। इन कथनों में ज्ञात और अज्ञात जोखिम, अनिश्चितताएं और अन्य कारक शामिल हैं जो वास्तविक परिणामों को भौतिक रूप से भिन्न कर सकते हैं। सुविधा विनिर्देश डिज़ाइन लक्ष्य हैं और परिवर्तन के अधीन हैं। This is not a financial prospectus or investment solicitation."
     },
     "page": {
       "hero": {
@@ -1409,7 +1413,7 @@
       "context": "एक सृजनात्मक पेशेवर के रूप में अपनी रुचि दर्ज करें।"
     },
     "disclaimer": {
-      "forwardLooking": "इस पृष्ठ में Production City के नियोजित सृजनात्मक पारिस्थितिकी तंत्र और सेवाओं के बारे में भविष्योन्मुखी कथन हैं। इन कथनों में ज्ञात और अज्ञात जोखिम, अनिश्चितताएं और अन्य कारक शामिल हैं जो वास्तविक परिणामों को भौतिक रूप से भिन्न कर सकते हैं।"
+      "forwardLooking": "इस पृष्ठ में Production City के नियोजित सृजनात्मक पारिस्थितिकी तंत्र और सेवाओं के बारे में भविष्योन्मुखी कथन हैं। इन कथनों में ज्ञात और अज्ञात जोखिम, अनिश्चितताएं और अन्य कारक शामिल हैं जो वास्तविक परिणामों को भौतिक रूप से भिन्न कर सकते हैं। This is not a financial prospectus or investment solicitation."
     }
   },
   "vision": {
@@ -1580,7 +1584,7 @@
       "context": "शिक्षा, साझेदारी और सामुदायिक अवसरों के बारे में जानने के लिए अपनी रुचि दर्ज करें।"
     },
     "disclaimer": {
-      "forwardLooking": "इस पृष्ठ में सामुदायिक जुड़ाव, शिक्षा और स्थिरता के लिए Production City की योजनाओं के बारे में भविष्योन्मुखी कथन हैं। इन कथनों में ज्ञात और अज्ञात जोखिम, अनिश्चितताएं और अन्य कारक शामिल हैं।"
+      "forwardLooking": "इस पृष्ठ में सामुदायिक जुड़ाव, शिक्षा और स्थिरता के लिए Production City की योजनाओं के बारे में भविष्योन्मुखी कथन हैं। इन कथनों में ज्ञात और अज्ञात जोखिम, अनिश्चितताएं और अन्य कारक शामिल हैं। This is not a financial prospectus or investment solicitation."
     },
     "acknowledgement": {
       "heading": "देश की स्वीकृति",
@@ -1886,15 +1890,18 @@
     "creativeLabel": "परिसर जिस रचनात्मक कार्य का समर्थन करता है",
     "creativeHeading": "प्रोडक्शन पैमाने पर देश। समुदायों की शर्तों पर दर्शक।",
     "creativeDesc": "वर्चुअल प्रोडक्शन और LED वॉल्यूम देश को प्रोडक्शन पैमाने पर प्रस्तुत करना संभव बनाते हैं, बिना उसे परेशान किए। लाइव ब्रॉडकास्ट, AR, और VR दर्शकों तक नए रास्ते खोलते हैं। परिसर को First Nations कहानीकारों को उन शर्तों पर राष्ट्रीय और अंतर्राष्ट्रीय दर्शकों तक पहुँचाने में मदद करने के लिए बनाया गया है जिन पर वे नियंत्रण रखते हैं।",
-    "evidenceLabel": "हम इसे कैसे प्रमाणित करते हैं",
-    "evidenceHeading": "जाँचने योग्य।",
+    "evidenceLabel": "How this is structured",
+    "evidenceHeading": "How we build accountability.",
     "evidence1": "बोर्ड और कार्यकारी शासन व्यवस्था, जिसमें COO का पोर्टफोलियो और निर्णय अधिकार शामिल हैं।",
     "evidence2": "IP और डेटा उद्गम ढाँचा, जिसमें First Nations सामग्री के लिए प्रोटोकॉल शामिल हैं।",
-    "evidence3": "रोज़गार, खरीद, और प्रशिक्षण के लिए लक्ष्य और रिपोर्टिंग प्रतिबद्धताएँ।",
-    "evidence4": "भागीदारी और सामुदायिक संबंध जिनके माध्यम से कार्यक्रम प्रदान किया जाता है।",
-    "evidence5": "प्रासंगिक NSW सरकार नीति के साथ संरेखण, जिसमें Aboriginal Procurement Policy और Closing the Gap प्रतिबद्धताएँ शामिल हैं।",
+    "evidence3": "Published targets for employment, procurement, and training, with reporting commitments from operations commencement.",
+    "evidence4": "Partnership and community relationships through which the programme will be delivered.",
+    "evidence5": "Designed alignment with relevant NSW Government policy, including the Aboriginal Procurement Policy and Closing the Gap commitments.",
     "ctaHeading": "Capability Statement पढ़ें।",
-    "ctaLink": "एक प्रति का अनुरोध करें"
+    "ctaLink": "एक प्रति का अनुरोध करें",
+    "disclaimer": {
+      "forwardLooking": "This page contains forward-looking statements about Production City's governance, intellectual property, and data governance commitments, workforce and procurement targets, and community partnerships. These statements involve known and unknown risks, uncertainties, and other factors that may cause actual results to differ materially. This is not a financial prospectus or investment solicitation."
+    }
   },
   "network": {
     "meta": {
@@ -1968,13 +1975,16 @@
     "partner4Desc": "First Nations स्वामित्व वाले व्यवसाय, सामुदायिक संगठन, और पारंपरिक स्वामी समूह जिनकी भागीदारी परिसर के कार्यबल, खरीद, सांस्कृतिक सुरक्षा, और रचनात्मक कार्य को आकार देती है।",
     "partnersNote": "नामित भागीदारों का खुलासा वहाँ किया जाता है जहाँ वाणिज्यिक गोपनीयता अनुमति देती है। प्रारंभिक चरण की संलग्नताएँ समझौतों पर हस्ताक्षर होने तक वाणिज्यिक शर्तों के अधीन रहती हैं।",
     "pullQuoteLabel": "05 — पहले स्थल पर",
-    "pullQuote": "पहला परिसर अभी बनाया जा रहा है। तकनीकी मानक, अनुसंधान और विकास, और नेटवर्क के कार्यकारी कार्य उस पहले स्थल पर आधारित हैं। पहला होना एक ब्रांडिंग दावा नहीं है — यह एक संरचनात्मक दावा है, और यह बढ़ता जाता है।",
+    "pullQuote": "The first campus is in active development. Technical standards, research and development, and the executive functions of the network are based at that first site. Being first is not a branding claim — it is a structural one, and it compounds.",
     "cta": "दल से बात करें।",
     "ctaLink": "बातचीत शुरू करें",
     "ctaFacilities": "सुविधाएं देखें",
     "ctaNetwork": "वैश्विक अनुक्रम",
     "leadershipBio1": "संस्थापक एवं मुख्य कार्यकारी। स्टेज एवं परदे के निर्माण, प्रसारण एवं डेटासेंटर अवसंरचना, तथा सिलिकॉन वैली में मशीन लर्निंग का अनुभव।",
-    "leadershipBio2": "मुख्य परिचालन अधिकारी एवं प्रबंध निदेशक। उनका अधिकार ठोस है, न कि केवल सलाहकारी।"
+    "leadershipBio2": "मुख्य परिचालन अधिकारी एवं प्रबंध निदेशक। उनका अधिकार ठोस है, न कि केवल सलाहकारी।",
+    "disclaimer": {
+      "forwardLooking": "This page contains forward-looking statements about Production City's operating model, international expansion plans, partner engagements, and organisational structure. These statements involve known and unknown risks, uncertainties, and other factors that may cause actual results to differ materially. This is not a financial prospectus or investment solicitation."
+    }
   },
   "companyTeam": {
     "meta": {
