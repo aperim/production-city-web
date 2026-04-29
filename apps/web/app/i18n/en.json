@@ -454,14 +454,14 @@
     "privacyPolicy": "Privacy Policy",
     "termsOfUse": "Terms of Use",
     "cookiePolicy": "Cookie Policy",
-    "lastUpdated": "Last updated: {date}",
+    "lastUpdated": "Last updated: 1 May 2026",
     "backToHome": "Back to home",
     "privacy": {
       "title": "Privacy Policy",
-      "effectiveDate": "Effective date: {date}",
+      "effectiveDate": "Effective date: 1 May 2026",
       "about": {
         "title": "About this policy",
-        "description": "This privacy policy explains how Aperim Pty Ltd (\"we\", \"us\", \"our\") collects, holds, uses, and discloses personal information in connection with the Production City website at production.city and any related services.",
+        "description": "This privacy policy explains how Aperim Pty Ltd (ACN 150 699 737) (\"we\", \"us\", \"our\") collects, holds, uses, and discloses personal information in connection with the Production City website at production.city and any related services.",
         "obligations": "We are bound by the Australian Privacy Act 1988 (Cth) (\"Privacy Act\") and the Australian Privacy Principles (\"APPs\"). This policy is intended to satisfy our obligations under APP 1 to manage personal information in an open and transparent way.",
         "contact": "If you have questions about this policy or how we handle your personal information, contact us at privacy@production.city."
       },
@@ -633,7 +633,7 @@
     },
     "terms": {
       "title": "Terms of Use",
-      "effectiveDate": "Effective date: {date}",
+      "effectiveDate": "Effective date: 1 May 2026",
       "intro": "These Terms of Use govern your access to and use of the Production City website operated by Aperim Pty Ltd (ABN 46 150 699 737 | ACN 150 699 737) of Suite 108, 9 Hutchinson Street, St Peters NSW 2044, Australia. By accessing this website, you agree to be bound by these terms.",
       "about": {
         "title": "About these terms",
