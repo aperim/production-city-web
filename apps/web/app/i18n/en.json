@@ -844,36 +844,36 @@
   "home": {
     "meta": {
       "title": "Production City — We Make Stories",
-      "description": "Production City fuses tradition and innovation for screen, stage, and experiential storytelling. Register your interest today."
+      "description": "Sound stages, LED volume, broadcast theatre, and production services under one operator. Register your interest."
     },
     "intro": {
       "tagline": "We make stories",
-      "positioning": "A vertically integrated studio campus. Sound stages, LED volume, broadcast theatre, and the full service stack — built as one system, not assembled from vendors.",
+      "positioning": "Sound stages, LED volume, broadcast theatre, and production services. One campus, one operator.",
       "ctaPrimary": "Register Your Interest",
       "ctaSecondary": "Explore Our Facilities",
       "brand": "Production City",
-      "tagline2": "Built together. Not retrofitted.",
+      "tagline2": "One campus. One operator.",
       "tagline3": "Screen. Stage. Experiential."
     },
     "whatIs": {
       "heading": "What is Production City?",
-      "claim1": "One operator running the venue, the technology, and the full creative service stack.",
-      "claim2": "Sound stages, broadcast theatre, LED volume, and the full service stack — on one campus.",
-      "claim3": "Building a global campus network, beginning in Australia.",
-      "claim4": "Modern infrastructure built on established production craft, not the other way around."
+      "claim1": "One operator runs the venue, the technology, and production services.",
+      "claim2": "Sound stages, broadcast theatre, and LED volume on one campus.",
+      "claim3": "Building a global campus network.",
+      "claim4": "Production craft first. Modern infrastructure built around it."
     },
     "facilitiesPreview": {
       "heading": "Planned Facilities",
       "viewAll": "Explore all facilities"
     },
     "creativePreview": {
-      "heading": "An Integrated Creative Ecosystem",
-      "description": "Seventeen disciplines. One campus. One operator. Pre-production through post — no vendor handoffs.",
+      "heading": "Creative services",
+      "description": "Seventeen disciplines from pre-production through post. No vendor handoffs.",
       "viewAll": "See how the campus works"
     },
     "visionTeaser": {
-      "heading": "A Global Vision",
-      "description": "Australia is the first campus. Europe, Asia Pacific, Africa, and North America follow — one operator, one standard, replicated region by region.",
+      "heading": "Global network",
+      "description": "Multiple campuses, each built to the same standard and run by the same operator.",
       "viewAll": "Learn about our vision"
     },
     "acknowledgement": {
@@ -885,18 +885,18 @@
     },
     "communityPreview": {
       "heading": "Community & Sustainability",
-      "description": "Education, skills, and community work embedded in the campus — not announced when the project needs goodwill.",
+      "description": "Education, training, and community programmes are part of campus operations, not PR.",
       "viewAll": "Explore community partnerships"
     },
     "masterplanTeaser": {
       "eyebrow": "Campus Masterplan",
-      "heading": "The campus, in three dimensions.",
-      "body": "Six sound stages, a broadcast theatre, creative hub, backlot, and public realm — explore the full 6-hectare site as an interactive 3D model.",
+      "heading": "Campus masterplan",
+      "body": "Six sound stages, a broadcast theatre, creative hub, backlot, and public realm across 6 hectares. Explore the interactive 3D model.",
       "ctaLabel": "Explore the campus in 3D →"
     },
     "hero": {
       "heading": "We make stories.",
-      "subtitle": "A vertically integrated studio campus. Sound stages, LED volume, a broadcast theatre, and the full service stack — built together, in one place.",
+      "subtitle": "Sound stages, LED volume, broadcast theatre, and production services. One campus, one operator.",
       "locations": "Australia · Europe · Asia Pacific · Africa",
       "ctaFacilities": "See the facilities",
       "ctaEoi": "Register interest",
@@ -906,8 +906,8 @@
     "operatingModel": {
       "sectionLabel": "01 — Operating model",
       "heading": "One operator. One campus. Script to delivery.",
-      "body1": "Production City is not a stage with vendors bolted on. It is one operator providing the venue, the technology stack, and the full creative service stack under one brand. That reduces coordination risk for tenants and opens multiple revenue streams for the company.",
-      "body2": "The stages, the LED volume, the broadcast theatre, the control room, and the service teams were designed together. Not retrofitted.",
+      "body1": "Production City is not a stage with vendors bolted on. One operator provides the venue, the technology, and production services under one brand. That reduces coordination risk for tenants and opens multiple revenue streams for the company.",
+      "body2": "The stages, the LED volume, the broadcast theatre, the control room, and the service teams were designed together.",
       "pillars": {
         "realtime": {
           "title": "One IP · two formats",
@@ -935,7 +935,7 @@
     },
     "facilitiesSection": {
       "sectionLabel": "02 — Facilities",
-      "heading": "Built together. Not retrofitted.",
+      "heading": "Designed together.",
       "tiles": {
         "screenStages": {
           "label": "A · SCREEN SOUND STAGES",
@@ -1035,7 +1035,7 @@
       "cards": {
         "producers": {
           "title": "For producers and studios",
-          "text": "Book a stage, a volume, and a full service stack. One operator, one schedule, no vendor chain to manage."
+          "text": "Book a stage, a volume, and production services. One operator, one schedule, no vendor chain to manage."
         },
         "government": {
           "title": "For government",
@@ -1062,7 +1062,7 @@
     },
     "overview": {
       "heading": "Planned Facilities",
-      "intro": "Production City is designed to house a comprehensive portfolio of production facilities, each built to professional broadcast and film specifications."
+      "intro": "Production facilities built to broadcast and film specifications."
     },
     "common": {
       "detail": {
@@ -1091,7 +1091,7 @@
         "lead": "2,025 m² of stage floor. 15 m to grid. NRC 1.05. Full-surround LED volume ready.",
         "prose": "Feature film. Episodic. Live television. When the production is large-format, the stage has to be built for it from the ground up.",
         "prose2": "Each screen sound stage is 45 m × 45 m, 15 m to grid, full-coverage grid and catwalk. Sound-proofing is NRC 1.05 / NC 25. LED volume is configurable flat, arc, or full-surround.",
-        "prose3": "These stages were designed against the technical specifications of major-studio and streamer productions. As the first site, the standards are set here.",
+        "prose3": "These stages were designed against the technical specifications of major-studio and streamer productions.",
         "usageLabel": "Usage",
         "usage1": "Feature film production",
         "usage2": "Episodic television",
@@ -1218,7 +1218,7 @@
         "heading": "The nerve centre.",
         "lead": "Central production management, live broadcast control, advanced synchronisation — feeding stages, the theatre, and external venues globally.",
         "prose": "The control room is the campus’s single broadcast spine. It manages and synchronises every live production on site.",
-        "prose2": "It is designed to originate broadcast from external sports and event venues anywhere in the world. Production City’s broadcast and data-centre pedigree sits here. The control room is engineered the way critical broadcast infrastructure is engineered.",
+        "prose2": "It is designed to originate broadcast from external sports and event venues anywhere in the world. The control room is engineered to critical broadcast infrastructure standards.",
         "capabilityLabel": "Capability",
         "cap1": "Centralised production management",
         "cap2": "Live broadcast control",
@@ -1260,8 +1260,8 @@
     "page": {
       "hero": {
         "eyebrow": "Facilities — 01/04",
-        "heading": "Built together. Not retrofitted.",
-        "description": "The stages, the volume, the theatre, and the control room were designed as one system. Specifications below are the specifications."
+        "heading": "The specifications.",
+        "description": "The stages, the volume, the theatre, and the control room were designed as one system."
       },
       "cta": "Read the spec",
       "screenStages": {
@@ -1320,34 +1320,34 @@
       },
       "services": {
         "eyebrow": "Integrated services",
-        "heading": "Every facility is supported by the full creative service stack, on the same campus."
+        "heading": "Every facility is supported by production services on the same campus."
       }
     }
   },
   "creative": {
     "meta": {
-      "title": "Creative & Ecosystem — Production City",
-      "description": "17 disciplines. One campus. One operator. From script to delivery — no vendor handoffs."
+      "title": "Creative services — Production City",
+      "description": "17 production disciplines from script to delivery. No vendor handoffs."
     },
     "ecosystem": {
-      "heading": "One campus. One operator.",
-      "summary": "All 17 disciplines share a campus, a schedule, and a broadcast backbone. They don't coordinate between each other — they're part of the same operation.",
+      "heading": "How the campus works",
+      "summary": "Seventeen disciplines share a campus, a schedule, and a broadcast backbone. They are part of the same operation.",
       "principles": "How it's structured",
       "principle1": "Physical and digital workflows are the same workflow.",
       "principle2": "Departments run concurrently. Props and post overlap. Shooting and script development overlap.",
       "principle3": "Workshop, stage, and edit suite sit on the same site. No logistics chain.",
       "principle4": "Problems get solved in real time because the people who can solve them are in the building.",
-      "principle5": "One operator means one set of decisions. Less friction for tenants. Cleaner revenue for the company.",
+      "principle5": "One operator, one set of decisions. Fewer parties for tenants to coordinate with.",
       "benefits": "What this changes",
       "benefit1": "Production timelines compress.",
       "benefit2": "A prop built in the workshop reaches the stage without leaving the campus.",
       "benefit3": "A take finished in the gallery is graded a floor away.",
-      "benefit4": "Efficiency is structural — it doesn't need to be managed onto it.",
+      "benefit4": "Efficiency comes from the layout, not management overhead.",
       "benefit5": "Cost comes out of logistics, not production quality.",
-      "benefit6": "Risk sits with us, not the production."
+      "benefit6": "We carry the coordination risk. Tenants focus on the work."
     },
     "services": {
-      "heading": "Creative Collaboration Services",
+      "heading": "Production services",
       "production": "Production",
       "postProduction": "Post-Production",
       "designCraft": "Design & Craft",
@@ -1368,12 +1368,12 @@
       "modelling3dDesc": "3D artists mapping designs and captures into detailed models, integrating CGI with live footage.",
       "motionCapture": "Motion Capture & Performance Recording",
       "motionCaptureDesc": "Recording actor movements and facial expressions for application to digital characters.",
-      "arVr": "AR/VR Solutions",
+      "arVr": "AR/VR",
       "arVrDesc": "AR and VR content built on the LED volume and broadcast theatre. Location scouting in headset, audience experiences delivered live or on-demand.",
       "broadcastCoord": "Broadcast Coordination & Management",
       "broadcastCoordDesc": "Gallery-led scheduling and technical coordination for live broadcasts — on-campus or to external venues.",
       "specialEffects": "Special Effects Design",
-      "specialEffectsDesc": "Mechanical, optical, and visual effects for practical and simulated phenomena.",
+      "specialEffectsDesc": "Mechanical, optical, and visual effects for practical on-set work.",
       "virtualProd": "Virtual Production",
       "virtualProdDesc": "LED volume, real-time compositing, and camera tracking from previz through final shot. All of it tight to the stages.",
       "conceptDev": "Design & Concept Development",
@@ -1410,17 +1410,17 @@
   "vision": {
     "meta": {
       "title": "Vision & Global Network — Production City",
-      "description": "Discover Production City's vision for a global network of interconnected production campuses, beginning in Australia."
+      "description": "Production City's plan for a global network of production campuses. One operator, one standard, built in sequence."
     },
     "mission": {
       "heading": "Vision & Mission",
-      "vision": "Production City builds the physical, technical, and cultural infrastructure that storytelling at scale requires — campus by campus, in the cities where that work happens.",
+      "vision": "Production City builds production campuses where screen, stage, and broadcast work happens under one roof and one operator.",
       "themes": "What we're here to do",
       "theme1": "Make stories at scale",
       "theme2": "Put LED volume, VR/AR, and live broadcast into the daily production pipeline",
-      "theme3": "Run the campus as one integrated system, not a collection of vendors",
-      "theme4": "Build knowledge and research into the campus — not alongside it",
-      "theme5": "Open serious production infrastructure to more creators",
+      "theme3": "Run the campus as one system, not a collection of vendors",
+      "theme4": "Build research into the campus, not alongside it",
+      "theme5": "Open production infrastructure to more creators",
       "theme6": "Tell stories from more places and more cultures",
       "theme7": "Operate in a way that earns the campus its place in the community",
       "philosophy": "How we work",
@@ -1461,18 +1461,18 @@
     "why": {
       "heading": "Why Production City?",
       "arg1": "Production craft and broadcast engineering in the same campus — not bolted together after the fact",
-      "arg2": "One operator. One campus. Script to delivery, without vendor handoffs",
-      "arg3": "Education and R&D built into the campus from day one, not added later",
-      "arg4": "A global network of campuses across five continents — one operator, one standard",
-      "arg5": "Sustainability designed into the site plan, not retrofitted",
+      "arg2": "One operator, script to delivery, no vendor handoffs",
+      "arg3": "Education and R&D built into the campus from day one",
+      "arg4": "A global network of campuses, each built to the same standard",
+      "arg5": "Sustainability designed into the site plan",
       "arg6": "Coordination risk sits with us. Creators focus on the work."
     },
     "stakeholders": {
-      "heading": "Stakeholder Benefits",
+      "heading": "Who benefits",
       "creators": "Creators",
       "creatorsDesc": "Access to sound stages, LED volume, broadcast, and post without assembling a vendor chain for each project.",
       "industry": "Industry Collaborators",
-      "industryDesc": "Supplier and specialist partnerships embedded in a working campus, not a trade show introduction.",
+      "industryDesc": "Supplier and specialist partnerships inside a working campus.",
       "investors": "Investors",
       "investorsDesc": "Revenue from facilities, services, and broadcast under one operator. Diversified by geography as the network grows.",
       "governments": "Governments & Communities",
@@ -1483,7 +1483,7 @@
       "leaderName": "Troy Kelly",
       "leaderRole": "Founder · Chief Executive",
       "leaderBio": "Experience in stage and screen production, toured theatrical shows globally, served as Chief Technology Officer for AFTRS, worked in machine learning in Silicon Valley, and led the design, build, and operation of data centres and broadcast facilities in Australia.",
-      "teamDesc": "The broader project team includes professionals across entertainment production, technology, project management, and financial strategy."
+      "teamDesc": "The project team spans entertainment production, technology, project management, and financial strategy."
     },
     "eoi": {
       "heading": "Explore Partnership Opportunities",
@@ -1496,16 +1496,16 @@
   "community": {
     "meta": {
       "title": "Community — Production City",
-      "description": "Learn about Production City's commitment to education, sustainability, strategic alliances, and community engagement."
+      "description": "Education, sustainability, and community programmes at Production City."
     },
     "heading": "Community & Engagement",
     "intro": "The campus is where the work happens. The community programme is what earns it a place.",
     "education": {
       "heading": "Education & Innovation",
-      "strategy1": "Collaborate with educational institutions to open access to fresh talent",
-      "strategy2": "Hands-on learning inside a working production campus, not simulations.",
-      "strategy3": "Keep learning inside the work — not scheduled around it.",
-      "strategy4": "Run an R&D facility embedded in the campus and focused on production-practical outcomes.",
+      "strategy1": "Partnerships with educational institutions for talent access",
+      "strategy2": "Hands-on learning inside a working production campus.",
+      "strategy3": "Training integrated into production schedules.",
+      "strategy4": "R&D facility on campus, focused on production-practical outcomes.",
       "rdHeading": "Research & Development",
       "rd1": "Pursue targeted innovation rather than unfocused experimentation",
       "rd2": "Focus on outcomes that improve what's possible on a working set.",
@@ -1523,7 +1523,7 @@
     },
     "sustainability": {
       "heading": "Sustainability",
-      "goal": "Sustainability is structural — designed into the campus plan, not applied after the fact.",
+      "goal": "Sustainability designed into the campus plan from the start.",
       "principle1": "Sustainable design principles in facility construction",
       "principle2": "Energy efficiency and regular assessment",
       "principle3": "Responsible waste management",
@@ -1543,17 +1543,17 @@
       "communitiesItems": "Direct and indirect jobs, screen-sector training pipelines, and local procurement from a campus built to operate continuously."
     },
     "alliances": {
-      "heading": "Strategic Alliances",
+      "heading": "Partners",
       "type1": "Educational institutions",
       "type2": "Major technology providers",
       "type3": "Working production and broadcast industry partners",
       "type4": "Sovereign funds",
       "type5": "Research and development facilities",
       "valueHeading": "What it opens up",
-      "value1": "Students and graduates enter paid placements on a working campus, not a simulation lab",
-      "value2": "Technology partners test and iterate against live production schedules, not trade-show demos",
-      "value3": "R&D partners co-develop inside the campus workflow. Research that ships, not research that publishes",
-      "value4": "Sovereign fund partners gain exposure to content infrastructure with diversified revenue across facilities, services, and broadcast"
+      "value1": "Students and graduates enter paid placements on a working campus",
+      "value2": "Technology partners test against live production schedules",
+      "value3": "R&D partners co-develop inside the campus workflow",
+      "value4": "Sovereign fund partners gain exposure to content infrastructure with diversified revenue"
     },
     "bridges": {
       "heading": "For the industry",
@@ -1582,8 +1582,8 @@
       "text": "Production City acknowledges the Traditional Owners of Country throughout Australia and their continuing connection to land, waters, and community. We pay our respect to them and their cultures and to Elders past, present, and emerging."
     },
     "innovation": {
-      "heading": "Cross-Sector Innovation",
-      "statement": "The technology that makes a broadcast set work also has direct applications in sports, robotics, machine learning, and sensor design. Those intersections are intentional — the campus is built with them in the plan, not discovered afterward."
+      "heading": "Cross-sector applications",
+      "statement": "The technology that makes a broadcast set work also applies to sports, robotics, machine learning, and sensor design. Those intersections are part of the campus plan."
     }
   },
   "faq": {
@@ -1626,25 +1626,25 @@
     "q7": "What's different about Production City?",
     "a7": "One campus. One operator. The craft and the technology in the same building, under the same management — not coordinated between separate vendors.",
     "c7": "Services",
-    "q8": "What kind of support services will Production City offer for a smooth production process?",
+    "q8": "What production support services will Production City offer?",
     "a8": "End-to-end virtual production, pre-production, filming, post-production, VFX, sound mixing, dressing rooms, catering, on-site set and prop construction, and digitisation services.",
     "c8": "Services",
     "q9": "What will make Production City's sound stages unique?",
     "a9": "15 m height to grid, NRC 1.05 acoustic isolation, and LED volume configurations sized for different production scales.",
     "c9": "Facilities",
-    "q10": "How will Production City's services simplify the production workflow?",
+    "q10": "How does co-location change the production workflow?",
     "a10": "By co-locating pre-production, production, and post-production services on one campus to reduce transport, coordination, and scheduling complexity.",
     "c10": "Services",
     "q11": "What benefits will the LED volume offer for productions?",
     "a11": "Flexible configurations, real-time visual effects, efficient background changes, and a cost/time-effective alternative to traditional green screen methods.",
     "c11": "Facilities",
-    "q12": "How will Production City commit to sustainability efforts?",
+    "q12": "What is Production City's approach to sustainability?",
     "a12": "Sustainability is designed into the campus plan. Energy systems, waste management, green spaces, and biodiversity targets are part of the site design, not added after construction.",
     "c12": "Community",
     "q13": "Will the Production City facilities accommodate pre-production and post-production processes?",
     "a13": "Yes. Script development, storyboarding, concept design, editing, sound mixing, colour grading, and visual effects will all be part of the planned offering.",
     "c13": "Services",
-    "q14": "How will being a part of the Production City network enrich a creative professional's experience?",
+    "q14": "What does the Production City network offer creative professionals?",
     "a14": "Access to sound stages, LED volume, post-production, and broadcast, plus the people working in them. The campus runs workshops and collaborative programmes, and the global network connects creators across sites.",
     "c14": "Community",
     "q15": "Will clients be able to provide their own technical crew, or will Production City supply them?",
@@ -1653,7 +1653,7 @@
     "q16": "How can clients stay updated with the latest developments or offerings at Production City?",
     "a16": "By registering interest on the website, subscribing to the newsletter, or following Production City's social media channels.",
     "c16": "Engagement",
-    "q17": "How will Production City foster talent growth and innovation?",
+    "q17": "How does Production City develop talent?",
     "a17": "By partnering with educational institutions, offering hands-on learning, maintaining R&D facilities, and running workshops and skill development programs.",
     "c17": "Community",
     "q18": "What measures will Production City have to ensure safety and security?",
@@ -1676,7 +1676,7 @@
       "description": "Get in touch with Production City. Register your expression of interest or contact us directly."
     },
     "heading": "Get in Touch",
-    "intro": "Whether you are a producer, creative professional, investor, educator, or simply interested in Production City, we would love to hear from you.",
+    "intro": "Producers, creative professionals, investors, educators — get in touch.",
     "info": {
       "heading": "Contact Information",
       "email": "Email",
@@ -1703,7 +1703,7 @@
       "investor": "I am an Investor",
       "investorDesc": "Interested in investment opportunities",
       "creative": "I am a Creative Professional",
-      "creativeDesc": "Interested in joining the creative ecosystem",
+      "creativeDesc": "Interested in working on campus",
       "partner": "I am a Technology Partner",
       "partnerDesc": "Interested in technology partnerships",
       "education": "I am an Educator",
@@ -1806,11 +1806,11 @@
   "services": {
     "meta": {
       "title": "Services — Production City",
-      "description": "Sixteen disciplines. One operator. One workflow. From script to delivery on one campus."
+      "description": "Sixteen production disciplines from script to delivery on one campus."
     },
     "eyebrow": "Services",
     "heading": "From script to delivery. On one campus.",
-    "lead": "Sixteen disciplines. One operator. One workflow.",
+    "lead": "Sixteen disciplines on one campus, from script to delivery.",
     "item01Name": "Virtual production",
     "item01Desc": "Pre-visualisation through final composite, tight to the stages and the volume.",
     "item02Name": "Design & concept",
@@ -1846,7 +1846,7 @@
     "item17Name": "Broadcast coordination",
     "item17Desc": "Scheduling, orchestration, and delivery of live events.",
     "operationalLabel": "How it works",
-    "operationalPoint": "The point is not the length of this list. The point is that these disciplines share a campus, a schedule, and a broadcast backbone. A prop built in the workshop reaches the stage without a logistics chain. A take finished in the gallery is graded upstairs. A performance recorded on the theatre stage is streamed from the control room in the same hour. This is the operational argument for vertical integration.",
+    "operationalPoint": "These disciplines share a campus, a schedule, and a broadcast backbone. A prop built in the workshop reaches the stage without a logistics chain. A take finished in the gallery is graded upstairs. A performance recorded on the theatre stage is streamed from the control room in the same hour.",
     "cta": "See the facilities that house this stack.",
     "ctaLink": "Facilities"
   },
@@ -1894,7 +1894,7 @@
   "network": {
     "meta": {
       "title": "Network — Production City",
-      "description": "A global network of vertically integrated studio campuses across five continents. One operator. One standard."
+      "description": "A global network of production campuses. One operator, one standard, built in sequence."
     },
     "eyebrow": "Network",
     "heading": "Five continents. One standard.",
@@ -1916,29 +1916,29 @@
     "northAmericaStatus": "Campus planned",
     "northAmericaDesc": "Campus in active planning.",
     "approachHeading": "One network.",
-    "approachDesc": "Each campus is built to the same technical specification, under the same brand, the same technology stack, and the same ownership model. Tenants and partners deal with one entity regardless of which campus they are on.",
+    "approachDesc": "Same technical specification, same technology stack, same ownership model at every campus. A production that starts at one site can continue at another on the same terms.",
     "operatorHeading": "One operator.",
-    "operatorDesc": "Each campus operates under the same brand, the same technology stack, and the same ownership model. Tenants and partners deal with one entity regardless of which campus they are on.",
+    "operatorDesc": "Tenants and partners deal with one entity regardless of which campus they are on.",
     "cta": "Start a conversation.",
     "ctaLink": "Contact"
   },
   "company": {
     "meta": {
       "title": "The company — Production City",
-      "description": "Production City is an Australian company that designs, builds, and operates vertically integrated content production campuses. Australia is the first site, not a branch."
+      "description": "Production City designs, builds, and operates production campuses. The first site sets the standard for the network."
     },
     "eyebrow": "The company",
     "heading": "A first site, not a branch.",
-    "lead": "Production City is an Australian company that designs, builds, and operates vertically integrated content production campuses across five continents — Australia, Europe, Asia Pacific, Africa, and North America.",
+    "lead": "Production City is an Australian company that designs, builds, and operates production campuses. The first site sets the technical standard. Each campus after it inherits that standard.",
     "whatLabel": "01 — What we do",
     "whatHeading": "In three paragraphs.",
-    "what1": "Production City combines established production craft with modern technology inside a single vertically integrated campus. The technology stack includes virtual production, LED volumes, motion capture, AR and VR, and connected broadcast — all designed together, not retrofitted.",
+    "what1": "Production City combines production craft with modern technology in a single campus. The technology stack includes virtual production, LED volumes, motion capture, AR/VR, and connected broadcast, all designed together.",
     "what2": "We operate the venue, the technology, and the services ourselves, under one brand. That reduces coordination risk for tenants and opens multiple revenue streams for the company.",
     "what3": "Our international footprint spans five continents — Australia, Europe, Asia Pacific, Africa, and North America. Each campus is built to the same technical specification, under the same operator and brand.",
     "pillarsLabel": "02 — How we operate",
-    "pillarsHeading": "Five pillars.",
+    "pillarsHeading": "How we operate.",
     "pillar1Title": "Vertical integration",
-    "pillar1Desc": "One operator. One campus. Venue, technology stack, and full creative services — from script to delivery — under one brand.",
+    "pillar1Desc": "One operator runs venue, technology, and production services from script to delivery under one brand.",
     "pillar2Title": "A First Nations approach, embedded throughout",
     "pillar2Desc": "Governance, intellectual property and data practice, workforce, and the stories this campus is built to serve — shaped by Aboriginal and Torres Strait Islander ways of Knowing, Being, and Doing.",
     "pillar3Title": "Infrastructure-grade delivery",
@@ -1946,30 +1946,30 @@
     "pillar4Title": "Global campus network",
     "pillar4Desc": "Five continents — Australia, Europe, Asia Pacific, Africa, and North America. One operator, one standard, replicated campus by campus.",
     "pillar5Title": "Sustainability as practice",
-    "pillar5Desc": "Sustainable design principles, energy and waste performance, biodiversity on the campus plan, and community dialogue that is ongoing rather than commissioning-phase.",
+    "pillar5Desc": "Sustainable design, energy and waste performance, biodiversity targets, and ongoing community dialogue.",
     "leadershipLabel": "03 — Leadership",
     "leadershipHeading": "Executive team.",
     "leadershipNote": "The wider executive team brings senior experience in screen education, animation and visual effects, virtual production and broadcast technology, music rights and US partnerships, and industry engagement. Full bios for each executive and non-executive director are provided on request.",
     "partnersLabel": "04 — Partners",
     "partnersHeading": "Who we work with.",
-    "partnersIntro": "Production City is in advanced engagement across four partner categories. Named partners and the nature of each arrangement are disclosed where commercial confidentiality allows.",
+    "partnersIntro": "We work with four types of partners. Named partners are disclosed where commercial confidentiality allows.",
     "partner1Title": "Educational institutions",
     "partner1Desc": "Tertiary and training partners to establish a talent pipeline and skills development programme from campus opening. Specific pathways are co-designed with Aboriginal and Torres Strait Islander education providers and community organisations.",
     "partner2Title": "Technology providers & industry specialists",
     "partner2Desc": "Major providers in virtual production, LED volume, real-time rendering, broadcast, and connected production. The technology stack is set at the first site and replicated across the network.",
     "partner3Title": "Sovereign funds & R&D partners",
-    "partner3Desc": "Capital and research partners co-investing in innovation capability embedded in the campus, rather than adjacent to it. Research is treated as infrastructure, not overhead.",
+    "partner3Desc": "Capital and research partners co-investing in on-campus innovation capability. Research treated as infrastructure.",
     "partner4Title": "Aboriginal & Torres Strait Islander partners",
     "partner4Desc": "First Nations owned businesses, community organisations, and Traditional Owner groups whose involvement shapes the workforce, procurement, cultural safety, and creative work of the campus.",
     "partnersNote": "Named partners are disclosed where commercial confidentiality allows. Early-stage engagements remain under commercial terms until agreements are signed.",
     "pullQuoteLabel": "05 — On the first site",
-    "pullQuote": "The first campus is being built now. Technical standards, research and development, and the executive functions of the network are based at that first site. Being first is not a branding claim — it is a structural one, and it compounds.",
+    "pullQuote": "The first campus is being built now. Technical standards, R&D, and the executive functions of the network are based here. Each subsequent campus is built from what this one proves.",
     "cta": "Speak to the team.",
     "ctaLink": "Start a conversation",
     "ctaFacilities": "See the facilities",
     "ctaNetwork": "The global sequence",
     "leadershipBio1": "Founder and Chief Executive. Stage and screen production, broadcast and data-centre infrastructure, machine learning in Silicon Valley.",
-    "leadershipBio2": "Chief Operating Officer and Managing Director. His authority is substantive, not advisory."
+    "leadershipBio2": "Chief Operating Officer and Managing Director."
   },
   "companyTeam": {
     "meta": {
@@ -2012,17 +2012,17 @@
       "description": "The operating model, in one page."
     },
     "eyebrow": "Our approach",
-    "heading": "Built together. Not retrofitted.",
-    "lead": "The operating model, in one page.",
+    "heading": "The operating model.",
+    "lead": "In one page.",
     "vertLabel": "The argument for vertical integration",
     "vertHeading": "Coordination risk, moved.",
     "vert1": "The traditional studio model coordinates many vendors across many sites. That works, but it moves the risk and the cost onto the production.",
-    "vert2": "Production City operates the venue, the technology, and the full creative service stack ourselves, under one brand. Coordination risk sits with us. Revenue streams are diversified across facilities, services, and broadcast — which is part of why this model is bankable at the scale of a campus.",
+    "vert2": "Production City operates the venue, the technology, and production services under one brand. Coordination risk sits with us. Revenue is diversified across facilities, services, and broadcast, which is part of why this model works at campus scale.",
     "vert3": "This is also why we can make commitments to tenants about pipeline time. A set built in our workshop does not leave the campus to reach the stage. A take finished in the gallery is graded a floor away. A live performance is broadcast from the control room without a second production being stood up around it.",
-    "vert4": "The argument is simple. The execution is not. The team that engineered the campus came to it from broadcast, from data-centre infrastructure, and from production craft — which is closer to the actual demand than a pure property development approach.",
+    "vert4": "The team that engineered the campus came to it from broadcast, from data-centre infrastructure, and from production craft — closer to the actual demand than a pure property development approach.",
     "platformLabel": "What comes later",
     "platformHeading": "The operator platform.",
-    "platformDesc": "A complex production and site management system is in design. It will handle scheduling, crew, tenants, billing, and broadcast orchestration at campus scale. That system is operator-facing, not public. This website will link to tenant and partner portals when they exist.",
+    "platformDesc": "A production and site management system is in design. It will handle scheduling, crew, tenants, billing, and broadcast orchestration at campus scale. That system is operator-facing, not public. This website will link to tenant and partner portals when they exist.",
     "cta": "Contact the team.",
     "ctaLink": "Start a conversation"
   },
@@ -2039,11 +2039,11 @@
   "masterplan": {
     "meta": {
       "title": "Campus Masterplan — Production City",
-      "description": "Explore Production City's 6-hectare integrated campus masterplan. Thirteen facilities, six sound stages, broadcast theatre, and public realm — designed as one connected system."
+      "description": "Production City's 6-hectare campus masterplan. Thirteen facilities, six sound stages, broadcast theatre, and public realm."
     },
     "hero": {
       "heading": "Campus Masterplan",
-      "tagline": "A 6-hectare campus designed as one integrated system.",
+      "tagline": "Thirteen facilities across 6 hectares.",
       "ariaLabel": "Production City campus masterplan — interactive 3D viewer. Click a building to explore its details.",
       "eyebrow": "Production City™ — Campus"
     },
@@ -2271,7 +2271,7 @@
     },
     "eoi": {
       "heading": "Register Your Interest",
-      "context": "Enquire about Production City's EOI submission, partnership opportunities, or investment in Australia's first vertically integrated virtual production ecosystem."
+      "context": "Enquire about Production City's EOI submission, partnership opportunities, or investment."
     },
     "disclaimer": {
       "forwardLooking": "This position paper contains forward-looking statements about Production City's proposed development, operational model, and market analysis. Statements about projected market size, facility specifications, and competitive positioning reflect current analysis and are subject to change. Market projections are sourced from third-party research and are not guarantees of future performance. This document is prepared in connection with the NSW Government Sydney Global Film Studio Expression of Interest and is not a financial prospectus or investment solicitation."
