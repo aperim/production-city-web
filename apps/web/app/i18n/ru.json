@@ -525,6 +525,10 @@
         "description": "Мы передаём ваши данные следующим поставщикам услуг:",
         "note": "Эти поставщики обрабатывают данные от нашего имени. Мы не продаём ваши персональные данные."
       },
+      "internationalTransfers": {
+        "title": "International Data Transfers",
+        "description": "Production City uses third-party service providers that may process personal data outside Australia, including Postmark (United States), HubSpot (United States), and Cloudflare (global network). These transfers are governed by Standard Contractual Clauses and Data Processing Agreements with each provider."
+      },
       "crossBorder": {
         "title": "Cross-border disclosure",
         "description": "Your personal information may be disclosed to service providers located in the United States. Before disclosing personal information to an overseas recipient, we take reasonable steps to ensure the recipient does not breach the APPs in relation to that information, or we rely on an exception under APP 8.2 (such as your informed consent or a binding contractual arrangement that requires the recipient to handle information consistently with the APPs).",
@@ -607,7 +611,7 @@
       },
       "jurisdiction": {
         "title": "Применимое право",
-        "description": "Настоящая политика конфиденциальности регулируется законодательством штата Новый Южный Уэльс, Австралия."
+        "description": "This privacy policy is governed by the laws of New South Wales, Australia, and the Australian Privacy Act 1988 (Cth) and the Australian Privacy Principles. For EU/EEA residents, the relevant supervisory authority is the data protection authority in your country of residence."
       },
       "changes": {
         "title": "Изменения в политике",
@@ -684,7 +688,7 @@
           "financial, investment, legal, or professional advice;",
           "a guarantee of availability, performance, or suitability for any particular purpose."
         ],
-        "description": "Этот веб-сайт предоставляется без каких-либо гарантий."
+        "description": "The content on this Website is provided for general informational purposes only. While we endeavour to keep the information up to date and correct, we make no representations or warranties of any kind, express or implied, about the completeness, accuracy, reliability, suitability, or availability of the Website or the information, products, services, or related graphics contained on the Website. Nothing in these terms excludes, restricts or modifies any right or remedy, or any guarantee, warranty or other term or condition, implied or imposed by any legislation which cannot lawfully be excluded or limited."
       },
       "forwardLooking": {
         "title": "Прогнозные заявления",
@@ -1260,7 +1264,7 @@
       "feet": "фут"
     },
     "disclaimer": {
-      "forwardLooking": "Эта страница содержит прогнозные заявления о планируемых объектах и возможностях Production City. Они связаны с рисками и неопределённостями, которые могут привести к существенно иным результатам. Спецификации объектов являются проектными целями и могут изменяться."
+      "forwardLooking": "Эта страница содержит прогнозные заявления о планируемых объектах и возможностях Production City. Они связаны с рисками и неопределённостями, которые могут привести к существенно иным результатам. Спецификации объектов являются проектными целями и могут изменяться. This is not a financial prospectus or investment solicitation."
     },
     "page": {
       "hero": {
@@ -1409,7 +1413,7 @@
       "context": "Зарегистрируйте интерес как творческий профессионал."
     },
     "disclaimer": {
-      "forwardLooking": "Эта страница содержит прогнозные заявления о планируемой творческой экосистеме и услугах Production City, связанные с рисками и неопределённостями."
+      "forwardLooking": "Эта страница содержит прогнозные заявления о планируемой творческой экосистеме и услугах Production City, связанные с рисками и неопределённостями. This is not a financial prospectus or investment solicitation."
     }
   },
   "vision": {
@@ -1580,7 +1584,7 @@
       "context": "Зарегистрируйте интерес, чтобы узнать о возможностях образования, партнёрства и сообщества."
     },
     "disclaimer": {
-      "forwardLooking": "Эта страница содержит прогнозные заявления о планах Production City в области общества, образования и устойчивого развития."
+      "forwardLooking": "Эта страница содержит прогнозные заявления о планах Production City в области общества, образования и устойчивого развития. This is not a financial prospectus or investment solicitation."
     },
     "acknowledgement": {
       "heading": "Признание земель",
@@ -1886,15 +1890,18 @@
     "creativeLabel": "Творческая работа, которую поддерживает кампус",
     "creativeHeading": "Страна — в производственном масштабе. Аудитории — на условиях, которые контролируют общины.",
     "creativeDesc": "Виртуальное производство и LED-объёмы позволяют воссоздавать Страну в производственном масштабе без нарушения её покоя. Прямое вещание, AR и VR открывают новые пути к аудиториям. Кампус создан для того, чтобы помочь рассказчикам из числа коренных народов выходить на национальную и международную аудиторию на их собственных условиях.",
-    "evidenceLabel": "Как мы это подтверждаем",
-    "evidenceHeading": "Проверяемо.",
+    "evidenceLabel": "How this is structured",
+    "evidenceHeading": "How we build accountability.",
     "evidence1": "Механизмы корпоративного и исполнительного управления, включая портфель и права принятия решений COO.",
     "evidence2": "Система обеспечения происхождения ИС и данных, включая протоколы работы с материалами коренных народов.",
-    "evidence3": "Целевые показатели и обязательства по отчётности в области занятости, закупок и обучения.",
-    "evidence4": "Партнёрства и общественные отношения, через которые реализуется программа.",
-    "evidence5": "Соответствие актуальной политике правительства Нового Южного Уэльса, в том числе Политике закупок у аборигенов и обязательствам программы Closing the Gap.",
+    "evidence3": "Published targets for employment, procurement, and training, with reporting commitments from operations commencement.",
+    "evidence4": "Partnership and community relationships through which the programme will be delivered.",
+    "evidence5": "Designed alignment with relevant NSW Government policy, including the Aboriginal Procurement Policy and Closing the Gap commitments.",
     "ctaHeading": "Ознакомьтесь с Заявлением о возможностях.",
-    "ctaLink": "Запросить копию"
+    "ctaLink": "Запросить копию",
+    "disclaimer": {
+      "forwardLooking": "This page contains forward-looking statements about Production City's governance, intellectual property, and data governance commitments, workforce and procurement targets, and community partnerships. These statements involve known and unknown risks, uncertainties, and other factors that may cause actual results to differ materially. This is not a financial prospectus or investment solicitation."
+    }
   },
   "network": {
     "meta": {
@@ -1968,13 +1975,16 @@
     "partner4Desc": "Предприятия, принадлежащие коренным народам, общественные организации и группы Традиционных владельцев, чьё участие определяет кадровую политику, закупки, культурную безопасность и творческую работу кампуса.",
     "partnersNote": "Имена партнёров раскрываются в пределах, допускаемых коммерческой конфиденциальностью. Соглашения на начальных стадиях остаются под коммерческими условиями до подписания.",
     "pullQuoteLabel": "05 — О первой площадке",
-    "pullQuote": "Первый кампус строится сейчас. Технические стандарты, исследования и разработки, а также исполнительные функции сети базируются на этой первой площадке. Быть первым — не брендинговое заявление, а структурное, и оно накапливает силу.",
+    "pullQuote": "The first campus is in active development. Technical standards, research and development, and the executive functions of the network are based at that first site. Being first is not a branding claim — it is a structural one, and it compounds.",
     "cta": "Поговорить с командой.",
     "ctaLink": "Начать разговор",
     "ctaFacilities": "Посмотреть объекты",
     "ctaNetwork": "Глобальная последовательность",
     "leadershipBio1": "Основатель и генеральный директор. Сценическое и экранное производство, инфраструктура вещания и центров обработки данных, машинное обучение в Кремниевой долине.",
-    "leadershipBio2": "Главный операционный директор и управляющий директор. Его полномочия реальные, а не консультативные."
+    "leadershipBio2": "Главный операционный директор и управляющий директор. Его полномочия реальные, а не консультативные.",
+    "disclaimer": {
+      "forwardLooking": "This page contains forward-looking statements about Production City's operating model, international expansion plans, partner engagements, and organisational structure. These statements involve known and unknown risks, uncertainties, and other factors that may cause actual results to differ materially. This is not a financial prospectus or investment solicitation."
+    }
   },
   "companyTeam": {
     "meta": {

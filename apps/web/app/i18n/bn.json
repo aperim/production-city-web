@@ -525,6 +525,10 @@
         "description": "আমরা নিম্নলিখিত সেবা প্রদানকারীদের সাথে আপনার ডেটা ভাগ করি:",
         "note": "এই প্রদানকারীরা ডেটা প্রক্রিয়াকরণ চুক্তির অধীনে আমাদের পক্ষে ডেটা প্রক্রিয়া করে। আমরা আপনার ব্যক্তিগত ডেটা বিক্রি করি না।"
       },
+      "internationalTransfers": {
+        "title": "International Data Transfers",
+        "description": "Production City uses third-party service providers that may process personal data outside Australia, including Postmark (United States), HubSpot (United States), and Cloudflare (global network). These transfers are governed by Standard Contractual Clauses and Data Processing Agreements with each provider."
+      },
       "crossBorder": {
         "title": "Cross-border disclosure",
         "description": "Your personal information may be disclosed to service providers located in the United States. Before disclosing personal information to an overseas recipient, we take reasonable steps to ensure the recipient does not breach the APPs in relation to that information, or we rely on an exception under APP 8.2 (such as your informed consent or a binding contractual arrangement that requires the recipient to handle information consistently with the APPs).",
@@ -607,7 +611,7 @@
       },
       "jurisdiction": {
         "title": "শাসক আইন",
-        "description": "এই গোপনীয়তা নীতি অস্ট্রেলিয়ার নিউ সাউথ ওয়েলসের আইন দ্বারা পরিচালিত।"
+        "description": "This privacy policy is governed by the laws of New South Wales, Australia, and the Australian Privacy Act 1988 (Cth) and the Australian Privacy Principles. For EU/EEA residents, the relevant supervisory authority is the data protection authority in your country of residence."
       },
       "changes": {
         "title": "নীতিতে পরিবর্তন",
@@ -684,7 +688,7 @@
           "financial, investment, legal, or professional advice;",
           "a guarantee of availability, performance, or suitability for any particular purpose."
         ],
-        "description": "এই ওয়েবসাইটটি কোনো ওয়ারেন্টি ছাড়াই প্রদান করা হয়।"
+        "description": "The content on this Website is provided for general informational purposes only. While we endeavour to keep the information up to date and correct, we make no representations or warranties of any kind, express or implied, about the completeness, accuracy, reliability, suitability, or availability of the Website or the information, products, services, or related graphics contained on the Website. Nothing in these terms excludes, restricts or modifies any right or remedy, or any guarantee, warranty or other term or condition, implied or imposed by any legislation which cannot lawfully be excluded or limited."
       },
       "forwardLooking": {
         "title": "ভবিষ্যতমুখী বিবৃতি",
@@ -1260,7 +1264,7 @@
       "feet": "ফুট"
     },
     "disclaimer": {
-      "forwardLooking": "এই পৃষ্ঠায় Production City-এর পরিকল্পিত সুবিধা ও সক্ষমতা সম্পর্কে ভবিষ্যৎমুখী বিবৃতি রয়েছে। এই বিবৃতিতে জ্ঞাত ও অজ্ঞাত ঝুঁকি, অনিশ্চয়তা এবং অন্যান্য বিষয় রয়েছে যা প্রকৃত ফলাফলকে উল্লেখযোগ্যভাবে ভিন্ন করতে পারে। সুবিধার স্পেসিফিকেশন ডিজাইন লক্ষ্য এবং পরিবর্তনসাপেক্ষ।"
+      "forwardLooking": "এই পৃষ্ঠায় Production City-এর পরিকল্পিত সুবিধা ও সক্ষমতা সম্পর্কে ভবিষ্যৎমুখী বিবৃতি রয়েছে। এই বিবৃতিতে জ্ঞাত ও অজ্ঞাত ঝুঁকি, অনিশ্চয়তা এবং অন্যান্য বিষয় রয়েছে যা প্রকৃত ফলাফলকে উল্লেখযোগ্যভাবে ভিন্ন করতে পারে। সুবিধার স্পেসিফিকেশন ডিজাইন লক্ষ্য এবং পরিবর্তনসাপেক্ষ। This is not a financial prospectus or investment solicitation."
     },
     "page": {
       "hero": {
@@ -1409,7 +1413,7 @@
       "context": "একজন সৃজনশীল পেশাদার হিসেবে আগ্রহ প্রকাশ করুন।"
     },
     "disclaimer": {
-      "forwardLooking": "এই পৃষ্ঠায় Production City-এর পরিকল্পিত সৃজনশীল ইকোসিস্টেম ও সেবা সম্পর্কে ভবিষ্যৎমুখী বিবৃতি রয়েছে। এই বিবৃতিতে জ্ঞাত ও অজ্ঞাত ঝুঁকি, অনিশ্চয়তা এবং অন্যান্য বিষয় রয়েছে যা প্রকৃত ফলাফলকে উল্লেখযোগ্যভাবে ভিন্ন করতে পারে।"
+      "forwardLooking": "এই পৃষ্ঠায় Production City-এর পরিকল্পিত সৃজনশীল ইকোসিস্টেম ও সেবা সম্পর্কে ভবিষ্যৎমুখী বিবৃতি রয়েছে। এই বিবৃতিতে জ্ঞাত ও অজ্ঞাত ঝুঁকি, অনিশ্চয়তা এবং অন্যান্য বিষয় রয়েছে যা প্রকৃত ফলাফলকে উল্লেখযোগ্যভাবে ভিন্ন করতে পারে। This is not a financial prospectus or investment solicitation."
     }
   },
   "vision": {
@@ -1580,7 +1584,7 @@
       "context": "শিক্ষা, অংশীদারিত্ব ও সম্প্রদায়ের সুযোগ সম্পর্কে জানতে আগ্রহ প্রকাশ করুন।"
     },
     "disclaimer": {
-      "forwardLooking": "এই পৃষ্ঠায় সম্প্রদায়ের সম্পৃক্ততা, শিক্ষা ও টেকসই উন্নয়নের জন্য Production City-এর পরিকল্পনা সম্পর্কে ভবিষ্যৎমুখী বিবৃতি রয়েছে।"
+      "forwardLooking": "এই পৃষ্ঠায় সম্প্রদায়ের সম্পৃক্ততা, শিক্ষা ও টেকসই উন্নয়নের জন্য Production City-এর পরিকল্পনা সম্পর্কে ভবিষ্যৎমুখী বিবৃতি রয়েছে। This is not a financial prospectus or investment solicitation."
     },
     "acknowledgement": {
       "heading": "দেশের স্বীকৃতি",
@@ -1886,15 +1890,18 @@
     "creativeLabel": "ক্যাম্পাস যে সৃজনশীল কাজ সমর্থন করে",
     "creativeHeading": "প্রোডাকশন স্কেলে দেশ। সম্প্রদায়গুলোর নিয়ন্ত্রণের শর্তে দর্শক।",
     "creativeDesc": "ভার্চুয়াল প্রোডাকশন ও LED ভলিউম দেশকে প্রোডাকশন স্কেলে উপস্থাপন করা সম্ভব করে তোলে, তা বিঘ্নিত না করে। লাইভ ব্রডকাস্ট, AR এবং VR দর্শকদের কাছে নতুন পথ খোলে। First Nations গল্পকারদের তাদের নিয়ন্ত্রণের শর্তে জাতীয় ও আন্তর্জাতিক দর্শকদের কাছে পৌঁছাতে সাহায্য করতে ক্যাম্পাস তৈরি।",
-    "evidenceLabel": "আমরা এটি কীভাবে প্রমাণ করি",
-    "evidenceHeading": "যাচাইযোগ্য।",
+    "evidenceLabel": "How this is structured",
+    "evidenceHeading": "How we build accountability.",
     "evidence1": "বোর্ড ও কার্যকারী শাসন ব্যবস্থা, COO-এর পোর্টফোলিও এবং সিদ্ধান্তের অধিকার সহ।",
     "evidence2": "IP ও ডেটা উৎস কাঠামো, First Nations উপকরণের জন্য প্রোটোকল সহ।",
-    "evidence3": "কর্মসংস্থান, ক্রয় এবং প্রশিক্ষণের জন্য লক্ষ্যমাত্রা ও প্রতিবেদন প্রতিশ্রুতি।",
-    "evidence4": "অংশীদারিত্ব ও সামুদায়িক সম্পর্ক যার মাধ্যমে কার্যক্রম প্রদান করা হয়।",
-    "evidence5": "প্রাসঙ্গিক NSW সরকার নীতির সাথে সামঞ্জস্য, যার মধ্যে Aboriginal Procurement Policy এবং Closing the Gap প্রতিশ্রুতি অন্তর্ভুক্ত।",
+    "evidence3": "Published targets for employment, procurement, and training, with reporting commitments from operations commencement.",
+    "evidence4": "Partnership and community relationships through which the programme will be delivered.",
+    "evidence5": "Designed alignment with relevant NSW Government policy, including the Aboriginal Procurement Policy and Closing the Gap commitments.",
     "ctaHeading": "Capability Statement পড়ুন।",
-    "ctaLink": "একটি কপির অনুরোধ করুন"
+    "ctaLink": "একটি কপির অনুরোধ করুন",
+    "disclaimer": {
+      "forwardLooking": "This page contains forward-looking statements about Production City's governance, intellectual property, and data governance commitments, workforce and procurement targets, and community partnerships. These statements involve known and unknown risks, uncertainties, and other factors that may cause actual results to differ materially. This is not a financial prospectus or investment solicitation."
+    }
   },
   "network": {
     "meta": {
@@ -1968,13 +1975,16 @@
     "partner4Desc": "First Nations মালিকানাধীন ব্যবসা, সামুদায়িক সংগঠন এবং ঐতিহ্যবাহী মালিক গোষ্ঠী যাদের অংশগ্রহণ ক্যাম্পাসের কর্মশক্তি, ক্রয়, সাংস্কৃতিক নিরাপত্তা এবং সৃজনশীল কাজকে গঠন দেয়।",
     "partnersNote": "নামধারী অংশীদারগুলো সেখানে প্রকাশ করা হয় যেখানে বাণিজ্যিক গোপনীয়তা অনুমতি দেয়। প্রাথমিক পর্যায়ের সম্পৃক্ততা চুক্তি স্বাক্ষর না হওয়া পর্যন্ত বাণিজ্যিক শর্তে থাকে।",
     "pullQuoteLabel": "০৫ — প্রথম স্থানে",
-    "pullQuote": "প্রথম ক্যাম্পাস এখন নির্মিত হচ্ছে। প্রযুক্তিগত মানদণ্ড, গবেষণা ও উন্নয়ন এবং নেটওয়ার্কের কার্যকারী কাজ সেই প্রথম স্থানে ভিত্তিক। প্রথম হওয়া একটি ব্র্যান্ডিং দাবি নয় — এটি একটি কাঠামোগত দাবি, এবং এটি বৃদ্ধি পায়।",
+    "pullQuote": "The first campus is in active development. Technical standards, research and development, and the executive functions of the network are based at that first site. Being first is not a branding claim — it is a structural one, and it compounds.",
     "cta": "দলের সাথে কথা বলুন।",
     "ctaLink": "কথোপকথন শুরু করুন",
     "ctaFacilities": "সুবিধাগুলি দেখুন",
     "ctaNetwork": "বৈশ্বিক ক্রম",
     "leadershipBio1": "প্রতিষ্ঠাতা এবং প্রধান নির্বাহী। মঞ্চ ও পর্দার প্রযোজনা, সম্প্রচার ও ডেটাসেন্টার অবকাঠামো, এবং সিলিকন ভ্যালিতে মেশিন লার্নিং।",
-    "leadershipBio2": "প্রধান পরিচালন কর্মকর্তা এবং ব্যবস্থাপনা পরিচালক। তাঁর কর্তৃত্ব হল প্রকৃত, পরামর্শমূলক নয়।"
+    "leadershipBio2": "প্রধান পরিচালন কর্মকর্তা এবং ব্যবস্থাপনা পরিচালক। তাঁর কর্তৃত্ব হল প্রকৃত, পরামর্শমূলক নয়।",
+    "disclaimer": {
+      "forwardLooking": "This page contains forward-looking statements about Production City's operating model, international expansion plans, partner engagements, and organisational structure. These statements involve known and unknown risks, uncertainties, and other factors that may cause actual results to differ materially. This is not a financial prospectus or investment solicitation."
+    }
   },
   "companyTeam": {
     "meta": {

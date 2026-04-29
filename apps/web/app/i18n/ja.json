@@ -525,6 +525,10 @@
         "description": "以下のサービスプロバイダーとデータを共有します：",
         "note": "これらのプロバイダーはデータ処理契約に基づき当社に代わってデータを処理します。個人データの販売は行いません。"
       },
+      "internationalTransfers": {
+        "title": "International Data Transfers",
+        "description": "Production City uses third-party service providers that may process personal data outside Australia, including Postmark (United States), HubSpot (United States), and Cloudflare (global network). These transfers are governed by Standard Contractual Clauses and Data Processing Agreements with each provider."
+      },
       "crossBorder": {
         "title": "Cross-border disclosure",
         "description": "Your personal information may be disclosed to service providers located in the United States. Before disclosing personal information to an overseas recipient, we take reasonable steps to ensure the recipient does not breach the APPs in relation to that information, or we rely on an exception under APP 8.2 (such as your informed consent or a binding contractual arrangement that requires the recipient to handle information consistently with the APPs).",
@@ -607,7 +611,7 @@
       },
       "jurisdiction": {
         "title": "準拠法",
-        "description": "このプライバシーポリシーはオーストラリア・ニューサウスウェールズ州の法律およびオーストラリアプライバシー法1988に準拠します。"
+        "description": "This privacy policy is governed by the laws of New South Wales, Australia, and the Australian Privacy Act 1988 (Cth) and the Australian Privacy Principles. For EU/EEA residents, the relevant supervisory authority is the data protection authority in your country of residence."
       },
       "changes": {
         "title": "ポリシーの変更",
@@ -684,7 +688,7 @@
           "financial, investment, legal, or professional advice;",
           "a guarantee of availability, performance, or suitability for any particular purpose."
         ],
-        "description": "Production Cityはローンチ前の開発段階にあります。すべての情報、機能、スケジュール、予測は予告なく変更される場合があります。本ウェブサイト上のいかなる内容も、拘束力のある提案、可用性の保証、または特定のサービスや機能の提供に関する約束を構成するものではありません。"
+        "description": "The content on this Website is provided for general informational purposes only. While we endeavour to keep the information up to date and correct, we make no representations or warranties of any kind, express or implied, about the completeness, accuracy, reliability, suitability, or availability of the Website or the information, products, services, or related graphics contained on the Website. Nothing in these terms excludes, restricts or modifies any right or remedy, or any guarantee, warranty or other term or condition, implied or imposed by any legislation which cannot lawfully be excluded or limited."
       },
       "forwardLooking": {
         "title": "将来の見通しに関する記述",
@@ -1260,7 +1264,7 @@
       "feet": "フィート"
     },
     "disclaimer": {
-      "forwardLooking": "このページにはProduction Cityの計画中の施設と能力に関する将来の見通しに関する記述が含まれています。これらの記述にはリスクと不確実性が伴い、実際の結果が大きく異なる場合があります。施設仕様は設計目標を示しており、変更される場合があります。"
+      "forwardLooking": "このページにはProduction Cityの計画中の施設と能力に関する将来の見通しに関する記述が含まれています。これらの記述にはリスクと不確実性が伴い、実際の結果が大きく異なる場合があります。施設仕様は設計目標を示しており、変更される場合があります。 This is not a financial prospectus or investment solicitation."
     },
     "page": {
       "hero": {
@@ -1409,7 +1413,7 @@
       "context": "クリエイティブプロフェッショナルとして関心をご登録ください。"
     },
     "disclaimer": {
-      "forwardLooking": "このページにはProduction Cityの計画中のクリエイティブエコシステムとサービスに関する将来の見通しに関する記述が含まれています。これらの記述にはリスクと不確実性が伴い、実際の結果が大きく異なる場合があります。"
+      "forwardLooking": "このページにはProduction Cityの計画中のクリエイティブエコシステムとサービスに関する将来の見通しに関する記述が含まれています。これらの記述にはリスクと不確実性が伴い、実際の結果が大きく異なる場合があります。 This is not a financial prospectus or investment solicitation."
     }
   },
   "vision": {
@@ -1580,7 +1584,7 @@
       "context": "教育、パートナーシップ、コミュニティの機会について知るために関心をご登録ください。"
     },
     "disclaimer": {
-      "forwardLooking": "このページにはProduction Cityのコミュニティエンゲージメント、教育、サステナビリティに関する将来の見通しに関する記述が含まれています。これらの記述にはリスクと不確実性が伴い、実際の結果が大きく異なる場合があります。"
+      "forwardLooking": "このページにはProduction Cityのコミュニティエンゲージメント、教育、サステナビリティに関する将来の見通しに関する記述が含まれています。これらの記述にはリスクと不確実性が伴い、実際の結果が大きく異なる場合があります。 This is not a financial prospectus or investment solicitation."
     },
     "acknowledgement": {
       "heading": "土地の承認",
@@ -1886,15 +1890,18 @@
     "creativeLabel": "キャンパスが支えるクリエイティブな仕事",
     "creativeHeading": "プロダクション規模で再現するカントリー。コミュニティが主導権を持つ形で届ける観客。",
     "creativeDesc": "バーチャルプロダクションとLEDボリュームにより、カントリーを損なうことなくプロダクション規模で映像化することが可能になりました。ライブ放送、AR、VRは観客への新たな経路を開きます。このキャンパスは、ファーストネーションズのストーリーテラーが、自らの条件のもとで国内外の観客に届けられるよう構築されています。",
-    "evidenceLabel": "どのように証明するか",
-    "evidenceHeading": "検証可能です。",
+    "evidenceLabel": "How this is structured",
+    "evidenceHeading": "How we build accountability.",
     "evidence1": "COOのポートフォリオと意思決定権限を含む、取締役会および経営幹部のガバナンス体制。",
     "evidence2": "ファーストネーションズの素材に関するプロトコルを含む、知的財産・データの出所フレームワーク。",
-    "evidence3": "雇用、調達、研修に関する目標値と報告義務。",
-    "evidence4": "プログラムを実施するパートナーシップおよびコミュニティとの関係。",
-    "evidence5": "アボリジナル調達政策およびクロージング・ザ・ギャップへの取り組みを含む、ニューサウスウェールズ州政府の関連政策との整合。",
+    "evidence3": "Published targets for employment, procurement, and training, with reporting commitments from operations commencement.",
+    "evidence4": "Partnership and community relationships through which the programme will be delivered.",
+    "evidence5": "Designed alignment with relevant NSW Government policy, including the Aboriginal Procurement Policy and Closing the Gap commitments.",
     "ctaHeading": "ケイパビリティ・ステートメントをご覧ください。",
-    "ctaLink": "コピーをリクエスト"
+    "ctaLink": "コピーをリクエスト",
+    "disclaimer": {
+      "forwardLooking": "This page contains forward-looking statements about Production City's governance, intellectual property, and data governance commitments, workforce and procurement targets, and community partnerships. These statements involve known and unknown risks, uncertainties, and other factors that may cause actual results to differ materially. This is not a financial prospectus or investment solicitation."
+    }
   },
   "network": {
     "meta": {
@@ -1968,13 +1975,16 @@
     "partner4Desc": "キャンパスの人材育成、調達、文化的安全、クリエイティブ活動を形づくることに参画する、ファーストネーションズ所有企業、コミュニティ組織、伝統的土地所有者グループ。",
     "partnersNote": "具体的なパートナー名は、商業上の守秘義務が許す範囲で開示されます。初期段階の交渉は、契約締結まで商業条件のもとで継続されます。",
     "pullQuoteLabel": "05 — 第1拠点について",
-    "pullQuote": "最初のキャンパスは現在建設中です。技術標準、研究開発、ネットワークの経営機能はこの第1拠点を拠点とします。「最初」であることは、ブランディング上の主張ではなく、構造的な意味を持つものであり、そしてそれは積み重なっていきます。",
+    "pullQuote": "The first campus is in active development. Technical standards, research and development, and the executive functions of the network are based at that first site. Being first is not a branding claim — it is a structural one, and it compounds.",
     "cta": "チームにお問い合わせください。",
     "ctaLink": "会話を始める",
     "ctaFacilities": "施設を見る",
     "ctaNetwork": "グローバル展開",
     "leadershipBio1": "創業者・最高経営責任者。舞台・映像制作、放送・データセンターインフラ、およびシリコンバレーにおける機械学習の分野でキャリアを積む。",
-    "leadershipBio2": "最高運用責任者・マネージングディレクター。その権限は実質的なものであり、諮問的なものではない。"
+    "leadershipBio2": "最高運用責任者・マネージングディレクター。その権限は実質的なものであり、諮問的なものではない。",
+    "disclaimer": {
+      "forwardLooking": "This page contains forward-looking statements about Production City's operating model, international expansion plans, partner engagements, and organisational structure. These statements involve known and unknown risks, uncertainties, and other factors that may cause actual results to differ materially. This is not a financial prospectus or investment solicitation."
+    }
   },
   "companyTeam": {
     "meta": {

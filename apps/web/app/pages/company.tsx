@@ -311,7 +311,7 @@ function CompanyPageContent() {
         />
       </div>
 
-      <ForwardLookingDisclaimer text={t("facilities.disclaimer.forwardLooking")} />
+      <ForwardLookingDisclaimer text={t("company.disclaimer.forwardLooking")} />
     </LandingPageTemplate>
   );
 }

@@ -250,7 +250,17 @@ function PrivacyPageContent() {
           </p>
         </section>
 
-        {/* Section 7 — Cross-border disclosure */}
+        {/* Section 7 — International data transfers */}
+        <section className="mt-10" aria-labelledby="privacy-international-transfers">
+          <h2 id="privacy-international-transfers" className="text-xl font-semibold text-foreground">
+            {t("legal.privacy.internationalTransfers.title")}
+          </h2>
+          <p className="mt-2 text-sm text-muted-foreground">
+            {t("legal.privacy.internationalTransfers.description")}
+          </p>
+        </section>
+
+        {/* Section 8 — Cross-border disclosure */}
         <section className="mt-10" aria-labelledby="privacy-cross-border">
           <h2 id="privacy-cross-border" className="text-xl font-semibold text-foreground">
             {t("legal.privacy.crossBorder.title")}
@@ -448,7 +458,17 @@ function PrivacyPageContent() {
           </ul>
         </section>
 
-        {/* Section 16 — Changes */}
+        {/* Section 16 — Governing Law */}
+        <section className="mt-10" aria-labelledby="privacy-jurisdiction">
+          <h2 id="privacy-jurisdiction" className="text-xl font-semibold text-foreground">
+            {t("legal.privacy.jurisdiction.title")}
+          </h2>
+          <p className="mt-2 text-sm text-muted-foreground">
+            {t("legal.privacy.jurisdiction.description")}
+          </p>
+        </section>
+
+        {/* Section 17 — Changes */}
         <section className="mt-10" aria-labelledby="privacy-changes">
           <h2 id="privacy-changes" className="text-xl font-semibold text-foreground">
             {t("legal.privacy.changes.title")}
@@ -458,7 +478,7 @@ function PrivacyPageContent() {
           </p>
         </section>
 
-        {/* Section 17 — Contact */}
+        {/* Section 18 — Contact */}
         <section className="mt-10 border-t border-border pt-8" aria-labelledby="privacy-contact">
           <h2 id="privacy-contact" className="text-xl font-semibold text-foreground">
             {t("legal.privacy.contact.title")}

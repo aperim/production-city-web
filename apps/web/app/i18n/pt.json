@@ -525,6 +525,10 @@
         "description": "Compartilhamos seus dados com os seguintes prestadores de serviços:",
         "note": "Esses prestadores processam dados em nosso nome sob acordos de processamento de dados. Não vendemos seus dados pessoais."
       },
+      "internationalTransfers": {
+        "title": "International Data Transfers",
+        "description": "Production City uses third-party service providers that may process personal data outside Australia, including Postmark (United States), HubSpot (United States), and Cloudflare (global network). These transfers are governed by Standard Contractual Clauses and Data Processing Agreements with each provider."
+      },
       "crossBorder": {
         "title": "Cross-border disclosure",
         "description": "Your personal information may be disclosed to service providers located in the United States. Before disclosing personal information to an overseas recipient, we take reasonable steps to ensure the recipient does not breach the APPs in relation to that information, or we rely on an exception under APP 8.2 (such as your informed consent or a binding contractual arrangement that requires the recipient to handle information consistently with the APPs).",
@@ -607,7 +611,7 @@
       },
       "jurisdiction": {
         "title": "Legislação aplicável",
-        "description": "Esta política de privacidade é regida pelas leis de Nova Gales do Sul, Austrália, e pela Lei de Privacidade Australiana de 1988."
+        "description": "This privacy policy is governed by the laws of New South Wales, Australia, and the Australian Privacy Act 1988 (Cth) and the Australian Privacy Principles. For EU/EEA residents, the relevant supervisory authority is the data protection authority in your country of residence."
       },
       "changes": {
         "title": "Alterações nesta política",
@@ -684,7 +688,7 @@
           "financial, investment, legal, or professional advice;",
           "a guarantee of availability, performance, or suitability for any particular purpose."
         ],
-        "description": "A Production City está em fase de pré-lançamento. Todas as informações, recursos, cronogramas e projeções estão sujeitos a alterações sem aviso prévio. Nada neste site constitui uma oferta vinculante, garantia de disponibilidade ou compromisso de entrega de qualquer serviço ou recurso específico."
+        "description": "The content on this Website is provided for general informational purposes only. While we endeavour to keep the information up to date and correct, we make no representations or warranties of any kind, express or implied, about the completeness, accuracy, reliability, suitability, or availability of the Website or the information, products, services, or related graphics contained on the Website. Nothing in these terms excludes, restricts or modifies any right or remedy, or any guarantee, warranty or other term or condition, implied or imposed by any legislation which cannot lawfully be excluded or limited."
       },
       "forwardLooking": {
         "title": "Declarações prospectivas",
@@ -1260,7 +1264,7 @@
       "feet": "pés"
     },
     "disclaimer": {
-      "forwardLooking": "Esta página contém declarações prospectivas sobre as instalações e capacidades planejadas da Production City. Estas declarações envolvem riscos conhecidos e desconhecidos, incertezas e outros fatores que podem fazer com que os resultados reais difiram materialmente. As especificações das instalações descrevem metas de projeto e estão sujeitas a alterações."
+      "forwardLooking": "Esta página contém declarações prospectivas sobre as instalações e capacidades planejadas da Production City. Estas declarações envolvem riscos conhecidos e desconhecidos, incertezas e outros fatores que podem fazer com que os resultados reais difiram materialmente. As especificações das instalações descrevem metas de projeto e estão sujeitas a alterações. This is not a financial prospectus or investment solicitation."
     },
     "page": {
       "hero": {
@@ -1409,7 +1413,7 @@
       "context": "Registre seu interesse como profissional criativo."
     },
     "disclaimer": {
-      "forwardLooking": "Esta página contém declarações prospectivas sobre o ecossistema criativo e serviços planejados da Production City. Estas declarações envolvem riscos conhecidos e desconhecidos, incertezas e outros fatores que podem fazer com que os resultados reais difiram materialmente."
+      "forwardLooking": "Esta página contém declarações prospectivas sobre o ecossistema criativo e serviços planejados da Production City. Estas declarações envolvem riscos conhecidos e desconhecidos, incertezas e outros fatores que podem fazer com que os resultados reais difiram materialmente. This is not a financial prospectus or investment solicitation."
     }
   },
   "vision": {
@@ -1580,7 +1584,7 @@
       "context": "Registre seu interesse para saber sobre educação, parceria e oportunidades comunitárias."
     },
     "disclaimer": {
-      "forwardLooking": "Esta página contém declarações prospectivas sobre os planos da Production City para engajamento comunitário, educação e sustentabilidade. Estas declarações envolvem riscos conhecidos e desconhecidos, incertezas e outros fatores que podem fazer com que os resultados reais difiram materialmente."
+      "forwardLooking": "Esta página contém declarações prospectivas sobre os planos da Production City para engajamento comunitário, educação e sustentabilidade. Estas declarações envolvem riscos conhecidos e desconhecidos, incertezas e outros fatores que podem fazer com que os resultados reais difiram materialmente. This is not a financial prospectus or investment solicitation."
     },
     "acknowledgement": {
       "heading": "Reconhecimento do Território",
@@ -1886,15 +1890,18 @@
     "creativeLabel": "Trabalho criativo que o campus apoia",
     "creativeHeading": "O País, em escala de produção. Audiências, em condições que as comunidades controlam.",
     "creativeDesc": "A produção virtual e os volumes de LED possibilitam reproduzir o País em escala de produção sem perturbá-lo. O broadcast ao vivo, a AR e a VR abrem novos caminhos para o público. O campus foi construído para ajudar os narradores dos Primeiros Povos a alcançar públicos nacionais e internacionais em condições que eles controlam.",
-    "evidenceLabel": "Como comprovamos isso",
-    "evidenceHeading": "Verificável.",
+    "evidenceLabel": "How this is structured",
+    "evidenceHeading": "How we build accountability.",
     "evidence1": "Arranjos de governança do conselho e da equipe executiva, incluindo o portfólio e os direitos de decisão do Diretor de Operações.",
     "evidence2": "Estrutura de PI e proveniência de dados, incluindo protocolos para material dos Primeiros Povos.",
-    "evidence3": "Metas e compromissos de reporte em emprego, contratação e formação.",
-    "evidence4": "Relações de parceria e comunitárias por meio das quais o programa é executado.",
-    "evidence5": "Alinhamento com a política relevante do Governo de Nova Gales do Sul, incluindo a Política de Contratação Aborígene e os compromissos do Closing the Gap.",
+    "evidence3": "Published targets for employment, procurement, and training, with reporting commitments from operations commencement.",
+    "evidence4": "Partnership and community relationships through which the programme will be delivered.",
+    "evidence5": "Designed alignment with relevant NSW Government policy, including the Aboriginal Procurement Policy and Closing the Gap commitments.",
     "ctaHeading": "Leia o Relatório de Capacidades.",
-    "ctaLink": "Solicitar uma cópia"
+    "ctaLink": "Solicitar uma cópia",
+    "disclaimer": {
+      "forwardLooking": "This page contains forward-looking statements about Production City's governance, intellectual property, and data governance commitments, workforce and procurement targets, and community partnerships. These statements involve known and unknown risks, uncertainties, and other factors that may cause actual results to differ materially. This is not a financial prospectus or investment solicitation."
+    }
   },
   "network": {
     "meta": {
@@ -1968,13 +1975,16 @@
     "partner4Desc": "Empresas de propriedade dos Primeiros Povos, organizações comunitárias e grupos de Proprietários Tradicionais cuja participação molda a força de trabalho, a contratação, a segurança cultural e o trabalho criativo do campus.",
     "partnersNote": "Os parceiros nomeados são divulgados onde a confidencialidade comercial permite. Negociações em estágio inicial permanecem sob termos comerciais até que os acordos sejam assinados.",
     "pullQuoteLabel": "05 — Sobre o primeiro site",
-    "pullQuote": "O primeiro campus está sendo construído agora. Os padrões técnicos, a pesquisa e o desenvolvimento, e as funções executivas da rede têm sede nesse primeiro site. Ser o primeiro não é uma afirmação de marca — é uma afirmação estrutural, e ela se acumula.",
+    "pullQuote": "The first campus is in active development. Technical standards, research and development, and the executive functions of the network are based at that first site. Being first is not a branding claim — it is a structural one, and it compounds.",
     "cta": "Fale com a equipe.",
     "ctaLink": "Iniciar uma conversa",
     "ctaFacilities": "Ver as instalações",
     "ctaNetwork": "A sequência global",
     "leadershipBio1": "Fundador e Diretor Executivo. Produção teatral e cinematográfica, infraestrutura de transmissão e centros de dados, aprendizado de máquina no Vale do Silício.",
-    "leadershipBio2": "Diretor de Operações e Diretor-Geral. A sua autoridade é substantiva, não consultiva."
+    "leadershipBio2": "Diretor de Operações e Diretor-Geral. A sua autoridade é substantiva, não consultiva.",
+    "disclaimer": {
+      "forwardLooking": "This page contains forward-looking statements about Production City's operating model, international expansion plans, partner engagements, and organisational structure. These statements involve known and unknown risks, uncertainties, and other factors that may cause actual results to differ materially. This is not a financial prospectus or investment solicitation."
+    }
   },
   "companyTeam": {
     "meta": {

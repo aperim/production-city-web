@@ -530,6 +530,10 @@
           "HubSpot (HubSpot, Inc.): Customer relationship management for expression of interest follow-up and communications"
         ]
       },
+      "internationalTransfers": {
+        "title": "International Data Transfers",
+        "description": "Production City uses third-party service providers that may process personal data outside Australia, including Postmark (United States), HubSpot (United States), and Cloudflare (global network). These transfers are governed by Standard Contractual Clauses and Data Processing Agreements with each provider."
+      },
       "crossBorder": {
         "title": "Cross-border disclosure",
         "description": "Your personal information may be disclosed to service providers located in the United States. Before disclosing personal information to an overseas recipient, we take reasonable steps to ensure the recipient does not breach the APPs in relation to that information, or we rely on an exception under APP 8.2 (such as your informed consent or a binding contractual arrangement that requires the recipient to handle information consistently with the APPs).",
@@ -612,7 +616,7 @@
       },
       "jurisdiction": {
         "title": "Governing Law",
-        "description": "This privacy policy is governed by the laws of New South Wales, Australia, and the Australian Privacy Act 1988 (Cth) and the Australian Privacy Principles."
+        "description": "This privacy policy is governed by the laws of New South Wales, Australia, and the Australian Privacy Act 1988 (Cth) and the Australian Privacy Principles. For EU/EEA residents, the relevant supervisory authority is the data protection authority in your country of residence."
       },
       "changes": {
         "title": "Changes to this policy",
@@ -684,7 +688,7 @@
           "financial, investment, legal, or professional advice;",
           "a guarantee of availability, performance, or suitability for any particular purpose."
         ],
-        "description": "The content on this Website is provided for general informational purposes only. While we endeavour to keep the information up to date and correct, we make no representations or warranties of any kind, express or implied, about the completeness, accuracy, reliability, suitability, or availability of the Website or the information, products, services, or related graphics contained on the Website."
+        "description": "The content on this Website is provided for general informational purposes only. While we endeavour to keep the information up to date and correct, we make no representations or warranties of any kind, express or implied, about the completeness, accuracy, reliability, suitability, or availability of the Website or the information, products, services, or related graphics contained on the Website. Nothing in these terms excludes, restricts or modifies any right or remedy, or any guarantee, warranty or other term or condition, implied or imposed by any legislation which cannot lawfully be excluded or limited."
       },
       "forwardLooking": {
         "title": "Forward-looking statements",
@@ -1260,7 +1264,7 @@
       "feet": "ft"
     },
     "disclaimer": {
-      "forwardLooking": "This page contains forward-looking statements about Production City's planned facilities and capabilities. These statements involve known and unknown risks, uncertainties, and other factors that may cause actual results to differ materially. Facility specifications describe design targets and are subject to change."
+      "forwardLooking": "This page contains forward-looking statements about Production City's planned facilities and capabilities. These statements involve known and unknown risks, uncertainties, and other factors that may cause actual results to differ materially. Facility specifications describe design targets and are subject to change. This is not a financial prospectus or investment solicitation."
     },
     "page": {
       "hero": {
@@ -1409,7 +1413,7 @@
       "context": "Register your interest to discuss how your work fits the campus."
     },
     "disclaimer": {
-      "forwardLooking": "This page contains forward-looking statements about Production City's planned creative ecosystem and services. These statements involve known and unknown risks, uncertainties, and other factors that may cause actual results to differ materially."
+      "forwardLooking": "This page contains forward-looking statements about Production City's planned creative ecosystem and services. These statements involve known and unknown risks, uncertainties, and other factors that may cause actual results to differ materially. This is not a financial prospectus or investment solicitation."
     }
   },
   "vision": {
@@ -1580,7 +1584,7 @@
       "context": "Register your interest to learn about education, partnership, and community opportunities."
     },
     "disclaimer": {
-      "forwardLooking": "This page contains forward-looking statements about Production City's plans for community engagement, education, and sustainability. These statements involve known and unknown risks, uncertainties, and other factors that may cause actual results to differ materially."
+      "forwardLooking": "This page contains forward-looking statements about Production City's plans for community engagement, education, and sustainability. These statements involve known and unknown risks, uncertainties, and other factors that may cause actual results to differ materially. This is not a financial prospectus or investment solicitation."
     },
     "acknowledgement": {
       "heading": "Acknowledgement of Country",
@@ -1886,15 +1890,18 @@
     "creativeLabel": "Creative work the campus supports",
     "creativeHeading": "Country, at production scale. Audiences, on terms communities control.",
     "creativeDesc": "Virtual production and LED volumes make it possible to render Country at production scale without disturbing it. Live broadcast, AR, and VR open new paths to audiences. The campus is built to help First Nations storytellers reach national and international audiences on terms they control.",
-    "evidenceLabel": "How we evidence this",
-    "evidenceHeading": "Checkable.",
+    "evidenceLabel": "How this is structured",
+    "evidenceHeading": "How we build accountability.",
     "evidence1": "Board and executive governance arrangements, including the COO’s portfolio and decision rights.",
     "evidence2": "IP and data provenance framework, including protocols for First Nations material.",
-    "evidence3": "Targets and reporting commitments for employment, procurement, and training.",
-    "evidence4": "Partnership and community relationships through which the programme is delivered.",
-    "evidence5": "Alignment with relevant NSW Government policy, including the Aboriginal Procurement Policy and Closing the Gap commitments.",
+    "evidence3": "Published targets for employment, procurement, and training, with reporting commitments from operations commencement.",
+    "evidence4": "Partnership and community relationships through which the programme will be delivered.",
+    "evidence5": "Designed alignment with relevant NSW Government policy, including the Aboriginal Procurement Policy and Closing the Gap commitments.",
     "ctaHeading": "Read the Capability Statement.",
-    "ctaLink": "Request a copy"
+    "ctaLink": "Request a copy",
+    "disclaimer": {
+      "forwardLooking": "This page contains forward-looking statements about Production City’s governance, intellectual property, and data governance commitments, workforce and procurement targets, and community partnerships. These statements involve known and unknown risks, uncertainties, and other factors that may cause actual results to differ materially. This is not a financial prospectus or investment solicitation."
+    }
   },
   "network": {
     "meta": {
@@ -1968,13 +1975,16 @@
     "partner4Desc": "First Nations owned businesses, community organisations, and Traditional Owner groups whose involvement shapes the workforce, procurement, cultural safety, and creative work of the campus.",
     "partnersNote": "Named partners are disclosed where commercial confidentiality allows. Early-stage engagements remain under commercial terms until agreements are signed.",
     "pullQuoteLabel": "05 — On the first site",
-    "pullQuote": "The first campus is being built now. Technical standards, R&D, and the executive functions of the network are based here. Each subsequent campus is built from what this one proves.",
+    "pullQuote": "The first campus is in active development. Technical standards, research and development, and the executive functions of the network are based at that first site. Being first is not a branding claim — it is a structural one, and it compounds.",
     "cta": "Speak to the team.",
     "ctaLink": "Start a conversation",
     "ctaFacilities": "See the facilities",
     "ctaNetwork": "The global sequence",
     "leadershipBio1": "Founder and Chief Executive. Stage and screen production, broadcast and data-centre infrastructure, machine learning in Silicon Valley.",
-    "leadershipBio2": "Chief Operating Officer and Managing Director."
+    "leadershipBio2": "Chief Operating Officer and Managing Director.",
+    "disclaimer": {
+      "forwardLooking": "This page contains forward-looking statements about Production City's operating model, international expansion plans, partner engagements, and organisational structure. These statements involve known and unknown risks, uncertainties, and other factors that may cause actual results to differ materially. This is not a financial prospectus or investment solicitation."
+    }
   },
   "companyTeam": {
     "meta": {

@@ -237,6 +237,17 @@ describe("i18n no untranslated English leakage", () => {
     /\.sectionLabel$/,
     // Position paper — EOI industry/technical document, English placeholder throughout (#518)
     /^positionPaper\./,
+    // New disclaimer keys added in PRO-1461 — translation deferred to a future localisation pass
+    /^company\.disclaimer\./,
+    /^firstNations\.disclaimer\./,
+    /^legal\.privacy\.internationalTransfers\./,
+    // CEO-verified copy corrections in PRO-1461 — new English text, retranslation deferred
+    /^company\.pullQuote$/,
+    /^firstNations\.evidenceLabel$/,
+    /^firstNations\.evidenceHeading$/,
+    /^firstNations\.evidence[345]$/,
+    /^legal\.privacy\.jurisdiction\.description$/,
+    /^legal\.terms\.disclaimer\.description$/,
   ];
 
   for (const locale of LOCALES.filter((l) => l !== "en")) {
