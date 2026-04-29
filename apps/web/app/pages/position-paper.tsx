@@ -62,7 +62,7 @@ function PositionPaperPageContent() {
       <DublinCoreMeta
         title={t("positionPaper.meta.title")}
         description={t("positionPaper.meta.description")}
-        subject="virtual production, VP infrastructure, integrated studio, Sydney, NSW EOI"
+        subject="virtual production, VP infrastructure, integrated studio, Australia, NSW EOI"
         type="Text"
         path="/position-paper"
         date="2026-04-28"
