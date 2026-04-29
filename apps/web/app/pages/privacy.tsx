@@ -45,6 +45,12 @@ const THIRD_PARTY_PROVIDERS = [
     data: "IP address, browser user-agent",
     purpose: "Delivery of web font files (Noto Sans) for Arabic, Devanagari, and Bengali script support via fonts.gstatic.com. Google does not set cookies through this service.",
   },
+  {
+    name: "HubSpot, Inc.",
+    country: "United States",
+    data: "Name, email address, category of interest, submission metadata",
+    purpose: "Customer relationship management for expression of interest follow-up and communications",
+  },
 ] as const;
 
 const RETENTION_PERIODS = [
@@ -99,7 +105,7 @@ function PrivacyPageContent() {
         description="Privacy policy for Production City: how we collect, use, and protect your personal information."
         subject="privacy policy, data protection, personal information, legal"
         path="/privacy"
-        date="2026-04-27"
+        date="2026-04-29"
       />
       <div className="mx-auto max-w-3xl py-12">
         <a
@@ -113,7 +119,7 @@ function PrivacyPageContent() {
           {t("legal.privacy.title")}
         </h1>
         <p className="mt-2 text-sm text-muted-foreground">
-          {t("legal.privacy.effectiveDate", { date: "27 April 2026" })}
+          {t("legal.lastUpdated", { date: "29 April 2026" })}
         </p>
 
         {/* Section 1 — About this policy */}

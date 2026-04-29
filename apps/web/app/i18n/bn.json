@@ -529,7 +529,7 @@
         "title": "Cross-border disclosure",
         "description": "Your personal information may be disclosed to service providers located in the United States. Before disclosing personal information to an overseas recipient, we take reasonable steps to ensure the recipient does not breach the APPs in relation to that information, or we rely on an exception under APP 8.2 (such as your informed consent or a binding contractual arrangement that requires the recipient to handle information consistently with the APPs).",
         "countries": [
-          "United States — Cloudflare (hosting, analytics), Postmark (email), Twilio (SMS), Google (font delivery)"
+          "United States — Cloudflare (hosting, analytics), Postmark (email), Twilio (SMS), Google (font delivery), HubSpot (CRM)"
         ],
         "note": "No other countries. All third-party data processing occurs in the United States as listed above."
       },
@@ -620,6 +620,11 @@
       "meta": {
         "title": "গোপনীয়তা নীতি — Production City",
         "description": "জানুন কিভাবে Production City আপনার ব্যক্তিগত তথ্য সংগ্রহ, ব্যবহার এবং সুরক্ষিত করে।"
+      },
+      "thirdPartyServices": {
+        "items": [
+          "HubSpot (HubSpot, Inc.): আগ্রহ প্রকাশের ফলো-আপ এবং যোগাযোগের জন্য গ্রাহক সম্পর্ক ব্যবস্থাপনা"
+        ]
       }
     },
     "terms": {

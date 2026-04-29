@@ -157,7 +157,7 @@ export function useEoiSubmit() {
       message: data.message || undefined,
       sourcePage: window.location.pathname,
       locale,
-      consentVersion: "2026-03-01",
+      consentVersion: "2026-04-29",
       privacyAccepted: data.consent,
       marketingOptIn: data.updates,
     });
