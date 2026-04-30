@@ -900,7 +900,7 @@
     "masterplanTeaser": {
       "eyebrow": "Plano diretor do campus",
       "heading": "O campus, em três dimensões.",
-      "body": "Seis estúdios de som, um teatro de transmissão, centro criativo, backlot e espaço público — explore o site completo de 6 hectares como um modelo 3D interativo.",
+      "body": "Oito estúdios de som, um teatro de transmissão, centro criativo, backlot e espaço público — explore o site completo de 6 hectares como um modelo 3D interativo.",
       "ctaLabel": "Explorar o campus em 3D →"
     },
     "hero": {
@@ -2044,7 +2044,7 @@
   "masterplan": {
     "meta": {
       "title": "Plano Diretor do Campus — Production City",
-      "description": "Explore a planta directriz do campus integrado de 6 hectares da Production City. Treze instalações, seis estúdios de som, teatro de emissão e espaço público."
+      "description": "Explore a planta directriz do campus integrado de 6 hectares da Production City. Treze instalações, oito estúdios de som, teatro de emissão e espaço público."
     },
     "hero": {
       "heading": "Planta directriz do campus",
@@ -2060,7 +2060,7 @@
       "sqmUnit": "metros quadrados",
       "facilities": "13",
       "facilitiesUnit": "instalações",
-      "soundStages": "6",
+      "soundStages": "8",
       "soundStagesUnit": "estúdios de som"
     },
     "highlights": {

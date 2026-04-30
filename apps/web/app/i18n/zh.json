@@ -900,7 +900,7 @@
     "masterplanTeaser": {
       "eyebrow": "园区总体规划",
       "heading": "三维呈现的园区。",
-      "body": "六个摄影棚、一座广播剧场、创意中心、外景地和公共空间——以交互式3D模型探索整个6公顷园区。",
+      "body": "八个录音棚、一座广播剧场、创意中心、外景地和公共空间——以交互式3D模型探索整个6公顷园区。",
       "ctaLabel": "以三维方式探索园区 →"
     },
     "hero": {
@@ -2044,7 +2044,7 @@
   "masterplan": {
     "meta": {
       "title": "园区总体规划 — Production City",
-      "description": "探索 Production City 的 6 公顷综合园区总规划图。十三个设施、六个摄影棚、广播剧院和公共区域——设计为一个互联系统。"
+      "description": "探索 Production City 的 6 公顷综合园区总规划图。十三个设施、八个录音棚、广播剧院和公共区域——设计为一个互联系统。"
     },
     "hero": {
       "heading": "园区总规划图",
@@ -2060,7 +2060,7 @@
       "sqmUnit": "平方米",
       "facilities": "13",
       "facilitiesUnit": "设施",
-      "soundStages": "6",
+      "soundStages": "8",
       "soundStagesUnit": "摄影棚"
     },
     "highlights": {

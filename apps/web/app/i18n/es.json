@@ -900,7 +900,7 @@
     "masterplanTeaser": {
       "eyebrow": "Plan maestro del campus",
       "heading": "El campus, en tres dimensiones.",
-      "body": "Seis platós de sonido, un teatro de transmisión, centro creativo, backlot y espacio público — explore el sitio completo de 6 hectáreas como un modelo 3D interactivo.",
+      "body": "Ocho platós de sonido, un teatro de transmisión, centro creativo, backlot y espacio público — explore el sitio completo de 6 hectáreas como un modelo 3D interactivo.",
       "ctaLabel": "Explorar el campus en 3D →"
     },
     "hero": {
@@ -2044,7 +2044,7 @@
   "masterplan": {
     "meta": {
       "title": "Plan Maestro del Campus — Production City",
-      "description": "Explore el plano directriz del campus integrado de 6 hectáreas de Production City. Trece instalaciones, seis platós de sonido, teatro de emisión y espacio público."
+      "description": "Explore el plano directriz del campus integrado de 6 hectáreas de Production City. Trece instalaciones, ocho platós de sonido, teatro de emisión y espacio público."
     },
     "hero": {
       "heading": "Plano del campus",
@@ -2060,7 +2060,7 @@
       "sqmUnit": "metros cuadrados",
       "facilities": "13",
       "facilitiesUnit": "instalaciones",
-      "soundStages": "6",
+      "soundStages": "8",
       "soundStagesUnit": "platós de sonido"
     },
     "highlights": {

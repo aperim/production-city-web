@@ -900,7 +900,7 @@
     "masterplanTeaser": {
       "eyebrow": "Plan directeur du campus",
       "heading": "Le campus, en trois dimensions.",
-      "body": "Six plateaux de tournage, un théâtre de diffusion, un pôle créatif, un backlot et un espace public — explorez l'intégralité du site de 6 hectares en modèle 3D interactif.",
+      "body": "Huit plateaux de tournage, un théâtre de diffusion, un pôle créatif, un backlot et un espace public — explorez l'intégralité du site de 6 hectares en modèle 3D interactif.",
       "ctaLabel": "Explorer le campus en 3D →"
     },
     "hero": {
@@ -2044,7 +2044,7 @@
   "masterplan": {
     "meta": {
       "title": "Plan directeur du campus — Production City",
-      "description": "Explorez le plan directeur du campus intégré de 6 hectares de Production City. Treize installations, six plateaux de tournage, théâtre de diffusion et espace public."
+      "description": "Explorez le plan directeur du campus intégré de 6 hectares de Production City. Treize installations, huit plateaux de tournage, théâtre de diffusion et espace public."
     },
     "hero": {
       "heading": "Plan directeur du campus",
@@ -2060,7 +2060,7 @@
       "sqmUnit": "mètres carrés",
       "facilities": "13",
       "facilitiesUnit": "installations",
-      "soundStages": "6",
+      "soundStages": "8",
       "soundStagesUnit": "plateaux de tournage"
     },
     "highlights": {

@@ -900,7 +900,7 @@
     "masterplanTeaser": {
       "eyebrow": "Campus Masterplan",
       "heading": "Campus masterplan",
-      "body": "Six sound stages, a broadcast theatre, creative hub, backlot, and public realm across 6 hectares. Explore the interactive 3D model.",
+      "body": "Eight sound stages, a broadcast theatre, creative hub, backlot, and public realm across 6 hectares. Explore the interactive 3D model.",
       "ctaLabel": "Explore the campus in 3D →"
     },
     "hero": {
@@ -2054,7 +2054,7 @@
   "masterplan": {
     "meta": {
       "title": "Campus Masterplan — Production City",
-      "description": "Production City's 6-hectare campus masterplan. Thirteen facilities, six sound stages, broadcast theatre, and public realm."
+      "description": "Production City's 6-hectare campus masterplan. Thirteen facilities, eight sound stages, broadcast theatre, and public realm."
     },
     "hero": {
       "heading": "Campus Masterplan",
@@ -2070,7 +2070,7 @@
       "sqmUnit": "square metres",
       "facilities": "13",
       "facilitiesUnit": "facilities",
-      "soundStages": "6",
+      "soundStages": "8",
       "soundStagesUnit": "sound stages"
     },
     "highlights": {
@@ -2091,7 +2091,7 @@
       "public": "Public access",
       "publicDesc": "South arrival road. Theatre lobby, exhibition, hospitality, and event plaza — all public-facing, all below the production gate.",
       "secure": "Production access",
-      "secureDesc": "Controlled north gate. Stage spine connects six stages, the creative hub, and broadcast control without crossing public ground.",
+      "secureDesc": "Controlled north gate. Stage spine connects eight stages, the creative hub, and broadcast control without crossing public ground.",
       "truck": "Service and logistics",
       "truckDesc": "Dedicated west and east service roads. Loading aprons reach every stage, the backlot, workshop, and warehouse independently.",
       "pedestrian": "Pedestrian circulation",
