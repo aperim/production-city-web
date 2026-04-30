@@ -13,11 +13,14 @@ import { I18nProvider, useTranslation } from "../i18n/context";
 
 export default function OnboardingPage() {
   return (
-    <I18nProvider>
-      <AuthProvider>
-        <OnboardingPageInner />
-      </AuthProvider>
-    </I18nProvider>
+    <>
+      <meta name="robots" content="noindex, nofollow" />
+      <I18nProvider>
+        <AuthProvider>
+          <OnboardingPageInner />
+        </AuthProvider>
+      </I18nProvider>
+    </>
   );
 }
 

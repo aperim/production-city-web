@@ -7,6 +7,11 @@ export function GET() {
   const body = [
     "User-agent: *",
     "Allow: /",
+    "Disallow: /login",
+    "Disallow: /onboarding",
+    "Disallow: /auth/",
+    "Disallow: /settings/",
+    "Disallow: /subscriptions/",
     "",
     "Sitemap: https://production.city/sitemap.xml",
     "",

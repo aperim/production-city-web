@@ -23,11 +23,14 @@ type LoginView = "email" | "code";
 
 export default function LoginPage() {
   return (
-    <I18nProvider>
-      <AuthProvider>
-        <LoginPageInner />
-      </AuthProvider>
-    </I18nProvider>
+    <>
+      <meta name="robots" content="noindex, nofollow" />
+      <I18nProvider>
+        <AuthProvider>
+          <LoginPageInner />
+        </AuthProvider>
+      </I18nProvider>
+    </>
   );
 }
 

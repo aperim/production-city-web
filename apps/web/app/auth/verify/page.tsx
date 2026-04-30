@@ -19,9 +19,12 @@ type VerifyState = "loading" | "success" | "error";
 
 export default function VerifyPage() {
   return (
-    <I18nProvider>
-      <VerifyPageInner />
-    </I18nProvider>
+    <>
+      <meta name="robots" content="noindex, nofollow" />
+      <I18nProvider>
+        <VerifyPageInner />
+      </I18nProvider>
+    </>
   );
 }
 
