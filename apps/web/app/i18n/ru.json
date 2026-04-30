@@ -681,7 +681,7 @@
         ]
       },
       "disclaimer": {
-        "title": "Disclaimer",
+        "title": "Отказ от ответственности",
         "prelaunch": "Production City is in pre-launch development. All information, features, services, timelines, pricing, and projections described on this Website are subject to change without notice.",
         "items": [
           "a binding offer, invitation to treat, or commitment to deliver any particular service, feature, or capability;",
@@ -1690,11 +1690,11 @@
       "heading": "Контактная информация",
       "email": "hello@productioncity.com",
       "emailAddress": "troy@team.production.city",
-      "phoneAU": "Australia",
+      "phoneAU": "Австралия",
       "phoneAUNumber": "+61 2 9137 9100",
       "phoneUS": "США",
       "phoneUSNumber": "+1 650 215 6253",
-      "website": "Website",
+      "website": "Веб-сайт",
       "websiteUrl": "www.production.city"
     },
     "eoi": {
