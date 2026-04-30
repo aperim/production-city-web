@@ -179,7 +179,7 @@ export function Dropdown({
         aria-controls={open ? menuId : undefined}
         onClick={toggle}
         onKeyDown={handleTriggerKeyDown}
-        className="inline-flex cursor-pointer bg-transparent border-none p-0 focus:outline-none"
+        className="inline-flex cursor-pointer bg-transparent border-none p-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
         aria-label={typeof trigger === "string" ? trigger : undefined}
       >
         {trigger}
@@ -218,7 +218,7 @@ export function Dropdown({
                   }}
                   className={cn(
                     "flex w-full items-center gap-2 px-3 py-1.5 text-sm text-start",
-                    "focus:bg-accent focus:text-accent-foreground focus:outline-none",
+                    "focus:bg-accent focus:text-accent-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-1",
                     "disabled:pointer-events-none disabled:opacity-50",
                   )}
                 >

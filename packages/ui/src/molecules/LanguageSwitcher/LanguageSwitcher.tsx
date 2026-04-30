@@ -183,7 +183,7 @@ export function LanguageSwitcher({
                 onClick={() => selectLanguage(lang.code)}
                 className={cn(
                   "flex w-full items-center gap-2 px-3 py-1.5 text-sm text-start",
-                  "focus:bg-accent focus:text-accent-foreground focus:outline-none",
+                  "focus:bg-accent focus:text-accent-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-1",
                   isSelected && "font-medium",
                 )}
               >

@@ -163,7 +163,7 @@ export function Popover({
         aria-expanded={open}
         aria-controls={open ? panelId : undefined}
         onClick={() => setOpen(!open)}
-        className="inline-flex cursor-pointer bg-transparent border-none p-0 focus:outline-none"
+        className="inline-flex cursor-pointer bg-transparent border-none p-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
       >
         {trigger}
       </button>

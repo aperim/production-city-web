@@ -70,3 +70,11 @@ export const WithActions: Story = {
     "aria-label": "Confirm deletion",
   },
 };
+
+/** Tab to the trigger to see the focus ring. Click interaction does not show a ring. */
+export const FocusVisible: Story = {
+  args: {
+    trigger: triggerButton,
+    content: <p className="text-sm">Tab here to verify focus indicator.</p>,
+  },
+};

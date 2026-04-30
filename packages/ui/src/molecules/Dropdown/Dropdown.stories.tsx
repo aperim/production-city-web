@@ -63,3 +63,15 @@ export const WithCheckmarks: Story = {
     ],
   },
 };
+
+/** Tab to the trigger to see the focus ring on the trigger. Open the menu and tab through items to see focus indicators. */
+export const FocusVisible: Story = {
+  args: {
+    trigger: triggerButton,
+    items: [
+      { id: "edit", label: "Edit" },
+      { id: "duplicate", label: "Duplicate" },
+      { id: "delete", label: "Delete", separator: true },
+    ],
+  },
+};

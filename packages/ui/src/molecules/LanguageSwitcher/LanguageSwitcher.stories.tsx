@@ -94,3 +94,8 @@ export const URLAwareRTL: Story = {
     ),
   ],
 };
+
+/** Tab to the trigger to see the focus ring. Open the menu and use Arrow keys to navigate items — each item shows a focus indicator. */
+export const FocusVisible: Story = {
+  args: {},
+};
