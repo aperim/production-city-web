@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Production City favicon — scalable "P" mark -->
+<!-- Dark rounded-rect with white "P", matches brand identity -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32">
+  <defs>
+    <!-- Dark background gradient for depth -->
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#1a1f2e"/>
+      <stop offset="100%" stop-color="#0f172a"/>
+    </linearGradient>
+  </defs>
+  <!-- Rounded dark background -->
+  <rect x="1" y="1" width="30" height="30" rx="7" fill="url(#bg)"
+        stroke="#2a3040" stroke-width="1" />
+  <!-- White "P" lettermark -->
+  <text x="16" y="22" font-family="'Inter Tight', Inter, system-ui, sans-serif"
+        font-size="16" font-weight="600" text-anchor="middle" fill="#ffffff">P</text>
+</svg>

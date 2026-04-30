@@ -398,6 +398,24 @@ describe("shared landing layout hooks", () => {
     const content = readFileSync(resolve(APP_ROOT, "lib/use-landing-layout.ts"), "utf-8");
     expect(content).toContain("submitEoi");
   });
+
+  it("useLandingFooter populates legalLinks with Privacy and Terms", () => {
+    const content = readFileSync(resolve(APP_ROOT, "lib/use-landing-layout.ts"), "utf-8");
+    expect(content).toContain('t("legal.privacyPolicy")');
+    expect(content).toContain('t("legal.termsOfUse")');
+    expect(content).toContain('t("legal.cookiePolicy")');
+    expect(content).toContain("/privacy");
+    expect(content).toContain("/terms");
+    expect(content).toContain("/cookies");
+  });
+
+  it("useLandingFooter legalLinks use locale prefix", () => {
+    const content = readFileSync(resolve(APP_ROOT, "lib/use-landing-layout.ts"), "utf-8");
+    // Links should be prefixed with locale (e.g., /zh/privacy or /privacy for en)
+    expect(content).toContain("`${prefix}/privacy`");
+    expect(content).toContain("`${prefix}/terms`");
+    expect(content).toContain("`${prefix}/cookies`");
+  });
 });
 
 describe("all page text is externalized via i18n", () => {

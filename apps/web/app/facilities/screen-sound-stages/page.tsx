@@ -17,7 +17,23 @@ export async function generateMetadata(): Promise<Metadata> {
   await loadLocale(locale);
   const title = t("facilities.screenStages.name", undefined, locale);
   const description = t("facilities.screenStages.description", undefined, locale);
-  return { title, description, openGraph: { title, description } };
+  return {
+    title,
+    description,
+    openGraph: {
+      title,
+      description,
+      siteName: "Production City™",
+      images: "https://production.city/opengraph-image.png",
+      type: "website",
+    },
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description,
+      images: "https://production.city/opengraph-image.png",
+    },
+  };
 }
 
 export default async function Page() {
