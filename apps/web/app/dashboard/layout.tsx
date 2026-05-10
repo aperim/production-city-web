@@ -36,6 +36,7 @@ import {
   type NotificationData,
 } from "../lib/api-client";
 import { RegistryProvider, useRegistry } from "./components/RegistryProvider";
+import { notificationMessage } from "./notification-message";
 import { SessionExpiredOverlay } from "./components/SessionExpiredOverlay";
 import { useSessionMonitor } from "../lib/use-session-monitor";
 import { useRegistryRevalidation } from "./use-registry-revalidation";
@@ -79,19 +80,6 @@ function DashboardStatusBar() {
   );
 }
 
-/** Map notification type to a message */
-function notificationMessage(n: NotificationData): string {
-  switch (n.type) {
-    case "approval_needed":
-      return "New user pending approval";
-    case "invitation_accepted":
-      return "Invitation accepted";
-    case "user_activated":
-      return "User account activated";
-    default:
-      return n.type;
-  }
-}
 
 /** Only allow relative URLs to prevent open redirects */
 function isSafeUrl(url: string): boolean {
