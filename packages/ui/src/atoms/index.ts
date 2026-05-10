@@ -116,3 +116,7 @@ export type { NetworkStatusChipProps, NetworkStatus } from "./NetworkStatusChip/
 // Issue #516: Position Paper — New Storybook Components
 export { StatCallout, statCalloutVariants } from "./StatCallout/StatCallout";
 export type { StatCalloutProps } from "./StatCallout/StatCallout";
+
+// PRO-3872: BRAND-1 — Live/Provisional/Concept canvas tag system
+export { CanvasTag, CanvasTagWrapper } from "./CanvasTag/CanvasTag";
+export type { CanvasTagProps, CanvasTagWrapperProps, CanvasTagVariant, CanvasType } from "./CanvasTag/CanvasTag";
