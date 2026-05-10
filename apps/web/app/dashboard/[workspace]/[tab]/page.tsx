@@ -35,7 +35,6 @@ import {
   ScopeBar,
   type BoardCard,
   type DataTableColumn,
-  type CommunicationsView,
 } from '@productioncity/holding-ui';
 import { getSampleData } from '../sample-data';
 import { WORKSPACE_SCOPE_CONFIGS } from '../../config/workspace-scope-configs';
