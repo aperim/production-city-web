@@ -585,3 +585,98 @@ testApp.post("/v1/test/seed-media", async (c) => {
     await prisma.$disconnect().catch(() => {});
   }
 });
+
+/**
+ * POST /v1/test/seed-dashboard-users
+ * Seeds one test user per dashboard role for E2E testing.
+ * Uses deterministic role names so repeated calls are idempotent:
+ *   - stale e2e-dashboard-* roles are deleted then recreated
+ *   - each user ends up with exactly one e2e-dashboard-{role} role
+ */
+testApp.post("/v1/test/seed-dashboard-users", async (c) => {
+  const prisma = await createPrismaClient(c.env.DB);
+  try {
+    // Remove stale e2e dashboard roles from previous runs. Prisma cascades
+    // userRole rows, so no manual join-table cleanup is needed.
+    await prisma.role.deleteMany({ where: { name: { startsWith: "e2e-dashboard-" } } });
+
+    const DASHBOARD_TEST_USERS: Array<{
+      email: string;
+      name: string;
+      dashboardRole: string;
+      permissions: [string, string][];
+    }> = [
+      { email: "admin@dashboard.test", name: "Dashboard Admin", dashboardRole: "admin", permissions: [["dashboard", "admin"]] },
+      {
+        email: "executive@dashboard.test", name: "Dashboard Executive", dashboardRole: "executive",
+        permissions: [["dashboard", "executive"], ["hr", "read"], ["legal", "read"], ["company_finance", "read"], ["productions", "read"], ["facilities", "read"], ["analytics", "read"], ["investor", "read"]],
+      },
+      {
+        email: "staff@dashboard.test", name: "Dashboard Staff", dashboardRole: "staff",
+        permissions: [["dashboard", "staff"], ["hr", "read"], ["productions", "read"], ["facilities", "book"], ["workflow", "read"], ["talent", "read"]],
+      },
+      {
+        email: "client@dashboard.test", name: "Dashboard Client", dashboardRole: "client",
+        permissions: [["dashboard", "client"], ["productions", "read"], ["facilities", "book"], ["workflow", "review"]],
+      },
+      { email: "vendor@dashboard.test", name: "Dashboard Vendor", dashboardRole: "vendor", permissions: [["dashboard", "vendor"], ["vendors", "read"]] },
+      {
+        email: "investor@dashboard.test", name: "Dashboard Investor", dashboardRole: "investor",
+        permissions: [["dashboard", "investor"], ["investor", "read"], ["data_rooms", "investor"]],
+      },
+      { email: "guest@dashboard.test", name: "Dashboard Guest", dashboardRole: "guest", permissions: [["dashboard", "guest"], ["events", "browse"], ["education", "browse"]] },
+      {
+        email: "government@dashboard.test", name: "Dashboard Government", dashboardRole: "government",
+        permissions: [["dashboard", "government"], ["gov_policy", "read"], ["data_rooms", "government"], ["analytics", "economic_impact"]],
+      },
+      {
+        email: "partner@dashboard.test", name: "Dashboard Partner", dashboardRole: "partner",
+        permissions: [["dashboard", "partner"], ["partnerships", "read"], ["data_rooms", "partner"], ["education", "collaborate"]],
+      },
+      {
+        email: "first_nations@dashboard.test", name: "Dashboard First Nations", dashboardRole: "first_nations",
+        permissions: [["dashboard", "first_nations"], ["first_nations", "read"], ["community", "read"]],
+      },
+    ];
+
+    const seeded: Array<{ email: string; roleName: string }> = [];
+
+    for (const testUser of DASHBOARD_TEST_USERS) {
+      const user = await prisma.user.upsert({
+        where: { email: testUser.email },
+        update: { status: "active", emailVerified: true },
+        create: { email: testUser.email, name: testUser.name, status: "active", emailVerified: true },
+      });
+
+      // Deterministic role name — no Date.now(), no random suffix
+      const roleName = `e2e-dashboard-${testUser.dashboardRole}`;
+      const role = await prisma.role.upsert({
+        where: { name: roleName },
+        update: { description: `E2E dashboard ${testUser.dashboardRole} role`, isSystem: false },
+        create: { name: roleName, description: `E2E dashboard ${testUser.dashboardRole} role`, isSystem: false },
+      });
+
+      for (const [resource, action] of testUser.permissions) {
+        const perm = await prisma.permission.findUnique({ where: { resource_action: { resource, action } } });
+        if (!perm) continue;
+        await prisma.rolePermission.upsert({
+          where: { roleId_permissionId: { roleId: role.id, permissionId: perm.id } },
+          update: {},
+          create: { roleId: role.id, permissionId: perm.id },
+        });
+      }
+
+      await prisma.userRole.upsert({
+        where: { userId_roleId: { userId: user.id, roleId: role.id } },
+        update: {},
+        create: { userId: user.id, roleId: role.id },
+      });
+
+      seeded.push({ email: user.email, roleName });
+    }
+
+    return c.json({ message: "Dashboard test users seeded.", users: seeded }, 200);
+  } finally {
+    await prisma.$disconnect().catch(() => {});
+  }
+});
