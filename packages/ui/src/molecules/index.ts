@@ -37,6 +37,11 @@ export { Tag } from "./Tag/Tag";
 export type { TagProps } from "./Tag/Tag";
 export { EmptyState } from "./EmptyState/EmptyState";
 export type { EmptyStateProps } from "./EmptyState/EmptyState";
+export { CanvasEmptyState } from "./CanvasEmptyState/CanvasEmptyState";
+export type {
+  CanvasEmptyStateProps,
+  CanvasEmptyStateVariant,
+} from "./CanvasEmptyState/CanvasEmptyState";
 export { Drawer } from "./Drawer/Drawer";
 export type { DrawerProps, DrawerPosition } from "./Drawer/Drawer";
 export { Pagination } from "./Pagination/Pagination";
