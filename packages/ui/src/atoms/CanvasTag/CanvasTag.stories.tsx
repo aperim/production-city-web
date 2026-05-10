@@ -58,6 +58,7 @@ export const Concept: Story = {
 
 // All three side-by-side
 export const AllVariants: Story = {
+  args: { variant: "live" },
   render: () => (
     <div className="flex items-center gap-3">
       <CanvasTag variant="live" />
@@ -69,6 +70,7 @@ export const AllVariants: Story = {
 
 // Canvas-type aware labels
 export const WithCanvasTypes: Story = {
+  args: { variant: "live" },
   render: () => (
     <div className="grid gap-3">
       {(
@@ -99,6 +101,7 @@ const MockCanvas = ({ label }: { label: string }) => (
 
 export const WrapperLive: Story = {
   name: "Wrapper — Live",
+  args: { variant: "live" },
   render: () => (
     <CanvasTagWrapper variant="live">
       <MockCanvas label="Chart canvas" />
@@ -108,6 +111,7 @@ export const WrapperLive: Story = {
 
 export const WrapperProvisional: Story = {
   name: "Wrapper — Provisional",
+  args: { variant: "provisional" },
   render: () => (
     <CanvasTagWrapper variant="provisional">
       <MockCanvas label="Table canvas" />
@@ -117,6 +121,7 @@ export const WrapperProvisional: Story = {
 
 export const WrapperConcept: Story = {
   name: "Wrapper — Concept (with watermark)",
+  args: { variant: "concept" },
   render: () => (
     <CanvasTagWrapper variant="concept">
       <MockCanvas label="Document canvas" />
@@ -127,6 +132,7 @@ export const WrapperConcept: Story = {
 // All three wrappers side by side
 export const AllWrappers: Story = {
   name: "All Wrappers",
+  args: { variant: "live" },
   render: () => (
     <div className="flex flex-col gap-4">
       <CanvasTagWrapper variant="live">
@@ -144,6 +150,7 @@ export const AllWrappers: Story = {
 
 // Light mode override for contrast verification
 export const LightMode: Story = {
+  args: { variant: "live" },
   parameters: {
     backgrounds: { default: "light" },
     docs: {

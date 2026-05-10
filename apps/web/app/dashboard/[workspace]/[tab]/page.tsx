@@ -11,7 +11,7 @@
  * @see Issue #415 (canvas slot rendering + sample data)
  */
 
-import { useCallback, useEffect, useMemo, useState, type ReactNode } from 'react';
+import { useEffect, useMemo, useState, type ReactNode } from 'react';
 import { useRegistry } from '../../components/RegistryProvider';
 import {
   WORKSPACE_MAP,
@@ -27,16 +27,19 @@ import {
   CanvasDocuments,
   CanvasCharts,
   CommunicationsCanvas,
+  CanvasEmptyState,
+  CanvasTag,
   UsersCanvas,
   SecurityCanvas,
   EoiCanvas,
   ScopeBar,
   type BoardCard,
   type DataTableColumn,
-  type CommunicationsView,
 } from '@productioncity/holding-ui';
 import { getSampleData } from '../sample-data';
 import { WORKSPACE_SCOPE_CONFIGS } from '../../config/workspace-scope-configs';
+import { useCommunicationsData } from './communications-data';
+import { AnnouncementsSubView } from './AnnouncementsSubView';
 
 /**
  * Custom canvas identifiers — workspace/tab combinations that render
@@ -259,29 +262,7 @@ export default function WorkspaceTabPage() {
   const viewParam = useViewParam();
   const { visibleFeatureIds, isWorkspaceVisible } = useRegistry();
   const [scopeValue, setScopeValue] = useState<string>('all');
-  const [commView, setCommView] = useState<CommunicationsView>(() => {
-    if (typeof window === 'undefined') return 'announcements';
-    const params = new URLSearchParams(window.location.search);
-    const view = params.get('view');
-    const valid: CommunicationsView[] = ['announcements', 'categories', 'tags', 'subscriptions'];
-    if (view && valid.includes(view as CommunicationsView)) return view as CommunicationsView;
-    // Invalid view — replaceState to default
-    if (view && typeof window !== 'undefined') {
-      const url = new URL(window.location.href);
-      url.searchParams.delete('view');
-      window.history.replaceState({}, '', url.toString());
-    }
-    return 'announcements';
-  });
-
-  const handleCommTabChange = useCallback((view: CommunicationsView) => {
-    setCommView(view);
-    if (typeof window !== 'undefined') {
-      const url = new URL(window.location.href);
-      url.searchParams.set('view', view);
-      window.history.pushState({}, '', url.toString());
-    }
-  }, []);
+  const commData = useCommunicationsData();
 
   // Anti-enumeration: workspace must exist and be visible
   const ws = WORKSPACE_MAP.get(workspaceId as WorkspaceId);
@@ -305,18 +286,59 @@ export default function WorkspaceTabPage() {
   // Scope bar config for this workspace
   const scopeConfig = WORKSPACE_SCOPE_CONFIGS[workspaceId];
 
-  // Communications canvas is special — it has SubViewTabs and deep routes
+  // Communications canvas — announcements from API; other sub-views show Provisional empty states.
   if (tab.canvas === 'communications') {
+    const provisionalTag = <CanvasTag variant="provisional" />;
+
+    const announcementsContent = (
+      <AnnouncementsSubView
+        announcements={commData.announcements}
+        loading={commData.loading}
+        error={commData.error}
+        onView={commData.handleView}
+        onEdit={commData.handleEdit}
+        onCreate={commData.handleCreate}
+      />
+    );
+
+    const categoriesContent = (
+      <CanvasEmptyState
+        canvasType="communications"
+        activationLabel="Provisional"
+        description="Category management for announcements — organise and filter by topic."
+        tag={provisionalTag}
+      />
+    );
+
+    const tagsContent = (
+      <CanvasEmptyState
+        canvasType="communications"
+        activationLabel="Provisional"
+        description="Tag management for announcements — label and cross-reference content."
+        tag={provisionalTag}
+      />
+    );
+
+    const subscriptionsContent = (
+      <CanvasEmptyState
+        canvasType="communications"
+        activationLabel="Provisional"
+        description="Subscription management — let members control which announcements they receive."
+        tag={provisionalTag}
+      />
+    );
+
     return (
       <div data-workspace={workspaceId} data-tab={tabId} className="flex flex-col h-full">
         <CommunicationsCanvas
-          activeView={commView}
-          onTabChange={handleCommTabChange}
+          activeView={commData.activeView}
+          onTabChange={commData.handleTabChange}
           hasPermission={() => true}
-          announcementsContent={<div className="p-4 text-sm text-muted-foreground">Announcements content loading...</div>}
-          categoriesContent={<div className="p-4 text-sm text-muted-foreground">Categories management loading...</div>}
-          tagsContent={<div className="p-4 text-sm text-muted-foreground">Tags management loading...</div>}
-          subscriptionsContent={<div className="p-4 text-sm text-muted-foreground">Subscriptions management loading...</div>}
+          loading={false}
+          announcementsContent={announcementsContent}
+          categoriesContent={categoriesContent}
+          tagsContent={tagsContent}
+          subscriptionsContent={subscriptionsContent}
         />
       </div>
     );
