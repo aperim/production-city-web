@@ -59,9 +59,17 @@ export function useCommunicationsData() {
     setState((prev) => ({ ...prev, loading: true, error: null }));
     try {
       const result = await listAdminAnnouncements({ page, pageSize: 25 });
+      if (!result.ok) {
+        setState((prev) => ({
+          ...prev,
+          loading: false,
+          error: result.error.message ?? 'Failed to load announcements.',
+        }));
+        return;
+      }
       setState({
-        announcements: result.announcements,
-        announcementsPagination: result.pagination,
+        announcements: result.data.announcements,
+        announcementsPagination: result.data.pagination,
         loading: false,
         error: null,
       });
