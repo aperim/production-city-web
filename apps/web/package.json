@@ -26,8 +26,8 @@
     "deploy:production": "node scripts/cf-deploy.mjs production"
   },
   "dependencies": {
-    "@prisma/adapter-d1": "^7.5.0",
-    "@prisma/client": "^7.5.0",
+    "@prisma/adapter-d1": "^7.8.0",
+    "@prisma/client": "^7.8.0",
     "@productioncity/holding-ui": "workspace:*",
     "@productioncity/masterplan-viewer": "workspace:*",
     "react": "^19.2.5",
