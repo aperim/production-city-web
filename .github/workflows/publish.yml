@@ -32,7 +32,7 @@ jobs:
           version: 10
 
       - name: Setup Node.js with GitHub Packages registry
-        uses: actions/setup-node@v6
+        uses: actions/setup-node@v7
         with:
           node-version-file: '.nvmrc'
           cache: 'pnpm'
