@@ -32,7 +32,7 @@
     "@productioncity/masterplan-viewer": "workspace:*",
     "react": "^19.2.5",
     "react-dom": "^19.2.5",
-    "react-server-dom-webpack": "^19.2.4",
+    "react-server-dom-webpack": "^19.2.8",
     "vinext": "^0.0.28"
   },
   "devDependencies": {
